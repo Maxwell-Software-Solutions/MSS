@@ -1,0 +1,56 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Fintech API case study — coverage up 32%</title>
+  <defs>
+    <linearGradient id="bgFin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <radialGradient id="glowFin" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(260 0) rotate(45) scale(560 360)">
+      <stop stop-color="#10b981" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="gridFin" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#334155" stroke-width="1" stroke-opacity="0.35"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="url(#bgFin)"/>
+  <rect width="1200" height="400" fill="url(#gridFin)" opacity="0.25"/>
+  <rect width="1200" height="400" fill="url(#glowFin)"/>
+
+  <text x="108" y="106" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="600" fill="#e2e8f0">Fintech API reliability uplift</text>
+  <text x="108" y="134" font-family="'Segoe UI',Arial,sans-serif" font-size="14" fill="#94a3b8">Coverage up 32% • Latency p99 improved 18%</text>
+
+  <!-- Coverage ring -->
+  <g transform="translate(180 236)">
+    <circle r="74" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <circle r="58" fill="none" stroke="#1e293b" stroke-width="10"/>
+    <circle r="58" fill="none" stroke="#0ea5e9" stroke-width="10" stroke-dasharray="364 408" stroke-dashoffset="250" stroke-linecap="round"/>
+    <text text-anchor="middle" y="8" font-family="'Segoe UI',Arial" font-size="30" font-weight="600" fill="#0ea5e9">+32%</text>
+    <text text-anchor="middle" y="34" font-family="'Segoe UI',Arial" font-size="12" fill="#94a3b8">coverage</text>
+  </g>
+
+  <!-- Latency card -->
+  <g transform="translate(470 188)">
+    <rect x="-70" y="0" width="140" height="140" rx="16" fill="#1e293b" stroke="#334155"/>
+    <text x="0" y="46" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="14" fill="#94a3b8">p99 latency</text>
+    <text x="0" y="80" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="30" font-weight="600" fill="#6366f1">-18%</text>
+  </g>
+
+  <!-- Incidents bars -->
+  <g transform="translate(780 188)">
+    <rect x="-70" y="0" width="140" height="140" rx="16" fill="#1e293b" stroke="#334155"/>
+    <g transform="translate(-40 28)">
+      <rect x="0" y="28" width="22" height="54" rx="4" fill="#f59e0b" fill-opacity="0.35"/>
+      <rect x="34" y="38" width="22" height="44" rx="4" fill="#f59e0b" fill-opacity="0.6"/>
+      <rect x="68" y="48" width="22" height="34" rx="4" fill="#f59e0b"/>
+      <text x="40" y="100" font-family="'Segoe UI',Arial" font-size="12" fill="#94a3b8" text-anchor="middle">-24% incidents</text>
+    </g>
+  </g>
+
+  <!-- Error budget card -->
+  <g transform="translate(1030 188)">
+    <rect x="-70" y="0" width="140" height="140" rx="16" fill="#1e293b" stroke="#334155"/>
+    <text x="0" y="46" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="14" fill="#94a3b8">error budget</text>
+    <text x="0" y="80" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="30" font-weight="600" fill="#10b981">+15%</text>
+  </g>
+</svg>

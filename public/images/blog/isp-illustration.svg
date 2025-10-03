@@ -1,0 +1,33 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Interface Segregation Principle illustration</title>
+  <desc>Shows a fat interface contrasted with three fine grained interfaces following ISP.</desc>
+  <defs>
+    <linearGradient id="bgIsp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
+    <pattern id="gridIsp" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#334155" stroke-opacity="0.25" stroke-width="1"/></pattern>
+    <linearGradient id="fat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7f1d1d"/><stop offset="1" stop-color="#991b1b"/></linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#bgIsp)"/>
+  <rect width="400" height="300" fill="url(#gridIsp)"/>
+  <text x="200" y="28" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="16" font-weight="600" fill="#f1f5f9">Interface Segregation</text>
+  <g font-family="'Segoe UI',Arial" font-size="10" font-weight="500" text-anchor="middle">
+    <g transform="translate(90 120)">
+      <rect x="-70" y="-50" width="140" height="100" rx="18" fill="url(#fat)" stroke="#ef4444"/>
+      <text y="-18" fill="#fee2e2" font-weight="600">IMachine</text>
+      <text y="2" fill="#fee2e2">print()</text>
+      <text y="20" fill="#fee2e2">scan()</text>
+      <text y="38" fill="#fee2e2">fax()</text>
+      <text y="58" fill="#ef4444" font-weight="600">Bad ❌</text>
+    </g>
+    <g transform="translate(290 120)" fill="#f1f5f9">
+      <rect x="-60" y="-50" width="120" height="36" rx="12" fill="#1e293b" stroke="#6366f1"/>
+      <text y="-30" fill="#6366f1" font-weight="600">IPrinter</text>
+      <rect x="-60" y="-10" width="120" height="36" rx="12" fill="#1e293b" stroke="#10b981"/>
+      <text y="8" fill="#10b981" font-weight="600">IScanner</text>
+      <rect x="-60" y="30" width="120" height="36" rx="12" fill="#1e293b" stroke="#f59e0b"/>
+      <text y="48" fill="#f59e0b" font-weight="600">IFax</text>
+      <text y="68" fill="#10b981" font-weight="600">Good ✅</text>
+    </g>
+  </g>
+  <text x="200" y="230" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="11" fill="#94a3b8">Clients depend only</text>
+  <text x="200" y="246" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="11" fill="#94a3b8">on what they use</text>
+</svg>

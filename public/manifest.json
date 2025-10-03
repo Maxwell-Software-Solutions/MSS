@@ -1,0 +1,27 @@
+{
+  "name": "Maxwell Software Solutions",
+  "short_name": "Maxwell",
+  "description": "Modern software consulting and development services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8B6B00",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo-icon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en",
+  "dir": "ltr"
+}

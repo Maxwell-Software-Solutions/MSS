@@ -1,0 +1,62 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Retail platform case study — escaped defects down 58%</title>
+  <defs>
+    <linearGradient id="bgRetail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <radialGradient id="glowRetail" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(920 40) rotate(45) scale(480 320)">
+      <stop stop-color="#6366f1" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="gridRetail" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#334155" stroke-width="1" stroke-opacity="0.35"/>
+    </pattern>
+    <linearGradient id="accentStrokeRetail" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="400" fill="url(#bgRetail)"/>
+  <rect width="1200" height="400" fill="url(#gridRetail)" opacity="0.25"/>
+  <rect width="1200" height="400" fill="url(#glowRetail)"/>
+  <g filter="url(#none)">
+    <rect x="72" y="56" width="1056" height="288" rx="28" fill="#0f172a" stroke="url(#accentStrokeRetail)" stroke-opacity="0.4"/>
+    <rect x="72" y="56" width="1056" height="92" rx="28" fill="linear-gradient(90deg,#1e293b,#0f172a)"/>
+  </g>
+  <text x="108" y="106" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="600" fill="#e2e8f0">Retail platform quality uplift</text>
+  <text x="108" y="134" font-family="'Segoe UI',Arial,sans-serif" font-size="14" fill="#94a3b8">Escaped defects down 58% • Deploy frequency up 28%</text>
+
+  <!-- Metric ring -->
+  <g transform="translate(170 238)">
+    <circle r="74" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <circle r="58" fill="none" stroke="#1e293b" stroke-width="10"/>
+    <circle r="58" fill="none" stroke="#10b981" stroke-width="10" stroke-dasharray="364 408" stroke-dashoffset="150" stroke-linecap="round"/>
+    <text text-anchor="middle" y="8" font-family="'Segoe UI',Arial" font-size="30" font-weight="600" fill="#10b981">-58%</text>
+    <text text-anchor="middle" y="34" font-family="'Segoe UI',Arial" font-size="12" fill="#94a3b8">escaped defects</text>
+  </g>
+
+  <!-- Deploy bars -->
+  <g transform="translate(460 190)">
+    <rect x="-70" y="0" width="140" height="140" rx="16" fill="#1e293b" stroke="#334155"/>
+    <g transform="translate(-40 26)">
+      <rect x="0" y="44" width="22" height="38" rx="4" fill="#6366f1" fill-opacity="0.45"/>
+      <rect x="34" y="32" width="22" height="50" rx="4" fill="#6366f1" fill-opacity="0.65"/>
+      <rect x="68" y="20" width="22" height="62" rx="4" fill="#6366f1"/>
+      <text x="40" y="100" font-family="'Segoe UI',Arial" font-size="12" fill="#94a3b8" text-anchor="middle">+28% deploys</text>
+    </g>
+  </g>
+
+  <!-- CSAT / MTTR -->
+  <g transform="translate(780 190)">
+    <rect x="-70" y="0" width="140" height="140" rx="16" fill="#1e293b" stroke="#334155"/>
+    <text x="0" y="46" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="14" fill="#94a3b8">MTTR</text>
+    <text x="0" y="80" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="30" font-weight="600" fill="#f59e0b">-42%</text>
+  </g>
+
+  <g transform="translate(1030 190)">
+    <rect x="-70" y="0" width="140" height="140" rx="16" fill="#1e293b" stroke="#334155"/>
+    <text x="0" y="46" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="14" fill="#94a3b8">CSAT</text>
+    <text x="0" y="80" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="30" font-weight="600" fill="#6366f1">+12</text>
+  </g>
+</svg>

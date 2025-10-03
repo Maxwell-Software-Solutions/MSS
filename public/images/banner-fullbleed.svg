@@ -1,0 +1,15 @@
+<svg width="2400" height="640" viewBox="0 0 2400 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Full-bleed abstract banner">
+  <defs>
+    <radialGradient id="rg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#8B6B00" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#8B6B00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="2400" height="640" fill="url(#rg)"/>
+  <g fill="none" stroke="#8B6B00" stroke-opacity=".22">
+    <path d="M0 420 C 400 300, 2000 300, 2400 420"/>
+    <path d="M0 500 C 600 360, 1800 360, 2400 500"/>
+  </g>
+</svg>
+
+

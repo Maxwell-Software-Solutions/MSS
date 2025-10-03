@@ -1,0 +1,5 @@
+---
+description: build 
+globs: When building the solution use build:test command
+alwaysApply: true
+---
