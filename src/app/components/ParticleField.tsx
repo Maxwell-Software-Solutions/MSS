@@ -71,6 +71,60 @@ export default function ParticleField(): ReactElement {
           return false;
         }
       })();
+      // Detect dark mode so we can reduce visual clutter (no agents / no connection lines)
+      // Track dark mode dynamically (respond to OS preference and class-based toggles)
+      let isDark = (() => {
+        try {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ||
+            document.documentElement.classList.contains('dark');
+        } catch {
+          return document.documentElement.classList.contains('dark');
+        }
+      })();
+
+      // MediaQuery + MutationObserver to respond when theme changes at runtime
+      const mq = (() => {
+        try {
+          return window.matchMedia('(prefers-color-scheme: dark)');
+        } catch {
+          return null as unknown as MediaQueryList | null;
+        }
+      })();
+      const onThemeChange = (matches: boolean) => {
+        if (matches === isDark) return;
+        isDark = matches;
+        if (isDark) {
+          // Immediately remove autonomous agents and trails when entering dark mode
+          agentsRef.current.length = 0;
+          trailRef.current.length = 0;
+          featuresEnabledRef.current.agents = false;
+        } else {
+          // Re-init agents when leaving dark mode
+          // Call resize which contains the agent init logic guarded by !isDark
+          try {
+            resize();
+          } catch {
+            // ignore if resize not yet available
+          }
+        }
+      };
+      if (mq) {
+        try {
+          // modern API
+          mq.addEventListener('change', (e: MediaQueryListEvent) => onThemeChange(e.matches));
+        } catch {
+          // fallback
+          try {
+            // @ts-ignore older types
+            mq.addListener((e: MediaQueryListEvent) => onThemeChange(e.matches));
+          } catch {}
+        }
+      }
+      const classObserver = new MutationObserver(() => {
+        const hasDarkClass = document.documentElement.classList.contains('dark');
+        onThemeChange(hasDarkClass);
+      });
+      classObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
       const TARGET_MAX_PARTICLES = prefersReducedMotion ? 400 : 1100; // further lowered
       let dynamicMax = Math.min(140, TARGET_MAX_PARTICLES); // progressive ramp
@@ -84,6 +138,37 @@ export default function ParticleField(): ReactElement {
         bctx = null;
       }
 
+      // Robust dark-mode detection fallback: compute background luminance of the closest container
+      const isBackgroundDark = (): boolean => {
+        try {
+          const el = canvas.parentElement ?? document.documentElement;
+          const cs = window.getComputedStyle(el);
+          const bg = cs.backgroundColor || cs.background || '';
+          // parse rgb(a) or hex
+          let r = 0,
+            g = 0,
+            b = 0;
+          const rgbMatch = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+          if (rgbMatch) {
+            r = Number(rgbMatch[1]);
+            g = Number(rgbMatch[2]);
+            b = Number(rgbMatch[3]);
+          } else {
+            const hexMatch = bg.match(/#([0-9a-f]{6})/i);
+            if (hexMatch && hexMatch[1]) {
+              const hex = hexMatch[1];
+              r = parseInt(hex.substring(0, 2), 16);
+              g = parseInt(hex.substring(2, 4), 16);
+              b = parseInt(hex.substring(4, 6), 16);
+            }
+          }
+          const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255; // relative luminance
+          return lum < 0.45; // threshold — tweakable
+        } catch {
+          return false;
+        }
+      };
+
       function resize(): void {
         if (!context) return;
         canvas.width = canvas.clientWidth * window.devicePixelRatio;
@@ -93,7 +178,7 @@ export default function ParticleField(): ReactElement {
         context.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
         bctx?.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
         // initialize autonomous agents after first real dimensions known
-        if (agentsRef.current.length === 0) {
+        if (agentsRef.current.length === 0 && !isDark) {
           const logicalW = canvas.width / window.devicePixelRatio;
           const logicalH = canvas.height / window.devicePixelRatio;
           const count = 3; // three agents
@@ -112,7 +197,7 @@ export default function ParticleField(): ReactElement {
         }
       }
       resize();
-      window.addEventListener('resize', resize);
+  window.addEventListener('resize', resize);
 
       const PALETTE: [number, number, number][] = [
         [255, 255, 255], // white (replaces prior light purple)
@@ -144,24 +229,27 @@ export default function ParticleField(): ReactElement {
       function spawnAmbient(): void {
         const logicalW = canvas.width / window.devicePixelRatio;
         const logicalH = canvas.height / window.devicePixelRatio;
-        const count = 1 + Math.floor(Math.random() * 2); // 1-2 subtle particles
+        // Increase ambient activity (on-screen only). Pointer bursts remain unchanged.
+        // Light: 2-4 ambient particles every ~0.5-1.2s
+        // Dark: 4-7 ambient particles every ~0.35-0.9s
+        const count = isDark ? 4 + Math.floor(Math.random() * 4) : 2 + Math.floor(Math.random() * 3);
         for (let i = 0; i < count; i++) {
           const x = Math.random() * logicalW;
           const y = Math.random() * logicalH;
           const angle = Math.random() * Math.PI * 2;
-          const speed = 0.4 + Math.random() * 0.3;
+          const speed = 0.45 + Math.random() * 0.35;
           const color = PALETTE[Math.floor(Math.random() * PALETTE.length)]!;
           particlesRef.current.push({
             x,
             y,
             vx: Math.cos(angle) * speed,
             vy: Math.sin(angle) * speed * 0.6,
-            life: 220 + Math.random() * 120,
+            life: 180 + Math.random() * 140,
             color,
           });
         }
-        // schedule next ambient burst with variability
-        ambientRef.current.nextAt = performance.now() + 1000 + Math.random() * 2500; // 1s - 3.5s
+        // schedule next ambient burst with variability (more frequent in dark mode)
+        ambientRef.current.nextAt = performance.now() + (isDark ? 350 + Math.random() * 550 : 500 + Math.random() * 700);
       }
 
       function spawnPulse(cx: number, cy: number): void {
@@ -195,7 +283,7 @@ export default function ParticleField(): ReactElement {
         frameSkipToggleRef.current = !frameSkipToggleRef.current;
         const skipHeavy = (longFrame && frameSkipToggleRef.current) || hidden;
 
-        const drawCtx = bctx ?? context;
+  const drawCtx = bctx ?? context;
         drawCtx.clearRect(0, 0, canvas.width, canvas.height);
         const logicalW = canvas.width / window.devicePixelRatio;
         const logicalH = canvas.height / window.devicePixelRatio;
@@ -217,13 +305,50 @@ export default function ParticleField(): ReactElement {
           spawnAmbient();
         }
 
+        // Re-evaluate dark mode at runtime to ensure immediate response to theme changes
+        const nowDark = (() => {
+          try {
+            return (
+              (mq ? mq.matches : false) ||
+              document.documentElement.classList.contains('dark') ||
+              isBackgroundDark()
+            );
+          } catch {
+            return isDark;
+          }
+        })();
+        if (nowDark !== isDark) {
+          isDark = nowDark;
+          if (isDark) {
+            // clear agents/trails immediately when entering dark
+            agentsRef.current.length = 0;
+            trailRef.current.length = 0;
+            featuresEnabledRef.current.agents = false;
+            // Clear drawing buffers to remove any previously drawn connection ribbons
+            try {
+              if (bctx) {
+                bctx.clearRect(0, 0, bufferCanvas.width, bufferCanvas.height);
+              }
+              if (context) {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+              }
+            } catch {}
+          } else {
+            // re-init agents on exit from dark (resize will create them)
+            try {
+              resize();
+            } catch {}
+          }
+        }
+
         // pulses
         // enable pulses & auto cursor after small delay to reduce main-thread contention
         if (!featuresEnabledRef.current.pulses && ts - rampStart > 2200) {
           featuresEnabledRef.current.pulses = true;
         }
+        // Only enable autonomous agents when not in dark mode (they cause visible moving anchors)
         if (!featuresEnabledRef.current.agents && ts - rampStart > 1600) {
-          featuresEnabledRef.current.agents = true;
+          featuresEnabledRef.current.agents = !isDark;
         }
 
         if (featuresEnabledRef.current.pulses && ts >= pulseRef.current.nextAt && !prefersReducedMotion && !skipHeavy) {
@@ -309,7 +434,8 @@ export default function ParticleField(): ReactElement {
           dynamicMax = TARGET_MAX_PARTICLES;
         }
 
-        const suppressConnections = elapsed < 1800 || skipHeavy; // delay & dampen
+    // In dark mode we suppress particle connection lines and heavy agent trails so only particles remain
+    const suppressConnections = elapsed < 1800 || skipHeavy || isDark; // delay & dampen
         const next: Particle[] = [];
         for (const p of particlesRef.current) {
           p.x += p.vx;
@@ -376,7 +502,7 @@ export default function ParticleField(): ReactElement {
           context.clearRect(0, 0, canvas.width, canvas.height);
           context.drawImage(bufferCanvas, 0, 0);
         }
-      }
+  }
       rafRef.current = requestAnimationFrame(tick);
 
       function onPointer(e: PointerEvent): void {
@@ -400,6 +526,18 @@ export default function ParticleField(): ReactElement {
         canvas.removeEventListener('pointerup', onLeave);
         canvas.removeEventListener('pointerleave', onLeave);
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        // cleanup theme listeners
+        try {
+          if (mq) {
+            // @ts-ignore
+            mq.removeEventListener?.('change', (e: MediaQueryListEvent) => onThemeChange(e.matches));
+            // @ts-ignore
+            mq.removeListener?.((e: MediaQueryListEvent) => onThemeChange(e.matches));
+          }
+        } catch {}
+        try {
+          classObserver.disconnect();
+        } catch {}
       };
     }); // end scheduled initialization
   }, []);
