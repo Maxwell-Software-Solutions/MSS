@@ -41,10 +41,11 @@ export default function ParticleField(): ReactElement {
 
   useEffect(() => {
     // Defer heavy canvas + animation setup until main thread is idle (or after small timeout)
-    const schedule =
+    type Scheduler = (cb: () => void) => number;
+    const schedule: Scheduler =
       typeof window.requestIdleCallback === 'function'
-        ? window.requestIdleCallback
-        : (cb: () => void) => window.setTimeout(cb, 60);
+        ? (cb) => window.requestIdleCallback(() => cb())
+        : (cb) => window.setTimeout(cb, 60);
 
     schedule(() => {
       const canvas = canvasRef.current!;
@@ -75,8 +76,10 @@ export default function ParticleField(): ReactElement {
       // Track dark mode dynamically (respond to OS preference and class-based toggles)
       let isDark = (() => {
         try {
-          return window.matchMedia('(prefers-color-scheme: dark)').matches ||
-            document.documentElement.classList.contains('dark');
+          return (
+            window.matchMedia('(prefers-color-scheme: dark)').matches ||
+            document.documentElement.classList.contains('dark')
+          );
         } catch {
           return document.documentElement.classList.contains('dark');
         }
@@ -90,7 +93,7 @@ export default function ParticleField(): ReactElement {
           return null as unknown as MediaQueryList | null;
         }
       })();
-      const onThemeChange = (matches: boolean) => {
+      const onThemeChange = (matches: boolean): void => {
         if (matches === isDark) return;
         isDark = matches;
         if (isDark) {
@@ -108,17 +111,19 @@ export default function ParticleField(): ReactElement {
           }
         }
       };
+      type LegacyMediaQueryList = MediaQueryList & {
+        addListener?: (listener: (event: MediaQueryListEvent) => void) => void;
+        removeListener?: (listener: (event: MediaQueryListEvent) => void) => void;
+      };
+      const themeListener = (event: MediaQueryListEvent): void => onThemeChange(event.matches);
       if (mq) {
         try {
-          // modern API
-          mq.addEventListener('change', (e: MediaQueryListEvent) => onThemeChange(e.matches));
-        } catch {
-          // fallback
-          try {
-            // @ts-ignore older types
-            mq.addListener((e: MediaQueryListEvent) => onThemeChange(e.matches));
-          } catch {}
-        }
+          if ('addEventListener' in mq && typeof mq.addEventListener === 'function') {
+            mq.addEventListener('change', themeListener);
+          } else {
+            (mq as LegacyMediaQueryList).addListener?.(themeListener);
+          }
+        } catch {}
       }
       const classObserver = new MutationObserver(() => {
         const hasDarkClass = document.documentElement.classList.contains('dark');
@@ -197,7 +202,7 @@ export default function ParticleField(): ReactElement {
         }
       }
       resize();
-  window.addEventListener('resize', resize);
+      window.addEventListener('resize', resize);
 
       const PALETTE: [number, number, number][] = [
         [255, 255, 255], // white (replaces prior light purple)
@@ -249,7 +254,8 @@ export default function ParticleField(): ReactElement {
           });
         }
         // schedule next ambient burst with variability (more frequent in dark mode)
-        ambientRef.current.nextAt = performance.now() + (isDark ? 350 + Math.random() * 550 : 500 + Math.random() * 700);
+        ambientRef.current.nextAt =
+          performance.now() + (isDark ? 350 + Math.random() * 550 : 500 + Math.random() * 700);
       }
 
       function spawnPulse(cx: number, cy: number): void {
@@ -283,7 +289,7 @@ export default function ParticleField(): ReactElement {
         frameSkipToggleRef.current = !frameSkipToggleRef.current;
         const skipHeavy = (longFrame && frameSkipToggleRef.current) || hidden;
 
-  const drawCtx = bctx ?? context;
+        const drawCtx = bctx ?? context;
         drawCtx.clearRect(0, 0, canvas.width, canvas.height);
         const logicalW = canvas.width / window.devicePixelRatio;
         const logicalH = canvas.height / window.devicePixelRatio;
@@ -309,9 +315,7 @@ export default function ParticleField(): ReactElement {
         const nowDark = (() => {
           try {
             return (
-              (mq ? mq.matches : false) ||
-              document.documentElement.classList.contains('dark') ||
-              isBackgroundDark()
+              (mq ? mq.matches : false) || document.documentElement.classList.contains('dark') || isBackgroundDark()
             );
           } catch {
             return isDark;
@@ -434,8 +438,8 @@ export default function ParticleField(): ReactElement {
           dynamicMax = TARGET_MAX_PARTICLES;
         }
 
-    // In dark mode we suppress particle connection lines and heavy agent trails so only particles remain
-    const suppressConnections = elapsed < 1800 || skipHeavy || isDark; // delay & dampen
+        // In dark mode we suppress particle connection lines and heavy agent trails so only particles remain
+        const suppressConnections = elapsed < 1800 || skipHeavy || isDark; // delay & dampen
         const next: Particle[] = [];
         for (const p of particlesRef.current) {
           p.x += p.vx;
@@ -502,7 +506,7 @@ export default function ParticleField(): ReactElement {
           context.clearRect(0, 0, canvas.width, canvas.height);
           context.drawImage(bufferCanvas, 0, 0);
         }
-  }
+      }
       rafRef.current = requestAnimationFrame(tick);
 
       function onPointer(e: PointerEvent): void {
@@ -529,10 +533,10 @@ export default function ParticleField(): ReactElement {
         // cleanup theme listeners
         try {
           if (mq) {
-            // @ts-ignore
-            mq.removeEventListener?.('change', (e: MediaQueryListEvent) => onThemeChange(e.matches));
-            // @ts-ignore
-            mq.removeListener?.((e: MediaQueryListEvent) => onThemeChange(e.matches));
+            if ('removeEventListener' in mq && typeof mq.removeEventListener === 'function') {
+              mq.removeEventListener('change', themeListener);
+            }
+            (mq as LegacyMediaQueryList).removeListener?.(themeListener);
           }
         } catch {}
         try {
