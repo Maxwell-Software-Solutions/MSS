@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+	<title id="title">Petras portrait icon</title>
+	<desc id="desc">Abstract avatar with fresh green gradient background and geometric highlights</desc>
+	<defs>
+		<linearGradient id="petrasGradient" x1="0%" y1="0%" x2="120%" y2="120%">
+			<stop offset="0%" stop-color="#9be15d" />
+			<stop offset="100%" stop-color="#00e3ae" />
+		</linearGradient>
+	</defs>
+	<rect width="120" height="120" rx="24" fill="url(#petrasGradient)" />
+	<circle cx="60" cy="46" r="23" fill="#f0fff6" />
+	<path d="M26 100c8-22 21-32 34-32s26 10 34 32" fill="#21c48d" opacity="0.85" />
+	<path d="M40 50c6 8 12 12 20 12s14-4 20-12" stroke="#21c48d" stroke-width="4" fill="none" stroke-linecap="round" />
+	<circle cx="60" cy="74" r="6" fill="#15a371" opacity="0.7" />
+</svg>

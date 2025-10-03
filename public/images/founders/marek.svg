@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+	<title id="title">Marek portrait icon</title>
+	<desc id="desc">Abstract avatar with warm gradient background and geometric accent</desc>
+	<defs>
+		<linearGradient id="marekGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+			<stop offset="0%" stop-color="#ff9a8b" />
+			<stop offset="100%" stop-color="#ff6a88" />
+		</linearGradient>
+	</defs>
+	<rect width="120" height="120" rx="24" fill="url(#marekGradient)" />
+	<circle cx="60" cy="46" r="22" fill="#fff4f0" />
+	<path d="M24 102c6-22 22-32 36-32s30 10 36 32" fill="#f4526b" opacity="0.85" />
+	<path d="M40 52c4 6 10 10 20 10s16-4 20-10" stroke="#f16a81" stroke-width="4" fill="none" stroke-linecap="round" />
+</svg>
