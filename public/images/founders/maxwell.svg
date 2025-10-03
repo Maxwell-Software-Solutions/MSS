@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+	<title id="title">Maxwell portrait icon</title>
+	<desc id="desc">Abstract avatar with cool gradient background and layered shapes</desc>
+	<defs>
+		<linearGradient id="maxwellGradient" x1="0%" y1="0%" x2="120%" y2="120%">
+			<stop offset="0%" stop-color="#4facfe" />
+			<stop offset="100%" stop-color="#00f2fe" />
+		</linearGradient>
+	</defs>
+	<rect width="120" height="120" rx="24" fill="url(#maxwellGradient)" />
+	<circle cx="60" cy="48" r="24" fill="#e6f7ff" />
+	<path d="M28 98c7-23 20-34 32-34s25 11 32 34" fill="#0c9ac7" opacity="0.85" />
+	<path d="M44 52c5 7 11 11 16 11s11-4 16-11" stroke="#26c6da" stroke-width="4" fill="none" stroke-linecap="round" />
+	<path d="M60 26c-10 0-18 8-18 18" stroke="#0a74da" stroke-width="4" fill="none" stroke-linecap="round" />
+</svg>
