@@ -23,14 +23,14 @@
     "lighthouse:assert": "lhci assert",
     "lighthouse:upload": "lhci upload",
     "lighthouse:manual": "lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html",
-    "analyze": "ANALYZE=true next build",
+  "analyze": "cross-env ANALYZE=true next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "analyze:full": "node scripts/analyze-bundle.js",
     "avatars:generate": "ts-node scripts/generate-founder-avatars.ts"
   },
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=20.9.0"
   },
   "dependencies": {
     "@vercel/kv": "^3.0.0",

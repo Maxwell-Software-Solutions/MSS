@@ -3,9 +3,6 @@ import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 
-// Bundle analyzer configuration
-const isAnalyze = process.env.ANALYZE === 'true';
-
 const nextConfig: NextConfig = {
   /* config options here */
   env: {
@@ -49,8 +46,8 @@ const nextConfig: NextConfig = {
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
 
-  // Base minimizer list
-  config.optimization.minimizer = [];
+      // Base minimizer list
+      config.optimization.minimizer = [];
 
       // Split chunks for better caching
       config.optimization.splitChunks = {
@@ -139,8 +136,8 @@ const nextConfig: NextConfig = {
       // Increase bundle size limits for better performance
       config.performance = {
         hints: 'warning',
-        maxEntrypointSize: 1024000, // 1MB
-        maxAssetSize: 1024000, // 1MB
+        maxEntrypointSize: 1024 * 1024, // 1MB
+        maxAssetSize: 1024 * 1024, // 1MB
       };
     }
 
@@ -160,11 +157,13 @@ const nextConfig: NextConfig = {
     };
 
     // Performance hints
-    config.performance = {
-      hints: dev ? false : 'warning',
-      maxEntrypointSize: 512000,
-      maxAssetSize: 512000,
-    };
+    config.performance = dev
+      ? { hints: false }
+      : {
+          hints: 'warning',
+          maxEntrypointSize: 1024 * 1024,
+          maxAssetSize: 1024 * 1024,
+        };
 
     return config;
   },

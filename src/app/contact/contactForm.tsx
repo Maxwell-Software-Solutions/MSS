@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 
-type FormData = {
+type ContactFormValues = {
   firstName: string;
   lastName: string;
   email: string;
@@ -10,20 +10,28 @@ type FormData = {
   description: string;
 };
 
+type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+const INITIAL_FORM_STATE: ContactFormValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  description: '',
+};
+
+const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? '/contact-handler.php';
+
 export default function ContactForm({
   onSubmit,
 }: {
-  onSubmit?: (data: FormData) => void;
+  onSubmit?: (data: ContactFormValues) => void;
 }): React.ReactElement {
-  const [form, setForm] = useState<FormData>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    description: '',
-  });
+  const [form, setForm] = useState<ContactFormValues>(INITIAL_FORM_STATE);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<SubmissionStatus>('idle');
+  const [serverMessage, setServerMessage] = useState<string>('');
 
   function validate(): Record<string, string> {
     const e: Record<string, string> = {};
@@ -37,22 +45,84 @@ export default function ContactForm({
     const { name, value } = e.target;
     setForm((s) => ({ ...s, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: '' }));
+    setStatus('idle');
+    setServerMessage('');
   }
 
-  function handleSubmit(e: React.FormEvent): void {
+  async function handleSubmit(e: React.FormEvent): Promise<void> {
     e.preventDefault();
     const eObj = validate();
     setErrors(eObj);
     if (Object.keys(eObj).length === 0) {
-      if (onSubmit) onSubmit(form);
+      setStatus('submitting');
+      setServerMessage('');
+
+      try {
+        const payload = new FormData();
+        Object.entries(form).forEach(([key, value]) => {
+          payload.append(key, value);
+        });
+
+        const response = await fetch(CONTACT_ENDPOINT, {
+          method: 'POST',
+          body: payload,
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('We could not send your message right now. Please try again.');
+        }
+
+        const data: unknown = await response.json().catch(() => ({ success: true, message: undefined }));
+
+        const success = typeof data === 'object' && data !== null ? (data as { success?: boolean }).success : undefined;
+        const message =
+          typeof data === 'object' &&
+          data !== null &&
+          'message' in data &&
+          typeof (data as { message?: unknown }).message === 'string'
+            ? (data as { message: string }).message
+            : undefined;
+
+        if (success === false) {
+          throw new Error(message ?? 'We could not send your message right now. Please try again.');
+        }
+
+        setStatus('success');
+        setServerMessage(message ?? 'Thanks! We received your message and will get back to you shortly.');
+        setForm(INITIAL_FORM_STATE);
+        if (onSubmit) onSubmit(form);
+      } catch (err) {
+        const fallbackMessage = err instanceof Error ? err.message : 'Something went wrong. Please try again later.';
+        setStatus('error');
+        setServerMessage(fallbackMessage);
+      }
     }
   }
 
   return (
     <form onSubmit={handleSubmit} aria-label="contact-form" className="max-w-2xl mx-auto">
       <div className="grid grid-cols-1 gap-6">
+        {(status === 'success' || status === 'error') && (
+          <div
+            role={status === 'success' ? 'status' : 'alert'}
+            aria-live="polite"
+            className={`rounded-md border px-4 py-3 text-sm ${
+              status === 'success'
+                ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
+                : 'border-red-200 bg-red-50 text-red-700'
+            }`}
+          >
+            {serverMessage}
+          </div>
+        )}
+
         <div className="flex flex-col">
-          <label htmlFor="firstName" className="mb-2 text-sm font-medium text-foreground/90">First name</label>
+          <label htmlFor="firstName" className="mb-2 text-sm font-medium text-foreground/90">
+            First name
+          </label>
           <input
             id="firstName"
             name="firstName"
@@ -63,7 +133,9 @@ export default function ContactForm({
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="lastName" className="mb-2 text-sm font-medium text-foreground/90">Last name</label>
+          <label htmlFor="lastName" className="mb-2 text-sm font-medium text-foreground/90">
+            Last name
+          </label>
           <input
             id="lastName"
             name="lastName"
@@ -74,7 +146,9 @@ export default function ContactForm({
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="email" className="mb-2 text-sm font-medium text-foreground/90">Email <span className="text-red-600">*</span></label>
+          <label htmlFor="email" className="mb-2 text-sm font-medium text-foreground/90">
+            Email <span className="text-red-600">*</span>
+          </label>
           <input
             id="email"
             name="email"
@@ -85,12 +159,16 @@ export default function ContactForm({
             className="w-full rounded-md border border-foreground/10 px-3 py-2 placeholder:opacity-60 focus:outline-none focus:ring-2 focus:ring-foreground/20"
           />
           {errors.email && (
-            <p id="email-error" role="alert" className="mt-2 text-sm text-red-600">{errors.email}</p>
+            <p id="email-error" role="alert" className="mt-2 text-sm text-red-600">
+              {errors.email}
+            </p>
           )}
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="phone" className="mb-2 text-sm font-medium text-foreground/90">Phone</label>
+          <label htmlFor="phone" className="mb-2 text-sm font-medium text-foreground/90">
+            Phone
+          </label>
           <input
             id="phone"
             name="phone"
@@ -101,7 +179,9 @@ export default function ContactForm({
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="description" className="mb-2 text-sm font-medium text-foreground/90">Description <span className="text-red-600">*</span></label>
+          <label htmlFor="description" className="mb-2 text-sm font-medium text-foreground/90">
+            Description <span className="text-red-600">*</span>
+          </label>
           <textarea
             id="description"
             name="description"
@@ -113,13 +193,19 @@ export default function ContactForm({
             className="w-full rounded-md border border-foreground/10 px-3 py-2 placeholder:opacity-60 focus:outline-none focus:ring-2 focus:ring-foreground/20"
           />
           {errors.description && (
-            <p id="description-error" role="alert" className="mt-2 text-sm text-red-600">{errors.description}</p>
+            <p id="description-error" role="alert" className="mt-2 text-sm text-red-600">
+              {errors.description}
+            </p>
           )}
         </div>
 
         <div className="pt-2">
-          <button type="submit" className="inline-flex items-center justify-center rounded-md px-6 py-3 bg-foreground text-background font-medium hover:opacity-95">
-            Send
+          <button
+            type="submit"
+            disabled={status === 'submitting'}
+            className="inline-flex items-center justify-center rounded-md px-6 py-3 bg-foreground text-background font-medium hover:opacity-95 disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {status === 'submitting' ? 'Sending…' : 'Send'}
           </button>
         </div>
       </div>
