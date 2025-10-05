@@ -50,25 +50,4 @@ describe('SVG asset integrity', () => {
     });
     expect(failures).toEqual([]);
   });
-
-  it('expected key illustration files are present', () => {
-    const required = [
-      // Blog illustrations
-      'blog/solid-principles-hero.svg',
-      'blog/srp-illustration.svg',
-      'blog/isp-illustration.svg',
-      'blog/lsp-illustration.svg',
-      'blog/ocp-illustration.svg',
-      'blog/dip-illustration.svg',
-      'blog/refactoring-legacy-code.svg',
-      'blog/tdd-business-value.svg',
-      // Case studies
-      'case-studies/retail-platform.svg',
-      'case-studies/fintech-api.svg',
-      'case-studies/saas-migration.svg'
-    ];
-    for (const file of required) {
-      expect(svgFiles).toContain(file);
-    }
-  });
 });

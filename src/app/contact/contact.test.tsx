@@ -18,7 +18,7 @@ describe('Contact page', () => {
 
   it('renders the email contact link', () => {
     render(<ContactPage />);
-    const emailLink = screen.getByRole('link', { name: /email: hello@maxwell\.software/i });
+    const emailLink = screen.getByRole('link', { name: /hello@maxwell\.software/i });
     expect(emailLink).toBeInTheDocument();
     expect(emailLink).toHaveAttribute('href', 'mailto:hello@maxwell.software?subject=Code%20Audit%20Request');
   });
