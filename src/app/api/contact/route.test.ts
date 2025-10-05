@@ -3,79 +3,228 @@
  */
 
 import { NextRequest } from 'next/server';
-
-const sendMock = jest.fn();
-
-jest.mock('resend', () => ({
-  Resend: jest.fn(() => ({ emails: { send: sendMock } })),
-  __esModule: true,
-}));
+import { POST, OPTIONS } from './route';
 
 describe('POST /api/contact', () => {
-  const createRequest = (body: unknown): NextRequest =>
-    new NextRequest('http://localhost/api/contact', {
-      method: 'POST',
-      headers: new Headers({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify(body),
-    });
+  const originalEnv = process.env;
+  const fetchMock = jest.fn();
+  const originalFetch = global.fetch;
 
   beforeEach(() => {
     jest.resetModules();
-    sendMock.mockReset();
-    process.env.RESEND_API_KEY = 'test-api-key';
-    process.env.CONTACT_RECIPIENT_EMAIL = 'admin@example.com';
-    process.env.CONTACT_FROM_EMAIL = 'Acme <contact@example.com>';
+    process.env = {
+      ...originalEnv,
+      CONTACT_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/mock/exec',
+      CONTACT_APPS_SCRIPT_TOKEN: 'shared-token',
+      CONTACT_ALLOWED_ORIGINS: '',
+    };
+    fetchMock.mockReset();
+    global.fetch = fetchMock as unknown as typeof fetch;
   });
 
   afterEach(() => {
-    delete process.env.RESEND_API_KEY;
-    delete process.env.CONTACT_RECIPIENT_EMAIL;
-    delete process.env.CONTACT_FROM_EMAIL;
+    process.env = originalEnv;
+    global.fetch = originalFetch;
   });
 
-  it('rejects requests with invalid email', async () => {
-    const { POST } = await import('./route');
-    const response = await POST(createRequest({ email: 'invalid', description: 'Need help' }));
+  it('forwards the payload to Google Apps Script and returns success', async () => {
+    fetchMock.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify({ ok: true }),
+    } as Response);
 
-    expect(response.status).toBe(422);
-    const payload = await response.json();
-    expect(payload).toEqual(expect.objectContaining({ success: false }));
-    expect(sendMock).not.toHaveBeenCalled();
-  });
+    const request = new NextRequest('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        origin: 'http://localhost:3000',
+        'x-forwarded-for': '203.0.113.5',
+      },
+      body: JSON.stringify({
+        firstName: 'Ada',
+        lastName: 'Lovelace',
+        email: 'ada@example.com',
+        phone: '1234567890',
+        description: 'Interested in a code audit',
+      }),
+    });
 
-  it('sends email via Resend when payload is valid', async () => {
-    sendMock.mockResolvedValueOnce({ id: 'email-id' });
-    const { POST } = await import('./route');
-    const response = await POST(
-      createRequest({
-        firstName: 'Jane',
-        lastName: 'Doe',
-        email: 'jane@example.com',
-        phone: '555-0101',
-        description: 'Looking for help',
-      })
-    );
-
+    const response = await POST(request);
     expect(response.status).toBe(200);
-    const payload = await response.json();
-    expect(payload).toEqual(expect.objectContaining({ success: true }));
+    await expect(response.json()).resolves.toEqual({ success: true });
 
-    expect(sendMock).toHaveBeenCalledWith(
+    expect(fetchMock).toHaveBeenCalledWith(
+      'https://script.google.com/macros/s/mock/exec',
       expect.objectContaining({
-        from: 'Acme <contact@example.com>',
-        to: ['admin@example.com'],
-        replyTo: 'jane@example.com',
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      })
+    );
+
+    const [, fetchInit] = fetchMock.mock.calls[0] as [string, RequestInit];
+    expect(fetchInit.body).toBe(
+      JSON.stringify({
+        token: 'shared-token',
+        name: 'Ada Lovelace',
+        email: 'ada@example.com',
+        phone: '1234567890',
+        message: 'Interested in a code audit',
+        ip: '203.0.113.5',
       })
     );
   });
 
-  it('returns error when Resend fails', async () => {
-    sendMock.mockRejectedValueOnce(new Error('Resend failure'));
-    const { POST } = await import('./route');
-    const response = await POST(createRequest({ email: 'jane@example.com', description: 'Need help' }));
+  it('rejects disallowed origins', async () => {
+    const request = new NextRequest('https://evil.example.com/api/contact', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        origin: 'https://evil.example.com',
+      },
+      body: JSON.stringify({}),
+    });
 
+    const response = await POST(request);
+    expect(response.status).toBe(403);
+    await expect(response.json()).resolves.toEqual({ success: false, message: 'Origin not allowed' });
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('returns 502 when upstream responds with an error payload', async () => {
+    fetchMock.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify({ ok: false, error: 'Too many requests' }),
+    } as Response);
+
+    const request = new NextRequest('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        origin: 'http://localhost:3000',
+      },
+      body: JSON.stringify({
+        firstName: 'Grace',
+        email: 'grace@example.com',
+        description: 'Help me',
+      }),
+    });
+
+    const response = await POST(request);
     expect(response.status).toBe(502);
-    const payload = await response.json();
-    expect(payload).toEqual(expect.objectContaining({ success: false }));
+    await expect(response.json()).resolves.toEqual({ success: false, message: 'Too many requests' });
+  });
+
+  it('returns 500 when contact service is not configured', async () => {
+    process.env.CONTACT_APPS_SCRIPT_URL = '';
+    process.env.CONTACT_APPS_SCRIPT_TOKEN = '';
+
+    const request = new NextRequest('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        origin: 'http://localhost:3000',
+      },
+      body: JSON.stringify({
+        firstName: 'Alan',
+        email: 'alan@example.com',
+        description: 'Ping',
+      }),
+    });
+
+    const response = await POST(request);
+    expect(response.status).toBe(500);
+    await expect(response.json()).resolves.toEqual({ success: false, message: 'Contact form misconfigured' });
+  });
+
+  it('supports legacy environment variable names', async () => {
+    process.env.CONTACT_APPS_SCRIPT_URL = '';
+    process.env.CONTACT_APPS_SCRIPT_TOKEN = '';
+    process.env.APPS_SCRIPT_URL = 'https://script.google.com/macros/s/legacy/exec';
+    process.env.SHARED_TOKEN = 'legacy-token';
+
+    fetchMock.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      text: async () => JSON.stringify({ ok: true }),
+    } as Response);
+
+    const request = new NextRequest('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        origin: 'http://localhost:3000',
+      },
+      body: JSON.stringify({
+        firstName: 'Ada',
+        email: 'ada@example.com',
+        description: 'Legacy env check',
+      }),
+    });
+
+    const response = await POST(request);
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toEqual({ success: true });
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      'https://script.google.com/macros/s/legacy/exec',
+      expect.objectContaining({
+        method: 'POST',
+      })
+    );
+
+    const [, fetchInit] = fetchMock.mock.calls[0] as [string, RequestInit];
+    const parsedBody = JSON.parse(fetchInit.body as string);
+    expect(parsedBody).toEqual({
+      token: 'legacy-token',
+      name: 'Ada',
+      email: 'ada@example.com',
+      message: 'Legacy env check',
+    });
+  });
+});
+
+describe('OPTIONS /api/contact', () => {
+  const originalEnv = process.env;
+  const originalFetch = global.fetch;
+
+  beforeEach(() => {
+    process.env = {
+      ...originalEnv,
+      CONTACT_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/mock/exec',
+      CONTACT_APPS_SCRIPT_TOKEN: 'shared-token',
+    };
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+    global.fetch = originalFetch;
+  });
+
+  it('allows CORS preflight for approved origins', async () => {
+    const request = new NextRequest('http://localhost:3000/api/contact', {
+      method: 'OPTIONS',
+      headers: {
+        origin: 'http://localhost:3000',
+      },
+    });
+
+    const response = await OPTIONS(request);
+    expect(response.status).toBe(204);
+    expect(response.headers.get('access-control-allow-origin')).toBe('http://localhost:3000');
+    expect(response.headers.get('access-control-allow-methods')).toBe('POST,OPTIONS');
+  });
+
+  it('blocks preflight for disallowed origins', async () => {
+    const request = new NextRequest('https://malicious.com/api/contact', {
+      method: 'OPTIONS',
+      headers: {
+        origin: 'https://malicious.com',
+      },
+    });
+
+    const response = await OPTIONS(request);
+    expect(response.status).toBe(403);
   });
 });
