@@ -64,10 +64,24 @@ describe('ContactForm', () => {
     });
 
     expect(mockFetch).toHaveBeenCalledWith(
-      '/contact-handler.php',
+      '/api/contact',
       expect.objectContaining({
         method: 'POST',
-        headers: expect.objectContaining({ Accept: 'application/json' }),
+        headers: expect.objectContaining({
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        }),
+      })
+    );
+
+    const requestArguments = mockFetch.mock.calls[0]?.[1];
+    expect(requestArguments?.body).toEqual(
+      JSON.stringify({
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'john.doe@example.com',
+        phone: '123456789',
+        description: 'I need help',
       })
     );
 

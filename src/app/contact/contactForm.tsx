@@ -20,7 +20,7 @@ const INITIAL_FORM_STATE: ContactFormValues = {
   description: '',
 };
 
-const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? '/contact-handler.php';
+const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? '/api/contact';
 
 export default function ContactForm({
   onSubmit,
@@ -58,17 +58,13 @@ export default function ContactForm({
       setServerMessage('');
 
       try {
-        const payload = new FormData();
-        Object.entries(form).forEach(([key, value]) => {
-          payload.append(key, value);
-        });
-
         const response = await fetch(CONTACT_ENDPOINT, {
           method: 'POST',
-          body: payload,
           headers: {
+            'Content-Type': 'application/json',
             Accept: 'application/json',
           },
+          body: JSON.stringify(form),
         });
 
         if (!response.ok) {
@@ -91,9 +87,9 @@ export default function ContactForm({
         }
 
         setStatus('success');
-        setServerMessage(message ?? 'Thanks! We received your message and will get back to you shortly.');
-        setForm(INITIAL_FORM_STATE);
+        setServerMessage(message ?? 'Thanks! Your message is on its way to our team.');
         if (onSubmit) onSubmit(form);
+        setForm(INITIAL_FORM_STATE);
       } catch (err) {
         const fallbackMessage = err instanceof Error ? err.message : 'Something went wrong. Please try again later.';
         setStatus('error');

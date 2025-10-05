@@ -36,55 +36,65 @@ jest.mock('next/dynamic', () => {
 });
 
 // Global test environment setup
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: jest.fn().mockImplementation((query) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
-});
+if (typeof window !== 'undefined' && !('matchMedia' in window)) {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: jest.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(), // deprecated
+      removeListener: jest.fn(), // deprecated
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    })),
+  });
+}
 
 // Mock IntersectionObserver
-global.IntersectionObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-}));
+if (typeof global.IntersectionObserver === 'undefined') {
+  global.IntersectionObserver = jest.fn().mockImplementation(() => ({
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+    disconnect: jest.fn(),
+  }));
+}
 
 // Mock requestAnimationFrame
-global.requestAnimationFrame = jest.fn((callback) => {
-  setTimeout(callback, 0);
-  return 1;
-});
+if (typeof global.requestAnimationFrame === 'undefined') {
+  global.requestAnimationFrame = jest.fn((callback: FrameRequestCallback) => {
+    setTimeout(callback, 0);
+    return 1;
+  });
+}
 
-global.cancelAnimationFrame = jest.fn();
+if (typeof global.cancelAnimationFrame === 'undefined') {
+  global.cancelAnimationFrame = jest.fn();
+}
 
 // Mock canvas getContext to avoid jsdom not-implemented errors cluttering test output.
-Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
-  value: jest.fn().mockImplementation(() => {
-    return {
-      // minimal stub API used in ParticleField
-      clearRect: jest.fn(),
-      fillRect: jest.fn(),
-      beginPath: jest.fn(),
-      moveTo: jest.fn(),
-      lineTo: jest.fn(),
-      stroke: jest.fn(),
-      arc: jest.fn(),
-      fill: jest.fn(),
-      closePath: jest.fn(),
-      createLinearGradient: jest.fn().mockReturnValue({
-        addColorStop: jest.fn(),
-      }),
-      strokeStyle: '',
-      fillStyle: '',
-      lineWidth: 0,
-    } as unknown as CanvasRenderingContext2D;
-  }),
-});
+if (typeof HTMLCanvasElement !== 'undefined') {
+  Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+    value: jest.fn().mockImplementation(() => {
+      return {
+        // minimal stub API used in ParticleField
+        clearRect: jest.fn(),
+        fillRect: jest.fn(),
+        beginPath: jest.fn(),
+        moveTo: jest.fn(),
+        lineTo: jest.fn(),
+        stroke: jest.fn(),
+        arc: jest.fn(),
+        fill: jest.fn(),
+        closePath: jest.fn(),
+        createLinearGradient: jest.fn().mockReturnValue({
+          addColorStop: jest.fn(),
+        }),
+        strokeStyle: '',
+        fillStyle: '',
+        lineWidth: 0,
+      } as unknown as CanvasRenderingContext2D;
+    }),
+  });
+}
