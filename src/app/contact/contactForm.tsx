@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-type ContactFormValues = {
+type FormData = {
   firstName: string;
   lastName: string;
   email: string;
@@ -10,28 +10,16 @@ type ContactFormValues = {
   description: string;
 };
 
-type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
-
-const INITIAL_FORM_STATE: ContactFormValues = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  description: '',
-};
-
-const CONTACT_ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? '/api/contact';
-
-export default function ContactForm({
-  onSubmit,
-}: {
-  onSubmit?: (data: ContactFormValues) => void;
-}): React.ReactElement {
-  const [form, setForm] = useState<ContactFormValues>(INITIAL_FORM_STATE);
+export default function ContactForm({ onSubmit }: { onSubmit?: (data: FormData) => void }): React.ReactElement {
+  const [form, setForm] = useState<FormData>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    description: '',
+  });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [status, setStatus] = useState<SubmissionStatus>('idle');
-  const [serverMessage, setServerMessage] = useState<string>('');
 
   function validate(): Record<string, string> {
     const e: Record<string, string> = {};
@@ -45,76 +33,20 @@ export default function ContactForm({
     const { name, value } = e.target;
     setForm((s) => ({ ...s, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: '' }));
-    setStatus('idle');
-    setServerMessage('');
   }
 
-  async function handleSubmit(e: React.FormEvent): Promise<void> {
+  function handleSubmit(e: React.FormEvent): void {
     e.preventDefault();
     const eObj = validate();
     setErrors(eObj);
     if (Object.keys(eObj).length === 0) {
-      setStatus('submitting');
-      setServerMessage('');
-
-      try {
-        const response = await fetch(CONTACT_ENDPOINT, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify(form),
-        });
-
-        if (!response.ok) {
-          throw new Error('We could not send your message right now. Please try again.');
-        }
-
-        const data: unknown = await response.json().catch(() => ({ success: true, message: undefined }));
-
-        const success = typeof data === 'object' && data !== null ? (data as { success?: boolean }).success : undefined;
-        const message =
-          typeof data === 'object' &&
-          data !== null &&
-          'message' in data &&
-          typeof (data as { message?: unknown }).message === 'string'
-            ? (data as { message: string }).message
-            : undefined;
-
-        if (success === false) {
-          throw new Error(message ?? 'We could not send your message right now. Please try again.');
-        }
-
-        setStatus('success');
-        setServerMessage(message ?? 'Thanks! Your message is on its way to our team.');
-        if (onSubmit) onSubmit(form);
-        setForm(INITIAL_FORM_STATE);
-      } catch (err) {
-        const fallbackMessage = err instanceof Error ? err.message : 'Something went wrong. Please try again later.';
-        setStatus('error');
-        setServerMessage(fallbackMessage);
-      }
+      if (onSubmit) onSubmit(form);
     }
   }
 
   return (
     <form onSubmit={handleSubmit} aria-label="contact-form" className="max-w-2xl mx-auto">
       <div className="grid grid-cols-1 gap-6">
-        {(status === 'success' || status === 'error') && (
-          <div
-            role={status === 'success' ? 'status' : 'alert'}
-            aria-live="polite"
-            className={`rounded-md border px-4 py-3 text-sm ${
-              status === 'success'
-                ? 'border-emerald-200 bg-emerald-50 text-emerald-800'
-                : 'border-red-200 bg-red-50 text-red-700'
-            }`}
-          >
-            {serverMessage}
-          </div>
-        )}
-
         <div className="flex flex-col">
           <label htmlFor="firstName" className="mb-2 text-sm font-medium text-foreground/90">
             First name
@@ -198,10 +130,9 @@ export default function ContactForm({
         <div className="pt-2">
           <button
             type="submit"
-            disabled={status === 'submitting'}
-            className="inline-flex items-center justify-center rounded-md px-6 py-3 bg-foreground text-background font-medium hover:opacity-95 disabled:opacity-70 disabled:cursor-not-allowed"
+            className="inline-flex items-center justify-center rounded-md px-6 py-3 bg-foreground text-background font-medium hover:opacity-95"
           >
-            {status === 'submitting' ? 'Sending…' : 'Send'}
+            Send
           </button>
         </div>
       </div>
