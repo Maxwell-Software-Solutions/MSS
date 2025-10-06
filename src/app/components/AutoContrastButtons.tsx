@@ -81,31 +81,84 @@ export default function AutoContrastButtons(): null {
       }
     }
     const selector = '.btn,button,[role="button"]';
-    const buttons = Array.from(document.querySelectorAll<HTMLElement>(selector));
-    buttons.forEach(adjust);
-    const obs = new MutationObserver((muts) => {
-      muts.forEach((m) => {
-        m.addedNodes.forEach((n) => {
-          if (n instanceof HTMLElement && n.matches?.(selector)) {
-            adjust(n);
-          } else if (n instanceof HTMLElement) {
-            n.querySelectorAll(selector).forEach((el) => adjust(el as HTMLElement));
-          }
-        });
-        if (m.type === 'attributes' && m.target instanceof HTMLElement && m.target.matches(selector)) {
-          adjust(m.target);
+
+    // Perform an initial, lightweight pass over existing buttons
+    const initialButtons = Array.from(document.querySelectorAll<HTMLElement>(selector));
+    initialButtons.forEach(adjust);
+
+    // Batch adjustments to avoid synchronous churn when many mutations occur
+    const pending = new Set<HTMLElement>();
+    let rafId = 0;
+    let scheduled = false;
+
+    function scheduleRun(): void {
+      // Respect a short-lived navigation-in-flight flag to avoid expensive work
+      if (document.body.hasAttribute('data-nav-in-flight')) {
+        // retry shortly after nav is likely complete
+        window.setTimeout(scheduleRun, 120);
+        return;
+      }
+      if (scheduled) return;
+      scheduled = true;
+      rafId = window.requestAnimationFrame(() => {
+        const toRun = Array.from(pending);
+        // If nothing specific was added, fall back to adjusting all buttons
+        if (toRun.length === 0) {
+          Array.from(document.querySelectorAll<HTMLElement>(selector)).forEach((el) => adjust(el));
+        } else {
+          toRun.forEach((el) => adjust(el));
         }
+        pending.clear();
+        scheduled = false;
       });
+    }
+
+    const obs = new MutationObserver((muts) => {
+      // avoid reacting to mutations during navigation to prevent heavy work and freezes
+      if (document.body.hasAttribute('data-nav-in-flight')) return;
+      for (const m of muts) {
+        // Handle added nodes (new buttons/components)
+        m.addedNodes.forEach((n) => {
+          if (!(n instanceof HTMLElement)) return;
+          try {
+            if (n.matches?.(selector)) pending.add(n as HTMLElement);
+          } catch (e) {
+            // defensive: some nodes may throw on matches
+          }
+          n.querySelectorAll?.(selector)?.forEach((el) => pending.add(el as HTMLElement));
+        });
+
+        // Handle attribute changes on existing buttons
+        if (m.type === 'attributes' && m.target instanceof HTMLElement) {
+          try {
+            if ((m.target as HTMLElement).matches?.(selector)) pending.add(m.target as HTMLElement);
+          } catch (e) {
+            // ignore
+          }
+        }
+      }
+      scheduleRun();
     });
-    obs.observe(document.documentElement, {
+
+    // Observe body (more narrow) rather than documentElement to reduce mutation noise
+    obs.observe(document.body, {
       childList: true,
       subtree: true,
       attributes: true,
       attributeFilter: ['style', 'class'],
     });
-    window.addEventListener('resize', () => buttons.forEach(adjust));
+
+    // Resize -> schedule a full pass (debounced via RAF)
+    const onResize = (): void => {
+      document.querySelectorAll<HTMLElement>(selector).forEach((el) => pending.add(el));
+      scheduleRun();
+    };
+    window.addEventListener('resize', onResize);
+
     return () => {
       obs.disconnect();
+      window.removeEventListener('resize', onResize);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, []);
   return null;
