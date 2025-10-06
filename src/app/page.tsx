@@ -162,19 +162,19 @@ export default function Home(): ReactElement {
       </section>
 
       <section id="about" className="px-6 sm:px-10 py-16 border-t border-foreground/10">
-        <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-3">
-          <div className="md:col-span-2">
+        <div className="max-w-6xl mx-auto">
+          <div>
             <h2 className="text-2xl font-semibold">About</h2>
             <p className="mt-3 text-foreground/80">
-              This is a clean starting point. Ask for layout, color, or content changes and I’ll implement them
-              immediately.
+              Maxwell Software Solutions is a boutique engineering consultancy helping teams ship reliable software
+              faster. We specialise in code quality audits, testing strategy, pragmatic refactoring, and production
+              reliability—focused on measurable outcomes and sustainable velocity.
             </p>
-          </div>
-          <div className="rounded-lg border border-foreground/10 p-4">
-            <p className="text-sm text-foreground/70">
-              Tip: say something like “Make the hero background a subtle gradient and add a CTA button that links to
-              /contact”.
-            </p>
+            <div className="mt-5">
+              <a href="/about" className="btn btn-accent">
+                Learn more about us
+              </a>
+            </div>
           </div>
         </div>
       </section>
