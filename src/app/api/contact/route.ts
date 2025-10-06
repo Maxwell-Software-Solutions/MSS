@@ -1,191 +1,97 @@
-import { NextResponse, type NextRequest } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
+import type { AxiosError } from 'axios';
+import axios from 'axios';
 
-export const runtime = 'nodejs';
+const FALLBACK_APPS_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbw07RGMM-G5b6uFbwiiHh7YpXNyEKpxCyiFAiwyScStx0MiuBOZpgnsyyREcW9JjzUKQg/exec';
 
-const DEFAULT_ALLOWED_ORIGINS = [
-  'https://www.maxwellsoftwaresolutions.com',
-  'https://maxwellsoftwaresolutions.com',
-  'https://mss-gamma.vercel.app',
-  'http://localhost:3000',
-];
+const REQUIRED_FIELDS = ['email', 'description'] as const;
+const KNOWN_FIELDS = ['firstName', 'lastName', 'email', 'phone', 'description'] as const;
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const REQUEST_TIMEOUT_MS = 10000;
+type ContactPayload = Record<(typeof KNOWN_FIELDS)[number], string>;
 
-function getEnvValue(...keys: string[]): string | undefined {
-  for (const key of keys) {
-    const value = key ? process.env[key] : undefined;
-    if (typeof value === 'string') {
-      const trimmed = value.trim();
-      if (trimmed) return trimmed;
+function normalizePayload(payload: Partial<ContactPayload>): ContactPayload {
+  const normalized = KNOWN_FIELDS.reduce((acc, key) => {
+    const value = payload[key];
+    acc[key] = typeof value === 'string' ? value.trim() : '';
+    return acc;
+  }, {} as ContactPayload);
+  return normalized;
+}
+
+function validatePayload(payload: ContactPayload): string[] {
+  const missing = REQUIRED_FIELDS.filter((field) => !payload[field as keyof ContactPayload]);
+  return missing;
+}
+
+function extractResponseMessage(data: unknown): string | undefined {
+  if (typeof data === 'string') return data.trim() || undefined;
+  if (data && typeof data === 'object' && 'message' in data) {
+    const message = (data as { message?: unknown }).message;
+    if (typeof message === 'string') {
+      return message.trim() || undefined;
     }
   }
   return undefined;
 }
 
-function parseEnvList(value: string | undefined): string[] {
-  if (!value) return [];
-  return value
-    .split(',')
-    .map((item) => item.trim())
-    .filter(Boolean);
-}
-
-const allowedOriginEntries = new Set(
-  [...DEFAULT_ALLOWED_ORIGINS, ...parseEnvList(process.env.CONTACT_ALLOWED_ORIGINS)].flatMap((entry) => {
-    try {
-      const url = new URL(entry);
-      return [url.origin, url.hostname];
-    } catch {
-      return [entry];
-    }
-  })
-);
-
-function isOriginAllowed(originHeader: string | null): boolean {
-  if (!originHeader) return true;
-  if (allowedOriginEntries.has(originHeader)) return true;
-
-  try {
-    const url = new URL(originHeader);
-    return allowedOriginEntries.has(url.origin) || allowedOriginEntries.has(url.hostname);
-  } catch {
-    return false;
-  }
-}
-
-function getClientIp(request: NextRequest): string | undefined {
-  const forwardedFor = request.headers.get('x-forwarded-for');
-  if (!forwardedFor) return undefined;
-  return forwardedFor.split(',')[0]?.trim();
-}
-
-function normaliseInput(value: unknown): string {
-  return typeof value === 'string' ? value.trim() : '';
-}
-
-function buildResponse(payload: Record<string, unknown>, status: number, originHeader: string | null): NextResponse {
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-    'Cache-Control': 'no-store',
-  };
-  if (originHeader && isOriginAllowed(originHeader)) {
-    headers['Access-Control-Allow-Origin'] = originHeader;
-  }
-  return NextResponse.json(payload, { status, headers });
-}
-
-export async function OPTIONS(request: NextRequest): Promise<NextResponse> {
-  const origin = request.headers.get('origin');
-  if (!isOriginAllowed(origin)) {
-    return buildResponse({ success: false, message: 'Origin not allowed' }, 403, origin);
-  }
-
-  const headers: Record<string, string> = {
-    'Access-Control-Allow-Methods': 'POST,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Max-Age': '86400',
-  };
-  if (origin) headers['Access-Control-Allow-Origin'] = origin;
-
-  return new NextResponse(null, { status: 204, headers });
-}
-
 export async function POST(request: NextRequest): Promise<NextResponse> {
-  const origin = request.headers.get('origin');
-  if (!isOriginAllowed(origin)) {
-    return buildResponse({ success: false, message: 'Origin not allowed' }, 403, origin);
+  const endpoint = process.env.APPS_SCRIPT_URL ?? FALLBACK_APPS_SCRIPT_URL;
+
+  if (!endpoint) {
+    return NextResponse.json({ message: 'Contact form endpoint has not been configured.' }, { status: 500 });
   }
 
-  const scriptUrl = getEnvValue('CONTACT_APPS_SCRIPT_URL', 'APPS_SCRIPT_URL');
-  const sharedToken = getEnvValue('CONTACT_APPS_SCRIPT_TOKEN', 'SHARED_TOKEN');
-
-  if (!scriptUrl || !sharedToken) {
-    return buildResponse({ success: false, message: 'Contact form misconfigured' }, 500, origin);
-  }
-
-  let body: unknown;
+  let payload: Partial<ContactPayload>;
   try {
-    body = await request.json();
+    payload = await request.json();
   } catch {
-    return buildResponse({ success: false, message: 'Invalid JSON payload' }, 400, origin);
+    return NextResponse.json({ message: 'Invalid request body.' }, { status: 400 });
   }
 
-  if (typeof body !== 'object' || body === null) {
-    return buildResponse({ success: false, message: 'Invalid request body' }, 400, origin);
-  }
+  const normalized = normalizePayload(payload);
+  const missingFields = validatePayload(normalized);
 
-  const firstName = normaliseInput((body as Record<string, unknown>).firstName);
-  const lastName = normaliseInput((body as Record<string, unknown>).lastName);
-  const email = normaliseInput((body as Record<string, unknown>).email);
-  const phone = normaliseInput((body as Record<string, unknown>).phone);
-  const description = normaliseInput((body as Record<string, unknown>).description);
-
-  if (!firstName && !lastName) {
-    return buildResponse({ success: false, message: 'Please provide your name.' }, 400, origin);
-  }
-
-  if (!email || !EMAIL_REGEX.test(email)) {
-    return buildResponse({ success: false, message: 'Please provide a valid email address.' }, 400, origin);
-  }
-
-  if (!description) {
-    return buildResponse({ success: false, message: 'Tell us a little about what you need.' }, 400, origin);
-  }
-
-  const name = `${firstName} ${lastName}`.trim();
-  const ip = getClientIp(request);
-
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-
-  let upstreamResponse: globalThis.Response;
-  try {
-    upstreamResponse = await fetch(scriptUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        token: sharedToken,
-        name,
-        email,
-        phone: phone || undefined,
-        message: description,
-        ip,
-      }),
-      signal: controller.signal,
-    });
-  } catch {
-    clearTimeout(timeout);
-    return buildResponse(
-      { success: false, message: 'We could not reach the mail service. Please try again later.' },
-      502,
-      origin
-    );
-  }
-
-  clearTimeout(timeout);
-
-  const text = await upstreamResponse.text();
-  let json: Record<string, unknown> | undefined;
-  try {
-    json = text ? (JSON.parse(text) as Record<string, unknown>) : undefined;
-  } catch {
-    json = undefined;
-  }
-
-  if (!upstreamResponse.ok || !json || json.ok !== true) {
-    const message = (json?.error as string) || (json?.message as string);
-    return buildResponse(
+  if (missingFields.length > 0) {
+    return NextResponse.json(
       {
-        success: false,
-        message: message || 'We could not send your message. Please try again later.',
+        message: `Missing required field${missingFields.length > 1 ? 's' : ''}: ${missingFields.join(', ')}`,
       },
-      upstreamResponse.ok ? 502 : upstreamResponse.status,
-      origin
+      { status: 400 }
     );
   }
 
-  return buildResponse({ success: true }, 200, origin);
+  const params = new URLSearchParams();
+  KNOWN_FIELDS.forEach((field) => {
+    params.append(field, normalized[field]);
+  });
+
+  try {
+    const externalResponse = await axios.post(endpoint, params, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
+
+    const message = extractResponseMessage(externalResponse.data);
+
+    return NextResponse.json(
+      {
+        message: message ?? "Thanks for reaching out! We'll be in touch soon.",
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    const status = axiosError.response?.status ?? 502;
+    const message = extractResponseMessage(axiosError.response?.data);
+
+    return NextResponse.json(
+      {
+        message: message ?? 'We were unable to send your message. Please try again later.',
+      },
+      { status }
+    );
+  }
 }

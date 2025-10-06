@@ -35,22 +35,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Environment configuration
-
-Set the following environment variables before running the contact form in production:
-
-- `CONTACT_APPS_SCRIPT_URL` – the deployed Google Apps Script web-app URL that processes form submissions.
-- `CONTACT_APPS_SCRIPT_TOKEN` – the shared secret token that the Apps Script expects in the `token` field.
-- `CONTACT_ALLOWED_ORIGINS` *(optional)* – a comma-separated list of additional origins allowed to call `/api/contact`. The defaults cover `localhost:3000`, the production domain, and the staging deployment.
-
-> Legacy support: the API route also recognises `APPS_SCRIPT_URL` and `SHARED_TOKEN` for compatibility with older deployments, but prefer the new `CONTACT_*` names for clarity.
-
-You can define these in a `.env.local` file while developing locally:
-
-```bash
-CONTACT_APPS_SCRIPT_URL="https://script.google.com/macros/s/your-id/exec"
-CONTACT_APPS_SCRIPT_TOKEN="super-secret-token"
-CONTACT_ALLOWED_ORIGINS="https://partner.example,https://another.example"
-```
-
+#
 Restart the dev server after updating the environment to pick up the changes.

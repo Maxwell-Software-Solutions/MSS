@@ -21,10 +21,13 @@ const EMPTY_FORM: FormData = {
 };
 
 export default function ContactForm(): React.ReactElement {
+  const appsScriptUrl = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL;
+  const sharedToken = process.env.NEXT_PUBLIC_SHARED_TOKEN;
   const [form, setForm] = useState<FormData>(EMPTY_FORM);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<SubmissionState>('idle');
   const [serverMessage, setServerMessage] = useState<string>('');
+  const hasConfigError = !appsScriptUrl || !sharedToken;
 
   function validate(): Record<string, string> {
     const validationErrors: Record<string, string> = {};
@@ -49,6 +52,13 @@ export default function ContactForm(): React.ReactElement {
 
   async function handleSubmit(e: React.FormEvent): Promise<void> {
     e.preventDefault();
+
+    if (!appsScriptUrl || !sharedToken) {
+      setServerMessage('Contact form is temporarily unavailable. Please reach out at hello@maxwell.software.');
+      setStatus('error');
+      return;
+    }
+
     const validationErrors = validate();
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) {
@@ -58,31 +68,60 @@ export default function ContactForm(): React.ReactElement {
     setStatus('submitting');
     setServerMessage('');
 
+    const payload = (Object.entries(form) as Array<[keyof FormData, string]>).reduce<FormData>(
+      (acc, [key, value]) => {
+        acc[key] = value.trim();
+        return acc;
+      },
+      { ...EMPTY_FORM }
+    );
+
     try {
-      const response = await fetch('/api/contact', {
+      const fullName = [payload.firstName, payload.lastName].filter(Boolean).join(' ');
+      const requestBody = {
+        token: sharedToken,
+        name: fullName || payload.email,
+        email: payload.email,
+        message: payload.description,
+        ...(payload.phone ? { phone: payload.phone } : {}),
+      };
+
+      const response = await fetch(appsScriptUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
       });
 
-      let payload: { success?: boolean; message?: string } = {};
-      try {
-        payload = await response.json();
-      } catch {}
+      const contentType = response.headers.get('content-type') ?? '';
+      let responseMessage = '';
 
-      if (!response.ok || !payload.success) {
-        const message = payload.message || 'We could not send your message. Please try again later.';
+      if (contentType.includes('application/json')) {
+        try {
+          const json = await response.json();
+          responseMessage = typeof json?.message === 'string' ? json.message : '';
+        } catch (jsonError) {
+          console.warn('Unable to parse JSON response from contact submission', jsonError);
+        }
+      } else {
+        const textResponse = await response.text();
+        responseMessage = textResponse.trim();
+      }
+
+      if (!response.ok) {
+        setServerMessage(responseMessage || 'We were unable to send your message. Please try again later.');
         setStatus('error');
-        setServerMessage(message);
         return;
       }
 
-      setForm(EMPTY_FORM);
       setStatus('success');
-      setServerMessage('Thanks! We will get back to you shortly.');
-    } catch {
+      setServerMessage(responseMessage || "Thanks for reaching out! We'll be in touch soon.");
+      setForm(EMPTY_FORM);
+    } catch (error) {
+      console.error('Contact form submission failed', error);
+      setServerMessage('An unexpected error occurred. Please try again.');
       setStatus('error');
-      setServerMessage('We could not send your message. Please try again later.');
     }
   }
 
@@ -179,16 +218,25 @@ export default function ContactForm(): React.ReactElement {
         <div className="pt-2">
           <button
             type="submit"
-            disabled={status === 'submitting'}
+            disabled={status === 'submitting' || hasConfigError}
             className="inline-flex items-center justify-center rounded-md px-6 py-3 bg-foreground text-background font-medium hover:opacity-95 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {status === 'submitting' ? 'Sending…' : 'Send'}
+            {status === 'submitting' ? 'Sending…' : hasConfigError ? 'Temporarily unavailable' : 'Send'}
           </button>
         </div>
 
         <div aria-live="polite" className="min-h-[1.5rem] text-sm">
           {status === 'success' && <span className="text-emerald-600">{serverMessage}</span>}
           {status === 'error' && <span className="text-red-600">{serverMessage}</span>}
+          {status === 'idle' && hasConfigError && (
+            <span className="text-red-600">
+              Our form is offline right now. Please email{' '}
+              <a className="underline" href="mailto:hello@maxwell.software">
+                hello@maxwell.software
+              </a>
+              .
+            </span>
+          )}
         </div>
       </div>
     </form>

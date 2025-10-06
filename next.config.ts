@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   /* config options here */
   env: {
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    NEXT_PUBLIC_APPS_SCRIPT_URL: process.env.NEXT_PUBLIC_APPS_SCRIPT_URL,
+    NEXT_PUBLIC_SHARED_TOKEN: process.env.NEXT_PUBLIC_SHARED_TOKEN,
   },
   // Permanent redirects
   async redirects() {
