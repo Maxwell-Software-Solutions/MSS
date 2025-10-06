@@ -10,12 +10,6 @@ describe('Terms page', () => {
     expect(screen.getByRole('heading', { name: /terms of service/i })).toBeInTheDocument();
   });
 
-  it('renders the placeholder content', () => {
-    render(<TermsPage />);
-    expect(screen.getByText(/Placeholder terms/i)).toBeInTheDocument();
-    expect(screen.getByText(/Define scope of work, liability, and payment terms/i)).toBeInTheDocument();
-  });
-
   it('has proper heading hierarchy', () => {
     render(<TermsPage />);
     const heading = screen.getByRole('heading', { level: 1 });

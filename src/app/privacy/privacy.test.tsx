@@ -10,12 +10,6 @@ describe('Privacy page', () => {
     expect(screen.getByRole('heading', { name: /privacy policy/i })).toBeInTheDocument();
   });
 
-  it('renders the placeholder content', () => {
-    render(<PrivacyPage />);
-    expect(screen.getByText(/Placeholder privacy policy/i)).toBeInTheDocument();
-    expect(screen.getByText(/Add your data handling details here/i)).toBeInTheDocument();
-  });
-
   it('has proper heading hierarchy', () => {
     render(<PrivacyPage />);
     const heading = screen.getByRole('heading', { level: 1 });

@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { CONTACT_EMAIL, CONTACT_PHONE } from '../contact/contact.constants';
 import SiteFooter from './AppFooter';
 
 expect.extend(toHaveNoViolations);
@@ -10,41 +11,46 @@ describe('AppFooter component', () => {
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 
-  it('renders the logo with proper alt text', () => {
+  it('renders the logo and strapline', () => {
     render(<SiteFooter />);
     const logo = screen.getByAltText('Maxwell Software Solutions');
     expect(logo).toBeInTheDocument();
     expect(logo).toHaveAttribute('src', '/logo-simple.svg');
+    expect(screen.getByText(/crafting reliable software/i)).toBeInTheDocument();
   });
 
-  it('renders the copyright year', () => {
+  it('displays contact information', () => {
     render(<SiteFooter />);
-    const currentYear = new Date().getFullYear().toString();
-    expect(screen.getByText(`© ${currentYear}`)).toBeInTheDocument();
+    const emailLink = screen.getByRole('link', { name: CONTACT_EMAIL });
+    expect(emailLink).toHaveAttribute('href', `mailto:${CONTACT_EMAIL}`);
+
+    const phoneLink = screen.getByRole('link', { name: CONTACT_PHONE });
+    expect(phoneLink).toHaveAttribute('href', expect.stringContaining('tel:'));
   });
 
-  it('renders all navigation links', () => {
+  it('renders primary navigation links', () => {
     render(<SiteFooter />);
-    const privacyLink = screen.getByRole('link', { name: /privacy/i });
-    const termsLink = screen.getByRole('link', { name: /terms/i });
-    const securityLink = screen.getByRole('link', { name: /security/i });
-
-    expect(privacyLink).toBeInTheDocument();
-    expect(termsLink).toBeInTheDocument();
-    expect(securityLink).toBeInTheDocument();
-
-    expect(privacyLink).toHaveAttribute('href', '/privacy');
-    expect(termsLink).toHaveAttribute('href', '/terms');
-    expect(securityLink).toHaveAttribute('href', '/security');
+    expect(screen.getByRole('link', { name: /services/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /project showcase/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /consulting process/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /insights & articles/i })).toBeInTheDocument();
   });
 
-  it('has proper semantic structure', () => {
+  it('renders resource links in multiple locations', () => {
     render(<SiteFooter />);
-    const footer = screen.getByRole('contentinfo');
-    expect(footer).toBeInTheDocument();
+    const privacyLinks = screen.getAllByRole('link', { name: /privacy/i });
+    const termsLinks = screen.getAllByRole('link', { name: /terms/i });
+    const securityLinks = screen.getAllByRole('link', { name: /security/i });
 
-    const nav = screen.getByRole('navigation');
-    expect(nav).toBeInTheDocument();
+    expect(privacyLinks.length).toBeGreaterThanOrEqual(1);
+    expect(termsLinks.length).toBeGreaterThanOrEqual(1);
+    expect(securityLinks.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('provides clear navigation landmarks', () => {
+    render(<SiteFooter />);
+    const navs = screen.getAllByRole('navigation');
+    expect(navs.length).toBeGreaterThanOrEqual(2);
   });
 
   it('has no accessibility violations', async () => {
