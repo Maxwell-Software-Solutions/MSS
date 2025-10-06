@@ -1,6 +1,7 @@
 // app/contact/page.tsx
 'use client';
 
+import axios from 'axios';
 import { useState, type ReactNode } from 'react';
 
 import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from './contact.constants';
@@ -24,7 +25,7 @@ export default function ContactForm(): ReactNode {
       return;
     }
 
-    // IMPORTANT: Use URLSearchParams and DO NOT set headers -> simple POST, no preflight/CORS
+    // IMPORTANT: Keep URLSearchParams and default headers -> simple POST, no preflight/CORS
     const body = new URLSearchParams({
       token: process.env.NEXT_PUBLIC_SHARED_TOKEN || '',
       name: String(form.get('name') || ''),
@@ -32,26 +33,44 @@ export default function ContactForm(): ReactNode {
       message: String(form.get('message') || ''),
     });
 
-    const res = await fetch(process.env.NEXT_PUBLIC_APPS_SCRIPT_URL!, {
-      method: 'POST',
-      body,
-    });
-
-    // Apps Script returns JSON text; read and parse safely
-
-    if (res.ok) {
+    try {
+      await axios.post(process.env.NEXT_PUBLIC_APPS_SCRIPT_URL!, body);
       setStatus('sent');
-    } else {
-      const text = await res.text();
-      let data;
-      try {
-        data = JSON.parse(text);
-      } catch {
-        data = {};
+    } catch (err: unknown) {
+      setStatus('error');
+
+      if (axios.isAxiosError(err)) {
+        const payload = err.response?.data;
+
+        if (typeof payload === 'string') {
+          try {
+            const parsed = JSON.parse(payload);
+            setError(typeof parsed?.error === 'string' ? parsed.error : 'Submission failed');
+            return;
+          } catch {
+            setError(payload || 'Submission failed');
+            return;
+          }
+        }
+
+        if (payload && typeof payload === 'object' && 'error' in payload) {
+          const message = (payload as { error?: string }).error;
+          setError(message || 'Submission failed');
+          return;
+        }
+
+        if (err.message) {
+          setError(err.message);
+          return;
+        }
       }
 
-      setStatus('error');
-      setError(data.error || 'Submission failed');
+      if (err instanceof Error && err.message) {
+        setError(err.message);
+        return;
+      }
+
+      setError('Submission failed');
     }
   }
 
