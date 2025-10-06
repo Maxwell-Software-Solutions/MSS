@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useCallback, useEffect, type ReactElement } from 'react';
+import { usePathname } from 'next/navigation';
 import MobileMenu from './navigation/MobileMenu';
 
 // Concise header + mobile menu toggle (<=60 lines)
@@ -9,6 +10,7 @@ export default function HeaderNav(): ReactElement {
   const [open, setOpen] = useState(false);
   const toggle = useCallback(() => setOpen((o) => !o), []);
   const close = useCallback(() => setOpen(false), []);
+  const pathname = usePathname();
   useEffect(() => {
     function onResize(): void {
       if (window.innerWidth >= 600) setOpen(false);
@@ -16,9 +18,34 @@ export default function HeaderNav(): ReactElement {
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);
+
+  // Clear any lingering navigation-in-flight flag once the route has changed.
+  useEffect(() => {
+    try {
+      document.body.removeAttribute('data-nav-in-flight');
+    } catch {}
+  }, [pathname]);
   return (
     <nav className="container h-14 flex items-center justify-between relative" aria-label="Site header">
-      <Link href="/" className="flex items-center" aria-label="Homepage">
+      {/* Mark navigation as "in-flight" on pointer down/touch so heavy background work can pause */}
+      <Link
+        href="/"
+        className="flex items-center"
+        aria-label="Homepage"
+        onMouseDown={() => {
+          try {
+            document.body.setAttribute('data-nav-in-flight', '1');
+            // clear attribute shortly after navigation begins in case navigation fails
+            window.setTimeout(() => document.body.removeAttribute('data-nav-in-flight'), 900);
+          } catch {}
+        }}
+        onTouchStart={() => {
+          try {
+            document.body.setAttribute('data-nav-in-flight', '1');
+            window.setTimeout(() => document.body.removeAttribute('data-nav-in-flight'), 900);
+          } catch {}
+        }}
+      >
         <Image
           src="/logo.svg"
           alt="Maxwell Software Solutions"

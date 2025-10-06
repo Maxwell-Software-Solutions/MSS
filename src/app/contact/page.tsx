@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
-import ContactForm from './contactForm';
+import ContactClient from './ContactClient';
 
 export const metadata: Metadata = {
   title: 'Contact — Maxwell Software Solutions',
@@ -8,9 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage(): ReactElement {
-  return (
-    <div>
-      <ContactForm />
-    </div>
-  );
+  return <ContactClient />;
 }

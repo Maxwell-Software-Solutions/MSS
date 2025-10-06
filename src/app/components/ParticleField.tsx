@@ -93,29 +93,59 @@ export default function ParticleField(): ReactElement {
           return null as unknown as MediaQueryList | null;
         }
       })();
-      const onThemeChange = (matches: boolean): void => {
+      // Debounced theme change handler: schedule minimal work on theme changes
+      let themeChangeTimer: number | null = null;
+      let pendingThemeMatches: boolean | null = null;
+      let needsResize = false;
+      const applyThemeChange = (matches: boolean): void => {
         if (matches === isDark) return;
         isDark = matches;
         if (isDark) {
-          // Immediately remove autonomous agents and trails when entering dark mode
+          // Immediately clear high-cost state when entering dark mode
           agentsRef.current.length = 0;
           trailRef.current.length = 0;
           featuresEnabledRef.current.agents = false;
+          // clear drawing buffers to remove previously drawn connection ribbons
+          // Avoid immediate heavy clears during navigation; schedule in RAF but skip if nav is in-flight
+          requestAnimationFrame(() => {
+            if (document.body.hasAttribute('data-nav-in-flight')) return;
+            const canvas = canvasRef.current;
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            try {
+              ctx?.clearRect?.(0, 0, canvas.width, canvas.height);
+            } catch {}
+          });
         } else {
-          // Re-init agents when leaving dark mode
-          // Call resize which contains the agent init logic guarded by !isDark
-          try {
-            resize();
-          } catch {
-            // ignore if resize not yet available
-          }
+          // Defer any re-init work (resize/agents) to the next animation frame to avoid synchronous work
+          needsResize = true;
+          requestAnimationFrame(() => {
+            try {
+              // Don't run resize while a navigation is in-flight
+              if (document.visibilityState === 'visible' && !document.body.hasAttribute('data-nav-in-flight')) {
+                resize();
+              }
+            } catch {}
+            needsResize = false;
+          });
         }
       };
       type LegacyMediaQueryList = MediaQueryList & {
         addListener?: (listener: (event: MediaQueryListEvent) => void) => void;
         removeListener?: (listener: (event: MediaQueryListEvent) => void) => void;
       };
-      const themeListener = (event: MediaQueryListEvent): void => onThemeChange(event.matches);
+      const themeListener = (event: MediaQueryListEvent): void => {
+        // Debounce rapid media query events
+        try {
+          if (themeChangeTimer) clearTimeout(themeChangeTimer);
+        } catch {}
+        pendingThemeMatches = event.matches;
+        themeChangeTimer = window.setTimeout(() => {
+          if (pendingThemeMatches !== null) applyThemeChange(pendingThemeMatches);
+          pendingThemeMatches = null;
+          themeChangeTimer = null;
+        }, 80);
+      };
       if (mq) {
         try {
           if ('addEventListener' in mq && typeof mq.addEventListener === 'function') {
@@ -125,11 +155,37 @@ export default function ParticleField(): ReactElement {
           }
         } catch {}
       }
-      const classObserver = new MutationObserver(() => {
-        const hasDarkClass = document.documentElement.classList.contains('dark');
-        onThemeChange(hasDarkClass);
+
+      // Observe body for class mutations (narrower than documentElement) and debounce updates
+      const classObserver = new MutationObserver((muts) => {
+        // Quick check for any class attribute change
+        let saw = false;
+        for (const m of muts) {
+          if (m.type === 'attributes' && m.attributeName === 'class') {
+            saw = true;
+            break;
+          }
+        }
+        if (!saw) return;
+        try {
+          const hasDarkClass = document.documentElement.classList.contains('dark');
+          if (themeChangeTimer) clearTimeout(themeChangeTimer as number);
+          pendingThemeMatches = hasDarkClass;
+          themeChangeTimer = window.setTimeout(() => {
+            if (pendingThemeMatches !== null) applyThemeChange(pendingThemeMatches);
+            pendingThemeMatches = null;
+            themeChangeTimer = null;
+          }, 80);
+        } catch {}
       });
-      classObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      try {
+        classObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      } catch {
+        // Fallback to observing documentElement if body isn't available for any reason
+        try {
+          classObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        } catch {}
+      }
 
       const TARGET_MAX_PARTICLES = prefersReducedMotion ? 400 : 1100; // further lowered
       let dynamicMax = Math.min(140, TARGET_MAX_PARTICLES); // progressive ramp

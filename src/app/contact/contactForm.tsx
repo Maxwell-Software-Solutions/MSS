@@ -8,9 +8,28 @@ import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL }
 
 const HONEYPOT_FIELD_NAME = 'company';
 
-export default function ContactForm(): ReactNode {
+export default function ContactForm(): ReactElement {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [error, setError] = useState<string>('');
+  // Debugging: capture a ref to the root element and log its DOM snapshot on client mount
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    try {
+      const root = rootRef.current;
+      if (!root) return;
+      // Log a compact snapshot to help compare server HTML vs client DOM
+      // eslint-disable-next-line no-console
+      console.log('[ContactForm] client DOM snapshot (first 2 children):', {
+        firstChildTag: root.firstElementChild?.tagName,
+        secondChildTag: root.firstElementChild?.nextElementSibling?.tagName,
+        innerStart: root.innerHTML?.slice?.(0, 300),
+      });
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('[ContactForm] debug snapshot failed', e);
+    }
+  }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>): Promise<void> {
     e.preventDefault();
@@ -75,8 +94,8 @@ export default function ContactForm(): ReactNode {
   }
 
   return (
-    <main className="relative isolate min-h-[70vh] overflow-hidden bg-slate-950/5 py-16 sm:py-20">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+  <div ref={rootRef} role="region" aria-label="Contact form" className="relative isolate min-h-[70vh] overflow-hidden bg-slate-950/5 py-16 sm:py-20">
+  <div aria-hidden={true} className="pointer-events-none absolute inset-0 -z-10">
         <div className="mx-auto h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle_at_center,var(--accent)_0%,transparent_70%)] opacity-20 blur-3xl" />
       </div>
 
@@ -131,7 +150,7 @@ export default function ContactForm(): ReactNode {
                 />
               </label>
 
-              <div aria-hidden className="sr-only absolute left-0 top-auto h-0 w-0 overflow-hidden">
+              <div aria-hidden={true} className="sr-only absolute left-0 top-auto h-0 w-0 overflow-hidden">
                 <label htmlFor={HONEYPOT_FIELD_NAME}>Company</label>
                 <input
                   id={HONEYPOT_FIELD_NAME}
@@ -220,6 +239,6 @@ export default function ContactForm(): ReactNode {
           </aside>
         </div>
       </div>
-    </main>
+  </div>
   );
 }

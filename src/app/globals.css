@@ -4,6 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --accent: #8B6B00; /* darker gold */
+  --accent-hover: #9a7500; /* slightly lighter for stable hover (avoids filter flicker) */
   --radius: 12px;
   /* Design tokens */
   --card: #ffffff;
@@ -96,12 +97,16 @@ body {
   border-radius: 10px;
   font-weight: 600;
   font-size: 0.95rem;
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
+  will-change: background-color;
+  backface-visibility: hidden;
 }
 .btn-accent {
-  background: var(--accent);
+  background-color: var(--accent);
   color: var(--btn-accent-fg, var(--background));
 }
-.btn-accent:hover { filter: brightness(1.05); }
+.btn-accent:hover { background-color: var(--accent-hover); }
+.btn-accent:active { transform: translateY(1px); }
 .btn-ghost {
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
