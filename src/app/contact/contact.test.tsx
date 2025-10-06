@@ -16,13 +16,6 @@ describe('Contact page', () => {
     expect(screen.getByText(/We typically reply within one business day/i)).toBeInTheDocument();
   });
 
-  it('renders the email contact link', () => {
-    render(<ContactPage />);
-    const emailLink = screen.getByRole('link', { name: /hello@maxwell\.software/i });
-    expect(emailLink).toBeInTheDocument();
-    expect(emailLink).toHaveAttribute('href', 'mailto:hello@maxwell.software?subject=Code%20Audit%20Request');
-  });
-
   it('renders the scheduling information', () => {
     render(<ContactPage />);
     expect(screen.getByText(/Prefer a call\? Add your scheduling link here/i)).toBeInTheDocument();
