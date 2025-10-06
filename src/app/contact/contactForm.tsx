@@ -2,13 +2,13 @@
 'use client';
 
 import axios from 'axios';
-import { useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from './contact.constants';
 
 const HONEYPOT_FIELD_NAME = 'company';
 
-export default function ContactForm(): ReactElement {
+export default function ContactForm(): ReactNode {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [error, setError] = useState<string>('');
   // Debugging: capture a ref to the root element and log its DOM snapshot on client mount
@@ -19,14 +19,13 @@ export default function ContactForm(): ReactElement {
       const root = rootRef.current;
       if (!root) return;
       // Log a compact snapshot to help compare server HTML vs client DOM
-      // eslint-disable-next-line no-console
+
       console.log('[ContactForm] client DOM snapshot (first 2 children):', {
         firstChildTag: root.firstElementChild?.tagName,
         secondChildTag: root.firstElementChild?.nextElementSibling?.tagName,
         innerStart: root.innerHTML?.slice?.(0, 300),
       });
     } catch (e) {
-      // eslint-disable-next-line no-console
       console.error('[ContactForm] debug snapshot failed', e);
     }
   }, []);
@@ -94,8 +93,13 @@ export default function ContactForm(): ReactElement {
   }
 
   return (
-  <div ref={rootRef} role="region" aria-label="Contact form" className="relative isolate min-h-[70vh] overflow-hidden bg-slate-950/5 py-16 sm:py-20">
-  <div aria-hidden={true} className="pointer-events-none absolute inset-0 -z-10">
+    <div
+      ref={rootRef}
+      role="region"
+      aria-label="Contact form"
+      className="relative isolate min-h-[70vh] overflow-hidden bg-slate-950/5 py-16 sm:py-20"
+    >
+      <div aria-hidden={true} className="pointer-events-none absolute inset-0 -z-10">
         <div className="mx-auto h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle_at_center,var(--accent)_0%,transparent_70%)] opacity-20 blur-3xl" />
       </div>
 
@@ -239,6 +243,6 @@ export default function ContactForm(): ReactElement {
           </aside>
         </div>
       </div>
-  </div>
+    </div>
   );
 }
