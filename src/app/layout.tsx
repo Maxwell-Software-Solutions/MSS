@@ -93,7 +93,7 @@ export default function RootLayout({
             .hero-gradient { background-image: radial-gradient(120% 80% at 50% 0%, rgba(139, 107, 0, 0.12) 0%, rgba(139, 107, 0, 0.06) 30%, transparent 60%); }
               /* Mobile (<600px): hide nav links, leave only logo */
               .nav-links { display:none; }
-              .menu-toggle { background:none; border:0; color:#111; display:inline-flex; align-items:center; justify-content:center; position:relative; z-index:70; width:2.5rem; height:2.5rem; transition:opacity .2s; }
+              .menu-toggle { background:none; border:0; color:#000; display:inline-flex; align-items:center; justify-content:center; position:relative; z-index:70; width:2.5rem; height:2.5rem; transition:opacity .2s; }
               .menu-toggle[aria-expanded="true"] { opacity:0; pointer-events:none; }
               .mobile-nav { position:fixed; top:0; right:0; height:340px; width:min(19rem,82%); background:linear-gradient(180deg, rgba(15,23,42,0.94), rgba(15,23,42,0.90)); -webkit-backdrop-filter:blur(18px) saturate(150%); backdrop-filter:blur(18px) saturate(150%); color:#f1f5f9; padding:4.25rem 2rem 2rem; display:flex; flex-direction:column; gap:1.25rem; transform:translateX(100%); transition:transform .35s cubic-bezier(.4,0,.2,1); box-shadow:-12px 0 36px -8px rgba(0,0,0,.55); border-left:1px solid rgba(255,255,255,0.06); z-index:80; overflow-y:auto; }
               @supports (-webkit-touch-callout: none) {

@@ -1,3 +1,4 @@
+"use client";
 import type { ReactElement } from 'react';
 import { services } from './services-data';
 import { processSteps } from './process-data';
@@ -19,7 +20,7 @@ export default function ServicesPage(): ReactElement {
   const steps = processSteps.map((p) => ({ title: p.title, desc: p.text }));
 
   return (
-    <div className="font-sans bg-[--page-bg] text-neutral-900 dark:text-neutral-50 [--card:#ffffff] dark:[--card:#0f172a] [--muted:#64748b] dark:[--muted:#94a3b8] [--border:rgba(2,6,23,0.08)] dark:[--border:rgba(255,255,255,0.12)]">
+    <main className="min-h-screen font-sans">
       {/* Hero */}
       <header className="max-w-7xl mx-auto px-6 md:px-8 pt-16 pb-4">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3">Expert partnership</p>
@@ -83,8 +84,8 @@ export default function ServicesPage(): ReactElement {
         </div>
       </section>
 
-      {/* CTA */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 pb-20">
+  {/* CTA */}
+  <div className="max-w-7xl mx-auto px-6 md:px-8 pb-20">
         <CTA
           title="Book a discovery call"
           body="Explore fit, clarify goals, and identify the fastest path to measurable impact. No obligation, high signal."
@@ -92,6 +93,6 @@ export default function ServicesPage(): ReactElement {
           secondary={{ href: '/project-showcase', label: 'See case studies' }}
         />
       </div>
-    </div>
+  </main>
   );
 }
