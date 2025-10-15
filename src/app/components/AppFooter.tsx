@@ -26,7 +26,7 @@ export default function SiteFooter(): ReactElement {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-black/10 bg-white/95 text-sm text-slate-600 backdrop-blur-sm dark:border-white/10 dark:bg-slate-950/80 dark:text-slate-300">
+    <footer className="border-t border-black/10 header-glass text-sm text-slate-600 dark:border-white/10 dark:bg-slate-950/80 dark:text-slate-300">
       <div className="mx-auto max-w-6xl px-6 py-12 sm:px-10 sm:py-14">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.7fr)_repeat(2,minmax(0,1fr))]">
           <div className="space-y-6">
