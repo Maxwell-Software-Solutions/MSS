@@ -22,7 +22,7 @@ Google's Core Web Vitals are essential metrics for measuring user experience:
 ### 2. Interaction to Next Paint (INP)
 **Target**: < 200 milliseconds
 
-**What it measures**: Responsiveness of the page to user interactions
+**What it measures**: Responsiveness of the page to user interactions (replaced First Input Delay as of March 2024)
 
 **How to improve**:
 - Minimize JavaScript execution time
@@ -49,8 +49,8 @@ Google's Core Web Vitals are essential metrics for measuring user experience:
 ### Modern Formats
 Use WebP and AVIF for better compression:
 
-```typescript
-// next.config.ts
+```javascript
+// next.config.ts (or next.config.js)
 images: {
   formats: ['image/webp', 'image/avif'],
 }

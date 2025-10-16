@@ -71,8 +71,10 @@ This document outlines mobile responsiveness best practices for the Maxwell Soft
 Ensure the viewport meta tag is properly configured:
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
+
+**Note**: Avoid setting `maximum-scale` as it prevents users from zooming, which creates accessibility barriers for users with visual impairments. WCAG guidelines recommend allowing unlimited zoom.
 
 ### Flexible Images
 
