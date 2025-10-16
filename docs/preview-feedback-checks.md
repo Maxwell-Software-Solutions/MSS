@@ -21,7 +21,7 @@ The workflow:
 
 ### 2. Lighthouse CI Workflow (`.github/workflows/lhci.yml`)
 A new workflow that runs Lighthouse performance checks on PRs:
-- **CLS (Cumulative Layout Shift)** threshold set to **0.01** (error level)
+- **CLS (Cumulative Layout Shift)** threshold set to **0.01** (error level) - 10x stricter than Google's "good" threshold of 0.1
 - **Image size budget** to flag heavy PNG files (max 200KB)
 - **Duplicate JavaScript** detection (max 10KB)
 - Tests multiple pages: home, about, blog, services, contact, project-showcase
@@ -53,7 +53,7 @@ When a PR has failing Playwright or Lighthouse checks, leave a comment like:
 
 ```
 @copilot Please fix failing Playwright and Lighthouse checks on this PR.
-- Remove PNG logo in favor of /public/logo.svg.
+- Convert PNG files to SVG format.
 - Reduce CLS below 0.01 on /.
 - Address header overlap at md breakpoint.
 ```
@@ -70,8 +70,9 @@ Copilot will then push commits to fix the issues until all checks pass.
 
 ## Test Results
 
-All checks currently pass with the existing codebase:
-- ✓ No PNG files found in /public/ directory
+The PNG check script has been validated:
+- ✓ Successfully detects PNG files when present
+- ✓ Passes when no PNG files exist in /public/ directory
 - ✓ ESLint passes with PNG check integrated
 - ✓ Playwright config updated to use npm
 - ✓ Lighthouse config has strict CLS threshold (0.01)
