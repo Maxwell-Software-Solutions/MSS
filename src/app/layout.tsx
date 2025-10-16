@@ -79,9 +79,9 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Cookiebot */}
-        <Cookiebot cbid="c99c6734-f40a-4c0f-842f-aea763f24ee7" />
+        <Cookiebot cbid={process.env.NEXT_PUBLIC_COOKIEBOT_CBID || 'c99c6734-f40a-4c0f-842f-aea763f24ee7'} />
         {/* Google Analytics */}
-        <GoogleAnalytics measurementId="G-Z934MSEFV5" />
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Z934MSEFV5'} />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
