@@ -23,8 +23,12 @@ module.exports = {
         'categories:seo': ['warn', { minScore: 0.8 }],
         'first-contentful-paint': ['warn', { maxNumericValue: 2000 }],
         'largest-contentful-paint': ['warn', { maxNumericValue: 2500 }],
-        'cumulative-layout-shift': ['warn', { maxNumericValue: 0.1 }],
+        'cumulative-layout-shift': ['error', { maxNumericValue: 0.01 }],
         'total-blocking-time': ['warn', { maxNumericValue: 300 }],
+        // Flag heavy PNG files - prefer SVG
+        'resource-summary:image:size': ['warn', { maxNumericValue: 200000 }],
+        // Warn about duplicate images
+        'duplicated-javascript': ['warn', { maxNumericValue: 10000 }],
       },
     },
     upload: {
