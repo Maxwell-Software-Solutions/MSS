@@ -1,15 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #2d3748; /* medium-dark blue-gray background for light mode */
-  --foreground: #e2e8f0; /* light gray text for good contrast */
-  --accent: #8B6B00; /* darker gold */
-  --accent-hover: #9a7500; /* slightly lighter for stable hover (avoids filter flicker) */
+  /* Primary colors - improved contrast ratios */
+  --background: #1a202c; /* darker background for better contrast */
+  --foreground: #f7fafc; /* brighter text for 4.5:1+ contrast */
+  --accent: #d4af37; /* brighter gold for better visibility */
+  --accent-hover: #e5c158; /* lighter hover state */
+  --secondary: #4299e1; /* blue secondary color */
   --radius: 12px;
-  /* Design tokens */
-  --card: #4a5568; /* slightly lighter card background */
-  --muted: #a0aec0; /* medium gray for muted text */
-  --border: rgba(218, 165, 32, 0.4); /* light gold borders */
+  
+  /* Design tokens - enhanced contrast */
+  --card: #2d3748; /* card background with good separation from main bg */
+  --muted: #cbd5e1; /* lighter muted text for better readability */
+  --border: rgba(212, 175, 55, 0.5); /* gold borders with better visibility */
+  
+  /* Chip colors */
   --chip-gold-from: #fbbf24;
   --chip-gold-to: #d97706;
   --chip-violet-from: #a78bfa;
@@ -25,10 +30,10 @@
 @media (prefers-color-scheme: dark) {
   :root {
   --background: #0a0f19;
-  --foreground: #ededed;
-  --card: #0f172a;
-  --muted: #94a3b8;
-  --border: rgba(218, 165, 32, 0.3);
+  --foreground: #f7fafc; /* brighter for better contrast */
+  --card: #1a202c;
+  --muted: #e2e8f0; /* lighter muted for dark mode */
+  --border: rgba(212, 175, 55, 0.4);
   }
 }
 
@@ -37,15 +42,16 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.65; /* Improved line height for better readability */
+  letter-spacing: 0.01em; /* Slight letter spacing for improved legibility */
 }
 
-/* Subtle gold-tinted hero background */
+/* Subtle gold-tinted hero background - enhanced visibility */
 .hero-gradient {
   background-image: radial-gradient(
     120% 80% at 50% 0%,
-    rgba(139, 107, 0, 0.12) 0%,
-    rgba(139, 107, 0, 0.06) 30%,
+    rgba(212, 175, 55, 0.15) 0%,
+    rgba(212, 175, 55, 0.08) 30%,
     transparent 60%
   );
 }
@@ -114,14 +120,14 @@ header nav .menu-toggle {
 }
 
 .card {
-  border: 1px solid rgba(218, 165, 32, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.6); /* Improved border visibility */
   border-radius: var(--radius);
-  background: rgba(74, 85, 104, 0.9);
+  background: rgba(45, 55, 72, 0.95); /* Better card separation */
 }
 @media (prefers-color-scheme: dark) {
   .card {
-    border-color: rgba(218, 165, 32, 0.4);
-    background: rgba(10, 10, 10, 0.94);
+    border-color: rgba(212, 175, 55, 0.5);
+    background: rgba(26, 32, 44, 0.95);
   }
 }
 
@@ -146,10 +152,10 @@ header nav .menu-toggle {
 .btn-accent:hover { background-color: var(--accent-hover); }
 .btn-accent:active { transform: translateY(1px); }
 .btn-ghost {
-  border: 1px solid rgba(218, 165, 32, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.6); /* Better visibility */
 }
 @media (prefers-color-scheme: dark) {
-  .btn-ghost { border-color: rgba(218, 165, 32, 0.4); }
+  .btn-ghost { border-color: rgba(212, 175, 55, 0.5); }
 }
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
 @media (prefers-color-scheme: dark) {
@@ -169,20 +175,20 @@ header nav .menu-toggle {
 /* Apple-like refinements */
 .section { padding-block: 72px; }
 @media (min-width: 640px) { .section { padding-block: 96px; } }
-.lead { font-size: 1.125rem; line-height: 1.7; color: rgba(245, 245, 245, 0.8); }
+.lead { font-size: 1.125rem; line-height: 1.75; color: rgba(247, 250, 252, 0.85); } /* Improved readability */
 @media (prefers-color-scheme: dark) {
-  .lead { color: rgba(237, 237, 237, 0.78); }
+  .lead { color: rgba(247, 250, 252, 0.85); }
 }
 .eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: .72rem; color: rgba(160, 160, 160, 0.8); }
 @media (prefers-color-scheme: dark) {
   .eyebrow { color: rgba(237, 237, 237, 0.6); }
 }
-.hairline { border-top: 1px solid rgba(218, 165, 32, 0.4); }
+.hairline { border-top: 1px solid rgba(212, 175, 55, 0.5); } /* Better visibility */
 @media (prefers-color-scheme: dark) {
-  .hairline { border-top: 1px solid rgba(218, 165, 32, 0.3); }
+  .hairline { border-top: 1px solid rgba(212, 175, 55, 0.4); }
 }
-.muted { color: rgba(160, 160, 160, 0.9); }
+.muted { color: rgba(203, 213, 225, 0.95); } /* Improved readability */
 @media (prefers-color-scheme: dark) {
-  .muted { color: rgba(237, 237, 237, 0.65); }
+  .muted { color: rgba(226, 232, 240, 0.8); }
 }
 .full-image { border-radius: 18px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.3); }

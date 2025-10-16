@@ -30,11 +30,11 @@ export default function Home(): ReactElement {
               Ship reliable software through code quality audits, testing strategy, refactoring, and observability.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-              <a href="/contact" className="btn btn-accent px-8 py-3 text-base sm:text-lg shadow-soft">
-                Request a code audit
+              <a href="/contact" className="btn btn-accent px-8 py-4 text-base sm:text-lg shadow-soft font-bold">
+                Request Your Code Audit
               </a>
-              <a href="/services" className="btn btn-ghost px-8 py-3 text-base sm:text-lg">
-                Explore services
+              <a href="/services" className="btn btn-ghost px-8 py-4 text-base sm:text-lg">
+                Explore Services
               </a>
             </div>
             <p className="mt-6 text-xs uppercase tracking-[0.25em] text-foreground/50 font-medium">
@@ -171,8 +171,8 @@ export default function Home(): ReactElement {
               reliability—focused on measurable outcomes and sustainable velocity.
             </p>
             <div className="mt-5">
-              <a href="/about" className="btn btn-accent">
-                Learn more about us
+              <a href="/about" className="btn btn-accent px-6 py-3 font-semibold">
+                Learn More About Us
               </a>
             </div>
           </div>
@@ -338,11 +338,11 @@ export default function Home(): ReactElement {
             diagnostic perspective and next-step options.
           </p>
           <div className="mt-4 flex flex-col sm:flex-row gap-3">
-            <a href="/contact" className="btn btn-accent">
-              Request intro call
+            <a href="/contact" className="btn btn-accent px-6 py-3 font-semibold">
+              Request Intro Call Today
             </a>
-            <a href="/services" className="btn btn-ghost">
-              View detailed services
+            <a href="/services" className="btn btn-ghost px-6 py-3">
+              View Detailed Services
             </a>
           </div>
           <div className="mt-6 pt-4 border-t border-foreground/10">

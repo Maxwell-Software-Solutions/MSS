@@ -34,7 +34,7 @@ describe('Home page', () => {
 
   it('renders the main call-to-action buttons', () => {
     render(<Home />);
-    expect(screen.getByRole('link', { name: /request a code audit/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /request your code audit/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /explore services/i })).toBeInTheDocument();
   });
 
