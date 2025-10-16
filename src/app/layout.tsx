@@ -6,6 +6,7 @@ import './globals.css';
 import ParallaxScrollEffects from '@/app/components/ParallaxScrollEffects';
 import AppFooter from '@/app/components/AppFooter';
 import AutoContrastButtons from '@/app/components/AutoContrastButtons';
+import GoogleAnalytics from '@/app/components/GoogleAnalytics';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -76,6 +77,8 @@ export default function RootLayout({
         <link rel="modulepreload" href="/_next/static/chunks/main-app.js" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Google Analytics */}
+        <GoogleAnalytics measurementId="G-Z934MSEFV5" />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
