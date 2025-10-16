@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ArticleStructuredData from '@/app/components/ArticleStructuredData';
 
 export const metadata: Metadata = {
   title: 'SOLID Principles: The Foundation of Clean Code — Maxwell Software Solutions',
@@ -11,7 +12,14 @@ export const metadata: Metadata = {
 
 export default function SOLIDPrinciplesPost(): ReactElement {
   return (
-    <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
+    <>
+      <ArticleStructuredData
+        title="SOLID Principles: The Foundation of Clean Code"
+        description="Master the five SOLID principles that form the foundation of clean, maintainable, and scalable software architecture."
+        datePublished="2024-12-19"
+        imageUrl="https://maxwell-software.com/images/blog/solid-principles-hero.svg"
+      />
+      <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
       {/* Header */}
       <header className="mb-12">
         <nav className="mb-6">
@@ -354,5 +362,6 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         </div>
       </section>
     </article>
+    </>
   );
 }

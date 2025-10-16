@@ -15,7 +15,7 @@ export default function DarkShowcaseSection(): ReactElement {
           <h2 id="showcase-heading" className="text-3xl sm:text-5xl font-semibold tracking-tight">
             Engineering leverage, not headcount.
           </h2>
-          <p className="mt-6 text-neutral-300 text-lg leading-relaxed max-w-3xl mx-auto">
+          <p className="mt-6 text-neutral-200 text-lg leading-relaxed max-w-3xl mx-auto">
             We focus on multiplier work—reducing defect surfaces, shrinking lead time to change, and embedding
             patterns that keep systems adaptable as complexity scales.
           </p>
@@ -31,7 +31,7 @@ export default function DarkShowcaseSection(): ReactElement {
               className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 flex flex-col"
             >
               <h3 className="font-medium tracking-tight text-lg">{f.title}</h3>
-              <p className="mt-2 text-sm text-neutral-300 leading-relaxed">{f.body}</p>
+              <p className="mt-2 text-sm text-neutral-200 leading-relaxed">{f.body}</p>
             </div>
           ))}
         </div>

@@ -169,7 +169,7 @@ const nextConfig: NextConfig = {
 
     return config;
   },
-  // Headers for performance
+  // Headers for performance and security
   async headers() {
     return [
       {
@@ -186,6 +186,18 @@ const nextConfig: NextConfig = {
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'geolocation=(), microphone=(), camera=()',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains; preload',
           },
           {
             key: 'Cache-Control',

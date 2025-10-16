@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ArticleStructuredData from '@/app/components/ArticleStructuredData';
 
 export const metadata: Metadata = {
   title: 'Test-Driven Development: Building Business Confidence Through Code Quality — Maxwell Software Solutions',
@@ -11,7 +12,14 @@ export const metadata: Metadata = {
 
 export default function TDDPost(): ReactElement {
   return (
-    <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
+    <>
+      <ArticleStructuredData
+        title="Test-Driven Development: Building Business Confidence Through Code Quality"
+        description="Discover how TDD reduces costs, improves reliability, and delivers business value. Learn why leading companies invest in test-driven development."
+        datePublished="2024-12-19"
+        imageUrl="https://maxwell-software.com/images/blog/tdd-business-value.svg"
+      />
+      <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
       {/* Header */}
       <header className="mb-12">
         <nav className="mb-6">
@@ -357,5 +365,6 @@ export default function TDDPost(): ReactElement {
         </div>
       </section>
     </article>
+    </>
   );
 }
