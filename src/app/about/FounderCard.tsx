@@ -1,10 +1,13 @@
 'use client';
 import type { ReactElement } from 'react';
 import type { FounderInfo } from './founders-data';
+import Image from 'next/image';
 
 export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
-  // Map founder name to preset key when available
-  // Avatar generation removed; using empty placeholder until real images provided.
+  // Map founder name to image file
+  const firstName = f.name.split(' ')[0]?.toLowerCase() || 'founder';
+  const imageSrc = `/images/founders/${firstName}.svg`;
+  
   return (
     <figure className="relative rounded-2xl border border-foreground/10 bg-gradient-to-br p-8 shadow-soft overflow-hidden group min-h-[22rem] flex flex-col">
       <div
@@ -13,12 +16,14 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
       />
       <div className="relative flex flex-col gap-5 grow">
         <div className="flex items-center gap-5">
-          <div
-            role="img"
-            aria-label={f.alt}
-            className="w-28 h-28 rounded-xl shadow-xl ring-2 ring-white/40 bg-foreground/5 flex items-center justify-center text-[10px] font-medium tracking-wide uppercase text-foreground/40"
-          >
-            Pending Image
+          <div className="w-28 h-28 rounded-xl shadow-xl ring-2 ring-white/40 bg-foreground/5 flex items-center justify-center overflow-hidden">
+            <Image
+              src={imageSrc}
+              alt={f.alt}
+              width={112}
+              height={112}
+              className="w-full h-full object-cover"
+            />
           </div>
           <figcaption className="flex flex-col">
             <h3 className="font-semibold text-lg leading-tight tracking-tight">{f.name}</h3>

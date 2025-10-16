@@ -3,6 +3,7 @@ import type { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import ArticleStructuredData from '@/app/components/ArticleStructuredData';
 
 // Defer large lower-page sections to reduce TTFB / initial JS
 const RefactoringStrategies = dynamic(() => import('./sections/RefactoringStrategies'), { ssr: true });
@@ -22,7 +23,14 @@ export const metadata: Metadata = {
 
 export default function RefactoringLegacyCodePost(): ReactElement {
   return (
-    <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
+    <>
+      <ArticleStructuredData
+        title="Refactoring Legacy Code: Complete Guide to Modernizing Your Software Architecture"
+        description="Learn proven strategies for refactoring legacy code, reducing technical debt, and improving software maintainability. Expert tips for modernizing old codebases."
+        datePublished="2024-12-19"
+        imageUrl="https://maxwell-software.com/images/blog/refactoring-legacy-code.svg"
+      />
+      <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
       {/* Header */}
       <header className="mb-12">
         <nav className="mb-6">
@@ -660,5 +668,6 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </div>
       </section>
     </article>
+    </>
   );
 }
