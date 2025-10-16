@@ -3,7 +3,15 @@ import GoogleAnalytics from './GoogleAnalytics';
 
 // Mock next/script
 jest.mock('next/script', () => {
-  return function Script({ children, dangerouslySetInnerHTML, ...props }: any) {
+  return function Script({ 
+    children, 
+    dangerouslySetInnerHTML, 
+    ...props 
+  }: { 
+    children?: React.ReactNode; 
+    dangerouslySetInnerHTML?: { __html: string }; 
+    [key: string]: unknown;
+  }) {
     if (dangerouslySetInnerHTML) {
       return <script {...props} dangerouslySetInnerHTML={dangerouslySetInnerHTML} />;
     }

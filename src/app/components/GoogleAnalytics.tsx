@@ -1,6 +1,7 @@
 'use client';
 
 import Script from 'next/script';
+import type { ReactElement } from 'react';
 
 interface GoogleAnalyticsProps {
   measurementId: string;
@@ -10,7 +11,7 @@ interface GoogleAnalyticsProps {
  * Google Analytics component for tracking page views and events
  * @param measurementId - Google Analytics measurement ID (e.g., 'G-Z934MSEFV5')
  */
-export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
+export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps): ReactElement {
   return (
     <>
       <Script
