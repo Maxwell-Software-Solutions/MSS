@@ -7,6 +7,7 @@ import ParallaxScrollEffects from '@/app/components/ParallaxScrollEffects';
 import AppFooter from '@/app/components/AppFooter';
 import AutoContrastButtons from '@/app/components/AutoContrastButtons';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
+import Cookiebot from '@/app/components/Cookiebot';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -77,6 +78,8 @@ export default function RootLayout({
         <link rel="modulepreload" href="/_next/static/chunks/main-app.js" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Cookiebot */}
+        <Cookiebot cbid="c99c6734-f40a-4c0f-842f-aea763f24ee7" />
         {/* Google Analytics */}
         <GoogleAnalytics measurementId="G-Z934MSEFV5" />
         <a href="#main-content" className="skip-link">
