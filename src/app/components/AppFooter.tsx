@@ -48,8 +48,8 @@ export default function SiteFooter(): ReactElement {
               confidence.
             </p>
 
-            <dl className="grid gap-4 text-sm sm:grid-cols-2">
-              <div className="p-3 rounded-lg bg-accent/5 dark:bg-accent/10">
+            <dl className="grid">
+              <div className="pb-3 rounded-lg bg-accent/5 light:bg-accent/10">
                 <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--accent)]">Email</dt>
                 <dd>
                   <a
@@ -60,7 +60,7 @@ export default function SiteFooter(): ReactElement {
                   </a>
                 </dd>
               </div>
-              <div className="p-3 rounded-lg bg-accent/5 dark:bg-accent/10">
+              <div className="pb-3 rounded-lg bg-accent/5 light:bg-accent/10">
                 <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--accent)]">Phone</dt>
                 <dd>
                   <a
