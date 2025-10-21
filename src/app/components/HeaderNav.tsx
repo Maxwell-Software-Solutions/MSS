@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, useCallback, useEffect, type ReactElement } from 'react';
 import { usePathname } from 'next/navigation';
 import MobileMenu from './navigation/MobileMenu';
+import { useLanguage } from '@/lib/LanguageContext';
 
 // Concise header + mobile menu toggle (<=60 lines)
 export default function HeaderNav(): ReactElement {
@@ -11,6 +12,11 @@ export default function HeaderNav(): ReactElement {
   const toggle = useCallback(() => setOpen((o) => !o), []);
   const close = useCallback(() => setOpen(false), []);
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
+  
+  const toggleLanguage = useCallback(() => {
+    setLanguage(language === 'en' ? 'lt' : 'en');
+  }, [language, setLanguage]);
   useEffect(() => {
     function onResize(): void {
       if (window.innerWidth >= 600) setOpen(false);
@@ -56,10 +62,19 @@ export default function HeaderNav(): ReactElement {
         />
       </Link>
       <div className="nav-links" aria-label="Primary navigation">
-        <Link href="/services">Services</Link>
-        <Link href="/project-showcase">Case studies</Link>
-        <Link href="/about">About</Link>
-        <Link href="/blog">Blog</Link>
+        <Link href="/services" suppressHydrationWarning>{t('nav.services') || 'Services'}</Link>
+        <Link href="/project-showcase" suppressHydrationWarning>{t('nav.caseStudies') || 'Case studies'}</Link>
+        <Link href="/about" suppressHydrationWarning>{t('nav.about') || 'About'}</Link>
+        <Link href="/blog" suppressHydrationWarning>{t('nav.blog') || 'Blog'}</Link>
+        <button
+          type="button"
+          onClick={toggleLanguage}
+          className="px-3 py-1.5 rounded-md border border-foreground/20 hover:border-accent hover:bg-accent/5 transition-colors font-medium text-sm"
+          aria-label={`Switch to ${language === 'en' ? 'Lithuanian' : 'English'}`}
+          suppressHydrationWarning
+        >
+          {language === 'en' ? '🇱🇹 LT' : '🇬🇧 EN'}
+        </button>
       </div>
       <button
         type="button"

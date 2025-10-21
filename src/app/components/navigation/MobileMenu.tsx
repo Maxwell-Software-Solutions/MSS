@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useRef, useEffect, useCallback, type ReactElement } from 'react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export interface MobileMenuProps {
   open: boolean;
@@ -8,9 +9,14 @@ export interface MobileMenuProps {
 }
 
 export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
+  const { t, language, setLanguage } = useLanguage();
   const panelRef = useRef<HTMLDivElement | null>(null);
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
   const prevFocus = useRef<HTMLElement | null>(null);
+  
+  const toggleLanguage = useCallback(() => {
+    setLanguage(language === 'en' ? 'lt' : 'en');
+  }, [language, setLanguage]);
 
   // Side effects when opening / closing
   useEffect(() => {
@@ -110,24 +116,35 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
         </div>
         <ul className="flex flex-col gap-4 text-lg font-medium">
           <li>
-            <Link ref={firstLinkRef} href="/services" onClick={handleLink}>
-              Services
+            <Link ref={firstLinkRef} href="/services" onClick={handleLink} suppressHydrationWarning>
+              {t('nav.services') || 'Services'}
             </Link>
           </li>
           <li>
-            <Link href="/project-showcase" onClick={handleLink}>
-              Case studies
+            <Link href="/project-showcase" onClick={handleLink} suppressHydrationWarning>
+              {t('nav.caseStudies') || 'Case studies'}
             </Link>
           </li>
           <li>
-            <Link href="/about" onClick={handleLink}>
-              About
+            <Link href="/about" onClick={handleLink} suppressHydrationWarning>
+              {t('nav.about') || 'About'}
             </Link>
           </li>
           <li>
-            <Link href="/blog" onClick={handleLink}>
-              Blog
+            <Link href="/blog" onClick={handleLink} suppressHydrationWarning>
+              {t('nav.blog') || 'Blog'}
             </Link>
+          </li>
+          <li className="pt-4 border-t border-white/10">
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="px-4 py-2 rounded-md border border-white/20 hover:border-accent hover:bg-accent/10 transition-colors font-medium text-sm w-full"
+              aria-label={`Switch to ${language === 'en' ? 'Lithuanian' : 'English'}`}
+              suppressHydrationWarning
+            >
+              {language === 'en' ? '🇱🇹 Switch to Lithuanian' : '🇬🇧 Switch to English'}
+            </button>
           </li>
         </ul>
       </div>
