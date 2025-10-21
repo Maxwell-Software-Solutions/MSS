@@ -26,7 +26,7 @@ export default function SiteFooter(): ReactElement {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-black/10 header-glass text-sm text-slate-600 dark:border-white/10 dark:bg-slate-950/80 dark:text-slate-300">
+    <footer className="border-t border-black/10 header-glass text-sm text-slate-600 dark:border-white/10 dark:bg-slate-950/80 dark:text-black">
       <div className="mx-auto max-w-6xl px-6 py-12 sm:px-10 sm:py-14">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.7fr)_repeat(2,minmax(0,1fr))]">
           <div className="space-y-6">
@@ -43,7 +43,7 @@ export default function SiteFooter(): ReactElement {
               </span>
             </div>
 
-            <p className="max-w-xl text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="max-w-xl text-sm leading-relaxed text-slate-600 dark:text-black">
               We help engineering leaders modernise legacy systems, accelerate delivery, and build teams that ship with
               confidence.
             </p>
@@ -73,16 +73,16 @@ export default function SiteFooter(): ReactElement {
               </div>
 
               <div>
-                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-black">
                   Hours
                 </dt>
-                <dd className="mt-1 text-slate-600 dark:text-slate-300">Monday – Friday, 8am – 6pm CT</dd>
+                <dd className="mt-1 text-slate-600 dark:text-black">Monday – Friday, 8am – 6pm CT</dd>
               </div>
             </dl>
           </div>
 
           <nav aria-label="Company" className="space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-black">
               Company
             </p>
             <ul className="space-y-2 text-sm">
@@ -97,7 +97,7 @@ export default function SiteFooter(): ReactElement {
           </nav>
 
           <nav aria-label="Resources" className="space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-black">
               Resources
             </p>
             <ul className="space-y-2 text-sm">
@@ -111,7 +111,7 @@ export default function SiteFooter(): ReactElement {
             </ul>
 
             <div className="mt-6 space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-slate-400">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-black">
                 Connect
               </p>
               <ul className="flex flex-col gap-2 text-sm">
@@ -146,7 +146,7 @@ export default function SiteFooter(): ReactElement {
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-black/10 pt-6 text-xs text-slate-500 dark:border-white/10 dark:text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-black/10 pt-6 text-xs text-slate-500 dark:border-white/10 dark:text-black sm:flex-row sm:items-center sm:justify-between">
           <p>© {currentYear} Maxwell Software Solutions. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
             {resourceLinks.map((link) => (
