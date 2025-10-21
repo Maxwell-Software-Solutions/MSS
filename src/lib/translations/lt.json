@@ -135,5 +135,37 @@
   
   "contactPage.eyebrow": "Norėtume išgirsti iš jūsų",
   "contactPage.title": "Sukurkime kažką nuostabaus kartu",
-  "contactPage.subtitle": "Pasidalinkite keliais detalėmis apie savo projektą ir mūsų konsultantai susisieks per vieną darbo dieną."
+  "contactPage.subtitle": "Pasidalinkite keliais detalėmis apie savo projektą ir mūsų konsultantai susisieks per vieną darbo dieną.",
+  
+  "blog.title": "Įžvalgos",
+  "blog.subtitle": "Trumpi, informatyvūs straipsniai apie testavimą, refaktoringą ir patikimumą.",
+  "blog.readMore": "Skaityti daugiau",
+  "blog.minRead": "min skaitymo",
+  "blog.solid.date": "2024 m. gruodžio 19 d.",
+  "blog.solid.duration": "8",
+  "blog.solid.category": "Programinės įrangos architektūra",
+  "blog.solid.title": "SOLID Principai: Švaraus Kodo Pagrindas",
+  "blog.solid.excerpt": "Išmokite penkis SOLID principus, kurie sudaro švaraus, lengvai prižiūrimo ir mastelio programinės įrangos architektūros pagrindą. Sužinokite, kaip šie principai padeda priimti geresnius dizaino sprendimus.",
+  "blog.tdd.date": "2024 m. gruodžio 19 d.",
+  "blog.tdd.duration": "10",
+  "blog.tdd.category": "Verslo vertė",
+  "blog.tdd.title": "Testu Grindžiamas Kūrimas: Verslo Pasitikėjimo Kūrimas Per Kodo Kokybę",
+  "blog.tdd.excerpt": "Sužinokite, kaip TDD sumažina išlaidas, pagerina patikimumą ir sukuria išmatuojamą verslo vertę. Sužinokite, kodėl pirmaujančios įmonės investuoja į testu grindžiamą kūrimą ir peržiūrėkite ROI skaičiavimus.",
+  "blog.refactoring.date": "2024 m. gruodžio 19 d.",
+  "blog.refactoring.duration": "12",
+  "blog.refactoring.category": "Programinės įrangos modernizavimas",
+  "blog.refactoring.title": "Pasenusio Kodo Refaktoringas: Pilnas Vadovas Programinės Įrangos Architektūros Modernizavimui",
+  "blog.refactoring.excerpt": "Išmokite įrodytų strategijų pasenusio kodo refaktoringui, techninės skolos mažinimui ir programinės įrangos prižiūrimumo gerinimui. Ekspertų patarimai pasenusių kodų bazių modernizavimui su realaus pasaulio atvejų studijomis.",
+  
+  "caseStudies.title": "Atvejų studijos",
+  "caseStudies.subtitle": "Pasirinkti rezultatai įvairiose pramonės šakose. Kiekviena studija apima kontekstą, veiksmus ir išmatuojamus rezultatus.",
+  "caseStudies.retail.title": "Mažmeninės prekybos platforma — praleistu defektų sumažėjo 58%",
+  "caseStudies.retail.summary": "Stabilizuotas CI, pridėti SLO, refaktoringuoti trapūs moduliai.",
+  "caseStudies.retail.meta": "E‑prekyba · Node/Next · 6 mėn",
+  "caseStudies.fintech.title": "Fintech API — padengimas padidėjo 32%",
+  "caseStudies.fintech.summary": "Sutarčių + auksiniai testai, greitesnis incidentų sprendimas.",
+  "caseStudies.fintech.meta": "Fintech · Go/TypeScript · 3 mėn",
+  "caseStudies.saas.title": "SaaS migracija — MTTR sumažėjo 45%",
+  "caseStudies.saas.summary": "Stebėsena, SLO ir automatizuoti veikimo vadovai.",
+  "caseStudies.saas.meta": "B2B SaaS · Kubernetes · 4 mėn"
 }

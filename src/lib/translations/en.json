@@ -136,5 +136,37 @@
   
   "contactPage.eyebrow": "We'd love to hear from you",
   "contactPage.title": "Let's build something remarkable together",
-  "contactPage.subtitle": "Share a few details about your project and our consultants will reach back within one business day."
+  "contactPage.subtitle": "Share a few details about your project and our consultants will reach back within one business day.",
+  
+  "blog.title": "Insights",
+  "blog.subtitle": "Short, high-signal posts on testing, refactoring, and reliability.",
+  "blog.readMore": "Read more",
+  "blog.minRead": "min read",
+  "blog.solid.date": "December 19, 2024",
+  "blog.solid.duration": "8",
+  "blog.solid.category": "Software Architecture",
+  "blog.solid.title": "SOLID Principles: The Foundation of Clean Code",
+  "blog.solid.excerpt": "Master the five SOLID principles that form the foundation of clean, maintainable, and scalable software architecture. Learn how these principles guide better design decisions.",
+  "blog.tdd.date": "December 19, 2024",
+  "blog.tdd.duration": "10",
+  "blog.tdd.category": "Business Value",
+  "blog.tdd.title": "Test-Driven Development: Building Business Confidence Through Code Quality",
+  "blog.tdd.excerpt": "Discover how TDD reduces costs, improves reliability, and delivers measurable business value. Learn why leading companies invest in test-driven development and see the ROI calculations.",
+  "blog.refactoring.date": "December 19, 2024",
+  "blog.refactoring.duration": "12",
+  "blog.refactoring.category": "Software Modernization",
+  "blog.refactoring.title": "Refactoring Legacy Code: Complete Guide to Modernizing Your Software Architecture",
+  "blog.refactoring.excerpt": "Learn proven strategies for refactoring legacy code, reducing technical debt, and improving software maintainability. Expert tips for modernizing old codebases with real-world case studies.",
+  
+  "caseStudies.title": "Case studies",
+  "caseStudies.subtitle": "Selected results across industries. Each study includes context, actions, and measurable outcomes.",
+  "caseStudies.retail.title": "Retail platform — escaped defects down 58%",
+  "caseStudies.retail.summary": "Stabilized CI, added SLOs, refactored brittle modules.",
+  "caseStudies.retail.meta": "E‑commerce · Node/Next · 6 months",
+  "caseStudies.fintech.title": "Fintech API — coverage up 32%",
+  "caseStudies.fintech.summary": "Contract + golden tests, faster incident resolution.",
+  "caseStudies.fintech.meta": "Fintech · Go/TypeScript · 3 months",
+  "caseStudies.saas.title": "SaaS migration — MTTR down 45%",
+  "caseStudies.saas.summary": "Observability, SLOs, and automated runbooks.",
+  "caseStudies.saas.meta": "B2B SaaS · Kubernetes · 4 months"
 }

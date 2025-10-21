@@ -1,9 +1,11 @@
 import { render, type RenderOptions } from '@testing-library/react';
 import type { ReactElement } from 'react';
-import { LanguageProvider } from '@/lib/LanguageContext';
 
-// Mock the LanguageContext module
+// Mock the LanguageContext module BEFORE importing it
 jest.mock('@/lib/LanguageContext');
+
+// Import AFTER mocking
+import { LanguageProvider } from '@/lib/LanguageContext';
 
 // Custom render function that wraps with the mocked LanguageProvider
 export function renderWithProviders(

@@ -1,19 +1,17 @@
-import type { Metadata } from 'next';
+'use client';
 import type { ReactElement } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-
-export const metadata: Metadata = {
-  title: 'Insights — Maxwell Software Solutions',
-  description: 'Short, high-signal posts on testing, refactoring, and reliability.',
-};
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function BlogIndexPage(): ReactElement {
+  const { t } = useLanguage();
+  
   return (
     <div className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-8">Insights</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold mb-8">{t('blog.title')}</h1>
       <p className="text-lg text-foreground/80 mb-12">
-        Short, high-signal posts on testing, refactoring, and reliability.
+        {t('blog.subtitle')}
       </p>
 
       <div className="space-y-12">
@@ -31,21 +29,20 @@ export default function BlogIndexPage(): ReactElement {
               </div>
               <div>
                 <div className="flex items-center gap-2 text-sm text-foreground/60 mb-3">
-                  <time dateTime="2024-12-19">December 19, 2024</time>
+                  <time dateTime="2024-12-19">{t('blog.solid.date')}</time>
                   <span>•</span>
-                  <span>8 min read</span>
+                  <span>{t('blog.solid.duration')} {t('blog.minRead')}</span>
                   <span>•</span>
-                  <span className="bg-accent/20 text-accent px-2 py-1 rounded-full text-xs">Software Architecture</span>
+                  <span className="bg-accent/20 text-accent px-2 py-1 rounded-full text-xs">{t('blog.solid.category')}</span>
                 </div>
                 <h2 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
-                  SOLID Principles: The Foundation of Clean Code
+                  {t('blog.solid.title')}
                 </h2>
                 <p className="text-foreground/70 mb-4 leading-relaxed">
-                  Master the five SOLID principles that form the foundation of clean, maintainable, and scalable
-                  software architecture. Learn how these principles guide better design decisions.
+                  {t('blog.solid.excerpt')}
                 </p>
                 <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all">
-                  Read more
+                  {t('blog.readMore')}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -69,21 +66,20 @@ export default function BlogIndexPage(): ReactElement {
               </div>
               <div className="order-1 lg:order-2">
                 <div className="flex items-center gap-2 text-sm text-foreground/60 mb-3">
-                  <time dateTime="2024-12-19">December 19, 2024</time>
+                  <time dateTime="2024-12-19">{t('blog.tdd.date')}</time>
                   <span>•</span>
-                  <span>10 min read</span>
+                  <span>{t('blog.tdd.duration')} {t('blog.minRead')}</span>
                   <span>•</span>
-                  <span className="bg-accent/20 text-accent px-2 py-1 rounded-full text-xs">Business Value</span>
+                  <span className="bg-accent/20 text-accent px-2 py-1 rounded-full text-xs">{t('blog.tdd.category')}</span>
                 </div>
                 <h2 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
-                  Test-Driven Development: Building Business Confidence Through Code Quality
+                  {t('blog.tdd.title')}
                 </h2>
                 <p className="text-foreground/70 mb-4 leading-relaxed">
-                  Discover how TDD reduces costs, improves reliability, and delivers measurable business value. Learn
-                  why leading companies invest in test-driven development and see the ROI calculations.
+                  {t('blog.tdd.excerpt')}
                 </p>
                 <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all">
-                  Read more
+                  {t('blog.readMore')}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -107,23 +103,22 @@ export default function BlogIndexPage(): ReactElement {
               </div>
               <div>
                 <div className="flex items-center gap-2 text-sm text-foreground/60 mb-3">
-                  <time dateTime="2024-12-19">December 19, 2024</time>
+                  <time dateTime="2024-12-19">{t('blog.refactoring.date')}</time>
                   <span>•</span>
-                  <span>12 min read</span>
+                  <span>{t('blog.refactoring.duration')} {t('blog.minRead')}</span>
                   <span>•</span>
                   <span className="bg-accent/20 text-accent px-2 py-1 rounded-full text-xs">
-                    Software Modernization
+                    {t('blog.refactoring.category')}
                   </span>
                 </div>
                 <h2 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
-                  Refactoring Legacy Code: Complete Guide to Modernizing Your Software Architecture
+                  {t('blog.refactoring.title')}
                 </h2>
                 <p className="text-foreground/70 mb-4 leading-relaxed">
-                  Learn proven strategies for refactoring legacy code, reducing technical debt, and improving software
-                  maintainability. Expert tips for modernizing old codebases with real-world case studies.
+                  {t('blog.refactoring.excerpt')}
                 </p>
                 <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all">
-                  Read more
+                  {t('blog.readMore')}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
