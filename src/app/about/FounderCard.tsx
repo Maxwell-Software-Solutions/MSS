@@ -2,11 +2,14 @@
 import type { ReactElement } from 'react';
 import type { FounderInfo } from './founders-data';
 import Image from 'next/image';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
+  const { t } = useLanguage();
   // Map founder name to image file
   const firstName = f.name.split(' ')[0]?.toLowerCase() || 'founder';
   const imageSrc = `/images/founders/${firstName}.svg`;
+  const founderKey = firstName; // maxwell, petras, marek
   
   return (
     <figure className="relative rounded-2xl border border-foreground/10 bg-gradient-to-br p-8 shadow-soft overflow-hidden group min-h-[22rem] flex flex-col">
@@ -26,11 +29,11 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
             />
           </div>
           <figcaption className="flex flex-col">
-            <h3 className="font-semibold text-lg leading-tight tracking-tight">{f.name}</h3>
-            <div className="text-xs uppercase tracking-wide text-foreground/60 mt-1">{f.role}</div>
+            <h3 className="font-semibold text-lg leading-tight tracking-tight">{t(`about.founder.${founderKey}.name`)}</h3>
+            <div className="text-xs uppercase tracking-wide text-foreground/60 mt-1">{t(`about.founder.${founderKey}.role`)}</div>
           </figcaption>
         </div>
-        <p className="text-sm text-foreground/75 leading-relaxed mt-1 max-w-prose">{f.bio}</p>
+        <p className="text-sm text-foreground/75 leading-relaxed mt-1 max-w-prose">{t(`about.founder.${founderKey}.bio`)}</p>
         <div className="mt-auto pt-4">
           <span className="inline-flex items-center gap-1 text-[11px] font-medium uppercase tracking-wider text-foreground/50">
             <span className="h-1.5 w-1.5 rounded-full bg-current" />

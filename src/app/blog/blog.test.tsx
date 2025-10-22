@@ -1,42 +1,48 @@
-import { render, screen } from '@testing-library/react';
+// Mock MUST be first, before ANY other imports
+jest.mock('@/lib/LanguageContext');
+
+import { screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import BlogIndexPage from './BlogIndexPage';
+import BlogIndexPage from './page';
+import { renderWithProviders as render } from '@/test/test-utils';
 
 expect.extend(toHaveNoViolations);
 
 describe('Blog page', () => {
   it('renders the main heading', () => {
     render(<BlogIndexPage />);
-    expect(screen.getByRole('heading', { name: /insights/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /insights|įžvalgos/i })).toBeInTheDocument();
   });
 
   it('renders the page description', () => {
     render(<BlogIndexPage />);
-    expect(screen.getByText(/Short, high-signal posts on testing, refactoring, and reliability/i)).toBeInTheDocument();
+    expect(screen.getByText(/Short, high-signal posts|Trumpi, informatyvūs straipsniai/i)).toBeInTheDocument();
   });
 
   it('renders the SOLID Principles blog post', () => {
     render(<BlogIndexPage />);
-    expect(screen.getByRole('link', { name: /SOLID Principles: The Foundation of Clean Code/i })).toBeInTheDocument();
-    expect(screen.getByText(/Master the five SOLID principles/i)).toBeInTheDocument();
-    expect(screen.getAllByText('December 19, 2024')).toHaveLength(3);
-    expect(screen.getByText('8 min read')).toBeInTheDocument();
-    expect(screen.getByText('Software Architecture')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /SOLID Principles|SOLID Principai/i })).toBeInTheDocument();
+    expect(screen.getByText(/Master the five SOLID principles|Išmokite penkis SOLID principus/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/December 19, 2024|2024 m. gruodžio 19 d./i)).toHaveLength(3);
+    expect(screen.getByText(/8 min read|8 min skaitymo/i)).toBeInTheDocument();
+    // Category appears multiple times (badge and potentially in content), so use getAllByText
+    expect(screen.getAllByText(/Software Architecture|Programinės įrangos architektūra/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders the Test-Driven Development blog post', () => {
     render(<BlogIndexPage />);
     expect(
-      screen.getByRole('link', { name: /Test-Driven Development: Building Business Confidence Through Code Quality/i })
+      screen.getByRole('link', { name: /Test-Driven Development|Testu Grindžiamas Kūrimas/i })
     ).toBeInTheDocument();
-    expect(screen.getByText(/Discover how TDD reduces costs/i)).toBeInTheDocument();
-    expect(screen.getByText('10 min read')).toBeInTheDocument();
-    expect(screen.getByText('Business Value')).toBeInTheDocument();
+    expect(screen.getByText(/Discover how TDD reduces costs|Sužinokite, kaip TDD sumažina išlaidas/i)).toBeInTheDocument();
+    expect(screen.getByText(/10 min read|10 min skaitymo/i)).toBeInTheDocument();
+    // Category appears multiple times (badge and potentially in content), so use getAllByText
+    expect(screen.getAllByText(/Business Value|Verslo vertė/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders the Refactoring Legacy Code blog post', () => {
     render(<BlogIndexPage />);
-    expect(screen.getByRole('link', { name: /Refactoring Legacy Code/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Refactoring Legacy Code|Pasenusio Kodo Refaktoringas/i })).toBeInTheDocument();
   });
 
   it('renders blog post images with proper alt text', () => {
@@ -49,14 +55,14 @@ describe('Blog page', () => {
 
   it('renders "Read more" links for each post', () => {
     render(<BlogIndexPage />);
-    const readMoreLinks = screen.getAllByText('Read more');
+    const readMoreLinks = screen.getAllByText(/Read more|Skaityti daugiau/i);
     expect(readMoreLinks.length).toBeGreaterThan(0);
   });
 
   it('has proper heading hierarchy', () => {
     render(<BlogIndexPage />);
     const mainHeading = screen.getByRole('heading', { level: 1 });
-    expect(mainHeading).toHaveTextContent('Insights');
+    expect(mainHeading).toHaveTextContent(/Insights|Įžvalgos/i);
 
     const postHeadings = screen.getAllByRole('heading', { level: 2 });
     expect(postHeadings.length).toBeGreaterThan(0);
