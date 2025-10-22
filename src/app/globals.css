@@ -192,3 +192,43 @@ header nav .menu-toggle {
   .muted { color: rgba(226, 232, 240, 0.8); }
 }
 .full-image { border-radius: 18px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.3); }
+
+/* Cookiebot dialog: lock placement to avoid cumulative layout shift */
+#CybotCookiebotDialog {
+  position: fixed !important;
+  inset: auto 0 0 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border-radius: 18px 18px 0 0 !important;
+  box-shadow: 0 -20px 42px rgba(0, 0, 0, 0.45);
+  z-index: 2147483000 !important;
+  transform: none !important;
+}
+
+@media (min-width: 640px) {
+  #CybotCookiebotDialog {
+    inset: auto auto 1.5rem 50% !important;
+    width: min(48rem, calc(100vw - 3rem)) !important;
+    border-radius: 18px !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+#CybotCookiebotDialogBodyUnderlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(10, 12, 20, 0.55) !important;
+  z-index: 2147482999 !important;
+}
+
+/* Reserve paint space so the banner overlays rather than pushing content */
+html:has(#CybotCookiebotDialog) {
+  scroll-padding-bottom: 220px;
+}
+
+@media (max-width: 639px) {
+  html:has(#CybotCookiebotDialog) {
+    scroll-padding-bottom: 140px;
+  }
+}
