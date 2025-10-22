@@ -8,7 +8,7 @@
   "stats.defects": "-60%",
   "stats.defects.label": "Praleistų defektų",
   "stats.coverage": "+35%",
-  "stats.coverage.label": "Testu padengimas",
+  "stats.coverage.label": "Testų padengimas",
   "stats.mttr": "-45%",
   "stats.mttr.label": "MTTR",
   
