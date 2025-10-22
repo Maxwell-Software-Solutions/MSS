@@ -6,7 +6,7 @@
   "hero.values": "KOKYBĖ • PATIKIMUMAS • GREITIS",
   
   "stats.defects": "-60%",
-  "stats.defects.label": "Praleistu defektu",
+  "stats.defects.label": "Praleistų defektų",
   "stats.coverage": "+35%",
   "stats.coverage.label": "Testu padengimas",
   "stats.mttr": "-45%",
