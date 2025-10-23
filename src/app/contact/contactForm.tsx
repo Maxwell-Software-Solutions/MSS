@@ -34,8 +34,8 @@ export default function ContactForm(): ReactNode {
       aria-label="Contact form"
       className="relative isolate min-h-[70vh] overflow-hidden bg-slate-950/5 py-16 sm:py-20"
     >
-      <div aria-hidden={true} className="pointer-events-none absolute inset-0 -z-10">
-        <div className="mx-auto h-[480px] w-[480px] rounded-full bg-[radial-gradient(circle_at_center,var(--accent)_0%,transparent_70%)] opacity-20 blur-3xl" />
+      <div aria-hidden={true} className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="mx-auto h-[480px] w-[480px] max-w-[80vw] max-h-[80vw] rounded-full bg-[radial-gradient(circle_at_center,var(--accent)_0%,transparent_70%)] opacity-20 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-5xl px-6 sm:px-10">

@@ -20,40 +20,44 @@ export default function HomeContent(): ReactElement {
 
   return (
     <main className="min-h-screen font-sans" id="main-content">
-      <section className="relative hero-gradient section overflow-hidden">
+      <section className="relative hero-gradient section overflow-hidden py-12 sm:py-16 lg:py-20">
         {/* Decorative background layers */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[120rem] h-[120rem] bg-accent/5 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 -left-1/4 w-[60rem] h-[60rem] bg-accent/10 rounded-full blur-2xl" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[100vw] max-w-[120rem] h-[100vw] max-h-[120rem] bg-accent/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 -left-1/4 w-[60vw] max-w-[60rem] h-[60vw] max-h-[60rem] bg-accent/10 rounded-full blur-2xl" />
         </div>
         <div className="container relative">
-          <div className="text-center max-w-4xl mx-auto" data-reveal>
-            <h1 className="text-5xl sm:text-7xl font-bold tracking-tight leading-[1.05]">{t('hero.title')}</h1>
-            <p className="mt-6 text-xl sm:text-2xl text-foreground/70 leading-snug">{t('hero.subtitle')}</p>
-            <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-              <a href="/contact" className="btn btn-accent px-8 py-4 text-base sm:text-lg shadow-soft font-bold">
+          <div className="text-center max-w-4xl mx-auto px-4" data-reveal>
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] sm:leading-[1.05]">
+              {t('hero.title')}
+            </h1>
+            <p className="mt-6 text-lg xs:text-xl sm:text-2xl text-foreground/80 leading-relaxed sm:leading-snug max-w-3xl mx-auto px-2">
+              {t('hero.subtitle')}
+            </p>
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
+              <a href="/contact" className="btn btn-accent px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-soft font-bold min-h-[48px]">
                 {t('hero.cta.primary')}
               </a>
-              <a href="/services" className="btn btn-ghost px-8 py-4 text-base sm:text-lg">
+              <a href="/services" className="btn btn-ghost px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg min-h-[48px]">
                 {t('hero.cta.secondary')}
               </a>
             </div>
-            <p className="mt-6 text-xs uppercase tracking-[0.25em] text-foreground/50 font-medium">
+            <p className="mt-6 text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] text-foreground/60 font-medium px-4">
               {t('hero.values')}
             </p>
           </div>
           <HeroFieldWrapper />
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3" data-reveal>
-            <div className="card shadow-soft p-5 text-center">
-              <div className="text-2xl font-semibold">{t('stats.defects')}</div>
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 px-4" data-reveal>
+            <div className="card shadow-soft p-4 sm:p-5 text-center">
+              <div className="text-xl sm:text-2xl font-semibold">{t('stats.defects')}</div>
               <div className="muted text-sm">{t('stats.defects.label')}</div>
             </div>
-            <div className="card shadow-soft p-5 text-center">
-              <div className="text-2xl font-semibold">{t('stats.coverage')}</div>
+            <div className="card shadow-soft p-4 sm:p-5 text-center">
+              <div className="text-xl sm:text-2xl font-semibold">{t('stats.coverage')}</div>
               <div className="muted text-sm">{t('stats.coverage.label')}</div>
             </div>
-            <div className="card shadow-soft p-5 text-center">
-              <div className="text-2xl font-semibold">{t('stats.mttr')}</div>
+            <div className="card shadow-soft p-4 sm:p-5 text-center">
+              <div className="text-xl sm:text-2xl font-semibold">{t('stats.mttr')}</div>
               <div className="muted text-sm">{t('stats.mttr.label')}</div>
             </div>
           </div>

@@ -232,6 +232,9 @@ export default function ParticleField(): ReactElement {
 
       function resize(): void {
         if (!context) return;
+        // Ensure canvas has valid client dimensions
+        if (canvas.clientWidth === 0 || canvas.clientHeight === 0) return;
+        
         canvas.width = canvas.clientWidth * window.devicePixelRatio;
         canvas.height = canvas.clientHeight * window.devicePixelRatio;
         bufferCanvas.width = canvas.width;
@@ -336,7 +339,7 @@ export default function ParticleField(): ReactElement {
 
       function tick(ts: number): void {
         rafRef.current = requestAnimationFrame(tick);
-        if (!context) return; // safety
+        if (!context || canvas.width === 0 || canvas.height === 0) return; // safety check for canvas dimensions
         const delta = ts - lastFrameRef.current;
         lastFrameRef.current = ts;
         // cadence dampening: when tab hidden or frames are long, skip every other frame heavy work
@@ -558,7 +561,7 @@ export default function ParticleField(): ReactElement {
         particlesRef.current = next;
 
         // composite buffer to visible canvas once per frame
-        if (bctx) {
+        if (bctx && bufferCanvas.width > 0 && bufferCanvas.height > 0) {
           context.clearRect(0, 0, canvas.width, canvas.height);
           context.drawImage(bufferCanvas, 0, 0);
         }

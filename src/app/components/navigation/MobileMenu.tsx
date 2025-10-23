@@ -22,20 +22,50 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
   useEffect(() => {
     if (!open) return;
     prevFocus.current = document.activeElement as HTMLElement | null;
-    const prevOverflow = document.body.style.overflow;
-    document.body.dataset.prevOverflow = prevOverflow;
-    document.body.style.overflow = 'hidden';
+    
+    // Prevent scrolling using event listeners instead of CSS to avoid layout changes
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    };
+    
+    const preventTouchMove = (e: TouchEvent) => {
+      e.preventDefault();
+    };
+    
+    const preventKeyScroll = (e: KeyboardEvent) => {
+      const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+      if (scrollKeys.includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+    
+    // Add event listeners to prevent scrolling without changing CSS
+    document.addEventListener('wheel', preventScroll, { passive: false });
+    document.addEventListener('touchmove', preventTouchMove, { passive: false });
+    document.addEventListener('keydown', preventKeyScroll);
+    
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
     main?.setAttribute('inert', '');
     footer?.setAttribute('inert', '');
     const t = setTimeout(() => firstLinkRef.current?.focus(), 30);
+    
     return () => {
       clearTimeout(t);
-      document.body.style.overflow = document.body.dataset.prevOverflow || '';
+      
+      // Remove event listeners
+      document.removeEventListener('wheel', preventScroll);
+      document.removeEventListener('touchmove', preventTouchMove);
+      document.removeEventListener('keydown', preventKeyScroll);
+      
       main?.removeAttribute('inert');
       footer?.removeAttribute('inert');
-      prevFocus.current?.focus?.();
+      // Ensure focus restoration happens after a brief delay
+      setTimeout(() => {
+        prevFocus.current?.focus?.();
+      }, 10);
     };
   }, [open]);
 
@@ -135,11 +165,11 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
               {t('nav.blog') || 'Blog'}
             </Link>
           </li>
-          <li className="pt-4 border-t border-white/10">
+          <li className="pt-4 border-t border-current/10">
             <button
               type="button"
               onClick={toggleLanguage}
-              className="px-4 py-2 rounded-md border border-white/20 hover:border-accent hover:bg-accent/10 transition-colors font-medium text-sm w-full"
+              className="px-4 py-2 rounded-md border border-current/20 hover:border-accent hover:bg-accent/10 transition-colors font-medium text-sm w-full text-left"
               aria-label={`Switch to ${language === 'en' ? 'Lithuanian' : 'English'}`}
               suppressHydrationWarning
             >
