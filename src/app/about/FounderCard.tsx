@@ -8,7 +8,9 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
   const { t } = useLanguage();
   // Map founder name to image file
   const firstName = f.name.split(' ')[0]?.toLowerCase() || 'founder';
-  const imageSrc = `/images/founders/${firstName}.svg`;
+  // Use JPG for Maxwell (professional photo), SVG for others (illustrations)
+  const imageExtension = firstName === 'maxwell' ? 'jpg' : 'svg';
+  const imageSrc = `/images/founders/${firstName}.${imageExtension}`;
   const founderKey = firstName; // maxwell, petras, marek
   
   return (

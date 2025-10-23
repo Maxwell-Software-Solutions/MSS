@@ -11,7 +11,7 @@ export const founders: FounderInfo[] = [
     name: 'Maxwell Archer',
     role: 'Software Engineer & SEO',
     bio: 'Sculpts sustainable velocity: clarity, automation, measurable quality signals—and removing drag.',
-    alt: 'Cartoon illustration of Maxwell Archer',
+    alt: 'Professional photo of Maxwell Archer',
     gradient: 'from-indigo-600 via-sky-500 to-cyan-400',
   },
   {
