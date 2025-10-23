@@ -55,7 +55,7 @@ describe('About page', () => {
 
   it('renders accessible founder portrait avatars', () => {
     render(<AboutPage />);
-    expect(screen.getByRole('img', { name: /Cartoon illustration of Maxwell Archer/i })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /Professional photo of Maxwell Archer/i })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /Cartoon illustration of Petras Rolinskij/i })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /Cartoon illustration of Marek Wolosewicz/i })).toBeInTheDocument();
   });
