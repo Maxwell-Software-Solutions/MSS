@@ -1,5 +1,14 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactElement } from 'react';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy — Maxwell Software Solutions',
+  description: 'How Maxwell Software Solutions collects, uses, and protects personal data in line with the GDPR.',
+  alternates: {
+    canonical: '/privacy',
+  },
+};
 
 const effectiveDate = '6 October 2025';
 const privacyEmail = 'privacy@maxwellsoftwaresolutions.com';

@@ -1,7 +1,15 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import TeamCard from '../components/TeamCard';
 
-export const metadata = { title: 'Founders' };
+export const metadata: Metadata = {
+  title: 'Founders — Maxwell Software Solutions',
+  description:
+    'Meet the founders driving engineering strategy, design, and platform quality at Maxwell Software Solutions.',
+  alternates: {
+    canonical: '/founders',
+  },
+};
 
 const founders = [
   {

@@ -131,6 +131,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: Slu
   return {
     title: `${c.title} | Maxwell Software Solutions`,
     description: c.subtitle,
+    alternates: {
+      canonical: `/project-showcase/${slug}`,
+    },
   };
 }
 

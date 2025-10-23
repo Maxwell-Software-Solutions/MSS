@@ -9,6 +9,8 @@ import AutoContrastButtons from '@/app/components/AutoContrastButtons';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
 import Cookiebot from '@/app/components/Cookiebot';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://maxwell-software.com';
+
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -26,11 +28,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Maxwell — Modern Web Experiences',
   description: 'Iterate on your site live with AI-driven edits.',
-  metadataBase: new URL('https://maxwell-software.com'),
+  metadataBase: new URL(siteUrl),
   openGraph: {
     title: 'Maxwell — Modern Web Experiences',
     description: 'Iterate on your site live with AI-driven edits.',
     type: 'website',
+    url: siteUrl,
   },
   twitter: {
     card: 'summary_large_image',
@@ -40,9 +43,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  alternates: {
-    canonical: '/',
   },
   manifest: '/manifest.json',
   icons: {

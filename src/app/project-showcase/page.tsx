@@ -6,6 +6,9 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: 'Case Studies — Maxwell Software Solutions',
   description: 'Real results from code quality and reliability engagements.',
+  alternates: {
+    canonical: '/project-showcase',
+  },
 };
 
 const studies = [

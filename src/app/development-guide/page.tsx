@@ -4,6 +4,9 @@ import type { ReactElement } from 'react';
 export const metadata: Metadata = {
   title: 'Reliability Playbook — Maxwell Software Solutions',
   description: 'Checklists and templates for quality and reliability.',
+  alternates: {
+    canonical: '/development-guide',
+  },
 };
 
 export default function PlaybookPage(): ReactElement {

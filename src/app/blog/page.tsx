@@ -6,6 +6,9 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: 'Insights — Maxwell Software Solutions',
   description: 'Short, high-signal posts on testing, refactoring, and reliability.',
+  alternates: {
+    canonical: '/blog',
+  },
 };
 
 export default function BlogIndexPage(): ReactElement {

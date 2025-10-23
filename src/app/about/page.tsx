@@ -4,6 +4,9 @@ import AboutPageComponent from './AboutPage';
 export const metadata: Metadata = {
   title: 'About — Maxwell Software Solutions',
   description: 'Our mission: correctness, simplicity, observability, automation.',
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 export default function Page(): React.ReactElement {

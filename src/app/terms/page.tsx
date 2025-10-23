@@ -1,9 +1,17 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactElement } from 'react';
 
+export const metadata: Metadata = {
+  title: 'Terms of Service — Maxwell Software Solutions',
+  description: 'The conditions that govern use of the Maxwell Software Solutions website and related content.',
+  alternates: {
+    canonical: '/terms',
+  },
+};
+
 const effectiveDate = '6 October 2025';
 const legalEmail = 'legal@maxwellsoftwaresolutions.com';
-const postalAddress = '221 Innovation Way, Austin, TX 73301, USA';
 
 export default function TermsPage(): ReactElement {
   return (

@@ -1,4 +1,13 @@
+import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
+
+export const metadata: Metadata = {
+  title: 'Security Policy — Maxwell Software Solutions',
+  description: 'Security practices, incident response approach, and contact details for Maxwell Software Solutions.',
+  alternates: {
+    canonical: '/security',
+  },
+};
 
 const effectiveDate = '6 October 2025';
 const securityEmail = 'security@maxwellsoftwaresolutions.com';
