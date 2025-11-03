@@ -25,7 +25,7 @@ export const founders: FounderInfo[] = [
     name: 'Marek Wolosewicz',
     role: 'Managing Director',
     bio: 'Turns reliability & speed into strategic leverage—aligning engineering bets with growth.',
-    alt: 'Cartoon illustration of Marek Wolosewicz',
+    alt: 'Professional photo of Marek Wolosewicz',
     gradient: 'from-amber-500 via-orange-500 to-red-400',
   },
 ];
