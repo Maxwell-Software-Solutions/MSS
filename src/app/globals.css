@@ -333,3 +333,79 @@ html:has(#CybotCookiebotDialog) {
     scroll-padding-bottom: 140px;
   }
 }
+
+/* Mobile Navigation Styles */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.nav-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 280px;
+  background-color: var(--card);
+  border-left: 1px solid var(--border);
+  z-index: 1001;
+  padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.2s ease;
+  overflow-y: auto;
+}
+
+.mobile-nav.open {
+  transform: translateX(0);
+}
+
+.mobile-nav .menu-close {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-nav .menu-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav ul li a {
+  display: block;
+  color: var(--foreground);
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.mobile-nav ul li a:hover {
+  color: var(--accent);
+  background-color: rgba(212, 175, 55, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-nav {
+    background-color: var(--card);
+  }
+}

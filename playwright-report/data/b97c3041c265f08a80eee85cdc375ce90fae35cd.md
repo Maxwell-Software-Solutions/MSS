@@ -1,0 +1,288 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - navigation "Site header" [ref=e4]:
+      - link "Homepage" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Maxwell Software Solutions" [ref=e6] [cursor=pointer]
+      - generic "Primary navigation" [ref=e7]:
+        - link "Services" [ref=e8] [cursor=pointer]:
+          - /url: /services
+        - link "Case studies" [ref=e9] [cursor=pointer]:
+          - /url: /project-showcase
+        - link "About" [ref=e10] [cursor=pointer]:
+          - /url: /about
+        - link "Blog" [ref=e11] [cursor=pointer]:
+          - /url: /blog
+        - button "Switch to Lithuanian" [ref=e12]: 🇱🇹 LT
+  - main [ref=e14]:
+    - main [ref=e15]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - heading "Build with confidence." [level=1] [ref=e19]
+          - paragraph [ref=e20]: Ship reliable software through code quality audits, testing strategy, refactoring, and observability.
+          - generic [ref=e21]:
+            - link "Request Your Code Audit" [ref=e22] [cursor=pointer]:
+              - /url: /contact
+            - link "Explore Services" [ref=e23] [cursor=pointer]:
+              - /url: /services
+          - paragraph [ref=e24]: QUALITY • RELIABILITY • VELOCITY
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - generic [ref=e31]: "-60%"
+            - generic [ref=e32]: Escaped defects
+          - generic [ref=e33]:
+            - generic [ref=e34]: +35%
+            - generic [ref=e35]: Test coverage
+          - generic [ref=e36]:
+            - generic [ref=e37]: "-45%"
+            - generic [ref=e38]: MTTR
+        - generic "Key value propositions" [ref=e39]:
+          - generic [ref=e40]:
+            - heading "Independent insight" [level=2] [ref=e41]
+            - paragraph [ref=e42]: Objective code quality audits that uncover structural risk, hidden complexity, and testing blind spots.
+          - generic [ref=e43]:
+            - heading "Faster iteration" [level=2] [ref=e44]
+            - paragraph [ref=e45]: Refactoring & architecture guidance that reduces cycle time and improves developer confidence.
+          - generic [ref=e46]:
+            - heading "Reliability focus" [level=2] [ref=e47]
+            - paragraph [ref=e48]: Observability patterns, failure-mode analysis, and guardrails that harden production systems.
+          - generic [ref=e49]:
+            - heading "Measurable outcomes" [level=2] [ref=e50]
+            - paragraph [ref=e51]: We align on baselines, instrument improvements, and report tangible engineering impact.
+      - img "Abstract full-bleed banner" [ref=e57]
+      - region "Capabilities" [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - heading "Capabilities" [level=2] [ref=e61]
+            - paragraph [ref=e62]: Deep focus on software quality, sustainable velocity, and operational excellence. We embed alongside your team to reduce risk and accelerate delivery.
+          - generic [ref=e63]:
+            - generic "Testing Strategy" [ref=e64]:
+              - generic [ref=e65]: 🧪
+              - heading "Testing Strategy" [level=3] [ref=e66]
+              - paragraph [ref=e67]: Layered test architectures, mutation & coverage analysis, flakiness reduction.
+            - generic "Refactoring" [ref=e68]:
+              - generic [ref=e69]: 📦
+              - heading "Refactoring" [level=3] [ref=e70]
+              - paragraph [ref=e71]: Modularization, domain boundaries, incremental strangler patterns.
+            - generic "Observability" [ref=e72]:
+              - generic [ref=e73]: 🔍
+              - heading "Observability" [level=3] [ref=e74]
+              - paragraph [ref=e75]: SLO design, trace-driven diagnostics, proactive error budgets.
+            - generic "Reliability" [ref=e76]:
+              - generic [ref=e77]: 🛡️
+              - heading "Reliability" [level=3] [ref=e78]
+              - paragraph [ref=e79]: Chaos rehearsal, failure mode reviews, incident response hardening.
+      - generic [ref=e82]:
+        - heading "About" [level=2] [ref=e83]
+        - paragraph [ref=e84]: Maxwell Software Solutions is a boutique engineering consultancy helping teams ship reliable software faster. We specialise in code quality audits, testing strategy, pragmatic refactoring, and production reliability—focused on measurable outcomes and sustainable velocity.
+        - link "Learn More About Us" [ref=e86] [cursor=pointer]:
+          - /url: /about
+      - region "How engagements work" [ref=e87]:
+        - generic [ref=e88]:
+          - heading "How engagements work" [level=2] [ref=e89]
+          - list [ref=e90]:
+            - listitem [ref=e91]:
+              - generic [ref=e93]:
+                - generic [ref=e94]: "01"
+                - heading "Technical discovery" [level=3] [ref=e95]
+                - paragraph [ref=e96]: Architecture & repository review, quality baselining, risk surfacing, metric capture.
+            - listitem [ref=e98]:
+              - generic [ref=e100]:
+                - generic [ref=e101]: "02"
+                - heading "Roadmap alignment" [level=3] [ref=e102]
+                - paragraph [ref=e103]: Define target outcomes, select focus areas, establish success criteria.
+            - listitem [ref=e105]:
+              - generic [ref=e107]:
+                - generic [ref=e108]: "03"
+                - heading "Enable & uplift" [level=3] [ref=e109]
+                - paragraph [ref=e110]: Refactoring spikes, test harness improvements, observability instrumentation.
+            - listitem [ref=e112]:
+              - generic [ref=e114]:
+                - generic [ref=e115]: "04"
+                - heading "Measurement & handoff" [level=3] [ref=e116]
+                - paragraph [ref=e117]: Quantify impact, transfer knowledge, create sustaining playbooks.
+      - generic [ref=e119]:
+        - generic [ref=e120]: Selected work
+        - heading "Case studies" [level=2] [ref=e121]
+        - paragraph [ref=e122]: Real engagements with measurable outcomes. Each links to a concise deep‑dive.
+        - generic [ref=e123]:
+          - link "Retail platform case study" [ref=e124] [cursor=pointer]:
+            - /url: /project-showcase/retail-platform
+            - img "Retail platform" [ref=e126] [cursor=pointer]
+            - generic [ref=e127] [cursor=pointer]:
+              - generic [ref=e128] [cursor=pointer]:
+                - generic [ref=e129] [cursor=pointer]: E‑commerce · 6 mo
+                - generic [ref=e131] [cursor=pointer]: Escaped defects down 58%
+              - heading "Retail platform" [level=3] [ref=e132] [cursor=pointer]
+              - generic [ref=e133] [cursor=pointer]:
+                - generic [ref=e134] [cursor=pointer]: "-58% defects"
+                - generic [ref=e135] [cursor=pointer]: +28% deploys
+                - generic [ref=e136] [cursor=pointer]: +12 CSAT
+              - generic [ref=e137] [cursor=pointer]:
+                - text: View study
+                - img [ref=e138] [cursor=pointer]
+          - link "Fintech API case study" [ref=e140] [cursor=pointer]:
+            - /url: /project-showcase/fintech-api
+            - img "Fintech API" [ref=e142] [cursor=pointer]
+            - generic [ref=e143] [cursor=pointer]:
+              - generic [ref=e144] [cursor=pointer]:
+                - generic [ref=e145] [cursor=pointer]: Fintech · 3 mo
+                - generic [ref=e147] [cursor=pointer]: Coverage up 32%
+              - heading "Fintech API" [level=3] [ref=e148] [cursor=pointer]
+              - generic [ref=e149] [cursor=pointer]:
+                - generic [ref=e150] [cursor=pointer]: +32% coverage
+                - generic [ref=e151] [cursor=pointer]: "-24% incidents"
+                - generic [ref=e152] [cursor=pointer]: "-18% p99"
+              - generic [ref=e153] [cursor=pointer]:
+                - text: View study
+                - img [ref=e154] [cursor=pointer]
+          - link "SaaS migration case study" [ref=e156] [cursor=pointer]:
+            - /url: /project-showcase/saas-migration
+            - img "SaaS migration" [ref=e158] [cursor=pointer]
+            - generic [ref=e159] [cursor=pointer]:
+              - generic [ref=e160] [cursor=pointer]:
+                - generic [ref=e161] [cursor=pointer]: B2B SaaS · 4 mo
+                - generic [ref=e163] [cursor=pointer]: MTTR down 45%
+              - heading "SaaS migration" [level=3] [ref=e164] [cursor=pointer]
+              - generic [ref=e165] [cursor=pointer]:
+                - generic [ref=e166] [cursor=pointer]: "-45% MTTR"
+                - generic [ref=e167] [cursor=pointer]: "-60% noise"
+                - generic [ref=e168] [cursor=pointer]: 4/4 SLOs
+              - generic [ref=e169] [cursor=pointer]:
+                - text: View study
+                - img [ref=e170] [cursor=pointer]
+        - link "Browse all case studies" [ref=e173] [cursor=pointer]:
+          - /url: /project-showcase
+      - generic [ref=e175]:
+        - heading "Contact" [level=2] [ref=e176]
+        - paragraph [ref=e177]: Outline your current challenges and desired outcomes. You will receive a rapid response with an initial diagnostic perspective and next-step options.
+        - generic [ref=e178]:
+          - link "Request Intro Call Today" [ref=e179] [cursor=pointer]:
+            - /url: /contact
+          - link "View Detailed Services" [ref=e180] [cursor=pointer]:
+            - /url: /services
+        - generic [ref=e181]:
+          - paragraph [ref=e182]: "Follow us on LinkedIn:"
+          - link "Maxwell Software Solutions" [ref=e183] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/maxwell-software-solutions
+            - img [ref=e184] [cursor=pointer]
+            - text: Maxwell Software Solutions
+      - region "Client perspective" [ref=e186]:
+        - generic [ref=e187]:
+          - heading "Client perspective" [level=2] [ref=e188]
+          - generic [ref=e189]:
+            - figure "VP Engineering, SaaS Platform" [ref=e190]:
+              - blockquote [ref=e191]: “They reduced build flakiness and restructured our test pyramid—deployment confidence went up immediately.”
+              - generic [ref=e192]: VP Engineering, SaaS Platform
+            - figure "Director of Engineering, FinTech" [ref=e193]:
+              - blockquote [ref=e194]: “Our critical path refactor shipped 6 weeks earlier with their architectural guidance.”
+              - generic [ref=e195]: Director of Engineering, FinTech
+            - figure "Principal Engineer, Retail" [ref=e196]:
+              - blockquote [ref=e197]: “Actionable audit, crisp patterns, and measurable reliability improvements across services.”
+              - generic [ref=e198]: Principal Engineer, Retail
+      - region "Engineering leverage, not headcount." [ref=e199]:
+        - generic [ref=e201]:
+          - generic [ref=e202]:
+            - heading "Engineering leverage, not headcount." [level=2] [ref=e203]
+            - paragraph [ref=e204]: We focus on multiplier work—reducing defect surfaces, shrinking lead time to change, and embedding patterns that keep systems adaptable as complexity scales.
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - heading "Architecture clarity" [level=3] [ref=e207]
+              - paragraph [ref=e208]: Surface hidden dependencies & simplify coupling.
+            - generic [ref=e209]:
+              - heading "Confidence metrics" [level=3] [ref=e210]
+              - paragraph [ref=e211]: Meaningful coverage + mutation + failure trend insight.
+            - generic [ref=e212]:
+              - heading "Operational readiness" [level=3] [ref=e213]
+              - paragraph [ref=e214]: Proactive SLOs, trace probes & incident rehearsal.
+      - region "Make quality your velocity advantage." [ref=e215]:
+        - generic [ref=e216]:
+          - heading "Make quality your velocity advantage." [level=2] [ref=e217]
+          - paragraph [ref=e218]: Audit first or targeted uplift—either way, we de-risk the roadmap and unlock faster, safer iteration.
+          - generic [ref=e219]:
+            - link "Begin assessment" [ref=e220] [cursor=pointer]:
+              - /url: /contact
+            - link "View services overview" [ref=e221] [cursor=pointer]:
+              - /url: /services
+  - contentinfo [ref=e222]:
+    - generic [ref=e223]:
+      - generic [ref=e224]:
+        - generic [ref=e225]:
+          - generic [ref=e226]:
+            - img "Maxwell Software Solutions"
+            - generic [ref=e227]: Crafting reliable software
+          - paragraph [ref=e228]: We help engineering leaders modernise legacy systems, accelerate delivery, and build teams that ship with confidence.
+          - generic [ref=e229]:
+            - generic [ref=e230]:
+              - term [ref=e231]: Email
+              - definition [ref=e232]:
+                - link "admin@maxwellsoftwaresolutions.com" [ref=e233] [cursor=pointer]:
+                  - /url: mailto:admin@maxwellsoftwaresolutions.com
+            - generic [ref=e234]:
+              - term [ref=e235]: Phone
+              - definition [ref=e236]:
+                - link "+37066360662" [ref=e237] [cursor=pointer]:
+                  - /url: tel:+37066360662
+            - generic [ref=e238]:
+              - term [ref=e239]: Hours
+              - definition [ref=e240]: Monday – Friday, 8am – 6pm CT
+        - navigation "Company" [ref=e241]:
+          - paragraph [ref=e242]: Company
+          - list [ref=e243]:
+            - listitem [ref=e244]:
+              - link "Services" [ref=e245] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e246]:
+              - link "Project showcase" [ref=e247] [cursor=pointer]:
+                - /url: /project-showcase
+            - listitem [ref=e248]:
+              - link "Consulting process" [ref=e249] [cursor=pointer]:
+                - /url: /consulting-process
+            - listitem [ref=e250]:
+              - link "Insights & articles" [ref=e251] [cursor=pointer]:
+                - /url: /blog
+        - navigation "Resources" [ref=e252]:
+          - paragraph [ref=e253]: Resources
+          - list [ref=e254]:
+            - listitem [ref=e255]:
+              - link "Privacy" [ref=e256] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e257]:
+              - link "Terms" [ref=e258] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e259]:
+              - link "Security" [ref=e260] [cursor=pointer]:
+                - /url: /security
+          - generic [ref=e261]:
+            - paragraph [ref=e262]: Connect
+            - list [ref=e263]:
+              - listitem [ref=e264]:
+                - link "LinkedIn" [ref=e265] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/maxwell-software-solutions
+                  - img [ref=e266] [cursor=pointer]
+                  - text: LinkedIn
+              - listitem [ref=e268]:
+                - link "GitHub" [ref=e269] [cursor=pointer]:
+                  - /url: https://github.com/Maxwell-Software-Solutions
+                  - img [ref=e270] [cursor=pointer]
+                  - text: GitHub
+      - generic [ref=e272]:
+        - paragraph [ref=e273]: © 2025 Maxwell Software Solutions. All rights reserved.
+        - generic [ref=e274]:
+          - link "Privacy" [ref=e275] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e276] [cursor=pointer]:
+            - /url: /terms
+          - link "Security" [ref=e277] [cursor=pointer]:
+            - /url: /security
+  - iframe [ref=e278]:
+    
+  - button "Open Next.js Dev Tools" [ref=e284] [cursor=pointer]:
+    - img [ref=e285] [cursor=pointer]
+  - alert [ref=e288]
+```

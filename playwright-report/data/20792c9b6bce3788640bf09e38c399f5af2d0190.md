@@ -1,0 +1,173 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - navigation "Site header" [ref=e4]:
+      - link "Homepage" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Maxwell Software Solutions" [ref=e6] [cursor=pointer]
+      - generic "Primary navigation" [ref=e7]:
+        - link "nav.services" [ref=e8] [cursor=pointer]:
+          - /url: /services
+        - link "nav.caseStudies" [ref=e9] [cursor=pointer]:
+          - /url: /project-showcase
+        - link "nav.about" [ref=e10] [cursor=pointer]:
+          - /url: /about
+        - link "nav.blog" [ref=e11] [cursor=pointer]:
+          - /url: /blog
+        - button "Switch to Lithuanian" [ref=e12]: 🇱🇹 LT
+  - main [ref=e14]:
+    - main [ref=e15]:
+      - generic [ref=e16]:
+        - paragraph [ref=e17]: services.hero.eyebrow
+        - heading "services.hero.title" [level=1] [ref=e18]
+        - paragraph [ref=e19]: services.hero.subtitle
+        - paragraph [ref=e20]: services.hero.description
+        - paragraph [ref=e21]: services.hero.note
+      - region "services.heading" [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - heading "services.heading" [level=2] [ref=e25]
+            - paragraph [ref=e26]: services.description
+          - generic [ref=e27]:
+            - article [ref=e28]:
+              - generic [ref=e29]:
+                - heading "services.audit.title" [level=3] [ref=e30]
+                - paragraph [ref=e31]: services.audit.body
+                - paragraph [ref=e32]: services.audit.tagline
+            - article [ref=e33]:
+              - generic [ref=e34]:
+                - heading "services.refactor.title" [level=3] [ref=e35]
+                - paragraph [ref=e36]: services.refactor.body
+                - paragraph [ref=e37]: services.refactor.tagline
+            - article [ref=e38]:
+              - generic [ref=e39]:
+                - heading "services.reliability.title" [level=3] [ref=e40]
+                - paragraph [ref=e41]: services.reliability.body
+                - paragraph [ref=e42]: services.reliability.tagline
+            - article [ref=e43]:
+              - generic [ref=e44]:
+                - heading "services.testing.title" [level=3] [ref=e45]
+                - paragraph [ref=e46]: services.testing.body
+                - paragraph [ref=e47]: services.testing.tagline
+            - article [ref=e48]:
+              - generic [ref=e49]:
+                - heading "services.cicd.title" [level=3] [ref=e50]
+                - paragraph [ref=e51]: services.cicd.body
+                - paragraph [ref=e52]: services.cicd.tagline
+      - region "services.process.heading" [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - heading "services.process.heading" [level=2] [ref=e56]
+            - paragraph [ref=e57]: services.process.description
+          - list [ref=e60]:
+            - listitem [ref=e61]:
+              - generic [ref=e62]:
+                - generic [ref=e63]: "1"
+                - heading "services.process.discover.title" [level=3] [ref=e64]
+                - paragraph [ref=e65]: services.process.discover.body
+            - listitem [ref=e66]:
+              - generic [ref=e67]:
+                - generic [ref=e68]: "2"
+                - heading "services.process.audit.title" [level=3] [ref=e69]
+                - paragraph [ref=e70]: services.process.audit.body
+            - listitem [ref=e71]:
+              - generic [ref=e72]:
+                - generic [ref=e73]: "3"
+                - heading "services.process.plan.title" [level=3] [ref=e74]
+                - paragraph [ref=e75]: services.process.plan.body
+            - listitem [ref=e76]:
+              - generic [ref=e77]:
+                - generic [ref=e78]: "4"
+                - heading "services.process.implement.title" [level=3] [ref=e79]
+                - paragraph [ref=e80]: services.process.implement.body
+            - listitem [ref=e81]:
+              - generic [ref=e82]:
+                - generic [ref=e83]: "5"
+                - heading "services.process.sustain.title" [level=3] [ref=e84]
+                - paragraph [ref=e85]: services.process.sustain.body
+      - generic [ref=e89]:
+        - heading "services.cta.title" [level=2] [ref=e90]
+        - paragraph [ref=e91]: services.cta.body
+        - generic [ref=e92]:
+          - link "services.cta.primary" [ref=e93] [cursor=pointer]:
+            - /url: /contact
+          - link "services.cta.secondary" [ref=e94] [cursor=pointer]:
+            - /url: /project-showcase
+  - contentinfo [ref=e95]:
+    - generic [ref=e96]:
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - generic [ref=e99]:
+            - img "Maxwell Software Solutions" [ref=e100]
+            - generic [ref=e101]: Crafting reliable software
+          - paragraph [ref=e102]: We help engineering leaders modernise legacy systems, accelerate delivery, and build teams that ship with confidence.
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - term [ref=e105]: Email
+              - definition [ref=e106]:
+                - link "admin@maxwellsoftwaresolutions.com" [ref=e107] [cursor=pointer]:
+                  - /url: mailto:admin@maxwellsoftwaresolutions.com
+            - generic [ref=e108]:
+              - term [ref=e109]: Phone
+              - definition [ref=e110]:
+                - link "+37066360662" [ref=e111] [cursor=pointer]:
+                  - /url: tel:+37066360662
+            - generic [ref=e112]:
+              - term [ref=e113]: Hours
+              - definition [ref=e114]: Monday – Friday, 8am – 6pm CT
+        - navigation "Company" [ref=e115]:
+          - paragraph [ref=e116]: Company
+          - list [ref=e117]:
+            - listitem [ref=e118]:
+              - link "Services" [ref=e119] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e120]:
+              - link "Project showcase" [ref=e121] [cursor=pointer]:
+                - /url: /project-showcase
+            - listitem [ref=e122]:
+              - link "Consulting process" [ref=e123] [cursor=pointer]:
+                - /url: /consulting-process
+            - listitem [ref=e124]:
+              - link "Insights & articles" [ref=e125] [cursor=pointer]:
+                - /url: /blog
+        - navigation "Resources" [ref=e126]:
+          - paragraph [ref=e127]: Resources
+          - list [ref=e128]:
+            - listitem [ref=e129]:
+              - link "Privacy" [ref=e130] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e131]:
+              - link "Terms" [ref=e132] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e133]:
+              - link "Security" [ref=e134] [cursor=pointer]:
+                - /url: /security
+          - generic [ref=e135]:
+            - paragraph [ref=e136]: Connect
+            - list [ref=e137]:
+              - listitem [ref=e138]:
+                - link "LinkedIn" [ref=e139] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/maxwell-software-solutions
+                  - img [ref=e140] [cursor=pointer]
+                  - text: LinkedIn
+              - listitem [ref=e142]:
+                - link "GitHub" [ref=e143] [cursor=pointer]:
+                  - /url: https://github.com/Maxwell-Software-Solutions
+                  - img [ref=e144] [cursor=pointer]
+                  - text: GitHub
+      - generic [ref=e146]:
+        - paragraph [ref=e147]: © 2025 Maxwell Software Solutions. All rights reserved.
+        - generic [ref=e148]:
+          - link "Privacy" [ref=e149] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms" [ref=e150] [cursor=pointer]:
+            - /url: /terms
+          - link "Security" [ref=e151] [cursor=pointer]:
+            - /url: /security
+  - iframe [ref=e152]:
+    
+```
