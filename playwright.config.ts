@@ -6,7 +6,7 @@ export default defineConfig({
   testDir: './e2e',
   timeout: 40 * 1000,
   expect: { timeout: 5000 },
-  fullyParallel: true,
+  fullyParallel: false, // Disable parallel execution to avoid test pollution
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }]],

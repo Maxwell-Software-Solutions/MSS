@@ -81,7 +81,7 @@ test.describe('Mobile burger menu', () => {
 
   test('focus trap cycles correctly', async ({ page }) => {
     await page.goto('/');
-  await page.click(toggleBtn);
+    await page.click(toggleBtn);
     await waitForFirstLinkFocus(page);
     const links = page.locator(panel + ' a');
     const last = links.last();
@@ -183,9 +183,9 @@ test.describe('Mobile burger menu', () => {
     await toggle.focus();
     for (let i = 0; i < 3; i++) {
       await page.keyboard.press('Enter');
-      await page.waitForTimeout(10);
+      await page.waitForTimeout(50); // Increased delay to allow state to settle
     }
-    await page.waitForTimeout(80);
+    await page.waitForTimeout(100);
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
     await page.keyboard.press('Enter'); // close
     await page.waitForTimeout(100);

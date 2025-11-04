@@ -18,7 +18,7 @@ export const founders: FounderInfo[] = [
     name: 'Petras Rolinskij',
     role: 'Design Director',
     bio: 'Shapes interfaces where aesthetic precision amplifies conversion and user trust.',
-    alt: 'Cartoon illustration of Petras Rolinskij',
+    alt: 'Professional photo of Petras Rolinskij',
     gradient: 'from-fuchsia-600 via-pink-500 to-rose-400',
   },
   {
