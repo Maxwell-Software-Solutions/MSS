@@ -90,10 +90,10 @@ export default function RootLayout({
           {/* Global scroll effects (no UI) */}
           <ParallaxScrollEffects key="scroll-effects" />
 
-        {/* Critical CSS for above-the-fold content */}
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
+          {/* Critical CSS for above-the-fold content */}
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
             /* Prevent horizontal scrolling globally and force vertical scrollbar to prevent layout shift */
             html, body { margin: 0; padding: 0; overflow-x: hidden; overflow-y: scroll; font-family: Arial, Helvetica, sans-serif; }
             *, *::before, *::after { box-sizing: border-box; }
@@ -169,7 +169,7 @@ export default function RootLayout({
                 transform: translateX(100%); 
                 transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
                 box-shadow: -16px 0 48px -12px rgba(0,0,0,0.25); 
-                border-left: 1px solid rgba(0,0,0,0.1); 
+                border-left: 1px solid rgba(247, 250, 252, 0.1); 
                 z-index: 80; 
                 overflow-y: auto;
                 visibility: hidden;
@@ -182,7 +182,7 @@ export default function RootLayout({
                   background: linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.94)); 
                   color: #f1f5f9; 
                   box-shadow: -16px 0 48px -12px rgba(0,0,0,0.6); 
-                  border-left: 1px solid rgba(255,255,255,0.1); 
+                  border-left: 1px solid rgba(247, 250, 252, 0.1); 
                 }
               }
               
@@ -204,12 +204,12 @@ export default function RootLayout({
                   .mobile-nav { background: rgba(15,23,42,0.98); }
                 }
               }
-              .mobile-nav a { color:inherit; text-decoration:none; font-size:1.125rem; font-weight:500; padding:0.75rem 0; border-bottom:1px solid rgba(0,0,0,0.05); transition:color .2s; }
+              .mobile-nav a { color:inherit; text-decoration:none; font-size:1.125rem; font-weight:500; padding:0.75rem 0; border-bottom:1px solid rgba(247,250,252,0.05); transition:color .2s; }
               .mobile-nav a:hover { color:#d4af37; }
               .mobile-nav a:last-child { border-bottom:none; }
               
               @media (prefers-color-scheme: dark) {
-                .mobile-nav a { border-bottom-color:rgba(255,255,255,0.05); }
+                .mobile-nav a { border-bottom-color:rgba(247,250,252,0.05); }
                 .mobile-nav a:hover { color:#e5c158; }
               }
               
@@ -279,8 +279,8 @@ export default function RootLayout({
                 .nav-overlay { transition:none !important; }
               }
           `,
-          }}
-        />
+            }}
+          />
 
           <header className="fixed top-0 left-0 right-0 z-50 header-glass border-b border-foreground/10">
             <HeaderNav />

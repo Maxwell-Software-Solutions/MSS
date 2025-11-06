@@ -13,7 +13,7 @@ export default function HeaderNav(): ReactElement {
   const close = useCallback(() => setOpen(false), []);
   const pathname = usePathname();
   const { language, setLanguage, t } = useLanguage();
-  
+
   const toggleLanguage = useCallback(() => {
     setLanguage(language === 'en' ? 'lt' : 'en');
   }, [language, setLanguage]);
@@ -62,10 +62,18 @@ export default function HeaderNav(): ReactElement {
         />
       </Link>
       <div className="nav-links" aria-label="Primary navigation">
-        <Link href="/services" suppressHydrationWarning>{t('nav.services') || 'Services'}</Link>
-        <Link href="/project-showcase" suppressHydrationWarning>{t('nav.caseStudies') || 'Case studies'}</Link>
-        <Link href="/about" suppressHydrationWarning>{t('nav.about') || 'About'}</Link>
-        <Link href="/blog" suppressHydrationWarning>{t('nav.blog') || 'Blog'}</Link>
+        <Link href="/services" suppressHydrationWarning>
+          {t('nav.services') || 'Services'}
+        </Link>
+        <Link href="/project-showcase" suppressHydrationWarning>
+          {t('nav.caseStudies') || 'Case studies'}
+        </Link>
+        <Link href="/about" suppressHydrationWarning>
+          {t('nav.about') || 'About'}
+        </Link>
+        <Link href="/blog" suppressHydrationWarning>
+          {t('nav.blog') || 'Blog'}
+        </Link>
         <button
           type="button"
           onClick={toggleLanguage}
@@ -73,7 +81,7 @@ export default function HeaderNav(): ReactElement {
           aria-label={`Switch to ${language === 'en' ? 'Lithuanian' : 'English'}`}
           suppressHydrationWarning
         >
-          {language === 'en' ? '🇱🇹 LT' : '🇬🇧 EN'}
+          {language === 'en' ? 'LT' : 'EN'}
         </button>
       </div>
       <button

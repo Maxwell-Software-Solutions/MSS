@@ -16,8 +16,8 @@ export default function DarkShowcaseSection(): ReactElement {
             Engineering leverage, not headcount.
           </h2>
           <p className="mt-6 text-neutral-200 text-lg leading-relaxed max-w-3xl mx-auto">
-            We focus on multiplier work—reducing defect surfaces, shrinking lead time to change, and embedding
-            patterns that keep systems adaptable as complexity scales.
+            We focus on multiplier work—reducing defect surfaces, shrinking lead time to change, and embedding patterns
+            that keep systems adaptable as complexity scales.
           </p>
         </div>
         <div className="mt-16 grid gap-6 md:grid-cols-3" data-reveal>
@@ -28,10 +28,10 @@ export default function DarkShowcaseSection(): ReactElement {
           ].map((f) => (
             <div
               key={f.title}
-              className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 flex flex-col"
+              className="rounded-xl border border-foreground/10 bg-card/5 backdrop-blur-sm p-6 flex flex-col"
             >
               <h3 className="font-medium tracking-tight text-lg">{f.title}</h3>
-              <p className="mt-2 text-sm text-neutral-200 leading-relaxed">{f.body}</p>
+              <p className="mt-2 text-sm text-foreground/80 leading-relaxed">{f.body}</p>
             </div>
           ))}
         </div>

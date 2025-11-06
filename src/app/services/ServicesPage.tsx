@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import type { ReactElement } from 'react';
 import { services } from './services-data';
 import { processSteps } from './process-data';
@@ -11,7 +11,7 @@ import { useLanguage } from '@/lib/LanguageContext';
 // Applies: unified spacing rhythm, typography clamps, consistent cards, guided timeline, CTA band.
 export default function ServicesPage(): ReactElement {
   const { t } = useLanguage();
-  
+
   const mappedServices = services.map((s) => ({
     key: s.key,
     title: t(`services.${s.key}.title`),
@@ -20,27 +20,27 @@ export default function ServicesPage(): ReactElement {
     meta: t(`services.${s.key}.tagline`),
     tone: s.featured ? 'accent' : 'default',
   }));
-  
-  const steps = processSteps.map((p) => ({ 
-    title: t(`services.process.${p.title.toLowerCase()}.title`), 
-    desc: t(`services.process.${p.title.toLowerCase()}.body`) 
+
+  const steps = processSteps.map((p) => ({
+    title: t(`services.process.${p.title.toLowerCase()}.title`),
+    desc: t(`services.process.${p.title.toLowerCase()}.body`),
   }));
 
   return (
     <main className="min-h-screen font-sans">
       {/* Hero */}
       <header className="max-w-7xl mx-auto px-6 md:px-8 pt-16 pb-4">
-        <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3">{t('services.hero.eyebrow')}</p>
-        <h1 className="font-semibold leading-[1.1] max-w-3xl text-[clamp(36px,3.6vw,56px)]">{t('services.hero.title')}</h1>
+        <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3">
+          {t('services.hero.eyebrow')}
+        </p>
+        <h1 className="font-semibold leading-[1.1] max-w-3xl text-[clamp(36px,3.6vw,56px)]">
+          {t('services.hero.title')}
+        </h1>
         <p className="mt-6 max-w-3xl text-base md:text-lg leading-[1.6] text-[--muted]">
           {t('services.hero.subtitle')}
         </p>
-        <p className="mt-4 max-w-3xl text-base leading-[1.6] text-[--muted]">
-          {t('services.hero.description')}
-        </p>
-        <p className="mt-3 max-w-2xl text-sm text-[--muted]">
-          {t('services.hero.note')}
-        </p>
+        <p className="mt-4 max-w-3xl text-base leading-[1.6] text-[--muted]">{t('services.hero.description')}</p>
+        <p className="mt-3 max-w-2xl text-sm text-[--muted]">{t('services.hero.note')}</p>
       </header>
 
       {/* Services Section */}
@@ -53,9 +53,7 @@ export default function ServicesPage(): ReactElement {
             >
               {t('services.heading')}
             </h2>
-            <p className="mt-3 text-[15px] leading-relaxed max-w-3xl text-[--muted]">
-              {t('services.description')}
-            </p>
+            <p className="mt-3 text-[15px] leading-relaxed max-w-3xl text-[--muted]">{t('services.description')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 auto-rows-fr gap-6 md:gap-8">
             {mappedServices.map((svc) => (
@@ -90,8 +88,8 @@ export default function ServicesPage(): ReactElement {
         </div>
       </section>
 
-  {/* CTA */}
-  <div className="max-w-7xl mx-auto px-6 md:px-8 pb-20">
+      {/* CTA */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8 pb-20">
         <CTA
           title={t('services.cta.title')}
           body={t('services.cta.body')}
@@ -99,6 +97,6 @@ export default function ServicesPage(): ReactElement {
           secondary={{ href: '/project-showcase', label: t('services.cta.secondary') }}
         />
       </div>
-  </main>
+    </main>
   );
 }

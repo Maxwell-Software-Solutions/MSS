@@ -12,9 +12,9 @@ export default function ContactStatusMessage({ status, error }: ContactStatusMes
     return (
       <div
         role="status"
-        className="mt-6 flex items-start gap-3 rounded-2xl border border-emerald-200/60 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-200"
+        className="mt-6 flex items-start gap-3 rounded-2xl border border-accent/20 bg-card/50 px-4 py-3 text-sm text-accent"
       >
-        <span className="mt-0.5 inline-flex h-2.5 w-2.5 flex-shrink-0 rounded-full bg-emerald-500" />
+        <span className="mt-0.5 inline-flex h-2.5 w-2.5 flex-shrink-0 rounded-full bg-accent" />
         Thanks! We’ll get back to you soon.
       </div>
     );
@@ -24,9 +24,9 @@ export default function ContactStatusMessage({ status, error }: ContactStatusMes
     return (
       <div
         role="alert"
-        className="mt-6 flex items-start gap-3 rounded-2xl border border-red-200/70 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-500/40 dark:bg-red-500/10 dark:text-red-200"
+        className="mt-6 flex items-start gap-3 rounded-2xl border border-foreground/20 bg-card/50 px-4 py-3 text-sm text-foreground"
       >
-        <span className="mt-0.5 inline-flex h-2.5 w-2.5 flex-shrink-0 rounded-full bg-red-500" />
+        <span className="mt-0.5 inline-flex h-2.5 w-2.5 flex-shrink-0 rounded-full bg-foreground/60" />
         Sorry—{error || 'something went wrong'}.
       </div>
     );

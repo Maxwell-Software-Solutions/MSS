@@ -11,7 +11,7 @@ import { useLanguage } from '@/lib/LanguageContext';
 
 // Dynamically import non-critical components
 const ClientLogos = dynamic(() => import('@/app/components/ClientLogos'), {
-  loading: () => <div className="h-20 bg-gray-100 animate-pulse rounded" />,
+  loading: () => <div className="h-20 bg-card/50 animate-pulse rounded" />,
   ssr: true,
 });
 
@@ -26,7 +26,7 @@ export default function HomeContent(): ReactElement {
           <div className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[100vw] max-w-[120rem] h-[100vw] max-h-[120rem] bg-accent/5 rounded-full blur-3xl" />
           <div className="absolute top-1/2 -left-1/4 w-[60vw] max-w-[60rem] h-[60vw] max-h-[60rem] bg-accent/10 rounded-full blur-2xl" />
         </div>
-        <div className="container relative">
+        <div className="container relative h-[100vh]">
           <div className="text-center max-w-4xl mx-auto px-4" data-reveal>
             <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] sm:leading-[1.05]">
               {t('hero.title')}
@@ -35,7 +35,10 @@ export default function HomeContent(): ReactElement {
               {t('hero.subtitle')}
             </p>
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
-              <a href="/contact" className="btn btn-accent px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-soft font-bold min-h-[48px]">
+              <a
+                href="/contact"
+                className="btn btn-accent px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-soft font-bold min-h-[48px]"
+              >
                 {t('hero.cta.primary')}
               </a>
               <a href="/services" className="btn btn-ghost px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg min-h-[48px]">
@@ -94,27 +97,6 @@ export default function HomeContent(): ReactElement {
           </div>
         </div>
       </section>
-      <DeferredClient
-        fallback={<div className="h-20 bg-gray-100 animate-pulse rounded" aria-hidden="true" />}
-        minHeight="5rem"
-      >
-        <ClientLogos />
-      </DeferredClient>
-      {/* Full-bleed banner */}
-      <section>
-        <div className="container" data-reveal>
-          <div className="full-image">
-            <Image
-              src="/images/banner-fullbleed.svg"
-              alt="Abstract full-bleed banner"
-              width={2400}
-              height={640}
-              sizes="(min-width: 1024px) 1024px, 100vw"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
 
       {/* Capabilities overview */}
       <section
@@ -128,7 +110,7 @@ export default function HomeContent(): ReactElement {
             </h2>
             <p className="mt-4 text-foreground/80 leading-relaxed">{t('capabilities.description')}</p>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-reveal>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 icon: '🧪',
@@ -169,7 +151,7 @@ export default function HomeContent(): ReactElement {
             <h2 className="text-2xl font-semibold">{t('about.section.heading')}</h2>
             <p className="mt-3 text-foreground/80">{t('about.section.description')}</p>
             <div className="mt-5">
-              <a href="/about" className="btn btn-accent px-6 py-3 font-semibold">
+              <a href="/about" className="btn btn-accent px-10 py-3 font-semibold">
                 {t('about.section.cta')}
               </a>
             </div>
@@ -333,10 +315,10 @@ export default function HomeContent(): ReactElement {
           <h2 className="text-2xl font-semibold">{t('contact.heading')}</h2>
           <p className="mt-3 text-sm text-foreground/75 leading-relaxed">{t('contact.description')}</p>
           <div className="mt-4 flex flex-col sm:flex-row gap-3">
-            <a href="/contact" className="btn btn-accent px-6 py-3 font-semibold">
+            <a href="/contact" className="btn btn-accent px-10 py-3 font-semibold">
               {t('contact.cta.primary')}
             </a>
-            <a href="/services" className="btn btn-ghost px-6 py-3">
+            <a href="/services" className="btn btn-ghost px-10 py-3">
               {t('contact.cta.secondary')}
             </a>
           </div>

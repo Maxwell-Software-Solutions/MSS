@@ -10,14 +10,14 @@ interface CTAProps {
 export function CTA({ title, body, primary, secondary }: CTAProps): ReactElement {
   return (
     <section className="mt-24">
-      <div className="relative rounded-3xl border border-[--border] bg-white/70 dark:bg-white/5 backdrop-blur supports-[backdrop-filter]:shadow-lg px-8 py-16 overflow-hidden">
+      <div className="relative rounded-3xl  bg-card/80 backdrop-blur supports-[backdrop-filter]:shadow-lg px-8 py-16 overflow-hidden bg-gradient-to-tl from-[rgba(212,175,55,0.1)] via-transparent to-[rgba(139,107,0,0.1)]">
         <div
-          className="absolute inset-0 pointer-events-none opacity-[0.35] bg-[radial-gradient(circle_at_75%_25%,rgba(255,255,255,0.6),transparent_60%)]"
+          className="absolute inset-0 pointer-events-none opacity-[0.15] bg-[radial-gradient(circle_at_75%_25%,rgba(212,175,55,0.3),transparent_60%)]"
           aria-hidden="true"
         />
         <div className="relative max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-tight">{title}</h2>
-          <p className="mt-4 text-lg leading-relaxed text-[--muted]">{body}</p>
+          <p className="mt-4 text-lg leading-relaxed text-foreground/80">{body}</p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={primary.href}

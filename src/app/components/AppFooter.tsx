@@ -23,10 +23,11 @@ const socialLinks = [
 ];
 
 export default function SiteFooter(): ReactElement {
+  // Use a fixed year or suppress hydration warning since year changes are acceptable
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-black/10 header-glass text-sm text-slate-600 dark:border-white/10 dark:bg-slate-950/80 dark:text-black">
+    <footer className="border-t text-sm text-foreground/80">
       <div className="mx-auto max-w-6xl px-6 py-12 sm:px-10 sm:py-14">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.7fr)_repeat(2,minmax(0,1fr))]">
           <div className="space-y-6">
@@ -43,13 +44,13 @@ export default function SiteFooter(): ReactElement {
               </span>
             </div>
 
-            <p className="max-w-xl text-sm leading-relaxed text-slate-600 dark:text-black">
+            <p className="max-w-xl text-sm leading-relaxed text-foreground/80">
               We help engineering leaders modernise legacy systems, accelerate delivery, and build teams that ship with
               confidence.
             </p>
 
-            <dl className="grid">
-              <div className="pb-3 rounded-lg bg-accent/5 light:bg-accent/10">
+            <dl className="grid gap-3">
+              <div className="p-3 rounded-xl bg-accent/5 border border-accent/20 border-[#d4af3799]">
                 <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--accent)]">Email</dt>
                 <dd>
                   <a
@@ -60,7 +61,7 @@ export default function SiteFooter(): ReactElement {
                   </a>
                 </dd>
               </div>
-              <div className="pb-3 rounded-lg bg-accent/5 light:bg-accent/10">
+              <div className="p-3 rounded-xl bg-accent/5 border border-accent/20  border-[#d4af3799]">
                 <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--accent)]">Phone</dt>
                 <dd>
                   <a
@@ -73,18 +74,14 @@ export default function SiteFooter(): ReactElement {
               </div>
 
               <div>
-                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-black">
-                  Hours
-                </dt>
-                <dd className="mt-1 text-slate-600 dark:text-black">Monday – Friday, 8am – 6pm CT</dd>
+                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-foreground/70">Hours</dt>
+                <dd className="mt-1 text-foreground/80">Monday – Friday, 8am – 6pm CT</dd>
               </div>
             </dl>
           </div>
 
           <nav aria-label="Company" className="space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-black">
-              Company
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-foreground/70">Company</p>
             <ul className="space-y-2 text-sm">
               {primaryLinks.map((link) => (
                 <li key={link.href}>
@@ -97,9 +94,7 @@ export default function SiteFooter(): ReactElement {
           </nav>
 
           <nav aria-label="Resources" className="space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-black">
-              Resources
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-foreground/70">Resources</p>
             <ul className="space-y-2 text-sm">
               {resourceLinks.map((link) => (
                 <li key={link.href}>
@@ -111,9 +106,7 @@ export default function SiteFooter(): ReactElement {
             </ul>
 
             <div className="mt-6 space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 dark:text-black">
-                Connect
-              </p>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-foreground/70">Connect</p>
               <ul className="flex flex-col gap-2 text-sm">
                 {socialLinks.map((link) => (
                   <li key={link.href}>
@@ -146,8 +139,8 @@ export default function SiteFooter(): ReactElement {
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-black/10 pt-6 text-xs text-slate-500 dark:border-white/10 dark:text-black sm:flex-row sm:items-center sm:justify-between">
-          <p>© {currentYear} Maxwell Software Solutions. All rights reserved.</p>
+        <div className="mt-10 flex flex-col gap-3 border-t border-foreground/10 pt-6 text-xs text-foreground/70 sm:flex-row sm:items-center sm:justify-between">
+          <p suppressHydrationWarning>© {currentYear} Maxwell Software Solutions. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
             {resourceLinks.map((link) => (
               <Link key={link.href} className="transition hover:text-[color:var(--accent)]" href={link.href}>

@@ -23,11 +23,11 @@ export function ServiceCard({
     <article
       className={[
         'group rounded-2xl card',
-  'p-6 md:p-7 shadow-[0_1px_1px_rgba(0,0,0,.06),0_8px_24px_rgba(0,0,0,.08)] transition h-full',
+        'p-6 md:p-7 shadow-soft transition h-full',
         'motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-lg motion-safe:focus-within:-translate-y-0.5 motion-safe:focus-within:shadow-lg',
-        'motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:focus-within:translate-y-0 motion-reduce:hover:shadow-[0_1px_1px_rgba(0,0,0,.06),0_8px_24px_rgba(0,0,0,.08)]',
+        'motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:focus-within:translate-y-0',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 relative',
-           accent ? 'bg-[--card]' : '',
+        accent ? 'bg-[--card]' : '',
       ].join(' ')}
     >
       <div className="flex flex-col">

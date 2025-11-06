@@ -213,18 +213,18 @@ export default function TDDPost(): ReactElement {
 
             <h3 className="text-xl font-semibold mb-4 mt-6">Business Results</h3>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <h3 className="font-semibold text-green-800 mb-2">✅ What Went Well</h3>
-                <ul className="text-green-700 text-sm space-y-1">
+              <div className="bg-card/50 border border-accent/20 rounded-lg p-4">
+                <h3 className="font-semibold text-accent mb-2">✅ What Went Well</h3>
+                <ul className="text-foreground/90 text-sm space-y-1">
                   <li>• Zero payment-related bugs in production</li>
                   <li>• 30% faster development cycle</li>
                   <li>• Easy to add new payment methods</li>
                   <li>• Confident deployment to production</li>
                 </ul>
               </div>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h3 className="font-semibold text-blue-800 mb-2">📊 Measurable Impact</h3>
-                <ul className="text-blue-700 text-sm space-y-1">
+              <div className="bg-card/50 border border-foreground/20 rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">📊 Measurable Impact</h3>
+                <ul className="text-foreground/90 text-sm space-y-1">
                   <li>• $50K saved in bug prevention</li>
                   <li>• 2 weeks faster to market</li>
                   <li>• 99.9% payment success rate</li>
@@ -256,16 +256,16 @@ export default function TDDPost(): ReactElement {
                     <span>Productivity Dip (1 month)</span>
                     <span className="font-semibold">$15,000</span>
                   </div>
-                  <div className="border-t pt-2">
+                  <div className="border-t border-foreground/20 pt-2">
                     <div className="flex justify-between font-bold">
                       <span>Total Investment</span>
-                      <span className="text-red-600">$40,000</span>
+                      <span className="text-accent">$40,000</span>
                     </div>
                   </div>
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold mb-4 text-green-600">Annual Returns</h3>
+                <h3 className="font-semibold mb-4 text-accent">Annual Returns</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span>Bug Prevention Savings</span>
@@ -279,10 +279,10 @@ export default function TDDPost(): ReactElement {
                     <span>Reduced Maintenance</span>
                     <span className="font-semibold">$25,000</span>
                   </div>
-                  <div className="border-t pt-2">
+                  <div className="border-t border-foreground/20 pt-2">
                     <div className="flex justify-between font-bold">
                       <span>Total Annual Return</span>
-                      <span className="text-green-600">$125,000</span>
+                      <span className="text-accent">$125,000</span>
                     </div>
                   </div>
                 </div>
@@ -361,10 +361,10 @@ export default function TDDPost(): ReactElement {
             business results. Let&apos;s work together to build the reliable, maintainable software your business needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="btn btn-primary">
+            <Link href="/contact" className="btn btn-accent px-10 py-3">
               Start Your TDD Journey
             </Link>
-            <Link href="/services" className="btn btn-ghost">
+            <Link href="/services" className="btn btn-ghost px-10 py-3">
               View Our Services
             </Link>
           </div>

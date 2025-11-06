@@ -234,7 +234,7 @@ export default function ParticleField(): ReactElement {
         if (!context) return;
         // Ensure canvas has valid client dimensions
         if (canvas.clientWidth === 0 || canvas.clientHeight === 0) return;
-        
+
         canvas.width = canvas.clientWidth * window.devicePixelRatio;
         canvas.height = canvas.clientHeight * window.devicePixelRatio;
         bufferCanvas.width = canvas.width;
@@ -608,7 +608,7 @@ export default function ParticleField(): ReactElement {
   return (
     <div
       data-testid="particle-field"
-      className="relative w-full h-[380px] sm:h-[460px] md:h-[520px] rounded-xl overflow-hidden bg-gradient-to-br from-accent/5 via-transparent to-accent/10 border border-foreground/10"
+      className="relative w-full h-[380px] sm:h-[460px] md:h-[520px] rounded-xl overflow-hidden bg-gradient-to-br from-accent/5 via-transparent to-accent/10 border border-foreground/1 border-[#d4af3799]"
     >
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
     </div>

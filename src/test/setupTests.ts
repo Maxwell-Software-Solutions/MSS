@@ -1,5 +1,11 @@
 import '@testing-library/jest-dom';
 import 'jest-axe/extend-expect';
+import { toHaveAdequateContrast } from './contrast-checker';
+
+// Extend Jest matchers with custom contrast checker
+expect.extend({
+  toHaveAdequateContrast,
+});
 
 // Mock next/navigation for tests
 jest.mock('next/navigation', () => ({

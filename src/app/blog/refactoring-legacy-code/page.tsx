@@ -164,18 +164,18 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             <div>
               <h3 className="text-xl font-semibold mb-4">Signs You Have Legacy Code</h3>
               <div className="space-y-4">
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                  <h3 className="font-semibold text-red-800 mb-2">🚨 Red Flags</h3>
-                  <ul className="text-red-700 text-sm space-y-1">
+                <div className="bg-card/50 border border-foreground/20 rounded-lg p-4">
+                  <h3 className="font-semibold text-foreground mb-2">🚨 Red Flags</h3>
+                  <ul className="text-foreground/90 text-sm space-y-1">
                     <li>• Developers afraid to make changes</li>
                     <li>• Simple features take weeks to implement</li>
                     <li>• Frequent production bugs and hotfixes</li>
                     <li>• High turnover in development team</li>
                   </ul>
                 </div>
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                  <h4 className="font-semibold text-yellow-800 mb-2">⚠️ Warning Signs</h4>
-                  <ul className="text-yellow-700 text-sm space-y-1">
+                <div className="bg-card/50 border border-accent/20 rounded-lg p-4">
+                  <h4 className="font-semibold text-accent mb-2">⚠️ Warning Signs</h4>
+                  <ul className="text-foreground/90 text-sm space-y-1">
                     <li>• Code reviews take longer than coding</li>
                     <li>• New team members struggle to onboard</li>
                     <li>• Deployment frequency decreasing</li>
@@ -479,37 +479,37 @@ export default function RefactoringLegacyCodePost(): ReactElement {
           <h2 className="text-3xl font-bold mb-8">Common Pitfalls and How to Avoid Them</h2>
 
           <div className="space-y-6">
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-red-800 mb-4">🚨 Refactoring Without Tests</h3>
-              <p className="text-red-700 mb-3">
+            <div className="bg-card/50 border border-foreground/20 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-foreground mb-4">🚨 Refactoring Without Tests</h3>
+              <p className="text-foreground/90 mb-3">
                 <strong>Problem:</strong> Making changes without comprehensive test coverage is like walking on a
                 tightrope without a safety net.
               </p>
-              <p className="text-red-700 mb-3">
+              <p className="text-foreground/90 mb-3">
                 <strong>Solution:</strong> Establish test coverage before starting refactoring work. Aim for at least
                 80% coverage of critical code paths.
               </p>
             </div>
 
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-yellow-800 mb-4">⚠️ Big Bang Refactoring</h3>
-              <p className="text-yellow-700 mb-3">
+            <div className="bg-card/50 border border-accent/20 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-accent mb-4">⚠️ Big Bang Refactoring</h3>
+              <p className="text-foreground/90 mb-3">
                 <strong>Problem:</strong> Trying to refactor everything at once leads to long-running branches, merge
                 conflicts, and increased risk.
               </p>
-              <p className="text-yellow-700 mb-3">
+              <p className="text-foreground/90 mb-3">
                 <strong>Solution:</strong> Break refactoring into small, incremental changes that can be completed in a
                 single sprint or iteration.
               </p>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-blue-800 mb-4">💡 Ignoring Business Context</h3>
-              <p className="text-blue-700 mb-3">
+            <div className="bg-card/50 border border-foreground/20 rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-foreground mb-4">💡 Ignoring Business Context</h3>
+              <p className="text-foreground/90 mb-3">
                 <strong>Problem:</strong> Refactoring for the sake of refactoring without considering business value and
                 priorities.
               </p>
-              <p className="text-blue-700 mb-3">
+              <p className="text-foreground/90 mb-3">
                 <strong>Solution:</strong> Always tie refactoring work to business objectives. Focus on areas that will
                 have the biggest impact on development speed and reliability.
               </p>
@@ -607,12 +607,12 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                   </ul>
                 </div>
               </div>
-              <div className="mt-6 bg-green-50 border border-green-200 rounded-lg p-4">
-                <h4 className="font-semibold text-green-800 mb-2">Results After 12 Months</h4>
+              <div className="mt-6 bg-card/50 border border-accent/20 rounded-lg p-4">
+                <h4 className="font-semibold text-accent mb-2">Results After 12 Months</h4>
                 <div className="grid md:grid-cols-4 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-green-600">↓ 90%</div>
-                    <div className="text-sm text-green-700">Page Load Time</div>
+                    <div className="text-2xl font-bold text-accent">↓ 90%</div>
+                    <div className="text-sm text-foreground/90">Page Load Time</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-green-600">↓ 95%</div>
@@ -664,10 +664,10 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             into a competitive advantage.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="btn btn-primary">
+            <Link href="/contact" className="btn btn-accent px-10 py-3">
               Start Your Modernization Journey
             </Link>
-            <Link href="/services" className="btn btn-ghost">
+            <Link href="/services" className="btn btn-ghost px-10 py-3">
               View Our Services
             </Link>
           </div>

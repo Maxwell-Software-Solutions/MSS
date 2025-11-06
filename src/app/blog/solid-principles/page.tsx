@@ -356,10 +356,10 @@ export default function SOLIDPrinciplesPost(): ReactElement {
             Let&apos;s work together to transform your codebase.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="btn btn-primary">
+            <Link href="/contact" className="btn btn-accent px-10 py-3">
               Get in Touch
             </Link>
-            <Link href="/services" className="btn btn-ghost">
+            <Link href="/services" className="btn btn-ghost px-10 py-3">
               View Our Services
             </Link>
           </div>
