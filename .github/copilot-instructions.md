@@ -1,0 +1,149 @@
+## Copilot / AI Agent Instructions — MSS (Maxwell Site)
+
+### Quick Orientation
+
+- **Framework**: Next.js 15 (App Router) + React 19 + TypeScript 5
+- **Key files**: `src/app/layout.tsx` (root layout with providers), `src/app/page.tsx`, `next.config.ts` (webpack/headers), `package.json` (scripts)
+- **Styling**: Tailwind CSS v4 (`src/app/globals.css`)
+
+### Essential Commands
+
+| Task              | Command                                        |
+| ----------------- | ---------------------------------------------- |
+| Dev server        | `pnpm dev`                                     |
+| Production build  | `pnpm build`                                   |
+| Run all tests     | `pnpm test` (lint → typecheck → jest)          |
+| E2E tests         | `pnpm e2e` (Playwright auto-starts dev server) |
+| E2E with UI       | `pnpm e2e:ui`                                  |
+| Performance audit | `pnpm lighthouse` (90+ score required)         |
+| Bundle analysis   | `pnpm analyze`                                 |
+
+### Architecture & Conventions
+
+**Component boundaries**:
+
+- **Server Components by default** — only add `'use client'` for interactivity (hooks, event handlers)
+- Pages: `src/app/*` with route-based structure
+- Reusable components: `src/app/components/` (e.g., `HeaderNav.tsx`, `AppFooter.tsx`)
+- Global providers: `src/app/layout.tsx` includes `LanguageProvider`, `Cookiebot`, `GoogleAnalytics`
+
+**Import paths**:
+
+- **Always use `@/` alias** (never relative paths across directories): `import { foo } from '@/lib/utils'`
+- Configured in `tsconfig.json` and `jest.config.js`
+
+**Testing structure**:
+
+- Unit tests live alongside code (e.g., `src/app/components/Button.test.tsx`)
+- Jest with `ts-jest`, React Testing Library, and `jest-axe` for a11y
+- E2E tests in `e2e/` (Playwright with chromium/firefox/webkit)
+- `jest.config.js` mocks `next/image` via `src/test/__mocks__/nextImageMock.tsx`
+
+### Coding Principles
+
+**KISS (Keep It Simple, Stupid)**:
+
+- Server Components by default — only add `'use client'` when interactivity is required
+- Prefer straightforward solutions over clever abstractions
+- Direct implementations unless complexity demands abstraction
+
+**DRY (Don't Repeat Yourself)**:
+
+- Reusable components in `src/app/components/`
+- Shared utilities in `src/lib/` (e.g., `LanguageContext.tsx`, translations)
+- Consistent patterns across similar features (model existing code)
+
+**SOLID (Apply When Beneficial)**:
+
+- Single Responsibility: Each component/function focuses on one concern
+- Don't over-engineer: Start simple, refactor when patterns emerge
+- See existing component structure for practical examples (e.g., `HeaderNav.tsx`, `AppFooter.tsx`)
+
+### Environment Variables
+
+- See `next.config.ts` and README; common keys: `OPENAI_API_KEY`, `NEXT_PUBLIC_APPS_SCRIPT_URL`, `NEXT_PUBLIC_SHARED_TOKEN`, `NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_COOKIEBOT_CBID`
+- Set `.env.local` for local dev
+- **Never commit secrets** — use environment variables and `.env.local`
+
+### Build & Deployment Details
+
+- Build helper: `postbuild:autocommit` attempts an automatic git commit after successful build — avoid unexpected commits when testing patches locally
+- Webpack/optimization: `next.config.ts` contains custom chunking, compression, and terser settings — avoid large, global changes that break these optimizations
+- Accessibility & performance: repository includes explicit docs under `docs/` (e.g. `accessibility.md`, `performance-optimization.md`) and the project enforces high Lighthouse and WCAG targets. When changing markup, preserve semantic structure and a11y affordances (skip links, ARIA where present)
+
+### Integration Points
+
+- Analytics & consent: `src/app/layout.tsx` wires `Cookiebot` and `GoogleAnalytics`. Cookie IDs and GA IDs come via env vars
+- External services: `@vercel/kv` and `openai` appear in dependencies — be explicit about not committing secret keys; prefer using `.env.local` and the environment
+- Images: Next image optimization is enabled (`next.config.ts` image formats). Avoid adding unoptimized large raster assets
+
+### Component Patterns
+
+**Server Component (default)**:
+
+```tsx
+export default async function Page() {
+  const data = await fetchData();
+  return <Content data={data} />;
+}
+```
+
+**Client Component (explicit)**:
+
+```tsx
+'use client';
+export function InteractiveButton() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount((c) => c + 1)}>{count}</button>;
+}
+```
+
+### Testing Patterns
+
+**Unit test example**:
+
+```tsx
+import { render, screen } from '@testing-library/react';
+import { Button } from './Button';
+
+describe('Button', () => {
+  it('renders with correct text', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button')).toHaveTextContent('Click me');
+  });
+});
+```
+
+**E2E test example**:
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+test('homepage loads', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: /Maxwell/i })).toBeVisible();
+});
+```
+
+### Common Pitfalls
+
+1. **Using `'use client'` unnecessarily** → increases bundle size, breaks SSR optimizations
+2. **Relative imports across directories** → Use `@/` alias (e.g., `@/lib/utils` not `../../lib/utils`)
+3. **Skipping test validation** → Always run `pnpm test` before committing
+4. **Modifying webpack config carelessly** → Can break production optimizations in `next.config.ts`
+5. **Adding large images without optimization** → Use Next.js Image component with WebP/AVIF
+6. **Ignoring accessibility** → Project enforces WCAG AA, maintain semantic HTML and ARIA labels
+
+### Editing & PR Guidance
+
+- Small UIs: prefer editing or adding files under `src/app/components/` and update corresponding unit tests in `src/`
+- Tests: for code changes, ensure `pnpm test` passes (lint + typecheck + jest). If adding runtime behavior, add a Playwright test under `e2e/` if it affects pages
+- Build validation: use `pnpm build` (or `npm run build`) and run `pnpm test` locally before creating PR
+
+### Examples (Where to Find Patterns)
+
+- Redirects & headers: `next.config.ts` shows canonical headers and redirects. Model changes to routing/headers on the same pattern
+- Root layout: `src/app/layout.tsx` demonstrates providers, global CSS, and critical CSS inlining
+- Jest setup: `jest.config.js` and `src/test/setupTests.ts` show test bootstrapping and mocks
+
+If unsure, prefer minimal, reversible edits and signal the change in the PR description (what file changed, why, how validated). Ask for clarification when a change touches infra (build, webpack, or CI scripts).
