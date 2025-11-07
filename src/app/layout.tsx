@@ -112,7 +112,7 @@ export default function RootLayout({
             }
             
             .header-glass { background-color: rgba(255, 255, 255, 0.78); backdrop-filter: saturate(180%) blur(12px); }
-            .container { max-width: 80rem; margin-inline: auto; padding-inline: 1rem; width: 100%; overflow-x: hidden; }
+            .container { max-width: 80rem; margin-inline: auto; padding-inline: 1rem; width: 100%; overflow: hidden; }
             @media (min-width: 640px) { .container { padding-inline: 2rem; } }
             @media (min-width: 768px) { .container { padding-inline: 2.5rem; } }
             .hero-gradient { background-image: radial-gradient(120% 80% at 50% 0%, rgba(139, 107, 0, 0.12) 0%, rgba(139, 107, 0, 0.06) 30%, transparent 60%); }
