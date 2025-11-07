@@ -71,10 +71,11 @@ describe('Home page', () => {
     expect(wrapper).toBeInTheDocument();
   });
 
-  it('renders the banner image with proper alt text', () => {
+  it('renders the particle field wrapper', async () => {
     render(<Home />);
-    const bannerImage = screen.getByAltText('Abstract full-bleed banner');
-    expect(bannerImage).toBeInTheDocument();
+    const particleField = await screen.findByTestId('hero-field-wrapper');
+    expect(particleField).toBeInTheDocument();
+    expect(particleField).toHaveAttribute('data-parallax', '0.1');
   });
 
   it('checks accessibility and reports violations', async () => {
