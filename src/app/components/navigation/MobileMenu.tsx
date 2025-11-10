@@ -24,17 +24,17 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
     prevFocus.current = document.activeElement as HTMLElement | null;
 
     // Prevent scrolling using event listeners instead of CSS to avoid layout changes
-    const preventScroll = (e: Event) => {
+    const preventScroll = (e: Event): boolean => {
       e.preventDefault();
       e.stopPropagation();
       return false;
     };
 
-    const preventTouchMove = (e: TouchEvent) => {
+    const preventTouchMove = (e: TouchEvent): void => {
       e.preventDefault();
     };
 
-    const preventKeyScroll = (e: KeyboardEvent) => {
+    const preventKeyScroll = (e: KeyboardEvent): void => {
       const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
       if (scrollKeys.includes(e.key)) {
         e.preventDefault();
@@ -147,22 +147,22 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
         <ul className="flex flex-col gap-4 text-lg font-medium">
           <li>
             <Link ref={firstLinkRef} href="/services" onClick={handleLink} suppressHydrationWarning>
-              {t('nav.services') || 'Services'}
+              {t('nav.services') === 'nav.services' ? 'Services' : t('nav.services')}
             </Link>
           </li>
           <li>
             <Link href="/project-showcase" onClick={handleLink} suppressHydrationWarning>
-              {t('nav.caseStudies') || 'Case studies'}
+              {t('nav.caseStudies') === 'nav.caseStudies' ? 'Case studies' : t('nav.caseStudies')}
             </Link>
           </li>
           <li>
             <Link href="/about" onClick={handleLink} suppressHydrationWarning>
-              {t('nav.about') || 'About'}
+              {t('nav.about') === 'nav.about' ? 'About' : t('nav.about')}
             </Link>
           </li>
           <li>
             <Link href="/blog" onClick={handleLink} suppressHydrationWarning>
-              {t('nav.blog') || 'Blog'}
+              {t('nav.blog') === 'nav.blog' ? 'Blog' : t('nav.blog')}
             </Link>
           </li>
           <li className="pt-4 border-t border-foreground/10">

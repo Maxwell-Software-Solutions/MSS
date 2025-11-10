@@ -4,7 +4,6 @@ import type { ReactElement } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
-import DeferredClient from './components/DeferredClient';
 import HeroFieldWrapper from './components/HeroFieldWrapper';
 import DeferredSections from './components/DeferredSections';
 import { useLanguage } from '@/lib/LanguageContext';
@@ -94,6 +93,25 @@ export default function HomeContent(): ReactElement {
                 <p className="mt-2 text-sm text-foreground/80 leading-relaxed">{t(v.bodyKey)}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Client logos */}
+      <ClientLogos />
+
+      {/* Banner section */}
+      <section>
+        <div className="container" data-reveal>
+          <div className="full-image">
+            <Image
+              src="/images/banner-fullbleed.svg"
+              alt="Abstract full-bleed banner"
+              width={2400}
+              height={640}
+              sizes="(min-width: 1024px) 1024px, 100vw"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
