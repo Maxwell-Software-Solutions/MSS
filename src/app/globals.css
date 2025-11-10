@@ -153,11 +153,11 @@ p, div, span, h1, h2, h3, h4, h5, h6 {
 
 /* Header navigation text styling - Light mode */
 header nav {
-  color: #1a202c;
+  color: #000000;
 }
 
 header nav a {
-  color: #1a202c;
+  color: #000000;
   font-weight: 500;
   transition: color 0.2s ease;
 }
@@ -167,7 +167,7 @@ header nav a:hover {
 }
 
 header nav .nav-links a {
-  color: #1a202c;
+  color: #000000;
   padding: 0.5rem 0.75rem;
   border-radius: 0.375rem;
   transition: all 0.2s ease;
@@ -179,7 +179,7 @@ header nav .nav-links a:hover {
 }
 
 header nav .menu-toggle {
-  color: #1a202c;
+  color: #000000;
 }
 
 /* Dark mode header styling */
@@ -189,28 +189,28 @@ header nav .menu-toggle {
   }
   
   header nav {
-    color: #f7fafc;
+    color: #000000;
   }
 
   header nav a {
-    color: #f7fafc;
+    color: #000000;
   }
 
   header nav a:hover {
-    color: #e5c158;
+    color: #d4af37;
   }
 
   header nav .nav-links a {
-    color: #f7fafc;
+    color: #000000;
   }
 
   header nav .nav-links a:hover {
-    color: #e5c158;
-    background-color: rgba(229, 193, 88, 0.1);
+    color: #d4af37;
+    background-color: rgba(212, 175, 55, 0.1);
   }
 
   header nav .menu-toggle {
-    color: #f7fafc;
+    color: #000000;
   }
 }
 
