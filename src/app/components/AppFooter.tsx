@@ -1,7 +1,6 @@
 import type { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card } from './ui';
 
 import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from '../contact/contact.constants';
 
@@ -51,7 +50,7 @@ export default function SiteFooter(): ReactElement {
             </p>
 
             <dl className="grid gap-3">
-              <Card padding="sm" className="bg-accent/5 border-accent/20">
+              <div>
                 <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--accent)]">Email</dt>
                 <dd>
                   <a
@@ -61,8 +60,8 @@ export default function SiteFooter(): ReactElement {
                     {CONTACT_EMAIL}
                   </a>
                 </dd>
-              </Card>
-              <Card padding="sm" className="bg-accent/5 border-accent/20">
+              </div>
+              <div>
                 <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--accent)]">Phone</dt>
                 <dd>
                   <a
@@ -72,7 +71,7 @@ export default function SiteFooter(): ReactElement {
                     {CONTACT_PHONE}
                   </a>
                 </dd>
-              </Card>
+              </div>
 
               <div>
                 <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-foreground/70">Hours</dt>

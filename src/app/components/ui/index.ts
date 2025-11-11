@@ -1,13 +1,19 @@
 // Unified UI components - consolidated from repeated patterns across the application
 export { Alert } from './Alert';
+export { ArticleSection } from './ArticleSection';
 export { Badge } from './Badge';
+export { BlogPostLayout } from './BlogPostLayout';
 export { ButtonLink } from './ButtonLink';
 export { Card } from './Card';
 export { CTA } from './CTA';
 export { FeatureCard } from './FeatureCard';
 export { IconChip } from './IconChip';
+export { ListSection } from './ListSection';
 export { NeuroCard } from './NeuroCard';
+export { PageContainer } from './PageContainer';
+export { PageHeader } from './PageHeader';
 export { ProcessTimeline } from './ProcessTimeline';
 export { Section } from './Section';
 export { ServiceCard } from './ServiceCard';
 export { StatCard } from './StatCard';
+export { TableOfContents } from './TableOfContents';
