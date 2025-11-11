@@ -58,7 +58,7 @@ export default function HomeContent(): ReactElement {
           </div>
           {/* Value propositions */}
           <div
-            className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+            className="mt-16 mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
             data-reveal
             aria-label="Key value propositions"
           >
@@ -74,22 +74,6 @@ export default function HomeContent(): ReactElement {
               className="h-full"
             />
             <FeatureCard title={t('value.outcomes.title')} description={t('value.outcomes.body')} className="h-full" />
-          </div>
-        </div>
-      </section>
-
-      {/* Banner section */}
-      <section>
-        <div className="container" data-reveal>
-          <div className="full-image">
-            <Image
-              src="/images/banner-fullbleed.svg"
-              alt="Abstract full-bleed banner"
-              width={2400}
-              height={640}
-              sizes="(min-width: 1024px) 1024px, 100vw"
-              loading="lazy"
-            />
           </div>
         </div>
       </section>
@@ -151,7 +135,12 @@ export default function HomeContent(): ReactElement {
           <h2 id="process-heading" className="text-3xl sm:text-4xl font-semibold tracking-tight">
             {t('process.heading')}
           </h2>
-          <ol className="mt-10 relative neuro-separator-vertical pl-8 space-y-10">
+          <ol className="mt-10 relative pl-20 space-y-8">
+            {/* Clean vertical line */}
+            <div
+              className="absolute left-6 top-4 bottom-4 w-px bg-gradient-to-b from-accent/20 via-accent/10 to-accent/20"
+              aria-hidden="true"
+            />
             {[
               {
                 step: '01',
@@ -173,23 +162,19 @@ export default function HomeContent(): ReactElement {
                 titleKey: 'process.step4.title',
                 bodyKey: 'process.step4.body',
               },
-            ].map((s, idx) => (
-              <li key={s.step} className="group">
+            ].map((s) => (
+              <li key={s.step} className="group relative">
+                {/* Neumorphic circle with step number */}
                 <div
-                  className="absolute -left-[13px] mt-1 w-6 h-6 rounded-full border bg-background group-hover:bg-accent/10 transition"
+                  className="rounded-full bg-gradient-to-br from-accent/10 to-accent/20 flex items-center justify-center shadow-soft border border-accent/20 group-hover:from-accent/20 group-hover:to-accent/30 group-hover:border-accent/30 transition-all absolute -left-[67px] top-[7px] sm:top-[26px] w-12 h-12"
                   aria-hidden="true"
-                />
-                <div className="flex flex-col gap-1">
-                  <span className="text-xs tracking-wide font-mono text-foreground/75">{s.step}</span>
-                  <h3 className="font-medium tracking-tight text-lg">{t(s.titleKey)}</h3>
-                  <p className="text-sm text-foreground/75 leading-relaxed max-w-prose">{t(s.bodyKey)}</p>
+                >
+                  <span className="text-sm font-bold text-accent">{s.step}</span>
                 </div>
-                {idx < 3 && (
-                  <div
-                    className="absolute left-[-1px] top-8 bottom-0 neuro-separator-vertical-dashed"
-                    aria-hidden="true"
-                  />
-                )}
+                <div className="flex flex-col gap-2">
+                  <h3 className="font-semibold tracking-tight text-xl">{t(s.titleKey)}</h3>
+                  <p className="text-sm text-foreground/70 leading-relaxed max-w-2xl">{t(s.bodyKey)}</p>
+                </div>
               </li>
             ))}
           </ol>

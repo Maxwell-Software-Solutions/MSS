@@ -187,8 +187,14 @@ export default function ParticleField(): ReactElement {
         } catch {}
       }
 
-      const TARGET_MAX_PARTICLES = prefersReducedMotion ? 400 : 1100; // further lowered
-      let dynamicMax = Math.min(140, TARGET_MAX_PARTICLES); // progressive ramp
+      // Detect mobile for increased particle density
+      const isMobile = canvas.clientWidth < 768;
+      const TARGET_MAX_PARTICLES = prefersReducedMotion
+        ? 400
+        : isMobile
+        ? 1800 // More particles on mobile
+        : 1400; // Increased from 1100
+      let dynamicMax = Math.min(isMobile ? 220 : 180, TARGET_MAX_PARTICLES); // progressive ramp, start higher on mobile
       const rampStart = performance.now();
       // double buffer (offscreen) for heavier draws (lines + gradients)
       const bufferCanvas = document.createElement('canvas');
@@ -290,13 +296,27 @@ export default function ParticleField(): ReactElement {
       // initialize ambient schedule now that performance.now is available
       ambientRef.current.nextAt = performance.now() + 1200;
       pulseRef.current.nextAt = performance.now() + 3200 + Math.random() * 3000; // first pulse 3.2s - 6.2s (delayed)
+
+      // Helper to check if mobile (reusable)
+      const checkIsMobile = (): boolean => {
+        const logicalW = canvas.width / window.devicePixelRatio;
+        return logicalW < 768;
+      };
+
       function spawnAmbient(): void {
         const logicalW = canvas.width / window.devicePixelRatio;
         const logicalH = canvas.height / window.devicePixelRatio;
-        // Increase ambient activity (on-screen only). Pointer bursts remain unchanged.
-        // Light: 2-4 ambient particles every ~0.5-1.2s
-        // Dark: 4-7 ambient particles every ~0.35-0.9s
-        const count = isDark ? 4 + Math.floor(Math.random() * 4) : 2 + Math.floor(Math.random() * 3);
+        const isMobile = checkIsMobile();
+        // Increased ambient activity with significantly more particles on mobile
+        // Mobile Light: 5-8 particles, Mobile Dark: 8-12 particles
+        // Desktop Light: 3-5 particles, Desktop Dark: 5-8 particles
+        const count = isMobile
+          ? isDark
+            ? 8 + Math.floor(Math.random() * 5)
+            : 5 + Math.floor(Math.random() * 4)
+          : isDark
+          ? 5 + Math.floor(Math.random() * 4)
+          : 3 + Math.floor(Math.random() * 3);
         for (let i = 0; i < count; i++) {
           const x = Math.random() * logicalW;
           const y = Math.random() * logicalH;
@@ -312,9 +332,19 @@ export default function ParticleField(): ReactElement {
             color,
           });
         }
-        // schedule next ambient burst with variability (more frequent in dark mode)
+        // schedule next ambient burst with increased frequency, especially on mobile
+        // Mobile: 200-500ms (dark) / 300-600ms (light)
+        // Desktop: 300-600ms (dark) / 400-700ms (light)
+        const isMobileForSchedule = checkIsMobile();
         ambientRef.current.nextAt =
-          performance.now() + (isDark ? 350 + Math.random() * 550 : 500 + Math.random() * 700);
+          performance.now() +
+          (isMobileForSchedule
+            ? isDark
+              ? 200 + Math.random() * 300
+              : 300 + Math.random() * 300
+            : isDark
+            ? 300 + Math.random() * 300
+            : 400 + Math.random() * 300);
       }
 
       function spawnPulse(cx: number, cy: number): void {
