@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useRef, useEffect, useCallback, type ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import ThemeToggle from '@/app/components/ThemeToggle';
 
 export interface MobileMenuProps {
   open: boolean;
@@ -102,10 +103,9 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
 
   const handleOverlayClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      // Only close if clicking the overlay itself, not bubbled events
-      if (e.target === e.currentTarget) {
-        onClose();
-      }
+      // Close when clicking the overlay
+      e.stopPropagation();
+      onClose();
     },
     [onClose]
   );
@@ -116,11 +116,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
         className={open ? 'nav-overlay open' : 'nav-overlay'}
         aria-hidden="true"
         onClick={handleOverlayClick}
+        onMouseDown={handleOverlayClick}
         data-test="nav-overlay"
-        style={{
-          display: open ? 'block' : 'none',
-          cursor: 'pointer',
-        }}
       />
       <div
         id="mobile-nav-panel"
@@ -133,38 +130,18 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
         tabIndex={-1}
       >
         <div className="flex justify-between items-center mb-6">
-          <span className="text-xs uppercase tracking-wide opacity-70" style={{ color: '#f7fafc' }}>
-            Navigate
-          </span>
-          <button
-            type="button"
-            className="menu-close"
-            aria-label="Close menu"
-            onClick={onClose}
-            data-test="menu-close"
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#f7fafc',
-              cursor: 'pointer',
-              padding: '0.5rem',
-              borderRadius: '6px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
+          <span className="text-xs uppercase tracking-wide opacity-70">Navigate</span>
+          <button type="button" className="menu-close" aria-label="Close menu" onClick={onClose} data-test="menu-close">
             <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
               aria-hidden="true"
               fill="none"
-              stroke="#f7fafc"
+              stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              style={{ display: 'block' }}
             >
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
@@ -191,23 +168,26 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
               {t('nav.blog') === 'nav.blog' ? 'Blog' : t('nav.blog')}
             </Link>
           </li>
-          <li className="pt-4 border-t" style={{ borderColor: 'rgba(247, 250, 252, 0.1)' }}>
+        </ul>
+
+        <div className="mt-6 pt-6 border-t mobile-nav-bottom-section">
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold uppercase tracking-wide">Theme</span>
+              <ThemeToggle />
+            </div>
+
             <button
               type="button"
               onClick={toggleLanguage}
-              className="px-4 py-2 rounded-md border hover:border-accent hover:bg-accent/10 transition-colors font-medium text-sm w-full text-left"
-              style={{
-                borderColor: 'rgba(247, 250, 252, 0.2)',
-                color: '#f7fafc',
-                backgroundColor: 'rgba(247, 250, 252, 0.05)',
-              }}
+              className="mobile-nav-lang-btn"
               aria-label={`Switch to ${language === 'en' ? 'Lithuanian' : 'English'}`}
               suppressHydrationWarning
             >
-              {language === 'en' ? 'Switch to Lithuanian' : 'Switch to English'}
+              {language === 'en' ? '🇱🇹 Switch to Lithuanian' : '🇬🇧 Switch to English'}
             </button>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </>
   );

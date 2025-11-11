@@ -634,3 +634,92 @@ html:has(#CybotCookiebotDialog) {
   background-color: rgba(184, 134, 11, 0.1);
 }
 
+/* Mobile nav language button */
+.mobile-nav-lang-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+:root[data-theme="dark"] .mobile-nav-lang-btn {
+  background-color: rgba(247, 250, 252, 0.08);
+  border-color: rgba(247, 250, 252, 0.3);
+  color: #f7fafc;
+}
+
+:root[data-theme="dark"] .mobile-nav-lang-btn:hover {
+  border-color: #d4af37;
+  background-color: rgba(212, 175, 55, 0.15);
+  color: #ffffff;
+}
+
+:root[data-theme="light"] .mobile-nav-lang-btn {
+  background-color: rgba(15, 23, 42, 0.08);
+  border-color: rgba(15, 23, 42, 0.3);
+  color: #0F172A;
+}
+
+:root[data-theme="light"] .mobile-nav-lang-btn:hover {
+  border-color: #B8860B;
+  background-color: rgba(184, 134, 11, 0.15);
+  color: #000000;
+}
+
+/* Mobile nav theme toggle in mobile menu */
+.mobile-nav .theme-toggle {
+  background: none;
+  border: 2px solid;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+:root[data-theme="dark"] .mobile-nav .theme-toggle {
+  color: #f7fafc;
+  border-color: rgba(247, 250, 252, 0.3);
+  background-color: rgba(247, 250, 252, 0.05);
+}
+
+:root[data-theme="dark"] .mobile-nav .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #d4af37;
+}
+
+:root[data-theme="light"] .mobile-nav .theme-toggle {
+  color: #0F172A;
+  border-color: rgba(15, 23, 42, 0.3);
+  background-color: rgba(15, 23, 42, 0.05);
+}
+
+:root[data-theme="light"] .mobile-nav .theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: #B8860B;
+}
+
+/* Mobile nav bottom section (theme & language) */
+.mobile-nav-bottom-section {
+  border-top-width: 1px;
+  border-style: solid;
+}
+
+:root[data-theme="dark"] .mobile-nav-bottom-section {
+  border-color: rgba(247, 250, 252, 0.15);
+}
+
+:root[data-theme="light"] .mobile-nav-bottom-section {
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+
