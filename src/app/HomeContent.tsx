@@ -1,19 +1,12 @@
 'use client';
 
 import type { ReactElement } from 'react';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroFieldWrapper from './components/HeroFieldWrapper';
 import DeferredSections from './components/DeferredSections';
 import { useLanguage } from '@/lib/LanguageContext';
 import { trackCTAClick } from '@/lib/analytics';
-
-// Dynamically import non-critical components
-const ClientLogos = dynamic(() => import('@/app/components/ClientLogos'), {
-  loading: () => <div className="h-20 bg-card/50 animate-pulse rounded" />,
-  ssr: true,
-});
 
 export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
@@ -103,9 +96,6 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      {/* Client logos */}
-      <ClientLogos />
-
       {/* Banner section */}
       <section>
         <div className="container" data-reveal>
@@ -127,7 +117,7 @@ export default function HomeContent(): ReactElement {
         className="px-6 sm:px-10 py-20 border-t border-foreground/10 bg-background/50"
         aria-labelledby="capabilities-heading"
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="max-w-3xl">
             <h2 id="capabilities-heading" className="text-3xl sm:text-4xl font-semibold tracking-tight">
               {t('capabilities.heading')}

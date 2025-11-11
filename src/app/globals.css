@@ -177,7 +177,7 @@ select:focus-visible {
 
 /* Modern UI helpers */
 .container {
-  max-width: 80rem;
+  max-width: 72rem; /* Aligned with footer/header (max-w-6xl) */
   margin-inline: auto;
   padding-inline: 1rem;
   width: 100%;
@@ -410,17 +410,19 @@ html:has(#CybotCookiebotDialog) {
 .nav-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(3px);
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  cursor: pointer;
 }
 
 .nav-overlay.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .mobile-nav {
@@ -455,17 +457,26 @@ html:has(#CybotCookiebotDialog) {
 }
 
 .mobile-nav .menu-close {
-  background: none;
-  border: none;
-  color: #f7fafc;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+  background: none !important;
+  border: none !important;
+  color: #f7fafc !important;
+  cursor: pointer !important;
+  padding: 0.5rem !important;
+  border-radius: 6px !important;
+  transition: background-color 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mobile-nav .menu-close svg {
+  color: #f7fafc !important;
+  stroke: #f7fafc !important;
+  display: block !important;
 }
 
 .mobile-nav .menu-close:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .mobile-nav ul {

@@ -162,18 +162,18 @@ export default function RootLayout({
                 right: 0; 
                 height: 100vh; 
                 width: min(20rem, 85%); 
-                background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,250,252,0.94)); 
+                background: linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.94)); 
                 -webkit-backdrop-filter: blur(20px) saturate(150%); 
                 backdrop-filter: blur(20px) saturate(150%); 
-                color: #1e293b; 
+                color: #f7fafc; 
                 padding: 4.5rem 2rem 2rem; 
                 display: flex; 
                 flex-direction: column; 
                 gap: 1.5rem; 
                 transform: translateX(100%); 
-                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
-                box-shadow: -16px 0 48px -12px rgba(0,0,0,0.25); 
-                border-left: 1px solid rgba(247, 250, 252, 0.1); 
+                transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, visibility 0.35s ease; 
+                box-shadow: -16px 0 48px -12px rgba(0,0,0,0.6); 
+                border-left: 1px solid rgba(212, 175, 55, 0.3); 
                 z-index: 80; 
                 overflow-y: auto;
                 visibility: hidden;
@@ -184,9 +184,9 @@ export default function RootLayout({
               @media (prefers-color-scheme: dark) {
                 .mobile-nav { 
                   background: linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.94)); 
-                  color: #f1f5f9; 
+                  color: #f7fafc; 
                   box-shadow: -16px 0 48px -12px rgba(0,0,0,0.6); 
-                  border-left: 1px solid rgba(247, 250, 252, 0.1); 
+                  border-left: 1px solid rgba(212, 175, 55, 0.3); 
                 }
               }
               
@@ -202,41 +202,49 @@ export default function RootLayout({
                 .mobile-nav { 
                   -webkit-backdrop-filter: none; 
                   backdrop-filter: none; 
-                  background: rgba(255,255,255,0.98); 
+                  background: rgba(15,23,42,0.98); 
                 }
                 @media (prefers-color-scheme: dark) {
                   .mobile-nav { background: rgba(15,23,42,0.98); }
                 }
               }
-              .mobile-nav a { color:inherit; text-decoration:none; font-size:1.125rem; font-weight:500; padding:0.75rem 0; border-bottom:1px solid rgba(247,250,252,0.05); transition:color .2s; }
-              .mobile-nav a:hover { color:#d4af37; }
+              .mobile-nav * { color: #f7fafc; }
+              .mobile-nav a { color:#f7fafc !important; text-decoration:none; font-size:1.125rem; font-weight:500; padding:0.75rem 0; border-bottom:1px solid rgba(247,250,252,0.05); transition:color .2s; }
+              .mobile-nav a:hover { color:#e5c158 !important; }
               .mobile-nav a:last-child { border-bottom:none; }
+              .mobile-nav button { color: #f7fafc !important; }
               
               @media (prefers-color-scheme: dark) {
-                .mobile-nav a { border-bottom-color:rgba(247,250,252,0.05); }
-                .mobile-nav a:hover { color:#e5c158; }
+                .mobile-nav a { border-bottom-color:rgba(247,250,252,0.05); color:#f7fafc !important; }
+                .mobile-nav a:hover { color:#e5c158 !important; }
               }
               
               .menu-close { 
-                background: none; 
-                border: 0; 
-                color: inherit; 
-                display: inline-flex; 
-                align-items: center;
-                justify-content: center;
-                padding: 0.5rem; 
-                border-radius: 0.5rem; 
-                transition: background-color 0.2s ease; 
-                cursor: pointer;
-                width: 2.5rem;
-                height: 2.5rem;
+                background: none !important; 
+                border: 0 !important; 
+                color: #f7fafc !important; 
+                display: inline-flex !important; 
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 0.5rem !important; 
+                border-radius: 0.5rem !important; 
+                transition: background-color 0.2s ease !important; 
+                cursor: pointer !important;
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+              }
+              .menu-close svg { 
+                color: #f7fafc !important;
+                stroke: #f7fafc !important;
               }
               .menu-close:hover { 
-                background-color: rgba(0,0,0,0.05); 
+                background-color: rgba(255,255,255,0.1) !important; 
               }
               
               @media (prefers-color-scheme: dark) {
-                .menu-close:hover { background-color: rgba(255,255,255,0.05); }
+                .menu-close { color: #f7fafc !important; }
+                .menu-close svg { stroke: #f7fafc !important; }
+                .menu-close:hover { background-color: rgba(255,255,255,0.1) !important; }
               }
               
               .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
@@ -245,7 +253,7 @@ export default function RootLayout({
               .nav-overlay { 
                 position: fixed; 
                 inset: 0; 
-                background: rgba(0,0,0,0.3); 
+                background: rgba(15,23,42,0.6); 
                 -webkit-backdrop-filter: blur(4px); 
                 backdrop-filter: blur(4px); 
                 opacity: 0; 
@@ -253,10 +261,11 @@ export default function RootLayout({
                 transition: opacity 0.3s ease; 
                 z-index: 60;
                 visibility: hidden;
+                cursor: pointer;
               }
               
               @media (prefers-color-scheme: dark) {
-                .nav-overlay { background: rgba(0,0,0,0.6); }
+                .nav-overlay { background: rgba(15,23,42,0.7); }
               }
               
               /* Overlay visible when menu is open */

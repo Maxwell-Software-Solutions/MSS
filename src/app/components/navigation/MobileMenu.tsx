@@ -100,14 +100,27 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
 
   const handleLink = useCallback(() => onClose(), [onClose]);
 
+  const handleOverlayClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      // Only close if clicking the overlay itself, not bubbled events
+      if (e.target === e.currentTarget) {
+        onClose();
+      }
+    },
+    [onClose]
+  );
+
   return (
     <>
       <div
         className={open ? 'nav-overlay open' : 'nav-overlay'}
         aria-hidden="true"
-        onClick={open ? onClose : undefined}
+        onClick={handleOverlayClick}
         data-test="nav-overlay"
-        style={!open ? { display: 'none' } : undefined}
+        style={{
+          display: open ? 'block' : 'none',
+          cursor: 'pointer',
+        }}
       />
       <div
         id="mobile-nav-panel"
@@ -120,14 +133,26 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
         tabIndex={-1}
       >
         <div className="flex justify-between items-center mb-6">
-          <span className="text-xs uppercase tracking-wide opacity-70">Navigate</span>
+          <span className="text-xs uppercase tracking-wide opacity-70" style={{ color: '#f7fafc' }}>
+            Navigate
+          </span>
           <button
             type="button"
             className="menu-close"
             aria-label="Close menu"
             onClick={onClose}
             data-test="menu-close"
-            tabIndex={-1}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: '#f7fafc',
+              cursor: 'pointer',
+              padding: '0.5rem',
+              borderRadius: '6px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
             <svg
               width="24"
@@ -135,10 +160,11 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
               viewBox="0 0 24 24"
               aria-hidden="true"
               fill="none"
-              stroke="currentColor"
+              stroke="#f7fafc"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              style={{ display: 'block' }}
             >
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
@@ -170,7 +196,11 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
               type="button"
               onClick={toggleLanguage}
               className="px-4 py-2 rounded-md border hover:border-accent hover:bg-accent/10 transition-colors font-medium text-sm w-full text-left"
-              style={{ borderColor: 'rgba(247, 250, 252, 0.2)', color: '#f7fafc' }}
+              style={{
+                borderColor: 'rgba(247, 250, 252, 0.2)',
+                color: '#f7fafc',
+                backgroundColor: 'rgba(247, 250, 252, 0.05)',
+              }}
               aria-label={`Switch to ${language === 'en' ? 'Lithuanian' : 'English'}`}
               suppressHydrationWarning
             >
