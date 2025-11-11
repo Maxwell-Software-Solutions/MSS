@@ -233,20 +233,36 @@ header nav a:hover {
 header nav .nav-links a {
   color: var(--color-text);
   padding: 0.5rem 0.75rem;
-  border-radius: 0.375rem;
-  transition: all 0.2s ease;
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
 header nav .nav-links a:hover {
   color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+:root[data-theme="dark"] header nav .nav-links a {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border: 1px solid rgba(60, 75, 95, 0.5);
 }
 
 :root[data-theme="dark"] header nav .nav-links a:hover {
-  background-color: rgba(212, 175, 55, 0.1);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark);
+  border-color: rgba(60, 75, 95, 0.7);
+}
+
+:root[data-theme="light"] header nav .nav-links a {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 :root[data-theme="light"] header nav .nav-links a:hover {
-  background-color: rgba(184, 134, 11, 0.1);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light);
 }
 
 header nav .menu-toggle {
@@ -303,20 +319,34 @@ header nav .menu-toggle {
 
 .card {
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border-radius: 16px;
   background: var(--color-card);
+  transition: all 0.3s ease;
 }
 
-/* Light mode cards */
+/* Light mode cards with neumorphic design */
 :root[data-theme="light"] .card {
-  border-color: var(--color-border);
-  background: var(--color-card);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light);
 }
 
-/* Dark mode cards */
+:root[data-theme="light"] .card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neuro-shadow-light-lg);
+}
+
+/* Dark mode cards with neumorphic design - INCREASED CONTRAST */
 :root[data-theme="dark"] .card {
-  border-color: rgba(212, 175, 55, 0.5);
-  background: rgba(26, 32, 44, 0.95);
+  border-color: rgba(60, 75, 95, 0.6);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark);
+}
+
+:root[data-theme="dark"] .card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--neuro-shadow-dark-lg);
+  border-color: rgba(60, 75, 95, 0.7);
 }
 
 .btn {
@@ -326,42 +356,129 @@ header nav .menu-toggle {
   padding: 0.75rem 1.25rem;
   min-height: 44px;
   min-width: 44px;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease;
-  will-change: background-color;
-  backface-visibility: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid;
 }
+
+/* Base button styles with neumorphic design */
+:root[data-theme="light"] .btn {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--color-text);
+}
+
+:root[data-theme="dark"] .btn {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border-color: rgba(60, 75, 95, 0.5);
+  color: var(--color-text);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+:root[data-theme="light"] .btn:hover {
+  box-shadow: var(--neuro-shadow-light);
+}
+
+:root[data-theme="dark"] .btn:hover {
+  box-shadow: var(--neuro-shadow-dark);
+  border-color: rgba(60, 75, 95, 0.7);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+:root[data-theme="light"] .btn:active {
+  box-shadow: var(--neuro-inset-light-sm);
+}
+
+:root[data-theme="dark"] .btn:active {
+  box-shadow: var(--neuro-inset-dark-sm);
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Accent button with neumorphic gold styling */
 .btn-accent {
-  background-color: var(--color-accent);
-  color: var(--color-accent-fg);
+  font-weight: 600;
+  color: #ffffff;
 }
-.btn-accent:hover { background-color: var(--color-accent-hover); }
-.btn-accent:active { transform: translateY(1px); }
+
+:root[data-theme="light"] .btn-accent {
+  background: linear-gradient(145deg, #c49d25, #b8860b);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+:root[data-theme="light"] .btn-accent:hover {
+  background: linear-gradient(145deg, #d4af37, #c49d25);
+  box-shadow: var(--neuro-shadow-light);
+}
+
+:root[data-theme="dark"] .btn-accent {
+  background: linear-gradient(145deg, #e5c158, #d4af37);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border-color: rgba(212, 175, 55, 0.3);
+  color: #0a0f19;
+}
+
+:root[data-theme="dark"] .btn-accent:hover {
+  background: linear-gradient(145deg, #f5d876, #e5c158);
+  box-shadow: var(--neuro-shadow-dark);
+}
+
+.btn-accent:active {
+  transform: translateY(0);
+}
 
 .btn-ghost {
   border: 1px solid var(--color-border);
+  background: transparent;
 }
 
 :root[data-theme="dark"] .btn-ghost {
-  border-color: rgba(212, 175, 55, 0.5);
+  border-color: rgba(60, 75, 95, 0.5);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
 }
 
 :root[data-theme="light"] .btn-ghost {
-  border-color: var(--color-border);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
 }
 
 .btn-ghost:hover {
-  background: var(--color-muted);
+  transform: translateY(-1px);
 }
 
 :root[data-theme="dark"] .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--neuro-shadow-dark);
+  border-color: rgba(60, 75, 95, 0.7);
 }
 
 :root[data-theme="light"] .btn-ghost:hover {
-  background: rgba(0, 0, 0, 0.05);
+  box-shadow: var(--neuro-shadow-light);
+}
+
+.btn-ghost:active {
+  transform: translateY(0);
+}
+
+:root[data-theme="dark"] .btn-ghost:active {
+  box-shadow: var(--neuro-inset-dark-sm);
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+:root[data-theme="light"] .btn-ghost:active {
+  box-shadow: var(--neuro-inset-light-sm);
 }
 
 /* Reveal + parallax */
@@ -411,11 +528,221 @@ header nav .menu-toggle {
 }
 
 :root[data-theme="dark"] .hairline {
-  border-top: 1px solid rgba(212, 175, 55, 0.4);
+  border-top: 2px solid;
+  border-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(60, 75, 95, 0.6) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  ) 1;
+  box-shadow: 0 1px 0 rgba(60, 75, 95, 0.3);
 }
 
 :root[data-theme="light"] .hairline {
-  border-top: 1px solid rgba(226, 232, 240, 0.6);
+  border-top: 2px solid;
+  border-image: linear-gradient(
+    to right,
+    rgba(163, 177, 198, 0.3) 0%,
+    rgba(163, 177, 198, 0.5) 50%,
+    rgba(163, 177, 198, 0.3) 100%
+  ) 1;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Neumorphic separator styles */
+.neuro-separator {
+  height: 2px;
+  border: none;
+  margin: 2rem 0;
+}
+
+:root[data-theme="dark"] .neuro-separator {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(60, 75, 95, 0.6) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  box-shadow: 0 1px 0 rgba(60, 75, 95, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.6);
+}
+
+:root[data-theme="light"] .neuro-separator {
+  background: linear-gradient(
+    to right,
+    rgba(163, 177, 198, 0.3) 0%,
+    rgba(163, 177, 198, 0.5) 50%,
+    rgba(163, 177, 198, 0.3) 100%
+  );
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 -1px 0 rgba(163, 177, 198, 0.3);
+}
+
+/* Neumorphic header border */
+.neuro-header-border {
+  border-bottom: none;
+}
+
+:root[data-theme="dark"] .neuro-header-border {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(60, 75, 95, 0.4);
+}
+
+:root[data-theme="light"] .neuro-header-border {
+  box-shadow: 0 2px 4px rgba(163, 177, 198, 0.3), 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Neumorphic footer border */
+.neuro-footer-border {
+  border-top: none;
+}
+
+:root[data-theme="dark"] .neuro-footer-border {
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(60, 75, 95, 0.4);
+}
+
+:root[data-theme="light"] .neuro-footer-border {
+  box-shadow: 0 -2px 4px rgba(163, 177, 198, 0.2), 0 -1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Neumorphic inline separator (border-t replacement) */
+.neuro-separator-inline {
+  border-top: none;
+  position: relative;
+}
+
+.neuro-separator-inline::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+:root[data-theme="dark"] .neuro-separator-inline::before {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(60, 75, 95, 0.6) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  box-shadow: 0 1px 0 rgba(60, 75, 95, 0.3);
+}
+
+:root[data-theme="light"] .neuro-separator-inline::before {
+  background: linear-gradient(
+    to right,
+    rgba(163, 177, 198, 0.3) 0%,
+    rgba(163, 177, 198, 0.5) 50%,
+    rgba(163, 177, 198, 0.3) 100%
+  );
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Neumorphic section border (for full-width sections) */
+.neuro-section-border {
+  border-top: none;
+  position: relative;
+}
+
+.neuro-section-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  pointer-events: none;
+}
+
+:root[data-theme="dark"] .neuro-section-border::before {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(60, 75, 95, 0.6) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  box-shadow: 0 1px 0 rgba(60, 75, 95, 0.3);
+}
+
+:root[data-theme="light"] .neuro-section-border::before {
+  background: linear-gradient(
+    to right,
+    rgba(163, 177, 198, 0.3) 0%,
+    rgba(163, 177, 198, 0.5) 50%,
+    rgba(163, 177, 198, 0.3) 100%
+  );
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Neumorphic vertical separator (for timeline/left borders) */
+.neuro-separator-vertical {
+  border-left: none;
+  position: relative;
+}
+
+.neuro-separator-vertical::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  pointer-events: none;
+}
+
+:root[data-theme="dark"] .neuro-separator-vertical::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(60, 75, 95, 0.6) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  box-shadow: 1px 0 0 rgba(60, 75, 95, 0.3);
+}
+
+:root[data-theme="light"] .neuro-separator-vertical::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(163, 177, 198, 0.3) 0%,
+    rgba(163, 177, 198, 0.5) 50%,
+    rgba(163, 177, 198, 0.3) 100%
+  );
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Neumorphic vertical separator - dashed variant */
+.neuro-separator-vertical-dashed {
+  border-left: none;
+  position: relative;
+}
+
+.neuro-separator-vertical-dashed::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  pointer-events: none;
+  background-size: 2px 8px;
+  background-repeat: repeat-y;
+}
+
+:root[data-theme="dark"] .neuro-separator-vertical-dashed::before {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(60, 75, 95, 0.6) 50%,
+    transparent 50%
+  );
+  box-shadow: 1px 0 0 rgba(60, 75, 95, 0.2);
+}
+
+:root[data-theme="light"] .neuro-separator-vertical-dashed::before {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(163, 177, 198, 0.5) 50%,
+    transparent 50%
+  );
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.3);
 }
 
 .muted { 
@@ -506,19 +833,20 @@ html:has(#CybotCookiebotDialog) {
   height: 100vh;
   width: 280px;
   backdrop-filter: blur(20px) saturate(150%);
-  border-left: 1px solid rgba(212, 175, 55, 0.3);
   z-index: 9999;
   padding: 2rem;
   transform: translateX(100%);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
+  border-radius: 20px 0 0 20px;
 }
 
-/* Dark mode mobile nav */
+/* Dark mode mobile nav with neumorphic design - INCREASED CONTRAST */
 :root[data-theme="dark"] .mobile-nav {
-  background: linear-gradient(180deg, rgba(26, 32, 44, 0.96), rgba(15, 23, 42, 0.94));
+  background: var(--color-bg);
   color: #f7fafc;
-  box-shadow: -16px 0 48px -12px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--neuro-shadow-dark-lg), -16px 0 48px -12px rgba(0, 0, 0, 0.6);
+  border-left: 2px solid rgba(60, 75, 95, 0.7);
 }
 
 :root[data-theme="dark"] .mobile-nav * {
@@ -530,11 +858,12 @@ html:has(#CybotCookiebotDialog) {
   color: #f7fafc;
 }
 
-/* Light mode mobile nav */
+/* Light mode mobile nav with neumorphic design */
 :root[data-theme="light"] .mobile-nav {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.94));
+  background: var(--color-bg);
   color: #0F172A;
-  box-shadow: -16px 0 48px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--neuro-shadow-light-lg), -16px 0 48px -12px rgba(0, 0, 0, 0.25);
+  border-left: 1px solid rgba(163, 177, 198, 0.4);
 }
 
 :root[data-theme="light"] .mobile-nav * {
@@ -603,125 +932,386 @@ html:has(#CybotCookiebotDialog) {
 .mobile-nav ul li a {
   display: block;
   text-decoration: none;
-  padding: 0.75rem 0;
-  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
   font-size: 1.125rem;
   font-weight: 500;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
 }
 
 .mobile-nav ul li a:last-child {
   border-bottom: none;
 }
 
-/* Dark mode mobile nav links */
+/* Dark mode mobile nav links with neumorphic effect - INCREASED CONTRAST */
 :root[data-theme="dark"] .mobile-nav ul li a {
   color: #f7fafc;
-  border-bottom: 1px solid rgba(247, 250, 252, 0.05);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border: 1px solid rgba(60, 75, 95, 0.5);
 }
 
 :root[data-theme="dark"] .mobile-nav ul li a:hover {
   color: #e5c158;
-  background-color: rgba(229, 193, 88, 0.1);
+  transform: translateY(-1px);
+  box-shadow: var(--neuro-shadow-dark);
+  border-color: rgba(60, 75, 95, 0.7);
 }
 
-/* Light mode mobile nav links */
+:root[data-theme="dark"] .mobile-nav ul li a:active {
+  transform: translateY(0);
+  box-shadow: var(--neuro-inset-dark-sm);
+  border-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Light mode mobile nav links with neumorphic effect */
 :root[data-theme="light"] .mobile-nav ul li a {
   color: #0F172A;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.05);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 :root[data-theme="light"] .mobile-nav ul li a:hover {
   color: #B8860B;
-  background-color: rgba(184, 134, 11, 0.1);
+  transform: translateY(-1px);
+  box-shadow: var(--neuro-shadow-light);
 }
 
-/* Mobile nav language button */
+:root[data-theme="light"] .mobile-nav ul li a:active {
+  transform: translateY(0);
+  box-shadow: var(--neuro-inset-light-sm);
+}
+
+/* Mobile nav language button with neumorphic design */
 .mobile-nav-lang-btn {
   width: 100%;
   text-align: left;
   padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border: 2px solid;
+  border-radius: 12px;
+  border: 1px solid;
   font-weight: 600;
   font-size: 0.9375rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 :root[data-theme="dark"] .mobile-nav-lang-btn {
-  background-color: rgba(247, 250, 252, 0.08);
-  border-color: rgba(247, 250, 252, 0.3);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border-color: rgba(60, 75, 95, 0.5);
   color: #f7fafc;
 }
 
 :root[data-theme="dark"] .mobile-nav-lang-btn:hover {
+  box-shadow: var(--neuro-shadow-dark);
   border-color: #d4af37;
-  background-color: rgba(212, 175, 55, 0.15);
-  color: #ffffff;
+  color: #e5c158;
+  transform: translateY(-1px);
+}
+
+:root[data-theme="dark"] .mobile-nav-lang-btn:active {
+  box-shadow: var(--neuro-inset-dark-sm);
+  transform: translateY(0);
+  border-color: rgba(0, 0, 0, 0.5);
 }
 
 :root[data-theme="light"] .mobile-nav-lang-btn {
-  background-color: rgba(15, 23, 42, 0.08);
-  border-color: rgba(15, 23, 42, 0.3);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border-color: rgba(255, 255, 255, 0.3);
   color: #0F172A;
 }
 
 :root[data-theme="light"] .mobile-nav-lang-btn:hover {
+  box-shadow: var(--neuro-shadow-light);
   border-color: #B8860B;
-  background-color: rgba(184, 134, 11, 0.15);
-  color: #000000;
+  color: #B8860B;
+  transform: translateY(-1px);
 }
 
-/* Mobile nav theme toggle in mobile menu */
+:root[data-theme="light"] .mobile-nav-lang-btn:active {
+  box-shadow: var(--neuro-inset-light-sm);
+  transform: translateY(0);
+}
+
+/* Mobile nav theme toggle in mobile menu with neumorphic design */
 .mobile-nav .theme-toggle {
-  background: none;
-  border: 2px solid;
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   width: 2.75rem;
   height: 2.75rem;
+  border: 1px solid;
 }
 
 :root[data-theme="dark"] .mobile-nav .theme-toggle {
   color: #f7fafc;
-  border-color: rgba(247, 250, 252, 0.3);
-  background-color: rgba(247, 250, 252, 0.05);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border-color: rgba(60, 75, 95, 0.5);
 }
 
 :root[data-theme="dark"] .mobile-nav .theme-toggle:hover {
-  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--neuro-shadow-dark);
   border-color: #d4af37;
+  transform: translateY(-1px);
+}
+
+:root[data-theme="dark"] .mobile-nav .theme-toggle:active,
+:root[data-theme="dark"] .mobile-nav .theme-toggle[aria-pressed="true"] {
+  box-shadow: var(--neuro-inset-dark-sm);
+  transform: translateY(0);
+  border-color: rgba(0, 0, 0, 0.5);
 }
 
 :root[data-theme="light"] .mobile-nav .theme-toggle {
   color: #0F172A;
-  border-color: rgba(15, 23, 42, 0.3);
-  background-color: rgba(15, 23, 42, 0.05);
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 :root[data-theme="light"] .mobile-nav .theme-toggle:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: var(--neuro-shadow-light);
   border-color: #B8860B;
+  transform: translateY(-1px);
+}
+
+:root[data-theme="light"] .mobile-nav .theme-toggle:active,
+:root[data-theme="light"] .mobile-nav .theme-toggle[aria-pressed="true"] {
+  box-shadow: var(--neuro-inset-light-sm);
+  transform: translateY(0);
 }
 
 /* Mobile nav bottom section (theme & language) */
 .mobile-nav-bottom-section {
-  border-top-width: 1px;
-  border-style: solid;
+  border-top: none;
+  position: relative;
 }
 
-:root[data-theme="dark"] .mobile-nav-bottom-section {
-  border-color: rgba(247, 250, 252, 0.15);
+.mobile-nav-bottom-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  pointer-events: none;
 }
 
-:root[data-theme="light"] .mobile-nav-bottom-section {
-  border-color: rgba(15, 23, 42, 0.15);
+:root[data-theme="dark"] .mobile-nav-bottom-section::before {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(60, 75, 95, 0.6) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  box-shadow: 0 1px 0 rgba(60, 75, 95, 0.3);
+}
+
+:root[data-theme="light"] .mobile-nav-bottom-section::before {
+  background: linear-gradient(
+    to right,
+    rgba(163, 177, 198, 0.3) 0%,
+    rgba(163, 177, 198, 0.5) 50%,
+    rgba(163, 177, 198, 0.3) 100%
+  );
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================
+   NEUMORPHIC DESIGN UTILITIES
+   ============================================ */
+
+/* Base neumorphic styles for light theme */
+:root[data-theme="light"] .neuro {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+:root[data-theme="light"] .neuro-sm {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+:root[data-theme="light"] .neuro-lg {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-lg);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+:root[data-theme="light"] .neuro-inset {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-light);
+  border: 1px solid rgba(163, 177, 198, 0.2);
+}
+
+:root[data-theme="light"] .neuro-inset-sm {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-light-sm);
+  border: 1px solid rgba(163, 177, 198, 0.2);
+}
+
+/* Base neumorphic styles for dark theme - INCREASED CONTRAST */
+:root[data-theme="dark"] .neuro {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark);
+  border: 1px solid rgba(60, 75, 95, 0.6);
+}
+
+:root[data-theme="dark"] .neuro-sm {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border: 1px solid rgba(60, 75, 95, 0.5);
+}
+
+:root[data-theme="dark"] .neuro-lg {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-lg);
+  border: 1px solid rgba(60, 75, 95, 0.7);
+}
+
+:root[data-theme="dark"] .neuro-inset {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-dark);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+:root[data-theme="dark"] .neuro-inset-sm {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-dark-sm);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+/* Neumorphic card styles */
+:root[data-theme="light"] .neuro-card {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+:root[data-theme="dark"] .neuro-card {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark);
+  border: 1px solid rgba(60, 75, 95, 0.6);
+  border-radius: 16px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.neuro-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Neumorphic button styles */
+:root[data-theme="light"] .neuro-btn {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+:root[data-theme="dark"] .neuro-btn {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border: 1px solid rgba(60, 75, 95, 0.5);
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.neuro-btn:hover {
+  transform: translateY(-1px);
+}
+
+.neuro-btn:active,
+.neuro-btn[aria-pressed="true"] {
+  transform: translateY(0);
+}
+
+:root[data-theme="light"] .neuro-btn:active,
+:root[data-theme="light"] .neuro-btn[aria-pressed="true"] {
+  box-shadow: var(--neuro-inset-light-sm);
+}
+
+:root[data-theme="dark"] .neuro-btn:active,
+:root[data-theme="dark"] .neuro-btn[aria-pressed="true"] {
+  box-shadow: var(--neuro-inset-dark-sm);
+}
+
+/* Neumorphic accent button with gold */
+:root[data-theme="light"] .neuro-btn-accent {
+  background: linear-gradient(145deg, #c49d25, #b8860b);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+:root[data-theme="dark"] .neuro-btn-accent {
+  background: linear-gradient(145deg, #e5c158, #d4af37);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #0a0f19;
+  font-weight: 600;
+}
+
+.neuro-btn-accent:hover {
+  transform: translateY(-1px);
+}
+
+:root[data-theme="light"] .neuro-btn-accent:hover {
+  background: linear-gradient(145deg, #d4af37, #c49d25);
+  box-shadow: var(--neuro-shadow-light);
+}
+
+:root[data-theme="dark"] .neuro-btn-accent:hover {
+  background: linear-gradient(145deg, #f5d876, #e5c158);
+  box-shadow: var(--neuro-shadow-dark);
+}
+
+/* Neumorphic input fields */
+:root[data-theme="light"] .neuro-input {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-light);
+  border: 1px solid rgba(163, 177, 198, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: box-shadow 0.2s ease;
+}
+
+:root[data-theme="dark"] .neuro-input {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-dark);
+  border: 1px solid rgba(60, 75, 95, 0.5);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.neuro-input:focus {
+  outline: none;
+}
+
+:root[data-theme="light"] .neuro-input:focus {
+  box-shadow: var(--neuro-inset-light), 0 0 0 3px rgba(184, 134, 11, 0.3);
+  border-color: var(--color-accent);
+}
+
+:root[data-theme="dark"] .neuro-input:focus {
+  box-shadow: var(--neuro-inset-dark), 0 0 0 3px rgba(212, 175, 55, 0.3);
+  border-color: var(--color-accent);
 }
 
 

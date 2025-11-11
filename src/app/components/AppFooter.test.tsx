@@ -65,8 +65,8 @@ describe('AppFooter component', () => {
       const footer = container.querySelector('footer');
       expect(footer).toBeInTheDocument();
 
-      // Check that footer has styles applied (may not compute in jsdom, but structure is verified)
-      expect(footer).toHaveClass('border-t');
+      // Check that footer has neumorphic border applied
+      expect(footer).toHaveClass('neuro-footer-border');
     });
 
     it('email and phone links maintain adequate contrast', () => {

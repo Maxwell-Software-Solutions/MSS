@@ -256,7 +256,7 @@ export default function TDDPost(): ReactElement {
                     <span>Productivity Dip (1 month)</span>
                     <span className="font-semibold">$15,000</span>
                   </div>
-                  <div className="border-t border-foreground/20 pt-2">
+                  <div className="neuro-separator-inline pt-2">
                     <div className="flex justify-between font-bold">
                       <span>Total Investment</span>
                       <span className="text-accent">$40,000</span>
@@ -279,7 +279,7 @@ export default function TDDPost(): ReactElement {
                     <span>Reduced Maintenance</span>
                     <span className="font-semibold">$25,000</span>
                   </div>
-                  <div className="border-t border-foreground/20 pt-2">
+                  <div className="neuro-separator-inline pt-2">
                     <div className="flex justify-between font-bold">
                       <span>Total Annual Return</span>
                       <span className="text-accent">$125,000</span>

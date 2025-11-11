@@ -3,7 +3,7 @@ import type { ReactElement } from 'react';
 export default function DarkShowcaseSection(): ReactElement {
   return (
     <section
-      className="relative border-t border-foreground/10 bg-neutral-950 text-neutral-50"
+      className="relative neuro-section-border bg-neutral-950 text-neutral-50"
       aria-labelledby="showcase-heading"
     >
       <div

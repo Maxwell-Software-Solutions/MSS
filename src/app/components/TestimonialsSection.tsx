@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 
 export default function TestimonialsSection(): ReactElement {
   return (
-    <section className="px-6 sm:px-10 py-20 border-t border-foreground/10" aria-labelledby="testimonials-heading">
+    <section className="px-6 sm:px-10 py-20 neuro-section-border" aria-labelledby="testimonials-heading">
       <div className="max-w-6xl mx-auto" data-reveal>
         <h2 id="testimonials-heading" className="text-3xl sm:text-4xl font-semibold tracking-tight">
           Client perspective

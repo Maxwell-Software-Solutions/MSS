@@ -3,7 +3,7 @@ import type { ReactElement } from 'react';
 export default function FinalCtaSection(): ReactElement {
   return (
     <section
-      className="px-6 sm:px-10 py-24 border-t border-foreground/10 bg-gradient-to-b from-background to-background/50"
+      className="px-6 sm:px-10 py-24 neuro-section-border bg-gradient-to-b from-background to-background/50"
       aria-labelledby="final-cta-heading"
     >
       <div className="max-w-5xl mx-auto text-center" data-reveal>

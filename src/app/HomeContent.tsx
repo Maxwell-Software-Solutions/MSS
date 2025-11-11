@@ -114,7 +114,7 @@ export default function HomeContent(): ReactElement {
 
       {/* Capabilities overview */}
       <section
-        className="px-6 sm:px-10 py-20 border-t border-foreground/10 bg-background/50"
+        className="px-6 sm:px-10 py-20 neuro-section-border bg-background/50"
         aria-labelledby="capabilities-heading"
       >
         <div className="max-w-6xl mx-auto">
@@ -159,7 +159,7 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      <section id="about" className="px-6 sm:px-10 py-16 border-t border-foreground/10">
+      <section id="about" className="px-6 sm:px-10 py-16 neuro-section-border">
         <div className="max-w-6xl mx-auto">
           <div>
             <h2 className="text-2xl font-semibold">{t('about.section.heading')}</h2>
@@ -174,15 +174,12 @@ export default function HomeContent(): ReactElement {
       </section>
 
       {/* Process timeline */}
-      <section
-        className="px-6 sm:px-10 py-20 border-t border-foreground/10 bg-background/30"
-        aria-labelledby="process-heading"
-      >
+      <section className="px-6 sm:px-10 py-20 neuro-section-border bg-background/30" aria-labelledby="process-heading">
         <div className="max-w-6xl mx-auto" data-reveal>
           <h2 id="process-heading" className="text-3xl sm:text-4xl font-semibold tracking-tight">
             {t('process.heading')}
           </h2>
-          <ol className="mt-10 relative border-s border-foreground/15 pl-8 space-y-10">
+          <ol className="mt-10 relative neuro-separator-vertical pl-8 space-y-10">
             {[
               {
                 step: '01',
@@ -217,7 +214,7 @@ export default function HomeContent(): ReactElement {
                 </div>
                 {idx < 3 && (
                   <div
-                    className="absolute left-[-1px] top-8 bottom-0 border-s border-dashed border-foreground/15"
+                    className="absolute left-[-1px] top-8 bottom-0 neuro-separator-vertical-dashed"
                     aria-hidden="true"
                   />
                 )}
@@ -324,7 +321,7 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      <section id="contact" className="px-6 sm:px-10 py-16 border-t border-foreground/10">
+      <section id="contact" className="px-6 sm:px-10 py-16 neuro-section-border">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-semibold">{t('contact.heading')}</h2>
           <p className="mt-3 text-sm text-foreground/75 leading-relaxed">{t('contact.description')}</p>
@@ -336,7 +333,7 @@ export default function HomeContent(): ReactElement {
               {t('contact.cta.secondary')}
             </a>
           </div>
-          <div className="mt-6 pt-4 border-t border-foreground/10">
+          <div className="mt-6 pt-4 neuro-separator-inline">
             <p className="text-sm text-foreground/75 mb-3">{t('contact.linkedin.label')}</p>
             <a
               href="https://www.linkedin.com/company/maxwell-software-solutions"

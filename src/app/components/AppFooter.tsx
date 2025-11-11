@@ -27,7 +27,7 @@ export default function SiteFooter(): ReactElement {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t text-sm text-foreground/80" role="contentinfo">
+    <footer className="neuro-footer-border text-sm text-foreground/80" role="contentinfo">
       <div className="mx-auto max-w-6xl px-6 py-12 sm:px-10 sm:py-14">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.7fr)_repeat(2,minmax(0,1fr))]">
           <div className="space-y-6">
@@ -139,7 +139,7 @@ export default function SiteFooter(): ReactElement {
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-foreground/10 pt-6 text-xs text-foreground/70 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 neuro-separator-inline pt-6 text-xs text-foreground/70 sm:flex-row sm:items-center sm:justify-between">
           <p suppressHydrationWarning>© {currentYear} Maxwell Software Solutions. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
             {resourceLinks.map((link) => (

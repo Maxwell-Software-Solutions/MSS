@@ -88,17 +88,35 @@ export default function ThemeToggle(): ReactElement {
           width: 2.5rem;
           height: 2.5rem;
           padding: 0.5rem;
-          background: transparent;
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-sm);
+          background: var(--color-bg);
+          border: 1px solid;
+          border-radius: 12px;
           cursor: pointer;
-          transition: all var(--transition-base);
+          transition: all 0.3s ease;
           color: var(--color-text);
         }
 
+        :global(:root[data-theme='light']) .theme-toggle {
+          box-shadow: var(--neuro-shadow-light-sm);
+          border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        :global(:root[data-theme='dark']) .theme-toggle {
+          box-shadow: var(--neuro-shadow-dark-sm);
+          border-color: rgba(45, 55, 72, 0.3);
+        }
+
         .theme-toggle:hover {
-          background: var(--color-hover);
           border-color: var(--color-accent);
+          transform: translateY(-1px);
+        }
+
+        :global(:root[data-theme='light']) .theme-toggle:hover {
+          box-shadow: var(--neuro-shadow-light);
+        }
+
+        :global(:root[data-theme='dark']) .theme-toggle:hover {
+          box-shadow: var(--neuro-shadow-dark);
         }
 
         .theme-toggle:focus-visible {
@@ -106,9 +124,19 @@ export default function ThemeToggle(): ReactElement {
           outline-offset: var(--outline-offset);
         }
 
-        .theme-toggle:active {
-          background: var(--color-active);
-          transform: scale(0.95);
+        .theme-toggle:active,
+        .theme-toggle[aria-pressed='true'] {
+          transform: translateY(0);
+        }
+
+        :global(:root[data-theme='light']) .theme-toggle:active,
+        :global(:root[data-theme='light']) .theme-toggle[aria-pressed='true'] {
+          box-shadow: var(--neuro-inset-light-sm);
+        }
+
+        :global(:root[data-theme='dark']) .theme-toggle:active,
+        :global(:root[data-theme='dark']) .theme-toggle[aria-pressed='true'] {
+          box-shadow: var(--neuro-inset-dark-sm);
         }
 
         .theme-icon {

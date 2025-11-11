@@ -43,13 +43,13 @@ describe('ButtonPrimary', () => {
   it('renders with accent variant by default', () => {
     render(<ButtonPrimary>Accent</ButtonPrimary>);
     const button = screen.getByRole('button');
-    expect(button.className).toContain('bg-accent');
+    expect(button.className).toContain('neuro-btn-accent');
   });
 
   it('renders with secondary variant when specified', () => {
     render(<ButtonPrimary variant="secondary">Secondary</ButtonPrimary>);
     const button = screen.getByRole('button');
-    expect(button.className).toContain('bg-secondary');
+    expect(button.className).toContain('neuro-btn');
   });
 
   it('has no accessibility violations', async () => {

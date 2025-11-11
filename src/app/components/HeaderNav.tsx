@@ -81,7 +81,7 @@ export default function HeaderNav(): ReactElement {
         <button
           type="button"
           onClick={toggleLanguage}
-          className="px-3 py-1.5 rounded-md border border-foreground/20 hover:border-accent hover:bg-accent/5 transition-colors font-medium text-sm"
+          className="px-3 py-1.5 rounded-xl border transition-all font-medium text-sm neuro-btn"
           aria-label={`Switch to ${language === 'en' ? 'Lithuanian' : 'English'}`}
           suppressHydrationWarning
         >

@@ -15,7 +15,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
   return (
     <form
       onSubmit={onSubmit}
-      className="shadow-soft rounded-3xl border border-accent/30 bg-card/95 p-8 backdrop-blur-xl transition"
+      className="shadow-soft rounded-3xl border bg-card/95 p-8 backdrop-blur-xl transition neuro-card"
     >
       <div className="space-y-6">
         <label className="block">
@@ -25,7 +25,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
             placeholder="Your name"
             required
             autoComplete="name"
-            className="mt-2 block w-full rounded-2xl border border-accent/30 bg-background/80 px-4 py-3 text-base text-foreground placeholder:text-foreground/40 shadow-[0_1px_2px_rgba(15,23,42,0.08)] transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-background"
+            className="neuro-input mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
           />
         </label>
 
@@ -37,7 +37,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
             placeholder="you@example.com"
             required
             autoComplete="email"
-            className="mt-2 block w-full rounded-2xl border border-accent/30 bg-background/80 px-4 py-3 text-base text-foreground placeholder:text-foreground/40 shadow-[0_1px_2px_rgba(15,23,42,0.08)] transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-background"
+            className="neuro-input mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
           />
         </label>
 
@@ -48,7 +48,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
             placeholder="Tell us about your goals, challenges, and timeline."
             required
             rows={5}
-            className="mt-2 block w-full rounded-2xl border border-accent/30 bg-background/80 px-4 py-3 text-base text-foreground placeholder:text-foreground/40 shadow-[0_1px_2px_rgba(15,23,42,0.08)] transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-background"
+            className="neuro-input mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
           />
         </label>
 

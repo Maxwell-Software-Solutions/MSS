@@ -230,7 +230,7 @@ export default async function RootLayout({
             }}
           />
 
-          <header className="fixed top-0 left-0 right-0 z-50 header-glass border-b border-foreground/10" role="banner">
+          <header className="fixed top-0 left-0 right-0 z-50 header-glass neuro-header-border" role="banner">
             <HeaderNav />
           </header>
           <div style={{ height: '56px' }} aria-hidden="true" />

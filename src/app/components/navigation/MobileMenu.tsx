@@ -171,7 +171,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
           </li>
         </ul>
 
-        <div className="mt-6 pt-6 border-t mobile-nav-bottom-section">
+        <div className="mt-6 pt-6 mobile-nav-bottom-section">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <span className="text-sm font-semibold uppercase tracking-wide">Theme</span>
