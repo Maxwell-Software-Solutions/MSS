@@ -5,6 +5,7 @@ import { useState, useCallback, useEffect, type ReactElement } from 'react';
 import { usePathname } from 'next/navigation';
 import MobileMenu from './navigation/MobileMenu';
 import { useLanguage } from '@/lib/LanguageContext';
+import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 
 // Concise header + mobile menu toggle (<=60 lines)
 export default function HeaderNav(): ReactElement {
@@ -12,7 +13,8 @@ export default function HeaderNav(): ReactElement {
   const toggle = useCallback(() => setOpen((o) => !o), []);
   const close = useCallback(() => setOpen(false), []);
   const pathname = usePathname();
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage } = useLanguage();
+  const ht = useHydratedTranslation();
 
   const toggleLanguage = useCallback(() => {
     setLanguage(language === 'en' ? 'lt' : 'en');
@@ -63,16 +65,16 @@ export default function HeaderNav(): ReactElement {
       </Link>
       <div className="nav-links" aria-label="Primary navigation">
         <Link href="/services" suppressHydrationWarning>
-          {t('nav.services') === 'nav.services' ? 'Services' : t('nav.services')}
+          {ht('nav.services', 'Services')}
         </Link>
         <Link href="/project-showcase" suppressHydrationWarning>
-          {t('nav.caseStudies') === 'nav.caseStudies' ? 'Case studies' : t('nav.caseStudies')}
+          {ht('nav.caseStudies', 'Case studies')}
         </Link>
         <Link href="/about" suppressHydrationWarning>
-          {t('nav.about') === 'nav.about' ? 'About' : t('nav.about')}
+          {ht('nav.about', 'About')}
         </Link>
         <Link href="/blog" suppressHydrationWarning>
-          {t('nav.blog') === 'nav.blog' ? 'Blog' : t('nav.blog')}
+          {ht('nav.blog', 'Blog')}
         </Link>
         <button
           type="button"
