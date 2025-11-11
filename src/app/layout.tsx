@@ -12,6 +12,8 @@ import Cookiebot from '@/app/components/Cookiebot';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import StructuredData from '@/app/components/StructuredData';
 import { organizationSchema } from '@/lib/structuredData';
+import { headers } from 'next/headers';
+import { loadServerTranslations, getCriticalTranslations } from '@/lib/server-translations';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://maxwell-software.com';
 
@@ -65,13 +67,24 @@ export const viewport = {
   themeColor: '#8B6B00',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>): ReactElement {
+}>): Promise<ReactElement> {
+  // Read language cookie from request headers on the server so we can set
+  // the HTML lang and pass an initial language to the client provider.
+  const hdrs = await headers();
+  const cookieHeader = hdrs.get('cookie') || '';
+  const match = cookieHeader.match(/(?:^|; )language=(lt|en)(?:;|$)/);
+  const initialLang = match?.[1] === 'lt' ? 'lt' : 'en';
+
+  // Load critical translations for server-side injection to reduce flashes
+  const fullTranslations = await loadServerTranslations(initialLang);
+  const criticalTranslations = getCriticalTranslations(fullTranslations);
+
   return (
-    <html lang="en">
+    <html lang={initialLang}>
       <head>
         {/* Preload & preconnect resources (moved from body for WebKit stability) */}
         <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
@@ -82,7 +95,7 @@ export default function RootLayout({
         <link rel="modulepreload" href="/_next/static/chunks/main-app.js" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <LanguageProvider>
+        <LanguageProvider initialLanguage={initialLang} criticalTranslations={criticalTranslations}>
           {/* Structured Data for Organization */}
           <StructuredData data={organizationSchema} />
           {/* Cookiebot */}
