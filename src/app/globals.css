@@ -243,9 +243,9 @@ header nav .nav-links a:hover {
 }
 
 :root[data-theme="dark"] header nav .nav-links a {
-  background: var(--color-bg);
-  box-shadow: var(--neuro-shadow-dark-sm);
-  border: 1px solid rgba(60, 75, 95, 0.5);
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid transparent;
 }
 
 :root[data-theme="dark"] header nav .nav-links a:hover {
@@ -254,19 +254,129 @@ header nav .nav-links a:hover {
   border-color: rgba(60, 75, 95, 0.7);
 }
 
+:root[data-theme="dark"] header nav .nav-links a:active {
+  transform: translateY(1px);
+  box-shadow: var(--neuro-inset-dark-sm);
+}
+
 :root[data-theme="light"] header nav .nav-links a {
-  background: var(--color-bg);
-  box-shadow: var(--neuro-shadow-light-sm);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid transparent;
 }
 
 :root[data-theme="light"] header nav .nav-links a:hover {
   background: var(--color-bg);
   box-shadow: var(--neuro-shadow-light);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
+:root[data-theme="light"] header nav .nav-links a:active {
+  transform: translateY(1px);
+  box-shadow: var(--neuro-inset-light-sm);
+}
+
+/* Header theme toggle button - flat by default, neumorphic on hover */
+header nav .theme-toggle {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] header nav .theme-toggle:hover {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border-color: rgba(60, 75, 95, 0.5);
+  transform: translateY(-1px);
+}
+
+:root[data-theme="dark"] header nav .theme-toggle:active,
+:root[data-theme="dark"] header nav .theme-toggle[aria-pressed="true"] {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-dark-sm);
+  transform: translateY(1px);
+  border-color: rgba(60, 75, 95, 0.5);
+}
+
+:root[data-theme="light"] header nav .theme-toggle:hover {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+:root[data-theme="light"] header nav .theme-toggle:active,
+:root[data-theme="light"] header nav .theme-toggle[aria-pressed="true"] {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-light-sm);
+  transform: translateY(1px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile menu toggle - only visible on mobile (< 600px) */
 header nav .menu-toggle {
   color: var(--color-text);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Hide menu toggle on desktop */
+@media (min-width: 600px) {
+  header nav .menu-toggle {
+    display: none;
+  }
+}
+
+/* Show menu toggle only on mobile */
+@media (max-width: 599px) {
+  header nav .nav-links {
+    display: none;
+  }
+}
+
+:root[data-theme="dark"] header nav .menu-toggle:hover {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border-color: rgba(60, 75, 95, 0.5);
+  transform: translateY(-1px);
+}
+
+:root[data-theme="dark"] header nav .menu-toggle:active {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-dark-sm);
+  transform: translateY(1px);
+  border-color: rgba(60, 75, 95, 0.5);
+}
+
+:root[data-theme="light"] header nav .menu-toggle:hover {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+:root[data-theme="light"] header nav .menu-toggle:active {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-inset-light-sm);
+  transform: translateY(1px);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Dark mode header styling - kept for fallback */
@@ -1214,20 +1324,20 @@ html:has(#CybotCookiebotDialog) {
 
 /* Neumorphic button styles */
 :root[data-theme="light"] .neuro-btn {
-  background: var(--color-bg);
-  box-shadow: var(--neuro-shadow-light-sm);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid transparent;
   border-radius: 12px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 :root[data-theme="dark"] .neuro-btn {
-  background: var(--color-bg);
-  box-shadow: var(--neuro-shadow-dark-sm);
-  border: 1px solid rgba(60, 75, 95, 0.5);
+  background: transparent;
+  box-shadow: none;
+  border: 1px solid transparent;
   border-radius: 12px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
@@ -1235,19 +1345,35 @@ html:has(#CybotCookiebotDialog) {
   transform: translateY(-1px);
 }
 
+:root[data-theme="light"] .neuro-btn:hover {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-light-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+:root[data-theme="dark"] .neuro-btn:hover {
+  background: var(--color-bg);
+  box-shadow: var(--neuro-shadow-dark-sm);
+  border: 1px solid rgba(60, 75, 95, 0.5);
+}
+
 .neuro-btn:active,
 .neuro-btn[aria-pressed="true"] {
-  transform: translateY(0);
+  transform: translateY(1px);
 }
 
 :root[data-theme="light"] .neuro-btn:active,
 :root[data-theme="light"] .neuro-btn[aria-pressed="true"] {
+  background: var(--color-bg);
   box-shadow: var(--neuro-inset-light-sm);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 :root[data-theme="dark"] .neuro-btn:active,
 :root[data-theme="dark"] .neuro-btn[aria-pressed="true"] {
+  background: var(--color-bg);
   box-shadow: var(--neuro-inset-dark-sm);
+  border: 1px solid rgba(60, 75, 95, 0.5);
 }
 
 /* Neumorphic accent button with gold */
