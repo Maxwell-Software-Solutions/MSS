@@ -63,16 +63,16 @@ export default function HeaderNav(): ReactElement {
       </Link>
       <div className="nav-links" aria-label="Primary navigation">
         <Link href="/services" suppressHydrationWarning>
-          {t('nav.services') || 'Services'}
+          {t('nav.services') === 'nav.services' ? 'Services' : t('nav.services')}
         </Link>
         <Link href="/project-showcase" suppressHydrationWarning>
-          {t('nav.caseStudies') || 'Case studies'}
+          {t('nav.caseStudies') === 'nav.caseStudies' ? 'Case studies' : t('nav.caseStudies')}
         </Link>
         <Link href="/about" suppressHydrationWarning>
-          {t('nav.about') || 'About'}
+          {t('nav.about') === 'nav.about' ? 'About' : t('nav.about')}
         </Link>
         <Link href="/blog" suppressHydrationWarning>
-          {t('nav.blog') || 'Blog'}
+          {t('nav.blog') === 'nav.blog' ? 'Blog' : t('nav.blog')}
         </Link>
         <button
           type="button"
