@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { ButtonLink } from './ui';
 
 export default function FinalCtaSection(): ReactElement {
   return (
@@ -14,12 +15,12 @@ export default function FinalCtaSection(): ReactElement {
           Audit first or targeted uplift—either way, we de-risk the roadmap and unlock faster, safer iteration.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-          <a href="/contact" className="btn btn-accent px-10 py-3 text-base">
+          <ButtonLink href="/contact" variant="accent" size="md">
             Begin assessment
-          </a>
-          <a href="/services" className="btn btn-ghost px-10 py-3 text-base">
+          </ButtonLink>
+          <ButtonLink href="/services" variant="ghost" size="md">
             View services overview
-          </a>
+          </ButtonLink>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { ButtonLink } from './ButtonLink';
 
 interface CTAProps {
   title: string;
@@ -19,21 +20,25 @@ export function CTA({ title, body, primary, secondary }: CTAProps): ReactElement
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-tight">{title}</h2>
           <p className="mt-4 text-lg leading-relaxed text-foreground/80">{body}</p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            <ButtonLink
               href={primary.href}
+              variant="accent"
+              size="lg"
+              className="shadow-soft focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
               aria-label={primary.ariaLabel || primary.label}
-              className="btn btn-accent px-10 py-3 text-base shadow-soft focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
             >
               {primary.label}
-            </a>
+            </ButtonLink>
             {secondary && (
-              <a
+              <ButtonLink
                 href={secondary.href}
+                variant="ghost"
+                size="lg"
+                className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
                 aria-label={secondary.ariaLabel || secondary.label}
-                className="btn btn-ghost px-10 py-3 text-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
               >
                 {secondary.label}
-              </a>
+              </ButtonLink>
             )}
           </div>
         </div>

@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { Card } from './ui';
 
 export default function DarkShowcaseSection(): ReactElement {
   return (
@@ -26,13 +27,10 @@ export default function DarkShowcaseSection(): ReactElement {
             { title: 'Confidence metrics', body: 'Meaningful coverage + mutation + failure trend insight.' },
             { title: 'Operational readiness', body: 'Proactive SLOs, trace probes & incident rehearsal.' },
           ].map((f) => (
-            <div
-              key={f.title}
-              className="rounded-xl border border-foreground/10 bg-card/5 backdrop-blur-sm p-6 flex flex-col"
-            >
+            <Card key={f.title} padding="md" className="backdrop-blur-sm flex flex-col">
               <h3 className="font-medium tracking-tight text-lg">{f.title}</h3>
               <p className="mt-2 text-sm text-foreground/80 leading-relaxed">{f.body}</p>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

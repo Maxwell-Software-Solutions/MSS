@@ -3,6 +3,7 @@ import type { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ArticleStructuredData from '@/app/components/ArticleStructuredData';
+import { Alert, ButtonLink } from '@/app/components/ui';
 
 export const metadata: Metadata = {
   title: 'Test-Driven Development: Building Business Confidence Through Code Quality — Maxwell Software Solutions',
@@ -213,24 +214,22 @@ export default function TDDPost(): ReactElement {
 
             <h3 className="text-xl font-semibold mb-4 mt-6">Business Results</h3>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-card/50 border border-accent/20 rounded-lg p-4">
-                <h3 className="font-semibold text-accent mb-2">✅ What Went Well</h3>
-                <ul className="text-foreground/90 text-sm space-y-1">
+              <Alert variant="warning" icon="✅" title="What Went Well">
+                <ul className="space-y-1">
                   <li>• Zero payment-related bugs in production</li>
                   <li>• 30% faster development cycle</li>
                   <li>• Easy to add new payment methods</li>
                   <li>• Confident deployment to production</li>
                 </ul>
-              </div>
-              <div className="bg-card/50 border border-foreground/20 rounded-lg p-4">
-                <h3 className="font-semibold text-foreground mb-2">📊 Measurable Impact</h3>
-                <ul className="text-foreground/90 text-sm space-y-1">
+              </Alert>
+              <Alert variant="info" icon="📊" title="Measurable Impact">
+                <ul className="space-y-1">
                   <li>• $50K saved in bug prevention</li>
                   <li>• 2 weeks faster to market</li>
                   <li>• 99.9% payment success rate</li>
                   <li>• 40% reduction in support tickets</li>
                 </ul>
-              </div>
+              </Alert>
             </div>
           </div>
         </section>
@@ -361,12 +360,12 @@ export default function TDDPost(): ReactElement {
             business results. Let&apos;s work together to build the reliable, maintainable software your business needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="btn btn-accent px-10 py-3">
+            <ButtonLink href="/contact" variant="accent" size="lg">
               Start Your TDD Journey
-            </Link>
-            <Link href="/services" className="btn btn-ghost px-10 py-3">
+            </ButtonLink>
+            <ButtonLink href="/services" variant="ghost" size="lg">
               View Our Services
-            </Link>
+            </ButtonLink>
           </div>
         </section>
       </article>

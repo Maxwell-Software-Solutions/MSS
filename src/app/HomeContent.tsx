@@ -7,7 +7,7 @@ import HeroFieldWrapper from './components/HeroFieldWrapper';
 import DeferredSections from './components/DeferredSections';
 import { useLanguage } from '@/lib/LanguageContext';
 import { trackCTAClick } from '@/lib/analytics';
-import { StatCard, FeatureCard } from './components/ui';
+import { StatCard, FeatureCard, ButtonLink } from './components/ui';
 
 export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
@@ -29,20 +29,22 @@ export default function HomeContent(): ReactElement {
               {t('hero.subtitle')}
             </p>
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
-              <a
+              <ButtonLink
                 href="/contact"
-                className="btn btn-accent px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-soft font-bold min-h-[48px]"
+                variant="accent"
+                className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-soft font-bold min-h-[48px]"
                 onClick={() => trackCTAClick('hero_primary')}
               >
                 {t('hero.cta.primary')}
-              </a>
-              <a
+              </ButtonLink>
+              <ButtonLink
                 href="/services"
-                className="btn btn-ghost px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg min-h-[48px]"
+                variant="ghost"
+                className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg min-h-[48px]"
                 onClick={() => trackCTAClick('hero_secondary')}
               >
                 {t('hero.cta.secondary')}
-              </a>
+              </ButtonLink>
             </div>
             <p className="mt-6 text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] text-foreground/75 font-medium px-4">
               {t('hero.values')}
@@ -135,9 +137,9 @@ export default function HomeContent(): ReactElement {
             <h2 className="text-2xl font-semibold">{t('about.section.heading')}</h2>
             <p className="mt-3 text-foreground/80">{t('about.section.description')}</p>
             <div className="mt-5">
-              <a href="/about" className="btn btn-accent px-10 py-3 font-semibold">
+              <ButtonLink href="/about" variant="accent">
                 {t('about.section.cta')}
-              </a>
+              </ButtonLink>
             </div>
           </div>
         </div>
@@ -284,9 +286,9 @@ export default function HomeContent(): ReactElement {
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/project-showcase" className="btn btn-ghost">
+            <ButtonLink href="/project-showcase" variant="ghost">
               {t('projects.browseAll')}
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       </section>
@@ -296,12 +298,12 @@ export default function HomeContent(): ReactElement {
           <h2 className="text-2xl font-semibold">{t('contact.heading')}</h2>
           <p className="mt-3 text-sm text-foreground/75 leading-relaxed">{t('contact.description')}</p>
           <div className="mt-4 flex flex-col sm:flex-row gap-3">
-            <a href="/contact" className="btn btn-accent px-10 py-3 font-semibold">
+            <ButtonLink href="/contact" variant="accent">
               {t('contact.cta.primary')}
-            </a>
-            <a href="/services" className="btn btn-ghost px-10 py-3">
+            </ButtonLink>
+            <ButtonLink href="/services" variant="ghost">
               {t('contact.cta.secondary')}
-            </a>
+            </ButtonLink>
           </div>
           <div className="mt-6 pt-4 neuro-separator-inline">
             <p className="text-sm text-foreground/75 mb-3">{t('contact.linkedin.label')}</p>
