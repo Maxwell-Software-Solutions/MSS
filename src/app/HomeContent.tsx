@@ -7,6 +7,7 @@ import HeroFieldWrapper from './components/HeroFieldWrapper';
 import DeferredSections from './components/DeferredSections';
 import { useLanguage } from '@/lib/LanguageContext';
 import { trackCTAClick } from '@/lib/analytics';
+import { StatCard, FeatureCard } from './components/ui';
 
 export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
@@ -49,18 +50,9 @@ export default function HomeContent(): ReactElement {
           </div>
           <HeroFieldWrapper />
           <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 px-4" data-reveal>
-            <div className="card shadow-soft p-4 sm:p-5 text-center">
-              <div className="text-xl sm:text-2xl font-semibold">{t('stats.defects')}</div>
-              <div className="muted text-sm">{t('stats.defects.label')}</div>
-            </div>
-            <div className="card shadow-soft p-4 sm:p-5 text-center">
-              <div className="text-xl sm:text-2xl font-semibold">{t('stats.coverage')}</div>
-              <div className="muted text-sm">{t('stats.coverage.label')}</div>
-            </div>
-            <div className="card shadow-soft p-4 sm:p-5 text-center">
-              <div className="text-xl sm:text-2xl font-semibold">{t('stats.mttr')}</div>
-              <div className="muted text-sm">{t('stats.mttr.label')}</div>
-            </div>
+            <StatCard value={t('stats.defects')} label={t('stats.defects.label')} />
+            <StatCard value={t('stats.coverage')} label={t('stats.coverage.label')} />
+            <StatCard value={t('stats.mttr')} label={t('stats.mttr.label')} />
           </div>
           {/* Value propositions */}
           <div
@@ -68,30 +60,18 @@ export default function HomeContent(): ReactElement {
             data-reveal
             aria-label="Key value propositions"
           >
-            {[
-              {
-                titleKey: 'value.insight.title',
-                bodyKey: 'value.insight.body',
-              },
-              {
-                titleKey: 'value.iteration.title',
-                bodyKey: 'value.iteration.body',
-              },
-              {
-                titleKey: 'value.reliability.title',
-                bodyKey: 'value.reliability.body',
-              },
-              {
-                titleKey: 'value.outcomes.title',
-                bodyKey: 'value.outcomes.body',
-              },
-            ].map((v) => (
-              <div key={v.titleKey} className="card p-5 shadow-soft h-full flex flex-col">
-                {/* Promote to h2 to establish correct hierarchy before any h3 usage */}
-                <h2 className="font-semibold text-lg tracking-tight">{t(v.titleKey)}</h2>
-                <p className="mt-2 text-sm text-foreground/80 leading-relaxed">{t(v.bodyKey)}</p>
-              </div>
-            ))}
+            <FeatureCard title={t('value.insight.title')} description={t('value.insight.body')} className="h-full" />
+            <FeatureCard
+              title={t('value.iteration.title')}
+              description={t('value.iteration.body')}
+              className="h-full"
+            />
+            <FeatureCard
+              title={t('value.reliability.title')}
+              description={t('value.reliability.body')}
+              className="h-full"
+            />
+            <FeatureCard title={t('value.outcomes.title')} description={t('value.outcomes.body')} className="h-full" />
           </div>
         </div>
       </section>
@@ -125,36 +105,26 @@ export default function HomeContent(): ReactElement {
             <p className="mt-4 text-foreground/80 leading-relaxed">{t('capabilities.description')}</p>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                icon: '🧪',
-                titleKey: 'capabilities.testing.title',
-                bodyKey: 'capabilities.testing.body',
-              },
-              {
-                icon: '📦',
-                titleKey: 'capabilities.refactoring.title',
-                bodyKey: 'capabilities.refactoring.body',
-              },
-              {
-                icon: '🔍',
-                titleKey: 'capabilities.observability.title',
-                bodyKey: 'capabilities.observability.body',
-              },
-              {
-                icon: '🛡️',
-                titleKey: 'capabilities.reliability.title',
-                bodyKey: 'capabilities.reliability.body',
-              },
-            ].map((c) => (
-              <div key={c.titleKey} className="card p-6 shadow-soft flex flex-col" aria-label={t(c.titleKey)}>
-                <div className="text-2xl" aria-hidden="true">
-                  {c.icon}
-                </div>
-                <h3 className="mt-3 font-medium tracking-tight">{t(c.titleKey)}</h3>
-                <p className="mt-2 text-sm text-foreground/75 leading-relaxed">{t(c.bodyKey)}</p>
-              </div>
-            ))}
+            <FeatureCard
+              icon="🧪"
+              title={t('capabilities.testing.title')}
+              description={t('capabilities.testing.body')}
+            />
+            <FeatureCard
+              icon="📦"
+              title={t('capabilities.refactoring.title')}
+              description={t('capabilities.refactoring.body')}
+            />
+            <FeatureCard
+              icon="🔍"
+              title={t('capabilities.observability.title')}
+              description={t('capabilities.observability.body')}
+            />
+            <FeatureCard
+              icon="🛡️"
+              title={t('capabilities.reliability.title')}
+              description={t('capabilities.reliability.body')}
+            />
           </div>
         </div>
       </section>

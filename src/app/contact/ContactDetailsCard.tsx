@@ -1,10 +1,11 @@
 import type { ReactElement } from 'react';
 
 import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from './contact.constants';
+import { NeuroCard } from '@/app/components/ui';
 
 export default function ContactDetailsCard(): ReactElement {
   return (
-    <aside className="relative overflow-hidden rounded-3xl border bg-card/95 p-8 shadow-soft backdrop-blur-xl neuro-card">
+    <NeuroCard as="aside" className="relative overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--accent)_0%,rgba(139,107,0,0.35)_100%)]" />
       <h2 className="text-lg font-semibold text-foreground">Prefer a direct line?</h2>
       <p className="mt-3 text-sm leading-relaxed text-foreground/70">
@@ -44,6 +45,6 @@ export default function ContactDetailsCard(): ReactElement {
           <p className="mt-2 text-base text-foreground/70">Monday – Friday, 8am – 6pm CT</p>
         </div>
       </div>
-    </aside>
+    </NeuroCard>
   );
 }

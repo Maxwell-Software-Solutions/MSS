@@ -4,6 +4,7 @@ import type { ReactElement } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/lib/LanguageContext';
+import { Badge } from '@/app/components/ui';
 
 export default function BlogIndexContent(): ReactElement {
   const { t } = useLanguage();
@@ -34,9 +35,7 @@ export default function BlogIndexContent(): ReactElement {
                     {t('blog.solid.duration')} {t('blog.minRead')}
                   </span>
                   <span>•</span>
-                  <span className="bg-accent/20 text-accent px-2 py-1 rounded-full text-xs">
-                    {t('blog.solid.category')}
-                  </span>
+                  <Badge>{t('blog.solid.category')}</Badge>
                 </div>
                 <h2 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
                   {t('blog.solid.title')}
@@ -73,9 +72,7 @@ export default function BlogIndexContent(): ReactElement {
                     {t('blog.tdd.duration')} {t('blog.minRead')}
                   </span>
                   <span>•</span>
-                  <span className="bg-accent/20 text-accent px-2 py-1 rounded-full text-xs">
-                    {t('blog.tdd.category')}
-                  </span>
+                  <Badge>{t('blog.tdd.category')}</Badge>
                 </div>
                 <h2 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
                   {t('blog.tdd.title')}
@@ -112,9 +109,7 @@ export default function BlogIndexContent(): ReactElement {
                     {t('blog.refactoring.duration')} {t('blog.minRead')}
                   </span>
                   <span>•</span>
-                  <span className="bg-accent/20 text-accent px-2 py-1 rounded-full text-xs">
-                    {t('blog.refactoring.category')}
-                  </span>
+                  <Badge>{t('blog.refactoring.category')}</Badge>
                 </div>
                 <h2 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
                   {t('blog.refactoring.title')}
