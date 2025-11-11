@@ -143,7 +143,7 @@ export default async function RootLayout({
             @media (min-width: 768px) { .container { padding-inline: 2.5rem; } }
             .hero-gradient { background-image: radial-gradient(120% 80% at 50% 0%, rgba(139, 107, 0, 0.12) 0%, rgba(139, 107, 0, 0.06) 30%, transparent 60%); }
               
-              /* Mobile (<600px): hide nav links, show only logo and menu button */
+              /* Mobile (<1000px): hide nav links, show only logo and menu button */
               .nav-links { display: none; }
               .menu-toggle { 
                 background: none; 
@@ -224,7 +224,7 @@ export default async function RootLayout({
               .skip-link { position:absolute; top:-40px; left:0; background:#111; color:#fff; padding:.5rem 1rem; z-index:100; text-decoration:none; font-size:.875rem; border-radius:0 0 .25rem .25rem; transition:top .2s; }
               .skip-link:focus { top:0; }
               
-              @media (min-width:600px){
+              @media (min-width:1000px){
                 .nav-links { display:flex; align-items:center; gap:1.25rem; font-size:0.875rem; }
                 .menu-toggle, .mobile-nav { display:none; }
                 .site-logo { height:3rem; }
