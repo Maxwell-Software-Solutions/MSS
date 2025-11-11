@@ -36,24 +36,39 @@ export default function CaseStudiesContent(): ReactElement {
           <Link
             key={c.slug}
             href={`/project-showcase/${c.slug}`}
-            className="card shadow-soft block overflow-hidden group"
+            className="card shadow-soft block overflow-hidden group transition-all hover:border-accent/80 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            aria-label={`View case study: ${t(`caseStudies.${c.translationKey}.title`)}`}
           >
-            <div className="relative h-36">
+            <div className="relative h-36 bg-background/80">
               <Image
                 src={c.image}
-                alt={t(`caseStudies.${c.translationKey}.title`)}
+                alt=""
                 fill
                 unoptimized
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className="object-cover group-hover:scale-[1.02] transition-transform"
+                role="presentation"
               />
             </div>
             <div className="p-5">
-              <div className="text-xs text-foreground/60 mb-1">{t(`caseStudies.${c.translationKey}.meta`)}</div>
+              <div className="text-xs text-foreground/70 mb-1 font-medium uppercase tracking-wider">
+                {t(`caseStudies.${c.translationKey}.meta`)}
+              </div>
               <h2 className="text-lg font-semibold group-hover:text-accent transition-colors">
                 {t(`caseStudies.${c.translationKey}.title`)}
               </h2>
-              <p className="mt-2 text-sm text-foreground/80">{t(`caseStudies.${c.translationKey}.summary`)}</p>
+              <p className="mt-2 text-sm text-foreground/85 leading-relaxed">
+                {t(`caseStudies.${c.translationKey}.summary`)}
+              </p>
+              <span
+                className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-accent group-hover:gap-2 transition-all"
+                aria-hidden="true"
+              >
+                View study
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
             </div>
           </Link>
         ))}

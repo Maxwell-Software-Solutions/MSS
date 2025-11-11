@@ -9,6 +9,8 @@ import AutoContrastButtons from '@/app/components/AutoContrastButtons';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
 import Cookiebot from '@/app/components/Cookiebot';
 import { LanguageProvider } from '@/lib/LanguageContext';
+import StructuredData from '@/app/components/StructuredData';
+import { organizationSchema } from '@/lib/structuredData';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://maxwell-software.com';
 
@@ -80,6 +82,8 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <LanguageProvider>
+          {/* Structured Data for Organization */}
+          <StructuredData data={organizationSchema} />
           {/* Cookiebot */}
           <Cookiebot cbid={process.env.NEXT_PUBLIC_COOKIEBOT_CBID || 'c99c6734-f40a-4c0f-842f-aea763f24ee7'} />
           {/* Google Analytics */}
@@ -282,11 +286,13 @@ export default function RootLayout({
             }}
           />
 
-          <header className="fixed top-0 left-0 right-0 z-50 header-glass border-b border-foreground/10">
+          <header className="fixed top-0 left-0 right-0 z-50 header-glass border-b border-foreground/10" role="banner">
             <HeaderNav />
           </header>
           <div style={{ height: '56px' }} aria-hidden="true" />
-          <main>{children}</main>
+          <main id="main-content" role="main">
+            {children}
+          </main>
           <AutoContrastButtons />
           <AppFooter />
         </LanguageProvider>

@@ -16,8 +16,14 @@ describe('Project Showcase page', () => {
 
   it('renders the page description', () => {
     render(<CaseStudiesIndex />);
-    expect(screen.getByText(/Selected results across industries|Pasirinkti rezultatai įvairiose pramonės šakose/i)).toBeInTheDocument();
-    expect(screen.getByText(/Each study includes context, actions, and measurable outcomes|Kiekviena studija apima kontekstą, veiksmus ir išmatuojamus rezultatus/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Selected results across industries|Pasirinkti rezultatai įvairiose pramonės šakose/i)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Each study includes context, actions, and measurable outcomes|Kiekviena studija apima kontekstą, veiksmus ir išmatuojamus rezultatus/i
+      )
+    ).toBeInTheDocument();
   });
 
   it('renders all case study links', () => {
@@ -41,11 +47,16 @@ describe('Project Showcase page', () => {
     expect(screen.getByText(/B2B SaaS.*Kubernetes.*4 m/i)).toBeInTheDocument();
   });
 
-  it('renders case study images with proper alt text', () => {
+  it('renders case study cards with proper aria labels', () => {
     render(<CaseStudiesIndex />);
-    expect(screen.getByAltText(/Retail platform|Mažmeninės prekybos platforma/i)).toBeInTheDocument();
-    expect(screen.getByAltText(/Fintech API/i)).toBeInTheDocument();
-    expect(screen.getByAltText(/SaaS migration|SaaS migracija/i)).toBeInTheDocument();
+    // Images now have empty alt with role="presentation", check aria-label on links instead
+    const links = screen.getAllByRole('link');
+    expect(links.length).toBeGreaterThanOrEqual(3);
+
+    // Check that links have descriptive aria-labels
+    expect(screen.getByLabelText(/View case study:.*Retail platform/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/View case study:.*Fintech API/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/View case study:.*SaaS migration/i)).toBeInTheDocument();
   });
 
   it('has proper heading hierarchy', () => {

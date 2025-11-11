@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useCallback, useState } from 'react';
 import type { FormEvent } from 'react';
+import { trackFormSubmit } from '@/lib/analytics';
 
 import { CONTACT_FORM_HONEYPOT_FIELD } from './contact.constants';
 
@@ -39,8 +40,10 @@ export function useContactForm(): UseContactFormResult {
     try {
       await axios.post(process.env.NEXT_PUBLIC_APPS_SCRIPT_URL!, body);
       setStatus('sent');
+      trackFormSubmit('contact', true);
     } catch (err: unknown) {
       setStatus('error');
+      trackFormSubmit('contact', false);
 
       if (axios.isAxiosError(err)) {
         const payload = err.response?.data;

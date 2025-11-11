@@ -51,6 +51,16 @@ export function LanguageProvider({ children }: { children: ReactNode }): React.R
     if (typeof window !== 'undefined') {
       localStorage.setItem('language', lang);
       document.documentElement.setAttribute('lang', lang);
+
+      // Announce language change for screen readers
+      const announcement = lang === 'en' ? 'Language changed to English' : 'Kalba pakeista į lietuvių';
+      const announcer = document.createElement('div');
+      announcer.setAttribute('role', 'status');
+      announcer.setAttribute('aria-live', 'polite');
+      announcer.className = 'sr-only';
+      announcer.textContent = announcement;
+      document.body.appendChild(announcer);
+      setTimeout(() => document.body.removeChild(announcer), 1000);
     }
   }, []);
 
@@ -65,11 +75,7 @@ export function LanguageProvider({ children }: { children: ReactNode }): React.R
     [translations, isClient]
   );
 
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage(): LanguageContextType {

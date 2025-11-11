@@ -7,6 +7,7 @@ import Link from 'next/link';
 import HeroFieldWrapper from './components/HeroFieldWrapper';
 import DeferredSections from './components/DeferredSections';
 import { useLanguage } from '@/lib/LanguageContext';
+import { trackCTAClick } from '@/lib/analytics';
 
 // Dynamically import non-critical components
 const ClientLogos = dynamic(() => import('@/app/components/ClientLogos'), {
@@ -37,10 +38,15 @@ export default function HomeContent(): ReactElement {
               <a
                 href="/contact"
                 className="btn btn-accent px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg shadow-soft font-bold min-h-[48px]"
+                onClick={() => trackCTAClick('hero_primary')}
               >
                 {t('hero.cta.primary')}
               </a>
-              <a href="/services" className="btn btn-ghost px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg min-h-[48px]">
+              <a
+                href="/services"
+                className="btn btn-ghost px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg min-h-[48px]"
+                onClick={() => trackCTAClick('hero_secondary')}
+              >
                 {t('hero.cta.secondary')}
               </a>
             </div>

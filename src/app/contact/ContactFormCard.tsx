@@ -1,5 +1,6 @@
 import type { FormEvent, ReactElement } from 'react';
 
+import ButtonPrimary from '@/app/components/ButtonPrimary';
 import ContactStatusMessage from './ContactStatusMessage';
 import { CONTACT_FORM_HONEYPOT_FIELD } from './contact.constants';
 import type { ContactFormStatus } from './useContactForm';
@@ -65,17 +66,21 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
       </div>
 
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <button
+        <ButtonPrimary
           disabled={status === 'sending'}
-          className="btn btn-accent w-full justify-center gap-2 text-base shadow-soft transition disabled:cursor-not-allowed disabled:opacity-70 disabled:shadow-none sm:w-auto"
+          loading={status === 'sending'}
+          type="submit"
+          className="w-full justify-center sm:w-auto"
         >
-          {status === 'sending' ? 'Sending…' : 'Send message'}
-        </button>
+          Send message
+        </ButtonPrimary>
 
         <p className="text-xs text-foreground/60">We respect your privacy and keep information confidential.</p>
       </div>
 
-      <ContactStatusMessage status={status} error={error} />
+      <div aria-live="polite" aria-atomic="true">
+        <ContactStatusMessage status={status} error={error} />
+      </div>
     </form>
   );
 }
