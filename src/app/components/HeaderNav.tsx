@@ -22,7 +22,7 @@ export default function HeaderNav(): ReactElement {
   }, [language, setLanguage]);
   useEffect(() => {
     function onResize(): void {
-      if (window.innerWidth >= 600) setOpen(false);
+      if (window.innerWidth >= 1024) setOpen(false);
     }
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);

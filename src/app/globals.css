@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Tailwind v4 theme configuration */
+@theme {
+  --font-family-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  --font-family-mono: ui-monospace, 'Courier New', monospace;
+  --font-weight-normal: 500;
+}
+
 /* Legacy custom properties - kept for backward compatibility during migration */
 /* Theme tokens in ./styles/tokens.css provide the new system */
 :root {
@@ -30,7 +37,8 @@
 body {
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
+  font-weight: 500;
   font-size: clamp(16px, 1.6vw, 18px);
   line-height: 1.7;
   letter-spacing: 0.01em;
@@ -38,6 +46,11 @@ body {
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+/* Apply Montserrat to all text elements - using direct font name */
+*, *::before, *::after {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif !important;
 }
 
 /* Prevent body from shifting when padding is added for scrollbar compensation */
@@ -94,6 +107,7 @@ h5, h6 {
 p {
   margin-block: 1em;
   line-height: 1.7;
+  font-weight: 500;
 }
 
 
@@ -338,14 +352,14 @@ header nav .menu-toggle {
 }
 
 /* Hide menu toggle on desktop */
-@media (min-width: 600px) {
+@media (min-width: 1024px) {
   header nav .menu-toggle {
     display: none;
   }
 }
 
-/* Show menu toggle only on mobile */
-@media (max-width: 599px) {
+/* Show menu toggle only on mobile and tablet */
+@media (max-width: 1023px) {
   header nav .nav-links {
     display: none;
   }

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 import HeaderNav from './components/HeaderNav';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Montserrat } from 'next/font/google';
 import './globals.css';
 import './styles/tokens.css';
 import ParallaxScrollEffects from '@/app/components/ParallaxScrollEffects';
@@ -16,6 +16,14 @@ import { headers } from 'next/headers';
 import { loadServerTranslations, getCriticalTranslations } from '@/lib/server-translations';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://maxwell-software.com';
+
+const montserrat = Montserrat({
+  variable: '--font-montserrat',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  preload: true,
+});
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -84,7 +92,7 @@ export default async function RootLayout({
   const criticalTranslations = getCriticalTranslations(fullTranslations);
 
   return (
-    <html lang={initialLang}>
+    <html lang={initialLang} className={`${montserrat.variable} ${geistSans.variable} ${geistMono.variable}`}>
       <head>
         {/* Preload & preconnect resources (moved from body for WebKit stability) */}
         <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
@@ -94,7 +102,7 @@ export default async function RootLayout({
         <link rel="modulepreload" href="/_next/static/chunks/webpack.js" />
         <link rel="modulepreload" href="/_next/static/chunks/main-app.js" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className="antialiased">
         <LanguageProvider initialLanguage={initialLang} criticalTranslations={criticalTranslations}>
           {/* Structured Data for Organization */}
           <StructuredData data={organizationSchema} />
