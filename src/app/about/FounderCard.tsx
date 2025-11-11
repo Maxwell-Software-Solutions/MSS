@@ -20,19 +20,19 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
         aria-hidden="true"
       />
       <div className="relative flex flex-col gap-4 sm:gap-5 grow">
-        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5">
+        <div className="flex flex-col items-center gap-4">
           <div
             className={`${
               firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras'
-                ? 'w-28 h-32 sm:w-32 sm:h-36'
-                : 'w-24 h-24 sm:w-28 sm:h-28'
+                ? 'w-32 h-36 sm:w-36 sm:h-40'
+                : 'w-28 h-28 sm:w-32 sm:h-32'
             } rounded-xl shadow-xl ring-2 ring-white/40 bg-foreground/5 overflow-hidden flex-shrink-0`}
           >
             <Image
               src={imageSrc}
               alt={f.alt}
-              width={firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras' ? 128 : 112}
-              height={firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras' ? 144 : 112}
+              width={firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras' ? 144 : 128}
+              height={firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras' ? 160 : 128}
               className={`${
                 firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras'
                   ? 'w-full h-auto object-cover object-top'
@@ -40,7 +40,7 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
               }`}
             />
           </div>
-          <figcaption className="flex flex-col text-center sm:text-left">
+          <figcaption className="flex flex-col text-center">
             <h3 className="font-semibold text-lg leading-tight tracking-tight">
               {t(`about.founder.${founderKey}.name`)}
             </h3>
@@ -49,11 +49,11 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
             </div>
           </figcaption>
         </div>
-        <p className="text-sm text-foreground/75 leading-relaxed mt-1 max-w-prose text-center sm:text-left">
+        <p className="text-sm text-foreground/75 leading-relaxed mt-1 max-w-prose text-center">
           {t(`about.founder.${founderKey}.bio`)}
         </p>
         <div className="mt-auto pt-4">
-          <span className="inline-flex items-center justify-center sm:justify-start gap-1 text-[11px] font-medium uppercase tracking-wider text-foreground/70">
+          <span className="inline-flex items-center justify-center gap-1 text-[11px] font-medium uppercase tracking-wider text-foreground/70">
             <span className="h-1.5 w-1.5 rounded-full bg-current" />
             Focus • Craft • Impact
           </span>
