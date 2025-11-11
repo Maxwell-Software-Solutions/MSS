@@ -3,6 +3,7 @@ import type { ReactElement } from 'react';
 import HeaderNav from './components/HeaderNav';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import './styles/tokens.css';
 import ParallaxScrollEffects from '@/app/components/ParallaxScrollEffects';
 import AppFooter from '@/app/components/AppFooter';
 import AutoContrastButtons from '@/app/components/AutoContrastButtons';
@@ -115,7 +116,7 @@ export default function RootLayout({
               box-sizing: border-box;
             }
             
-            .header-glass { background-color: rgba(255, 255, 255, 0.78); backdrop-filter: saturate(180%) blur(12px); }
+            .header-glass { backdrop-filter: saturate(180%) blur(12px); }
             .container { max-width: 80rem; margin-inline: auto; padding-inline: 1rem; width: 100%; overflow: hidden; }
             @media (min-width: 640px) { .container { padding-inline: 2rem; } }
             @media (min-width: 768px) { .container { padding-inline: 2.5rem; } }
@@ -126,7 +127,7 @@ export default function RootLayout({
               .menu-toggle { 
                 background: none; 
                 border: 0; 
-                color: #000; 
+                color: var(--color-text); 
                 display: inline-flex; 
                 align-items: center; 
                 justify-content: center; 
@@ -140,13 +141,7 @@ export default function RootLayout({
               }
               
               .menu-toggle:hover {
-                background-color: rgba(0,0,0,0.05);
-              }
-              
-              @media (prefers-color-scheme: dark) {
-                .menu-toggle:hover {
-                  background-color: rgba(255,255,255,0.05);
-                }
+                opacity: 0.8;
               }
               
               /* Hide menu button when menu is open (replaced by close button) */
@@ -155,39 +150,23 @@ export default function RootLayout({
                 pointer-events: none; 
               }
               
-              /* Mobile Navigation - Hidden by default, overlay when open */
+              /* Mobile Navigation - styles defined in globals.css for theme support */
               .mobile-nav { 
                 position: fixed; 
                 top: 0; 
                 right: 0; 
                 height: 100vh; 
                 width: min(20rem, 85%); 
-                background: linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.94)); 
-                -webkit-backdrop-filter: blur(20px) saturate(150%); 
-                backdrop-filter: blur(20px) saturate(150%); 
-                color: #f7fafc; 
                 padding: 4.5rem 2rem 2rem; 
                 display: flex; 
                 flex-direction: column; 
                 gap: 1.5rem; 
                 transform: translateX(100%); 
                 transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, visibility 0.35s ease; 
-                box-shadow: -16px 0 48px -12px rgba(0,0,0,0.6); 
-                border-left: 1px solid rgba(212, 175, 55, 0.3); 
                 z-index: 80; 
                 overflow-y: auto;
                 visibility: hidden;
                 opacity: 0;
-              }
-              
-              /* Dark mode mobile nav */
-              @media (prefers-color-scheme: dark) {
-                .mobile-nav { 
-                  background: linear-gradient(180deg, rgba(15,23,42,0.96), rgba(15,23,42,0.94)); 
-                  color: #f7fafc; 
-                  box-shadow: -16px 0 48px -12px rgba(0,0,0,0.6); 
-                  border-left: 1px solid rgba(212, 175, 55, 0.3); 
-                }
               }
               
               /* Mobile nav open state - visible overlay */
@@ -197,75 +176,18 @@ export default function RootLayout({
                 opacity: 1;
               }
               
-              @supports (-webkit-touch-callout: none) {
-                /* Simplify effects for WebKit to avoid rare crash on backdrop + transform combo */
-                .mobile-nav { 
-                  -webkit-backdrop-filter: none; 
-                  backdrop-filter: none; 
-                  background: rgba(15,23,42,0.98); 
-                }
-                @media (prefers-color-scheme: dark) {
-                  .mobile-nav { background: rgba(15,23,42,0.98); }
-                }
-              }
-              .mobile-nav * { color: #f7fafc; }
-              .mobile-nav a { color:#f7fafc !important; text-decoration:none; font-size:1.125rem; font-weight:500; padding:0.75rem 0; border-bottom:1px solid rgba(247,250,252,0.05); transition:color .2s; }
-              .mobile-nav a:hover { color:#e5c158 !important; }
-              .mobile-nav a:last-child { border-bottom:none; }
-              .mobile-nav button { color: #f7fafc !important; }
-              
-              @media (prefers-color-scheme: dark) {
-                .mobile-nav a { border-bottom-color:rgba(247,250,252,0.05); color:#f7fafc !important; }
-                .mobile-nav a:hover { color:#e5c158 !important; }
-              }
-              
-              .menu-close { 
-                background: none !important; 
-                border: 0 !important; 
-                color: #f7fafc !important; 
-                display: inline-flex !important; 
-                align-items: center !important;
-                justify-content: center !important;
-                padding: 0.5rem !important; 
-                border-radius: 0.5rem !important; 
-                transition: background-color 0.2s ease !important; 
-                cursor: pointer !important;
-                width: 2.5rem !important;
-                height: 2.5rem !important;
-              }
-              .menu-close svg { 
-                color: #f7fafc !important;
-                stroke: #f7fafc !important;
-              }
-              .menu-close:hover { 
-                background-color: rgba(255,255,255,0.1) !important; 
-              }
-              
-              @media (prefers-color-scheme: dark) {
-                .menu-close { color: #f7fafc !important; }
-                .menu-close svg { stroke: #f7fafc !important; }
-                .menu-close:hover { background-color: rgba(255,255,255,0.1) !important; }
-              }
-              
               .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
               
-              /* Navigation Overlay - Hidden by default */
+              /* Navigation Overlay - styles defined in globals.css for theme support */
               .nav-overlay { 
                 position: fixed; 
                 inset: 0; 
-                background: rgba(15,23,42,0.6); 
-                -webkit-backdrop-filter: blur(4px); 
-                backdrop-filter: blur(4px); 
                 opacity: 0; 
                 pointer-events: none; 
                 transition: opacity 0.3s ease; 
                 z-index: 60;
                 visibility: hidden;
                 cursor: pointer;
-              }
-              
-              @media (prefers-color-scheme: dark) {
-                .nav-overlay { background: rgba(15,23,42,0.7); }
               }
               
               /* Overlay visible when menu is open */

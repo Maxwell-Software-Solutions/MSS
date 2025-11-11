@@ -5,6 +5,7 @@ import { useState, useCallback, useEffect, type ReactElement } from 'react';
 import { usePathname } from 'next/navigation';
 import MobileMenu from './navigation/MobileMenu';
 import { useLanguage } from '@/lib/LanguageContext';
+import ThemeToggle from './ThemeToggle';
 
 // Concise header + mobile menu toggle (<=60 lines)
 export default function HeaderNav(): ReactElement {
@@ -74,6 +75,7 @@ export default function HeaderNav(): ReactElement {
         <Link href="/blog" suppressHydrationWarning>
           {t('nav.blog') === 'nav.blog' ? 'Blog' : t('nav.blog')}
         </Link>
+        <ThemeToggle />
         <button
           type="button"
           onClick={toggleLanguage}
