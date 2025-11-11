@@ -103,9 +103,11 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
 
   const handleOverlayClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      // Close when clicking the overlay
-      e.stopPropagation();
-      onClose();
+      // Only close if clicking directly on the overlay (not on the menu panel)
+      if (e.target === e.currentTarget) {
+        e.preventDefault();
+        onClose();
+      }
     },
     [onClose]
   );
@@ -116,7 +118,6 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
         className={open ? 'nav-overlay open' : 'nav-overlay'}
         aria-hidden="true"
         onClick={handleOverlayClick}
-        onMouseDown={handleOverlayClick}
         data-test="nav-overlay"
       />
       <div
