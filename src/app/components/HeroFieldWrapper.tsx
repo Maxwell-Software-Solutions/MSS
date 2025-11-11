@@ -10,7 +10,7 @@ const ParticleField = dynamic(() => import('./ParticleField'), {
       data-testid="particle-field"
       className="relative w-full h-[380px] sm:h-[460px] md:h-[520px] rounded-xl overflow-hidden bg-gradient-to-br from-accent/5 via-transparent to-accent/10 border border-foreground/10 flex items-center justify-center"
     >
-      <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/30">Loading field…</span>
+      <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/70">Loading field…</span>
     </div>
   ),
 });

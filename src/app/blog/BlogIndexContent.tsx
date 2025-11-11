@@ -27,7 +27,7 @@ export default function BlogIndexContent(): ReactElement {
                 />
               </div>
               <div>
-                <div className="flex items-center gap-2 text-sm text-foreground/60 mb-3">
+                <div className="flex items-center gap-2 text-sm text-foreground/75 mb-3">
                   <time dateTime="2024-12-19">{t('blog.solid.date')}</time>
                   <span>•</span>
                   <span>
@@ -66,7 +66,7 @@ export default function BlogIndexContent(): ReactElement {
                 />
               </div>
               <div className="order-1 lg:order-2">
-                <div className="flex items-center gap-2 text-sm text-foreground/60 mb-3">
+                <div className="flex items-center gap-2 text-sm text-foreground/75 mb-3">
                   <time dateTime="2024-12-19">{t('blog.tdd.date')}</time>
                   <span>•</span>
                   <span>
@@ -105,7 +105,7 @@ export default function BlogIndexContent(): ReactElement {
                 />
               </div>
               <div>
-                <div className="flex items-center gap-2 text-sm text-foreground/60 mb-3">
+                <div className="flex items-center gap-2 text-sm text-foreground/75 mb-3">
                   <time dateTime="2024-12-19">{t('blog.refactoring.date')}</time>
                   <span>•</span>
                   <span>

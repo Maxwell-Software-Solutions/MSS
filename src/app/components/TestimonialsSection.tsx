@@ -25,7 +25,7 @@ export default function TestimonialsSection(): ReactElement {
           ].map((t) => (
             <figure key={t.author} className="card shadow-soft p-6 flex flex-col justify-between">
               <blockquote className="text-sm leading-relaxed text-foreground/80">“{t.quote}”</blockquote>
-              <figcaption className="mt-4 text-xs font-medium uppercase tracking-wide text-foreground/60">
+              <figcaption className="mt-4 text-xs font-medium uppercase tracking-wide text-foreground/75">
                 {t.author}
               </figcaption>
             </figure>

@@ -165,11 +165,12 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
               {t('nav.blog') === 'nav.blog' ? 'Blog' : t('nav.blog')}
             </Link>
           </li>
-          <li className="pt-4 border-t border-foreground/10">
+          <li className="pt-4 border-t" style={{ borderColor: 'rgba(247, 250, 252, 0.1)' }}>
             <button
               type="button"
               onClick={toggleLanguage}
-              className="px-4 py-2 rounded-md border border-foreground/20 hover:border-accent hover:bg-accent/10 transition-colors font-medium text-sm w-full text-left"
+              className="px-4 py-2 rounded-md border hover:border-accent hover:bg-accent/10 transition-colors font-medium text-sm w-full text-left"
+              style={{ borderColor: 'rgba(247, 250, 252, 0.2)', color: '#f7fafc' }}
               aria-label={`Switch to ${language === 'en' ? 'Lithuanian' : 'English'}`}
               suppressHydrationWarning
             >

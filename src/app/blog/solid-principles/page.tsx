@@ -26,12 +26,12 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         {/* Header */}
         <header className="mb-12">
           <nav className="mb-6">
-            <Link href="/blog" className="text-foreground/60 hover:text-foreground transition-colors">
+            <Link href="/blog" className="text-foreground/75 hover:text-foreground transition-colors">
               ← Back to Insights
             </Link>
           </nav>
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">SOLID Principles: The Foundation of Clean Code</h1>
-          <div className="flex items-center gap-4 text-foreground/60">
+          <div className="flex items-center gap-4 text-foreground/75">
             <time dateTime="2024-12-19">December 19, 2024</time>
             <span>•</span>
             <span>8 min read</span>
@@ -140,13 +140,13 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                 </p>
                 <div className="bg-foreground/5 rounded-lg p-4 mb-4">
                   <h3 className="font-semibold mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/60 text-sm">
+                  <p className="text-foreground/75 text-sm">
                     A class that handles user authentication, sends emails, and manages database connections.
                   </p>
                 </div>
                 <div className="bg-foreground/5 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/60 text-sm">
+                  <p className="text-foreground/75 text-sm">
                     Separate classes for UserAuthentication, EmailService, and DatabaseConnection.
                   </p>
                 </div>
@@ -181,11 +181,11 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                 </p>
                 <div className="bg-foreground/5 rounded-lg p-4 mb-4">
                   <h3 className="font-semibold mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/60 text-sm">Modifying existing classes to add new payment methods.</p>
+                  <p className="text-foreground/75 text-sm">Modifying existing classes to add new payment methods.</p>
                 </div>
                 <div className="bg-foreground/5 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/60 text-sm">
+                  <p className="text-foreground/75 text-sm">
                     Creating new payment method classes that implement a common interface.
                   </p>
                 </div>
@@ -204,13 +204,13 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                 </p>
                 <div className="bg-foreground/5 rounded-lg p-4 mb-4">
                   <h3 className="font-semibold mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/60 text-sm">
+                  <p className="text-foreground/75 text-sm">
                     A Square class that inherits from Rectangle but changes the behavior of width/height setters.
                   </p>
                 </div>
                 <div className="bg-foreground/5 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/60 text-sm">
+                  <p className="text-foreground/75 text-sm">
                     Ensuring that derived classes maintain the contract of their base classes.
                   </p>
                 </div>
@@ -245,13 +245,13 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                 </p>
                 <div className="bg-foreground/5 rounded-lg p-4 mb-4">
                   <h3 className="font-semibold mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/60 text-sm">
+                  <p className="text-foreground/75 text-sm">
                     A large interface with methods for printing, scanning, and faxing that not all clients need.
                   </p>
                 </div>
                 <div className="bg-foreground/5 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/60 text-sm">
+                  <p className="text-foreground/75 text-sm">
                     Separate interfaces: IPrinter, IScanner, IFax, allowing clients to implement only what they need.
                   </p>
                 </div>
@@ -270,13 +270,13 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                 </p>
                 <div className="bg-foreground/5 rounded-lg p-4 mb-4">
                   <h3 className="font-semibold mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/60 text-sm">
+                  <p className="text-foreground/75 text-sm">
                     A business logic class directly instantiating a specific database implementation.
                   </p>
                 </div>
                 <div className="bg-foreground/5 rounded-lg p-4">
                   <h3 className="font-semibold mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/60 text-sm">
+                  <p className="text-foreground/75 text-sm">
                     Business logic depending on a database interface, with implementations injected via dependency
                     injection.
                   </p>

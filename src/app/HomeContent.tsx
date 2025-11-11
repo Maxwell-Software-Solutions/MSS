@@ -50,7 +50,7 @@ export default function HomeContent(): ReactElement {
                 {t('hero.cta.secondary')}
               </a>
             </div>
-            <p className="mt-6 text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] text-foreground/60 font-medium px-4">
+            <p className="mt-6 text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] text-foreground/75 font-medium px-4">
               {t('hero.values')}
             </p>
           </div>
@@ -221,7 +221,7 @@ export default function HomeContent(): ReactElement {
                   aria-hidden="true"
                 />
                 <div className="flex flex-col gap-1">
-                  <span className="text-xs tracking-wide font-mono text-foreground/60">{s.step}</span>
+                  <span className="text-xs tracking-wide font-mono text-foreground/75">{s.step}</span>
                   <h3 className="font-medium tracking-tight text-lg">{t(s.titleKey)}</h3>
                   <p className="text-sm text-foreground/75 leading-relaxed max-w-prose">{t(s.bodyKey)}</p>
                 </div>
@@ -286,7 +286,7 @@ export default function HomeContent(): ReactElement {
                   />
                 </div>
                 <div className="p-5 flex flex-col grow">
-                  <div className="text-xs text-foreground/50 mb-1 flex items-center gap-2">
+                  <div className="text-xs text-foreground/70 mb-1 flex items-center gap-2">
                     <span>{t(c.metaKey)}</span>
                     <span className="h-1 w-1 rounded-full bg-foreground/30" />
                     <span className="text-accent font-medium">{t(c.outcomeKey)}</span>
@@ -298,7 +298,7 @@ export default function HomeContent(): ReactElement {
                     {c.metrics.map((m) => (
                       <span
                         key={m}
-                        className="text-[11px] font-medium px-2 py-1 rounded-md bg-foreground/5 border border-foreground/10 text-foreground/60"
+                        className="text-[11px] font-medium px-2 py-1 rounded-md bg-foreground/5 border border-foreground/10 text-foreground/75"
                       >
                         {m}
                       </span>

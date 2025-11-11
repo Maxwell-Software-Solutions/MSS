@@ -20,7 +20,7 @@ export default function ServiceCard({ s }: { s: ServiceItem }): ReactElement {
         <h2 className="text-lg font-semibold tracking-tight">{s.title}</h2>
       </div>
       <p className="mt-2 text-sm text-foreground/75 leading-relaxed relative">{s.body}</p>
-      <p className="mt-2 text-xs uppercase tracking-wide text-foreground/50 relative">{s.tagline}</p>
+      <p className="mt-2 text-xs uppercase tracking-wide text-foreground/70 relative">{s.tagline}</p>
     </section>
   );
 }

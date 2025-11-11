@@ -429,13 +429,25 @@ html:has(#CybotCookiebotDialog) {
   right: 0;
   height: 100vh;
   width: 280px;
-  background-color: var(--card);
-  border-left: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(26, 32, 44, 0.96), rgba(15, 23, 42, 0.94));
+  backdrop-filter: blur(20px) saturate(150%);
+  color: #f7fafc;
+  border-left: 1px solid rgba(212, 175, 55, 0.3);
   z-index: 1001;
   padding: 2rem;
   transform: translateX(100%);
   transition: transform 0.2s ease;
   overflow-y: auto;
+  box-shadow: -16px 0 48px -12px rgba(0, 0, 0, 0.6);
+}
+
+.mobile-nav * {
+  color: #f7fafc;
+}
+
+.mobile-nav span,
+.mobile-nav button {
+  color: #f7fafc;
 }
 
 .mobile-nav.open {
@@ -445,7 +457,7 @@ html:has(#CybotCookiebotDialog) {
 .mobile-nav .menu-close {
   background: none;
   border: none;
-  color: var(--foreground);
+  color: #f7fafc;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 6px;
@@ -464,20 +476,50 @@ html:has(#CybotCookiebotDialog) {
 
 .mobile-nav ul li a {
   display: block;
-  color: var(--foreground);
+  color: #f7fafc;
   text-decoration: none;
   padding: 0.75rem 0;
   border-radius: 6px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(247, 250, 252, 0.05);
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.mobile-nav ul li a:hover {
-  color: var(--accent);
-  background-color: rgba(212, 175, 55, 0.1);
+.mobile-nav ul li a:last-child {
+  border-bottom: none;
 }
 
-@media (prefers-color-scheme: dark) {
+.mobile-nav ul li a:hover {
+  color: #e5c158;
+  background-color: rgba(229, 193, 88, 0.1);
+}
+
+/* Light mode override for mobile nav (if needed) */
+@media (prefers-color-scheme: light) {
   .mobile-nav {
-    background-color: var(--card);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.94));
+    color: #1a202c;
+    border-left: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: -16px 0 48px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .mobile-nav .menu-close {
+    color: #1a202c;
+  }
+  
+  .mobile-nav .menu-close:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .mobile-nav ul li a {
+    color: #1a202c;
+    border-bottom-color: rgba(26, 32, 44, 0.05);
+  }
+  
+  .mobile-nav ul li a:hover {
+    color: #d4af37;
+    background-color: rgba(212, 175, 55, 0.1);
   }
 }
+

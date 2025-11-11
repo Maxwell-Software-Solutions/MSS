@@ -37,14 +37,14 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         {/* Header */}
         <header className="mb-12">
           <nav className="mb-6">
-            <Link href="/blog" className="text-foreground/60 hover:text-foreground transition-colors">
+            <Link href="/blog" className="text-foreground/75 hover:text-foreground transition-colors">
               ← Back to Insights
             </Link>
           </nav>
           <h1 className="text-4xl sm:text-5xl font-bold mb-6">
             Refactoring Legacy Code: Complete Guide to Modernizing Your Software Architecture
           </h1>
-          <div className="flex items-center gap-4 text-foreground/60">
+          <div className="flex items-center gap-4 text-foreground/75">
             <time dateTime="2024-12-19">December 19, 2024</time>
             <span>•</span>
             <span>12 min read</span>

@@ -75,7 +75,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
           Send message
         </ButtonPrimary>
 
-        <p className="text-xs text-foreground/60">We respect your privacy and keep information confidential.</p>
+        <p className="text-xs text-foreground/75">We respect your privacy and keep information confidential.</p>
       </div>
 
       <div aria-live="polite" aria-atomic="true">

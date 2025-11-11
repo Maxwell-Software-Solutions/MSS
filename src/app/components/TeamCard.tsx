@@ -19,7 +19,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ name, title, bio, className = '' })
         <div
           role="img"
           aria-label={`${name} — ${title}`}
-          className="w-24 h-24 rounded-2xl shadow-lg bg-foreground/5 flex items-center justify-center text-[10px] font-medium uppercase text-foreground/40"
+          className="w-24 h-24 rounded-2xl shadow-lg bg-foreground/5 flex items-center justify-center text-[10px] font-medium uppercase text-foreground/70"
         >
           Pending
         </div>
@@ -27,7 +27,7 @@ const TeamCard: React.FC<TeamCardProps> = ({ name, title, bio, className = '' })
       <div className="flex flex-col gap-2">
         <div>
           <h3 className="text-lg font-semibold tracking-tight">{name}</h3>
-          <p className="text-sm text-foreground/60 font-medium">{title}</p>
+          <p className="text-sm text-foreground/75 font-medium">{title}</p>
         </div>
         <p className="text-sm text-foreground/75 leading-relaxed max-w-prose">{bio}</p>
       </div>

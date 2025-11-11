@@ -144,13 +144,13 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
   return (
     <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
       <nav className="mb-6">
-        <Link href="/project-showcase" className="text-foreground/60 hover:text-foreground transition-colors">
+        <Link href="/project-showcase" className="text-foreground/75 hover:text-foreground transition-colors">
           ← Back to case studies
         </Link>
       </nav>
 
       <header className="mb-8">
-        <p className="text-sm text-foreground/60">Case study · {c.meta}</p>
+        <p className="text-sm text-foreground/75">Case study · {c.meta}</p>
         <h1 className="text-4xl sm:text-5xl font-bold mt-2">{c.title}</h1>
         <p className="text-lg text-foreground/75 mt-3 max-w-3xl">{c.subtitle}</p>
       </header>
