@@ -8,9 +8,9 @@ export default function AboutPage(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12">
+    <div className="max-w-5xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
       <h1 className="text-3xl sm:text-4xl font-bold">{t('about.title')}</h1>
-      <div className="mt-6 space-y-5 text-foreground/85 leading-relaxed">
+      <div className="mt-6 space-y-6 text-foreground/85 leading-relaxed">
         <p className="text-lg">{t('about.intro')}</p>
         <p>{t('about.description')}</p>
         <Card padding="md" className="mt-8 bg-accent/5 border-accent/30">
@@ -64,14 +64,14 @@ export default function AboutPage(): ReactElement {
           </ul>
         </Card>
       </div>
-      <section className="mt-16" aria-labelledby="founders-heading">
+      <section className="mt-12 sm:mt-16" aria-labelledby="founders-heading">
         <h2 id="founders-heading" className="text-3xl font-semibold tracking-tight mb-4">
           {t('about.founders.heading')}
         </h2>
-        <p className="mt-4 text-base text-foreground/75 max-w-2xl leading-relaxed mb-12">
+        <p className="mt-4 text-base text-foreground/75 max-w-2xl leading-relaxed mb-8 sm:mb-12">
           {t('about.founders.description')}
         </p>
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           {founders.map((f, index) => {
             const firstName = f.name.split(' ')[0]?.toLowerCase() || 'founder';
             const imageExtension =

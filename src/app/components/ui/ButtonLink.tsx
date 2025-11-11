@@ -24,9 +24,9 @@ export function ButtonLink({
   ...props
 }: ButtonLinkProps): ReactElement {
   const sizeClasses = {
-    sm: 'px-6 py-2',
-    md: 'px-10 py-3',
-    lg: 'px-12 py-4',
+    sm: 'px-4 py-2',
+    md: 'px-6 py-3',
+    lg: 'px-8 py-4',
   };
 
   const variantClasses = {

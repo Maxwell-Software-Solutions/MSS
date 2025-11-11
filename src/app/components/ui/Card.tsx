@@ -20,9 +20,9 @@ export function Card({
   hover = false,
 }: CardProps): ReactElement {
   const paddingClasses = {
-    sm: 'p-4',
-    md: 'p-5',
-    lg: 'p-6',
+    sm: 'p-4 sm:p-5',
+    md: 'p-6',
+    lg: 'p-8',
   };
 
   const baseClasses = 'card';

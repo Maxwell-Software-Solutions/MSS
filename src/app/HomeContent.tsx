@@ -51,14 +51,14 @@ export default function HomeContent(): ReactElement {
             </p>
           </div>
           <HeroFieldWrapper />
-          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 px-4" data-reveal>
+          <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 px-4" data-reveal>
             <StatCard value={t('stats.defects')} label={t('stats.defects.label')} />
             <StatCard value={t('stats.coverage')} label={t('stats.coverage.label')} />
             <StatCard value={t('stats.mttr')} label={t('stats.mttr.label')} />
           </div>
           {/* Value propositions */}
           <div
-            className="mt-16 mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+            className="mt-12 sm:mt-16 mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
             data-reveal
             aria-label="Key value propositions"
           >
@@ -80,7 +80,7 @@ export default function HomeContent(): ReactElement {
 
       {/* Capabilities overview */}
       <section
-        className="px-6 sm:px-10 py-20 neuro-section-border bg-background/50"
+        className="px-6 sm:px-10 py-12 sm:py-16 neuro-section-border bg-background/50"
         aria-labelledby="capabilities-heading"
       >
         <div className="max-w-6xl mx-auto">
@@ -90,7 +90,7 @@ export default function HomeContent(): ReactElement {
             </h2>
             <p className="mt-4 text-foreground/80 leading-relaxed">{t('capabilities.description')}</p>
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <FeatureCard
               icon="🧪"
               title={t('capabilities.testing.title')}
@@ -115,12 +115,12 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      <section id="about" className="px-6 sm:px-10 py-16 neuro-section-border">
+      <section id="about" className="px-6 sm:px-10 py-12 sm:py-16 neuro-section-border">
         <div className="max-w-6xl mx-auto">
           <div>
             <h2 className="text-2xl font-semibold">{t('about.section.heading')}</h2>
-            <p className="mt-3 text-foreground/80">{t('about.section.description')}</p>
-            <div className="mt-5">
+            <p className="mt-4 text-foreground/80">{t('about.section.description')}</p>
+            <div className="mt-6">
               <ButtonLink href="/about" variant="accent">
                 {t('about.section.cta')}
               </ButtonLink>
@@ -130,12 +130,15 @@ export default function HomeContent(): ReactElement {
       </section>
 
       {/* Process timeline */}
-      <section className="px-6 sm:px-10 py-20 neuro-section-border bg-background/30" aria-labelledby="process-heading">
+      <section
+        className="px-6 sm:px-10 py-12 sm:py-16 neuro-section-border bg-background/30"
+        aria-labelledby="process-heading"
+      >
         <div className="max-w-6xl mx-auto" data-reveal>
           <h2 id="process-heading" className="text-3xl sm:text-4xl font-semibold tracking-tight">
             {t('process.heading')}
           </h2>
-          <ol className="mt-10 relative pl-20 space-y-8">
+          <ol className="mt-8 relative pl-20 space-y-8">
             {/* Clean vertical line */}
             <div
               className="absolute left-6 top-4 bottom-4 w-px bg-gradient-to-b from-accent/20 via-accent/10 to-accent/20"
@@ -185,8 +188,8 @@ export default function HomeContent(): ReactElement {
         <div className="container section">
           <div className="eyebrow">{t('projects.eyebrow')}</div>
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">{t('projects.heading')}</h2>
-          <p className="mt-3 text-foreground/70 max-w-2xl text-sm">{t('projects.description')}</p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
+          <p className="mt-4 text-foreground/70 max-w-2xl text-sm">{t('projects.description')}</p>
+          <div className="mt-8 grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
             {[
               {
                 slug: 'retail-platform',

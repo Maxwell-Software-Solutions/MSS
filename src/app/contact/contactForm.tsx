@@ -41,7 +41,7 @@ export default function ContactForm(): ReactNode {
       <div className="mx-auto max-w-5xl px-6 sm:px-10">
         <ContactHero />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)]">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)]">
           <ContactFormCard status={status} error={error} onSubmit={handleSubmit} />
           <ContactDetailsCard />
         </div>

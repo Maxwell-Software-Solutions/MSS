@@ -29,7 +29,7 @@ export default function ServicesPage(): ReactElement {
   return (
     <main className="min-h-screen font-sans">
       {/* Hero */}
-      <header className="max-w-7xl mx-auto px-6 md:px-8 pt-16 pb-4">
+      <header className="max-w-7xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3" suppressHydrationWarning>
           {ht('services.hero.eyebrow', 'Our Services')}
         </p>
@@ -37,10 +37,16 @@ export default function ServicesPage(): ReactElement {
           {ht('services.hero.title', 'Engineering Quality at Scale')}
         </h1>
         <p className="mt-6 max-w-3xl text-base md:text-lg leading-[1.6] text-[--muted]" suppressHydrationWarning>
-          {ht('services.hero.subtitle', 'Code quality audits, reliability engineering, testing strategy, and CI/CD hardening.')}
+          {ht(
+            'services.hero.subtitle',
+            'Code quality audits, reliability engineering, testing strategy, and CI/CD hardening.'
+          )}
         </p>
         <p className="mt-4 max-w-3xl text-base leading-[1.6] text-[--muted]" suppressHydrationWarning>
-          {ht('services.hero.description', 'We embed with your team to reduce defect rates, improve deployment confidence, and accelerate delivery through systematic engineering practices.')}
+          {ht(
+            'services.hero.description',
+            'We embed with your team to reduce defect rates, improve deployment confidence, and accelerate delivery through systematic engineering practices.'
+          )}
         </p>
         <p className="mt-3 max-w-2xl text-sm text-[--muted]" suppressHydrationWarning>
           {ht('services.hero.note', 'All engagements include measurable outcomes and knowledge transfer.')}
@@ -48,8 +54,8 @@ export default function ServicesPage(): ReactElement {
       </header>
 
       {/* Services Section */}
-      <section aria-labelledby="services-heading" className="py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-6 md:gap-8">
+      <section aria-labelledby="services-heading" className="py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col gap-6 md:gap-8">
           <div>
             <h2
               id="services-heading"
@@ -59,7 +65,10 @@ export default function ServicesPage(): ReactElement {
               {ht('services.heading', 'Services')}
             </h2>
             <p className="mt-3 text-[15px] leading-relaxed max-w-3xl text-[--muted]" suppressHydrationWarning>
-              {ht('services.description', 'Deep focus on software quality, sustainable velocity, and operational excellence.')}
+              {ht(
+                'services.description',
+                'Deep focus on software quality, sustainable velocity, and operational excellence.'
+              )}
             </p>
           </div>
           <div
@@ -81,8 +90,8 @@ export default function ServicesPage(): ReactElement {
       </section>
 
       {/* Process Timeline */}
-      <section aria-labelledby="process-heading" className="py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-6 md:gap-8">
+      <section aria-labelledby="process-heading" className="py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col gap-6 md:gap-8">
           <div>
             <h2
               id="process-heading"
@@ -102,10 +111,13 @@ export default function ServicesPage(): ReactElement {
       </section>
 
       {/* CTA */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 pb-20" suppressHydrationWarning>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 pb-16 sm:pb-20" suppressHydrationWarning>
         <CTA
           title={ht('services.cta.title', 'Ready to Improve Your Code Quality?')}
-          body={ht('services.cta.body', 'Let us help you reduce defects, improve velocity, and build confidence in your deployments.')}
+          body={ht(
+            'services.cta.body',
+            'Let us help you reduce defects, improve velocity, and build confidence in your deployments.'
+          )}
           primary={{ href: '/contact', label: ht('services.cta.primary', 'Start a Conversation') }}
           secondary={{ href: '/project-showcase', label: ht('services.cta.secondary', 'View Case Studies') }}
         />

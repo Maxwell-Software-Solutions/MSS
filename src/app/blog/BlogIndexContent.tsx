@@ -10,7 +10,7 @@ export default function BlogIndexContent(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <div className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
+    <div className="max-w-4xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
       <h1 className="text-3xl sm:text-4xl font-bold mb-8">{t('blog.title')}</h1>
       <p className="text-lg text-foreground/80 mb-12">{t('blog.subtitle')}</p>
 
