@@ -15,7 +15,7 @@ interface ContactFormCardProps {
 export default function ContactFormCard({ status, error, onSubmit }: ContactFormCardProps): ReactElement {
   return (
     <NeuroCard as="div" className="p-0">
-      <form onSubmit={onSubmit} className="p-8">
+      <form onSubmit={onSubmit}>
         <div className="space-y-6">
           <label className="block">
             <span className="text-sm font-semibold text-foreground/90">Full name</span>
