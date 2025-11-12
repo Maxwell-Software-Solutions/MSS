@@ -4,11 +4,9 @@ import HeaderNav from './components/HeaderNav';
 import { Geist, Geist_Mono, Montserrat } from 'next/font/google';
 import './globals.css';
 import './styles/tokens.css';
-import ParallaxScrollEffects from '@/app/components/ParallaxScrollEffects';
-import AppFooter from '@/app/components/AppFooter';
-import AutoContrastButtons from '@/app/components/AutoContrastButtons';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
 import Cookiebot from '@/app/components/Cookiebot';
+import ClientOnlyComponents from '@/app/components/ClientOnlyComponents';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import StructuredData from '@/app/components/StructuredData';
 import { organizationSchema } from '@/lib/structuredData';
@@ -20,9 +18,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://maxwell-software.co
 const montserrat = Montserrat({
   variable: '--font-montserrat',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '600', '700'], // Removed '500' to reduce font payload
   display: 'swap',
   preload: true,
+  adjustFontFallback: true,
 });
 
 const geistSans = Geist({
@@ -30,13 +29,15 @@ const geistSans = Geist({
   subsets: ['latin'],
   display: 'swap',
   preload: true,
+  adjustFontFallback: true,
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
   display: 'swap',
-  preload: true,
+  preload: false, // Don't preload mono font (only used sparingly)
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -94,13 +95,10 @@ export default async function RootLayout({
   return (
     <html lang={initialLang} className={`${montserrat.variable} ${geistSans.variable} ${geistMono.variable}`}>
       <head>
-        {/* Preload & preconnect resources (moved from body for WebKit stability) */}
-        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
+        {/* Preconnect to critical origins for faster resource loading */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="//fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="//fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="modulepreload" href="/_next/static/chunks/webpack.js" />
-        <link rel="modulepreload" href="/_next/static/chunks/main-app.js" />
       </head>
       <body className="antialiased">
         <LanguageProvider initialLanguage={initialLang} criticalTranslations={criticalTranslations}>
@@ -113,8 +111,6 @@ export default async function RootLayout({
           <a href="#main-content" className="skip-link">
             Skip to main content
           </a>
-          {/* Global scroll effects (no UI) */}
-          <ParallaxScrollEffects key="scroll-effects" />
 
           {/* Critical CSS for above-the-fold content */}
           <style
@@ -245,8 +241,7 @@ export default async function RootLayout({
           <main id="main-content" role="main" tabIndex={-1}>
             {children}
           </main>
-          <AutoContrastButtons />
-          <AppFooter />
+          <ClientOnlyComponents />
         </LanguageProvider>
       </body>
     </html>

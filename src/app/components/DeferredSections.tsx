@@ -1,9 +1,20 @@
-import type { ReactElement } from 'react';
-import TestimonialsSection from '@/app/components/TestimonialsSection';
-import DarkShowcaseSection from '@/app/components/DarkShowcaseSection';
-import FinalCtaSection from '@/app/components/FinalCtaSection';
+'use client';
 
-// Immediate render version (no intersection deferral) to avoid large blank space at page end.
+import type { ReactElement } from 'react';
+import dynamic from 'next/dynamic';
+
+// Lazy load below-the-fold sections for better TBT
+const TestimonialsSection = dynamic(() => import('@/app/components/TestimonialsSection'), {
+  loading: () => <div style={{ minHeight: '400px' }} aria-hidden="true" />,
+});
+const DarkShowcaseSection = dynamic(() => import('@/app/components/DarkShowcaseSection'), {
+  loading: () => <div style={{ minHeight: '500px' }} aria-hidden="true" />,
+});
+const FinalCtaSection = dynamic(() => import('@/app/components/FinalCtaSection'), {
+  loading: () => <div style={{ minHeight: '300px' }} aria-hidden="true" />,
+});
+
+// Deferred sections to reduce initial bundle size and TBT
 export default function DeferredSections(): ReactElement {
   return (
     <>

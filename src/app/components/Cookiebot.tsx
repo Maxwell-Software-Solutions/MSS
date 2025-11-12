@@ -19,7 +19,7 @@ export default function Cookiebot({ cbid }: CookiebotProps): ReactElement {
       data-cbid={cbid}
       data-blockingmode="auto"
       type="text/javascript"
-      strategy="beforeInteractive"
+      strategy="lazyOnload"
     />
   );
 }
