@@ -171,17 +171,42 @@ const nextConfig: NextConfig = {
   },
   // Headers for performance and security
   async headers() {
+    const isDev = process.env.NODE_ENV !== 'production';
+
+    // Dev-only permissive headers for VS Code Simple Browser
+    if (isDev) {
+      const csp = [
+        "default-src 'self' http: https: data: blob:",
+        "script-src 'self' 'unsafe-eval' 'unsafe-inline' http: https: blob:",
+        "style-src 'self' 'unsafe-inline' http: https:",
+        "img-src 'self' data: blob: http: https:",
+        "connect-src 'self' ws: wss: http: https:",
+        // NO frame-ancestors in dev - allows embedding in Simple Browser
+      ].join('; ');
+
+      return [
+        {
+          source: '/:path*',
+          headers: [
+            { key: 'Content-Security-Policy', value: csp },
+            { key: 'X-Frame-Options', value: 'ALLOWALL' },
+          ],
+        },
+      ];
+    }
+
+    // Production headers
     return [
       {
         source: '/(.*)',
         headers: [
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'self' vscode-webview://*;",
           },
           {
-            key: 'X-Frame-Options',
-            value: 'DENY',
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
           },
           {
             key: 'X-XSS-Protection',

@@ -1,4 +1,5 @@
-import type { ReactElement } from 'react';
+'use client';
+import { useEffect, useState, type ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -25,6 +26,26 @@ const socialLinks = [
 export default function SiteFooter(): ReactElement {
   // Use a fixed year or suppress hydration warning since year changes are acceptable
   const currentYear = new Date().getFullYear();
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Check initial theme
+    const checkTheme = (): void => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      setIsDark(theme === 'dark');
+    };
+
+    checkTheme();
+
+    // Watch for theme changes
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <footer className="neuro-footer-border text-sm text-foreground/80" role="contentinfo">
@@ -33,7 +54,7 @@ export default function SiteFooter(): ReactElement {
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <Image
-                src="/logo-simple.svg"
+                src={isDark ? '/logo-simple-dark.svg' : '/logo-simple.svg'}
                 alt="Maxwell Software Solutions"
                 width={200}
                 height={42}

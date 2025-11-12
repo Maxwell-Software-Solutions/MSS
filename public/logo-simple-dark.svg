@@ -1,0 +1,11 @@
+<svg width="240" height="48" viewBox="0 0 240 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle for the M - lighter for dark mode -->
+  <circle cx="24" cy="24" r="21" fill="#D4AF37" fill-opacity="0.15" stroke="#D4AF37" stroke-width="2.25"/>
+  
+  <!-- Stylized M letter - golden accent -->
+  <path d="M 15 33 L 24 15 L 33 33 L 28.5 33 L 24 21 L 19.5 33 Z" fill="#D4AF37"/>
+  
+  <!-- Company name text - light colors for dark mode -->
+  <text x="54" y="21" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#F7FAFC">Maxwell</text>
+  <text x="54" y="36" font-family="Arial, sans-serif" font-size="13" font-weight="400" fill="#E2E8F0">Software Solutions</text>
+</svg>

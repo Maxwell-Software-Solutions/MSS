@@ -1,12 +1,12 @@
 'use client';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState, useCallback, useEffect, type ReactElement } from 'react';
 import { usePathname } from 'next/navigation';
 import MobileMenu from './navigation/MobileMenu';
 import { useLanguage } from '@/lib/LanguageContext';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import ThemeToggle from './ThemeToggle';
+import ThemeAwareLogo from './ThemeAwareLogo';
 
 // Concise header + mobile menu toggle (<=60 lines)
 export default function HeaderNav(): ReactElement {
@@ -55,14 +55,7 @@ export default function HeaderNav(): ReactElement {
           } catch {}
         }}
       >
-        <Image
-          src="/logo.svg"
-          alt="Maxwell Software Solutions"
-          width={240}
-          height={60}
-          className="site-logo w-auto"
-          priority
-        />
+        <ThemeAwareLogo width={240} height={60} className="site-logo w-auto" priority />
       </Link>
       <div className="nav-links" aria-label="Primary navigation">
         <Link href="/services" suppressHydrationWarning>
