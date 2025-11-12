@@ -5,6 +5,7 @@
 - **Framework**: Next.js 15 (App Router) + React 19 + TypeScript 5
 - **Key files**: `src/app/layout.tsx` (root layout with providers), `src/app/page.tsx`, `next.config.ts` (webpack/headers), `package.json` (scripts)
 - **Styling**: Tailwind CSS v4 (`src/app/globals.css`)
+- **Theme System**: Uses CSS custom properties with `data-theme` attribute (NOT Tailwind's `dark:` classes)
 
 ### Essential Commands
 
@@ -133,6 +134,33 @@ test('homepage loads', async ({ page }) => {
 4. **Modifying webpack config carelessly** → Can break production optimizations in `next.config.ts`
 5. **Adding large images without optimization** → Use Next.js Image component with WebP/AVIF
 6. **Ignoring accessibility** → Project enforces WCAG AA, maintain semantic HTML and ARIA labels
+7. **Using Tailwind `dark:` classes for theming** → This project uses `data-theme` attribute with CSS custom properties instead. Use `style={{ color: 'var(--color-text)' }}` or similar CSS variables from `src/app/styles/tokens.css`, NOT `text-slate-900 dark:text-slate-100`
+
+### Theme System (IMPORTANT)
+
+**DO NOT use Tailwind's `dark:` modifier** — the site uses a custom theme system:
+
+- Theme toggled via `data-theme="light"` or `data-theme="dark"` on `:root`
+- Colors defined in `src/app/styles/tokens.css` as CSS custom properties
+- Common theme variables:
+  - `--color-text` (main text: dark in light mode, light in dark mode)
+  - `--color-text-secondary` (secondary text)
+  - `--color-bg` (background)
+  - `--color-accent` (brand accent color)
+  - `--color-border` (borders)
+
+**Correct approach for theme-aware styling**:
+
+```tsx
+// ✅ CORRECT - Uses CSS custom properties
+<h1 style={{ color: 'var(--color-text)' }}>Title</h1>
+<p style={{ color: 'var(--color-text-secondary)' }}>Subtitle</p>
+
+// ❌ WRONG - Tailwind dark: classes won't work
+<h1 className="text-slate-900 dark:text-white">Title</h1>
+```
+
+See `src/app/styles/tokens.css` for all available theme variables.
 
 ### Editing & PR Guidance
 
