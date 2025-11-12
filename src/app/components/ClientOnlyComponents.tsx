@@ -17,9 +17,14 @@ const AutoContrastButtons = dynamic(() => import('@/app/components/AutoContrastB
   ssr: false,
 });
 
+const FirstLoadProgressBar = dynamic(() => import('@/app/components/FirstLoadProgressBar'), {
+  ssr: false,
+});
+
 export default function ClientOnlyComponents(): ReactElement {
   return (
     <>
+      <FirstLoadProgressBar />
       <ParallaxScrollEffects key="scroll-effects" />
       <AutoContrastButtons />
       <AppFooter />
