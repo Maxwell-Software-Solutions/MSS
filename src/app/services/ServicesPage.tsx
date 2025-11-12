@@ -27,7 +27,7 @@ export default function ServicesPage(): ReactElement {
   }));
 
   return (
-    <main className="min-h-screen font-sans">
+    <>
       {/* Hero */}
       <header className="max-w-7xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3" suppressHydrationWarning>
@@ -122,6 +122,6 @@ export default function ServicesPage(): ReactElement {
           secondary={{ href: '/project-showcase', label: ht('services.cta.secondary', 'View Case Studies') }}
         />
       </div>
-    </main>
+    </>
   );
 }

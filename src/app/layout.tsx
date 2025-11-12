@@ -242,7 +242,7 @@ export default async function RootLayout({
             <HeaderNav />
           </header>
           <div style={{ height: '56px' }} aria-hidden="true" />
-          <main id="main-content" role="main">
+          <main id="main-content" role="main" tabIndex={-1}>
             {children}
           </main>
           <AutoContrastButtons />

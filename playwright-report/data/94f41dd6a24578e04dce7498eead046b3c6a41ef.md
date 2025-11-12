@@ -1,0 +1,289 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - link "Skip to main content" [ref=e2]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - navigation "Site header" [ref=e4]:
+      - link "Homepage" [ref=e5]:
+        - /url: /
+        - img "Maxwell Software Solutions" [ref=e6]
+      - generic "Primary navigation" [ref=e7]:
+        - link "Paslaugos" [ref=e8]:
+          - /url: /services
+        - link "Atvejų studijos" [ref=e9]:
+          - /url: /project-showcase
+        - link "Apie" [ref=e10]:
+          - /url: /about
+        - link "Tinklaraštis" [ref=e11]:
+          - /url: /blog
+        - button "Switch to dark theme" [ref=e12] [cursor=pointer]:
+          - generic [ref=e13] [cursor=pointer]: Switch to dark theme
+          - img [ref=e14] [cursor=pointer]
+        - button "Switch to English" [active] [ref=e16] [cursor=pointer]: EN
+  - main [ref=e18]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - heading "Kurkite su pasitikėjimu." [level=1] [ref=e22]
+        - paragraph [ref=e23]: Pristatykite patikimą programinę įrangą per kodo kokybės auditus, testavimo strategiją, refaktoringą ir stebėseną.
+        - generic [ref=e24]:
+          - link "Užsakykite Kodo Auditą" [ref=e25] [cursor=pointer]:
+            - /url: /contact
+          - link "Naršyti Paslaugas" [ref=e26] [cursor=pointer]:
+            - /url: /services
+        - paragraph [ref=e27]: KOKYBĖ • PATIKIMUMAS • GREITIS
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: "-60%"
+          - generic [ref=e35]: Praleistų defektų
+        - generic [ref=e36]:
+          - generic [ref=e37]: +35%
+          - generic [ref=e38]: Testų padengimas
+        - generic [ref=e39]:
+          - generic [ref=e40]: "-45%"
+          - generic [ref=e41]: MTTR
+      - generic "Key value propositions" [ref=e42]:
+        - generic [ref=e43]:
+          - heading "Nepriklausoma įžvalga" [level=3] [ref=e44]
+          - paragraph [ref=e45]: Objektyvūs kodo kokybės auditai, atskleidžiantys struktūrinę riziką, paslėptą sudėtingumą ir testavimo spragas.
+        - generic [ref=e46]:
+          - heading "Greitesnė iteracija" [level=3] [ref=e47]
+          - paragraph [ref=e48]: Refaktoringo ir architektūros gairės, kurios sumažina ciklo laiką ir padidina kūrėjų pasitikėjimą.
+        - generic [ref=e49]:
+          - heading "Patikimumo orientacija" [level=3] [ref=e50]
+          - paragraph [ref=e51]: Stebėsenos modeliai, gedimo režimo analizė ir apsaugos priemonės, kurios sustiprina gamybines sistemas.
+        - generic [ref=e52]:
+          - heading "Išmatuojami rezultatai" [level=3] [ref=e53]
+          - paragraph [ref=e54]: Derinamos bazės, įdiegiami patobulinimai ir pranešama apie realų inžinerinį poveikį.
+    - region "Galimybės" [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e57]:
+          - heading "Galimybės" [level=2] [ref=e58]
+          - paragraph [ref=e59]: Didelis dėmesys programinės įrangos kokybei, tvariam greičiui ir veiklos tobulinimui. Įsiliename į jūsų komandą, kad sumažintume riziką ir pagreitintume pristatymą.
+        - generic [ref=e60]:
+          - generic [ref=e61]:
+            - generic [ref=e62]: 🧪
+            - heading "Testavimo Strategija" [level=3] [ref=e63]
+            - paragraph [ref=e64]: Daugiasluoksnė testu architektūra, mutaciju ir padengimo analizė, nestabilumo mažinimas.
+          - generic [ref=e65]:
+            - generic [ref=e66]: 📦
+            - heading "Refaktoringas" [level=3] [ref=e67]
+            - paragraph [ref=e68]: Modularizacija, domenų ribos, laipsniškas strangler metodas.
+          - generic [ref=e69]:
+            - generic [ref=e70]: 🔍
+            - heading "Stebėsena" [level=3] [ref=e71]
+            - paragraph [ref=e72]: SLO dizainas, pėdsakais pagrįsta diagnostika, proaktyvūs klaidų biudžetai.
+          - generic [ref=e73]:
+            - generic [ref=e74]: 🛡️
+            - heading "Patikimumas" [level=3] [ref=e75]
+            - paragraph [ref=e76]: Chaoso repeticijos, gedimo režimų apžvalgos, incidentų reagavimo stiprinimas.
+    - generic [ref=e79]:
+      - heading "Apie" [level=2] [ref=e80]
+      - paragraph [ref=e81]: Maxwell Software Solutions yra butikinė inžinerijos konsultacijų įmonė, padedanti komandoms greičiau pristatyti patikimą programinę įrangą. Mes specializuojamės kodo kokybės audituose, testavimo strategijoje, pragmatiniame refaktoringe ir gamybos patikimume—orientuotasi į išmatuojamus rezultatus ir tvarų greitį.
+      - link "Sužinokite Daugiau Apie Mus" [ref=e83] [cursor=pointer]:
+        - /url: /about
+    - region "Kaip veikia bendradarbiavimas" [ref=e84]:
+      - generic [ref=e85]:
+        - heading "Kaip veikia bendradarbiavimas" [level=2] [ref=e86]
+        - list [ref=e87]:
+          - listitem [ref=e89]:
+            - generic [ref=e91]: "01"
+            - generic [ref=e92]:
+              - heading "Techninis tyrimas" [level=3] [ref=e93]
+              - paragraph [ref=e94]: Architektūros ir saugyklos peržiūra, kokybės bazavimas, rizikos aptikimas, metrikos fiksavimas.
+          - listitem [ref=e95]:
+            - generic [ref=e97]: "02"
+            - generic [ref=e98]:
+              - heading "Kelių plano suderinimas" [level=3] [ref=e99]
+              - paragraph [ref=e100]: Apibrėžti tikslinius rezultatus, pasirinkti dėmesio sritis, nustatyti sėkmės kriterijus.
+          - listitem [ref=e101]:
+            - generic [ref=e103]: "03"
+            - generic [ref=e104]:
+              - heading "Įgalinimas ir kėlimas" [level=3] [ref=e105]
+              - paragraph [ref=e106]: Refaktoringo sprogimai, testu sistemos patobulinimai, stebėsenos instrumentavimas.
+          - listitem [ref=e107]:
+            - generic [ref=e109]: "04"
+            - generic [ref=e110]:
+              - heading "Matavimas ir perdavimas" [level=3] [ref=e111]
+              - paragraph [ref=e112]: Kiekybiškai įvertinti poveikį, perduoti žinias, sukurti palaikymo vadovus.
+    - generic [ref=e114]:
+      - generic [ref=e115]: Pasirinkti darbai
+      - heading "Atvejų studijos" [level=2] [ref=e116]
+      - paragraph [ref=e117]: Tikri projektai su išmatuojamais rezultatais. Kiekvienas nukreipia į glaustą giluminę analizę.
+      - generic [ref=e118]:
+        - link "Mažmeninės prekybos platforma case study" [ref=e119]:
+          - /url: /project-showcase/retail-platform
+          - img "Mažmeninės prekybos platforma" [ref=e121]
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e124]: E‑prekyba · 6 mėn
+              - generic [ref=e126]: Praleisti defektai sumažėjo 58%
+            - heading "Mažmeninės prekybos platforma" [level=3] [ref=e127]
+            - generic [ref=e128]:
+              - generic [ref=e129]: "-58% defects"
+              - generic [ref=e130]: +28% deploys
+              - generic [ref=e131]: +12 CSAT
+            - generic [ref=e132]:
+              - text: Žiūrėti studiją
+              - img [ref=e133]
+        - link "Fintech API case study" [ref=e135]:
+          - /url: /project-showcase/fintech-api
+          - img "Fintech API" [ref=e137]
+          - generic [ref=e138]:
+            - generic [ref=e139]:
+              - generic [ref=e140]: Fintech · 3 mėn
+              - generic [ref=e142]: Padengimas padidėjo 32%
+            - heading "Fintech API" [level=3] [ref=e143]
+            - generic [ref=e144]:
+              - generic [ref=e145]: +32% coverage
+              - generic [ref=e146]: "-24% incidents"
+              - generic [ref=e147]: "-18% p99"
+            - generic [ref=e148]:
+              - text: Žiūrėti studiją
+              - img [ref=e149]
+        - link "SaaS migracija case study" [ref=e151]:
+          - /url: /project-showcase/saas-migration
+          - img "SaaS migracija" [ref=e153]
+          - generic [ref=e154]:
+            - generic [ref=e155]:
+              - generic [ref=e156]: B2B SaaS · 4 mėn
+              - generic [ref=e158]: MTTR sumažėjo 45%
+            - heading "SaaS migracija" [level=3] [ref=e159]
+            - generic [ref=e160]:
+              - generic [ref=e161]: "-45% MTTR"
+              - generic [ref=e162]: "-60% noise"
+              - generic [ref=e163]: 4/4 SLOs
+            - generic [ref=e164]:
+              - text: Žiūrėti studiją
+              - img [ref=e165]
+      - link "Naršyti visas atvejų studijas" [ref=e168] [cursor=pointer]:
+        - /url: /project-showcase
+    - generic [ref=e170]:
+      - heading "Kontaktai" [level=2] [ref=e171]
+      - paragraph [ref=e172]: Aprašykite savo dabartines problemas ir norimus rezultatus. Gausite greitą atsakymą su pradiniu diagnostiniu požiūriu ir kito žingsnio parinktimis.
+      - generic [ref=e173]:
+        - link "Užsakyti Įžanginį Skambutį Šiandien" [ref=e174] [cursor=pointer]:
+          - /url: /contact
+        - link "Žiūrėti Išsamias Paslaugas" [ref=e175] [cursor=pointer]:
+          - /url: /services
+      - generic [ref=e176]:
+        - paragraph [ref=e177]: "Sekite mus LinkedIn:"
+        - link "Maxwell Software Solutions" [ref=e178]:
+          - /url: https://www.linkedin.com/company/maxwell-software-solutions
+          - img [ref=e179]
+          - text: Maxwell Software Solutions
+    - region "Client perspective" [ref=e181]:
+      - generic [ref=e182]:
+        - heading "Client perspective" [level=2] [ref=e183]
+        - generic [ref=e184]:
+          - figure "VP Engineering, SaaS Platform" [ref=e185]:
+            - blockquote [ref=e186]: “They reduced build flakiness and restructured our test pyramid—deployment confidence went up immediately.”
+            - generic [ref=e187]: VP Engineering, SaaS Platform
+          - figure "Director of Engineering, FinTech" [ref=e188]:
+            - blockquote [ref=e189]: “Our critical path refactor shipped 6 weeks earlier with their architectural guidance.”
+            - generic [ref=e190]: Director of Engineering, FinTech
+          - figure "Principal Engineer, Retail" [ref=e191]:
+            - blockquote [ref=e192]: “Actionable audit, crisp patterns, and measurable reliability improvements across services.”
+            - generic [ref=e193]: Principal Engineer, Retail
+    - region "Engineering leverage, not headcount." [ref=e194]:
+      - generic [ref=e196]:
+        - generic [ref=e197]:
+          - heading "Engineering leverage, not headcount." [level=2] [ref=e198]
+          - paragraph [ref=e199]: We focus on multiplier work—reducing defect surfaces, shrinking lead time to change, and embedding patterns that keep systems adaptable as complexity scales.
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - heading "Architecture clarity" [level=3] [ref=e202]
+            - paragraph [ref=e203]: Surface hidden dependencies & simplify coupling.
+          - generic [ref=e204]:
+            - heading "Confidence metrics" [level=3] [ref=e205]
+            - paragraph [ref=e206]: Meaningful coverage + mutation + failure trend insight.
+          - generic [ref=e207]:
+            - heading "Operational readiness" [level=3] [ref=e208]
+            - paragraph [ref=e209]: Proactive SLOs, trace probes & incident rehearsal.
+    - region "Make quality your velocity advantage." [ref=e210]:
+      - generic [ref=e211]:
+        - heading "Make quality your velocity advantage." [level=2] [ref=e212]
+        - paragraph [ref=e213]: Audit first or targeted uplift—either way, we de-risk the roadmap and unlock faster, safer iteration.
+        - generic [ref=e214]:
+          - link "Begin assessment" [ref=e215] [cursor=pointer]:
+            - /url: /contact
+          - link "View services overview" [ref=e216] [cursor=pointer]:
+            - /url: /services
+  - contentinfo [ref=e217]:
+    - generic [ref=e218]:
+      - generic [ref=e219]:
+        - generic [ref=e220]:
+          - generic [ref=e221]:
+            - img "Maxwell Software Solutions" [ref=e222]
+            - generic [ref=e223]: Crafting reliable software
+          - paragraph [ref=e224]: We help engineering leaders modernise legacy systems, accelerate delivery, and build teams that ship with confidence.
+          - generic [ref=e225]:
+            - generic [ref=e226]:
+              - term [ref=e227]: Email
+              - definition [ref=e228]:
+                - link "admin@maxwellsoftwaresolutions.com" [ref=e229]:
+                  - /url: mailto:admin@maxwellsoftwaresolutions.com
+            - generic [ref=e230]:
+              - term [ref=e231]: Phone
+              - definition [ref=e232]:
+                - link "+37066360662" [ref=e233]:
+                  - /url: tel:+37066360662
+            - generic [ref=e234]:
+              - term [ref=e235]: Hours
+              - definition [ref=e236]: Monday – Friday, 8am – 6pm CT
+        - navigation "Company" [ref=e237]:
+          - paragraph [ref=e238]: Company
+          - list [ref=e239]:
+            - listitem [ref=e240]:
+              - link "Services" [ref=e241]:
+                - /url: /services
+            - listitem [ref=e242]:
+              - link "Project showcase" [ref=e243]:
+                - /url: /project-showcase
+            - listitem [ref=e244]:
+              - link "Consulting process" [ref=e245]:
+                - /url: /consulting-process
+            - listitem [ref=e246]:
+              - link "Insights & articles" [ref=e247]:
+                - /url: /blog
+        - navigation "Resources" [ref=e248]:
+          - paragraph [ref=e249]: Resources
+          - list [ref=e250]:
+            - listitem [ref=e251]:
+              - link "Privacy" [ref=e252]:
+                - /url: /privacy
+            - listitem [ref=e253]:
+              - link "Terms" [ref=e254]:
+                - /url: /terms
+            - listitem [ref=e255]:
+              - link "Security" [ref=e256]:
+                - /url: /security
+          - generic [ref=e257]:
+            - paragraph [ref=e258]: Connect
+            - list [ref=e259]:
+              - listitem [ref=e260]:
+                - link "LinkedIn" [ref=e261]:
+                  - /url: https://www.linkedin.com/company/maxwell-software-solutions
+                  - img [ref=e262]
+                  - text: LinkedIn
+              - listitem [ref=e264]:
+                - link "GitHub" [ref=e265]:
+                  - /url: https://github.com/Maxwell-Software-Solutions
+                  - img [ref=e266]
+                  - text: GitHub
+      - generic [ref=e268]:
+        - paragraph [ref=e269]: © 2025 Maxwell Software Solutions. All rights reserved.
+        - generic [ref=e270]:
+          - link "Privacy" [ref=e271]:
+            - /url: /privacy
+          - link "Terms" [ref=e272]:
+            - /url: /terms
+          - link "Security" [ref=e273]:
+            - /url: /security
+  - iframe [ref=e274]:
+    
+  - button "Open Next.js Dev Tools" [ref=e280] [cursor=pointer]:
+    - img [ref=e281] [cursor=pointer]
+  - alert [ref=e286]
+```

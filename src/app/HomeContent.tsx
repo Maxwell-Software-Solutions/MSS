@@ -13,7 +13,7 @@ export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <main className="min-h-screen font-sans" id="main-content">
+    <>
       <section className="relative hero-gradient section overflow-hidden py-12 sm:py-16 lg:py-20">
         {/* Decorative background layers */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -310,6 +310,6 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
       <DeferredSections />
-    </main>
+    </>
   );
 }
