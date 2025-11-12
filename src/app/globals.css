@@ -338,7 +338,7 @@ header nav .theme-toggle {
 
 /* Mobile menu toggle - visible on mobile and tablet (< 1024px) */
 header nav .menu-toggle {
-  color: var(--color-text);
+  color: var(--color-text) !important;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 12px;
@@ -349,6 +349,11 @@ header nav .menu-toggle {
   border: 1px solid transparent;
   background: transparent;
   box-shadow: none;
+}
+
+header nav .menu-toggle svg {
+  color: var(--color-text) !important;
+  stroke: currentColor;
 }
 
 /* Hide menu toggle on desktop */
