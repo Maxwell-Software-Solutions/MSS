@@ -7,7 +7,7 @@ export default function ContactHero(): ReactElement {
 
   return (
     <>
-      <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[color:var(--accent)]">
+      <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-700 dark:text-slate-300">
         {t('contactPage.eyebrow')}
       </p>
       <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-4xl">
