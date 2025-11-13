@@ -1,0 +1,74 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-cicd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg-cicd)"/>
+  
+  <!-- Pipeline Stages -->
+  <g transform="translate(50, 150)">
+    <!-- Source -->
+    <rect x="0" y="0" width="100" height="100" rx="8" fill="#6366f1" opacity="0.2" stroke="#6366f1" stroke-width="2"/>
+    <text x="50" y="45" font-family="sans-serif" font-size="12" font-weight="bold" fill="#6366f1" text-anchor="middle">Source</text>
+    <text x="50" y="65" font-family="monospace" font-size="10" fill="#334155" text-anchor="middle">git push</text>
+    <circle cx="50" cy="85" r="6" fill="#10b981"/>
+    
+    <!-- Arrow -->
+    <path d="M 110 50 L 130 50" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Build -->
+    <rect x="140" y="0" width="100" height="100" rx="8" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="2"/>
+    <text x="190" y="45" font-family="sans-serif" font-size="12" font-weight="bold" fill="#8b5cf6" text-anchor="middle">Build</text>
+    <text x="190" y="65" font-family="monospace" font-size="10" fill="#334155" text-anchor="middle">compile</text>
+    <circle cx="190" cy="85" r="6" fill="#10b981"/>
+    
+    <!-- Arrow -->
+    <path d="M 250 50 L 270 50" stroke="#94a3b8" stroke-width="2" fill="none"/>
+    
+    <!-- Test -->
+    <rect x="280" y="0" width="100" height="100" rx="8" fill="#06b6d4" opacity="0.2" stroke="#06b6d4" stroke-width="2"/>
+    <text x="330" y="45" font-family="sans-serif" font-size="12" font-weight="bold" fill="#06b6d4" text-anchor="middle">Test</text>
+    <text x="330" y="65" font-family="monospace" font-size="10" fill="#334155" text-anchor="middle">jest</text>
+    <circle cx="330" cy="85" r="6" fill="#10b981"/>
+    
+    <!-- Arrow -->
+    <path d="M 390 50 L 410 50" stroke="#94a3b8" stroke-width="2" fill="none"/>
+    
+    <!-- Security -->
+    <rect x="420" y="0" width="100" height="100" rx="8" fill="#f59e0b" opacity="0.2" stroke="#f59e0b" stroke-width="2"/>
+    <text x="470" y="45" font-family="sans-serif" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="middle">Security</text>
+    <text x="470" y="65" font-family="monospace" font-size="10" fill="#334155" text-anchor="middle">scan</text>
+    <circle cx="470" cy="85" r="6" fill="#10b981"/>
+    
+    <!-- Arrow -->
+    <path d="M 530 50 L 550 50" stroke="#94a3b8" stroke-width="2" fill="none"/>
+    
+    <!-- Deploy -->
+    <rect x="560" y="0" width="100" height="100" rx="8" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="2"/>
+    <text x="610" y="45" font-family="sans-serif" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle">Deploy</text>
+    <text x="610" y="65" font-family="monospace" font-size="10" fill="#334155" text-anchor="middle">production</text>
+    <circle cx="610" cy="85" r="6" fill="#10b981"/>
+  </g>
+  
+  <!-- Automated Badge -->
+  <g transform="translate(650, 20)">
+    <rect x="0" y="0" width="130" height="40" rx="20" fill="#10b981" opacity="0.2"/>
+    <text x="65" y="26" font-family="sans-serif" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle">Automated</text>
+  </g>
+  
+  <!-- CI/CD Label -->
+  <g transform="translate(50, 50)">
+    <text x="0" y="0" font-family="sans-serif" font-size="24" font-weight="bold" fill="#334155">CI/CD Pipeline</text>
+  </g>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>
