@@ -121,6 +121,81 @@ const CASES = {
       { label: 'SLOs met', value: '4/4' },
     ],
   },
+  'healthcare-platform': {
+    title: 'Healthcare Platform — Security Audit Pass Rate 100%',
+    subtitle: 'Legacy modernization with HIPAA compliance, improving code quality and deployment velocity.',
+    hero: '/images/case-studies/healthcare-platform.svg',
+    meta: 'Healthcare · Python/Django · 5 months',
+    context: [
+      'Decade-old patient management system with manual deployments and no automated testing.',
+      'HIPAA audit failures due to inadequate security controls and undocumented data flows.',
+    ],
+    actions: [
+      'Implemented comprehensive test suite covering critical patient data workflows.',
+      'Added automated security scanning, secrets management, and audit logging.',
+      'Refactored authentication layer with RBAC and session management hardening.',
+    ],
+    results: [
+      'Passed HIPAA security audit with zero findings on second attempt.',
+      'Test coverage increased from 12% to 76% for core modules.',
+      'Deploy time reduced from 4 hours (manual) to 15 minutes (automated).',
+    ],
+    metrics: [
+      { label: 'Test coverage', value: '+64%' },
+      { label: 'Deploy time', value: '-94%' },
+      { label: 'Security findings', value: '0' },
+    ],
+  },
+  'edtech-startup': {
+    title: 'EdTech Startup — Load Capacity Up 340%',
+    subtitle: 'Testing pyramid and performance optimization enabled rapid user growth without infrastructure bloat.',
+    hero: '/images/case-studies/edtech-startup.svg',
+    meta: 'Education · React/Node · 3 months',
+    context: [
+      'Viral growth from 5K to 50K+ concurrent users crashed the platform during peak hours.',
+      'No load testing or performance benchmarks; reactive firefighting became the norm.',
+    ],
+    actions: [
+      'Established testing strategy: unit, integration, E2E, and load tests with clear ownership.',
+      'Optimized database queries and added Redis caching for frequent read paths.',
+      'Implemented auto-scaling policies and CDN for static assets.',
+    ],
+    results: [
+      'Platform handled 340% user growth without additional servers.',
+      'Page load time reduced 67% for the most-used student dashboard.',
+      'Zero downtime during peak registration periods for 3 consecutive semesters.',
+    ],
+    metrics: [
+      { label: 'Load capacity', value: '+340%' },
+      { label: 'Page load time', value: '-67%' },
+      { label: 'Peak downtime', value: '0' },
+    ],
+  },
+  'iot-platform': {
+    title: 'IoT Platform — Data Loss Down 89%',
+    subtitle: 'Observability and pipeline resilience improvements for manufacturing telemetry system.',
+    hero: '/images/case-studies/iot-platform.svg',
+    meta: 'Manufacturing · Go/Kafka · 4 months',
+    context: [
+      'Sensor data pipeline losing messages during network hiccups and service restarts.',
+      'No visibility into processing lag or data quality; manual reconciliation took days.',
+    ],
+    actions: [
+      'Added distributed tracing and metrics for pipeline stages (ingestion, transform, storage).',
+      'Implemented at-least-once delivery with idempotent consumers and dead-letter queues.',
+      'Created automated data quality checks and alerting on anomalies.',
+    ],
+    results: [
+      'Message loss reduced from 3.2% to 0.35% under normal conditions.',
+      'Processing lag visibility enabled proactive scaling before SLA breaches.',
+      'Data reconciliation time dropped from 8 hours to 20 minutes.',
+    ],
+    metrics: [
+      { label: 'Data loss', value: '-89%' },
+      { label: 'Reconciliation time', value: '-96%' },
+      { label: 'Pipeline visibility', value: '100%' },
+    ],
+  },
 } as const;
 
 type Slug = keyof typeof CASES;

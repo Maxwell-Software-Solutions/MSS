@@ -31,6 +31,9 @@ describe('Project Showcase page', () => {
     expect(screen.getByRole('link', { name: /Retail platform|Mažmeninės prekybos platforma/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Fintech API/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /SaaS migration|SaaS migracija/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /Healthcare platform|Sveikatos priežiūros platforma/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /EdTech startup|EdTech startuolis/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /IoT platform|IoT platforma/i })).toBeInTheDocument();
   });
 
   it('renders case study summaries', () => {
@@ -45,18 +48,24 @@ describe('Project Showcase page', () => {
     expect(screen.getByText(/E‑commerce.*Node\/Next.*6 m/i)).toBeInTheDocument();
     expect(screen.getByText(/Fintech.*Go\/TypeScript.*3 m/i)).toBeInTheDocument();
     expect(screen.getByText(/B2B SaaS.*Kubernetes.*4 m/i)).toBeInTheDocument();
+    expect(screen.getByText(/Healthcare.*Python\/Django.*5 m/i)).toBeInTheDocument();
+    expect(screen.getByText(/Education.*React\/Node.*3 m/i)).toBeInTheDocument();
+    expect(screen.getByText(/Manufacturing.*Go\/Kafka.*4 m/i)).toBeInTheDocument();
   });
 
   it('renders case study cards with proper aria labels', () => {
     render(<CaseStudiesIndex />);
     // Images now have empty alt with role="presentation", check aria-label on links instead
     const links = screen.getAllByRole('link');
-    expect(links.length).toBeGreaterThanOrEqual(3);
+    expect(links.length).toBeGreaterThanOrEqual(6);
 
     // Check that links have descriptive aria-labels
     expect(screen.getByLabelText(/View case study:.*Retail platform/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/View case study:.*Fintech API/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/View case study:.*SaaS migration/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/View case study:.*Healthcare platform/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/View case study:.*EdTech startup/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/View case study:.*IoT platform/i)).toBeInTheDocument();
   });
 
   it('has proper heading hierarchy', () => {
@@ -65,7 +74,7 @@ describe('Project Showcase page', () => {
     expect(mainHeading).toHaveTextContent(/Case studies|Atvejų studijos/i);
 
     const caseStudyHeadings = screen.getAllByRole('heading', { level: 2 });
-    expect(caseStudyHeadings).toHaveLength(3);
+    expect(caseStudyHeadings).toHaveLength(6);
   });
 
   it('has no accessibility violations', async () => {

@@ -58,6 +58,15 @@
   "projects.saas.title": "SaaS migration",
   "projects.saas.meta": "B2B SaaS · 4 mo",
   "projects.saas.outcome": "MTTR down 45%",
+  "projects.healthcare.title": "Healthcare platform",
+  "projects.healthcare.meta": "Healthcare · 5 mo",
+  "projects.healthcare.outcome": "Security audit pass rate 100%",
+  "projects.edtech.title": "EdTech startup",
+  "projects.edtech.meta": "Education · 3 mo",
+  "projects.edtech.outcome": "Load capacity up 340%",
+  "projects.iot.title": "IoT platform",
+  "projects.iot.meta": "Manufacturing · 4 mo",
+  "projects.iot.outcome": "Data loss down 89%",
   "projects.viewStudy": "View study",
   "projects.browseAll": "Browse all case studies",
   
@@ -183,5 +192,14 @@
   "caseStudies.fintech.meta": "Fintech · Go/TypeScript · 3 months",
   "caseStudies.saas.title": "SaaS migration — MTTR down 45%",
   "caseStudies.saas.summary": "Observability, SLOs, and automated runbooks.",
-  "caseStudies.saas.meta": "B2B SaaS · Kubernetes · 4 months"
+  "caseStudies.saas.meta": "B2B SaaS · Kubernetes · 4 months",
+  "caseStudies.healthcare.title": "Healthcare platform — security audit pass rate 100%",
+  "caseStudies.healthcare.summary": "Legacy modernization with HIPAA compliance and testing.",
+  "caseStudies.healthcare.meta": "Healthcare · Python/Django · 5 months",
+  "caseStudies.edtech.title": "EdTech startup — load capacity up 340%",
+  "caseStudies.edtech.summary": "Testing strategy and performance optimization for growth.",
+  "caseStudies.edtech.meta": "Education · React/Node · 3 months",
+  "caseStudies.iot.title": "IoT platform — data loss down 89%",
+  "caseStudies.iot.summary": "Pipeline resilience and observability for telemetry.",
+  "caseStudies.iot.meta": "Manufacturing · Go/Kafka · 4 months"
 }
