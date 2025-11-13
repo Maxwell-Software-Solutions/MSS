@@ -49,7 +49,7 @@ describe('Blog page', () => {
     render(<BlogIndexPage />);
     expect(screen.getByAltText('SOLID Principles illustration')).toBeInTheDocument();
     expect(
-      screen.getByAltText('Test-Driven Development showing business metrics and code quality')
+      screen.getByAltText('Test-Driven Development cycle diagram')
     ).toBeInTheDocument();
   });
 

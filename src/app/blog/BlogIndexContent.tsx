@@ -18,8 +18,8 @@ export default function BlogIndexContent(): ReactElement {
         {/* SOLID Principles Post */}
         <article className="group">
           <Link href="/blog/solid-principles" className="block">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5">
+            <div className="flex flex-col gap-6">
+              <div className="relative h-56 lg:h-64 rounded-xl overflow-hidden bg-foreground/5">
                 <Image
                   src="/images/blog/solid-principles-hero.svg"
                   alt="SOLID Principles illustration"
@@ -55,8 +55,8 @@ export default function BlogIndexContent(): ReactElement {
         {/* Test-Driven Development Post */}
         <article className="group">
           <Link href="/blog/test-driven-development" className="block">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5 order-2 lg:order-1">
+            <div className="flex flex-col gap-6">
+              <div className="relative h-56 lg:h-64 rounded-xl overflow-hidden bg-foreground/5">
                 <Image
                   src="/images/blog/tdd-hero.svg"
                   alt="Test-Driven Development cycle diagram"
@@ -64,7 +64,7 @@ export default function BlogIndexContent(): ReactElement {
                   className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
                 />
               </div>
-              <div className="order-1 lg:order-2">
+              <div>
                 <div className="flex items-center gap-2 text-sm text-foreground/75 mb-3">
                   <time dateTime="2024-12-19">{t('blog.tdd.date')}</time>
                   <span>•</span>
@@ -92,8 +92,8 @@ export default function BlogIndexContent(): ReactElement {
         {/* Refactoring Legacy Code Post */}
         <article className="group">
           <Link href="/blog/refactoring-legacy-code" className="block">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5">
+            <div className="flex flex-col gap-6">
+              <div className="relative h-56 lg:h-64 rounded-xl overflow-hidden bg-foreground/5">
                 <Image
                   src="/images/blog/refactoring-hero.svg"
                   alt="Code refactoring process visualization"
@@ -129,8 +129,8 @@ export default function BlogIndexContent(): ReactElement {
         {/* API Design Best Practices Post */}
         <article className="group">
           <Link href="/blog/api-design-best-practices" className="block">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5 order-2 lg:order-1">
+            <div className="flex flex-col gap-6">
+              <div className="relative h-56 lg:h-64 rounded-xl overflow-hidden bg-foreground/5">
                 <Image
                   src="/images/blog/api-design-hero.svg"
                   alt="API Design illustration showing RESTful endpoints and HTTP methods"
@@ -138,7 +138,7 @@ export default function BlogIndexContent(): ReactElement {
                   className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
                 />
               </div>
-              <div className="order-1 lg:order-2">
+              <div>
                 <div className="flex items-center gap-2 text-sm text-foreground/75 mb-3">
                   <time dateTime="2024-12-20">{t('blog.api.date')}</time>
                   <span>•</span>
@@ -166,8 +166,8 @@ export default function BlogIndexContent(): ReactElement {
         {/* Microservices Architecture Post */}
         <article className="group">
           <Link href="/blog/microservices-architecture" className="block">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5">
+            <div className="flex flex-col gap-6">
+              <div className="relative h-56 lg:h-64 rounded-xl overflow-hidden bg-foreground/5">
                 <Image
                   src="/images/blog/microservices-hero.svg"
                   alt="Microservices architecture diagram showing independent services communicating"
@@ -203,8 +203,8 @@ export default function BlogIndexContent(): ReactElement {
         {/* CI/CD Pipelines Post */}
         <article className="group">
           <Link href="/blog/ci-cd-pipelines" className="block">
-            <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5 order-2 lg:order-1">
+            <div className="flex flex-col gap-6">
+              <div className="relative h-56 lg:h-64 rounded-xl overflow-hidden bg-foreground/5">
                 <Image
                   src="/images/blog/cicd-hero.svg"
                   alt="CI/CD pipeline diagram showing automated build, test, and deployment stages"
@@ -212,7 +212,7 @@ export default function BlogIndexContent(): ReactElement {
                   className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
                 />
               </div>
-              <div className="order-1 lg:order-2">
+              <div>
                 <div className="flex items-center gap-2 text-sm text-foreground/75 mb-3">
                   <time dateTime="2024-12-22">{t('blog.cicd.date')}</time>
                   <span>•</span>
