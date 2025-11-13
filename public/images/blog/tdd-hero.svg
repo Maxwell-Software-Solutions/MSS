@@ -1,0 +1,60 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tdd-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tdd-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tdd-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tdd-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#tdd-bg)"/>
+
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Test-Driven Development Cycle</text>
+
+  <!-- Red Circle - Write Test -->
+  <circle cx="200" cy="200" r="70" fill="none" stroke="url(#tdd-red)" stroke-width="4"/>
+  <text x="200" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle">RED</text>
+  <text x="200" y="215" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Write Test</text>
+
+  <!-- Green Circle - Make it Pass -->
+  <circle cx="400" cy="200" r="70" fill="none" stroke="url(#tdd-green)" stroke-width="4"/>
+  <text x="400" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle">GREEN</text>
+  <text x="400" y="215" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Make it Pass</text>
+
+  <!-- Blue Circle - Refactor -->
+  <circle cx="600" cy="200" r="70" fill="none" stroke="url(#tdd-blue)" stroke-width="4"/>
+  <text x="600" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle">REFACTOR</text>
+  <text x="600" y="215" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Improve Code</text>
+
+  <!-- Arrows connecting the circles -->
+  <defs>
+    <marker id="arrowhead-tdd" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#94a3b8" />
+    </marker>
+  </defs>
+
+  <!-- Arrow from Red to Green -->
+  <path d="M 270 200 L 330 200" stroke="#94a3b8" stroke-width="3" fill="none" marker-end="url(#arrowhead-tdd)"/>
+
+  <!-- Arrow from Green to Blue -->
+  <path d="M 470 200 L 530 200" stroke="#94a3b8" stroke-width="3" fill="none" marker-end="url(#arrowhead-tdd)"/>
+
+  <!-- Arrow from Blue back to Red (curved) -->
+  <path d="M 600 270 Q 400 340, 200 270" stroke="#94a3b8" stroke-width="3" fill="none" marker-end="url(#arrowhead-tdd)" stroke-dasharray="5,5"/>
+
+  <!-- Bottom text -->
+  <text x="400" y="360" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Continuous Quality Improvement</text>
+</svg>

@@ -35,10 +35,10 @@ describe('APIDesignPost', () => {
         <APIDesignPost />
       </LanguageProvider>
     );
-    expect(screen.getByText(/RESTful Design Principles/i)).toBeInTheDocument();
-    expect(screen.getByText(/Resource Naming Conventions/i)).toBeInTheDocument();
-    expect(screen.getByText(/API Versioning Strategies/i)).toBeInTheDocument();
-    expect(screen.getByText(/Security Best Practices/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/RESTful Design Principles/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/Resource Naming Conventions/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/API Versioning Strategies/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/Security Best Practices/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it('includes code examples', () => {
@@ -47,7 +47,7 @@ describe('APIDesignPost', () => {
         <APIDesignPost />
       </LanguageProvider>
     );
-    expect(screen.getByText(/GET \/users/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/GET \/users/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText(/POST \/users/i)).toBeInTheDocument();
   });
 });

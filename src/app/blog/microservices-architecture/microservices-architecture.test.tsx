@@ -17,7 +17,7 @@ describe('MicroservicesPost', () => {
         <MicroservicesPost />
       </LanguageProvider>
     );
-    expect(screen.getByText(/Microservices Architecture/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Microservices Architecture/i })).toBeInTheDocument();
   });
 
   it('renders table of contents', () => {
@@ -35,10 +35,10 @@ describe('MicroservicesPost', () => {
         <MicroservicesPost />
       </LanguageProvider>
     );
-    expect(screen.getByText(/What Are Microservices?/i)).toBeInTheDocument();
-    expect(screen.getByText(/When to Use Microservices/i)).toBeInTheDocument();
-    expect(screen.getByText(/Core Microservices Patterns/i)).toBeInTheDocument();
-    expect(screen.getByText(/Common Challenges & Solutions/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/What Are Microservices?/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/When to Use Microservices/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/Core Microservices Patterns/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/Common Challenges & Solutions/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it('includes warning about starting with monolith', () => {

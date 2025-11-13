@@ -1,0 +1,58 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="refactor-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="refactor-old" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#991b1b;stop-opacity:0.3" />
+    </linearGradient>
+    <linearGradient id="refactor-new" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#refactor-bg)"/>
+
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Code Refactoring Process</text>
+
+  <!-- Legacy Code Box -->
+  <rect x="80" y="120" width="250" height="220" rx="12" fill="url(#refactor-old)" stroke="#ef4444" stroke-width="3" stroke-dasharray="8,4"/>
+  <text x="205" y="155" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle">Legacy</text>
+  
+  <!-- Legacy issues -->
+  <text x="100" y="185" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• God Class</text>
+  <text x="100" y="210" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Duplicate Logic</text>
+  <text x="100" y="235" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Tight Coupling</text>
+  <text x="100" y="260" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• No Tests</text>
+  <text x="100" y="285" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Hidden Bugs</text>
+  <text x="100" y="310" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• High Risk</text>
+
+  <!-- Refactor Arrow -->
+  <defs>
+    <marker id="arrowhead-refactor" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto">
+      <polygon points="0 0, 12 6, 0 12" fill="#3b82f6" />
+    </marker>
+  </defs>
+  <path d="M 335 230 L 460 230" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#arrowhead-refactor)"/>
+  <text x="397" y="220" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle">Refactor</text>
+
+  <!-- Refactored Code Box -->
+  <rect x="470" y="120" width="250" height="220" rx="12" fill="url(#refactor-new)" stroke="#10b981" stroke-width="3"/>
+  <text x="595" y="155" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle">Refactored</text>
+  
+  <!-- Refactored benefits -->
+  <text x="490" y="185" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Cohesive</text>
+  <text x="490" y="210" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• DRY</text>
+  <text x="490" y="235" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Loose Coupling</text>
+  <text x="490" y="260" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Tests</text>
+  <text x="490" y="285" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Transparent</text>
+  <text x="490" y="310" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Lower Risk</text>
+
+  <!-- Bottom text -->
+  <text x="400" y="375" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Improving Code Quality Without Changing Behavior</text>
+</svg>

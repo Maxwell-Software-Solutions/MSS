@@ -35,7 +35,7 @@ describe('Blog page', () => {
       screen.getByRole('link', { name: /Test-Driven Development|Testu Grindžiamas Kūrimas/i })
     ).toBeInTheDocument();
     expect(screen.getByText(/Discover how TDD reduces costs|Sužinokite, kaip TDD sumažina išlaidas/i)).toBeInTheDocument();
-    expect(screen.getByText(/10 min read|10 min skaitymo/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/10 min read|10 min skaitymo/i).length).toBeGreaterThanOrEqual(1);
     // Category appears multiple times (badge and potentially in content), so use getAllByText
     expect(screen.getAllByText(/Business Value|Verslo vertė/i).length).toBeGreaterThanOrEqual(1);
   });

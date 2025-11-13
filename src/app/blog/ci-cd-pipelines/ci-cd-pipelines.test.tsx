@@ -17,7 +17,7 @@ describe('CICDPost', () => {
         <CICDPost />
       </LanguageProvider>
     );
-    expect(screen.getByText(/Modern CI\/CD Pipelines/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Modern CI\/CD Pipelines/i })).toBeInTheDocument();
   });
 
   it('renders table of contents', () => {
@@ -35,10 +35,10 @@ describe('CICDPost', () => {
         <CICDPost />
       </LanguageProvider>
     );
-    expect(screen.getByText(/CI\/CD Fundamentals/i)).toBeInTheDocument();
-    expect(screen.getByText(/Automated Testing Strategy/i)).toBeInTheDocument();
-    expect(screen.getByText(/Deployment Strategies/i)).toBeInTheDocument();
-    expect(screen.getByText(/Security in CI\/CD/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/CI\/CD Fundamentals/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/Automated Testing Strategy/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/Deployment Strategies/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/Security in CI\/CD/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it('includes deployment strategy information', () => {
@@ -48,6 +48,6 @@ describe('CICDPost', () => {
       </LanguageProvider>
     );
     expect(screen.getByText(/Blue-Green Deployment/i)).toBeInTheDocument();
-    expect(screen.getByText(/Canary Deployment/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Canary Deployment/i).length).toBeGreaterThanOrEqual(1);
   });
 });

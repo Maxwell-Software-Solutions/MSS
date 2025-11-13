@@ -19,12 +19,12 @@ export default function BlogIndexContent(): ReactElement {
         <article className="group">
           <Link href="/blog/solid-principles" className="block">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-48 lg:h-64 rounded-xl overflow-hidden">
+              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5">
                 <Image
                   src="/images/blog/solid-principles-hero.svg"
                   alt="SOLID Principles illustration"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
                 />
               </div>
               <div>
@@ -56,12 +56,12 @@ export default function BlogIndexContent(): ReactElement {
         <article className="group">
           <Link href="/blog/test-driven-development" className="block">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-48 lg:h-64 rounded-xl overflow-hidden order-2 lg:order-1">
+              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5 order-2 lg:order-1">
                 <Image
-                  src="/images/blog/tdd-business-value.svg"
-                  alt="Test-Driven Development showing business metrics and code quality"
+                  src="/images/blog/tdd-hero.svg"
+                  alt="Test-Driven Development cycle diagram"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
                 />
               </div>
               <div className="order-1 lg:order-2">
@@ -93,12 +93,12 @@ export default function BlogIndexContent(): ReactElement {
         <article className="group">
           <Link href="/blog/refactoring-legacy-code" className="block">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-48 lg:h-64 rounded-xl overflow-hidden">
+              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5">
                 <Image
-                  src="/images/blog/refactoring-legacy-code.svg"
-                  alt="Legacy code refactoring showing transformation from old to new architecture"
+                  src="/images/blog/refactoring-hero.svg"
+                  alt="Code refactoring process visualization"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
                 />
               </div>
               <div>
@@ -130,12 +130,12 @@ export default function BlogIndexContent(): ReactElement {
         <article className="group">
           <Link href="/blog/api-design-best-practices" className="block">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-48 lg:h-64 rounded-xl overflow-hidden order-2 lg:order-1">
+              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5 order-2 lg:order-1">
                 <Image
                   src="/images/blog/api-design-hero.svg"
                   alt="API Design illustration showing RESTful endpoints and HTTP methods"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
                 />
               </div>
               <div className="order-1 lg:order-2">
@@ -167,12 +167,12 @@ export default function BlogIndexContent(): ReactElement {
         <article className="group">
           <Link href="/blog/microservices-architecture" className="block">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-48 lg:h-64 rounded-xl overflow-hidden">
+              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5">
                 <Image
                   src="/images/blog/microservices-hero.svg"
                   alt="Microservices architecture diagram showing independent services communicating"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
                 />
               </div>
               <div>
@@ -204,12 +204,12 @@ export default function BlogIndexContent(): ReactElement {
         <article className="group">
           <Link href="/blog/ci-cd-pipelines" className="block">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-48 lg:h-64 rounded-xl overflow-hidden order-2 lg:order-1">
+              <div className="relative h-56 lg:h-72 rounded-xl overflow-hidden bg-foreground/5 order-2 lg:order-1">
                 <Image
                   src="/images/blog/cicd-hero.svg"
                   alt="CI/CD pipeline diagram showing automated build, test, and deployment stages"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
                 />
               </div>
               <div className="order-1 lg:order-2">
