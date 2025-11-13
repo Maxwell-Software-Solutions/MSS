@@ -54,6 +54,15 @@
   "projects.saas.title": "SaaS migracija",
   "projects.saas.meta": "B2B SaaS · 4 mėn",
   "projects.saas.outcome": "MTTR sumažėjo 45%",
+  "projects.healthcare.title": "Sveikatos priežiūros platforma",
+  "projects.healthcare.meta": "Sveikatos priežiūra · 5 mėn",
+  "projects.healthcare.outcome": "Saugumo audito sėkmingumas 100%",
+  "projects.edtech.title": "EdTech startuolis",
+  "projects.edtech.meta": "Švietimas · 3 mėn",
+  "projects.edtech.outcome": "Apkrovos pajėgumas padidėjo 340%",
+  "projects.iot.title": "IoT platforma",
+  "projects.iot.meta": "Gamyba · 4 mėn",
+  "projects.iot.outcome": "Duomenų praradimas sumažėjo 89%",
   "projects.viewStudy": "Žiūrėti studiją",
   "projects.browseAll": "Naršyti visas atvejų studijas",
   
@@ -182,5 +191,14 @@
   "caseStudies.fintech.meta": "Fintech · Go/TypeScript · 3 mėn",
   "caseStudies.saas.title": "SaaS migracija — MTTR sumažėjo 45%",
   "caseStudies.saas.summary": "Stebėsena, SLO ir automatizuoti veikimo vadovai.",
-  "caseStudies.saas.meta": "B2B SaaS · Kubernetes · 4 mėn"
+  "caseStudies.saas.meta": "B2B SaaS · Kubernetes · 4 mėn",
+  "caseStudies.healthcare.title": "Sveikatos priežiūros platforma — saugumo audito sėkmingumas 100%",
+  "caseStudies.healthcare.summary": "Pasenusios sistemos modernizavimas su HIPAA atitiktimi ir testavimu.",
+  "caseStudies.healthcare.meta": "Sveikatos priežiūra · Python/Django · 5 mėn",
+  "caseStudies.edtech.title": "EdTech startuolis — apkrovos pajėgumas padidėjo 340%",
+  "caseStudies.edtech.summary": "Testavimo strategija ir našumo optimizavimas augimui.",
+  "caseStudies.edtech.meta": "Švietimas · React/Node · 3 mėn",
+  "caseStudies.iot.title": "IoT platforma — duomenų praradimas sumažėjo 89%",
+  "caseStudies.iot.summary": "Vamzdyno atsparumas ir stebėsena telemetrijai.",
+  "caseStudies.iot.meta": "Gamyba · Go/Kafka · 4 mėn"
 }
