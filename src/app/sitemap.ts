@@ -3,11 +3,11 @@ import { SITE_CONFIG, PAGES, BLOG_POSTS, PROJECTS } from '@/lib/seo/data';
 
 /**
  * Dynamic sitemap generated from central data registry
- * 
+ *
  * Next.js automatically converts this to XML and serves at /sitemap.xml
  * All URLs, dates, and priorities are calculated from the central data,
  * ensuring the sitemap stays in sync without manual updates.
- * 
+ *
  * @returns Sitemap entries for all pages, blog posts, and projects
  */
 export default function sitemap(): MetadataRoute.Sitemap {
