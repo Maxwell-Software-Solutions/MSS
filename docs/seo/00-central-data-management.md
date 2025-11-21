@@ -1,0 +1,613 @@
+# Central SEO Data Management
+
+**Priority**: Foundation for all other SEO implementations  
+**Effort**: 2-3 hours  
+**Maintainability**: ⭐⭐⭐⭐⭐
+
+## Overview
+
+This document establishes the **single source of truth** for all SEO-related data, preventing duplication and ensuring consistency across the entire application.
+
+## Architecture Principles
+
+1. **Single Source of Truth**: All SEO content lives in centralized data files
+2. **Type Safety**: TypeScript interfaces ensure data consistency
+3. **DRY**: No duplicate metadata definitions across pages
+4. **Atomic Components**: Small, reusable SEO components
+5. **Dynamic Generation**: Metadata computed from central data
+
+---
+
+## 1. Central Data Structure
+
+### Create `src/lib/seo/data.ts`
+
+```typescript
+/**
+ * Central SEO data repository
+ * All page metadata, structured data, and SEO content defined here
+ */
+
+// Type definitions
+export interface PageMetadata {
+  title: string;
+  description: string;
+  keywords: string[];
+  canonical: string;
+  ogType?: 'website' | 'article' | 'profile';
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: string;
+  tags?: string[];
+}
+
+export interface BlogPostMeta extends PageMetadata {
+  slug: string;
+  author: string;
+  publishedTime: string;
+  modifiedTime?: string;
+  readTime: string;
+  category: string;
+  excerpt: string;
+}
+
+export interface ProjectMeta {
+  slug: string;
+  title: string;
+  description: string;
+  metrics: string[];
+  industry: string;
+  technologies: string[];
+  publishedDate: string;
+}
+
+// Site-wide constants
+export const SITE_CONFIG = {
+  name: 'Maxwell Software Solutions',
+  title: 'Engineering Excellence Through Quality & Reliability',
+  description:
+    'Elite software engineering consultancy specializing in code quality audits, test-driven development, CI/CD optimization, and reliability engineering.',
+  url: 'https://maxwell-software.com',
+  locale: 'en_US',
+  alternateLocale: 'lt_LT',
+  email: 'contact@maxwell-software.com',
+  foundingDate: '2024-01-01',
+  address: {
+    country: 'LT',
+  },
+  social: {
+    linkedin: 'https://www.linkedin.com/company/maxwell-software-solutions',
+    github: 'https://github.com/Maxwell-Software-Solutions',
+    twitter: '@maxwellsoftware', // Update if available
+  },
+} as const;
+
+// Keywords by category (reusable across pages)
+export const KEYWORD_SETS = {
+  core: [
+    'software engineering consultancy',
+    'code quality audit',
+    'reliability engineering',
+    'technical debt reduction',
+  ],
+  testing: ['test-driven development', 'TDD', 'software testing strategy', 'automated testing'],
+  devops: ['CI/CD optimization', 'DevOps best practices', 'continuous integration', 'deployment automation'],
+  architecture: ['software architecture', 'clean code', 'SOLID principles', 'design patterns'],
+} as const;
+
+// Page metadata registry
+export const PAGES: Record<string, PageMetadata> = {
+  home: {
+    title: 'Maxwell Software Solutions — Engineering Excellence Through Quality & Reliability',
+    description: SITE_CONFIG.description,
+    keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.testing, ...KEYWORD_SETS.devops],
+    canonical: '/',
+    ogType: 'website',
+  },
+  about: {
+    title: 'About Us — Our Approach to Software Engineering Excellence',
+    description:
+      'Learn about our engineering philosophy, team expertise, and commitment to delivering high-quality software solutions through proven practices.',
+    keywords: [...KEYWORD_SETS.core, 'software consulting team', 'engineering expertise'],
+    canonical: '/about',
+  },
+  services: {
+    title: 'Services — Code Quality, Testing & CI/CD Optimization',
+    description:
+      'Professional software engineering services: code quality audits, reliability engineering, testing strategy, CI/CD hardening, and technical debt reduction.',
+    keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.testing, ...KEYWORD_SETS.devops],
+    canonical: '/services',
+  },
+  contact: {
+    title: 'Contact Us — Start Your Software Quality Journey',
+    description:
+      "Get in touch with our engineering team to discuss your code quality, testing, or DevOps challenges. We're here to help.",
+    keywords: ['software consulting contact', 'engineering services inquiry', ...KEYWORD_SETS.core],
+    canonical: '/contact',
+  },
+  blog: {
+    title: 'Engineering Insights — Blog',
+    description:
+      'Expert insights on software engineering, testing, architecture, and DevOps best practices from the Maxwell Software Solutions team.',
+    keywords: [...KEYWORD_SETS.architecture, ...KEYWORD_SETS.testing, 'software engineering blog'],
+    canonical: '/blog',
+  },
+  projectShowcase: {
+    title: 'Case Studies — Real-World Engineering Success Stories',
+    description:
+      'Explore our portfolio of successful software quality transformations, reliability improvements, and engineering excellence initiatives.',
+    keywords: ['software case studies', 'engineering portfolio', ...KEYWORD_SETS.core],
+    canonical: '/project-showcase',
+  },
+  founders: {
+    title: 'Our Founders — Leadership in Software Engineering',
+    description:
+      'Meet the experienced software engineers leading Maxwell Software Solutions with decades of combined expertise.',
+    keywords: ['software engineering leadership', 'founders', 'engineering team'],
+    canonical: '/founders',
+  },
+  privacy: {
+    title: 'Privacy Policy',
+    description: 'Our privacy policy and data protection practices.',
+    keywords: ['privacy policy', 'data protection'],
+    canonical: '/privacy',
+  },
+  security: {
+    title: 'Security',
+    description: 'Our security practices and commitment to protecting your information.',
+    keywords: ['security practices', 'data security'],
+    canonical: '/security',
+  },
+  terms: {
+    title: 'Terms of Service',
+    description: 'Terms and conditions for using Maxwell Software Solutions services.',
+    keywords: ['terms of service', 'legal'],
+    canonical: '/terms',
+  },
+};
+
+// Blog posts registry (single source of truth)
+export const BLOG_POSTS: Record<string, BlogPostMeta> = {
+  'solid-principles': {
+    slug: 'solid-principles',
+    title: 'SOLID Principles: The Foundation of Clean Code',
+    description:
+      'Master the five SOLID principles that form the foundation of clean, maintainable, and scalable software architecture.',
+    excerpt:
+      'Learn how Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion principles create robust software.',
+    keywords: [...KEYWORD_SETS.architecture, 'SOLID', 'object-oriented design', 'software principles'],
+    canonical: '/blog/solid-principles',
+    ogType: 'article',
+    author: 'Maxwell Software Solutions',
+    publishedTime: '2024-12-19T00:00:00.000Z',
+    modifiedTime: '2024-12-19T00:00:00.000Z',
+    readTime: '8 min read',
+    category: 'Software Architecture',
+    section: 'Software Engineering',
+    tags: ['SOLID', 'Clean Code', 'Architecture', 'Design Patterns'],
+  },
+  'test-driven-development': {
+    slug: 'test-driven-development',
+    title: 'Test-Driven Development: A Practical Guide',
+    description:
+      'Learn how to implement TDD effectively with real-world examples, best practices, and common pitfalls to avoid.',
+    excerpt:
+      'Discover the Red-Green-Refactor cycle and how TDD improves code quality, reduces bugs, and accelerates development.',
+    keywords: [...KEYWORD_SETS.testing, 'TDD tutorial', 'red green refactor', 'unit testing'],
+    canonical: '/blog/test-driven-development',
+    ogType: 'article',
+    author: 'Maxwell Software Solutions',
+    publishedTime: '2024-12-20T00:00:00.000Z',
+    modifiedTime: '2024-12-20T00:00:00.000Z',
+    readTime: '10 min read',
+    category: 'Testing',
+    section: 'Software Engineering',
+    tags: ['TDD', 'Testing', 'Quality Assurance', 'Best Practices'],
+  },
+  'refactoring-legacy-code': {
+    slug: 'refactoring-legacy-code',
+    title: 'Refactoring Legacy Code: Where to Start',
+    description:
+      'Strategic approaches to refactoring legacy codebases safely and effectively, with proven techniques and risk mitigation strategies.',
+    excerpt: 'Transform unmaintainable legacy code into clean, testable systems without breaking production.',
+    keywords: [...KEYWORD_SETS.core, 'legacy code refactoring', 'code modernization', 'technical debt'],
+    canonical: '/blog/refactoring-legacy-code',
+    ogType: 'article',
+    author: 'Maxwell Software Solutions',
+    publishedTime: '2024-12-21T00:00:00.000Z',
+    modifiedTime: '2024-12-21T00:00:00.000Z',
+    readTime: '12 min read',
+    category: 'Refactoring',
+    section: 'Software Engineering',
+    tags: ['Refactoring', 'Legacy Code', 'Technical Debt', 'Code Quality'],
+  },
+  'microservices-architecture': {
+    slug: 'microservices-architecture',
+    title: 'Microservices Architecture: Benefits, Challenges & Best Practices',
+    description:
+      'Comprehensive guide to microservices architecture, including when to use it, common pitfalls, and proven patterns for success.',
+    excerpt:
+      'Navigate the complexity of microservices with practical guidance on service boundaries, communication patterns, and operational excellence.',
+    keywords: [...KEYWORD_SETS.architecture, 'microservices', 'distributed systems', 'API design'],
+    canonical: '/blog/microservices-architecture',
+    ogType: 'article',
+    author: 'Maxwell Software Solutions',
+    publishedTime: '2024-12-22T00:00:00.000Z',
+    modifiedTime: '2024-12-22T00:00:00.000Z',
+    readTime: '15 min read',
+    category: 'Architecture',
+    section: 'Software Engineering',
+    tags: ['Microservices', 'Architecture', 'Distributed Systems', 'Scalability'],
+  },
+  'ci-cd-pipelines': {
+    slug: 'ci-cd-pipelines',
+    title: 'Modern CI/CD Pipelines: Automating Your Software Delivery',
+    description:
+      'Learn how to build modern CI/CD pipelines with automated testing, deployment strategies, and DevOps best practices for faster, safer releases.',
+    excerpt:
+      'Master continuous integration and deployment with practical examples of pipeline configuration, testing strategies, and deployment automation.',
+    keywords: [...KEYWORD_SETS.devops, 'pipeline automation', 'deployment strategies', 'build automation'],
+    canonical: '/blog/ci-cd-pipelines',
+    ogType: 'article',
+    author: 'Maxwell Software Solutions',
+    publishedTime: '2024-12-22T00:00:00.000Z',
+    modifiedTime: '2024-12-22T00:00:00.000Z',
+    readTime: '11 min read',
+    category: 'DevOps',
+    section: 'Software Engineering',
+    tags: ['CI/CD', 'DevOps', 'Automation', 'Deployment'],
+  },
+  'api-design-best-practices': {
+    slug: 'api-design-best-practices',
+    title: 'API Design Best Practices: Building Developer-Friendly Interfaces',
+    description:
+      'Essential principles for designing RESTful APIs that are intuitive, scalable, and maintainable, with real-world examples.',
+    excerpt:
+      'Create APIs that developers love with clear naming conventions, proper versioning, comprehensive documentation, and robust error handling.',
+    keywords: [...KEYWORD_SETS.architecture, 'API design', 'REST API', 'API best practices', 'web services'],
+    canonical: '/blog/api-design-best-practices',
+    ogType: 'article',
+    author: 'Maxwell Software Solutions',
+    publishedTime: '2024-12-23T00:00:00.000Z',
+    modifiedTime: '2024-12-23T00:00:00.000Z',
+    readTime: '9 min read',
+    category: 'API Design',
+    section: 'Software Engineering',
+    tags: ['API Design', 'REST', 'Web Services', 'Best Practices'],
+  },
+};
+
+// Project showcase registry
+export const PROJECTS: Record<string, ProjectMeta> = {
+  'retail-platform': {
+    slug: 'retail-platform',
+    title: 'E-Commerce Platform Quality Transformation',
+    description: 'Reduced defects by 58% and improved deployment frequency by 28% for a high-traffic retail platform.',
+    metrics: ['-58% defects', '+28% deploys', '+12 CSAT'],
+    industry: 'Retail',
+    technologies: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Docker'],
+    publishedDate: '2024-12-15',
+  },
+  'fintech-api': {
+    slug: 'fintech-api',
+    title: 'FinTech API Reliability Engineering',
+    description:
+      'Achieved 99.95% uptime and reduced MTTR by 73% through comprehensive testing and observability improvements.',
+    metrics: ['99.95% uptime', '-73% MTTR', '100% test coverage'],
+    industry: 'Financial Technology',
+    technologies: ['Java', 'Spring Boot', 'Kafka', 'Redis', 'Kubernetes'],
+    publishedDate: '2024-12-10',
+  },
+  'saas-migration': {
+    slug: 'saas-migration',
+    title: 'SaaS Platform CI/CD Modernization',
+    description:
+      'Modernized deployment pipeline reducing release time from 4 hours to 12 minutes with zero-downtime deployments.',
+    metrics: ['-95% release time', '0 downtime', '+40% developer velocity'],
+    industry: 'SaaS',
+    technologies: ['Python', 'Django', 'GitLab CI', 'Terraform', 'AWS'],
+    publishedDate: '2024-12-05',
+  },
+};
+
+// Service offerings (for structured data)
+export const SERVICES = [
+  {
+    name: 'Code Quality Audit',
+    description:
+      'Comprehensive code quality analysis identifying technical debt, vulnerabilities, and improvement opportunities with actionable recommendations.',
+  },
+  {
+    name: 'Reliability Engineering',
+    description:
+      'Build resilient systems with proper monitoring, alerting, incident response, and chaos engineering practices.',
+  },
+  {
+    name: 'Testing Strategy & Implementation',
+    description:
+      'Design and implement comprehensive testing strategies including unit, integration, E2E, and performance testing.',
+  },
+  {
+    name: 'CI/CD Pipeline Optimization',
+    description:
+      'Optimize build pipelines, automate deployments, and implement continuous delivery best practices for faster, safer releases.',
+  },
+  {
+    name: 'Technical Debt Reduction',
+    description:
+      'Strategic refactoring and modernization to reduce technical debt while maintaining business continuity.',
+  },
+  {
+    name: 'Software Architecture Consulting',
+    description:
+      'Expert guidance on architecture decisions, design patterns, and system scalability for long-term success.',
+  },
+] as const;
+
+// FAQ data (reusable across pages)
+export const FAQS = [
+  {
+    question: 'What is a code quality audit?',
+    answer:
+      'A code quality audit is a comprehensive analysis of your codebase to identify technical debt, security vulnerabilities, performance bottlenecks, and maintainability issues. We examine code structure, testing coverage, documentation, and adherence to best practices, delivering actionable recommendations for improvement.',
+  },
+  {
+    question: 'How long does a typical engagement last?',
+    answer:
+      'Engagement duration varies based on project scope. Code quality audits typically take 2-4 weeks, while ongoing reliability engineering or CI/CD optimization projects can range from 2-6 months. We work with you to define clear milestones and deliverables.',
+  },
+  {
+    question: 'Do you work with remote teams?',
+    answer:
+      'Yes, we work with teams worldwide. Our consultants are experienced in remote collaboration and can integrate seamlessly with your existing processes, whether you prefer daily standups, async communication, or hybrid models.',
+  },
+  {
+    question: 'What technologies do you support?',
+    answer:
+      'We have expertise across modern technology stacks including TypeScript/JavaScript, Python, Java, Go, React, Node.js, and major cloud platforms (AWS, Azure, GCP). Our engineering principles apply regardless of specific technology choices.',
+  },
+  {
+    question: 'How do you measure success?',
+    answer:
+      'We establish concrete metrics at the start of each engagement, such as defect reduction percentage, test coverage improvement, deployment frequency increase, MTTR reduction, or performance gains. Every recommendation includes measurable success criteria.',
+  },
+  {
+    question: 'Can you help with legacy code?',
+    answer:
+      'Absolutely. Legacy code transformation is one of our specialties. We use proven refactoring techniques, incremental migration strategies, and comprehensive testing to modernize codebases while minimizing risk to production systems.',
+  },
+  {
+    question: 'Do you provide training for our team?',
+    answer:
+      'Yes, knowledge transfer is a core part of our engagements. We provide hands-on training, documentation, and mentoring to ensure your team can maintain and build upon the improvements we implement together.',
+  },
+] as const;
+```
+
+---
+
+## 2. Utility Functions
+
+### Create `src/lib/seo/utils.ts`
+
+```typescript
+import { SITE_CONFIG, PAGES, BLOG_POSTS, PROJECTS } from './data';
+import type { Metadata } from 'next';
+
+/**
+ * Generate Next.js Metadata object from page key
+ */
+export function generateMetadata(pageKey: keyof typeof PAGES): Metadata {
+  const page = PAGES[pageKey];
+
+  return {
+    title: page.title,
+    description: page.description,
+    keywords: page.keywords,
+    alternates: {
+      canonical: page.canonical,
+    },
+    openGraph: {
+      title: page.title,
+      description: page.description,
+      type: page.ogType || 'website',
+      url: `${SITE_CONFIG.url}${page.canonical}`,
+      siteName: SITE_CONFIG.name,
+      locale: SITE_CONFIG.locale,
+      ...(page.publishedTime && { publishedTime: page.publishedTime }),
+      ...(page.modifiedTime && { modifiedTime: page.modifiedTime }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.title,
+      description: page.description,
+    },
+  };
+}
+
+/**
+ * Generate blog post metadata
+ */
+export function generateBlogMetadata(slug: string): Metadata {
+  const post = BLOG_POSTS[slug];
+  if (!post) throw new Error(`Blog post not found: ${slug}`);
+
+  return {
+    title: `${post.title} — ${SITE_CONFIG.name}`,
+    description: post.description,
+    keywords: post.keywords,
+    authors: [{ name: post.author, url: SITE_CONFIG.url }],
+    alternates: {
+      canonical: post.canonical,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      publishedTime: post.publishedTime,
+      modifiedTime: post.modifiedTime || post.publishedTime,
+      authors: [post.author],
+      section: post.section,
+      tags: post.tags,
+      url: `${SITE_CONFIG.url}${post.canonical}`,
+      siteName: SITE_CONFIG.name,
+      locale: SITE_CONFIG.locale,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+    },
+  };
+}
+
+/**
+ * Generate project showcase metadata
+ */
+export function generateProjectMetadata(slug: string): Metadata {
+  const project = PROJECTS[slug];
+  if (!project) throw new Error(`Project not found: ${slug}`);
+
+  return {
+    title: `${project.title} — Case Study | ${SITE_CONFIG.name}`,
+    description: project.description,
+    keywords: [...project.technologies, project.industry, 'case study', 'success story'],
+    alternates: {
+      canonical: `/project-showcase/${slug}`,
+    },
+  };
+}
+
+/**
+ * Get all blog post slugs (for sitemap generation)
+ */
+export function getAllBlogSlugs(): string[] {
+  return Object.keys(BLOG_POSTS);
+}
+
+/**
+ * Get all project slugs
+ */
+export function getAllProjectSlugs(): string[] {
+  return Object.keys(PROJECTS);
+}
+
+/**
+ * Get related blog posts based on tags/category
+ */
+export function getRelatedPosts(currentSlug: string, limit = 3): (typeof BLOG_POSTS)[string][] {
+  const current = BLOG_POSTS[currentSlug];
+  if (!current) return [];
+
+  const allPosts = Object.values(BLOG_POSTS).filter((post) => post.slug !== currentSlug);
+
+  // Score by matching tags and category
+  const scored = allPosts.map((post) => {
+    let score = 0;
+    if (post.category === current.category) score += 10;
+    const matchingTags = post.tags?.filter((tag) => current.tags?.includes(tag)).length || 0;
+    score += matchingTags * 5;
+    return { post, score };
+  });
+
+  // Sort by score and return top N
+  return scored
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((item) => item.post);
+}
+```
+
+---
+
+## 3. Atomic Components
+
+### Create `src/lib/seo/components/SEOHead.tsx`
+
+```typescript
+'use client';
+
+/**
+ * Client-side SEO meta tags (for dynamic content)
+ * Use sparingly - prefer Next.js Metadata API in page.tsx
+ */
+import Head from 'next/head';
+
+interface SEOHeadProps {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+export function SEOHead({ title, description, canonical, noindex }: SEOHeadProps) {
+  return (
+    <Head>
+      {title && <title>{title}</title>}
+      {description && <meta name="description" content={description} />}
+      {canonical && <link rel="canonical" href={canonical} />}
+      {noindex && <meta name="robots" content="noindex,nofollow" />}
+    </Head>
+  );
+}
+```
+
+---
+
+## Usage Examples
+
+### Page-level metadata:
+
+```typescript
+// src/app/about/page.tsx
+import { generateMetadata } from '@/lib/seo/utils';
+
+export const metadata = generateMetadata('about');
+
+export default function AboutPage() {
+  return <AboutContent />;
+}
+```
+
+### Blog post metadata:
+
+```typescript
+// src/app/blog/[slug]/page.tsx
+import { generateBlogMetadata } from '@/lib/seo/utils';
+
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  return generateBlogMetadata(params.slug);
+}
+```
+
+### Get related posts:
+
+```typescript
+// In blog post component
+import { getRelatedPosts } from '@/lib/seo/utils';
+
+const related = getRelatedPosts('solid-principles', 3);
+```
+
+---
+
+## Benefits
+
+✅ **Single Source of Truth**: All SEO data in one place  
+✅ **Type Safety**: TypeScript prevents data inconsistencies  
+✅ **DRY**: No duplicate metadata across pages  
+✅ **Maintainable**: Update dates/descriptions in one location  
+✅ **Scalable**: Add new pages/posts by extending data objects  
+✅ **Testable**: Data structures can be unit tested
+
+---
+
+## Next Steps
+
+1. Implement this central data layer first
+2. Migrate existing page metadata to use utility functions
+3. Build structured data components from central data
+4. Generate dynamic sitemap from data registry
+5. Create OG images using data from registry
+
+This foundation makes all subsequent SEO implementations cleaner and more maintainable.

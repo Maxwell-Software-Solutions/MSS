@@ -175,3 +175,43 @@ See `src/app/styles/tokens.css` for all available theme variables.
 - Jest setup: `jest.config.js` and `src/test/setupTests.ts` show test bootstrapping and mocks
 
 If unsure, prefer minimal, reversible edits and signal the change in the PR description (what file changed, why, how validated). Ask for clarification when a change touches infra (build, webpack, or CI scripts).
+
+### SEO Implementation Workflow
+
+**Active SEO Improvements**: See `docs/seo/` directory for comprehensive SEO implementation plan with prioritized tasks (P0-P3).
+
+**Workflow Directive**: When implementing SEO features from `docs/seo/` documentation, **ALWAYS** follow this test-driven process:
+
+1. **Implement** → Create/modify files per implementation doc
+2. **Build** → Run `pnpm build` (must succeed with zero errors)
+3. **Test** → Run `pnpm test` (all tests must pass)
+4. **Validate** → Complete manual validation checklist from doc
+5. **Commit** → Git commit changes with descriptive message
+6. **Delete Doc** → Remove implementation doc once complete and validated
+
+**Quality Gates** (all must pass before proceeding):
+
+- ✅ TypeScript compiles without errors
+- ✅ `pnpm build` succeeds
+- ✅ `pnpm test` passes (lint + typecheck + jest)
+- ✅ Manual validation complete (see doc checklist)
+- ✅ No console errors in browser
+
+**Implementation Order** (do NOT skip phases):
+
+1. **Phase 1 - Foundation** (Week 1): `00-central-data-management.md` — Create `src/lib/seo/data.ts` and `utils.ts` with central data registry (SITE_CONFIG, PAGES, BLOG_POSTS, etc.)
+2. **Phase 2 - P0 Critical** (Week 2): `P0-1-opengraph-images.md`, `P0-2-enhanced-metadata.md`, `P0-3-structured-data.md` — OG images, metadata, Schema.org
+3. **Phase 3 - P1 High** (Week 3-4): `P1-1-dynamic-sitemap.md`, `P1-2-internal-linking.md` — Dynamic sitemap, related content
+4. **Phase 4 - P2 Medium** (Week 5-6): `P2-1-faq-schema.md`, `P2-2-canonical-enforcement.md` — FAQ schema, canonical URLs
+5. **Phase 5 - P3 Ongoing**: `P3-1-content-strategy.md`, `P3-2-implementation-roadmap.md` — Content planning, monitoring
+
+**Key Architectural Patterns** (enforce in all SEO code):
+
+- **DRY (Don't Repeat Yourself)**: Single source of truth in `src/lib/seo/data.ts` — update once, propagates everywhere
+- **Atomic Components**: Small, reusable components (RelatedArticles, Breadcrumbs, FAQ, StructuredData)
+- **Dynamic Generation**: Metadata, OG images, sitemap, schemas all generated from central data
+- **Type Safety**: Full TypeScript coverage with interfaces for all SEO data structures
+
+**Progress Tracking**: Implementation docs in `docs/seo/` are deleted after completion — when all are gone, SEO implementation is complete.
+
+**Reference**: See `docs/seo/WORKFLOW.md` for detailed phase-by-phase instructions, troubleshooting, and validation checklists.
