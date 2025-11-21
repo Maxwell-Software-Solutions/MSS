@@ -55,10 +55,7 @@ export default function BlogPostTemplate({ slug, children }: BlogPostTemplatePro
           </Link>
         </nav>
 
-        <h1
-          className="text-4xl sm:text-5xl font-bold mb-6"
-          style={{ color: 'var(--color-text)' }}
-        >
+        <h1 className="text-4xl sm:text-5xl font-bold mb-6" style={{ color: 'var(--color-text)' }}>
           {post.title}
         </h1>
 
@@ -79,13 +76,7 @@ export default function BlogPostTemplate({ slug, children }: BlogPostTemplatePro
 
       {/* Hero Image (OG image doubles as hero) */}
       <div className="mb-12 relative h-64 sm:h-80 rounded-2xl overflow-hidden">
-        <Image
-          src={`${post.canonical}/opengraph-image`}
-          alt={post.title}
-          fill
-          className="object-cover"
-          priority
-        />
+        <Image src={`${post.canonical}/opengraph-image`} alt={post.title} fill className="object-cover" priority />
       </div>
 
       {/* Content */}
