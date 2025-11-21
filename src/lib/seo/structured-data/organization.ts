@@ -3,10 +3,10 @@ import type { Organization } from './types';
 
 /**
  * Enhanced Organization schema from central data
- * 
+ *
  * Includes contact point, social links, and address information.
  * Used as the primary organization identifier across all pages.
- * 
+ *
  * @returns Organization schema object for JSON-LD
  */
 export function generateOrganizationSchema(): Organization {

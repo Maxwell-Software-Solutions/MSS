@@ -8,10 +8,10 @@ export interface BreadcrumbItem {
 
 /**
  * Generate BreadcrumbList schema from path items
- * 
+ *
  * Improves navigation understanding for search engines and
  * displays breadcrumb trails in search results.
- * 
+ *
  * @param items - Array of breadcrumb items (name + URL)
  * @returns BreadcrumbList schema object for JSON-LD
  */
@@ -30,14 +30,14 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]): BreadcrumbLis
 
 /**
  * Helper: Generate breadcrumbs from URL path
- * 
+ *
  * Automatically creates breadcrumb items from a URL path.
  * Supports custom title mapping for pretty names.
- * 
+ *
  * @param pathname - URL pathname (e.g., "/blog/solid-principles")
  * @param titleMap - Optional mapping of slugs to display names
  * @returns Array of breadcrumb items
- * 
+ *
  * @example
  * ```typescript
  * const breadcrumbs = breadcrumbsFromPath('/blog/solid-principles', {

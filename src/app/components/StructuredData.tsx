@@ -6,17 +6,17 @@ interface StructuredDataProps {
 
 /**
  * Atomic component for injecting JSON-LD structured data
- * 
+ *
  * Accepts single schema or array of schemas for flexible usage.
  * Each schema is rendered as a separate <script type="application/ld+json"> tag.
- * 
+ *
  * @param schema - Single schema object or array of schema objects
- * 
+ *
  * @example
  * ```tsx
  * // Single schema
  * <StructuredData schema={organizationSchema} />
- * 
+ *
  * // Multiple schemas
  * <StructuredData schema={[organizationSchema, websiteSchema]} />
  * ```

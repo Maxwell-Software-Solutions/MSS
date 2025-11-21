@@ -4,14 +4,14 @@ import { generateOrganizationSchema } from './organization';
 
 /**
  * Generate Article schema for blog posts
- * 
+ *
  * Enhances search result appearance with rich snippets including
  * publish date, author, article section, and keywords.
- * 
+ *
  * @param slug - Blog post slug (e.g., "solid-principles")
  * @returns Article schema object for JSON-LD
  * @throws Error if blog post not found in central registry
- * 
+ *
  * @example
  * ```typescript
  * const schema = generateArticleSchema('solid-principles');

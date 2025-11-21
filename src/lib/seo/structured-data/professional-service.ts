@@ -3,10 +3,10 @@ import type { ProfessionalService } from './types';
 
 /**
  * ProfessionalService schema for service offerings
- * 
+ *
  * Helps Google understand your business type and the services you offer.
  * Includes offer catalog with all service descriptions from central data.
- * 
+ *
  * @returns ProfessionalService schema object for JSON-LD
  */
 export function generateProfessionalServiceSchema(): ProfessionalService {

@@ -3,10 +3,10 @@ import type { WebSite } from './types';
 
 /**
  * WebSite schema with search action
- * 
+ *
  * Enables the Google "Sitelinks Search Box" feature, allowing users
  * to search your site directly from Google search results.
- * 
+ *
  * @returns WebSite schema object for JSON-LD
  */
 export function generateWebSiteSchema(): WebSite {
