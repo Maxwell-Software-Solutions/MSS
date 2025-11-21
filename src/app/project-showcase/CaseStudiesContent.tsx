@@ -21,6 +21,21 @@ const studies = [
     translationKey: 'saas',
     image: '/images/case-studies/saas-migration.svg',
   },
+  {
+    slug: 'healthcare-platform',
+    translationKey: 'healthcare',
+    image: '/images/case-studies/healthcare-platform.svg',
+  },
+  {
+    slug: 'edtech-startup',
+    translationKey: 'edtech',
+    image: '/images/case-studies/edtech-startup.svg',
+  },
+  {
+    slug: 'iot-platform',
+    translationKey: 'iot',
+    image: '/images/case-studies/iot-platform.svg',
+  },
 ];
 
 export default function CaseStudiesContent(): ReactElement {
