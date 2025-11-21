@@ -420,3 +420,4 @@ export function validateSEOData(): { valid: boolean; errors: string[] } {
     errors,
   };
 }
+
