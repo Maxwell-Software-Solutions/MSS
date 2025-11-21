@@ -1,9 +1,9 @@
 /**
  * SEO Utility Functions
- * 
+ *
  * Helper functions for generating Next.js metadata objects from central data registry.
  * Provides type-safe metadata generation with error handling and validation.
- * 
+ *
  * @module seo/utils
  */
 
@@ -40,11 +40,11 @@ export class SEODataNotFoundError extends Error {
 
 /**
  * Generate Next.js Metadata object from page key
- * 
+ *
  * @param pageKey - Key from PAGES registry
  * @returns Next.js Metadata object
  * @throws {SEODataNotFoundError} If page key doesn't exist
- * 
+ *
  * @example
  * ```ts
  * // In page.tsx
@@ -85,11 +85,11 @@ export function generateMetadata(pageKey: string): Metadata {
 
 /**
  * Generate blog post metadata with article-specific fields
- * 
+ *
  * @param slug - Blog post slug
  * @returns Next.js Metadata object with article schema
  * @throws {SEODataNotFoundError} If blog post doesn't exist
- * 
+ *
  * @example
  * ```ts
  * // In blog/[slug]/page.tsx
@@ -136,11 +136,11 @@ export function generateBlogMetadata(slug: string): Metadata {
 
 /**
  * Generate project showcase metadata
- * 
+ *
  * @param slug - Project slug
  * @returns Next.js Metadata object
  * @throws {SEODataNotFoundError} If project doesn't exist
- * 
+ *
  * @example
  * ```ts
  * // In project-showcase/[slug]/page.tsx
@@ -185,9 +185,9 @@ export function generateProjectMetadata(slug: string): Metadata {
 
 /**
  * Get all blog post slugs for sitemap/static path generation
- * 
+ *
  * @returns Array of all blog post slugs
- * 
+ *
  * @example
  * ```ts
  * // For generateStaticParams
@@ -202,7 +202,7 @@ export function getAllBlogSlugs(): string[] {
 
 /**
  * Get all project slugs for sitemap/static path generation
- * 
+ *
  * @returns Array of all project slugs
  */
 export function getAllProjectSlugs(): string[] {
@@ -211,7 +211,7 @@ export function getAllProjectSlugs(): string[] {
 
 /**
  * Get all blog posts sorted by publication date (newest first)
- * 
+ *
  * @returns Array of blog post metadata sorted by date
  */
 export function getAllBlogPosts(): BlogPostMeta[] {
@@ -222,7 +222,7 @@ export function getAllBlogPosts(): BlogPostMeta[] {
 
 /**
  * Get all projects sorted by publication date (newest first)
- * 
+ *
  * @returns Array of project metadata sorted by date
  */
 export function getAllProjects(): ProjectMeta[] {
@@ -233,7 +233,7 @@ export function getAllProjects(): ProjectMeta[] {
 
 /**
  * Get blog posts by category
- * 
+ *
  * @param category - Category to filter by
  * @returns Array of blog posts in the specified category
  */
@@ -243,7 +243,7 @@ export function getPostsByCategory(category: string): BlogPostMeta[] {
 
 /**
  * Get blog posts by tag
- * 
+ *
  * @param tag - Tag to filter by
  * @returns Array of blog posts with the specified tag
  */
@@ -265,7 +265,7 @@ interface ScoredContent<T> {
 
 /**
  * Calculate relevance score between two blog posts
- * 
+ *
  * @param current - Current blog post
  * @param candidate - Candidate related post
  * @returns Relevance score (higher = more related)
@@ -286,9 +286,7 @@ function calculatePostRelevance(current: BlogPostMeta, candidate: BlogPostMeta):
 
   // Keywords overlap (bonus points)
   const currentKeywords = new Set(current.keywords.map((k) => k.toLowerCase()));
-  const matchingKeywords = candidate.keywords.filter((k) =>
-    currentKeywords.has(k.toLowerCase())
-  );
+  const matchingKeywords = candidate.keywords.filter((k) => currentKeywords.has(k.toLowerCase()));
   score += matchingKeywords.length * 2;
 
   return score;
@@ -296,16 +294,16 @@ function calculatePostRelevance(current: BlogPostMeta, candidate: BlogPostMeta):
 
 /**
  * Get related blog posts based on tags, category, and keywords
- * 
+ *
  * Uses scoring algorithm:
  * - Same category: +10 points
  * - Matching tag: +5 points per tag
  * - Matching keyword: +2 points per keyword
- * 
+ *
  * @param currentSlug - Current blog post slug
  * @param limit - Maximum number of related posts to return (default: 3)
  * @returns Array of related blog posts sorted by relevance
- * 
+ *
  * @example
  * ```ts
  * const relatedPosts = getRelatedPosts('solid-principles', 3);
@@ -335,7 +333,7 @@ export function getRelatedPosts(currentSlug: string, limit = 3): BlogPostMeta[] 
 
 /**
  * Get related projects based on technologies and industry
- * 
+ *
  * @param currentSlug - Current project slug
  * @param limit - Maximum number of related projects (default: 2)
  * @returns Array of related projects sorted by relevance
@@ -359,9 +357,7 @@ export function getRelatedProjects(currentSlug: string, limit = 2): ProjectMeta[
     }
 
     // Matching technologies
-    const matchingTech = project.technologies.filter((tech) =>
-      current.technologies.includes(tech)
-    );
+    const matchingTech = project.technologies.filter((tech) => current.technologies.includes(tech));
     score += matchingTech.length * 5;
 
     return { item: project, score };
@@ -380,7 +376,7 @@ export function getRelatedProjects(currentSlug: string, limit = 2): ProjectMeta[
 /**
  * Validate all SEO data for consistency
  * Useful for build-time validation
- * 
+ *
  * @returns Validation result with any errors found
  */
 export function validateSEOData(): { valid: boolean; errors: string[] } {

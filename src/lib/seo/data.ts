@@ -1,10 +1,10 @@
 /**
  * Central SEO Data Repository
- * 
+ *
  * Single source of truth for all SEO-related data across the application.
  * This prevents duplication and ensures consistency in metadata, structured data,
  * and SEO content.
- * 
+ *
  * @module seo/data
  */
 
@@ -171,24 +171,9 @@ export const KEYWORD_SETS = {
     'reliability engineering',
     'technical debt reduction',
   ],
-  testing: [
-    'test-driven development',
-    'TDD',
-    'software testing strategy',
-    'automated testing',
-  ],
-  devops: [
-    'CI/CD optimization',
-    'DevOps best practices',
-    'continuous integration',
-    'deployment automation',
-  ],
-  architecture: [
-    'software architecture',
-    'clean code',
-    'SOLID principles',
-    'design patterns',
-  ],
+  testing: ['test-driven development', 'TDD', 'software testing strategy', 'automated testing'],
+  devops: ['CI/CD optimization', 'DevOps best practices', 'continuous integration', 'deployment automation'],
+  architecture: ['software architecture', 'clean code', 'SOLID principles', 'design patterns'],
 } as const;
 
 // ============================================================================
