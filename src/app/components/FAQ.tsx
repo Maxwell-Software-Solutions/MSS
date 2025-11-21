@@ -55,18 +55,11 @@ export default function FAQ({ faqs, title, description }: FAQProps): ReactElemen
         <div className="max-w-4xl mx-auto px-6">
           {/* Header */}
           <div className="mb-8 text-center">
-            <h2
-              id="faq-heading"
-              className="text-3xl sm:text-4xl font-bold mb-4"
-              style={{ color: 'var(--color-text)' }}
-            >
+            <h2 id="faq-heading" className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
               {title || 'Frequently Asked Questions'}
             </h2>
             {description && (
-              <p
-                className="text-lg max-w-2xl mx-auto"
-                style={{ color: 'var(--color-text-secondary)' }}
-              >
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--color-text-secondary)' }}>
                 {description}
               </p>
             )}
@@ -78,10 +71,7 @@ export default function FAQ({ faqs, title, description }: FAQProps): ReactElemen
               const isOpen = openIndex === index;
 
               return (
-                <div
-                  key={index}
-                  className="border border-border rounded-lg overflow-hidden transition-all"
-                >
+                <div key={index} className="border border-border rounded-lg overflow-hidden transition-all">
                   {/* Question (button) */}
                   <dt>
                     <button
@@ -103,28 +93,18 @@ export default function FAQ({ faqs, title, description }: FAQProps): ReactElemen
                         }
                       }}
                     >
-                      <span
-                        className="font-semibold text-lg pr-8"
-                        style={{ color: 'var(--color-text)' }}
-                      >
+                      <span className="font-semibold text-lg pr-8" style={{ color: 'var(--color-text)' }}>
                         {faq.question}
                       </span>
                       <svg
-                        className={`w-5 h-5 transition-transform flex-shrink-0 ${
-                          isOpen ? 'rotate-180' : ''
-                        }`}
+                        className={`w-5 h-5 transition-transform flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
                         style={{ color: 'var(--color-accent)' }}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                         aria-hidden="true"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
                   </dt>
@@ -136,10 +116,7 @@ export default function FAQ({ faqs, title, description }: FAQProps): ReactElemen
                       isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div
-                      className="px-6 pb-6 leading-relaxed"
-                      style={{ color: 'var(--color-text-secondary)' }}
-                    >
+                    <div className="px-6 pb-6 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
                       {faq.answer}
                     </div>
                   </dd>
