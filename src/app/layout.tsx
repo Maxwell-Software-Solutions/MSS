@@ -12,6 +12,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { organizationSchema } from '@/lib/structuredData';
 import { headers } from 'next/headers';
 import { loadServerTranslations, getCriticalTranslations } from '@/lib/server-translations';
+import { SITE_CONFIG, PAGES } from '@/lib/seo/data';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://maxwell-software.com';
 
@@ -40,25 +41,100 @@ const geistMono = Geist_Mono({
   adjustFontFallback: true,
 });
 
+/**
+ * Enhanced root metadata using central data registry
+ * Data source: SITE_CONFIG and PAGES.home from @/lib/seo/data
+ */
 export const metadata: Metadata = {
-  title: 'Maxwell — Modern Web Experiences',
-  description: 'Iterate on your site live with AI-driven edits.',
-  metadataBase: new URL(siteUrl),
-  openGraph: {
-    title: 'Maxwell — Modern Web Experiences',
-    description: 'Iterate on your site live with AI-driven edits.',
-    type: 'website',
-    url: siteUrl,
+  // Title with template for child pages
+  title: {
+    default: PAGES.home!.title,
+    template: `%s | ${SITE_CONFIG.name}`,
   },
+
+  // Description from central registry
+  description: PAGES.home!.description,
+
+  // Keywords array
+  keywords: PAGES.home!.keywords,
+
+  // Author information
+  authors: [
+    {
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
+    },
+  ],
+
+  // Creator/Publisher for rich snippets
+  creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
+
+  // Metadata base URL for all relative paths
+  metadataBase: new URL(siteUrl),
+
+  // Canonical URL and language alternates
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en',
+      'lt-LT': '/lt',
+    },
+  },
+
+  // Enhanced Open Graph metadata
+  openGraph: {
+    title: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    type: 'website',
+    url: SITE_CONFIG.url,
+    siteName: SITE_CONFIG.name,
+    locale: SITE_CONFIG.locale,
+    alternateLocale: [SITE_CONFIG.alternateLocale],
+
+    // OG Image (generated dynamically)
+    images: [
+      {
+        url: '/opengraph-image', // Next.js auto-discovers opengraph-image.tsx
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`,
+        type: 'image/png',
+      },
+    ],
+  },
+
+  // Twitter Card metadata
   twitter: {
     card: 'summary_large_image',
-    title: 'Maxwell — Modern Web Experiences',
-    description: 'Iterate on your site live with AI-driven edits.',
+    title: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    creator: SITE_CONFIG.social.twitter,
+    images: ['/opengraph-image'],
   },
+
+  // Enhanced robots configuration
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1, // No limit
+      'max-image-preview': 'large', // Large image previews
+      'max-snippet': -1, // No snippet length limit
+    },
   },
+
+  // Verification tokens (add from Google Search Console)
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    // yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+    // bing: process.env.NEXT_PUBLIC_BING_VERIFICATION,
+  },
+
+  // App manifest and icons
   manifest: '/manifest.json',
   icons: {
     icon: [
@@ -68,12 +144,27 @@ export const metadata: Metadata = {
     apple: '/logo-icon.svg',
     shortcut: '/favicon.svg',
   },
+
+  // Additional metadata for categorization
+  category: 'technology',
+
+  // App-specific metadata
+  applicationName: SITE_CONFIG.name,
+
+  // Format detection (disable auto phone number detection)
+  formatDetection: {
+    telephone: false, // Prevents accidental phone number linking
+  },
 };
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#8B6B00',
+  maximumScale: 5, // Allow zoom for accessibility
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1a1a' },
+  ],
 };
 
 export default async function RootLayout({
