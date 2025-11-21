@@ -35,11 +35,7 @@ export default function RelatedArticles({ currentSlug, limit = 3 }: RelatedArtic
       }}
       aria-labelledby="related-articles-heading"
     >
-      <h3
-        id="related-articles-heading"
-        className="font-semibold text-lg mb-4"
-        style={{ color: 'var(--color-text)' }}
-      >
+      <h3 id="related-articles-heading" className="font-semibold text-lg mb-4" style={{ color: 'var(--color-text)' }}>
         Related Reading
       </h3>
       <ul className="space-y-3">
@@ -53,10 +49,7 @@ export default function RelatedArticles({ currentSlug, limit = 3 }: RelatedArtic
               <span className="font-medium group-hover:underline group-hover:text-[var(--color-accent)]">
                 {post.title}
               </span>
-              <span
-                className="text-sm"
-                style={{ color: 'var(--color-text-secondary)' }}
-              >
+              <span className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
                 {post.readTime} • {post.category}
               </span>
             </Link>

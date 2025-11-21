@@ -40,10 +40,7 @@ export default function Breadcrumbs({ pathname, titleMap }: BreadcrumbsProps) {
               {index === items.length - 1 ? (
                 <span style={{ color: 'var(--color-text)' }}>{item.name}</span>
               ) : (
-                <Link
-                  href={item.url}
-                  className="transition-colors hover:text-[var(--color-accent)]"
-                >
+                <Link href={item.url} className="transition-colors hover:text-[var(--color-accent)]">
                   {item.name}
                 </Link>
               )}
