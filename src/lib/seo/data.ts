@@ -97,6 +97,34 @@ export interface FAQItem {
 }
 
 /**
+ * Content calendar item for planning future blog posts
+ */
+export interface ContentIdea {
+  /** Post title */
+  title: string;
+  /** URL-friendly slug */
+  slug: string;
+  /** Primary target keyword */
+  targetKeyword: string;
+  /** Monthly search volume */
+  searchVolume: number;
+  /** Keyword difficulty */
+  difficulty: 'easy' | 'medium' | 'hard';
+  /** Content category */
+  category: string;
+  /** Content tags */
+  tags: string[];
+  /** Publication status */
+  status: 'planned' | 'in-progress' | 'published';
+  /** Planned/actual publish date (ISO 8601) */
+  publishDate?: string;
+  /** Editorial priority */
+  priority: 'high' | 'medium' | 'low';
+  /** Estimated reading time */
+  estimatedReadTime: string;
+}
+
+/**
  * Site configuration
  */
 export interface SiteConfig {
@@ -507,6 +535,107 @@ export const FAQS: Record<string, ReadonlyArray<FAQItem>> = {
     },
   ],
 };
+
+// ============================================================================
+// Content Calendar (P3-1: Content Strategy)
+// ============================================================================
+
+/**
+ * Content calendar - planned blog posts
+ * Move items to BLOG_POSTS when published
+ * Track keyword targets, priorities, and publishing schedule
+ */
+export const CONTENT_CALENDAR: ContentIdea[] = [
+  // High Priority - Q1 2026
+  {
+    title: 'Code Review Checklist: 15 Things Every Reviewer Should Check',
+    slug: 'code-review-checklist',
+    targetKeyword: 'code review checklist',
+    searchVolume: 2400,
+    difficulty: 'easy',
+    category: 'Code Quality',
+    tags: ['Code Review', 'Best Practices', 'Quality Assurance'],
+    status: 'planned',
+    priority: 'high',
+    estimatedReadTime: '10 min read',
+  },
+  {
+    title: 'Technical Debt: How to Identify, Measure, and Pay It Down',
+    slug: 'technical-debt-guide',
+    targetKeyword: 'technical debt',
+    searchVolume: 3600,
+    difficulty: 'medium',
+    category: 'Refactoring',
+    tags: ['Technical Debt', 'Code Quality', 'Maintenance'],
+    status: 'planned',
+    priority: 'high',
+    estimatedReadTime: '12 min read',
+  },
+  {
+    title: 'The Software Testing Pyramid: A Practical Guide',
+    slug: 'testing-pyramid-guide',
+    targetKeyword: 'testing pyramid',
+    searchVolume: 1900,
+    difficulty: 'easy',
+    category: 'Testing',
+    tags: ['Testing Strategy', 'Unit Testing', 'Integration Testing'],
+    status: 'planned',
+    priority: 'high',
+    estimatedReadTime: '11 min read',
+  },
+
+  // Medium Priority - Q2 2026
+  {
+    title: 'DevOps Security Best Practices: Shift-Left Security',
+    slug: 'devops-security-best-practices',
+    targetKeyword: 'devops security best practices',
+    searchVolume: 1200,
+    difficulty: 'medium',
+    category: 'DevOps',
+    tags: ['Security', 'DevOps', 'CI/CD'],
+    status: 'planned',
+    priority: 'medium',
+    estimatedReadTime: '13 min read',
+  },
+  {
+    title: 'Comparing CI/CD Tools: Jenkins vs GitLab CI vs GitHub Actions',
+    slug: 'cicd-tools-comparison',
+    targetKeyword: 'ci/cd tools comparison',
+    searchVolume: 890,
+    difficulty: 'medium',
+    category: 'DevOps',
+    tags: ['CI/CD', 'Tools', 'Comparison'],
+    status: 'planned',
+    priority: 'medium',
+    estimatedReadTime: '15 min read',
+  },
+
+  // Long-tail keywords - Q3 2026
+  {
+    title: 'How to Reduce Technical Debt in Legacy Systems',
+    slug: 'reduce-technical-debt-legacy-systems',
+    targetKeyword: 'how to reduce technical debt legacy systems',
+    searchVolume: 320,
+    difficulty: 'easy',
+    category: 'Refactoring',
+    tags: ['Legacy Code', 'Technical Debt', 'Refactoring'],
+    status: 'planned',
+    priority: 'medium',
+    estimatedReadTime: '14 min read',
+  },
+  {
+    title: 'What is Observability in Software Engineering?',
+    slug: 'what-is-observability',
+    targetKeyword: 'what is observability software',
+    searchVolume: 450,
+    difficulty: 'easy',
+    category: 'Reliability',
+    tags: ['Observability', 'Monitoring', 'DevOps'],
+    status: 'planned',
+    priority: 'low',
+    estimatedReadTime: '9 min read',
+  },
+];
 
 // ============================================================================
 // Helper Functions
