@@ -13,4 +13,6 @@ export { generateBreadcrumbSchema, breadcrumbsFromPath, type BreadcrumbItem } fr
 
 export { generateArticleSchema } from './article';
 
+export { generateFAQSchema } from './faq';
+
 export type * from './types';

@@ -3,7 +3,7 @@ Allow: /
 Allow: /_next/data/
 
 # Sitemap
-Sitemap: https://maxwell-software.com/sitemap.xml
+Sitemap: https://www.maxwellsoftwaresolutions.com/sitemap.xml
 
 # Disallow admin and private areas
 Disallow: /api/
