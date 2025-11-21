@@ -10,9 +10,33 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_APPS_SCRIPT_URL: process.env.NEXT_PUBLIC_APPS_SCRIPT_URL,
     NEXT_PUBLIC_SHARED_TOKEN: process.env.NEXT_PUBLIC_SHARED_TOKEN,
   },
-  // Permanent redirects
+  /**
+   * Canonical URL enforcement via 301 redirects
+   * Prevents duplicate content from www/non-www, trailing slashes, etc.
+   */
   async redirects() {
     return [
+      // 1. Enforce non-www (www.maxwell-software.com → maxwell-software.com)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.maxwell-software.com',
+          },
+        ],
+        destination: 'https://maxwell-software.com/:path*',
+        permanent: true, // 301 redirect
+      },
+
+      // 2. Trailing slash normalization (remove trailing slashes)
+      {
+        source: '/:path+/',
+        destination: '/:path+',
+        permanent: true,
+      },
+
+      // 3. Legacy URL redirects
       {
         source: '/consulting-process',
         destination: '/services',
