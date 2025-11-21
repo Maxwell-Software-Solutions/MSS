@@ -1,5 +1,23 @@
 ## Copilot / AI Agent Instructions — MSS (Maxwell Site)
 
+### Task Modes with Shorthand Aliases
+
+Copilot supports custom **chat modes** to adjust behavior based on your current task. Use keyboard shortcuts or the dropdown in VS Code to switch between modes.
+
+**Available Modes**:
+
+- **`imp` (Implementation Mode)**: Just write the code. No frills. Great for quick fixes or initial drafts. Minimal explanations, maximum code output.
+
+- **`eng` (Engineering Mode)**: Prioritize production-quality code. Includes error handling, input validation, tests, and inline docs. Like a senior engineer wrote it. This is the **default mode**.
+
+- **`arch` (Architectural Mode)**: Focus on high-level planning. Generates design plans, patterns, pseudocode, and outlines—not implementation. Use for planning before coding.
+
+**Workflow**: Plan in `arch` mode → Build in `eng` mode → Finish fast in `imp` mode.
+
+**Location**: Chat mode definitions are in `.github/agents/*.agent.md`.
+
+---
+
 ### Quick Orientation
 
 - **Framework**: Next.js 15 (App Router) + React 19 + TypeScript 5
