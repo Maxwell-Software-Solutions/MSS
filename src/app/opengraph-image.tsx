@@ -3,10 +3,10 @@ import { SITE_CONFIG } from '@/lib/seo/data';
 
 /**
  * Root Open Graph Image
- * 
+ *
  * Generates dynamic OG image for homepage using Next.js ImageResponse API.
  * Data pulled from central SITE_CONFIG to ensure consistency with metadata.
- * 
+ *
  * Specifications:
  * - Size: 1200x630 (Facebook/Twitter optimal)
  * - Format: PNG

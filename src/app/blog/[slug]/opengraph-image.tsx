@@ -3,16 +3,16 @@ import { SITE_CONFIG, BLOG_POSTS, isValidBlogSlug } from '@/lib/seo/data';
 
 /**
  * Dynamic Blog Post Open Graph Images
- * 
+ *
  * Generates unique OG image for each blog post using ImageResponse API.
  * Data source: BLOG_POSTS registry from central data management.
- * 
+ *
  * Features:
  * - Category badge
  * - Article title and excerpt
  * - Read time indicator
  * - Consistent branding
- * 
+ *
  * @param params - Route parameters containing blog slug
  */
 

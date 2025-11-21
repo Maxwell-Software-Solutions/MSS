@@ -3,16 +3,16 @@ import { SITE_CONFIG, PROJECTS, isValidProjectSlug } from '@/lib/seo/data';
 
 /**
  * Dynamic Project Showcase Open Graph Images
- * 
+ *
  * Generates unique OG image for each case study/project using ImageResponse API.
  * Data source: PROJECTS registry from central data management.
- * 
+ *
  * Features:
  * - Case study badge + industry
  * - Project title
  * - Key metrics display (up to 3)
  * - Consistent branding
- * 
+ *
  * @param params - Route parameters containing project slug
  */
 
@@ -46,7 +46,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
   }
 
   const project = PROJECTS[params.slug]!;
-  
+
   // Get first 3 metrics for display
   const displayMetrics = project.metrics.slice(0, 3);
 
