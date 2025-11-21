@@ -9,7 +9,7 @@ import Cookiebot from '@/app/components/Cookiebot';
 import ClientOnlyComponents from '@/app/components/ClientOnlyComponents';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import StructuredData from '@/app/components/StructuredData';
-import { organizationSchema } from '@/lib/structuredData';
+import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/seo/structured-data';
 import { headers } from 'next/headers';
 import { loadServerTranslations, getCriticalTranslations } from '@/lib/server-translations';
 import { SITE_CONFIG, PAGES } from '@/lib/seo/data';
@@ -183,6 +183,10 @@ export default async function RootLayout({
   const fullTranslations = await loadServerTranslations(initialLang);
   const criticalTranslations = getCriticalTranslations(fullTranslations);
 
+  // Generate enhanced structured data schemas
+  const organizationSchemaNew = generateOrganizationSchema();
+  const websiteSchema = generateWebSiteSchema();
+
   return (
     <html lang={initialLang} className={`${montserrat.variable} ${geistSans.variable} ${geistMono.variable}`}>
       <head>
@@ -193,8 +197,8 @@ export default async function RootLayout({
       </head>
       <body className="antialiased">
         <LanguageProvider initialLanguage={initialLang} criticalTranslations={criticalTranslations}>
-          {/* Structured Data for Organization */}
-          <StructuredData data={organizationSchema} />
+          {/* Enhanced Structured Data: Organization + WebSite with search */}
+          <StructuredData schema={[organizationSchemaNew, websiteSchema]} />
           {/* Cookiebot */}
           <Cookiebot cbid={process.env.NEXT_PUBLIC_COOKIEBOT_CBID || 'c99c6734-f40a-4c0f-842f-aea763f24ee7'} />
           {/* Google Analytics */}
