@@ -55,7 +55,14 @@ export function middleware(request: NextRequest): NextResponse | void {
     return NextResponse.redirect(url, { status: 301 });
   }
 
-  // 3. Allow request to proceed
+  // 3. Strip meaningless symbol-only paths (e.g., /&, /$) that crawlers sometimes discover
+  if (/^\/[&$]+$/.test(pathname)) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/';
+    return NextResponse.redirect(url, { status: 301 });
+  }
+
+  // 4. Allow request to proceed
   return NextResponse.next();
 }
 
