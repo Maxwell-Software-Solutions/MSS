@@ -6,15 +6,15 @@ export const organizationSchema = {
   '@type': 'Organization',
   name: 'Maxwell Software Solutions',
   alternateName: 'Maxwell',
-  url: 'https://maxwell-software.com',
-  logo: 'https://maxwell-software.com/logo.svg',
+  url: 'https://www.maxwellsoftwaresolutions.com',
+  logo: 'https://www.maxwellsoftwaresolutions.com/logo.svg',
   description:
     'Modern web experiences with AI-driven edits. Engineering excellence through test-driven development, clean architecture, and continuous delivery.',
   foundingDate: '2024',
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
-    email: 'contact@maxwell-software.com',
+    email: 'contact@maxwellsoftwaresolutions.com',
     availableLanguage: ['English', 'Lithuanian'],
   },
   sameAs: [
@@ -55,10 +55,10 @@ export function generateArticleSchema(article: {
       name: 'Maxwell Software Solutions',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://maxwell-software.com/logo.svg',
+        url: 'https://www.maxwellsoftwaresolutions.com/logo.svg',
       },
     },
-    image: article.imageUrl || 'https://maxwell-software.com/logo.svg',
+    image: article.imageUrl || 'https://www.maxwellsoftwaresolutions.com/logo.svg',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': article.url,

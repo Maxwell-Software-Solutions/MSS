@@ -15,7 +15,7 @@ export default function ArticleStructuredData({
   datePublished,
   dateModified,
   author = 'Maxwell Software Solutions',
-  imageUrl = 'https://maxwell-software.com/logo.svg',
+  imageUrl = 'https://www.maxwellsoftwaresolutions.com/logo.svg',
 }: ArticleStructuredDataProps): ReactElement {
   const structuredData = {
     '@context': 'https://schema.org',
@@ -27,14 +27,14 @@ export default function ArticleStructuredData({
     author: {
       '@type': 'Organization',
       name: author,
-      url: 'https://maxwell-software.com',
+      url: 'https://www.maxwellsoftwaresolutions.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Maxwell Software Solutions',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://maxwell-software.com/logo.svg',
+        url: 'https://www.maxwellsoftwaresolutions.com/logo.svg',
       },
     },
     image: imageUrl,
@@ -43,10 +43,5 @@ export default function ArticleStructuredData({
     },
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />;
 }

@@ -16,7 +16,29 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
-      // 1. Enforce non-www (www.maxwell-software.com → maxwell-software.com)
+      // 1. Enforce canonical hostname (route legacy or non-www domains → www.maxwellsoftwaresolutions.com)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'maxwellsoftwaresolutions.com',
+          },
+        ],
+        destination: 'https://www.maxwellsoftwaresolutions.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'maxwell-software.com',
+          },
+        ],
+        destination: 'https://www.maxwellsoftwaresolutions.com/:path*',
+        permanent: true,
+      },
       {
         source: '/:path*',
         has: [
@@ -25,8 +47,8 @@ const nextConfig: NextConfig = {
             value: 'www.maxwell-software.com',
           },
         ],
-        destination: 'https://maxwell-software.com/:path*',
-        permanent: true, // 301 redirect
+        destination: 'https://www.maxwellsoftwaresolutions.com/:path*',
+        permanent: true,
       },
 
       // 2. Trailing slash normalization (remove trailing slashes)

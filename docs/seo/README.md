@@ -251,7 +251,7 @@ curl http://localhost:3000/opengraph-image
 curl http://localhost:3000/sitemap.xml
 
 # Test redirects
-curl -I https://www.maxwell-software.com
+curl -I https://www.maxwellsoftwaresolutions.com
 ```
 
 ---

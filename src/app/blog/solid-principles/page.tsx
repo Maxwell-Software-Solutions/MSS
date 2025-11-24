@@ -21,7 +21,7 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         title="SOLID Principles: The Foundation of Clean Code"
         description="Master the five SOLID principles that form the foundation of clean, maintainable, and scalable software architecture."
         datePublished="2024-12-19"
-        imageUrl="https://maxwell-software.com/images/blog/solid-principles-hero.svg"
+        imageUrl="https://www.maxwellsoftwaresolutions.com/images/blog/solid-principles-hero.svg"
       />
       <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
         {/* Header */}

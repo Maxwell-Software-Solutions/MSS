@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+const CANONICAL_HOST = process.env.NEXT_PUBLIC_CANONICAL_HOST ?? 'www.maxwellsoftwaresolutions.com';
+const CANONICAL_PROTOCOL = 'https';
+
+const isLocalLikeHost = (host: string): boolean =>
+  host.includes('localhost') || host.startsWith('127.0.0.1') || host.endsWith('.vercel.app');
+
 /**
  * Middleware for URL normalization and canonical enforcement
  *
@@ -13,8 +19,25 @@ import type { NextRequest } from 'next/server';
  *
  * @see https://nextjs.org/docs/app/building-your-application/routing/middleware
  */
-export function middleware(request: NextRequest) {
-  const { pathname, search } = request.nextUrl;
+export function middleware(request: NextRequest): NextResponse | void {
+  const { pathname } = request.nextUrl;
+  const host = request.headers.get('host') ?? '';
+  const protocol = request.headers.get('x-forwarded-proto') ?? request.nextUrl.protocol.replace(':', '');
+
+  if (host && !isLocalLikeHost(host)) {
+    if (host !== CANONICAL_HOST) {
+      const url = request.nextUrl.clone();
+      url.host = CANONICAL_HOST;
+      url.protocol = `${CANONICAL_PROTOCOL}:`;
+      return NextResponse.redirect(url, { status: 301 });
+    }
+
+    if (protocol !== CANONICAL_PROTOCOL) {
+      const url = request.nextUrl.clone();
+      url.protocol = `${CANONICAL_PROTOCOL}:`;
+      return NextResponse.redirect(url, { status: 301 });
+    }
+  }
 
   // 1. Lowercase enforcement (case-insensitive URLs)
   // /Services → /services

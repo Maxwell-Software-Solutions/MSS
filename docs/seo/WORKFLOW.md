@@ -762,7 +762,7 @@ curl http://localhost:3000/sitemap.xml
 curl http://localhost:3000/opengraph-image
 
 # Test redirects (requires production URL)
-curl -I https://www.maxwell-software.com
+curl -I https://www.maxwellsoftwaresolutions.com
 # Should show 301 redirect
 
 # View page source

@@ -32,7 +32,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         title="Refactoring Legacy Code: Complete Guide to Modernizing Your Software Architecture"
         description="Learn proven strategies for refactoring legacy code, reducing technical debt, and improving software maintainability. Expert tips for modernizing old codebases."
         datePublished="2024-12-19"
-        imageUrl="https://maxwell-software.com/images/blog/refactoring-legacy-code.svg"
+        imageUrl="https://www.maxwellsoftwaresolutions.com/images/blog/refactoring-legacy-code.svg"
       />
       <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
         {/* Header */}

@@ -14,7 +14,7 @@ import { headers } from 'next/headers';
 import { loadServerTranslations, getCriticalTranslations } from '@/lib/server-translations';
 import { SITE_CONFIG, PAGES } from '@/lib/seo/data';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://maxwell-software.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.maxwellsoftwaresolutions.com';
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',

@@ -169,10 +169,10 @@ export const SITE_CONFIG: Readonly<SiteConfig> = {
   title: 'Engineering Excellence Through Quality & Reliability',
   description:
     'Elite software engineering consultancy specializing in code quality audits, test-driven development, CI/CD optimization, and reliability engineering.',
-  url: 'https://maxwell-software.com',
+  url: 'https://www.maxwellsoftwaresolutions.com',
   locale: 'en_US',
   alternateLocale: 'lt_LT',
-  email: 'contact@maxwell-software.com',
+  email: 'contact@maxwellsoftwaresolutions.com',
   foundingDate: '2024-01-01',
   address: {
     country: 'LT',
