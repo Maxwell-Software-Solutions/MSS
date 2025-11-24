@@ -7,6 +7,7 @@
  *
  * @module seo/data
  */
+import { CANONICAL_BASE_URL } from './url';
 
 // ============================================================================
 // Type Definitions
@@ -169,7 +170,7 @@ export const SITE_CONFIG: Readonly<SiteConfig> = {
   title: 'Engineering Excellence Through Quality & Reliability',
   description:
     'Elite software engineering consultancy specializing in code quality audits, test-driven development, CI/CD optimization, and reliability engineering.',
-  url: 'https://www.maxwellsoftwaresolutions.com',
+  url: CANONICAL_BASE_URL,
   locale: 'en_US',
   alternateLocale: 'lt_LT',
   email: 'contact@maxwellsoftwaresolutions.com',

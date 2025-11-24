@@ -13,8 +13,9 @@ import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/seo/str
 import { headers } from 'next/headers';
 import { loadServerTranslations, getCriticalTranslations } from '@/lib/server-translations';
 import { SITE_CONFIG, PAGES } from '@/lib/seo/data';
+import { CANONICAL_BASE_URL } from '@/lib/seo/url';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.maxwellsoftwaresolutions.com';
+const siteUrl = CANONICAL_BASE_URL;
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',

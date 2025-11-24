@@ -11,29 +11,35 @@ All recommendations from the problem statement have been successfully implemente
 ### 1. Mobile Responsiveness and Layout ✅
 
 **Typography Improvements**
+
 - Set body text to minimum 16px (prevents iOS zoom)
 - Applied 1.5× line-height for better readability
 - Already using responsive font scaling with rem units
 
 **Touch Targets**
+
 - Updated all buttons to meet 44×44px minimum (`min-height: 44px; min-width: 44px`)
 - Increased menu toggle from 40px to 44px (2.75rem)
 - Verified adequate spacing between interactive elements
 
 **Color Contrast**
+
 - Improved DarkShowcaseSection from `neutral-300` to `neutral-200` on dark background
 - Achieves WCAG AA standard (4.5:1 for normal text)
 
 **Viewport Configuration**
+
 - Removed `maximumScale` restriction to allow user zoom (WCAG requirement)
 - Properly configured: `width=device-width, initial-scale=1`
 
 **Mobile Navigation**
+
 - Already implements excellent mobile menu with proper accessibility
 - Hamburger menu with smooth transitions
 - Focus trap and keyboard navigation support
 
 **Files Modified:**
+
 - `src/app/globals.css` (lines 35-39, 128-139)
 - `src/app/layout.tsx` (lines 56-60, 96)
 - `src/app/components/DarkShowcaseSection.tsx` (lines 18, 34)
@@ -41,59 +47,70 @@ All recommendations from the problem statement have been successfully implemente
 ### 2. Accessibility Improvements (WCAG AA Compliant) ✅
 
 **Semantic HTML**
+
 - Verified use of proper HTML5 elements (`<header>`, `<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`)
 - Proper heading hierarchy (h1 → h2 → h3)
 - Form labels correctly associated with inputs
 
 **ARIA Labels**
+
 - All icons have proper `aria-label` attributes
 - Interactive elements have appropriate ARIA attributes
 - `aria-expanded`, `aria-controls`, `aria-modal` properly implemented
 
 **Images and Alt Text**
+
 - **Major Fix**: Replaced "Pending Image" placeholders with actual founder avatars
 - All images have descriptive alt text
 - Decorative images properly marked with `aria-hidden="true"`
 
 **Keyboard Navigation**
+
 - Skip-to-content link present and functional
 - Full keyboard accessibility (Tab, Enter, Escape)
 - Visible focus indicators on all interactive elements
 - Focus trap in mobile menu
 
 **Reduced Motion**
+
 - Respects `prefers-reduced-motion` media query
 - Animations can be disabled by user preference
 
 **Files Modified:**
+
 - `src/app/about/FounderCard.tsx` (complete rewrite to use actual images)
 - Verified in: `src/app/layout.tsx`, `src/app/components/HeaderNav.tsx`, `src/app/components/navigation/MobileMenu.tsx`
 
 ### 3. Performance and Core Web Vitals ✅
 
 **Image Optimization**
+
 - WebP and AVIF formats enabled in Next.js config
 - Lazy loading on all below-the-fold images
 - Responsive images with `sizes` attribute
 - Proper width/height to prevent CLS
 
 **CSS Optimization**
+
 - Critical CSS inlined in layout for above-the-fold content
 - Tailwind CSS v4 with automatic purging
 - Minimal CSS file sizes
 
 **JavaScript Optimization**
+
 - Code splitting with dynamic imports
 - Tree shaking enabled
 - Minification and compression (Terser + Gzip)
 - Bundle analysis available
 
 **Caching Strategy**
+
 - Static assets: 1 year cache (`max-age=31536000`)
 - Dynamic content: 1 hour cache with 1 day stale-while-revalidate
 - Images cached with immutable flag
 
 **Current Configuration:**
+
 - Already optimal in `next.config.ts`
 - Compression plugin configured
 - Image optimization configured
@@ -101,11 +118,13 @@ All recommendations from the problem statement have been successfully implemente
 ### 4. Content and SEO ✅
 
 **Meta Descriptions**
+
 - Verified unique meta descriptions on all pages
 - Optimal length (50-160 characters)
 - Includes target keywords naturally
 
 **Structured Data**
+
 - **New Component**: `ArticleStructuredData.tsx`
 - Added Schema.org Article markup to all 3 blog posts:
   - `/blog/test-driven-development`
@@ -114,11 +133,13 @@ All recommendations from the problem statement have been successfully implemente
 - Includes headline, description, datePublished, author, publisher, image
 
 **Open Graph and Twitter Cards**
+
 - Already configured in root layout
 - Includes title, description, type, and images
 - Ready for social media sharing
 
 **Files Added/Modified:**
+
 - **NEW**: `src/app/components/ArticleStructuredData.tsx`
 - `src/app/blog/test-driven-development/page.tsx`
 - `src/app/blog/solid-principles/page.tsx`
@@ -127,43 +148,51 @@ All recommendations from the problem statement have been successfully implemente
 ### 5. Security and Trust ✅
 
 **Security Headers Added**
+
 - `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload` (HSTS)
 - `Referrer-Policy: strict-origin-when-cross-origin`
 - `Permissions-Policy: geolocation=(), microphone=(), camera=()`
 
 **Existing Security Headers**
+
 - `X-Frame-Options: DENY` (prevents clickjacking)
 - `X-Content-Type-Options: nosniff` (prevents MIME sniffing)
 - `X-XSS-Protection: 1; mode=block`
 
 **Documentation**
+
 - Comprehensive security guide created
 - MFA recommendations
 - Input validation guidelines
 - Dependency management best practices
 
 **Files Modified:**
+
 - `next.config.ts` (lines 173-194)
 - **NEW**: `docs/security-best-practices.md`
 
 ### 6. User Engagement and Design ✅
 
 **CTAs (Call-to-Action)**
+
 - Clear hierarchy with primary and secondary buttons
 - Proper contrast and sizing (44×44px minimum)
 - Consistent styling across the site
 
 **Case Studies**
+
 - Text contrast verified (16px minimum, good contrast)
 - Hover states clear and responsive
 - Proper semantic structure
 
 **Hover Effects**
+
 - Smooth transitions (0.2s-0.35s)
 - Visual feedback on all interactive elements
 - Respects reduced motion preferences
 
 **Current Implementation:**
+
 - Already excellent in existing codebase
 - No changes needed, verified as compliant
 
@@ -172,6 +201,7 @@ All recommendations from the problem statement have been successfully implemente
 **Four Comprehensive Guides:**
 
 1. **docs/accessibility.md** (11,259 characters)
+
    - WCAG POUR principles explained
    - Implementation checklist
    - Semantic HTML examples
@@ -181,6 +211,7 @@ All recommendations from the problem statement have been successfully implemente
    - Common mistakes to avoid
 
 2. **docs/mobile-responsiveness.md** (6,234 characters)
+
    - Mobile-first approach
    - Typography guidelines (16px minimum, 1.5× line-height)
    - Touch target sizing (44×44px)
@@ -190,6 +221,7 @@ All recommendations from the problem statement have been successfully implemente
    - Performance considerations
 
 3. **docs/performance-optimization.md** (10,488 characters)
+
    - Core Web Vitals explained (LCP, INP, CLS)
    - Image optimization strategies
    - CSS and JavaScript optimization
@@ -209,6 +241,7 @@ All recommendations from the problem statement have been successfully implemente
    - Monitoring and incident response
 
 **README.md Updated**
+
 - Added feature overview
 - Development scripts documented
 - Architecture section
@@ -222,30 +255,37 @@ All recommendations from the problem statement have been successfully implemente
 ## Testing and Validation ✅
 
 **TypeScript**
+
 ```bash
 npm run typecheck
 ```
+
 ✅ No errors
 
 **ESLint**
+
 ```bash
 npm run lint
 ```
+
 ✅ Only pre-existing warnings (not related to changes)
 
 **Accessibility**
+
 - ✅ WCAG AA compliant
 - ✅ Keyboard navigation verified
 - ✅ Screen reader compatible
 - ✅ Color contrast verified
 
 **Performance**
+
 - ✅ Image optimization configured
 - ✅ Lazy loading implemented
 - ✅ Caching strategy in place
 - ✅ Code splitting enabled
 
 **Security**
+
 - ✅ HSTS header configured
 - ✅ All recommended headers in place
 - ✅ Best practices documented
@@ -260,17 +300,20 @@ npm run lint
 ## Metrics and Targets
 
 **Core Web Vitals Targets:**
+
 - ✅ LCP (Largest Contentful Paint): < 2.5s
 - ✅ INP (Interaction to Next Paint): < 200ms
 - ✅ CLS (Cumulative Layout Shift): < 0.1
 
 **Accessibility:**
+
 - ✅ WCAG AA Level (4.5:1 contrast ratio)
 - ✅ Touch targets: 44×44px minimum
 - ✅ Font size: 16px minimum
 - ✅ Line height: 1.5× minimum
 
 **Performance:**
+
 - ✅ Lighthouse score target: > 90
 - ✅ Initial bundle: < 200KB (gzipped)
 - ✅ Image size: < 100KB each
@@ -278,27 +321,32 @@ npm run lint
 ## Impact Summary
 
 **User Experience**
+
 - Better mobile responsiveness with proper touch targets
 - Improved readability with larger fonts and better contrast
 - Faster page loads with optimized images and caching
 
 **Accessibility**
+
 - Full WCAG AA compliance
 - Better keyboard navigation support
 - Screen reader compatibility
 - No zoom restrictions
 
 **SEO**
+
 - Improved search visibility with structured data
 - Better social media sharing with Open Graph tags
 - Enhanced discoverability of blog content
 
 **Security**
+
 - Stronger security posture with HSTS
 - Better protection against common attacks
 - Clear guidelines for team to follow
 
 **Maintainability**
+
 - Comprehensive documentation for all best practices
 - Clear guidelines for future development
 - Testing strategies documented
@@ -318,6 +366,7 @@ These are not required but could be considered for future improvements:
 ## Files Summary
 
 **Modified Files:**
+
 1. `src/app/globals.css` - Typography and touch targets
 2. `src/app/layout.tsx` - Menu toggle and viewport
 3. `src/app/components/DarkShowcaseSection.tsx` - Color contrast
@@ -329,13 +378,44 @@ These are not required but could be considered for future improvements:
 9. `README.md` - Comprehensive documentation
 
 **New Files:**
+
 1. `src/app/components/ArticleStructuredData.tsx` - SEO component
 2. `docs/accessibility.md` - WCAG guide
 3. `docs/mobile-responsiveness.md` - Mobile guide
 4. `docs/performance-optimization.md` - Performance guide
 5. `docs/security-best-practices.md` - Security guide
 
+### 8. Search Console Noise URLs ✅
+
+**Root Cause Discovery**
+
+- Googlebot was requesting `/&` and `/$` URLs it discovered inside the inline React Flight streaming script (see `tmp_root.html`). These markers are part of React's internal protocol rather than real navigation links, so crawlers ended up generating false 404s.
+
+**Mitigation**
+
+- Added a guard in `src/middleware.ts` that detects symbol-only root paths (currently `/&` and `/$`) and 301-redirects them to `/`. This keeps analytics clean and prevents Search Console from flagging these requests as errors.
+
+**Operational Guidance**
+
+- After deploying the middleware change, open Search Console and click **Validate Fix** for both `/&` and `/$` issues. Google will see the 301 response and remove the errors once validation completes.
+
+### 9. Sitemap Host Alignment ✅
+
+**Error Triggered**
+
+- Search Console flagged the sitemap with "URL not allowed" because entries listed the legacy `https://maxwell-software.com` origin while the sitemap itself lives on `https://www.maxwellsoftwaresolutions.com`.
+
+**Fix Implemented**
+
+- Introduced `src/lib/seo/url.ts`, a shared helper that normalizes environment variables into a single canonical base URL.
+- Updated `SITE_CONFIG`, the global metadata in `src/app/layout.tsx`, and the dynamic sitemap generator to consume that helper so every canonical reference now points at `https://www.maxwellsoftwaresolutions.com` regardless of outdated env vars.
+
+**Next Steps**
+
+- Deploy the change, then in Search Console open the sitemap details and select **Resubmit**/**Validate Fix** so Google re-fetches the updated XML without cross-domain URLs.
+
 **Total Changes:**
+
 - 9 files modified
 - 5 files created
 - 14 files total changed

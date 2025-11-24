@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { SITE_CONFIG, PAGES, BLOG_POSTS, PROJECTS } from '@/lib/seo/data';
+import { CANONICAL_BASE_URL } from '@/lib/seo/url';
 
 /**
  * Dynamic sitemap generated from central data registry
@@ -11,7 +12,7 @@ import { SITE_CONFIG, PAGES, BLOG_POSTS, PROJECTS } from '@/lib/seo/data';
  * @returns Sitemap entries for all pages, blog posts, and projects
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = SITE_CONFIG.url;
+  const baseUrl = CANONICAL_BASE_URL ?? SITE_CONFIG.url;
   const now = new Date();
 
   // Static pages from PAGES registry
