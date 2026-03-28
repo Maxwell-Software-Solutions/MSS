@@ -229,6 +229,17 @@ p, div, span, h1, h2, h3, h4, h5, h6 {
   background-color: rgba(248, 250, 252, 0.85);
 }
 
+/* Override dark media query when light theme is explicitly set */
+:root[data-theme="light"] header nav {
+  color: var(--color-text);
+}
+:root[data-theme="light"] header nav a {
+  color: var(--color-text);
+}
+:root[data-theme="light"] header nav .menu-toggle {
+  color: var(--color-text);
+}
+
 /* Header navigation text styling */
 header nav {
   color: var(--color-text);
@@ -277,6 +288,7 @@ header nav .nav-links a:hover {
   background: transparent;
   box-shadow: none;
   border: 1px solid transparent;
+  color: var(--color-text);
 }
 
 :root[data-theme="light"] header nav .nav-links a:hover {
