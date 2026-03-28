@@ -61,8 +61,11 @@ export default function HeaderNav(): ReactElement {
         <Link href="/services" suppressHydrationWarning>
           {ht('nav.services', 'Services')}
         </Link>
-        <Link href="/project-showcase" suppressHydrationWarning>
+        <Link href="/case-studies" suppressHydrationWarning>
           {ht('nav.caseStudies', 'Case studies')}
+        </Link>
+        <Link href="/pricing" suppressHydrationWarning>
+          {ht('nav.pricing', 'Pricing')}
         </Link>
         <Link href="/about" suppressHydrationWarning>
           {ht('nav.about', 'About')}

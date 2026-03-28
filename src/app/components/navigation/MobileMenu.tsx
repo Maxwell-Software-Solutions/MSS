@@ -155,8 +155,13 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
             </Link>
           </li>
           <li>
-            <Link href="/project-showcase" onClick={handleLink} suppressHydrationWarning>
+            <Link href="/case-studies" onClick={handleLink} suppressHydrationWarning>
               {t('nav.caseStudies') === 'nav.caseStudies' ? 'Case studies' : t('nav.caseStudies')}
+            </Link>
+          </li>
+          <li>
+            <Link href="/pricing" onClick={handleLink} suppressHydrationWarning>
+              {t('nav.pricing') === 'nav.pricing' ? 'Pricing' : t('nav.pricing')}
             </Link>
           </li>
           <li>
