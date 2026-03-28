@@ -1,0 +1,5 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Diamond mark only — dark/negative, white on transparent -->
+  <rect x="13" y="13" width="38" height="38" rx="2" transform="rotate(45 32 32)" stroke="#FFFFFF" stroke-width="4" fill="none"/>
+  <rect x="21" y="21" width="22" height="22" rx="1.5" transform="rotate(45 32 32)" stroke="#60A5FA" stroke-width="2.5" fill="#60A5FA" fill-opacity="0.12"/>
+</svg>
