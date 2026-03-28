@@ -30,7 +30,7 @@ beforeAll(() => {
 describe('Home page', () => {
   it('renders the primary headline', () => {
     render(<Home />);
-    expect(screen.getByText(/Build with confidence/i)).toBeInTheDocument();
+    expect(screen.getByText(/Software Engineering Consultancy/i)).toBeInTheDocument();
   });
 
   it('renders the main call-to-action buttons', () => {

@@ -8,7 +8,7 @@ expect.extend(toHaveNoViolations);
 describe('Services & Process page', () => {
   it('renders the combined main heading', () => {
     render(<ServicesPage />);
-    expect(screen.getByRole('heading', { name: /services & process/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /service capabilities/i })).toBeInTheDocument();
   });
 
   it('renders the lead description', () => {

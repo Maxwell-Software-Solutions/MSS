@@ -17,7 +17,7 @@ describe('MicroservicesPost', () => {
         <MicroservicesPost />
       </LanguageProvider>
     );
-    expect(screen.getByRole('heading', { name: /Microservices Architecture/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Microservices Architecture/i, level: 1 })).toBeInTheDocument();
   });
 
   it('renders table of contents', () => {
