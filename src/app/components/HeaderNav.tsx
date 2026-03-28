@@ -55,7 +55,7 @@ export default function HeaderNav(): ReactElement {
           } catch {}
         }}
       >
-        <ThemeAwareLogo width={240} height={60} className="site-logo w-auto" priority />
+        <ThemeAwareLogo width={280} height={64} className="site-logo w-auto" priority />
       </Link>
       <div className="nav-links" aria-label="Primary navigation">
         <Link href="/services" suppressHydrationWarning>

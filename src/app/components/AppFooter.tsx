@@ -54,11 +54,11 @@ export default function SiteFooter(): ReactElement {
           <div className="space-y-6">
             <div className="flex items-center gap-3">
               <Image
-                src={isDark ? '/logo-simple-dark.svg' : '/logo-simple.svg'}
+                src={isDark ? '/logo-icon-dark.svg' : '/logo-icon.svg'}
                 alt="Maxwell Software Solutions"
-                width={200}
-                height={42}
-                className="h-8 w-auto opacity-90"
+                width={40}
+                height={40}
+                className="h-10 w-10 opacity-90"
               />
               <span className="text-xs uppercase tracking-[0.35em] text-[color:var(--accent)]">
                 Crafting reliable software

@@ -10,8 +10,8 @@ interface ThemeAwareLogoProps {
 }
 
 export default function ThemeAwareLogo({
-  width = 240,
-  height = 60,
+  width = 280,
+  height = 64,
   className = 'site-logo w-auto',
   priority = false,
 }: ThemeAwareLogoProps): ReactElement {
