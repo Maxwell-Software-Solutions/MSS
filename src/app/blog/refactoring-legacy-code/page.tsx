@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Alert, ButtonLink } from '@/app/components/ui';
 import dynamic from 'next/dynamic';
 import ArticleStructuredData from '@/app/components/ArticleStructuredData';
+import StructuredData from '@/app/components/StructuredData';
+import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 // Defer large lower-page sections to reduce TTFB / initial JS
 const RefactoringStrategies = dynamic(() => import('./sections/RefactoringStrategies'), { ssr: true });
@@ -26,8 +28,14 @@ export const metadata: Metadata = {
 };
 
 export default function RefactoringLegacyCodePost(): ReactElement {
+  const breadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'Refactoring Legacy Code', url: '/blog/refactoring-legacy-code' },
+  ]);
   return (
     <>
+      <StructuredData schema={breadcrumb} />
       <ArticleStructuredData
         title="Refactoring Legacy Code: Complete Guide to Modernizing Your Software Architecture"
         description="Learn proven strategies for refactoring legacy code, reducing technical debt, and improving software maintainability. Expert tips for modernizing old codebases."
@@ -655,8 +663,12 @@ export default function RefactoringLegacyCodePost(): ReactElement {
           <h2 className="text-2xl font-bold mb-4">Ready to Transform Your Legacy Codebase?</h2>
           <p className="text-foreground/70 mb-6">
             At Maxwell Software Solutions, we specialize in helping teams modernize legacy systems and build
-            maintainable, scalable software architectures. Let&apos;s work together to transform your technical debt
-            into a competitive advantage.
+            maintainable, scalable software architectures. Our{' '}
+            <Link href="/services" className="text-accent underline hover:no-underline font-medium">
+              Technical Debt Reduction service
+            </Link>{' '}
+            uses systematic refactoring techniques to transform legacy codebases safely — while keeping your production
+            systems running.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <ButtonLink href="/contact" variant="accent">

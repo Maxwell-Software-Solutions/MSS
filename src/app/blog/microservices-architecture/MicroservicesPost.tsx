@@ -348,6 +348,23 @@ export default function MicroservicesPost(): ReactElement {
           clear bounded contexts using Domain-Driven Design, and pilot with a single extracted service to learn the
           operational challenges.
         </Alert>
+        <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
+          <h3 className="text-xl font-bold mb-3">Need Help With Microservices Architecture?</h3>
+          <p className="text-foreground/70 mb-5">
+            Our{' '}
+            <a href="/services" className="text-accent underline hover:no-underline font-medium">
+              Reliability Engineering service
+            </a>{' '}
+            helps teams design observable, resilient distributed systems — with SLOs, distributed tracing, and incident
+            response practices built in from the start.
+          </p>
+          <a
+            href="/contact"
+            className="inline-block px-6 py-3 bg-accent text-white rounded-xl font-semibold hover:opacity-90 transition-opacity"
+          >
+            Talk to Our Engineering Team
+          </a>
+        </div>
       </ArticleSection>
     </BlogPostLayout>
   );

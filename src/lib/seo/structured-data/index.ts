@@ -3,7 +3,7 @@
  * Import from here to access any schema generator
  */
 
-export { generateOrganizationSchema } from './organization';
+export { generateOrganizationSchema, generateLocalBusinessSchema } from './organization';
 
 export { generateWebSiteSchema } from './website';
 

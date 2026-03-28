@@ -9,7 +9,7 @@ import Cookiebot from '@/app/components/Cookiebot';
 import ClientOnlyComponents from '@/app/components/ClientOnlyComponents';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import StructuredData from '@/app/components/StructuredData';
-import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/seo/structured-data';
+import { generateOrganizationSchema, generateWebSiteSchema, generateLocalBusinessSchema } from '@/lib/seo/structured-data';
 import { headers } from 'next/headers';
 import { loadServerTranslations, getCriticalTranslations } from '@/lib/server-translations';
 import { SITE_CONFIG, PAGES } from '@/lib/seo/data';
@@ -187,6 +187,7 @@ export default async function RootLayout({
   // Generate enhanced structured data schemas
   const organizationSchemaNew = generateOrganizationSchema();
   const websiteSchema = generateWebSiteSchema();
+  const localBusinessSchema = generateLocalBusinessSchema();
 
   return (
     <html lang={initialLang} className={`${montserrat.variable} ${geistSans.variable} ${geistMono.variable}`}>
@@ -195,11 +196,15 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="//fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="//fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* hreflang tags for bilingual EN/LT site — required to avoid duplicate content penalties */}
+        <link rel="alternate" hrefLang="en" href={`${siteUrl}/en`} />
+        <link rel="alternate" hrefLang="lt" href={`${siteUrl}/lt`} />
+        <link rel="alternate" hrefLang="x-default" href={siteUrl} />
       </head>
       <body className="antialiased">
         <LanguageProvider initialLanguage={initialLang} criticalTranslations={criticalTranslations}>
-          {/* Enhanced Structured Data: Organization + WebSite with search */}
-          <StructuredData schema={[organizationSchemaNew, websiteSchema]} />
+          {/* Enhanced Structured Data: Organization + WebSite + LocalBusiness (Vilnius) */}
+          <StructuredData schema={[organizationSchemaNew, websiteSchema, localBusinessSchema]} />
           {/* Cookiebot */}
           <Cookiebot cbid={process.env.NEXT_PUBLIC_COOKIEBOT_CBID || 'c99c6734-f40a-4c0f-842f-aea763f24ee7'} />
           {/* Google Analytics */}

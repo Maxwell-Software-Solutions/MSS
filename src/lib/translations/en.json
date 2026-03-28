@@ -1,17 +1,15 @@
 {
-  "hero.title": "Build with confidence.",
+  "hero.title": "Software Engineering Consultancy — Vilnius, Lithuania",
   "hero.subtitle": "Ship reliable software through code quality audits, testing strategy, refactoring, and observability.",
   "hero.cta.primary": "Request Your Code Audit",
   "hero.cta.secondary": "Explore Services",
   "hero.values": "QUALITY • RELIABILITY • VELOCITY",
-  
   "stats.defects": "-60%",
   "stats.defects.label": "Escaped defects",
   "stats.coverage": "+35%",
   "stats.coverage.label": "Test coverage",
   "stats.mttr": "-45%",
   "stats.mttr.label": "MTTR",
-  
   "value.insight.title": "Independent insight",
   "value.insight.body": "Objective code quality audits that uncover structural risk, hidden complexity, and testing blind spots.",
   "value.iteration.title": "Faster iteration",
@@ -20,7 +18,6 @@
   "value.reliability.body": "Observability patterns, failure-mode analysis, and guardrails that harden production systems.",
   "value.outcomes.title": "Measurable outcomes",
   "value.outcomes.body": "We align on baselines, instrument improvements, and report tangible engineering impact.",
-  
   "capabilities.heading": "Capabilities",
   "capabilities.description": "Deep focus on software quality, sustainable velocity, and operational excellence. We embed alongside your team to reduce risk and accelerate delivery.",
   "capabilities.testing.title": "Testing Strategy",
@@ -31,11 +28,9 @@
   "capabilities.observability.body": "SLO design, trace-driven diagnostics, proactive error budgets.",
   "capabilities.reliability.title": "Reliability",
   "capabilities.reliability.body": "Chaos rehearsal, failure mode reviews, incident response hardening.",
-  
   "about.section.heading": "About",
   "about.section.description": "Maxwell Software Solutions is a boutique engineering consultancy helping teams ship reliable software faster. We specialise in code quality audits, testing strategy, pragmatic refactoring, and production reliability—focused on measurable outcomes and sustainable velocity.",
   "about.section.cta": "Learn More About Us",
-  
   "process.heading": "How engagements work",
   "process.step1.title": "Technical discovery",
   "process.step1.body": "Architecture & repository review, quality baselining, risk surfacing, metric capture.",
@@ -45,7 +40,6 @@
   "process.step3.body": "Refactoring spikes, test harness improvements, observability instrumentation.",
   "process.step4.title": "Measurement & handoff",
   "process.step4.body": "Quantify impact, transfer knowledge, create sustaining playbooks.",
-  
   "projects.eyebrow": "Selected work",
   "projects.heading": "Case studies",
   "projects.description": "Real engagements with measurable outcomes. Each links to a concise deep‑dive.",
@@ -69,21 +63,19 @@
   "projects.iot.outcome": "Data loss down 89%",
   "projects.viewStudy": "View study",
   "projects.browseAll": "Browse all case studies",
-  
   "contact.heading": "Contact",
   "contact.description": "Outline your current challenges and desired outcomes. You will receive a rapid response with an initial diagnostic perspective and next-step options.",
   "contact.cta.primary": "Request Intro Call Today",
   "contact.cta.secondary": "View Detailed Services",
   "contact.linkedin.label": "Follow us on LinkedIn:",
   "contact.linkedin.company": "Maxwell Software Solutions",
-  
   "nav.services": "Services",
   "nav.caseStudies": "Case studies",
   "nav.about": "About",
   "nav.blog": "Blog",
-  
+  "nav.founders": "Founders",
   "services.hero.eyebrow": "Expert partnership",
-  "services.hero.title": "Services & Process",
+  "services.hero.title": "Software Engineering Services — Vilnius, Lithuania",
   "services.hero.subtitle": "We help teams ship correct, maintainable, and observable software with measurable improvements.",
   "services.hero.description": "Focused engagements amplify engineering effectiveness: faster iteration, observable systems, and measurable reliability gains.",
   "services.hero.note": "Start lightweight—prove value quickly, expand impact deliberately.",
@@ -120,7 +112,6 @@
   "services.cta.body": "Explore fit, clarify goals, and identify the fastest path to measurable impact. No obligation, high signal.",
   "services.cta.primary": "Book a discovery call",
   "services.cta.secondary": "See case studies",
-  
   "about.title": "About Maxwell Software Solutions",
   "about.intro": "Maxwell Software Solutions focuses on code quality and reliability. We believe correctness and simplicity enable speed.",
   "about.description": "We partner with engineering teams to modernize legacy systems, accelerate delivery pipelines, and build sustainable practices that scale. Our approach combines technical rigor with pragmatic outcomes.",
@@ -142,11 +133,9 @@
   "about.founder.marek.name": "Marek Wolosewicz",
   "about.founder.marek.role": "Managing Director",
   "about.founder.marek.bio": "Turns reliability & speed into strategic leverage—aligning engineering bets with growth.",
-  
   "contactPage.eyebrow": "We'd love to hear from you",
   "contactPage.title": "Let's build something remarkable together",
   "contactPage.subtitle": "Share a few details about your project and our consultants will reach back within one business day.",
-  
   "blog.title": "Insights",
   "blog.subtitle": "Short, high-signal posts on testing, refactoring, and reliability.",
   "blog.readMore": "Read more",
@@ -181,7 +170,6 @@
   "blog.cicd.category": "DevOps & Automation",
   "blog.cicd.title": "Modern CI/CD Pipelines: Automating Your Software Delivery",
   "blog.cicd.excerpt": "Learn how to build modern CI/CD pipelines with automated testing, deployment strategies, and DevOps best practices for faster, safer releases.",
-  
   "caseStudies.title": "Case studies",
   "caseStudies.subtitle": "Selected results across industries. Each study includes context, actions, and measurable outcomes.",
   "caseStudies.retail.title": "Retail platform — escaped defects down 58%",

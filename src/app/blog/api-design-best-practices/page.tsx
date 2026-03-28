@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 import APIDesignPost from './APIDesignPost';
+import StructuredData from '@/app/components/StructuredData';
+import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
   title: 'API Design Best Practices: Building RESTful APIs That Scale | Maxwell Software Solutions',
@@ -16,5 +18,15 @@ export const metadata: Metadata = {
 };
 
 export default function Page(): ReactElement {
-  return <APIDesignPost />;
+  const breadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'API Design Best Practices', url: '/blog/api-design-best-practices' },
+  ]);
+  return (
+    <>
+      <StructuredData schema={breadcrumb} />
+      <APIDesignPost />
+    </>
+  );
 }

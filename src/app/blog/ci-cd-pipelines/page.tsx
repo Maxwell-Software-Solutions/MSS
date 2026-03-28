@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 import CICDPost from './CICDPost';
+import StructuredData from '@/app/components/StructuredData';
+import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
   title: 'Modern CI/CD Pipelines: Automating Your Software Delivery | Maxwell Software Solutions',
@@ -16,5 +18,15 @@ export const metadata: Metadata = {
 };
 
 export default function Page(): ReactElement {
-  return <CICDPost />;
+  const breadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'Modern CI/CD Pipelines', url: '/blog/ci-cd-pipelines' },
+  ]);
+  return (
+    <>
+      <StructuredData schema={breadcrumb} />
+      <CICDPost />
+    </>
+  );
 }

@@ -3,6 +3,8 @@ import type { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ArticleStructuredData from '@/app/components/ArticleStructuredData';
+import StructuredData from '@/app/components/StructuredData';
+import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 import { Alert, ButtonLink } from '@/app/components/ui';
 
 export const metadata: Metadata = {
@@ -15,8 +17,14 @@ export const metadata: Metadata = {
 };
 
 export default function TDDPost(): ReactElement {
+  const breadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'Test-Driven Development', url: '/blog/test-driven-development' },
+  ]);
   return (
     <>
+      <StructuredData schema={breadcrumb} />
       <ArticleStructuredData
         title="Test-Driven Development: Building Business Confidence Through Code Quality"
         description="Discover how TDD reduces costs, improves reliability, and delivers business value. Learn why leading companies invest in test-driven development."
@@ -357,7 +365,11 @@ export default function TDDPost(): ReactElement {
           <h2 className="text-2xl font-bold mb-4">Ready to Transform Your Development Process?</h2>
           <p className="text-foreground/70 mb-6">
             At Maxwell Software Solutions, we&apos;ve helped dozens of teams implement TDD and achieve measurable
-            business results. Let&apos;s work together to build the reliable, maintainable software your business needs.
+            business results. Our{' '}
+            <Link href="/services" className="text-accent underline hover:no-underline font-medium">
+              Testing Strategy &amp; Implementation service
+            </Link>{' '}
+            gives your team the practices, tools, and confidence to ship reliable software from day one.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <ButtonLink href="/contact" variant="accent" size="lg">

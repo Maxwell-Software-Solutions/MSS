@@ -416,6 +416,23 @@ terraform apply`}
           <strong>Next Steps:</strong> Audit your current deployment process. Identify the biggest manual bottleneck.
           Automate it this week. Then repeat. Small, incremental improvements compound into transformation.
         </Alert>
+        <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
+          <h3 className="text-xl font-bold mb-3">Need Help Optimising Your CI/CD Pipeline?</h3>
+          <p className="text-foreground/70 mb-5">
+            Our{' '}
+            <a href="/services" className="text-accent underline hover:no-underline font-medium">
+              CI/CD Pipeline Optimisation service
+            </a>{' '}
+            helps teams at Maxwell Software Solutions build faster, safer delivery pipelines with measurable DORA metric
+            improvements.
+          </p>
+          <a
+            href="/contact"
+            className="inline-block px-6 py-3 bg-accent text-white rounded-xl font-semibold hover:opacity-90 transition-opacity"
+          >
+            Talk to Our Engineering Team
+          </a>
+        </div>
       </ArticleSection>
     </BlogPostLayout>
   );

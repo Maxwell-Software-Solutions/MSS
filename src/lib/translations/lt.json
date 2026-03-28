@@ -4,14 +4,12 @@
   "hero.cta.primary": "Užsakykite Kodo Auditą",
   "hero.cta.secondary": "Naršyti Paslaugas",
   "hero.values": "KOKYBĖ • PATIKIMUMAS • GREITIS",
-  
   "stats.defects": "-60%",
   "stats.defects.label": "Praleistų defektų",
   "stats.coverage": "+35%",
   "stats.coverage.label": "Testų padengimas",
   "stats.mttr": "-45%",
   "stats.mttr.label": "MTTR",
-  
   "value.insight.title": "Nepriklausoma įžvalga",
   "value.insight.body": "Objektyvūs kodo kokybės auditai, atskleidžiantys struktūrinę riziką, paslėptą sudėtingumą ir testavimo spragas.",
   "value.iteration.title": "Greitesnė iteracija",
@@ -20,7 +18,6 @@
   "value.reliability.body": "Stebėsenos modeliai, gedimo režimo analizė ir apsaugos priemonės, kurios sustiprina gamybines sistemas.",
   "value.outcomes.title": "Išmatuojami rezultatai",
   "value.outcomes.body": "Derinamos bazės, įdiegiami patobulinimai ir pranešama apie realų inžinerinį poveikį.",
-  
   "capabilities.heading": "Galimybės",
   "capabilities.description": "Didelis dėmesys programinės įrangos kokybei, tvariam greičiui ir veiklos tobulinimui. Įsiliename į jūsų komandą, kad sumažintume riziką ir pagreitintume pristatymą.",
   "capabilities.testing.title": "Testavimo Strategija",
@@ -31,7 +28,6 @@
   "capabilities.observability.body": "SLO dizainas, pėdsakais pagrįsta diagnostika, proaktyvūs klaidų biudžetai.",
   "capabilities.reliability.title": "Patikimumas",
   "capabilities.reliability.body": "Chaoso repeticijos, gedimo režimų apžvalgos, incidentų reagavimo stiprinimas.",
-  
   "process.heading": "Kaip veikia bendradarbiavimas",
   "process.step1.title": "Techninis tyrimas",
   "process.step1.body": "Architektūros ir saugyklos peržiūra, kokybės bazavimas, rizikos aptikimas, metrikos fiksavimas.",
@@ -41,7 +37,6 @@
   "process.step3.body": "Refaktoringo sprogimai, testu sistemos patobulinimai, stebėsenos instrumentavimas.",
   "process.step4.title": "Matavimas ir perdavimas",
   "process.step4.body": "Kiekybiškai įvertinti poveikį, perduoti žinias, sukurti palaikymo vadovus.",
-  
   "projects.eyebrow": "Pasirinkti darbai",
   "projects.heading": "Atvejų studijos",
   "projects.description": "Tikri projektai su išmatuojamais rezultatais. Kiekvienas nukreipia į glaustą giluminę analizę.",
@@ -65,19 +60,17 @@
   "projects.iot.outcome": "Duomenų praradimas sumažėjo 89%",
   "projects.viewStudy": "Žiūrėti studiją",
   "projects.browseAll": "Naršyti visas atvejų studijas",
-  
   "contact.heading": "Kontaktai",
   "contact.description": "Aprašykite savo dabartines problemas ir norimus rezultatus. Gausite greitą atsakymą su pradiniu diagnostiniu požiūriu ir kito žingsnio parinktimis.",
   "contact.cta.primary": "Užsakyti Įžanginį Skambutį Šiandien",
   "contact.cta.secondary": "Žiūrėti Išsamias Paslaugas",
   "contact.linkedin.label": "Sekite mus LinkedIn:",
   "contact.linkedin.company": "Maxwell Software Solutions",
-  
   "nav.services": "Paslaugos",
   "nav.caseStudies": "Atvejų studijos",
   "nav.about": "Apie",
   "nav.blog": "Tinklaraštis",
-  
+  "nav.founders": "Įkūrėjai",
   "services.hero.eyebrow": "Ekspertų partnerystė",
   "services.hero.title": "Paslaugos ir Procesas",
   "services.hero.subtitle": "Padedame komandoms pristatyti teisingą, lengvai prižiūrimą ir stebimą programinę įrangą su išmatuojamais patobulinimais.",
@@ -116,7 +109,6 @@
   "services.cta.body": "Tyrinėkite tinkamumą, paaiškinkite tikslus ir nustatykite greitiausią kelią į išmatuojamą poveikį. Be įsipareigojimų, didelis signalas.",
   "services.cta.primary": "Užsisakykite atradimo skambutį",
   "services.cta.secondary": "Žiūrėti atvejų studijas",
-  
   "about.section.heading": "Apie",
   "about.section.description": "Maxwell Software Solutions yra butikinė inžinerijos konsultacijų įmonė, padedanti komandoms greičiau pristatyti patikimą programinę įrangą. Mes specializuojamės kodo kokybės audituose, testavimo strategijoje, pragmatiniame refaktoringe ir gamybos patikimume—orientuotasi į išmatuojamus rezultatus ir tvarų greitį.",
   "about.section.cta": "Sužinokite Daugiau Apie Mus",
@@ -141,11 +133,9 @@
   "about.founder.marek.name": "Marek Wolosewicz",
   "about.founder.marek.role": "Valdantis Direktorius",
   "about.founder.marek.bio": "Paverčia patikimumą ir greitį strateginiu svertu—derinant inžinerinius lažybas su augimu.",
-  
   "contactPage.eyebrow": "Norėtume išgirsti iš jūsų",
   "contactPage.title": "Sukurkime kažką nuostabaus kartu",
   "contactPage.subtitle": "Pasidalinkite keliais detalėmis apie savo projektą ir mūsų konsultantai susisieks per vieną darbo dieną.",
-  
   "blog.title": "Įžvalgos",
   "blog.subtitle": "Trumpi, informatyvūs straipsniai apie testavimą, refaktoringą ir patikimumą.",
   "blog.readMore": "Skaityti daugiau",
@@ -180,7 +170,6 @@
   "blog.cicd.category": "DevOps ir Automatizavimas",
   "blog.cicd.title": "Šiuolaikiniai CI/CD Vamzdynai: Programinės Įrangos Pristatymo Automatizavimas",
   "blog.cicd.excerpt": "Išmokite kurti šiuolaikinius CI/CD vamzdynus su automatiniu testavimu, diegimo strategijomis ir DevOps geriausia praktika greitesniems, saugesniems leidimams.",
-  
   "caseStudies.title": "Atvejų studijos",
   "caseStudies.subtitle": "Pasirinkti rezultatai įvairiose pramonės šakose. Kiekviena studija apima kontekstą, veiksmus ir išmatuojamus rezultatus.",
   "caseStudies.retail.title": "Mažmeninės prekybos platforma — praleistu defektų sumažėjo 58%",

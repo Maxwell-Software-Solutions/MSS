@@ -148,6 +148,10 @@ export interface SiteConfig {
   /** Company address */
   address: {
     country: string;
+    locality?: string;
+    region?: string;
+    postalCode?: string;
+    streetAddress?: string;
   };
   /** Social media links */
   social: {
@@ -177,6 +181,10 @@ export const SITE_CONFIG: Readonly<SiteConfig> = {
   foundingDate: '2024-01-01',
   address: {
     country: 'LT',
+    locality: 'Vilnius',
+    region: 'Vilnius County',
+    postalCode: 'LT-01108',
+    streetAddress: 'Gedimino pr. 1',
   },
   social: {
     linkedin: 'https://www.linkedin.com/company/maxwell-software-solutions',
@@ -215,31 +223,31 @@ export const KEYWORD_SETS = {
  */
 export const PAGES: Record<string, PageMetadata> = {
   home: {
-    title: 'Maxwell Software Solutions — Engineering Excellence Through Quality & Reliability',
+    title: 'Software Engineering Consultancy in Vilnius, Lithuania — Maxwell Software Solutions',
     description: SITE_CONFIG.description,
-    keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.testing, ...KEYWORD_SETS.devops],
+    keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.testing, ...KEYWORD_SETS.devops, 'software consultancy Lithuania', 'software development company Vilnius'],
     canonical: '/',
     ogType: 'website',
   },
   about: {
-    title: 'About Us — Our Approach to Software Engineering Excellence',
+    title: 'About Maxwell Software Solutions — Elite Software Consultancy, Vilnius Lithuania',
     description:
-      'Learn about our engineering philosophy, team expertise, and commitment to delivering high-quality software solutions through proven practices.',
-    keywords: [...KEYWORD_SETS.core, 'software consulting team', 'engineering expertise'],
+      'Maxwell Software Solutions is a software engineering consultancy based in Vilnius, Lithuania, specialising in code quality audits, TDD, and reliability engineering. Meet the team.',
+    keywords: [...KEYWORD_SETS.core, 'software consulting team', 'engineering expertise', 'software consultancy Vilnius', 'Lithuania engineering team'],
     canonical: '/about',
   },
   services: {
-    title: 'Services — Code Quality, Testing & CI/CD Optimization',
+    title: 'Code Quality Audits & Engineering Consulting — Maxwell Software Solutions | Vilnius, Lithuania',
     description:
-      'Professional software engineering services: code quality audits, reliability engineering, testing strategy, CI/CD hardening, and technical debt reduction.',
-    keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.testing, ...KEYWORD_SETS.devops],
+      'Professional software engineering services in Vilnius, Lithuania: code quality audits, reliability engineering, testing strategy, CI/CD hardening, and technical debt reduction.',
+    keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.testing, ...KEYWORD_SETS.devops, 'software consultancy Lithuania', 'code quality audit Vilnius'],
     canonical: '/services',
   },
   contact: {
-    title: 'Contact Us — Start Your Software Quality Journey',
+    title: 'Contact Maxwell Software Solutions | Vilnius, Lithuania',
     description:
-      "Get in touch with our engineering team to discuss your code quality, testing, or DevOps challenges. We're here to help.",
-    keywords: ['software consulting contact', 'engineering services inquiry', ...KEYWORD_SETS.core],
+      "Get in touch with our engineering team in Vilnius, Lithuania to discuss your code quality, testing, or DevOps challenges. We're here to help.",
+    keywords: ['software consulting contact', 'engineering services inquiry', ...KEYWORD_SETS.core, 'software consultancy Vilnius'],
     canonical: '/contact',
   },
   blog: {
@@ -250,10 +258,10 @@ export const PAGES: Record<string, PageMetadata> = {
     canonical: '/blog',
   },
   projectShowcase: {
-    title: 'Case Studies — Real-World Engineering Success Stories',
+    title: 'Case Studies — Software Engineering Success Stories | Vilnius, Lithuania',
     description:
-      'Explore our portfolio of successful software quality transformations, reliability improvements, and engineering excellence initiatives.',
-    keywords: ['software case studies', 'engineering portfolio', ...KEYWORD_SETS.core],
+      'Explore our portfolio of successful software quality transformations, reliability improvements, and engineering excellence initiatives by Maxwell Software Solutions, based in Vilnius, Lithuania.',
+    keywords: ['software case studies', 'engineering portfolio', ...KEYWORD_SETS.core, 'software consultancy Lithuania', 'code quality case studies Vilnius'],
     canonical: '/project-showcase',
   },
   founders: {

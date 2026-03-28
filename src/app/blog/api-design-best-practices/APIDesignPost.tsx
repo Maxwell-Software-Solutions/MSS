@@ -337,6 +337,23 @@ GET /users?limit=20&cursor=abc123
           implement this week—whether it&apos;s better documentation, consistent error handling, or implementing
           versioning.
         </Alert>
+        <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
+          <h3 className="text-xl font-bold mb-3">Want Expert API Design Guidance?</h3>
+          <p className="text-foreground/70 mb-5">
+            Our{' '}
+            <a href="/services" className="text-accent underline hover:no-underline font-medium">
+              Code Quality Audit service
+            </a>{' '}
+            includes API surface reviews — identifying inconsistencies, breaking changes, and missing standards across
+            your services before they reach production.
+          </p>
+          <a
+            href="/contact"
+            className="inline-block px-6 py-3 bg-accent text-white rounded-xl font-semibold hover:opacity-90 transition-opacity"
+          >
+            Request an API Audit
+          </a>
+        </div>
       </ArticleSection>
     </BlogPostLayout>
   );

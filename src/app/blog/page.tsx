@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 import BlogIndexContent from './BlogIndexContent';
+import StructuredData from '@/app/components/StructuredData';
+import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
   title: 'Insights — Maxwell Software Solutions',
@@ -11,5 +13,14 @@ export const metadata: Metadata = {
 };
 
 export default function BlogIndexPage(): ReactElement {
-  return <BlogIndexContent />;
+  const breadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+  ]);
+  return (
+    <>
+      <StructuredData schema={breadcrumb} />
+      <BlogIndexContent />
+    </>
+  );
 }

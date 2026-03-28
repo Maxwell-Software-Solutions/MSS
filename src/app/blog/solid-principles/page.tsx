@@ -3,6 +3,8 @@ import type { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ArticleStructuredData from '@/app/components/ArticleStructuredData';
+import StructuredData from '@/app/components/StructuredData';
+import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 import { ButtonLink } from '@/app/components/ui';
 
 export const metadata: Metadata = {
@@ -15,8 +17,14 @@ export const metadata: Metadata = {
 };
 
 export default function SOLIDPrinciplesPost(): ReactElement {
+  const breadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog' },
+    { name: 'SOLID Principles', url: '/blog/solid-principles' },
+  ]);
   return (
     <>
+      <StructuredData schema={breadcrumb} />
       <ArticleStructuredData
         title="SOLID Principles: The Foundation of Clean Code"
         description="Master the five SOLID principles that form the foundation of clean, maintainable, and scalable software architecture."
@@ -353,12 +361,16 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         <section className="bg-accent/10 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Improve Your Code Quality?</h2>
           <p className="text-foreground/70 mb-6">
-            At Maxwell Software Solutions, we specialize in helping teams write cleaner, more maintainable code.
-            Let&apos;s work together to transform your codebase.
+            At Maxwell Software Solutions, we specialize in helping teams write cleaner, more maintainable code. Our{' '}
+            <Link href="/services" className="text-accent underline hover:no-underline font-medium">
+              Code Quality Audit service
+            </Link>{' '}
+            identifies SOLID violations, technical debt, and architectural issues — with actionable recommendations your
+            team can implement immediately.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <ButtonLink href="/contact" variant="accent" size="lg">
-              Get in Touch
+              Request a Code Audit
             </ButtonLink>
             <ButtonLink href="/services" variant="ghost" size="lg">
               View Our Services
