@@ -10,7 +10,7 @@ interface ThemeAwareLogoProps {
 }
 
 export default function ThemeAwareLogo({
-  width = 280,
+  width = 340,
   height = 64,
   className = 'site-logo w-auto',
   priority = false,
