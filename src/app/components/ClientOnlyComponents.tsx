@@ -21,6 +21,10 @@ const FirstLoadProgressBar = dynamic(() => import('@/app/components/FirstLoadPro
   ssr: false,
 });
 
+const ExitIntentPopup = dynamic(() => import('@/app/components/ExitIntentPopup'), {
+  ssr: false,
+});
+
 export default function ClientOnlyComponents(): ReactElement {
   return (
     <>
@@ -28,6 +32,7 @@ export default function ClientOnlyComponents(): ReactElement {
       <ParallaxScrollEffects key="scroll-effects" />
       <AutoContrastButtons />
       <AppFooter />
+      <ExitIntentPopup />
     </>
   );
 }

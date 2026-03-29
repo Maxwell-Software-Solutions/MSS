@@ -289,6 +289,36 @@ export const PAGES: Record<string, PageMetadata> = {
     keywords: ['terms of service', 'legal'],
     canonical: '/terms',
   },
+  pricing: {
+    title: 'Pricing — Engineering Service Packages | Maxwell Software Solutions',
+    description: 'Transparent pricing for code quality audits, sprint delivery, engineering retainers, CI/CD hardening, and fractional CTO services. Fixed-price and retainer options.',
+    keywords: ['software engineering pricing', 'code audit cost', 'engineering retainer pricing', ...KEYWORD_SETS.core],
+    canonical: '/pricing',
+  },
+  caseStudies: {
+    title: 'Case Studies — Software Engineering Results | Maxwell Software Solutions',
+    description: 'Real-world engineering transformations: code quality improvements, reliability uplifts, and CI/CD acceleration delivered by Maxwell Software Solutions.',
+    keywords: ['software engineering case studies', 'code quality results', ...KEYWORD_SETS.core],
+    canonical: '/case-studies',
+  },
+  freeAudit: {
+    title: 'Free Code Health Audit — Maxwell Software Solutions',
+    description: 'Request a free code health audit from Maxwell Software Solutions. Get an objective assessment of your codebase quality, test coverage, and reliability posture.',
+    keywords: ['free code audit', 'code health check', 'codebase review', ...KEYWORD_SETS.core],
+    canonical: '/free-audit',
+  },
+  startASprint: {
+    title: 'Start a Sprint — Sprint-in-a-Box Service | Maxwell Software Solutions',
+    description: 'Kick off a focused engineering sprint with Maxwell Software Solutions. Fixed-scope, fixed-price delivery with measurable outcomes in two to four weeks.',
+    keywords: ['sprint delivery', 'fixed price sprint', 'engineering sprint', ...KEYWORD_SETS.core],
+    canonical: '/start-a-sprint',
+  },
+  servicesPackages: {
+    title: 'Service Packages — Code Audit, Sprint, Retainer & More | Maxwell Software Solutions',
+    description: 'Compare all five Maxwell Software Solutions service packages: Code Health Audit, Sprint-in-a-Box, Engineering Partner Retainer, CI/CD Accelerator, and Fractional CTO.',
+    keywords: ['engineering service packages', 'code audit package', 'software retainer', ...KEYWORD_SETS.core],
+    canonical: '/services/packages',
+  },
 };
 
 // ============================================================================
