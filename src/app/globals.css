@@ -239,6 +239,10 @@ p, div, span, h1, h2, h3, h4, h5, h6 {
 :root[data-theme="light"] header nav .menu-toggle {
   color: var(--color-text);
 }
+:root[data-theme="light"] header nav button.neuro-btn {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
 
 /* Header navigation text styling */
 header nav {
