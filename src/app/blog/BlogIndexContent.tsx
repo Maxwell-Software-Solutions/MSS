@@ -15,6 +15,80 @@ export default function BlogIndexContent(): ReactElement {
       <p className="text-lg text-foreground/80 mb-12">{t('blog.subtitle')}</p>
 
       <div className="space-y-12">
+        {/* Code Health Audit Post */}
+        <article className="group">
+          <Link href="/blog/code-health-audit-business-impact" className="block">
+            <div className="flex flex-col gap-6">
+              <div className="relative h-56 lg:h-64 rounded-xl overflow-hidden bg-foreground/5">
+                <Image
+                  src="/images/blog/api-design-hero.svg"
+                  alt="Codebase architecture diagram showing interconnected modules"
+                  fill
+                  className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 text-sm text-foreground/75 mb-3">
+                  <time dateTime="2026-03-28">{t('blog.codeHealth.date')}</time>
+                  <span>•</span>
+                  <span>
+                    {t('blog.codeHealth.duration')} {t('blog.minRead')}
+                  </span>
+                  <span>•</span>
+                  <Badge>{t('blog.codeHealth.category')}</Badge>
+                </div>
+                <h2 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
+                  {t('blog.codeHealth.title')}
+                </h2>
+                <p className="text-foreground/70 mb-4 leading-relaxed">{t('blog.codeHealth.excerpt')}</p>
+                <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all">
+                  {t('blog.readMore')}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </article>
+
+        {/* 2-Week Sprint Post */}
+        <article className="group">
+          <Link href="/blog/what-to-expect-2-week-sprint" className="block">
+            <div className="flex flex-col gap-6">
+              <div className="relative h-56 lg:h-64 rounded-xl overflow-hidden bg-foreground/5">
+                <Image
+                  src="/images/blog/tdd-hero.svg"
+                  alt="Sprint planning board showing a focused 2-week delivery cycle"
+                  fill
+                  className="object-contain scale-95 group-hover:scale-100 transition-transform duration-300"
+                />
+              </div>
+              <div>
+                <div className="flex items-center gap-2 text-sm text-foreground/75 mb-3">
+                  <time dateTime="2026-03-28">{t('blog.sprint.date')}</time>
+                  <span>•</span>
+                  <span>
+                    {t('blog.sprint.duration')} {t('blog.minRead')}
+                  </span>
+                  <span>•</span>
+                  <Badge>{t('blog.sprint.category')}</Badge>
+                </div>
+                <h2 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
+                  {t('blog.sprint.title')}
+                </h2>
+                <p className="text-foreground/70 mb-4 leading-relaxed">{t('blog.sprint.excerpt')}</p>
+                <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all">
+                  {t('blog.readMore')}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </article>
+
         {/* SOLID Principles Post */}
         <article className="group">
           <Link href="/blog/solid-principles" className="block">
