@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import HeroFieldWrapper from './components/HeroFieldWrapper';
 import DeferredSections from './components/DeferredSections';
+import CalendlyCTA from './components/CalendlyCTA';
 import { useLanguage } from '@/lib/LanguageContext';
 import { trackCTAClick } from '@/lib/analytics';
 import { StatCard, FeatureCard, ButtonLink } from './components/ui';
@@ -49,6 +50,7 @@ export default function HomeContent(): ReactElement {
             <p className="mt-6 text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] text-foreground/75 font-medium px-4">
               {t('hero.values')}
             </p>
+            <CalendlyCTA />
           </div>
           <HeroFieldWrapper />
           <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 px-4" data-reveal>

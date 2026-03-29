@@ -280,5 +280,21 @@
   "pricing.faq.a5": "Kiekvienas projektas apima iš anksto suderintus sėkmės kriterijus. Jei išmatuojami tikslai nebus pasiekti iki etapų peržiūros, pratęsime projektą be papildomo mokesčio, kol jie bus pasiekti.",
   "pricing.notSure.title": "Nesate tikri, kuris planas tinka?",
   "pricing.notSure.body": "Papasakokite apie savo projektą ir komandos dydį. Rekomenduosime tinkamą projekto modelį ir apimtį — jokio spaudimo, jokių įsipareigojimų.",
-  "pricing.notSure.cta": "Pasikalbėkite su mumis"
+  "pricing.notSure.cta": "Pasikalbėkite su mumis",
+  "hero.calendly.cta": "Rezervuokite nemokamą 30 min. pažintinį skambutį",
+  "hero.calendly.aria": "Rezervuokite nemokamą 30 minučių pažintinį skambutį per Calendly (atsidaro naujame skirtuke)",
+  "socialProof.trusted": "Pasitiki inovatyvios komandos",
+  "socialProof.stat1.value": "3×",
+  "socialProof.stat1.label": "greitesni diegimai",
+  "socialProof.stat2.value": "€200 tūkst.+",
+  "socialProof.stat2.label": "įvykdytų projektų vertė",
+  "socialProof.stat3.value": "100%",
+  "socialProof.stat3.label": "pristatymas laiku",
+  "socialProof.heading": "Klientų rezultatai ir atsiliepimai",
+  "socialProof.testimonial1.quote": "Maxwell Software Solutions sutrumpino mūsų diegimo procesą nuo keturių valandų iki mažiau nei dešimties minučių. Jų sukurtas stebėsenos sluoksnis suteikė mums anksčiau neturėto incidentų matomumo — MTTR per pirmą ketvirtį sumažėjo 71%.",
+  "socialProof.testimonial1.author": "Technologijų direktorius, Miau",
+  "socialProof.testimonial2.quote": "Jie atėjo, per kelias dienas suprato mūsų integracijos chaosą ir pristatė švarią įvykiais pagrįstą architektūrą, kuri pašalino tris valandas kasdienio rankinio derinimo. Tikslūs profesionalai — jokios priežiūros nereikėjo.",
+  "socialProof.testimonial2.author": "Inžinerijos vadovas, NeoNova",
+  "socialProof.testimonial3.quote": "Mūsų paskirstyta komanda šešiose šalyse reikalavo saugių, nuoseklių kūrimo aplinkų. VDI diegimas sutrumpino įdarbinimą nuo dviejų dienų iki 45 minučių. Tikrai transformuojantis projektas.",
+  "socialProof.testimonial3.author": "Įkūrėjas, Fueille"
 }
