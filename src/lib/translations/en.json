@@ -297,7 +297,7 @@
   "socialProof.testimonial2.author": "Head of Engineering, NeoNova",
   "socialProof.testimonial3.quote": "Our distributed team across six countries needed a secure, consistent dev environment. The VDI rollout reduced onboarding from two days to 45 minutes. A genuinely transformative engagement.",
   "socialProof.testimonial3.author": "Founder, Fueille",
-  "contactForm.name.label": "Full name",
+    "contactForm.name.label": "Full name",
   "contactForm.name.placeholder": "Your name",
   "contactForm.email.label": "Email address",
   "contactForm.email.placeholder": "you@example.com",

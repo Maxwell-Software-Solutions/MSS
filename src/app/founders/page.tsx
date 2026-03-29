@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/founders',
   },
+  // Noindex: page contains placeholder content (photos pending) — re-enable once content is complete
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 const founders = [
