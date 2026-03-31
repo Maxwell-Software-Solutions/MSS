@@ -13,7 +13,7 @@ describe('ButtonPrimary', () => {
   });
 
   it('has minimum height of 44px for accessibility', () => {
-    const { container } = render(<ButtonPrimary>Button</ButtonPrimary>);
+    render(<ButtonPrimary>Button</ButtonPrimary>);
     const button = screen.getByRole('button');
 
     // Check class includes min-h-[44px]
@@ -72,7 +72,7 @@ describe('ButtonSecondary', () => {
   });
 
   it('has minimum height of 44px for accessibility', () => {
-    const { container } = render(<ButtonSecondary>Button</ButtonSecondary>);
+    render(<ButtonSecondary>Button</ButtonSecondary>);
     const button = screen.getByRole('button');
 
     // Check class includes min-h-[44px]

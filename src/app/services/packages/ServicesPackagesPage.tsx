@@ -162,7 +162,7 @@ export default function ServicesPackagesPage(): ReactElement {
     },
     {
       name: ht('packages.cto.name', 'Fractional CTO'),
-      price: ht('packages.cto.price', '€2,500'),
+      price: ht('packages.cto.price', '€3,500'),
       period: ht('packages.cto.period', '/month'),
       idealFor: ht('packages.cto.idealFor', 'Ideal for: early-stage startups and scale-ups needing strategic technical leadership without a full-time C-suite cost.'),
       includes: [
@@ -205,15 +205,8 @@ export default function ServicesPackagesPage(): ReactElement {
           {ht('packages.title', 'Service Packages')}
         </h2>
         <div className="max-w-7xl mx-auto px-6 sm:px-10">
-          {/* Top row: 2 cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8" suppressHydrationWarning>
-            {packages.slice(0, 2).map((pkg) => (
-              <PackageCard key={pkg.name} {...pkg} />
-            ))}
-          </div>
-          {/* Middle: highlighted retainer + 2 flanking */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start" suppressHydrationWarning>
-            {packages.slice(2, 5).map((pkg) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" suppressHydrationWarning>
+            {packages.map((pkg) => (
               <PackageCard key={pkg.name} {...pkg} />
             ))}
           </div>
@@ -288,12 +281,37 @@ export default function ServicesPackagesPage(): ReactElement {
               </tr>
               <tr className="hover:bg-card/40 transition-colors">
                 <td className="p-4 font-medium">{ht('packages.cto.name', 'Fractional CTO')}</td>
-                <td className="p-4 text-foreground/80">{ht('packages.cto.price', '€2,500')}/mo</td>
+                <td className="p-4 text-foreground/80">{ht('packages.cto.price', '€3,500')}/mo</td>
                 <td className="p-4 text-foreground/80">{ht('packages.compare.cto.duration', 'Ongoing')}</td>
                 <td className="p-4 text-foreground/75">{ht('packages.compare.cto.for', 'Early-stage startups, post-seed to Series A')}</td>
               </tr>
             </tbody>
           </table>
+        </div>
+      </section>
+
+      {/* AI Implementation */}
+      <section aria-label="AI implementation capabilities" className="py-10 sm:py-12">
+        <div className="max-w-3xl mx-auto px-6 sm:px-10 text-center">
+          <p className="text-[12px] font-bold uppercase tracking-widest text-accent/70 mb-3" suppressHydrationWarning>
+            {ht('packages.ai.eyebrow', 'AI & ML')}
+          </p>
+          <h2 className="text-xl font-semibold tracking-tight mb-4" suppressHydrationWarning>
+            {ht('packages.ai.heading', 'We also ship AI into production')}
+          </h2>
+          <p className="text-[15px] text-foreground/70 leading-relaxed mb-6" suppressHydrationWarning>
+            {ht(
+              'packages.ai.body',
+              'We help AI startups and product teams ship models into production — from RAG pipelines and LLM-powered features to embedding search and AI-assisted workflows. If you are building with AI and need engineering support, talk to us.'
+            )}
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block border border-accent/40 text-accent rounded-xl px-7 py-3 text-sm font-semibold hover:bg-accent/10 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
+            suppressHydrationWarning
+          >
+            {ht('packages.ai.cta', 'Discuss an AI project')}
+          </Link>
         </div>
       </section>
     </>

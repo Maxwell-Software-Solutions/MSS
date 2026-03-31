@@ -21,7 +21,7 @@ export default function HomeContent(): ReactElement {
           <div className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[100vw] max-w-[120rem] h-[100vw] max-h-[120rem] bg-accent/5 rounded-full blur-3xl" />
           <div className="absolute top-1/2 -left-1/4 w-[60vw] max-w-[60rem] h-[60vw] max-h-[60rem] bg-accent/10 rounded-full blur-2xl" />
         </div>
-        <div className="container relative ">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 relative">
           <div className="text-center max-w-4xl mx-auto px-4" data-reveal>
             <h1 className="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] sm:leading-[1.05]">
               {t('hero.title')}
@@ -187,7 +187,7 @@ export default function HomeContent(): ReactElement {
       </section>
 
       <section id="projects" className="hairline">
-        <div className="container section">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
           <div className="eyebrow">{t('projects.eyebrow')}</div>
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">{t('projects.heading')}</h2>
           <p className="mt-4 text-foreground/70 max-w-2xl text-sm">{t('projects.description')}</p>

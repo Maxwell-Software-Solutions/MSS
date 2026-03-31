@@ -29,14 +29,14 @@ export default function ExitIntentPopup(): ReactElement | null {
 
   useEffect(() => {
     // Desktop: mouseleave toward top of viewport
-    const handleMouseLeave = (e: MouseEvent) => {
+    const handleMouseLeave = (e: MouseEvent): void => {
       if (e.clientY <= 8) {
         show();
       }
     };
 
     // Mobile: rapid upward scroll (velocity > 80px in one tick)
-    const handleScroll = () => {
+    const handleScroll = (): void => {
       const currentY = window.scrollY;
       const delta = lastScrollY.current - currentY;
       lastScrollY.current = currentY;
@@ -57,7 +57,7 @@ export default function ExitIntentPopup(): ReactElement | null {
   // Keyboard: dismiss on Escape
   useEffect(() => {
     if (!visible) return;
-    const handleKey = (e: KeyboardEvent) => {
+    const handleKey = (e: KeyboardEvent): void => {
       if (e.key === 'Escape') dismiss();
     };
     document.addEventListener('keydown', handleKey);

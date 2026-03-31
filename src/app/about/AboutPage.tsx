@@ -1,5 +1,6 @@
 'use client';
 import type { ReactElement } from 'react';
+import Image from 'next/image';
 import { founders } from './founders-data';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Card } from '@/app/components/ui';
@@ -122,7 +123,7 @@ export default function AboutPage(): ReactElement {
                       aria-hidden="true"
                     />
 
-                    <img src={imageSrc} alt={f.alt} className="w-full h-full object-cover" />
+                    <Image src={imageSrc} alt={f.alt} width={400} height={400} className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>

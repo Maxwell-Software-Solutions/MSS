@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import Link from 'next/link';
 import { getRelatedProjects } from '@/lib/seo/utils';
 
@@ -21,7 +22,7 @@ interface RelatedProjectsProps {
  * <RelatedProjects currentSlug="retail-platform" limit={2} />
  * ```
  */
-export default function RelatedProjects({ currentSlug, limit = 3 }: RelatedProjectsProps) {
+export default function RelatedProjects({ currentSlug, limit = 3 }: RelatedProjectsProps): ReactElement | null {
   const projects = getRelatedProjects(currentSlug, limit);
 
   if (projects.length === 0) return null;

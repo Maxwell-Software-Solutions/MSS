@@ -122,7 +122,7 @@ export default function AutoContrastButtons(): null {
           if (!(n instanceof HTMLElement)) return;
           try {
             if (n.matches?.(selector)) pending.add(n as HTMLElement);
-          } catch (e) {
+          } catch {
             // defensive: some nodes may throw on matches
           }
           n.querySelectorAll?.(selector)?.forEach((el) => pending.add(el as HTMLElement));
@@ -132,7 +132,7 @@ export default function AutoContrastButtons(): null {
         if (m.type === 'attributes' && m.target instanceof HTMLElement) {
           try {
             if ((m.target as HTMLElement).matches?.(selector)) pending.add(m.target as HTMLElement);
-          } catch (e) {
+          } catch {
             // ignore
           }
         }

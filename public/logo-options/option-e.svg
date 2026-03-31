@@ -1,0 +1,18 @@
+<svg width="360" height="80" viewBox="0 0 360 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    OPTION E — Bold Wordmark Only (no icon mark)
+    The most confident approach. If the letterforms are strong enough,
+    no icon is needed. Think: Stripe, Notion, Figma early days.
+    "MSS" large and tight, descriptor beneath, blue underline as the only accent.
+    Clean. Premium. Timeless.
+  -->
+
+  <!-- Primary wordmark -->
+  <text x="8" y="50" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="-2.5" fill="#0F172A">MSS</text>
+
+  <!-- Accent underline — precise, thin -->
+  <rect x="8" y="56" width="116" height="3" rx="1.5" fill="#2563EB"/>
+
+  <!-- Descriptor -->
+  <text x="8" y="72" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="500" letter-spacing="3" fill="#64748B">MAXWELL SOFTWARE SOLUTIONS</text>
+</svg>

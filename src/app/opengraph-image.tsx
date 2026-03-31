@@ -19,7 +19,7 @@ export const alt = `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default async function Image() {
+export default async function Image(): Promise<ImageResponse> {
   return new ImageResponse(
     (
       <div

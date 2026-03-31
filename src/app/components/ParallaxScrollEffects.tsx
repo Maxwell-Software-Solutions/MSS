@@ -53,7 +53,7 @@ export default function ScrollEffects(): null {
     }
 
     // Wait for DOM to be ready
-    const initEffects = (): void => {
+    const initEffects = (): MutationObserver => {
       // Reveal on intersect
       const revealEls = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
       const observer = new IntersectionObserver(
@@ -71,19 +71,44 @@ export default function ScrollEffects(): null {
       revealEls.forEach((el) => observer.observe(el));
       observerRef.current = observer;
 
-      if (reduceMotion) {
-        return;
+      // Watch for dynamically loaded elements (e.g. next/dynamic deferred sections)
+      // that mount after the IntersectionObserver is initialised.
+      const mutationObserver = new MutationObserver((mutations) => {
+        for (const mutation of mutations) {
+          for (const node of Array.from(mutation.addedNodes)) {
+            if (!(node instanceof HTMLElement)) continue;
+            // Check the node itself
+            if (node.hasAttribute('data-reveal')) {
+              observer.observe(node);
+            }
+            // Check descendants
+            node.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => {
+              observer.observe(el);
+            });
+          }
+        }
+      });
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+
+      if (!reduceMotion) {
+        // Use passive scroll listener for better performance
+        window.addEventListener('scroll', handleScroll, { passive: true });
       }
 
-      // Use passive scroll listener for better performance
-      window.addEventListener('scroll', handleScroll, { passive: true });
+      return mutationObserver;
     };
 
     // Small delay to ensure DOM is ready after navigation
-    const timeoutId = setTimeout(initEffects, 100);
+    let mutationObserverRef: MutationObserver | undefined;
+    const timeoutId = setTimeout(() => {
+      mutationObserverRef = initEffects();
+    }, 100);
 
     return () => {
       clearTimeout(timeoutId);
+      if (mutationObserverRef) {
+        mutationObserverRef.disconnect();
+      }
       if (observerRef.current) {
         observerRef.current.disconnect();
       }

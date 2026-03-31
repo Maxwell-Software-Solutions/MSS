@@ -25,7 +25,7 @@ interface BlogPostTemplateProps {
  * @param slug - Blog post slug from BLOG_POSTS registry
  * @param children - Post content (MDX or JSX)
  */
-export default function BlogPostTemplate({ slug, children }: BlogPostTemplateProps) {
+export default function BlogPostTemplate({ slug, children }: BlogPostTemplateProps): ReactElement {
   const post = BLOG_POSTS[slug];
 
   if (!post) {

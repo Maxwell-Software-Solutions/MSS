@@ -20,7 +20,7 @@ export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default async function Image({ params }: { params: { slug: string } }) {
+export default async function Image({ params }: { params: { slug: string } }): Promise<ImageResponse> {
   // Validate slug and get post data
   if (!isValidBlogSlug(params.slug)) {
     // Return fallback image for invalid slugs
@@ -183,7 +183,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
  * Generate alt text for OG image
  * Uses blog post title from central data
  */
-export async function generateImageMetadata({ params }: { params: { slug: string } }) {
+export async function generateImageMetadata({ params }: { params: { slug: string } }): Promise<Array<{ alt: string }>> {
   if (!isValidBlogSlug(params.slug)) {
     return [{ alt: 'Blog Post' }];
   }

@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import Link from 'next/link';
 import { getRelatedPosts } from '@/lib/seo/utils';
 
@@ -22,7 +23,7 @@ interface RelatedArticlesProps {
  * <RelatedArticles currentSlug="solid-principles" limit={3} />
  * ```
  */
-export default function RelatedArticles({ currentSlug, limit = 3 }: RelatedArticlesProps) {
+export default function RelatedArticles({ currentSlug, limit = 3 }: RelatedArticlesProps): ReactElement | null {
   const relatedPosts = getRelatedPosts(currentSlug, limit);
 
   if (relatedPosts.length === 0) return null;

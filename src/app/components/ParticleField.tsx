@@ -96,7 +96,6 @@ export default function ParticleField(): ReactElement {
       // Debounced theme change handler: schedule minimal work on theme changes
       let themeChangeTimer: number | null = null;
       let pendingThemeMatches: boolean | null = null;
-      let needsResize = false;
       const applyThemeChange = (matches: boolean): void => {
         if (matches === isDark) return;
         isDark = matches;
@@ -118,7 +117,6 @@ export default function ParticleField(): ReactElement {
           });
         } else {
           // Defer any re-init work (resize/agents) to the next animation frame to avoid synchronous work
-          needsResize = true;
           requestAnimationFrame(() => {
             try {
               // Don't run resize while a navigation is in-flight
@@ -126,7 +124,6 @@ export default function ParticleField(): ReactElement {
                 resize();
               }
             } catch {}
-            needsResize = false;
           });
         }
       };

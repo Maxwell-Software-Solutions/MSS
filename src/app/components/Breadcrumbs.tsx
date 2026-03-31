@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import Link from 'next/link';
 import { generateBreadcrumbSchema, breadcrumbsFromPath } from '@/lib/seo/structured-data';
 import StructuredData from './StructuredData';
@@ -24,7 +25,7 @@ interface BreadcrumbsProps {
  * />
  * ```
  */
-export default function Breadcrumbs({ pathname, titleMap }: BreadcrumbsProps) {
+export default function Breadcrumbs({ pathname, titleMap }: BreadcrumbsProps): ReactElement {
   const items = breadcrumbsFromPath(pathname, titleMap);
   const schema = generateBreadcrumbSchema(items);
 

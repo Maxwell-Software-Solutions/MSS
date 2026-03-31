@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import Link from 'next/link';
 import { getPostsByCategory, getPostsByTag } from '@/lib/seo/utils';
 
@@ -27,7 +28,7 @@ interface TopicClusterProps {
  * />
  * ```
  */
-export default function TopicCluster({ type, value, title }: TopicClusterProps) {
+export default function TopicCluster({ type, value, title }: TopicClusterProps): ReactElement | null {
   const posts = type === 'category' ? getPostsByCategory(value) : getPostsByTag(value);
 
   if (posts.length === 0) return null;

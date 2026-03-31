@@ -1,0 +1,17 @@
+<svg width="360" height="80" viewBox="0 0 360 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    OPTION B — Cornerstone
+    A single bold right-angle / L-shape. Engineering precision.
+    One shape, one color. Scales perfectly to any size.
+    The negative space is the design.
+  -->
+
+  <!-- The corner mark — bold stroke, crisp -->
+  <path d="M 8 8 L 8 66 L 54 66" stroke="#0F172A" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  <!-- Blue accent dot at the corner vertex -->
+  <rect x="4" y="62" width="9" height="9" fill="#2563EB"/>
+
+  <!-- Wordmark — clean, confident -->
+  <text x="70" y="38" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="-0.8" fill="#0F172A">MSS</text>
+  <text x="70" y="60" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="400" letter-spacing="2.8" fill="#64748B">MAXWELL SOFTWARE SOLUTIONS</text>
+</svg>

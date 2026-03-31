@@ -1,0 +1,19 @@
+<svg width="360" height="80" viewBox="0 0 360 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    OPTION C — Diamond (rotated square, outline only)
+    A precise diamond outline. No fill. Pure form.
+    At small size: instantly recognisable geometric shape.
+    At large: elegant, premium, unfussy.
+    Blue inner diamond creates depth without clutter.
+  -->
+
+  <!-- Outer diamond -->
+  <rect x="10" y="10" width="42" height="42" rx="2" transform="rotate(45 31 31)" stroke="#0F172A" stroke-width="4" fill="none"/>
+  <!-- Inner diamond — filled blue, creates a subtle nested effect -->
+  <rect x="19" y="19" width="24" height="24" rx="1" transform="rotate(45 31 31)" fill="#2563EB" opacity="0.15"/>
+  <rect x="22" y="22" width="18" height="18" rx="1" transform="rotate(45 31 31)" stroke="#2563EB" stroke-width="2.5" fill="none"/>
+
+  <!-- Wordmark -->
+  <text x="74" y="37" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="-0.8" fill="#0F172A">MSS</text>
+  <text x="75" y="58" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="400" letter-spacing="2.5" fill="#94A3B8">MAXWELL SOFTWARE SOLUTIONS</text>
+</svg>
