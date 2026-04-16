@@ -81,7 +81,7 @@ export default function FreeAuditPage(): ReactElement {
       </div>
 
       {/* Hero */}
-      <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-8">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
           {ht('freeAudit.eyebrow', 'Free Code Health Audit')}
         </p>
@@ -114,7 +114,7 @@ export default function FreeAuditPage(): ReactElement {
       </header>
 
       {/* Two-column: deliverables + form */}
-      <section aria-labelledby="audit-details-heading" className="max-w-5xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
+      <section aria-labelledby="audit-details-heading" className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
           {/* Left: What you get */}
@@ -259,7 +259,7 @@ export default function FreeAuditPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-12 sm:py-16 bg-card/30">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-card/30">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <h2
             id="faq-heading"
@@ -277,7 +277,7 @@ export default function FreeAuditPage(): ReactElement {
       </section>
 
       {/* Bottom CTA */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <div className="rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12 text-center">
           <p className="text-[12px] font-bold uppercase tracking-widest text-accent/70 mb-3" suppressHydrationWarning>
             {ht('freeAudit.cta.eyebrow', 'Limited availability')}

@@ -19,9 +19,9 @@ const widthClasses = {
  * Unified page container component for consistent max-width and padding
  * Consolidates repeated container patterns across pages
  */
-export function PageContainer({ children, maxWidth = '4xl', className = '' }: PageContainerProps): ReactElement {
+export function PageContainer({ children, maxWidth = '6xl', className = '' }: PageContainerProps): ReactElement {
   return (
-    <main className={`mx-auto ${widthClasses[maxWidth]} px-6 py-12 sm:px-10 ${className}`.trim()}>{children}</main>
+    <main className={`mx-auto ${widthClasses[maxWidth]} px-6 sm:px-10 ${className}`.trim()}>{children}</main>
   );
 }
 

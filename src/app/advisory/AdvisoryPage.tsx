@@ -136,7 +136,7 @@ export default function AdvisoryPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
           {ht('advisory.eyebrow', 'CTO-in-a-Box')}
         </p>
@@ -188,8 +188,8 @@ export default function AdvisoryPage(): ReactElement {
       </header>
 
       {/* What you get */}
-      <section aria-labelledby="includes-heading" className="py-12 sm:py-16 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="includes-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <h2
             id="includes-heading"
             className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
@@ -209,7 +209,7 @@ export default function AdvisoryPage(): ReactElement {
       </section>
 
       {/* Perfect for */}
-      <section aria-labelledby="perfect-for-heading" className="py-12 sm:py-16 max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="perfect-for-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <h2
           id="perfect-for-heading"
           className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-6"
@@ -228,8 +228,8 @@ export default function AdvisoryPage(): ReactElement {
       </section>
 
       {/* How it works */}
-      <section aria-labelledby="process-heading" className="py-12 sm:py-16 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="process-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <h2
             id="process-heading"
             className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-10"
@@ -254,7 +254,7 @@ export default function AdvisoryPage(): ReactElement {
       </section>
 
       {/* Comparison table */}
-      <section aria-labelledby="compare-heading" className="py-12 sm:py-16 max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="compare-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <h2
           id="compare-heading"
           className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
@@ -303,7 +303,7 @@ export default function AdvisoryPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-12 sm:py-16 bg-card/30">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-card/30">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <h2
             id="faq-heading"
@@ -321,7 +321,7 @@ export default function AdvisoryPage(): ReactElement {
       </section>
 
       {/* Bottom CTA */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 py-14 sm:py-20 text-center">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
           {ht('advisory.bottomcta.title', 'Senior technical guidance for €500/month.')}
         </h2>

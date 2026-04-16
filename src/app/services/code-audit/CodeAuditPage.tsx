@@ -94,7 +94,7 @@ export default function CodeAuditPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
           {ht('codeAudit.eyebrow', 'Code Audit Service')}
         </p>
@@ -152,8 +152,8 @@ export default function CodeAuditPage(): ReactElement {
       </header>
 
       {/* What we examine */}
-      <section aria-labelledby="areas-heading" className="py-12 sm:py-16 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="areas-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <h2
             id="areas-heading"
             className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
@@ -178,7 +178,7 @@ export default function CodeAuditPage(): ReactElement {
       </section>
 
       {/* What you get */}
-      <section aria-labelledby="deliverables-heading" className="py-12 sm:py-16 max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="deliverables-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <h2
           id="deliverables-heading"
           className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-6"
@@ -197,8 +197,8 @@ export default function CodeAuditPage(): ReactElement {
       </section>
 
       {/* Pricing */}
-      <section aria-labelledby="pricing-heading" className="py-12 sm:py-14 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="pricing-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <div className="rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12">
             <h2
               id="pricing-heading"
@@ -233,7 +233,7 @@ export default function CodeAuditPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-12 sm:py-16">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <h2
             id="faq-heading"
@@ -251,7 +251,7 @@ export default function CodeAuditPage(): ReactElement {
       </section>
 
       {/* Bottom CTA */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 py-14 sm:py-20 text-center">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
           {ht('codeAudit.bottomcta.title', 'Stop guessing. Start with data.')}
         </h2>

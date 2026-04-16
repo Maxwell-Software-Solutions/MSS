@@ -29,7 +29,7 @@ export default function ServicesPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-7xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3" suppressHydrationWarning>
           {ht('services.hero.eyebrow', 'Our Services')}
         </p>
@@ -54,8 +54,8 @@ export default function ServicesPage(): ReactElement {
       </header>
 
       {/* Services Section */}
-      <section aria-labelledby="services-heading" className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col gap-6 md:gap-8">
+      <section aria-labelledby="services-heading" className="py-16 sm:py-20">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col gap-6 md:gap-8">
           <div>
             <h2
               id="services-heading"
@@ -90,8 +90,8 @@ export default function ServicesPage(): ReactElement {
       </section>
 
       {/* Process Timeline */}
-      <section aria-labelledby="process-heading" className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col gap-6 md:gap-8">
+      <section aria-labelledby="process-heading" className="py-16 sm:py-20">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col gap-6 md:gap-8">
           <div>
             <h2
               id="process-heading"
@@ -111,7 +111,7 @@ export default function ServicesPage(): ReactElement {
       </section>
 
       {/* CTA */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 pb-16 sm:pb-20" suppressHydrationWarning>
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-20 sm:pb-24" suppressHydrationWarning>
         <CTA
           title={ht('services.cta.title', 'Ready to Improve Your Code Quality?')}
           body={ht(

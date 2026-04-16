@@ -188,7 +188,7 @@ export default function PricingPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-7xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p
           className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase"
           suppressHydrationWarning
@@ -213,11 +213,11 @@ export default function PricingPage(): ReactElement {
       </header>
 
       {/* Pricing tiers */}
-      <section aria-labelledby="pricing-tiers-heading" className="py-10 sm:py-14">
+      <section aria-labelledby="pricing-tiers-heading" className="py-16 sm:py-20">
         <h2 id="pricing-tiers-heading" className="sr-only" suppressHydrationWarning>
           {ht('pricing.title', 'Pricing')}
         </h2>
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start" suppressHydrationWarning>
             {tiers.map((tier) => (
               <PricingTier key={tier.name} {...tier} />
@@ -227,7 +227,7 @@ export default function PricingPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-10 sm:py-14 bg-card/30">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-card/30">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <h2
             id="faq-heading"
@@ -245,7 +245,7 @@ export default function PricingPage(): ReactElement {
       </section>
 
       {/* Not sure CTA */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 py-10 sm:py-14" suppressHydrationWarning>
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20" suppressHydrationWarning>
         <div className="rounded-3xl border border-border bg-card/80 p-8 sm:p-12 text-center max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight" suppressHydrationWarning>
             {ht('pricing.notSure.title', 'Not sure which plan fits?')}
@@ -267,7 +267,7 @@ export default function PricingPage(): ReactElement {
       </div>
 
       {/* CTA band */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 pb-16 sm:pb-20" suppressHydrationWarning>
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-20 sm:pb-24" suppressHydrationWarning>
         <CTA
           title={ht('services.cta.title', 'Book a discovery call')}
           body={ht(

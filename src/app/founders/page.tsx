@@ -39,7 +39,7 @@ const founders = [
 export default function FoundersPage(): React.ReactElement {
   return (
     <div className="min-h-screen px-6 sm:px-10 py-16 sm:py-20">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-center" data-reveal>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Founders</h1>
           <p className="mt-4 text-foreground/70 max-w-2xl mx-auto leading-relaxed">

@@ -67,7 +67,7 @@ export default function HireDeveloperPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
           {ht('hireDev.eyebrow', 'Hire a Developer')}
         </p>
@@ -125,8 +125,8 @@ export default function HireDeveloperPage(): ReactElement {
       </header>
 
       {/* Why outsource to MSS */}
-      <section aria-labelledby="reasons-heading" className="py-12 sm:py-16 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="reasons-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <h2
             id="reasons-heading"
             className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
@@ -146,7 +146,7 @@ export default function HireDeveloperPage(): ReactElement {
       </section>
 
       {/* Tech stack */}
-      <section aria-labelledby="stack-heading" className="py-12 sm:py-16 max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="stack-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <h2
           id="stack-heading"
           className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-6"
@@ -170,8 +170,8 @@ export default function HireDeveloperPage(): ReactElement {
       </section>
 
       {/* Engagement models */}
-      <section aria-labelledby="engagements-heading" className="py-12 sm:py-16 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="engagements-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <h2
             id="engagements-heading"
             className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
@@ -202,7 +202,7 @@ export default function HireDeveloperPage(): ReactElement {
       </section>
 
       {/* Bottom CTA */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 py-14 sm:py-20 text-center">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
           {ht('hireDev.bottomcta.title', 'Ship faster with senior engineers.')}
         </h2>

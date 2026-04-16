@@ -9,7 +9,7 @@ export default function AboutPage(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <div className="max-w-5xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+    <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
       <h1 className="text-3xl sm:text-4xl font-bold">{t('about.title')}</h1>
       <div className="mt-6 space-y-6 text-foreground/85 leading-relaxed">
         <p className="text-lg">{t('about.intro')}</p>

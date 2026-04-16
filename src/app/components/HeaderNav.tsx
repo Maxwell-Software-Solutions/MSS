@@ -35,7 +35,7 @@ export default function HeaderNav(): ReactElement {
     } catch {}
   }, [pathname]);
   return (
-    <nav className="container h-14 flex items-center justify-between relative" aria-label="Site header">
+    <nav className="max-w-6xl mx-auto px-6 sm:px-10 h-14 flex items-center justify-between relative" aria-label="Site header">
       {/* Mark navigation as "in-flight" on pointer down/touch so heavy background work can pause */}
       <Link
         href="/"

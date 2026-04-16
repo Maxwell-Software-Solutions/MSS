@@ -181,7 +181,7 @@ export default function ServicesPackagesPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-7xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
           {ht('packages.eyebrow', 'Service Packages')}
         </p>
@@ -200,11 +200,11 @@ export default function ServicesPackagesPage(): ReactElement {
       </header>
 
       {/* Packages grid */}
-      <section aria-labelledby="packages-heading" className="py-10 sm:py-14">
+      <section aria-labelledby="packages-heading" className="py-16 sm:py-20">
         <h2 id="packages-heading" className="sr-only" suppressHydrationWarning>
           {ht('packages.title', 'Service Packages')}
         </h2>
-        <div className="max-w-7xl mx-auto px-6 sm:px-10">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" suppressHydrationWarning>
             {packages.map((pkg) => (
               <PackageCard key={pkg.name} {...pkg} />
@@ -236,7 +236,7 @@ export default function ServicesPackagesPage(): ReactElement {
       </section>
 
       {/* FAQ-style comparison table */}
-      <section aria-labelledby="compare-heading" className="py-12 sm:py-16 max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="compare-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <h2
           id="compare-heading"
           className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"

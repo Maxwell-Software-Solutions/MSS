@@ -15,7 +15,7 @@ export default function HomeContent(): ReactElement {
 
   return (
     <>
-      <section className="relative hero-gradient section overflow-hidden py-12 sm:py-16 lg:py-20">
+      <section className="relative hero-gradient section overflow-hidden py-16 sm:py-20 lg:py-20">
         {/* Decorative background layers */}
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -top-1/3 left-1/2 -translate-x-1/2 w-[100vw] max-w-[120rem] h-[100vw] max-h-[120rem] bg-accent/5 rounded-full blur-3xl" />
@@ -82,7 +82,7 @@ export default function HomeContent(): ReactElement {
 
       {/* Capabilities overview */}
       <section
-        className="px-6 sm:px-10 py-12 sm:py-16 neuro-section-border bg-background/50"
+        className="px-6 sm:px-10 py-16 sm:py-20 neuro-section-border bg-background/50"
         aria-labelledby="capabilities-heading"
       >
         <div className="max-w-6xl mx-auto">
@@ -117,7 +117,7 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      <section id="about" className="px-6 sm:px-10 py-12 sm:py-16 neuro-section-border">
+      <section id="about" className="px-6 sm:px-10 py-16 sm:py-20 neuro-section-border">
         <div className="max-w-6xl mx-auto">
           <div>
             <h2 className="text-2xl font-semibold">{t('about.section.heading')}</h2>
@@ -133,7 +133,7 @@ export default function HomeContent(): ReactElement {
 
       {/* Process timeline */}
       <section
-        className="px-6 sm:px-10 py-12 sm:py-16 neuro-section-border bg-background/30"
+        className="px-6 sm:px-10 py-16 sm:py-20 neuro-section-border bg-background/30"
         aria-labelledby="process-heading"
       >
         <div className="max-w-6xl mx-auto" data-reveal>
@@ -187,7 +187,7 @@ export default function HomeContent(): ReactElement {
       </section>
 
       <section id="projects" className="hairline">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
           <div className="eyebrow">{t('projects.eyebrow')}</div>
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">{t('projects.heading')}</h2>
           <p className="mt-4 text-foreground/70 max-w-2xl text-sm">{t('projects.description')}</p>

@@ -109,7 +109,7 @@ export default function FractionalCTOPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
           {ht('fractionalCTO.eyebrow', 'Fractional CTO')}
         </p>
@@ -167,8 +167,8 @@ export default function FractionalCTOPage(): ReactElement {
       </header>
 
       {/* What a Fractional CTO does */}
-      <section aria-labelledby="responsibilities-heading" className="py-12 sm:py-16 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="responsibilities-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <h2
             id="responsibilities-heading"
             className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
@@ -193,7 +193,7 @@ export default function FractionalCTOPage(): ReactElement {
       </section>
 
       {/* When you need one */}
-      <section aria-labelledby="scenarios-heading" className="py-12 sm:py-16 max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="scenarios-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <h2
           id="scenarios-heading"
           className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-6"
@@ -212,8 +212,8 @@ export default function FractionalCTOPage(): ReactElement {
       </section>
 
       {/* Comparison table */}
-      <section aria-labelledby="compare-heading" className="py-12 sm:py-16 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="compare-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <h2
             id="compare-heading"
             className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
@@ -245,7 +245,7 @@ export default function FractionalCTOPage(): ReactElement {
       </section>
 
       {/* Mid-page CTA */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12 sm:py-14 text-center">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20 text-center">
         <p className="text-[13px] uppercase tracking-widest font-semibold text-foreground/50 mb-3" suppressHydrationWarning>
           {ht('fractionalCTO.midcta.eyebrow', 'From €3,500/month')}
         </p>
@@ -270,7 +270,7 @@ export default function FractionalCTOPage(): ReactElement {
       </div>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-12 sm:py-16 bg-card/30">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-card/30">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <h2
             id="faq-heading"
@@ -288,7 +288,7 @@ export default function FractionalCTOPage(): ReactElement {
       </section>
 
       {/* Bottom CTA */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 py-14 sm:py-20 text-center">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
           {ht('fractionalCTO.bottomcta.title', 'Technical leadership — on your terms.')}
         </h2>

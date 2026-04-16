@@ -50,7 +50,7 @@ export default function CaseStudiesPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-7xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p
           className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase"
           suppressHydrationWarning
@@ -75,11 +75,11 @@ export default function CaseStudiesPage(): ReactElement {
       </header>
 
       {/* Case Studies */}
-      <section aria-labelledby="case-studies-heading" className="py-10 sm:py-14">
+      <section aria-labelledby="case-studies-heading" className="py-16 sm:py-20">
         <h2 id="case-studies-heading" className="sr-only">
           {ht('caseStudiesPage.title', 'Case Studies')}
         </h2>
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col gap-10 md:gap-14">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col gap-10 md:gap-14">
           {STUDIES.map((study) => (
             <article
               key={study.key}
@@ -166,7 +166,7 @@ export default function CaseStudiesPage(): ReactElement {
       </section>
 
       {/* CTA */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 pb-16 sm:pb-20" suppressHydrationWarning>
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-20 sm:pb-24" suppressHydrationWarning>
         <CTA
           title={ht('caseStudiesPage.cta.title', 'Want results like these?')}
           body={ht(

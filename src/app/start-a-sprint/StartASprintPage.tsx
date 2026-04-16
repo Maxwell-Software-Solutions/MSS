@@ -102,7 +102,7 @@ export default function StartASprintPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-16 sm:pt-20 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
           {ht('sprint.eyebrow', 'Sprint-in-a-Box')}
         </p>
@@ -162,8 +162,8 @@ export default function StartASprintPage(): ReactElement {
       </header>
 
       {/* What you get */}
-      <section aria-labelledby="deliverables-heading" className="py-12 sm:py-16 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="deliverables-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <h2
             id="deliverables-heading"
             className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-6"
@@ -183,7 +183,7 @@ export default function StartASprintPage(): ReactElement {
       </section>
 
       {/* Process */}
-      <section aria-labelledby="process-heading" className="py-12 sm:py-16 max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="process-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <h2
           id="process-heading"
           className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-10"
@@ -207,8 +207,8 @@ export default function StartASprintPage(): ReactElement {
       </section>
 
       {/* Requirements */}
-      <section aria-labelledby="requirements-heading" className="py-12 sm:py-14 bg-card/30">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10">
+      <section aria-labelledby="requirements-heading" className="py-16 sm:py-20 bg-card/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <h2
             id="requirements-heading"
             className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-3"
@@ -231,7 +231,7 @@ export default function StartASprintPage(): ReactElement {
       </section>
 
       {/* Mid-page CTA */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12 sm:py-14 text-center">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20 text-center">
         <p className="text-[13px] uppercase tracking-widest font-semibold text-foreground/50 mb-3" suppressHydrationWarning>
           {ht('sprint.midcta.eyebrow', 'Ready to move fast?')}
         </p>
@@ -256,7 +256,7 @@ export default function StartASprintPage(): ReactElement {
       </div>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-12 sm:py-16 bg-card/30">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-card/30">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <h2
             id="faq-heading"
@@ -274,7 +274,7 @@ export default function StartASprintPage(): ReactElement {
       </section>
 
       {/* Bottom CTA */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 py-14 sm:py-20 text-center">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
           {ht('sprint.bottomcta.title', 'Ship something real in 2 weeks.')}
         </h2>
