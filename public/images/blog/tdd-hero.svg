@@ -1,60 +1,134 @@
-<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="tdd-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080f"/>
+      <stop offset="100%" stop-color="#0c1325"/>
     </linearGradient>
-    <linearGradient id="tdd-red" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    <radialGradient id="glow1" cx="25%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="75%" cy="60%" r="40%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="50%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#2563eb"/>
     </linearGradient>
-    <linearGradient id="tdd-green" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
     </linearGradient>
-    <linearGradient id="tdd-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-
-  <!-- Background -->
-  <rect width="800" height="400" fill="url(#tdd-bg)"/>
-
-  <!-- Title -->
-  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Test-Driven Development Cycle</text>
-
-  <!-- Red Circle - Write Test -->
-  <circle cx="200" cy="200" r="70" fill="none" stroke="url(#tdd-red)" stroke-width="4"/>
-  <text x="200" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle">RED</text>
-  <text x="200" y="215" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Write Test</text>
-
-  <!-- Green Circle - Make it Pass -->
-  <circle cx="400" cy="200" r="70" fill="none" stroke="url(#tdd-green)" stroke-width="4"/>
-  <text x="400" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle">GREEN</text>
-  <text x="400" y="215" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Make it Pass</text>
-
-  <!-- Blue Circle - Refactor -->
-  <circle cx="600" cy="200" r="70" fill="none" stroke="url(#tdd-blue)" stroke-width="4"/>
-  <text x="600" y="195" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle">REFACTOR</text>
-  <text x="600" y="215" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1" text-anchor="middle">Improve Code</text>
-
-  <!-- Arrows connecting the circles -->
-  <defs>
-    <marker id="arrowhead-tdd" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#94a3b8" />
+    <marker id="arrRed" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f87171"/>
+    </marker>
+    <marker id="arrGreen" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#34d399"/>
+    </marker>
+    <marker id="arrBlue" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#818cf8"/>
     </marker>
   </defs>
 
-  <!-- Arrow from Red to Green -->
-  <path d="M 270 200 L 330 200" stroke="#94a3b8" stroke-width="3" fill="none" marker-end="url(#arrowhead-tdd)"/>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
 
-  <!-- Arrow from Green to Blue -->
-  <path d="M 470 200 L 530 200" stroke="#94a3b8" stroke-width="3" fill="none" marker-end="url(#arrowhead-tdd)"/>
+  <!-- Grid -->
+  <g opacity="0.04" stroke="#818cf8" stroke-width="1">
+    <line x1="0" y1="90" x2="1200" y2="90"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="120" y1="0" x2="120" y2="630"/>
+    <line x1="240" y1="0" x2="240" y2="630"/>
+    <line x1="360" y1="0" x2="360" y2="630"/>
+    <line x1="480" y1="0" x2="480" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="720" y1="0" x2="720" y2="630"/>
+    <line x1="840" y1="0" x2="840" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/>
+    <line x1="1080" y1="0" x2="1080" y2="630"/>
+  </g>
 
-  <!-- Arrow from Blue back to Red (curved) -->
-  <path d="M 600 270 Q 400 340, 200 270" stroke="#94a3b8" stroke-width="3" fill="none" marker-end="url(#arrowhead-tdd)" stroke-dasharray="5,5"/>
+  <!-- Title -->
+  <g transform="translate(60, 80)">
+    <rect x="0" y="0" width="180" height="28" rx="6" fill="#7c3aed" fill-opacity="0.2" stroke="#7c3aed" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="90" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#a78bfa" text-anchor="middle" letter-spacing="3">METHODOLOGY</text>
+    <text x="0" y="66" font-family="sans-serif" font-size="38" font-weight="800" fill="#f1f5f9">Test-Driven</text>
+    <text x="0" y="100" font-family="sans-serif" font-size="38" font-weight="800" fill="#818cf8">Development</text>
+    <text x="0" y="134" font-family="sans-serif" font-size="15" fill="#94a3b8">Write the test first. Then the code.</text>
+  </g>
 
-  <!-- Bottom text -->
-  <text x="400" y="360" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Continuous Quality Improvement</text>
+  <!-- TDD Cycle - three large circles -->
+
+  <!-- RED circle -->
+  <g transform="translate(380, 200)">
+    <circle cx="100" cy="100" r="88" fill="#f87171" fill-opacity="0.05" stroke="#f87171" stroke-opacity="0.4" stroke-width="2"/>
+    <circle cx="100" cy="100" r="70" fill="#f87171" fill-opacity="0.08"/>
+    <text x="100" y="88" font-family="sans-serif" font-size="28" font-weight="800" fill="#f87171" text-anchor="middle">RED</text>
+    <text x="100" y="110" font-family="sans-serif" font-size="13" fill="#f1f5f9" text-anchor="middle">Write a failing</text>
+    <text x="100" y="128" font-family="sans-serif" font-size="13" fill="#f1f5f9" text-anchor="middle">test</text>
+    <!-- Step number -->
+    <circle cx="100" cy="20" r="14" fill="#f87171" fill-opacity="0.2" stroke="#f87171" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="100" y="25" font-family="sans-serif" font-size="12" font-weight="700" fill="#f87171" text-anchor="middle">1</text>
+  </g>
+
+  <!-- Arrow RED → GREEN -->
+  <path d="M 568 300 L 610 300" stroke="#f87171" stroke-width="2.5" stroke-opacity="0.6" fill="none" marker-end="url(#arrRed)"/>
+
+  <!-- GREEN circle -->
+  <g transform="translate(620, 200)">
+    <circle cx="100" cy="100" r="88" fill="#34d399" fill-opacity="0.05" stroke="#34d399" stroke-opacity="0.4" stroke-width="2"/>
+    <circle cx="100" cy="100" r="70" fill="#34d399" fill-opacity="0.08"/>
+    <text x="100" y="88" font-family="sans-serif" font-size="28" font-weight="800" fill="#34d399" text-anchor="middle">GREEN</text>
+    <text x="100" y="110" font-family="sans-serif" font-size="13" fill="#f1f5f9" text-anchor="middle">Write minimal</text>
+    <text x="100" y="128" font-family="sans-serif" font-size="13" fill="#f1f5f9" text-anchor="middle">code to pass</text>
+    <circle cx="100" cy="20" r="14" fill="#34d399" fill-opacity="0.2" stroke="#34d399" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="100" y="25" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399" text-anchor="middle">2</text>
+  </g>
+
+  <!-- Arrow GREEN → BLUE -->
+  <path d="M 808 300 L 850 300" stroke="#34d399" stroke-width="2.5" stroke-opacity="0.6" fill="none" marker-end="url(#arrGreen)"/>
+
+  <!-- REFACTOR circle -->
+  <g transform="translate(860, 200)">
+    <circle cx="100" cy="100" r="88" fill="#818cf8" fill-opacity="0.05" stroke="#818cf8" stroke-opacity="0.4" stroke-width="2"/>
+    <circle cx="100" cy="100" r="70" fill="#818cf8" fill-opacity="0.08"/>
+    <text x="100" y="82" font-family="sans-serif" font-size="22" font-weight="800" fill="#818cf8" text-anchor="middle">REFACTOR</text>
+    <text x="100" y="110" font-family="sans-serif" font-size="13" fill="#f1f5f9" text-anchor="middle">Improve without</text>
+    <text x="100" y="128" font-family="sans-serif" font-size="13" fill="#f1f5f9" text-anchor="middle">breaking tests</text>
+    <circle cx="100" cy="20" r="14" fill="#818cf8" fill-opacity="0.2" stroke="#818cf8" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="100" y="25" font-family="sans-serif" font-size="12" font-weight="700" fill="#818cf8" text-anchor="middle">3</text>
+  </g>
+
+  <!-- Feedback arc (REFACTOR back to RED) -->
+  <path d="M 960 388 Q 770 480, 480 388" stroke="#818cf8" stroke-width="2" stroke-opacity="0.4" fill="none" stroke-dasharray="6,4" marker-end="url(#arrBlue)"/>
+  <text x="720" y="478" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="middle">repeat cycle</text>
+
+  <!-- Benefit pills -->
+  <g transform="translate(60, 490)">
+    <rect x="0" y="0" width="148" height="36" rx="18" fill="#f87171" fill-opacity="0.1" stroke="#f87171" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="74" y="23" font-family="sans-serif" font-size="12" font-weight="600" fill="#f87171" text-anchor="middle">Fewer Bugs</text>
+
+    <rect x="168" y="0" width="148" height="36" rx="18" fill="#34d399" fill-opacity="0.1" stroke="#34d399" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="242" y="23" font-family="sans-serif" font-size="12" font-weight="600" fill="#34d399" text-anchor="middle">Living Docs</text>
+
+    <rect x="336" y="0" width="148" height="36" rx="18" fill="#818cf8" fill-opacity="0.1" stroke="#818cf8" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="410" y="23" font-family="sans-serif" font-size="12" font-weight="600" fill="#818cf8" text-anchor="middle">Safe Refactor</text>
+
+    <rect x="504" y="0" width="148" height="36" rx="18" fill="#fbbf24" fill-opacity="0.1" stroke="#fbbf24" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="578" y="23" font-family="sans-serif" font-size="12" font-weight="600" fill="#fbbf24" text-anchor="middle">Faster Delivery</text>
+  </g>
+
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="1200" height="3" fill="url(#accent)"/>
+
+  <!-- Bottom label -->
+  <text x="600" y="596" font-family="sans-serif" font-size="13" fill="#64748b" text-anchor="middle" letter-spacing="2">MAXWELL SOFTWARE SOLUTIONS</text>
 </svg>

@@ -1,42 +1,145 @@
-<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img">
-  <title>Refactoring Legacy Code</title>
-  <desc>Legacy monolith contrasted with refactored modular design.</desc>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bgRef" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e293b"/></linearGradient>
-    <pattern id="gridRef" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#334155" stroke-opacity="0.25" stroke-width="1"/></pattern>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080f"/>
+      <stop offset="100%" stop-color="#0c1325"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="28%" cy="42%" r="52%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="76%" cy="60%" r="42%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="50%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
   </defs>
-  <rect width="400" height="300" fill="url(#bgRef)"/>
-  <rect width="400" height="300" fill="url(#gridRef)"/>
-  <text x="200" y="26" text-anchor="middle" font-family="'Segoe UI',Arial" font-size="15" font-weight="600" fill="#f1f5f9">Refactoring Legacy Code</text>
-  <g font-family="'Segoe UI',Arial" font-size="9" font-weight="500">
-    <g transform="translate(80 70)">
-      <rect x="-60" y="-16" width="120" height="170" rx="18" fill="#1e293b" stroke="#dc2626" stroke-dasharray="4 6"/>
-      <text x="0" y="0" text-anchor="middle" fill="#dc2626" font-weight="600">Legacy</text>
-      <g fill="#94a3b8" text-anchor="middle">
-        <text x="0" y="26">God Class</text>
-        <text x="0" y="44">Dup Logic</text>
-        <text x="0" y="62">Tight Coupling</text>
-        <text x="0" y="80">No Tests</text>
-        <text x="0" y="98">Hidden Bugs</text>
-        <text x="0" y="116">High Risk</text>
-      </g>
-    </g>
-    <g transform="translate(320 70)">
-      <rect x="-60" y="-16" width="120" height="170" rx="18" fill="#1e293b" stroke="#10b981"/>
-      <text x="0" y="0" text-anchor="middle" fill="#10b981" font-weight="600">Refactored</text>
-      <g fill="#94a3b8" text-anchor="middle">
-        <text x="0" y="26">Cohesive</text>
-        <text x="0" y="44">DRY</text>
-        <text x="0" y="62">Loose Coupling</text>
-        <text x="0" y="80">Tests</text>
-        <text x="0" y="98">Transparent</text>
-        <text x="0" y="116">Lower Risk</text>
-      </g>
-    </g>
-    <path d="M140 154H260" stroke="#6366f1" stroke-width="4" stroke-linecap="round" marker-end="url(#arrRef)"/>
-    <text x="200" y="148" text-anchor="middle" fill="#6366f1" font-size="10" font-weight="600">Refactor</text>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Grid -->
+  <g opacity="0.04" stroke="#818cf8" stroke-width="1">
+    <line x1="0" y1="90" x2="1200" y2="90"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="120" y1="0" x2="120" y2="630"/>
+    <line x1="240" y1="0" x2="240" y2="630"/>
+    <line x1="360" y1="0" x2="360" y2="630"/>
+    <line x1="480" y1="0" x2="480" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="720" y1="0" x2="720" y2="630"/>
+    <line x1="840" y1="0" x2="840" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/>
+    <line x1="1080" y1="0" x2="1080" y2="630"/>
   </g>
-  <defs>
-    <marker id="arrRef" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0l10 5-10 5z" fill="#6366f1"/></marker>
-  </defs>
+
+  <!-- Title -->
+  <g transform="translate(60, 68)">
+    <rect x="0" y="0" width="200" height="28" rx="6" fill="#7c3aed" fill-opacity="0.2" stroke="#7c3aed" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="100" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#a78bfa" text-anchor="middle" letter-spacing="3">LEGACY SYSTEMS</text>
+    <text x="0" y="64" font-family="sans-serif" font-size="38" font-weight="800" fill="#f1f5f9">Refactoring</text>
+    <text x="0" y="100" font-family="sans-serif" font-size="38" font-weight="800" fill="#818cf8">Legacy Code</text>
+    <text x="0" y="134" font-family="sans-serif" font-size="15" fill="#94a3b8">A systematic approach to modernizing old systems</text>
+  </g>
+
+  <!-- Strategy steps -->
+  <g transform="translate(60, 195)">
+    <!-- Step 1 -->
+    <rect x="0" y="0" width="260" height="90" rx="12" fill="url(#cardGrad)" stroke="#818cf8" stroke-opacity="0.2" stroke-width="1"/>
+    <circle cx="36" cy="28" r="16" fill="#818cf8" fill-opacity="0.15"/>
+    <text x="36" y="33" font-family="sans-serif" font-size="14" font-weight="700" fill="#818cf8" text-anchor="middle">1</text>
+    <text x="66" y="24" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9">Characterisation Tests</text>
+    <text x="66" y="42" font-family="sans-serif" font-size="11" fill="#94a3b8">Lock existing behaviour</text>
+    <text x="66" y="58" font-family="sans-serif" font-size="11" fill="#94a3b8">before touching code</text>
+
+    <!-- Step 2 -->
+    <rect x="0" y="108" width="260" height="90" rx="12" fill="url(#cardGrad)" stroke="#fbbf24" stroke-opacity="0.2" stroke-width="1"/>
+    <circle cx="36" cy="136" r="16" fill="#fbbf24" fill-opacity="0.15"/>
+    <text x="36" y="141" font-family="sans-serif" font-size="14" font-weight="700" fill="#fbbf24" text-anchor="middle">2</text>
+    <text x="66" y="132" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9">Identify Seams</text>
+    <text x="66" y="150" font-family="sans-serif" font-size="11" fill="#94a3b8">Find safe entry points</text>
+    <text x="66" y="166" font-family="sans-serif" font-size="11" fill="#94a3b8">to inject new behaviour</text>
+
+    <!-- Step 3 -->
+    <rect x="0" y="216" width="260" height="90" rx="12" fill="url(#cardGrad)" stroke="#34d399" stroke-opacity="0.2" stroke-width="1"/>
+    <circle cx="36" cy="244" r="16" fill="#34d399" fill-opacity="0.15"/>
+    <text x="36" y="249" font-family="sans-serif" font-size="14" font-weight="700" fill="#34d399" text-anchor="middle">3</text>
+    <text x="66" y="240" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9">Strangle Fig Pattern</text>
+    <text x="66" y="258" font-family="sans-serif" font-size="11" fill="#94a3b8">Replace incrementally,</text>
+    <text x="66" y="274" font-family="sans-serif" font-size="11" fill="#94a3b8">ship continuously</text>
+
+    <!-- Step 4 -->
+    <rect x="0" y="324" width="260" height="90" rx="12" fill="url(#cardGrad)" stroke="#a78bfa" stroke-opacity="0.2" stroke-width="1"/>
+    <circle cx="36" cy="352" r="16" fill="#a78bfa" fill-opacity="0.15"/>
+    <text x="36" y="357" font-family="sans-serif" font-size="14" font-weight="700" fill="#a78bfa" text-anchor="middle">4</text>
+    <text x="66" y="348" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9">Delete Old Code</text>
+    <text x="66" y="366" font-family="sans-serif" font-size="11" fill="#94a3b8">Remove legacy once</text>
+    <text x="66" y="382" font-family="sans-serif" font-size="11" fill="#94a3b8">new path is proven</text>
+  </g>
+
+  <!-- Metrics panel on right -->
+  <g transform="translate(440, 195)">
+    <rect x="0" y="0" width="700" height="90" rx="12" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="30" y="28" font-family="sans-serif" font-size="13" font-weight="700" fill="#94a3b8">Before Refactor</text>
+    <!-- Coverage bar -->
+    <rect x="30" y="46" width="620" height="12" rx="6" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="30" y="46" width="62" height="12" rx="6" fill="#f87171"/>
+    <text x="30" y="74" font-family="monospace" font-size="11" fill="#f87171">10% test coverage</text>
+    <text x="500" y="74" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle">Complexity: 94 (Critical)</text>
+
+    <rect x="0" y="108" width="700" height="90" rx="12" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="30" y="136" font-family="sans-serif" font-size="13" font-weight="700" fill="#94a3b8">After Refactor</text>
+    <rect x="30" y="154" width="620" height="12" rx="6" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="30" y="154" width="527" height="12" rx="6" fill="#34d399"/>
+    <text x="30" y="182" font-family="monospace" font-size="11" fill="#34d399">85% test coverage</text>
+    <text x="500" y="182" font-family="monospace" font-size="11" fill="#34d399" text-anchor="middle">Complexity: 12 (Good)</text>
+
+    <!-- Stat pills -->
+    <rect x="0" y="220" width="160" height="58" rx="10" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="80" y="248" font-family="sans-serif" font-size="22" font-weight="800" fill="#34d399" text-anchor="middle">75%</text>
+    <text x="80" y="268" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Bug reduction</text>
+
+    <rect x="180" y="220" width="160" height="58" rx="10" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="260" y="248" font-family="sans-serif" font-size="22" font-weight="800" fill="#818cf8" text-anchor="middle">3×</text>
+    <text x="260" y="268" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Dev velocity</text>
+
+    <rect x="360" y="220" width="160" height="58" rx="10" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="440" y="248" font-family="sans-serif" font-size="22" font-weight="800" fill="#fbbf24" text-anchor="middle">60%</text>
+    <text x="440" y="268" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Onboarding time</text>
+
+    <rect x="540" y="220" width="160" height="58" rx="10" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="620" y="248" font-family="sans-serif" font-size="22" font-weight="800" fill="#a78bfa" text-anchor="middle">40%</text>
+    <text x="620" y="268" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Lower cost</text>
+
+    <!-- Techniques list -->
+    <rect x="0" y="300" width="700" height="114" rx="12" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="24" y="324" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9">Key Techniques</text>
+    <text x="24" y="348" font-family="monospace" font-size="11" fill="#818cf8">Extract Method</text>
+    <text x="24" y="366" font-family="monospace" font-size="11" fill="#818cf8">Move Field</text>
+    <text x="180" y="348" font-family="monospace" font-size="11" fill="#34d399">Rename Variable</text>
+    <text x="180" y="366" font-family="monospace" font-size="11" fill="#34d399">Introduce Parameter Object</text>
+    <text x="400" y="348" font-family="monospace" font-size="11" fill="#fbbf24">Replace Conditional with Polymorphism</text>
+    <text x="400" y="366" font-family="monospace" font-size="11" fill="#fbbf24">Decompose Conditional</text>
+    <text x="24" y="390" font-family="sans-serif" font-size="11" fill="#64748b">Fowler's Refactoring catalog — 90+ patterns</text>
+  </g>
+
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="1200" height="3" fill="url(#accent)"/>
+
+  <!-- Bottom label -->
+  <text x="600" y="596" font-family="sans-serif" font-size="13" fill="#64748b" text-anchor="middle" letter-spacing="2">MAXWELL SOFTWARE SOLUTIONS</text>
 </svg>

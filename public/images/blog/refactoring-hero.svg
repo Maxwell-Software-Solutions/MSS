@@ -1,58 +1,135 @@
-<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="refactor-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080f"/>
+      <stop offset="100%" stop-color="#0c1325"/>
     </linearGradient>
-    <linearGradient id="refactor-old" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#991b1b;stop-opacity:0.3" />
+    <radialGradient id="glow1" cx="28%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="75%" cy="58%" r="40%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="50%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#2563eb"/>
     </linearGradient>
-    <linearGradient id="refactor-new" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#059669;stop-opacity:0.3" />
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
     </linearGradient>
+    <marker id="arrBlue" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#4f46e5"/>
+    </marker>
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="400" fill="url(#refactor-bg)"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Grid -->
+  <g opacity="0.04" stroke="#818cf8" stroke-width="1">
+    <line x1="0" y1="90" x2="1200" y2="90"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="120" y1="0" x2="120" y2="630"/>
+    <line x1="240" y1="0" x2="240" y2="630"/>
+    <line x1="360" y1="0" x2="360" y2="630"/>
+    <line x1="480" y1="0" x2="480" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="720" y1="0" x2="720" y2="630"/>
+    <line x1="840" y1="0" x2="840" y2="630"/>
+    <line x1="960" y1="0" x2="960" y2="630"/>
+    <line x1="1080" y1="0" x2="1080" y2="630"/>
+  </g>
 
   <!-- Title -->
-  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Code Refactoring Process</text>
+  <g transform="translate(60, 68)">
+    <rect x="0" y="0" width="188" height="28" rx="6" fill="#7c3aed" fill-opacity="0.2" stroke="#7c3aed" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="94" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#a78bfa" text-anchor="middle" letter-spacing="3">BEST PRACTICES</text>
+    <text x="0" y="64" font-family="sans-serif" font-size="38" font-weight="800" fill="#f1f5f9">Code</text>
+    <text x="0" y="100" font-family="sans-serif" font-size="38" font-weight="800" fill="#818cf8">Refactoring</text>
+    <text x="0" y="134" font-family="sans-serif" font-size="15" fill="#94a3b8">Better code without changing behavior</text>
+  </g>
 
-  <!-- Legacy Code Box -->
-  <rect x="80" y="120" width="250" height="220" rx="12" fill="url(#refactor-old)" stroke="#ef4444" stroke-width="3" stroke-dasharray="8,4"/>
-  <text x="205" y="155" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle">Legacy</text>
-  
-  <!-- Legacy issues -->
-  <text x="100" y="185" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• God Class</text>
-  <text x="100" y="210" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Duplicate Logic</text>
-  <text x="100" y="235" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Tight Coupling</text>
-  <text x="100" y="260" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• No Tests</text>
-  <text x="100" y="285" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Hidden Bugs</text>
-  <text x="100" y="310" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• High Risk</text>
+  <!-- BEFORE panel -->
+  <g transform="translate(60, 200)">
+    <!-- Panel header -->
+    <rect x="0" y="0" width="460" height="340" rx="14" fill="#f87171" fill-opacity="0.04" stroke="#f87171" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="6,4"/>
+    <rect x="0" y="0" width="460" height="44" rx="14" fill="#f87171" fill-opacity="0.1"/>
+    <rect x="0" y="30" width="460" height="14" fill="#f87171" fill-opacity="0.1"/>
+    <text x="24" y="28" font-family="sans-serif" font-size="14" font-weight="700" fill="#f87171">BEFORE</text>
+    <rect x="400" y="14" width="44" height="18" rx="6" fill="#f87171" fill-opacity="0.2"/>
+    <text x="422" y="27" font-family="monospace" font-size="10" font-weight="700" fill="#f87171" text-anchor="middle">v1.0</text>
 
-  <!-- Refactor Arrow -->
-  <defs>
-    <marker id="arrowhead-refactor" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto">
-      <polygon points="0 0, 12 6, 0 12" fill="#3b82f6" />
-    </marker>
-  </defs>
-  <path d="M 335 230 L 460 230" stroke="#3b82f6" stroke-width="4" fill="none" marker-end="url(#arrowhead-refactor)"/>
-  <text x="397" y="220" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle">Refactor</text>
+    <!-- Code lines - messy -->
+    <text x="24" y="74" font-family="monospace" font-size="12" fill="#f87171">class GodClass &#x7B;</text>
+    <text x="24" y="96" font-family="monospace" font-size="12" fill="#94a3b8">  // 2000 lines...</text>
+    <text x="24" y="118" font-family="monospace" font-size="12" fill="#64748b">  doEverything() &#x7B;</text>
+    <text x="24" y="140" font-family="monospace" font-size="12" fill="#64748b">    // copy-pasted logic</text>
+    <text x="24" y="162" font-family="monospace" font-size="12" fill="#64748b">    // copy-pasted logic</text>
+    <text x="24" y="184" font-family="monospace" font-size="12" fill="#64748b">    // deeply nested if</text>
+    <text x="24" y="206" font-family="monospace" font-size="12" fill="#64748b">    // deeply nested if</text>
+    <text x="24" y="228" font-family="monospace" font-size="12" fill="#64748b">    // magic numbers</text>
+    <text x="24" y="250" font-family="monospace" font-size="12" fill="#64748b">  &#x7D;</text>
+    <text x="24" y="272" font-family="monospace" font-size="12" fill="#f87171">&#x7D;</text>
 
-  <!-- Refactored Code Box -->
-  <rect x="470" y="120" width="250" height="220" rx="12" fill="url(#refactor-new)" stroke="#10b981" stroke-width="3"/>
-  <text x="595" y="155" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle">Refactored</text>
-  
-  <!-- Refactored benefits -->
-  <text x="490" y="185" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Cohesive</text>
-  <text x="490" y="210" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• DRY</text>
-  <text x="490" y="235" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Loose Coupling</text>
-  <text x="490" y="260" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Tests</text>
-  <text x="490" y="285" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Transparent</text>
-  <text x="490" y="310" font-family="Arial, sans-serif" font-size="12" fill="#cbd5e1">• Lower Risk</text>
+    <!-- Issue tags -->
+    <rect x="24" y="290" width="86" height="22" rx="5" fill="#f87171" fill-opacity="0.15"/>
+    <text x="67" y="305" font-family="monospace" font-size="10" fill="#f87171" text-anchor="middle">God Class</text>
+    <rect x="120" y="290" width="100" height="22" rx="5" fill="#f87171" fill-opacity="0.15"/>
+    <text x="170" y="305" font-family="monospace" font-size="10" fill="#f87171" text-anchor="middle">Dup Logic</text>
+    <rect x="230" y="290" width="110" height="22" rx="5" fill="#f87171" fill-opacity="0.15"/>
+    <text x="285" y="305" font-family="monospace" font-size="10" fill="#f87171" text-anchor="middle">No Tests</text>
+  </g>
 
-  <!-- Bottom text -->
-  <text x="400" y="375" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">Improving Code Quality Without Changing Behavior</text>
+  <!-- Arrow -->
+  <g transform="translate(540, 360)">
+    <rect x="0" y="-20" width="100" height="40" rx="20" fill="#4f46e5" fill-opacity="0.15" stroke="#4f46e5" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="50" y="5" font-family="sans-serif" font-size="12" font-weight="700" fill="#818cf8" text-anchor="middle">Refactor</text>
+    <path d="M 108 0 L 126 0" stroke="#4f46e5" stroke-width="2" fill="none" marker-end="url(#arrBlue)"/>
+  </g>
+
+  <!-- AFTER panel -->
+  <g transform="translate(680, 200)">
+    <rect x="0" y="0" width="460" height="340" rx="14" fill="#34d399" fill-opacity="0.04" stroke="#34d399" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="0" y="0" width="460" height="44" rx="14" fill="#34d399" fill-opacity="0.1"/>
+    <rect x="0" y="30" width="460" height="14" fill="#34d399" fill-opacity="0.1"/>
+    <text x="24" y="28" font-family="sans-serif" font-size="14" font-weight="700" fill="#34d399">AFTER</text>
+    <rect x="400" y="14" width="44" height="18" rx="6" fill="#34d399" fill-opacity="0.2"/>
+    <text x="422" y="27" font-family="monospace" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">v2.0</text>
+
+    <!-- Code lines - clean -->
+    <text x="24" y="74" font-family="monospace" font-size="12" fill="#34d399">class OrderService &#x7B;</text>
+    <text x="24" y="96" font-family="monospace" font-size="12" fill="#818cf8">  constructor(</text>
+    <text x="24" y="118" font-family="monospace" font-size="12" fill="#94a3b8">    private repo: OrderRepo,</text>
+    <text x="24" y="140" font-family="monospace" font-size="12" fill="#94a3b8">    private notifier: Notifier</text>
+    <text x="24" y="162" font-family="monospace" font-size="12" fill="#818cf8">  ) &#x7B;&#x7D;</text>
+    <text x="24" y="184" font-family="monospace" font-size="12" fill="#818cf8">  async create(dto: CreateDTO) &#x7B;</text>
+    <text x="24" y="206" font-family="monospace" font-size="12" fill="#94a3b8">    return this.repo.save(dto);</text>
+    <text x="24" y="228" font-family="monospace" font-size="12" fill="#818cf8">  &#x7D;</text>
+    <text x="24" y="250" font-family="monospace" font-size="12" fill="#64748b">  // 40 focused lines</text>
+    <text x="24" y="272" font-family="monospace" font-size="12" fill="#34d399">&#x7D;</text>
+
+    <!-- Benefit tags -->
+    <rect x="24" y="290" width="86" height="22" rx="5" fill="#34d399" fill-opacity="0.15"/>
+    <text x="67" y="305" font-family="monospace" font-size="10" fill="#34d399" text-anchor="middle">SOLID</text>
+    <rect x="120" y="290" width="100" height="22" rx="5" fill="#34d399" fill-opacity="0.15"/>
+    <text x="170" y="305" font-family="monospace" font-size="10" fill="#34d399" text-anchor="middle">Testable</text>
+    <rect x="230" y="290" width="110" height="22" rx="5" fill="#34d399" fill-opacity="0.15"/>
+    <text x="285" y="305" font-family="monospace" font-size="10" fill="#34d399" text-anchor="middle">Readable</text>
+  </g>
+
+  <!-- Accent line top -->
+  <rect x="0" y="0" width="1200" height="3" fill="url(#accent)"/>
+
+  <!-- Bottom label -->
+  <text x="600" y="596" font-family="sans-serif" font-size="13" fill="#64748b" text-anchor="middle" letter-spacing="2">MAXWELL SOFTWARE SOLUTIONS</text>
 </svg>
