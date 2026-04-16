@@ -48,7 +48,28 @@ export default function SiteFooter(): ReactElement {
   }, []);
 
   return (
-    <footer className="neuro-footer-border text-sm text-foreground/80" role="contentinfo">
+    <footer
+      className="relative text-sm text-foreground/80"
+      style={{
+        background: isDark ? '#030508' : '#ffffff',
+        backgroundImage: isDark
+          ? 'radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px)'
+          : 'radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px)',
+        backgroundSize: '28px 28px',
+      }}
+      role="contentinfo"
+    >
+      {/* Gradient top accent line — purple→indigo→blue fading in from left */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px"
+        style={{
+          background: isDark
+            ? 'linear-gradient(to right, transparent 0%, rgba(124,58,237,0.6) 25%, rgba(79,70,229,0.8) 50%, rgba(37,99,235,0.6) 75%, transparent 100%)'
+            : 'linear-gradient(to right, transparent 0%, rgba(109,40,217,0.4) 25%, rgba(79,70,229,0.6) 50%, rgba(37,99,235,0.4) 75%, transparent 100%)',
+        }}
+      />
+
       <div className="mx-auto max-w-6xl px-6 py-12 sm:px-10 sm:py-14">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.7fr)_repeat(2,minmax(0,1fr))]">
           <div className="space-y-6">
@@ -60,7 +81,7 @@ export default function SiteFooter(): ReactElement {
                 height={40}
                 className="h-10 w-10 opacity-90"
               />
-              <span className="text-xs uppercase tracking-[0.35em] text-[color:var(--accent)]">
+              <span className="text-xs uppercase tracking-[0.35em] text-violet-400">
                 Crafting reliable software
               </span>
             </div>
@@ -72,10 +93,10 @@ export default function SiteFooter(): ReactElement {
 
             <dl className="grid gap-3">
               <div>
-                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--accent)]">Email</dt>
+                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-violet-400">Email</dt>
                 <dd>
                   <a
-                    className="mt-1 block break-words text-foreground/90 font-medium transition hover:text-[color:var(--accent)]"
+                    className="mt-1 block break-words text-foreground/90 font-medium transition hover:text-violet-400"
                     href={CONTACT_EMAIL_MAILTO}
                   >
                     {CONTACT_EMAIL}
@@ -83,10 +104,10 @@ export default function SiteFooter(): ReactElement {
                 </dd>
               </div>
               <div>
-                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-[color:var(--accent)]">Phone</dt>
+                <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-violet-400">Phone</dt>
                 <dd>
                   <a
-                    className="mt-1 block text-foreground/90 font-medium transition hover:text-[color:var(--accent)]"
+                    className="mt-1 block text-foreground/90 font-medium transition hover:text-violet-400"
                     href={CONTACT_PHONE_TEL}
                   >
                     {CONTACT_PHONE}
@@ -106,7 +127,7 @@ export default function SiteFooter(): ReactElement {
             <ul className="space-y-2 text-sm">
               {primaryLinks.map((link) => (
                 <li key={link.href}>
-                  <Link className="transition hover:text-[color:var(--accent)]" href={link.href}>
+                  <Link className="transition hover:text-violet-400" href={link.href}>
                     {link.label}
                   </Link>
                 </li>
@@ -119,7 +140,7 @@ export default function SiteFooter(): ReactElement {
             <ul className="space-y-2 text-sm">
               {resourceLinks.map((link) => (
                 <li key={link.href}>
-                  <Link className="transition hover:text-[color:var(--accent)]" href={link.href}>
+                  <Link className="transition hover:text-violet-400" href={link.href}>
                     {link.label}
                   </Link>
                 </li>
@@ -135,7 +156,7 @@ export default function SiteFooter(): ReactElement {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 transition hover:text-[color:var(--accent)]"
+                      className="inline-flex items-center gap-2 transition hover:text-violet-400"
                     >
                       {link.label === 'LinkedIn' && (
                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -160,11 +181,22 @@ export default function SiteFooter(): ReactElement {
           </nav>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 neuro-separator-inline pt-6 text-xs text-foreground/70 sm:flex-row sm:items-center sm:justify-between">
+        {/* Gradient separator above copyright */}
+        <div
+          aria-hidden="true"
+          className="mt-10 h-px"
+          style={{
+            background: isDark
+              ? 'linear-gradient(to right, transparent 0%, rgba(129,140,248,0.3) 50%, transparent 100%)'
+              : 'linear-gradient(to right, transparent 0%, rgba(109,40,217,0.2) 50%, transparent 100%)',
+          }}
+        />
+
+        <div className="mt-6 flex flex-col gap-3 text-xs text-foreground/70 sm:flex-row sm:items-center sm:justify-between">
           <p suppressHydrationWarning>© {currentYear} Maxwell Software Solutions. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
             {resourceLinks.map((link) => (
-              <Link key={link.href} className="transition hover:text-[color:var(--accent)]" href={link.href}>
+              <Link key={link.href} className="transition hover:text-violet-400" href={link.href}>
                 {link.label}
               </Link>
             ))}

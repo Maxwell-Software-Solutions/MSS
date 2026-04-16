@@ -2,12 +2,13 @@
 
 import type { ReactElement } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+      className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -28,7 +29,7 @@ interface FAQItemProps {
 
 function FAQItem({ question, answer }: FAQItemProps): ReactElement {
   return (
-    <div className="border-b border-border pb-6">
+    <div className="border-b border-violet-500/10 pb-6">
       <h3 className="text-[15px] font-semibold mb-2">{question}</h3>
       <p className="text-[14px] text-foreground/75 leading-relaxed">{answer}</p>
     </div>
@@ -103,80 +104,105 @@ export default function StartASprintPage(): ReactElement {
     <>
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
-          {ht('sprint.eyebrow', 'Sprint-in-a-Box')}
-        </p>
-        <h1
-          className="font-semibold leading-[1.1] max-w-3xl text-[clamp(34px,3.4vw,52px)]"
-          suppressHydrationWarning
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-          {ht('sprint.headline', 'Ship Your MVP in 2 Weeks. €4,800 Fixed Price.')}
-        </h1>
-        <p className="mt-5 max-w-2xl text-base md:text-lg leading-[1.65] text-[--muted]" suppressHydrationWarning>
-          {ht(
-            'sprint.subheadline',
-            'A focused, self-contained development sprint. You bring the problem statement. We bring a senior engineer, a clear process, and tested code delivered in 10 working days.'
-          )}
-        </p>
-
-        {/* Primary CTA */}
-        <div className="mt-8 flex flex-wrap gap-4 items-center">
-          <Link
-            href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-            className="inline-flex items-center gap-2 bg-accent text-white rounded-xl px-7 py-3.5 text-sm font-semibold hover:bg-accent/90 transition-all shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
-            target="_blank"
-            rel="noopener noreferrer"
+          <div className="eyebrow mb-4" suppressHydrationWarning>
+            {ht('sprint.eyebrow', 'Sprint-in-a-Box')}
+          </div>
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
-            {ht('sprint.cta.primary', 'Start your sprint — €4,800')}
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </Link>
-          <Link
-            href="/services/packages"
-            className="text-[14px] font-medium text-foreground/70 hover:text-foreground transition-colors underline underline-offset-2"
-            suppressHydrationWarning
-          >
-            {ht('sprint.cta.compare', 'Compare all packages')}
-          </Link>
-        </div>
+            {ht('sprint.headline.pre', 'Ship Your MVP in')}{' '}
+            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              {ht('sprint.headline.gradient', '2 Weeks.')}
+            </span>{' '}
+            {ht('sprint.headline.post', '€4,800 Fixed Price.')}
+          </h1>
+          <p className="mt-6 text-lg text-foreground/70 max-w-2xl" suppressHydrationWarning>
+            {ht(
+              'sprint.subheadline',
+              'A focused, self-contained development sprint. You bring the problem statement. We bring a senior engineer, a clear process, and tested code delivered in 10 working days.'
+            )}
+          </p>
 
-        {/* Trust signals */}
-        <div className="mt-6 flex flex-wrap gap-4">
-          {[
-            ht('sprint.trust.fixed', 'Fixed price — no surprises'),
-            ht('sprint.trust.nda', 'NDA on day one'),
-            ht('sprint.trust.handoff', 'Full code ownership at handoff'),
-          ].map((item, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center gap-1.5 text-[12px] text-foreground/65"
+          {/* Primary CTA */}
+          <div className="mt-8 flex flex-wrap gap-4 items-center">
+            <Link
+              href="https://calendly.com/maxwellsoftwaresolutions/discovery"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              target="_blank"
+              rel="noopener noreferrer"
               suppressHydrationWarning
             >
-              <CheckIcon />
-              {item}
-            </span>
-          ))}
-        </div>
+              {ht('sprint.cta.primary', 'Start your sprint — €4,800')}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </Link>
+            <Link
+              href="/services/packages"
+              className="text-[14px] font-medium text-foreground/70 hover:text-foreground transition-colors underline underline-offset-2"
+              suppressHydrationWarning
+            >
+              {ht('sprint.cta.compare', 'Compare all packages')}
+            </Link>
+          </div>
+
+          {/* Trust signals */}
+          <div className="mt-6 flex flex-wrap gap-4">
+            {[
+              ht('sprint.trust.fixed', 'Fixed price — no surprises'),
+              ht('sprint.trust.nda', 'NDA on day one'),
+              ht('sprint.trust.handoff', 'Full code ownership at handoff'),
+            ].map((item, i) => (
+              <span
+                key={i}
+                className="inline-flex items-center gap-1.5 text-[12px] text-foreground/65"
+                suppressHydrationWarning
+              >
+                <CheckIcon />
+                {item}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </header>
 
       {/* What you get */}
-      <section aria-labelledby="deliverables-heading" className="py-16 sm:py-20 bg-card/30">
+      <section aria-labelledby="deliverables-heading" className="py-16 sm:py-20 bg-white/[0.02]">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
-          <h2
-            id="deliverables-heading"
-            className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-6"
-            suppressHydrationWarning
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            {ht('sprint.deliverables.heading', 'What you get in 2 weeks')}
-          </h2>
+            <h2
+              id="deliverables-heading"
+              className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-6"
+              suppressHydrationWarning
+            >
+              {ht('sprint.deliverables.heading', 'What you get in 2 weeks')}
+            </h2>
+          </motion.div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {deliverables.map((item, i) => (
-              <li key={i} className="flex items-start gap-3 bg-background/50 rounded-2xl border border-border p-5">
+              <motion.li
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.07 }}
+                className="neuro-card flex items-start gap-3 bg-white/[0.03] backdrop-blur rounded-2xl border border-violet-500/15 p-5 hover:-translate-y-1 transition-all duration-300"
+              >
                 <CheckIcon />
                 <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
@@ -184,118 +210,159 @@ export default function StartASprintPage(): ReactElement {
 
       {/* Process */}
       <section aria-labelledby="process-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
-        <h2
+        <motion.h2
           id="process-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-10"
           suppressHydrationWarning
         >
           {ht('sprint.process.heading', 'The process')}
-        </h2>
+        </motion.h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" suppressHydrationWarning>
-          {processSteps.map((step) => (
-            <div key={step.step} className="flex gap-5">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/10 text-accent font-bold text-sm flex items-center justify-center">
+          {processSteps.map((step, i) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="neuro-card flex gap-5 bg-white/[0.03] backdrop-blur rounded-2xl border border-violet-500/15 p-6 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="flex-shrink-0 w-11 h-11 rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-white font-bold text-sm flex items-center justify-center shadow-[0_4px_12px_rgba(124,58,237,0.4)]">
                 {step.step}
               </div>
               <div>
                 <h3 className="font-semibold mb-1.5">{step.title}</h3>
                 <p className="text-[14px] text-foreground/75 leading-relaxed">{step.body}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* Requirements */}
-      <section aria-labelledby="requirements-heading" className="py-16 sm:py-20 bg-card/30">
+      <section aria-labelledby="requirements-heading" className="py-16 sm:py-20 bg-white/[0.02]">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
-          <h2
-            id="requirements-heading"
-            className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-3"
-            suppressHydrationWarning
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            {ht('sprint.requirements.heading', 'What we need from you')}
-          </h2>
-          <p className="text-[15px] text-foreground/70 mb-6" suppressHydrationWarning>
-            {ht('sprint.requirements.body', 'A sprint works well when both sides are aligned from the start. This is the minimum we need:')}
-          </p>
-          <ul className="space-y-3">
-            {requirements.map((req, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <CheckIcon />
-                <span className="text-[14px] leading-relaxed text-foreground/85">{req}</span>
-              </li>
-            ))}
-          </ul>
+            <h2
+              id="requirements-heading"
+              className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-3"
+              suppressHydrationWarning
+            >
+              {ht('sprint.requirements.heading', 'What we need from you')}
+            </h2>
+            <p className="text-[15px] text-foreground/70 mb-6" suppressHydrationWarning>
+              {ht('sprint.requirements.body', 'A sprint works well when both sides are aligned from the start. This is the minimum we need:')}
+            </p>
+            <ul className="space-y-3">
+              {requirements.map((req, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckIcon />
+                  <span className="text-[14px] leading-relaxed text-foreground/85">{req}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
       </section>
 
       {/* Mid-page CTA */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20 text-center">
-        <p className="text-[13px] uppercase tracking-widest font-semibold text-foreground/50 mb-3" suppressHydrationWarning>
-          {ht('sprint.midcta.eyebrow', 'Ready to move fast?')}
-        </p>
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
-          {ht('sprint.midcta.title', 'Book a 30-minute discovery call')}
-        </h2>
-        <p className="text-[15px] text-foreground/70 max-w-xl mx-auto mb-6" suppressHydrationWarning>
-          {ht(
-            'sprint.midcta.body',
-            'We will listen to what you need, tell you honestly whether a 2-week sprint is the right fit, and confirm pricing. No sales process.'
-          )}
-        </p>
-        <Link
-          href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-          className="inline-flex items-center gap-2 bg-accent text-white rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent/90 transition-all shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
-          target="_blank"
-          rel="noopener noreferrer"
-          suppressHydrationWarning
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center"
         >
-          {ht('sprint.midcta.cta', 'Start your sprint — €4,800')}
-        </Link>
+          <p className="text-[13px] uppercase tracking-widest font-semibold text-violet-400/70 mb-3" suppressHydrationWarning>
+            {ht('sprint.midcta.eyebrow', 'Ready to move fast?')}
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+            {ht('sprint.midcta.title', 'Book a 30-minute discovery call')}
+          </h2>
+          <p className="text-[15px] text-foreground/70 max-w-xl mx-auto mb-6" suppressHydrationWarning>
+            {ht(
+              'sprint.midcta.body',
+              'We will listen to what you need, tell you honestly whether a 2-week sprint is the right fit, and confirm pricing. No sales process.'
+            )}
+          </p>
+          <Link
+            href="https://calendly.com/maxwellsoftwaresolutions/discovery"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+            target="_blank"
+            rel="noopener noreferrer"
+            suppressHydrationWarning
+          >
+            {ht('sprint.midcta.cta', 'Start your sprint — €4,800')}
+          </Link>
+        </motion.div>
       </div>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-card/30">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-white/[0.02]">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
-          <h2
-            id="faq-heading"
-            className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
-            suppressHydrationWarning
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            {ht('sprint.faq.heading', 'Frequently asked questions')}
-          </h2>
-          <div className="space-y-6">
-            {faqs.map((item, i) => (
-              <FAQItem key={i} question={item.question} answer={item.answer} />
-            ))}
-          </div>
+            <h2
+              id="faq-heading"
+              className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
+              suppressHydrationWarning
+            >
+              {ht('sprint.faq.heading', 'Frequently asked questions')}
+            </h2>
+            <div className="space-y-6">
+              {faqs.map((item, i) => (
+                <FAQItem key={i} question={item.question} answer={item.answer} />
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Bottom CTA */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20 text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
-          {ht('sprint.bottomcta.title', 'Ship something real in 2 weeks.')}
-        </h2>
-        <p className="text-[15px] text-foreground/70 max-w-lg mx-auto mb-7" suppressHydrationWarning>
-          {ht(
-            'sprint.bottomcta.body',
-            'Fixed price. Fixed timeline. No retainer required. Book the call, confirm scope, and we start the following Monday.'
-          )}
-        </p>
-        <Link
-          href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-          className="inline-flex items-center gap-2 bg-accent text-white rounded-xl px-8 py-4 text-base font-semibold hover:bg-accent/90 transition-all shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
-          target="_blank"
-          rel="noopener noreferrer"
-          suppressHydrationWarning
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center"
         >
-          {ht('sprint.bottomcta.cta', 'Start your sprint — €4,800')}
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        </Link>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+            {ht('sprint.bottomcta.title', 'Ship something real in 2 weeks.')}
+          </h2>
+          <p className="text-[15px] text-foreground/70 max-w-lg mx-auto mb-7" suppressHydrationWarning>
+            {ht(
+              'sprint.bottomcta.body',
+              'Fixed price. Fixed timeline. No retainer required. Book the call, confirm scope, and we start the following Monday.'
+            )}
+          </p>
+          <Link
+            href="https://calendly.com/maxwellsoftwaresolutions/discovery"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-8 py-4 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+            target="_blank"
+            rel="noopener noreferrer"
+            suppressHydrationWarning
+          >
+            {ht('sprint.bottomcta.cta', 'Start your sprint — €4,800')}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Link>
+        </motion.div>
       </div>
     </>
   );

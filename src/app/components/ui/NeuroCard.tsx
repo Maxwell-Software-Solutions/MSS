@@ -13,7 +13,7 @@ interface NeuroCardProps {
 export function NeuroCard({ children, className = '', as: Component = 'div' }: NeuroCardProps): ReactElement {
   return (
     <Component
-      className={`shadow-soft rounded-3xl border bg-card/95 p-8 backdrop-blur-xl transition neuro-card ${className}`.trim()}
+      className={`rounded-2xl border border-white/[0.07] bg-white/[0.03] backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.07)] p-8 transition-all duration-300 neuro-card ${className}`.trim()}
     >
       {children}
     </Component>

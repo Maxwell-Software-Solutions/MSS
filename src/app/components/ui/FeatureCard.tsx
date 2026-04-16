@@ -13,9 +13,14 @@ interface FeatureCardProps {
  */
 export function FeatureCard({ icon, title, description, className = '' }: FeatureCardProps): ReactElement {
   return (
-    <div className={`card p-6 shadow-soft flex flex-col ${className}`.trim()}>
+    <div
+      className={`glass-card p-6 flex flex-col hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] transition-all duration-300 ${className}`.trim()}
+    >
       {icon && (
-        <div className="text-2xl mb-4" aria-hidden="true">
+        <div
+          className="mb-4 inline-flex items-center justify-center rounded-xl bg-gradient-to-br from-violet-600/20 to-indigo-600/10 border border-violet-500/20 p-2.5 text-xl w-fit"
+          aria-hidden="true"
+        >
           {icon}
         </div>
       )}

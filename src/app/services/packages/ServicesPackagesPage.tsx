@@ -2,12 +2,20 @@
 
 import type { ReactElement } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
+
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5 },
+};
 
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-4 h-4 text-accent flex-shrink-0 mt-0.5"
+      className="w-4 h-4 text-violet-400 flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -46,22 +54,26 @@ function PackageCard({
 }: PackageCardProps): ReactElement {
   return (
     <div
-      className={`relative flex flex-col rounded-3xl border p-7 sm:p-8 transition-all h-full ${
-        highlighted
-          ? 'bg-accent/5 border-accent/40 shadow-lg shadow-accent/10'
-          : 'bg-card/95 border-border shadow-soft'
+      className={`neuro-card relative flex flex-col rounded-3xl p-7 sm:p-8 hover:-translate-y-1 transition-all h-full ${
+        highlighted ? 'border border-violet-500/40 shadow-[0_0_40px_rgba(124,58,237,0.15)]' : ''
       }`}
     >
       {badge && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block bg-accent text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow">
+        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block bg-gradient-to-r from-violet-600 to-indigo-500 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow">
           {badge}
         </span>
+      )}
+
+      {highlighted && (
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent rounded-t-3xl" />
       )}
 
       <div className="mb-5">
         <h2 className="text-lg font-bold tracking-tight">{name}</h2>
         <div className="mt-2.5 flex items-end gap-2">
-          <span className="text-2xl sm:text-3xl font-bold">{price}</span>
+          <span className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            {price}
+          </span>
           {period && <span className="text-sm text-foreground/60 mb-0.5">{period}</span>}
         </div>
         <p className="mt-2.5 text-[12px] text-foreground/60 leading-relaxed">{idealFor}</p>
@@ -78,10 +90,10 @@ function PackageCard({
 
       <Link
         href={ctaHref}
-        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60 ${
+        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60 ${
           highlighted
-            ? 'bg-accent text-white hover:bg-accent/90 shadow-soft'
-            : 'border border-accent/40 text-accent hover:bg-accent/10'
+            ? 'bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold shadow-[0_4px_20px_rgba(124,58,237,0.4)]'
+            : 'border border-white/10 hover:border-white/20 hover:bg-white/5'
         }`}
       >
         {ctaLabel}
@@ -182,137 +194,153 @@ export default function ServicesPackagesPage(): ReactElement {
     <>
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
-          {ht('packages.eyebrow', 'Service Packages')}
-        </p>
-        <h1
-          className="font-semibold leading-[1.1] max-w-3xl text-[clamp(36px,3.6vw,56px)]"
-          suppressHydrationWarning
-        >
-          {ht('packages.title', 'Choose the Right Engagement')}
-        </h1>
-        <p className="mt-5 max-w-2xl text-base md:text-lg leading-[1.6] text-[--muted]" suppressHydrationWarning>
-          {ht(
-            'packages.subtitle',
-            'Five focused service packages — from a one-off audit to ongoing strategic leadership. All are fixed in scope and priced transparently.'
-          )}
-        </p>
+        <motion.div {...fadeUp}>
+          <div className="eyebrow mb-4" suppressHydrationWarning>
+            {ht('packages.eyebrow', 'Service Packages')}
+          </div>
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            suppressHydrationWarning
+          >
+            Choose the{' '}
+            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              Right Engagement
+            </span>
+          </h1>
+          <p className="mt-6 text-lg leading-relaxed text-foreground/70 max-w-2xl" suppressHydrationWarning>
+            {ht(
+              'packages.subtitle',
+              'Five focused service packages — from a one-off audit to ongoing strategic leadership. All are fixed in scope and priced transparently.'
+            )}
+          </p>
+        </motion.div>
       </header>
 
       {/* Packages grid */}
-      <section aria-labelledby="packages-heading" className="py-16 sm:py-20">
+      <section aria-labelledby="packages-heading" className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <h2 id="packages-heading" className="sr-only" suppressHydrationWarning>
           {ht('packages.title', 'Service Packages')}
         </h2>
-        <div className="max-w-6xl mx-auto px-6 sm:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" suppressHydrationWarning>
-            {packages.map((pkg) => (
-              <PackageCard key={pkg.name} {...pkg} />
-            ))}
-          </div>
-        </div>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          suppressHydrationWarning
+        >
+          {packages.map((pkg) => (
+            <PackageCard key={pkg.name} {...pkg} />
+          ))}
+        </motion.div>
       </section>
 
       {/* Comparison note */}
-      <section aria-label="Engagement guidance" className="py-10 sm:py-12 bg-card/30">
-        <div className="max-w-3xl mx-auto px-6 sm:px-10 text-center">
-          <h2 className="text-xl font-semibold tracking-tight mb-4" suppressHydrationWarning>
-            {ht('packages.unsure.heading', 'Not sure which package fits?')}
-          </h2>
-          <p className="text-[15px] text-foreground/70 leading-relaxed mb-6" suppressHydrationWarning>
-            {ht(
-              'packages.unsure.body',
-              'Most clients start with a Code Health Audit. It surfaces the real priorities and often makes the next step obvious. If you already know what you need, book a 30-minute discovery call and we will confirm fit.'
-            )}
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block bg-accent text-white rounded-xl px-7 py-3 text-sm font-semibold hover:bg-accent/90 transition-all shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
-            suppressHydrationWarning
-          >
-            {ht('packages.unsure.cta', 'Book a discovery call')}
-          </Link>
-        </div>
+      <section aria-label="Engagement guidance" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+        <motion.div {...fadeUp}>
+          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center max-w-3xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+              {ht('packages.unsure.heading', 'Not sure which package fits?')}
+            </h2>
+            <p className="text-base text-foreground/70 leading-relaxed mb-8" suppressHydrationWarning>
+              {ht(
+                'packages.unsure.body',
+                'Most clients start with a Code Health Audit. It surfaces the real priorities and often makes the next step obvious. If you already know what you need, book a 30-minute discovery call and we will confirm fit.'
+              )}
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              suppressHydrationWarning
+            >
+              {ht('packages.unsure.cta', 'Book a discovery call')}
+            </Link>
+          </div>
+        </motion.div>
       </section>
 
       {/* FAQ-style comparison table */}
-      <section aria-labelledby="compare-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
-        <h2
-          id="compare-heading"
-          className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
-          suppressHydrationWarning
-        >
-          {ht('packages.compare.heading', 'Quick comparison')}
-        </h2>
-        <div className="overflow-x-auto rounded-2xl border border-border">
-          <table className="w-full text-[13px]" role="table" aria-label="Service package comparison">
-            <thead>
-              <tr className="border-b border-border bg-card/60">
-                <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.package', 'Package')}</th>
-                <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.price', 'Price')}</th>
-                <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.duration', 'Duration')}</th>
-                <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.for', 'Best for')}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-border hover:bg-card/40 transition-colors">
-                <td className="p-4 font-medium">{ht('packages.audit.name', 'Code Health Audit')}</td>
-                <td className="p-4 text-foreground/80">{ht('packages.audit.price', '€2,500')}</td>
-                <td className="p-4 text-foreground/80">{ht('packages.compare.audit.duration', '5 business days')}</td>
-                <td className="p-4 text-foreground/75">{ht('packages.compare.audit.for', 'Pre-investment, new CTOs, legacy systems')}</td>
-              </tr>
-              <tr className="border-b border-border hover:bg-card/40 transition-colors">
-                <td className="p-4 font-medium">{ht('packages.sprint.name', 'Sprint-in-a-Box')}</td>
-                <td className="p-4 text-foreground/80">{ht('packages.sprint.price', '€4,800')}</td>
-                <td className="p-4 text-foreground/80">{ht('packages.compare.sprint.duration', '2 weeks')}</td>
-                <td className="p-4 text-foreground/75">{ht('packages.compare.sprint.for', 'MVPs, feature spikes, proof-of-concept')}</td>
-              </tr>
-              <tr className="border-b border-border bg-accent/5 hover:bg-accent/10 transition-colors">
-                <td className="p-4 font-medium text-accent">{ht('packages.retainer.name', 'Engineering Partner Retainer')}</td>
-                <td className="p-4 text-foreground/80">{ht('packages.retainer.price', '€3,500–€6,500')}/mo</td>
-                <td className="p-4 text-foreground/80">{ht('packages.compare.retainer.duration', 'Ongoing')}</td>
-                <td className="p-4 text-foreground/75">{ht('packages.compare.retainer.for', 'Scale-ups, embedded engineering support')}</td>
-              </tr>
-              <tr className="border-b border-border hover:bg-card/40 transition-colors">
-                <td className="p-4 font-medium">{ht('packages.cicd.name', 'CI/CD Accelerator')}</td>
-                <td className="p-4 text-foreground/80">{ht('packages.cicd.price', '€7,500')}</td>
-                <td className="p-4 text-foreground/80">{ht('packages.compare.cicd.duration', '3–4 weeks')}</td>
-                <td className="p-4 text-foreground/75">{ht('packages.compare.cicd.for', 'Slow deploys, broken pipelines, manual releases')}</td>
-              </tr>
-              <tr className="hover:bg-card/40 transition-colors">
-                <td className="p-4 font-medium">{ht('packages.cto.name', 'Fractional CTO')}</td>
-                <td className="p-4 text-foreground/80">{ht('packages.cto.price', '€3,500')}/mo</td>
-                <td className="p-4 text-foreground/80">{ht('packages.compare.cto.duration', 'Ongoing')}</td>
-                <td className="p-4 text-foreground/75">{ht('packages.compare.cto.for', 'Early-stage startups, post-seed to Series A')}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <section aria-labelledby="compare-heading" className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+        <motion.div {...fadeUp}>
+          <h2
+            id="compare-heading"
+            className="text-3xl sm:text-4xl font-bold tracking-tight mb-8"
+            suppressHydrationWarning
+          >
+            {ht('packages.compare.heading', 'Quick comparison')}
+          </h2>
+          <div className="overflow-x-auto rounded-2xl neuro-card">
+            <table className="w-full text-[13px]" role="table" aria-label="Service package comparison">
+              <thead>
+                <tr className="border-b border-white/5">
+                  <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.package', 'Package')}</th>
+                  <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.price', 'Price')}</th>
+                  <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.duration', 'Duration')}</th>
+                  <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.for', 'Best for')}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-white/5 hover:bg-white/3 transition-colors">
+                  <td className="p-4 font-medium">{ht('packages.audit.name', 'Code Health Audit')}</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.audit.price', '€2,500')}</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.compare.audit.duration', '5 business days')}</td>
+                  <td className="p-4 text-foreground/75">{ht('packages.compare.audit.for', 'Pre-investment, new CTOs, legacy systems')}</td>
+                </tr>
+                <tr className="border-b border-white/5 hover:bg-white/3 transition-colors">
+                  <td className="p-4 font-medium">{ht('packages.sprint.name', 'Sprint-in-a-Box')}</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.sprint.price', '€4,800')}</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.compare.sprint.duration', '2 weeks')}</td>
+                  <td className="p-4 text-foreground/75">{ht('packages.compare.sprint.for', 'MVPs, feature spikes, proof-of-concept')}</td>
+                </tr>
+                <tr className="border-b border-white/5 bg-violet-500/5 hover:bg-violet-500/10 transition-colors">
+                  <td className="p-4 font-medium text-violet-400">{ht('packages.retainer.name', 'Engineering Partner Retainer')}</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.retainer.price', '€3,500–€6,500')}/mo</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.compare.retainer.duration', 'Ongoing')}</td>
+                  <td className="p-4 text-foreground/75">{ht('packages.compare.retainer.for', 'Scale-ups, embedded engineering support')}</td>
+                </tr>
+                <tr className="border-b border-white/5 hover:bg-white/3 transition-colors">
+                  <td className="p-4 font-medium">{ht('packages.cicd.name', 'CI/CD Accelerator')}</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.cicd.price', '€7,500')}</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.compare.cicd.duration', '3–4 weeks')}</td>
+                  <td className="p-4 text-foreground/75">{ht('packages.compare.cicd.for', 'Slow deploys, broken pipelines, manual releases')}</td>
+                </tr>
+                <tr className="hover:bg-white/3 transition-colors">
+                  <td className="p-4 font-medium">{ht('packages.cto.name', 'Fractional CTO')}</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.cto.price', '€3,500')}/mo</td>
+                  <td className="p-4 text-foreground/80">{ht('packages.compare.cto.duration', 'Ongoing')}</td>
+                  <td className="p-4 text-foreground/75">{ht('packages.compare.cto.for', 'Early-stage startups, post-seed to Series A')}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
       </section>
 
       {/* AI Implementation */}
-      <section aria-label="AI implementation capabilities" className="py-10 sm:py-12">
-        <div className="max-w-3xl mx-auto px-6 sm:px-10 text-center">
-          <p className="text-[12px] font-bold uppercase tracking-widest text-accent/70 mb-3" suppressHydrationWarning>
-            {ht('packages.ai.eyebrow', 'AI & ML')}
-          </p>
-          <h2 className="text-xl font-semibold tracking-tight mb-4" suppressHydrationWarning>
-            {ht('packages.ai.heading', 'We also ship AI into production')}
-          </h2>
-          <p className="text-[15px] text-foreground/70 leading-relaxed mb-6" suppressHydrationWarning>
-            {ht(
-              'packages.ai.body',
-              'We help AI startups and product teams ship models into production — from RAG pipelines and LLM-powered features to embedding search and AI-assisted workflows. If you are building with AI and need engineering support, talk to us.'
-            )}
-          </p>
-          <Link
-            href="/contact"
-            className="inline-block border border-accent/40 text-accent rounded-xl px-7 py-3 text-sm font-semibold hover:bg-accent/10 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
-            suppressHydrationWarning
-          >
-            {ht('packages.ai.cta', 'Discuss an AI project')}
-          </Link>
-        </div>
+      <section aria-label="AI implementation capabilities" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+        <motion.div {...fadeUp}>
+          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center max-w-3xl mx-auto">
+            <div className="eyebrow mb-3" suppressHydrationWarning>
+              {ht('packages.ai.eyebrow', 'AI & ML')}
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+              {ht('packages.ai.heading', 'We also ship AI into production')}
+            </h2>
+            <p className="text-base text-foreground/70 leading-relaxed mb-8" suppressHydrationWarning>
+              {ht(
+                'packages.ai.body',
+                'We help AI startups and product teams ship models into production — from RAG pipelines and LLM-powered features to embedding search and AI-assisted workflows. If you are building with AI and need engineering support, talk to us.'
+              )}
+            </p>
+            <Link
+              href="/contact"
+              className="border border-white/10 hover:border-white/20 hover:bg-white/5 px-6 py-3 rounded-xl transition-all inline-flex items-center text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              suppressHydrationWarning
+            >
+              {ht('packages.ai.cta', 'Discuss an AI project')}
+            </Link>
+          </div>
+        </motion.div>
       </section>
     </>
   );

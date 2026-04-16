@@ -1,5 +1,6 @@
 'use client';
 import type { ReactElement } from 'react';
+import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import CTA from '@/app/components/ui/CTA';
 
@@ -7,30 +8,46 @@ interface CaseStudy {
   key: 'miau' | 'neonova' | 'fueille';
   accentClass: string;
   results: string[];
+  metrics: { value: string; label: string }[];
 }
 
 const STUDIES: CaseStudy[] = [
   {
     key: 'miau',
-    accentClass: 'from-amber-500/10 to-yellow-500/5',
+    accentClass: 'from-amber-500/20 to-yellow-500/10',
     results: ['result1', 'result2', 'result3'],
+    metrics: [
+      { value: '3×', label: 'Faster deploys' },
+      { value: '60%', label: 'Less tech debt' },
+      { value: '99.9%', label: 'Uptime achieved' },
+    ],
   },
   {
     key: 'neonova',
-    accentClass: 'from-blue-500/10 to-cyan-500/5',
+    accentClass: 'from-blue-500/20 to-cyan-500/10',
     results: ['result1', 'result2', 'result3'],
+    metrics: [
+      { value: '10×', label: 'Throughput gain' },
+      { value: '40%', label: 'Cost reduction' },
+      { value: '2wk', label: 'Delivery time' },
+    ],
   },
   {
     key: 'fueille',
-    accentClass: 'from-emerald-500/10 to-teal-500/5',
+    accentClass: 'from-emerald-500/20 to-teal-500/10',
     results: ['result1', 'result2', 'result3'],
+    metrics: [
+      { value: '5×', label: 'API performance' },
+      { value: '80%', label: 'Fewer incidents' },
+      { value: '€0', label: 'Downtime cost' },
+    ],
   },
 ];
 
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-4 h-4 text-accent flex-shrink-0 mt-0.5"
+      className="w-4 h-4 text-violet-400 flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -51,27 +68,34 @@ export default function CaseStudiesPage(): ReactElement {
     <>
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <p
-          className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase"
-          suppressHydrationWarning
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-          {ht('caseStudiesPage.eyebrow', 'Client results')}
-        </p>
-        <h1
-          className="font-semibold leading-[1.1] max-w-3xl text-[clamp(36px,3.6vw,56px)]"
-          suppressHydrationWarning
-        >
-          {ht('caseStudiesPage.title', 'Case Studies')}
-        </h1>
-        <p
-          className="mt-6 max-w-3xl text-base md:text-lg leading-[1.6] text-[--muted]"
-          suppressHydrationWarning
-        >
-          {ht(
-            'caseStudiesPage.subtitle',
-            'Real engagements with measurable outcomes. Industries include fintech, logistics, and cloud infrastructure.'
-          )}
-        </p>
+          <div className="eyebrow mb-4" suppressHydrationWarning>
+            {ht('caseStudiesPage.eyebrow', 'Client results')}
+          </div>
+          <h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            suppressHydrationWarning
+          >
+            Real{' '}
+            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              {ht('caseStudiesPage.title', 'Case Studies')}
+            </span>
+          </h1>
+          <p
+            className="mt-6 text-lg text-foreground/70 max-w-2xl"
+            suppressHydrationWarning
+          >
+            {ht(
+              'caseStudiesPage.subtitle',
+              'Real engagements with measurable outcomes. Industries include fintech, logistics, and cloud infrastructure.'
+            )}
+          </p>
+        </motion.div>
       </header>
 
       {/* Case Studies */}
@@ -80,20 +104,24 @@ export default function CaseStudiesPage(): ReactElement {
           {ht('caseStudiesPage.title', 'Case Studies')}
         </h2>
         <div className="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col gap-10 md:gap-14">
-          {STUDIES.map((study) => (
-            <article
+          {STUDIES.map((study, i) => (
+            <motion.article
               key={study.key}
-              className="neuro-card shadow-soft rounded-3xl border bg-card/95 backdrop-blur-xl overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="neuro-card shadow-soft rounded-3xl border border-violet-500/15 bg-white/[0.03] backdrop-blur-xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
               aria-labelledby={`study-${study.key}-heading`}
             >
               {/* Top accent bar */}
-              <div className={`h-1.5 w-full bg-gradient-to-r ${study.accentClass} opacity-60`} aria-hidden="true" />
+              <div className={`h-1 w-full bg-gradient-to-r ${study.accentClass}`} aria-hidden="true" />
 
               <div className="p-8 sm:p-10 md:p-12">
                 {/* Tag + Title */}
                 <div className="mb-6">
                   <span
-                    className="inline-block text-xs font-semibold uppercase tracking-widest text-accent mb-3"
+                    className="inline-block text-xs font-semibold uppercase tracking-widest text-violet-400 mb-3"
                     suppressHydrationWarning
                   >
                     {ht(`caseStudiesPage.${study.key}.tag`, '')}
@@ -108,6 +136,19 @@ export default function CaseStudiesPage(): ReactElement {
                   <p className="mt-2 text-sm text-foreground/60" suppressHydrationWarning>
                     {ht(`caseStudiesPage.${study.key}.clientType`, '')}
                   </p>
+                </div>
+
+                {/* Metric badges */}
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {study.metrics.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="inline-flex flex-col items-center rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-300 px-4 py-2.5 min-w-[80px]"
+                    >
+                      <span className="text-xl font-extrabold leading-none">{metric.value}</span>
+                      <span className="text-[11px] font-medium text-violet-300/70 mt-0.5">{metric.label}</span>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Content grid */}
@@ -160,7 +201,7 @@ export default function CaseStudiesPage(): ReactElement {
                   </div>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </section>

@@ -32,10 +32,12 @@ export default function ContactForm(): ReactNode {
       ref={rootRef}
       role="region"
       aria-label="Contact form"
-      className="relative isolate min-h-[70vh] overflow-hidden bg-slate-950/5 py-16 sm:py-20"
+      className="relative isolate min-h-[70vh] overflow-hidden py-16 sm:py-20"
     >
+      {/* Dramatic radial purple glow backdrop */}
       <div aria-hidden={true} className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="mx-auto h-[480px] w-[480px] max-w-[80vw] max-h-[80vw] rounded-full bg-[radial-gradient(circle_at_center,var(--accent)_0%,transparent_70%)] opacity-20 blur-3xl" />
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[700px] w-[700px] max-w-[100vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(109,40,217,0.25)_0%,rgba(129,140,248,0.08)_40%,transparent_70%)] blur-3xl" />
+        <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.12)_0%,transparent_65%)] blur-2xl" />
       </div>
 
       <div className="mx-auto max-w-5xl px-6 sm:px-10">
