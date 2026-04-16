@@ -1,0 +1,33 @@
+<svg width="280" height="64" viewBox="0 0 280 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    OPTION E — Geometric M (new)
+    A bold geometric M drawn from two angled strokes meeting at a centre point.
+    The M reads as "Maxwell", momentum, and mountain — upward reaching.
+    Gradient stroke, rounded caps. "Maxwell" full wordmark alongside.
+    No subtext. This is the only option using the full brand name.
+  -->
+  <defs>
+    <linearGradient id="mg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="50%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Geometric M: two V-shapes forming M -->
+  <!-- Left leg up -->
+  <path d="M 8 54 L 8 14"
+    stroke="url(#mg)" stroke-width="6.5" stroke-linecap="round"/>
+  <!-- Left diagonal down to centre -->
+  <path d="M 8 14 L 32 42"
+    stroke="url(#mg)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Right diagonal up from centre -->
+  <path d="M 32 42 L 56 14"
+    stroke="url(#mg)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Right leg down -->
+  <path d="M 56 14 L 56 54"
+    stroke="url(#mg)" stroke-width="6.5" stroke-linecap="round"/>
+
+  <!-- Wordmark — "Maxwell" full name -->
+  <text x="76" y="42" font-family="'Inter','DM Sans','Helvetica Neue',Arial,sans-serif" font-size="26" font-weight="800" letter-spacing="-0.8" fill="#ffffff">Maxwell</text>
+</svg>

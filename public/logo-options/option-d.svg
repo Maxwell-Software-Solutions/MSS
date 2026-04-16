@@ -1,19 +1,27 @@
-<svg width="360" height="80" viewBox="0 0 360 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="210" height="64" viewBox="0 0 210 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!--
     OPTION D — Double Slash
-    Two bold forward slashes. References code (// comments),
-    references momentum and forward motion.
-    Brutally simple. Works at 16px and beyond.
-    One navy, one blue — creates clear identity.
+    Two bold forward slashes — code comment syntax // .
+    References engineering, forward momentum, cutting-edge.
+    Left slash: violet. Right slash: indigo gradient.
+    No subtext. Bold MSS wordmark.
   -->
+  <defs>
+    <linearGradient id="s1" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6d28d9"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="s2" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
 
-  <!-- Slash 1 — navy -->
-  <line x1="18" y1="66" x2="32" y2="10" stroke="#0F172A" stroke-width="8" stroke-linecap="round"/>
-  <!-- Slash 2 — blue, offset right -->
-  <line x1="34" y1="66" x2="48" y2="10" stroke="#2563EB" stroke-width="8" stroke-linecap="round"/>
+  <!-- Left slash -->
+  <line x1="10" y1="56" x2="26" y2="8" stroke="url(#s1)" stroke-width="7" stroke-linecap="round"/>
+  <!-- Right slash -->
+  <line x1="28" y1="56" x2="44" y2="8" stroke="url(#s2)" stroke-width="7" stroke-linecap="round"/>
 
-  <!-- Wordmark — full name, two weights -->
-  <text x="70" y="36" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="-0.3" fill="#0F172A">Maxwell Software Solutions</text>
-  <!-- Tagline / descriptor -->
-  <text x="71" y="56" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="10.5" font-weight="400" letter-spacing="1.5" fill="#94A3B8">SOFTWARE ENGINEERING CONSULTANCY</text>
+  <!-- Wordmark -->
+  <text x="68" y="42" font-family="'Inter','DM Sans','Helvetica Neue',Arial,sans-serif" font-size="28" font-weight="800" letter-spacing="-1" fill="#ffffff">MSS</text>
 </svg>

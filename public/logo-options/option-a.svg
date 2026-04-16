@@ -1,19 +1,24 @@
-<svg width="360" height="80" viewBox="0 0 360 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="210" height="64" viewBox="0 0 210 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!--
     OPTION A — Signal Bars
-    Three ascending bars. Reads as signal strength / upward growth.
-    At 16px: clean abstract mark. At large: clear metaphor.
-    Middle bar is accent blue — creates visual anchor.
+    Three ascending bars: reads as growth, signal strength, momentum.
+    Gradient across bars from muted → full violet → indigo.
+    No subtext. Bold MSS wordmark.
   -->
+  <defs>
+    <linearGradient id="barGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
 
-  <!-- Bar 1 — short -->
-  <rect x="8" y="44" width="10" height="22" rx="2" fill="#0F172A"/>
-  <!-- Bar 2 — medium, accent -->
-  <rect x="23" y="30" width="10" height="36" rx="2" fill="#2563EB"/>
-  <!-- Bar 3 — tall -->
-  <rect x="38" y="16" width="10" height="50" rx="2" fill="#0F172A"/>
+  <!-- Bar 1 — short, muted -->
+  <rect x="6"  y="40" width="12" height="20" rx="3" fill="#818cf8" fill-opacity="0.35"/>
+  <!-- Bar 2 — medium -->
+  <rect x="22" y="24" width="12" height="36" rx="3" fill="#818cf8" fill-opacity="0.65"/>
+  <!-- Bar 3 — tall, full gradient -->
+  <rect x="38" y="8"  width="12" height="52" rx="3" fill="url(#barGrad)"/>
 
   <!-- Wordmark -->
-  <text x="70" y="36" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="-0.6" fill="#0F172A">Maxwell Software</text>
-  <text x="70" y="58" font-family="'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="20" font-weight="300" letter-spacing="-0.6" fill="#2563EB">Solutions</text>
+  <text x="68" y="42" font-family="'Inter','DM Sans','Helvetica Neue',Arial,sans-serif" font-size="28" font-weight="800" letter-spacing="-1" fill="#ffffff">MSS</text>
 </svg>
