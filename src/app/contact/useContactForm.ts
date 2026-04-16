@@ -34,9 +34,6 @@ export function useContactForm(): UseContactFormResult {
       token: process.env.NEXT_PUBLIC_SHARED_TOKEN || '',
       name: String(form.get('name') || ''),
       email: String(form.get('email') || ''),
-      service: String(form.get('service') || ''),
-      budget: String(form.get('budget') || ''),
-      timeline: String(form.get('timeline') || ''),
       message: String(form.get('message') || ''),
     });
 
