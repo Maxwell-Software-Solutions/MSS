@@ -1,0 +1,123 @@
+<svg width="600" height="450" viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080f"/>
+      <stop offset="100%" stop-color="#0c1325"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="30%" cy="40%" r="52%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.36"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="78%" cy="62%" r="44%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="velBar" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="velBarGreen" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#6ee7b7" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <rect width="600" height="450" fill="url(#g1)"/>
+  <rect width="600" height="450" fill="url(#g2)"/>
+  <rect width="600" height="3" fill="url(#accent)"/>
+
+  <!-- Grid -->
+  <g opacity="0.04" stroke="#818cf8" stroke-width="1">
+    <line x1="0" y1="90" x2="600" y2="90"/>
+    <line x1="0" y1="180" x2="600" y2="180"/>
+    <line x1="0" y1="270" x2="600" y2="270"/>
+    <line x1="0" y1="360" x2="600" y2="360"/>
+    <line x1="100" y1="0" x2="100" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="300" y1="0" x2="300" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="500" y1="0" x2="500" y2="450"/>
+  </g>
+
+  <!-- Kanban-style sprint columns (top half) -->
+  <g transform="translate(55, 70)">
+    <!-- Column headers -->
+    <rect x="0" y="0" width="140" height="22" rx="6" fill="#818cf8" fill-opacity="0.15" stroke="#818cf8" stroke-opacity="0.3" stroke-width="1"/>
+    <rect x="158" y="0" width="140" height="22" rx="6" fill="#fbbf24" fill-opacity="0.12" stroke="#fbbf24" stroke-opacity="0.25" stroke-width="1"/>
+    <rect x="316" y="0" width="140" height="22" rx="6" fill="#34d399" fill-opacity="0.12" stroke="#34d399" stroke-opacity="0.3" stroke-width="1"/>
+
+    <!-- Column dividers -->
+    <line x1="148" y1="0" x2="148" y2="180" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    <line x1="306" y1="0" x2="306" y2="180" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+
+    <!-- Backlog tickets -->
+    <rect x="8" y="30" width="124" height="32" rx="6" fill="#818cf8" fill-opacity="0.1" stroke="#818cf8" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="16" y="38" width="60" height="6" rx="3" fill="#818cf8" fill-opacity="0.3"/>
+    <rect x="16" y="50" width="40" height="5" rx="2" fill="#818cf8" fill-opacity="0.15"/>
+
+    <rect x="8" y="70" width="124" height="32" rx="6" fill="#818cf8" fill-opacity="0.08" stroke="#818cf8" stroke-opacity="0.15" stroke-width="1"/>
+    <rect x="16" y="78" width="50" height="6" rx="3" fill="#818cf8" fill-opacity="0.25"/>
+    <rect x="16" y="90" width="35" height="5" rx="2" fill="#818cf8" fill-opacity="0.12"/>
+
+    <rect x="8" y="110" width="124" height="32" rx="6" fill="#818cf8" fill-opacity="0.06" stroke="#818cf8" stroke-opacity="0.12" stroke-width="1"/>
+    <rect x="16" y="118" width="70" height="6" rx="3" fill="#818cf8" fill-opacity="0.2"/>
+
+    <!-- In-progress tickets -->
+    <rect x="166" y="30" width="124" height="32" rx="6" fill="#fbbf24" fill-opacity="0.1" stroke="#fbbf24" stroke-opacity="0.25" stroke-width="1"/>
+    <rect x="174" y="38" width="55" height="6" rx="3" fill="#fbbf24" fill-opacity="0.35"/>
+    <rect x="174" y="50" width="38" height="5" rx="2" fill="#fbbf24" fill-opacity="0.18"/>
+    <!-- Progress bar on ticket -->
+    <rect x="174" y="57" width="108" height="3" rx="1.5" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="174" y="57" width="68" height="3" rx="1.5" fill="#fbbf24" fill-opacity="0.5"/>
+
+    <rect x="166" y="70" width="124" height="32" rx="6" fill="#fbbf24" fill-opacity="0.07" stroke="#fbbf24" stroke-opacity="0.18" stroke-width="1"/>
+    <rect x="174" y="78" width="42" height="6" rx="3" fill="#fbbf24" fill-opacity="0.28"/>
+    <rect x="174" y="87" width="108" height="3" rx="1.5" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="174" y="87" width="90" height="3" rx="1.5" fill="#fbbf24" fill-opacity="0.45"/>
+
+    <!-- Done tickets -->
+    <rect x="324" y="30" width="124" height="32" rx="6" fill="#34d399" fill-opacity="0.1" stroke="#34d399" stroke-opacity="0.3" stroke-width="1"/>
+    <rect x="332" y="38" width="65" height="6" rx="3" fill="#34d399" fill-opacity="0.35"/>
+    <circle cx="434" cy="46" r="7" fill="#34d399" fill-opacity="0.2"/>
+    <path d="M430 46 L433 49 L438 43" stroke="#34d399" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <rect x="324" y="70" width="124" height="32" rx="6" fill="#34d399" fill-opacity="0.08" stroke="#34d399" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="332" y="78" width="50" height="6" rx="3" fill="#34d399" fill-opacity="0.28"/>
+    <circle cx="434" cy="86" r="7" fill="#34d399" fill-opacity="0.15"/>
+    <path d="M430 86 L433 89 L438 83" stroke="#34d399" stroke-opacity="0.6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <rect x="324" y="110" width="124" height="32" rx="6" fill="#34d399" fill-opacity="0.07" stroke="#34d399" stroke-opacity="0.18" stroke-width="1"/>
+    <rect x="332" y="118" width="44" height="6" rx="3" fill="#34d399" fill-opacity="0.22"/>
+    <circle cx="434" cy="126" r="7" fill="#34d399" fill-opacity="0.12"/>
+    <path d="M430 126 L433 129 L438 123" stroke="#34d399" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- Velocity chart (bottom half) -->
+  <g transform="translate(55, 285)">
+    <!-- Chart baseline -->
+    <line x1="0" y1="110" x2="490" y2="110" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+
+    <!-- Velocity bars growing left to right (sprint 1-7) -->
+    <rect x="10"  y="90"  width="50" height="20"  rx="4" fill="url(#velBar)" opacity="0.6"/>
+    <rect x="80"  y="72"  width="50" height="38"  rx="4" fill="url(#velBar)" opacity="0.7"/>
+    <rect x="150" y="56"  width="50" height="54"  rx="4" fill="url(#velBar)" opacity="0.75"/>
+    <rect x="220" y="44"  width="50" height="66"  rx="4" fill="url(#velBar)" opacity="0.8"/>
+    <rect x="290" y="28"  width="50" height="82"  rx="4" fill="url(#velBarGreen)" opacity="0.7"/>
+    <rect x="360" y="16"  width="50" height="94"  rx="4" fill="url(#velBarGreen)" opacity="0.8"/>
+    <rect x="430" y="4"   width="50" height="106" rx="4" fill="url(#velBarGreen)" opacity="0.9"/>
+
+    <!-- Trend line -->
+    <polyline
+      points="35,90 105,72 175,56 245,44 315,28 385,16 455,4"
+      fill="none"
+      stroke="#34d399"
+      stroke-width="2"
+      stroke-opacity="0.5"
+      stroke-dasharray="4,3"
+    />
+  </g>
+</svg>

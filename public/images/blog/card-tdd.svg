@@ -1,0 +1,84 @@
+<svg width="600" height="450" viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080f"/>
+      <stop offset="100%" stop-color="#0c1325"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="30%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="75%" cy="65%" r="45%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+      <polygon points="0 0, 7 3, 0 6" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <rect width="600" height="450" fill="url(#g1)"/>
+  <rect width="600" height="450" fill="url(#g2)"/>
+  <rect width="600" height="3" fill="url(#accent)"/>
+
+  <!-- Grid -->
+  <g opacity="0.04" stroke="#818cf8" stroke-width="1">
+    <line x1="0" y1="90" x2="600" y2="90"/>
+    <line x1="0" y1="180" x2="600" y2="180"/>
+    <line x1="0" y1="270" x2="600" y2="270"/>
+    <line x1="0" y1="360" x2="600" y2="360"/>
+    <line x1="100" y1="0" x2="100" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="450"/>
+    <line x1="300" y1="0" x2="300" y2="450"/>
+    <line x1="400" y1="0" x2="400" y2="450"/>
+    <line x1="500" y1="0" x2="500" y2="450"/>
+  </g>
+
+  <!-- Ambient glows behind circles -->
+  <circle cx="178" cy="210" r="90" fill="url(#rGlow)"/>
+  <circle cx="300" cy="210" r="90" fill="url(#gGlow)"/>
+  <circle cx="422" cy="210" r="90" fill="url(#bGlow)"/>
+
+  <!-- Outer rings -->
+  <circle cx="178" cy="210" r="82" fill="none" stroke="#f87171" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="5,5"/>
+  <circle cx="300" cy="210" r="82" fill="none" stroke="#34d399" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="5,5"/>
+  <circle cx="422" cy="210" r="82" fill="none" stroke="#818cf8" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="5,5"/>
+
+  <!-- Main circles -->
+  <circle cx="178" cy="210" r="64" fill="#f87171" fill-opacity="0.1" stroke="#f87171" stroke-opacity="0.5" stroke-width="2"/>
+  <circle cx="300" cy="210" r="64" fill="#34d399" fill-opacity="0.1" stroke="#34d399" stroke-opacity="0.5" stroke-width="2"/>
+  <circle cx="422" cy="210" r="64" fill="#818cf8" fill-opacity="0.1" stroke="#818cf8" stroke-opacity="0.5" stroke-width="2"/>
+
+  <!-- Inner filled cores -->
+  <circle cx="178" cy="210" r="26" fill="#f87171" fill-opacity="0.25"/>
+  <circle cx="300" cy="210" r="26" fill="#34d399" fill-opacity="0.25"/>
+  <circle cx="422" cy="210" r="26" fill="#818cf8" fill-opacity="0.2"/>
+
+  <!-- Center dots -->
+  <circle cx="178" cy="210" r="8" fill="#f87171" fill-opacity="0.8"/>
+  <circle cx="300" cy="210" r="8" fill="#34d399" fill-opacity="0.8"/>
+  <circle cx="422" cy="210" r="8" fill="#a78bfa" fill-opacity="0.8"/>
+
+  <!-- Connecting arrows -->
+  <path d="M 244 210 L 236 210" stroke="#64748b" stroke-width="1.5" stroke-opacity="0.5" fill="none" marker-end="url(#arr)"/>
+  <path d="M 364 210 L 356 210" stroke="#64748b" stroke-width="1.5" stroke-opacity="0.5" fill="none" marker-end="url(#arr)"/>
+
+  <!-- Return arc -->
+  <path d="M 422 292 Q 300 370, 178 292" stroke="#818cf8" stroke-width="1.5" stroke-opacity="0.3" fill="none" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+</svg>

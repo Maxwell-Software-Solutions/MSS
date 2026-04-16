@@ -22,8 +22,8 @@ interface BlogPost {
 const posts: BlogPost[] = [
   {
     href: '/blog/code-health-audit-business-impact',
-    imageSrc: '/images/blog/api-design-hero.svg',
-    imageAlt: 'Codebase architecture diagram showing interconnected modules',
+    imageSrc: '/images/blog/card-code-health.svg',
+    imageAlt: 'Abstract heartbeat pulse over circuit board pattern representing code health',
     dateTime: '2026-03-28',
     dateKey: 'blog.codeHealth.date',
     durationKey: 'blog.codeHealth.duration',
@@ -33,8 +33,8 @@ const posts: BlogPost[] = [
   },
   {
     href: '/blog/what-to-expect-2-week-sprint',
-    imageSrc: '/images/blog/tdd-hero.svg',
-    imageAlt: 'Sprint planning board showing a focused 2-week delivery cycle',
+    imageSrc: '/images/blog/card-sprint.svg',
+    imageAlt: 'Abstract kanban board with growing velocity bars representing a sprint',
     dateTime: '2026-03-28',
     dateKey: 'blog.sprint.date',
     durationKey: 'blog.sprint.duration',
@@ -44,8 +44,8 @@ const posts: BlogPost[] = [
   },
   {
     href: '/blog/solid-principles',
-    imageSrc: '/images/blog/solid-principles-hero.svg',
-    imageAlt: 'SOLID Principles illustration',
+    imageSrc: '/images/blog/card-solid.svg',
+    imageAlt: 'Abstract coloured vertical blocks representing the five SOLID principles',
     dateTime: '2024-12-19',
     dateKey: 'blog.solid.date',
     durationKey: 'blog.solid.duration',
@@ -55,8 +55,8 @@ const posts: BlogPost[] = [
   },
   {
     href: '/blog/test-driven-development',
-    imageSrc: '/images/blog/tdd-hero.svg',
-    imageAlt: 'Test-Driven Development cycle diagram',
+    imageSrc: '/images/blog/card-tdd.svg',
+    imageAlt: 'Abstract red green and blue circles representing the TDD cycle',
     dateTime: '2024-12-19',
     dateKey: 'blog.tdd.date',
     durationKey: 'blog.tdd.duration',
@@ -66,8 +66,8 @@ const posts: BlogPost[] = [
   },
   {
     href: '/blog/refactoring-legacy-code',
-    imageSrc: '/images/blog/refactoring-hero.svg',
-    imageAlt: 'Code refactoring process visualization',
+    imageSrc: '/images/blog/card-refactoring.svg',
+    imageAlt: 'Abstract before and after code blocks showing transformation',
     dateTime: '2024-12-19',
     dateKey: 'blog.refactoring.date',
     durationKey: 'blog.refactoring.duration',
@@ -77,8 +77,8 @@ const posts: BlogPost[] = [
   },
   {
     href: '/blog/api-design-best-practices',
-    imageSrc: '/images/blog/api-design-hero.svg',
-    imageAlt: 'API Design illustration showing RESTful endpoints and HTTP methods',
+    imageSrc: '/images/blog/card-api-design.svg',
+    imageAlt: 'Abstract network of connected endpoint nodes representing API design',
     dateTime: '2024-12-20',
     dateKey: 'blog.api.date',
     durationKey: 'blog.api.duration',
@@ -88,8 +88,8 @@ const posts: BlogPost[] = [
   },
   {
     href: '/blog/microservices-architecture',
-    imageSrc: '/images/blog/microservices-hero.svg',
-    imageAlt: 'Microservices architecture diagram showing independent services communicating',
+    imageSrc: '/images/blog/card-microservices.svg',
+    imageAlt: 'Abstract hexagonal honeycomb grid representing microservices',
     dateTime: '2024-12-21',
     dateKey: 'blog.microservices.date',
     durationKey: 'blog.microservices.duration',
@@ -99,8 +99,8 @@ const posts: BlogPost[] = [
   },
   {
     href: '/blog/ci-cd-pipelines',
-    imageSrc: '/images/blog/cicd-hero.svg',
-    imageAlt: 'CI/CD pipeline diagram showing automated build, test, and deployment stages',
+    imageSrc: '/images/blog/card-cicd.svg',
+    imageAlt: 'Abstract pipeline flow with coloured stage nodes representing CI/CD',
     dateTime: '2024-12-22',
     dateKey: 'blog.cicd.date',
     durationKey: 'blog.cicd.duration',

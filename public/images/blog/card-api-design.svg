@@ -1,0 +1,97 @@
+<svg width="600" height="450" viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06080f"/>
+      <stop offset="100%" stop-color="#0c1325"/>
+    </linearGradient>
+    <radialGradient id="g1" cx="35%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="75%" cy="65%" r="45%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <rect width="600" height="450" fill="url(#g1)"/>
+  <rect width="600" height="450" fill="url(#g2)"/>
+  <rect width="600" height="3" fill="url(#accent)"/>
+
+  <!-- Grid -->
+  <g opacity="0.05" stroke="#818cf8" stroke-width="1">
+    <line x1="0" y1="75" x2="600" y2="75"/>
+    <line x1="0" y1="150" x2="600" y2="150"/>
+    <line x1="0" y1="225" x2="600" y2="225"/>
+    <line x1="0" y1="300" x2="600" y2="300"/>
+    <line x1="0" y1="375" x2="600" y2="375"/>
+    <line x1="75" y1="0" x2="75" y2="450"/>
+    <line x1="150" y1="0" x2="150" y2="450"/>
+    <line x1="225" y1="0" x2="225" y2="450"/>
+    <line x1="300" y1="0" x2="300" y2="450"/>
+    <line x1="375" y1="0" x2="375" y2="450"/>
+    <line x1="450" y1="0" x2="450" y2="450"/>
+    <line x1="525" y1="0" x2="525" y2="450"/>
+  </g>
+
+  <!-- Central hub node -->
+  <circle cx="300" cy="225" r="36" fill="#4f46e5" fill-opacity="0.2" stroke="#818cf8" stroke-width="1.5" stroke-opacity="0.6" filter="url(#glow)"/>
+  <circle cx="300" cy="225" r="18" fill="#818cf8" fill-opacity="0.3"/>
+  <circle cx="300" cy="225" r="7" fill="#a78bfa"/>
+
+  <!-- Orbit ring -->
+  <circle cx="300" cy="225" r="80" fill="none" stroke="#818cf8" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="4,6"/>
+
+  <!-- Satellite endpoint nodes -->
+  <!-- Top -->
+  <circle cx="300" cy="110" r="16" fill="#34d399" fill-opacity="0.15" stroke="#34d399" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="300" cy="110" r="6" fill="#34d399" fill-opacity="0.8"/>
+  <line x1="300" y1="189" x2="300" y2="126" stroke="#34d399" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="4,3"/>
+
+  <!-- Bottom right -->
+  <circle cx="410" cy="295" r="16" fill="#818cf8" fill-opacity="0.15" stroke="#818cf8" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="410" cy="295" r="6" fill="#818cf8" fill-opacity="0.8"/>
+  <line x1="325" y1="243" x2="394" y2="279" stroke="#818cf8" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="4,3"/>
+
+  <!-- Bottom left -->
+  <circle cx="190" cy="295" r="16" fill="#fbbf24" fill-opacity="0.15" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="190" cy="295" r="6" fill="#fbbf24" fill-opacity="0.8"/>
+  <line x1="275" y1="243" x2="206" y2="279" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="4,3"/>
+
+  <!-- Top right -->
+  <circle cx="410" cy="158" r="12" fill="#f87171" fill-opacity="0.15" stroke="#f87171" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="410" cy="158" r="5" fill="#f87171" fill-opacity="0.8"/>
+  <line x1="323" y1="206" x2="399" y2="170" stroke="#f87171" stroke-width="1.2" stroke-opacity="0.4" stroke-dasharray="3,3"/>
+
+  <!-- Top left -->
+  <circle cx="190" cy="158" r="12" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-opacity="0.5" stroke-width="1.5"/>
+  <circle cx="190" cy="158" r="5" fill="#06b6d4" fill-opacity="0.8"/>
+  <line x1="277" y1="206" x2="201" y2="170" stroke="#06b6d4" stroke-width="1.2" stroke-opacity="0.4" stroke-dasharray="3,3"/>
+
+  <!-- Far nodes — second ring -->
+  <circle cx="300" cy="48" r="8" fill="#ffffff" fill-opacity="0.06" stroke="#818cf8" stroke-opacity="0.2" stroke-width="1"/>
+  <circle cx="300" cy="48" r="3" fill="#818cf8" fill-opacity="0.4"/>
+  <line x1="300" y1="94" x2="300" y2="56" stroke="#818cf8" stroke-width="1" stroke-opacity="0.15"/>
+
+  <circle cx="500" cy="340" r="8" fill="#ffffff" fill-opacity="0.06" stroke="#34d399" stroke-opacity="0.2" stroke-width="1"/>
+  <circle cx="500" cy="340" r="3" fill="#34d399" fill-opacity="0.4"/>
+  <line x1="418" y1="302" x2="494" y2="335" stroke="#34d399" stroke-width="1" stroke-opacity="0.15"/>
+
+  <circle cx="100" cy="340" r="8" fill="#ffffff" fill-opacity="0.06" stroke="#fbbf24" stroke-opacity="0.2" stroke-width="1"/>
+  <circle cx="100" cy="340" r="3" fill="#fbbf24" fill-opacity="0.4"/>
+  <line x1="182" y1="302" x2="106" y2="335" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.15"/>
+
+  <!-- Floating data packets -->
+  <circle cx="370" cy="168" r="3" fill="#818cf8" fill-opacity="0.6"/>
+  <circle cx="348" cy="155" r="2" fill="#818cf8" fill-opacity="0.4"/>
+  <circle cx="240" cy="262" r="3" fill="#fbbf24" fill-opacity="0.6"/>
+  <circle cx="258" cy="278" r="2" fill="#fbbf24" fill-opacity="0.4"/>
+</svg>
