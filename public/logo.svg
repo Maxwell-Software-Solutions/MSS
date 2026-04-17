@@ -1,19 +1,37 @@
 <svg width="210" height="64" viewBox="0 0 210 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    MSS primary logo — light-mode (dark text for light backgrounds).
+    Mark: "Maxwell Peak" — a solid M built from 4 faceted triangles, origami-folded.
+    Lit facets use brighter gradient stops; shadow facets use darker stops to sell the fold.
+  -->
   <defs>
-    <linearGradient id="s1" x1="0" y1="1" x2="0.6" y2="0">
-      <stop offset="0%" stop-color="#5b21b6"/>
-      <stop offset="100%" stop-color="#7c3aed"/>
+    <linearGradient id="lo-lit-l" x1="0" y1="1" x2="0.3" y2="0">
+      <stop offset="0%"  stop-color="#5b21b6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
     </linearGradient>
-    <linearGradient id="s2" x1="0" y1="1" x2="0.6" y2="0">
-      <stop offset="0%" stop-color="#4338ca"/>
-      <stop offset="100%" stop-color="#6d28d9"/>
+    <linearGradient id="lo-sha-l" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0%"  stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#4c1d95"/>
+    </linearGradient>
+    <linearGradient id="lo-sha-r" x1="1" y1="0" x2="0.4" y2="1">
+      <stop offset="0%"  stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="lo-lit-r" x1="1" y1="1" x2="0.7" y2="0">
+      <stop offset="0%"  stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
     </linearGradient>
   </defs>
 
-  <!-- // mark -->
-  <line x1="10" y1="56" x2="26" y2="8" stroke="url(#s1)" stroke-width="7" stroke-linecap="round"/>
-  <line x1="28" y1="56" x2="44" y2="8" stroke="url(#s2)" stroke-width="7" stroke-linecap="round"/>
+  <!-- Left outer (front-lit): base → left-peak → valley -->
+  <path d="M 8 56 L 20 8 L 32 30 Z" fill="url(#lo-lit-l)"/>
+  <!-- Left inner (shadow, inside fold): left-peak → valley → inner-base -->
+  <path d="M 20 8 L 32 30 L 20 56 Z" fill="url(#lo-sha-l)"/>
+  <!-- Right inner (shadow): valley → right-peak → inner-base -->
+  <path d="M 32 30 L 44 8 L 44 56 Z" fill="url(#lo-sha-r)"/>
+  <!-- Right outer (front-lit): right-peak → outer-base → inner-base -->
+  <path d="M 44 8 L 56 56 L 44 56 Z" fill="url(#lo-lit-r)"/>
 
-  <!-- Wordmark — dark mode: navy text -->
-  <text x="64" y="42" font-family="'Inter','DM Sans','Helvetica Neue',Arial,sans-serif" font-size="28" font-weight="800" letter-spacing="-1" fill="#0f172a">MSS</text>
+  <!-- Wordmark -->
+  <text x="76" y="42" font-family="'Inter','DM Sans','Helvetica Neue',Arial,sans-serif" font-size="28" font-weight="800" letter-spacing="-1" fill="#0f172a">MSS</text>
 </svg>

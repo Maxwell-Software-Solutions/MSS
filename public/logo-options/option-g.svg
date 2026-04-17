@@ -1,0 +1,45 @@
+<svg width="210" height="64" viewBox="0 0 210 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!--
+    OPTION G — Maxwell Prism
+    A triangular prism refracting light into the brand's gradient spectrum.
+    Ties directly to James Clerk Maxwell (physics of light, electromagnetism).
+    Single iconic silhouette. Works at any scale.
+  -->
+  <defs>
+    <linearGradient id="g-prism" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="50%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#3730a3"/>
+    </linearGradient>
+    <linearGradient id="g-beam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c4b5fd" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="g-spectrum-1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="g-spectrum-2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="g-spectrum-3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Incoming light beam (from left) -->
+  <rect x="0" y="31" width="16" height="2" fill="url(#g-beam)"/>
+
+  <!-- Prism triangle -->
+  <path d="M 30 8 L 52 52 L 16 52 Z" fill="url(#g-prism)"/>
+
+  <!-- Refracted spectrum (exiting right, fanned out) -->
+  <rect x="52" y="24" width="18" height="2.2" fill="url(#g-spectrum-1)"/>
+  <rect x="52" y="31" width="20" height="2.2" fill="url(#g-spectrum-2)"/>
+  <rect x="52" y="38" width="16" height="2.2" fill="url(#g-spectrum-3)"/>
+
+  <!-- Wordmark -->
+  <text x="86" y="42" font-family="'Inter','DM Sans','Helvetica Neue',Arial,sans-serif" font-size="28" font-weight="800" letter-spacing="-1" fill="#ffffff">MSS</text>
+</svg>

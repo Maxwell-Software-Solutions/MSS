@@ -4,8 +4,13 @@ const options = [
   { id: 'A', file: '/logo-options/option-a.svg', label: 'Signal Bars', desc: 'Three ascending bars — growth, momentum, signal strength' },
   { id: 'B', file: '/logo-options/option-b.svg', label: 'Cornerstone', desc: 'Bold L-bracket — engineering precision, structural' },
   { id: 'C', file: '/logo-options/option-c.svg', label: 'Gradient Diamond', desc: 'Evolution of the current mark — gradient upgrade, center anchor' },
-  { id: 'D', file: '/logo-options/option-d.svg', label: 'Double Slash', desc: '// code comment — forward motion, engineering heritage' },
+  { id: 'D', file: '/logo-options/option-d.svg', label: 'Double Slash (current)', desc: '// code comment — forward motion, engineering heritage' },
   { id: 'E', file: '/logo-options/option-e.svg', label: 'Geometric M', desc: 'Geometric M letterform — "Maxwell" as primary wordmark' },
+  { id: 'F', file: '/logo-options/option-f.svg', label: 'Maxwell Peak', desc: 'Solid faceted M — 4 gradient triangles, architectural, premium' },
+  { id: 'G', file: '/logo-options/option-g.svg', label: 'Maxwell Prism', desc: 'Prism refracting light into a spectrum — physics of light, unique silhouette' },
+  { id: 'H', file: '/logo-options/option-h.svg', label: 'Pure Wordmark', desc: 'Stripe-style typography-only with a single gradient accent bar' },
+  { id: 'I', file: '/logo-options/option-i.svg', label: 'Maxwell Wave', desc: 'Single continuous stroke tracing an M as a waveform — signal, electromagnetism' },
+  { id: 'J', file: '/logo-options/option-j.svg', label: 'Monolith', desc: 'Rounded-square plate with a bold white M — iconic app-mark silhouette' },
 ];
 
 export default function LogoOptionsPage() {
