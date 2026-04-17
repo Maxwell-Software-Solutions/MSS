@@ -1,26 +1,5 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Icon-only (mark) for dark backgrounds — Maxwell Peak -->
-  <defs>
-    <linearGradient id="id-lit-l" x1="0" y1="1" x2="0.3" y2="0">
-      <stop offset="0%"  stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#c4b5fd"/>
-    </linearGradient>
-    <linearGradient id="id-sha-l" x1="0" y1="0" x2="0.6" y2="1">
-      <stop offset="0%"  stop-color="#4f46e5"/>
-      <stop offset="100%" stop-color="#6d28d9"/>
-    </linearGradient>
-    <linearGradient id="id-sha-r" x1="1" y1="0" x2="0.4" y2="1">
-      <stop offset="0%"  stop-color="#3730a3"/>
-      <stop offset="100%" stop-color="#4338ca"/>
-    </linearGradient>
-    <linearGradient id="id-lit-r" x1="1" y1="1" x2="0.7" y2="0">
-      <stop offset="0%"  stop-color="#4f46e5"/>
-      <stop offset="100%" stop-color="#93c5fd"/>
-    </linearGradient>
-  </defs>
-
-  <path d="M 8 56 L 20 8 L 32 30 Z" fill="url(#id-lit-l)"/>
-  <path d="M 20 8 L 32 30 L 20 56 Z" fill="url(#id-sha-l)"/>
-  <path d="M 32 30 L 44 8 L 44 56 Z" fill="url(#id-sha-r)"/>
-  <path d="M 44 8 L 56 56 L 44 56 Z" fill="url(#id-lit-r)"/>
+  <!-- Diamond mark only — dark/negative, white on transparent -->
+  <rect x="13" y="13" width="38" height="38" rx="2" transform="rotate(45 32 32)" stroke="#FFFFFF" stroke-width="4" fill="none"/>
+  <rect x="21" y="21" width="22" height="22" rx="1.5" transform="rotate(45 32 32)" stroke="#60A5FA" stroke-width="2.5" fill="#60A5FA" fill-opacity="0.12"/>
 </svg>
