@@ -75,7 +75,7 @@ export default function BlogPostTemplate({ slug, children }: BlogPostTemplatePro
       </header>
 
       {/* Hero Image (OG image doubles as hero) */}
-      <div className="mb-12 relative h-64 sm:h-80 rounded-2xl overflow-hidden">
+      <div className="mb-12 relative aspect-[1200/630] overflow-hidden rounded-xl border border-border bg-wash">
         <Image src={`${post.canonical}/opengraph-image`} alt={post.title} fill className="object-cover" priority />
       </div>
 

@@ -134,7 +134,7 @@ export default function StartASprintPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -162,7 +162,7 @@ export default function StartASprintPage(): ReactElement {
             ].map((item, i) => (
               <span
                 key={i}
-                className="inline-flex items-center gap-1.5 text-[12px] text-foreground/65"
+                className="inline-flex items-center gap-1.5 text-[13px] text-foreground/65"
                 suppressHydrationWarning
               >
                 <CheckIcon />
@@ -174,7 +174,7 @@ export default function StartASprintPage(): ReactElement {
       </header>
 
       {/* What you get */}
-      <section aria-labelledby="deliverables-heading" className="py-16 sm:py-20 bg-foreground/5">
+      <section aria-labelledby="deliverables-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -198,7 +198,7 @@ export default function StartASprintPage(): ReactElement {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="card flex items-start gap-3 bg-foreground/5 rounded-2xl border border-border p-5 transition-all duration-300"
+                className="card flex items-start gap-3 rounded-2xl border border-border p-5 transition-all duration-300"
               >
                 <CheckIcon />
                 <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
@@ -229,7 +229,7 @@ export default function StartASprintPage(): ReactElement {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="card flex gap-5 bg-foreground/5 rounded-2xl border border-border p-6 transition-all duration-300"
+              className="card flex gap-5 rounded-2xl border border-border p-6 transition-all duration-300"
             >
               <div className="flex-shrink-0 w-11 h-11 rounded-full bg-accent-fill text-accent-contrast font-semibold text-sm flex items-center justify-center">
                 {step.step}
@@ -244,7 +244,7 @@ export default function StartASprintPage(): ReactElement {
       </section>
 
       {/* Requirements */}
-      <section aria-labelledby="requirements-heading" className="py-16 sm:py-20 bg-foreground/5">
+      <section aria-labelledby="requirements-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -297,7 +297,7 @@ export default function StartASprintPage(): ReactElement {
           </p>
           <Link
             href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-            className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+            className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
             target="_blank"
             rel="noopener noreferrer"
             suppressHydrationWarning
@@ -308,7 +308,7 @@ export default function StartASprintPage(): ReactElement {
       </div>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-foreground/5">
+      <section aria-labelledby="faq-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 [&>*]:max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -352,7 +352,7 @@ export default function StartASprintPage(): ReactElement {
           </p>
           <Link
             href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-            className="inline-flex items-center gap-2 btn btn-accent px-8 py-4 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+            className="inline-flex items-center gap-2 btn btn-accent px-8 py-4 rounded-xl transition-all"
             target="_blank"
             rel="noopener noreferrer"
             suppressHydrationWarning

@@ -100,7 +100,7 @@ export default function HireDeveloperPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -127,7 +127,7 @@ export default function HireDeveloperPage(): ReactElement {
             ].map((item, i) => (
               <span
                 key={i}
-                className="inline-flex items-center gap-1.5 text-[12px] text-foreground/65"
+                className="inline-flex items-center gap-1.5 text-[13px] text-foreground/65"
                 suppressHydrationWarning
               >
                 <CheckIcon />
@@ -223,7 +223,7 @@ export default function HireDeveloperPage(): ReactElement {
               <p className="mt-3 text-[14px] text-foreground/75 leading-relaxed flex-1">{eng.description}</p>
               <Link
                 href={eng.href}
-                className="mt-6 w-full text-center rounded-xl px-5 py-3 text-sm font-semibold btn transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+                className="mt-6 w-full text-center rounded-xl px-5 py-3 text-sm font-semibold btn transition-all"
                 suppressHydrationWarning
               >
                 {ht('hireDev.engagements.cta', 'Learn more')}
@@ -251,7 +251,7 @@ export default function HireDeveloperPage(): ReactElement {
             </p>
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning

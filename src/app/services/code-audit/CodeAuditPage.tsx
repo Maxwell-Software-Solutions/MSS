@@ -126,7 +126,7 @@ export default function CodeAuditPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -153,7 +153,7 @@ export default function CodeAuditPage(): ReactElement {
             ].map((item, i) => (
               <span
                 key={i}
-                className="inline-flex items-center gap-1.5 text-[12px] text-foreground/65"
+                className="inline-flex items-center gap-1.5 text-[13px] text-foreground/65"
                 suppressHydrationWarning
               >
                 <CheckIcon />
@@ -243,7 +243,7 @@ export default function CodeAuditPage(): ReactElement {
             </p>
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -293,7 +293,7 @@ export default function CodeAuditPage(): ReactElement {
             </p>
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning

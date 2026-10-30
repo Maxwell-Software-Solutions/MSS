@@ -406,9 +406,9 @@
   }
 
   .nav-links a:hover { color: var(--color-text); background: var(--color-hover); }
-  .nav-links a[aria-current="page"] { color: var(--color-text); }
+  .nav-links a[aria-current] { color: var(--color-text); }
 
-  .nav-links a[aria-current="page"]::after {
+  .nav-links a[aria-current]::after {
     content: "";
     position: absolute;
     left: 0.75rem;

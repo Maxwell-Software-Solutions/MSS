@@ -45,7 +45,7 @@ export function BlogPostLayout({
         </div>
       </header>
 
-      <div className="mb-12 relative h-64 sm:h-80 rounded-2xl overflow-hidden">
+      <div className="mb-12 relative aspect-[1200/630] overflow-hidden rounded-xl border border-border bg-wash">
         <Image src={heroImage} alt={heroAlt} fill className="object-cover" priority />
       </div>
 

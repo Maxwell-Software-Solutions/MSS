@@ -63,7 +63,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </header>
 
         {/* Hero Image */}
-        <div className="mb-12 relative h-64 sm:h-80 rounded-2xl overflow-hidden">
+        <div className="mb-12 relative aspect-[1200/630] overflow-hidden rounded-xl border border-border bg-wash">
           <Image
             src="/images/blog/refactoring-legacy-code.svg"
             alt="Legacy code refactoring showing transformation from old to new architecture"

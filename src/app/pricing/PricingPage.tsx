@@ -268,7 +268,7 @@ export default function PricingPage(): ReactElement {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               suppressHydrationWarning
             >
               {ht('pricing.notSure.cta', 'Talk to us')}

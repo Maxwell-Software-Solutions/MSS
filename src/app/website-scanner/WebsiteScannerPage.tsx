@@ -167,7 +167,7 @@ function MetricCard({ label, value, status }: { label: string; value: string; st
   };
   return (
     <div className="rounded-xl border border-border bg-card/60 p-4">
-      <p className="text-[12px] text-muted mb-1">{label}</p>
+      <p className="text-[13px] text-muted mb-1">{label}</p>
       <p className={`text-lg font-semibold ${colors[status]}`}>{value}</p>
     </div>
   );
@@ -178,12 +178,12 @@ function HeaderRow({ name, present, ht }: { name: string; present: boolean; ht: 
     <div className="flex items-center justify-between py-2 border-b border-border/50 last:border-0">
       <code className="text-[13px] text-foreground/80">{name}</code>
       {present ? (
-        <span className="text-success text-[12px] font-medium flex items-center gap-1">
+        <span className="text-success text-[13px] font-medium flex items-center gap-1">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
           {ht('scanner.present', 'Present')}
         </span>
       ) : (
-        <span className="text-error text-[12px] font-medium flex items-center gap-1">
+        <span className="text-error text-[13px] font-medium flex items-center gap-1">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
           {ht('scanner.missing', 'Missing')}
         </span>
@@ -369,7 +369,7 @@ export default function WebsiteScannerPage(): ReactElement {
           <button
             type="submit"
             disabled={isScanning || !url.trim()}
-            className="bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+            className="bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
             suppressHydrationWarning
           >
             {isScanning
@@ -420,7 +420,7 @@ export default function WebsiteScannerPage(): ReactElement {
               { label: ht('scanner.category.security', 'Security'), score: results.security.score },
             ].map((cat) => (
               <div key={cat.label} className={`rounded-xl border p-4 text-center ${scoreBg(cat.score)}`}>
-                <p className="text-[12px] text-muted mb-1">{cat.label}</p>
+                <p className="text-[13px] text-muted mb-1">{cat.label}</p>
                 <p className={`text-2xl font-semibold ${scoreColor(cat.score)}`}>{cat.score}</p>
               </div>
             ))}
@@ -523,14 +523,14 @@ export default function WebsiteScannerPage(): ReactElement {
               </p>
               <div className="flex flex-wrap gap-2">
                 {results.metaGenerator && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 text-accent text-[12px] font-semibold px-3 py-1.5">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 text-accent text-[13px] font-semibold px-3 py-1.5">
                     {results.metaGenerator}
                   </span>
                 )}
                 {results.tech.map((t) => (
                   <span
                     key={t.name}
-                    className={`inline-flex items-center gap-1.5 rounded-full text-[12px] font-semibold px-3 py-1.5 ${
+                    className={`inline-flex items-center gap-1.5 rounded-full text-[13px] font-semibold px-3 py-1.5 ${
                       t.confidence === 'high'
                         ? 'bg-accent/10 text-accent'
                         : 'bg-foreground/5 text-foreground/70'
@@ -548,7 +548,7 @@ export default function WebsiteScannerPage(): ReactElement {
 
           {/* CTA */}
           <div className="mt-12 rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12 text-center">
-            <p className="text-[12px] font-semibold text-accent mb-3" suppressHydrationWarning>
+            <p className="text-[13px] font-semibold text-accent mb-3" suppressHydrationWarning>
               {ht('scanner.cta.eyebrow', 'Go Deeper')}
             </p>
             <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
@@ -561,7 +561,7 @@ export default function WebsiteScannerPage(): ReactElement {
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
+              className="inline-block bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all"
               suppressHydrationWarning
             >
               {ht('scanner.cta.button', 'Book Free Expert Review')}

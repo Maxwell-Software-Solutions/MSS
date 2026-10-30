@@ -168,7 +168,7 @@ export default function AdvisoryPage(): ReactElement {
             <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-border text-accent text-[13px] font-semibold px-4 py-1.5" suppressHydrationWarning>
               {ht('advisory.price', '€500/month')}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/70 text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/70 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
               {ht('advisory.cancel', 'Cancel anytime')}
             </span>
           </div>
@@ -177,7 +177,7 @@ export default function AdvisoryPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -199,7 +199,7 @@ export default function AdvisoryPage(): ReactElement {
       </header>
 
       {/* What you get */}
-      <section aria-labelledby="includes-heading" className="py-16 sm:py-20 bg-foreground/5">
+      <section aria-labelledby="includes-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <motion.h2
             id="includes-heading"
@@ -220,7 +220,7 @@ export default function AdvisoryPage(): ReactElement {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="card flex items-start gap-4 bg-foreground/5 rounded-2xl border border-border p-6 transition-all duration-300"
+                className="card flex items-start gap-4 rounded-2xl border border-border p-6 transition-all duration-300"
               >
                 {item.icon}
                 <span className="text-[14px] leading-relaxed text-foreground/85">{item.text}</span>
@@ -257,7 +257,7 @@ export default function AdvisoryPage(): ReactElement {
       </section>
 
       {/* How it works */}
-      <section aria-labelledby="process-heading" className="py-16 sm:py-20 bg-foreground/5">
+      <section aria-labelledby="process-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <motion.h2
             id="process-heading"
@@ -278,7 +278,7 @@ export default function AdvisoryPage(): ReactElement {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="card flex gap-5 bg-foreground/5 rounded-2xl border border-border p-6 transition-all duration-300"
+                className="card flex gap-5 rounded-2xl border border-border p-6 transition-all duration-300"
               >
                 <div className="flex-shrink-0 w-11 h-11 rounded-full bg-accent-fill text-accent-contrast font-semibold text-sm flex items-center justify-center">
                   {step.step}
@@ -350,7 +350,7 @@ export default function AdvisoryPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-foreground/5">
+      <section aria-labelledby="faq-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 [&>*]:max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -394,7 +394,7 @@ export default function AdvisoryPage(): ReactElement {
           </p>
           <Link
             href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-            className="inline-flex items-center gap-2 btn btn-accent px-8 py-4 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+            className="inline-flex items-center gap-2 btn btn-accent px-8 py-4 rounded-xl transition-all"
             target="_blank"
             rel="noopener noreferrer"
             suppressHydrationWarning

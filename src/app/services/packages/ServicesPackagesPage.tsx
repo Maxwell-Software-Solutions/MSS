@@ -76,7 +76,7 @@ function PackageCard({
           </span>
           {period && <span className="text-sm text-foreground/60 mb-0.5">{period}</span>}
         </div>
-        <p className="mt-2.5 text-[12px] text-foreground/60 leading-relaxed">{idealFor}</p>
+        <p className="mt-2.5 text-[13px] text-foreground/60 leading-relaxed">{idealFor}</p>
       </div>
 
       <ul className="flex-1 space-y-2.5 mb-6">
@@ -90,7 +90,7 @@ function PackageCard({
 
       <Link
         href={ctaHref}
-        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent ${
+        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all ${
           highlighted
             ? 'btn btn-accent'
             : 'btn'
@@ -250,7 +250,7 @@ export default function ServicesPackagesPage(): ReactElement {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               suppressHydrationWarning
             >
               {ht('packages.unsure.cta', 'Book a discovery call')}
@@ -334,7 +334,7 @@ export default function ServicesPackagesPage(): ReactElement {
             </p>
             <Link
               href="/contact"
-              className="btn px-6 py-3 rounded-xl transition-all inline-flex items-center text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="btn px-6 py-3 rounded-xl transition-all inline-flex items-center text-sm font-semibold"
               suppressHydrationWarning
             >
               {ht('packages.ai.cta', 'Discuss an AI project')}

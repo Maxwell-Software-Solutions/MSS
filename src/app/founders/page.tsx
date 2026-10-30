@@ -82,7 +82,7 @@ export default function FoundersPage(): React.ReactElement {
                   <div
                     role="img"
                     aria-label={`${founder.name} — ${founder.title}`}
-                    className="w-full max-w-sm aspect-square rounded-3xl bg-foreground/5 flex items-center justify-center text-sm font-medium text-foreground/70 card"
+                    className="w-full max-w-sm aspect-square rounded-3xl flex items-center justify-center text-sm font-medium text-foreground/70 card"
                   >
                     Photo Pending
                   </div>

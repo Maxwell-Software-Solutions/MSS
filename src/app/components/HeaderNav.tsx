@@ -34,8 +34,9 @@ export default function HeaderNav(): ReactElement {
       document.body.removeAttribute('data-nav-in-flight');
     } catch {}
   }, [pathname]);
-  const current = (href: string): 'page' | undefined =>
-    pathname === href || pathname?.startsWith(`${href}/`) ? 'page' : undefined;
+  // exact match marks the page; a parent section is marked as the current section
+  const current = (href: string): 'page' | 'true' | undefined =>
+    pathname === href ? 'page' : pathname?.startsWith(`${href}/`) ? 'true' : undefined;
 
   return (
     <nav className="max-w-6xl mx-auto px-6 sm:px-10 h-16 flex items-center justify-between relative" aria-label="Site header">

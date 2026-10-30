@@ -348,7 +348,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
         {/* CTA */}
         <div className="max-w-6xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
           <div className="rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12 text-center">
-            <p className="text-[12px] font-semibold text-accent mb-3" suppressHydrationWarning>
+            <p className="text-[13px] font-semibold text-accent mb-3" suppressHydrationWarning>
               {ht('codeHealth.cta.eyebrow', 'Next step')}
             </p>
             <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
@@ -363,7 +363,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-                className="inline-flex items-center gap-2 bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
+                className="inline-flex items-center gap-2 bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all"
                 target="_blank"
                 rel="noopener noreferrer"
                 suppressHydrationWarning
@@ -409,16 +409,16 @@ export default function CodeHealthScorePage(): ReactElement | null {
           )}
         </p>
         <div className="mt-6 flex flex-wrap gap-3 items-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 text-accent text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 text-accent text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
             <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
             {ht('codeHealth.badge.free', '2 minutes')}
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
             {ht('codeHealth.badge.questions', '15 questions')}
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
             {ht('codeHealth.badge.instant', 'Instant results')}
           </span>
         </div>
@@ -426,7 +426,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
 
       {/* Progress Bar */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-2">
-        <div className="flex items-center justify-between text-[12px] text-muted mb-2">
+        <div className="flex items-center justify-between text-[13px] text-muted mb-2">
           <span suppressHydrationWarning>
             {ht('codeHealth.progress.question', 'Question')} {currentQuestion + 1} / {totalQuestions}
           </span>
@@ -454,7 +454,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
                 <button
                   key={optionIndex}
                   onClick={() => handleAnswer(currentQuestion, option.score)}
-                  className={`w-full text-left rounded-xl border p-4 transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 ${
+                  className={`w-full text-left rounded-xl border p-4 transition-all duration-150 ${
                     isSelected
                       ? 'border-accent bg-accent/10 text-foreground'
                       : 'border-border bg-background hover:border-accent/40 hover:bg-accent/5 text-foreground/85'
@@ -491,7 +491,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             {answeredCount === totalQuestions && (
               <button
                 onClick={() => setShowResults(true)}
-                className="bg-accent-fill text-accent-contrast rounded-xl px-6 py-3 text-sm font-semibold hover:bg-accent-fill-hover transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
+                className="bg-accent-fill text-accent-contrast rounded-xl px-6 py-3 text-sm font-semibold hover:bg-accent-fill-hover transition-all"
                 suppressHydrationWarning
               >
                 {ht('codeHealth.nav.results', 'See my results')}

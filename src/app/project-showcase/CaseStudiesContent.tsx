@@ -42,7 +42,7 @@ export default function CaseStudiesContent(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <div className="container section" data-reveal>
+    <div className="container py-16 sm:py-24" data-reveal>
       <h1>{t('caseStudies.title')}</h1>
       <p className="mt-3 lead max-w-2xl">{t('caseStudies.subtitle')}</p>
 
@@ -51,32 +51,32 @@ export default function CaseStudiesContent(): ReactElement {
           <Link
             key={c.slug}
             href={`/project-showcase/${c.slug}`}
-            className="card block overflow-hidden group transition-all hover:border-accent/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="card block overflow-hidden group transition-colors hover:border-border-strong"
             aria-label={`View case study: ${t(`caseStudies.${c.translationKey}.title`)}`}
           >
-            <div className="relative h-36 bg-background/80">
+            <div className="relative aspect-[3/1] border-b border-border bg-wash">
               <Image
                 src={c.image}
                 alt=""
                 fill
                 unoptimized
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition-transform"
+                className="object-cover"
                 role="presentation"
               />
             </div>
             <div className="p-5">
-              <div className="text-xs text-foreground/70 mb-1 font-medium">
+              <div className="mb-1 text-sm text-muted">
                 {t(`caseStudies.${c.translationKey}.meta`)}
               </div>
               <h2 className="text-lg group-hover:text-accent transition-colors">
                 {t(`caseStudies.${c.translationKey}.title`)}
               </h2>
-              <p className="mt-2 text-sm text-foreground/85 leading-relaxed">
+              <p className="mt-2 text-[0.9375rem] leading-relaxed text-secondary">
                 {t(`caseStudies.${c.translationKey}.summary`)}
               </p>
               <span
-                className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-accent group-hover:gap-2 transition-all"
+                className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent transition-all group-hover:gap-2"
                 aria-hidden="true"
               >
                 View study

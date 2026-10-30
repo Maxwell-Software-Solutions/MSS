@@ -108,16 +108,16 @@ export default function FreeAuditPage(): ReactElement {
             )}
           </p>
           <div className="mt-6 flex flex-wrap gap-3 items-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-border text-accent text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-border text-accent text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               {ht('freeAudit.badge.free', 'Completely free')}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
               {ht('freeAudit.badge.time', '5 business days')}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
               {ht('freeAudit.badge.nda', 'NDA-protected')}
             </span>
           </div>
@@ -176,7 +176,7 @@ export default function FreeAuditPage(): ReactElement {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <div className="card rounded-3xl border border-border bg-foreground/5 p-8 sm:p-10 transition-all duration-300">
+            <div className="card rounded-3xl border border-border p-8 sm:p-10 transition-all duration-300">
               <h2 className="text-xl tracking-tight mb-1" suppressHydrationWarning>
                 {ht('freeAudit.form.heading', 'Apply for your free audit')}
               </h2>
@@ -201,7 +201,7 @@ export default function FreeAuditPage(): ReactElement {
                     required
                     autoComplete="name"
                     placeholder="Jane Smith"
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
+                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
@@ -216,7 +216,7 @@ export default function FreeAuditPage(): ReactElement {
                     required
                     autoComplete="email"
                     placeholder="jane@company.com"
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
+                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
@@ -231,7 +231,7 @@ export default function FreeAuditPage(): ReactElement {
                     required
                     autoComplete="organization"
                     placeholder="Acme Inc."
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
+                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
@@ -245,7 +245,7 @@ export default function FreeAuditPage(): ReactElement {
                     type="text"
                     required
                     placeholder="e.g. Node.js, React, PostgreSQL"
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
+                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
@@ -258,19 +258,19 @@ export default function FreeAuditPage(): ReactElement {
                     name="context"
                     rows={3}
                     placeholder="e.g. we keep missing sprint deadlines, deployment takes 2 hours, etc."
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition resize-none"
+                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+                  className="w-full btn btn-accent px-6 py-3 rounded-xl transition-all"
                   suppressHydrationWarning
                 >
                   {ht('freeAudit.form.cta', 'Apply for free audit')}
                 </button>
 
-                <p className="text-center text-[12px] text-muted" suppressHydrationWarning>
+                <p className="text-center text-[13px] text-muted" suppressHydrationWarning>
                   {ht('freeAudit.form.privacy', 'No spam. We only contact you about your audit request.')}
                 </p>
               </form>
@@ -280,7 +280,7 @@ export default function FreeAuditPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-foreground/5">
+      <section aria-labelledby="faq-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 [&>*]:max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -313,7 +313,7 @@ export default function FreeAuditPage(): ReactElement {
           transition={{ duration: 0.5 }}
           className="band band-split p-8 sm:p-12"
         >
-          <p className="text-[12px] font-semibold text-accent" suppressHydrationWarning>
+          <p className="text-[13px] font-semibold text-accent" suppressHydrationWarning>
             {ht('freeAudit.cta.eyebrow', 'Limited availability')}
           </p>
           <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
@@ -327,7 +327,7 @@ export default function FreeAuditPage(): ReactElement {
           </p>
           <a
             href="#audit-name"
-            className="inline-block btn btn-accent px-8 py-3.5 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+            className="inline-block btn btn-accent px-8 py-3.5 rounded-xl transition-all"
             suppressHydrationWarning
           >
             {ht('freeAudit.cta.button', 'Apply now — it is free')}

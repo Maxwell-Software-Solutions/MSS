@@ -161,8 +161,10 @@ export default function BlogIndexContent(): ReactElement {
                       <span>
                         {t(post.durationKey)} {t('blog.minRead')}
                       </span>
-                      <span>•</span>
-                      <Badge>{t(post.categoryKey)}</Badge>
+                      <span className="inline-flex items-center gap-2">
+                        <span>•</span>
+                        <Badge>{t(post.categoryKey)}</Badge>
+                      </span>
                     </div>
                     <h2 className="text-xl sm:text-2xl mb-3 group-hover:text-accent transition-colors">
                       {t(post.titleKey)}
