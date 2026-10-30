@@ -194,9 +194,9 @@ export default function TDDPost(): ReactElement {
 
             <h3 className="text-xl mb-4">TDD Approach</h3>
             <div className="grid lg:grid-cols-2 gap-8">
-              <div>
+              <div className="min-w-0">
                 <h3 className="mb-2 text-accent">Test First</h3>
-                <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm">
+                <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto">
                   <div className="text-accent">describe</div>
                   <div className="text-accent"> &apos;PaymentProcessor&apos;</div>
                   <div className="text-accent"> it &apos;should process credit card payment&apos;</div>
@@ -206,9 +206,9 @@ export default function TDDPost(): ReactElement {
                   <div className="text-accent">end</div>
                 </div>
               </div>
-              <div>
+              <div className="min-w-0">
                 <h3 className="mb-2 text-accent">Implementation</h3>
-                <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm">
+                <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto">
                   <div className="text-success">class PaymentProcessor</div>
                   <div className="text-success"> def process(payment)</div>
                   <div className="text-success"> return &apos;success&apos; if</div>
