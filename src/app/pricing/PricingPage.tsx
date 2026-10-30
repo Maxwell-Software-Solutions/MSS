@@ -57,7 +57,7 @@ function PricingTier({
       className={`card relative flex flex-col p-7 sm:p-8 ${highlighted ? 'border-accent' : ''}`}
     >
       {badge && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block bg-accent-fill text-accent-contrast text-xs font-semibold px-4 py-1.5 rounded-full">
+        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block whitespace-nowrap bg-accent-fill text-accent-contrast text-xs font-semibold px-4 py-1.5 rounded-full">
           {badge}
         </span>
       )}
@@ -220,7 +220,7 @@ export default function PricingPage(): ReactElement {
           {ht('pricing.title', 'Pricing')}
         </h2>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start"
+          className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8 items-start"
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -314,7 +314,7 @@ export default function HomeContent(): ReactElement {
       ============================================================ */}
       <section id="contact" className="border-t border-border">
         <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <motion.div className="band grid gap-8 p-8 sm:p-12 md:grid-cols-[minmax(0,1fr)_auto] md:items-end md:gap-x-12" {...inView}>
+          <motion.div className="band grid gap-8 p-8 sm:p-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-x-12" {...inView}>
             <div className="max-w-2xl">
               <h2>{t('contact.heading')}</h2>
               <p className="mt-4 text-lg leading-relaxed text-secondary">{t('contact.description')}</p>
@@ -327,7 +327,7 @@ export default function HomeContent(): ReactElement {
                 {t('contact.cta.secondary')}
               </ButtonLink>
             </div>
-            <div className="border-t border-border pt-5 md:col-span-2">
+            <div className="border-t border-border pt-5 lg:col-span-2">
               <p className="mb-3 text-sm text-secondary">{t('contact.linkedin.label')}</p>
               <a
                 href="https://www.linkedin.com/company/maxwell-software-solutions"

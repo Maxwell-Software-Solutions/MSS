@@ -257,8 +257,8 @@
     border-radius: var(--radius-3xl);
   }
 
-  /* Band with copy on the left and the action on the right (stacked on small screens) */
-  @media (min-width: 768px) {
+  /* Band with copy on the left and the action on the right (stacked below 1024px) */
+  @media (min-width: 1024px) {
     .band-split {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;

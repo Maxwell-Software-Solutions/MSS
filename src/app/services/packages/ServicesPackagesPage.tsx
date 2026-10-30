@@ -59,7 +59,7 @@ function PackageCard({
       }`}
     >
       {badge && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block bg-accent-fill text-accent-contrast text-xs font-semibold px-4 py-1.5 rounded-full">
+        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block whitespace-nowrap bg-accent-fill text-accent-contrast text-xs font-semibold px-4 py-1.5 rounded-full">
           {badge}
         </span>
       )}

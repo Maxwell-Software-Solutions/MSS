@@ -270,7 +270,7 @@ export default function AdvisoryPage(): ReactElement {
           >
             {ht('advisory.process.heading', 'How it works')}
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6" suppressHydrationWarning>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" suppressHydrationWarning>
             {processSteps.map((step, i) => (
               <motion.div
                 key={step.step}
