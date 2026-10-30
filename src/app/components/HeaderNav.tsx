@@ -34,8 +34,11 @@ export default function HeaderNav(): ReactElement {
       document.body.removeAttribute('data-nav-in-flight');
     } catch {}
   }, [pathname]);
+  const current = (href: string): 'page' | undefined =>
+    pathname === href || pathname?.startsWith(`${href}/`) ? 'page' : undefined;
+
   return (
-    <nav className="max-w-6xl mx-auto px-6 sm:px-10 h-14 flex items-center justify-between relative" aria-label="Site header">
+    <nav className="max-w-6xl mx-auto px-6 sm:px-10 h-16 flex items-center justify-between relative" aria-label="Site header">
       {/* Mark navigation as "in-flight" on pointer down/touch so heavy background work can pause */}
       <Link
         href="/"
@@ -58,26 +61,27 @@ export default function HeaderNav(): ReactElement {
         <ThemeAwareLogo width={210} height={64} className="site-logo w-auto" priority />
       </Link>
       <div className="nav-links" aria-label="Primary navigation">
-        <Link href="/services" suppressHydrationWarning>
+        <Link href="/services" aria-current={current('/services')} suppressHydrationWarning>
           {ht('nav.services', 'Services')}
         </Link>
-        <Link href="/case-studies" suppressHydrationWarning>
+        <Link href="/case-studies" aria-current={current('/case-studies')} suppressHydrationWarning>
           {ht('nav.caseStudies', 'Case studies')}
         </Link>
-        <Link href="/pricing" suppressHydrationWarning>
+        <Link href="/pricing" aria-current={current('/pricing')} suppressHydrationWarning>
           {ht('nav.pricing', 'Pricing')}
         </Link>
-        <Link href="/about" suppressHydrationWarning>
+        <Link href="/about" aria-current={current('/about')} suppressHydrationWarning>
           {ht('nav.about', 'About')}
         </Link>
-        <Link href="/blog" suppressHydrationWarning>
+        <Link href="/blog" aria-current={current('/blog')} suppressHydrationWarning>
           {ht('nav.blog', 'Blog')}
         </Link>
+        <span className="mx-2 h-5 w-px bg-border" aria-hidden="true" />
         <ThemeToggle />
         <button
           type="button"
           onClick={toggleLanguage}
-          className="px-3 py-1.5 rounded-xl border transition-all font-medium text-sm neuro-btn"
+          className="lang-toggle"
           aria-label={`Switch to ${language === 'en' ? 'Lithuanian' : 'English'}`}
           suppressHydrationWarning
         >
@@ -95,13 +99,13 @@ export default function HeaderNav(): ReactElement {
       >
         <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
         <svg
-          width="28"
-          height="28"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           aria-hidden="true"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.75"
           strokeLinecap="round"
           strokeLinejoin="round"
         >

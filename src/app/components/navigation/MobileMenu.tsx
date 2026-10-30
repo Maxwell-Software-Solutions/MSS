@@ -130,8 +130,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
         aria-hidden={open ? 'false' : 'true'}
         tabIndex={-1}
       >
-        <div className="flex justify-between items-center mb-6">
-          <span className="text-xs uppercase tracking-wide opacity-70">Navigate</span>
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-sm text-muted">Navigate</span>
           <button type="button" className="menu-close" aria-label="Close menu" onClick={onClose} data-test="menu-close">
             <svg
               width="24"
@@ -148,7 +148,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
             </svg>
           </button>
         </div>
-        <ul className="flex flex-col gap-4 text-lg font-medium">
+        <ul className="flex flex-col">
           <li>
             <Link ref={firstLinkRef} href="/services" onClick={handleLink} suppressHydrationWarning>
               {t('nav.services') === 'nav.services' ? 'Services' : t('nav.services')}
@@ -176,10 +176,10 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
           </li>
         </ul>
 
-        <div className="mt-6 pt-6 mobile-nav-bottom-section">
+        <div className="mobile-nav-bottom-section">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold uppercase tracking-wide">Theme</span>
+              <span className="text-sm font-medium">Theme</span>
               <ThemeToggle />
             </div>
 
