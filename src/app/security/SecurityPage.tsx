@@ -9,6 +9,7 @@ export default function SecurityPage(): ReactElement {
   return (
     <PageContainer className="text-secondary">
       <PageHeader
+        className="max-w-3xl"
         eyebrow="Security Policy"
         title="Security at Maxwell Software Solutions"
         meta={`Effective date: ${effectiveDate}`}

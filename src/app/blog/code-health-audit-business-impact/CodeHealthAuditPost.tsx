@@ -208,7 +208,7 @@ export default function CodeHealthAuditPost(): ReactElement {
           findings are always good news, but because ambiguity is more exhausting than a clear problem with a plan
           attached.
         </p>
-        <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
+        <div className="mt-8 band p-8 sm:p-10 text-center">
           <h3 className="text-xl mb-3">Get a free Code Health Audit</h3>
           <p className="text-foreground/70 mb-5 max-w-md mx-auto">
             We conduct a full architecture, security, and performance review — and deliver a prioritised remediation

@@ -7,7 +7,7 @@ interface SecurityContentProps {
 
 export function SecurityContent({ securityEmail }: SecurityContentProps): ReactElement {
   return (
-    <section className="mt-12 space-y-10">
+    <section className="mt-12 max-w-3xl space-y-10">
       <ListSection
         title="Our security practices"
         items={[

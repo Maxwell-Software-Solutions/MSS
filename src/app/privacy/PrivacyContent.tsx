@@ -8,7 +8,7 @@ interface PrivacyContentProps {
 
 export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElement {
   return (
-    <section className="mt-12 space-y-8">
+    <section className="mt-12 max-w-3xl space-y-8">
       <ListSection
         title="Summary"
         items={[

@@ -348,7 +348,7 @@ export default function MicroservicesPost(): ReactElement {
           clear bounded contexts using Domain-Driven Design, and pilot with a single extracted service to learn the
           operational challenges.
         </Alert>
-        <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
+        <div className="mt-8 band p-8 sm:p-10 text-center">
           <h3 className="text-xl mb-3">Need Help With Microservices Architecture?</h3>
           <p className="text-foreground/70 mb-5">
             Our{' '}

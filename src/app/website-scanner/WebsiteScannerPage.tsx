@@ -92,9 +92,9 @@ function normalizeUrl(input: string): string {
 }
 
 function scoreColor(score: number): string {
-  if (score >= 90) return 'text-green-400';
-  if (score >= 50) return 'text-yellow-400';
-  return 'text-red-400';
+  if (score >= 90) return 'text-success';
+  if (score >= 50) return 'text-warning';
+  return 'text-error';
 }
 
 function scoreBg(score: number): string {
@@ -161,9 +161,9 @@ function ScoreRing({ score, size = 120 }: { score: number; size?: number }): Rea
 
 function MetricCard({ label, value, status }: { label: string; value: string; status: 'good' | 'warn' | 'poor' }): ReactElement {
   const colors = {
-    good: 'text-green-400',
-    warn: 'text-yellow-400',
-    poor: 'text-red-400',
+    good: 'text-success',
+    warn: 'text-warning',
+    poor: 'text-error',
   };
   return (
     <div className="rounded-xl border border-border bg-card/60 p-4">
@@ -178,12 +178,12 @@ function HeaderRow({ name, present, ht }: { name: string; present: boolean; ht: 
     <div className="flex items-center justify-between py-2 border-b border-border/50 last:border-0">
       <code className="text-[13px] text-foreground/80">{name}</code>
       {present ? (
-        <span className="text-green-400 text-[12px] font-medium flex items-center gap-1">
+        <span className="text-success text-[12px] font-medium flex items-center gap-1">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
           {ht('scanner.present', 'Present')}
         </span>
       ) : (
-        <span className="text-red-400 text-[12px] font-medium flex items-center gap-1">
+        <span className="text-error text-[12px] font-medium flex items-center gap-1">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
           {ht('scanner.missing', 'Missing')}
         </span>
@@ -222,7 +222,7 @@ function ProgressBar({ phase, ht }: { phase: ScanPhase; ht: (k: string, f: strin
         {steps.map((step, i) => (
           <div key={step.key} className="flex items-center gap-2 flex-1">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-semibold transition-colors ${
-              i < currentIndex ? 'bg-green-400/20 text-green-400' :
+              i < currentIndex ? 'bg-green-400/20 text-success' :
               i === currentIndex ? 'bg-accent/20 text-accent animate-pulse' :
               'bg-foreground/10 text-muted'
             }`}>
@@ -342,7 +342,7 @@ export default function WebsiteScannerPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-8">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-8">
         <p className="text-[13px] text-muted mb-3" suppressHydrationWarning>
           {ht('scanner.eyebrow', 'Free Tool')}
         </p>
@@ -379,7 +379,7 @@ export default function WebsiteScannerPage(): ReactElement {
         </form>
 
         {error && (
-          <div className="mt-4 rounded-xl border border-red-400/30 bg-red-400/10 p-4 text-[14px] text-red-400">
+          <div className="mt-4 rounded-xl border border-red-400/30 bg-red-400/10 p-4 text-[14px] text-error">
             {error}
           </div>
         )}
@@ -399,7 +399,7 @@ export default function WebsiteScannerPage(): ReactElement {
 
       {/* Results */}
       {results && phase === 'done' && (
-        <section className="max-w-5xl mx-auto px-6 sm:px-10 pb-16">
+        <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-16">
           {/* Overall Score */}
           <div className="text-center mb-12">
             <ScoreRing score={results.overallScore} size={140} />
@@ -465,7 +465,7 @@ export default function WebsiteScannerPage(): ReactElement {
             >
               <div className="mb-3">
                 <div className="flex items-center gap-2 mb-3">
-                  <span className={`text-[13px] font-medium ${results.security.ssl ? 'text-green-400' : 'text-red-400'}`}>
+                  <span className={`text-[13px] font-medium ${results.security.ssl ? 'text-success' : 'text-error'}`}>
                     {results.security.ssl
                       ? ht('scanner.ssl.secure', 'SSL/HTTPS: Secure')
                       : ht('scanner.ssl.insecure', 'SSL/HTTPS: Not Secure')}
@@ -572,7 +572,7 @@ export default function WebsiteScannerPage(): ReactElement {
 
       {/* How it works (shown before scan) */}
       {phase === 'idle' && !results && (
-        <section className="max-w-5xl mx-auto px-6 sm:px-10 pb-16">
+        <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-16">
           <h2 className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8 text-center" suppressHydrationWarning>
             {ht('scanner.how.heading', 'What we check')}
           </h2>

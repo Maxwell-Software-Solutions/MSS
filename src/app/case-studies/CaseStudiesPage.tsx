@@ -87,7 +87,7 @@ export default function CaseStudiesPage(): ReactElement {
             </span>
           </h1>
           <p
-            className="mt-6 text-lg text-foreground/70 max-w-2xl"
+            className="lead mt-6 max-w-2xl"
             suppressHydrationWarning
           >
             {ht(
@@ -111,7 +111,7 @@ export default function CaseStudiesPage(): ReactElement {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="card rounded-3xl border border-border bg-foreground/5 overflow-hidden transition-all duration-300"
+              className="card overflow-hidden"
               aria-labelledby={`study-${study.key}-heading`}
             >
               {/* Top accent bar */}
@@ -133,7 +133,7 @@ export default function CaseStudiesPage(): ReactElement {
                   >
                     {ht(`caseStudiesPage.${study.key}.title`, '')}
                   </h2>
-                  <p className="mt-2 text-sm text-foreground/60" suppressHydrationWarning>
+                  <p className="mt-2 text-sm text-muted" suppressHydrationWarning>
                     {ht(`caseStudiesPage.${study.key}.clientType`, '')}
                   </p>
                 </div>
@@ -143,10 +143,10 @@ export default function CaseStudiesPage(): ReactElement {
                   {study.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="inline-flex flex-col items-center rounded-xl bg-accent/10 border border-border text-accent px-4 py-2.5 min-w-[80px]"
+                      className="inline-flex min-w-[88px] flex-col items-start rounded-lg border border-border bg-wash px-4 py-2.5"
                     >
-                      <span className="text-xl font-semibold leading-none">{metric.value}</span>
-                      <span className="text-xs font-medium text-accent mt-0.5">{metric.label}</span>
+                      <span className="text-xl font-semibold leading-none tabular-nums">{metric.value}</span>
+                      <span className="mt-1 text-xs text-muted">{metric.label}</span>
                     </div>
                   ))}
                 </div>
@@ -156,18 +156,18 @@ export default function CaseStudiesPage(): ReactElement {
                   {/* Left: Challenge + Solution */}
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-xs text-muted mb-2" suppressHydrationWarning>
+                      <h3 className="mb-2 text-sm font-medium text-muted" suppressHydrationWarning>
                         {ht('caseStudiesPage.challenge', 'Challenge')}
                       </h3>
-                      <p className="text-[15px] leading-relaxed text-foreground/80" suppressHydrationWarning>
+                      <p className="text-[0.9375rem] leading-relaxed text-foreground" suppressHydrationWarning>
                         {ht(`caseStudiesPage.${study.key}.challenge`, '')}
                       </p>
                     </div>
                     <div>
-                      <h3 className="text-xs text-muted mb-2" suppressHydrationWarning>
+                      <h3 className="mb-2 text-sm font-medium text-muted" suppressHydrationWarning>
                         {ht('caseStudiesPage.solution', 'Solution')}
                       </h3>
-                      <p className="text-[15px] leading-relaxed text-foreground/80" suppressHydrationWarning>
+                      <p className="text-[0.9375rem] leading-relaxed text-foreground" suppressHydrationWarning>
                         {ht(`caseStudiesPage.${study.key}.solution`, '')}
                       </p>
                     </div>
@@ -176,22 +176,22 @@ export default function CaseStudiesPage(): ReactElement {
                   {/* Right: Tech stack + Results */}
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-xs text-muted mb-2" suppressHydrationWarning>
+                      <h3 className="mb-2 text-sm font-medium text-muted" suppressHydrationWarning>
                         {ht('caseStudiesPage.techStack', 'Tech stack')}
                       </h3>
-                      <p className="text-[13px] font-mono text-foreground/70 leading-relaxed" suppressHydrationWarning>
+                      <p className="text-[13px] font-mono text-secondary leading-relaxed" suppressHydrationWarning>
                         {ht(`caseStudiesPage.${study.key}.tech`, '')}
                       </p>
                     </div>
                     <div>
-                      <h3 className="text-xs text-muted mb-3" suppressHydrationWarning>
+                      <h3 className="mb-3 text-sm font-medium text-muted" suppressHydrationWarning>
                         {ht('caseStudiesPage.results', 'Results')}
                       </h3>
                       <ul className="space-y-2" suppressHydrationWarning>
                         {study.results.map((resultKey) => (
                           <li key={resultKey} className="flex items-start gap-2">
                             <CheckIcon />
-                            <span className="text-[15px] font-medium text-foreground/85">
+                            <span className="text-[0.9375rem] font-medium text-foreground">
                               {ht(`caseStudiesPage.${study.key}.${resultKey}`, '')}
                             </span>
                           </li>

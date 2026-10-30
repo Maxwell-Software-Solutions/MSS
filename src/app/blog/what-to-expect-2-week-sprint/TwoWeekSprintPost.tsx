@@ -232,7 +232,7 @@ export default function TwoWeekSprintPost(): ReactElement {
           The signal that it is the right time: you can write a two-sentence description of what you need built and
           what done looks like. If you can do that, a sprint can probably deliver it.
         </p>
-        <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
+        <div className="mt-8 band p-8 sm:p-10 text-center">
           <h3 className="text-xl mb-3">Ready to start a sprint?</h3>
           <p className="text-foreground/70 mb-5 max-w-md mx-auto">
             Book a 30-minute discovery call. We will confirm fit, agree scope, and start the following Monday.

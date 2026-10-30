@@ -21,7 +21,7 @@ const widthClasses = {
  */
 export function PageContainer({ children, maxWidth = '6xl', className = '' }: PageContainerProps): ReactElement {
   return (
-    <main className={`mx-auto ${widthClasses[maxWidth]} px-6 sm:px-10 ${className}`.trim()}>{children}</main>
+    <main className={`mx-auto ${widthClasses[maxWidth]} px-6 py-14 sm:px-10 sm:py-20 ${className}`.trim()}>{children}</main>
   );
 }
 

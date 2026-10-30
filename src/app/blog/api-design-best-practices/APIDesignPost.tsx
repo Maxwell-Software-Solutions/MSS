@@ -337,7 +337,7 @@ GET /users?limit=20&cursor=abc123
           implement this week—whether it&apos;s better documentation, consistent error handling, or implementing
           versioning.
         </Alert>
-        <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
+        <div className="mt-8 band p-8 sm:p-10 text-center">
           <h3 className="text-xl mb-3">Want Expert API Design Guidance?</h3>
           <p className="text-foreground/70 mb-5">
             Our{' '}

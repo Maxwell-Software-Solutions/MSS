@@ -48,7 +48,7 @@ export default function AboutPage(): ReactElement {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="card rounded-3xl border border-border bg-foreground/5 p-8 sm:p-10 mb-16 transition-all duration-300"
+        className="card p-8 sm:p-10 mb-16"
       >
         <h2 className="text-lg mb-6 text-accent">{t('about.principles.heading')}</h2>
         <ul className="space-y-5">
@@ -110,7 +110,7 @@ export default function AboutPage(): ReactElement {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card rounded-3xl border border-border bg-foreground/5 transition-all duration-300 overflow-hidden"
+                className="card overflow-hidden"
               >
                 <div
                   className={`grid grid-cols-1 ${

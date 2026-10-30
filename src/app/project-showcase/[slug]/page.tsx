@@ -219,25 +219,25 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
   return (
     <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
       <nav className="mb-6">
-        <Link href="/project-showcase" className="text-foreground/75 hover:text-foreground transition-colors">
+        <Link href="/project-showcase" className="text-secondary transition-colors hover:text-foreground">
           ← Back to case studies
         </Link>
       </nav>
 
       <header className="mb-8">
-        <p className="text-sm text-foreground/75">Case study · {c.meta}</p>
+        <p className="text-sm text-muted">Case study · {c.meta}</p>
         <h1 className="mt-2">{c.title}</h1>
-        <p className="text-lg text-foreground/75 mt-3 max-w-3xl">{c.subtitle}</p>
+        <p className="lead mt-3 max-w-3xl">{c.subtitle}</p>
       </header>
 
-      <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden mb-10">
+      <div className="relative mb-10 aspect-[3/1] overflow-hidden rounded-xl border border-border bg-wash">
         <Image src={c.hero} alt={c.title} fill className="object-cover" priority unoptimized />
       </div>
 
       <section className="grid md:grid-cols-2 gap-8 mb-12">
         <div>
           <h2 className="text-2xl mb-3">Context</h2>
-          <ul className="list-disc pl-5 space-y-2 text-foreground/80">
+          <ul className="list-disc pl-5 space-y-2 text-secondary">
             {c.context.map((t) => (
               <li key={t}>{t}</li>
             ))}
@@ -245,7 +245,7 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
         </div>
         <div>
           <h2 className="text-2xl mb-3">Actions</h2>
-          <ul className="list-disc pl-5 space-y-2 text-foreground/80">
+          <ul className="list-disc pl-5 space-y-2 text-secondary">
             {c.actions.map((t) => (
               <li key={t}>{t}</li>
             ))}
@@ -260,7 +260,7 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
             {c.process!.map((step) => (
               <div key={step.heading} className="card p-5">
                 <h3 className="text-lg mb-2">{step.heading}</h3>
-                <ul className="list-disc pl-5 space-y-1 text-foreground/80">
+                <ul className="list-disc pl-5 space-y-1 text-secondary">
                   {step.bullets.map((b) => (
                     <li key={b}>{b}</li>
                   ))}
@@ -273,18 +273,18 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
 
       <section className="mb-12">
         <h2 className="text-2xl mb-3">Results</h2>
-        <ul className="list-disc pl-5 space-y-2 text-foreground/80">
+        <ul className="list-disc pl-5 space-y-2 text-secondary">
           {c.results.map((t) => (
             <li key={t}>{t}</li>
           ))}
         </ul>
       </section>
 
-      <section className="grid sm:grid-cols-3 gap-4" data-reveal>
+      <section className="ruled grid-cols-1 sm:grid-cols-3" data-reveal>
         {c.metrics.map((m) => (
-          <div key={m.label} className="card p-5 text-center">
-            <div className="text-3xl font-semibold text-accent">{m.value}</div>
-            <div className="text-sm text-foreground/70 mt-1">{m.label}</div>
+          <div key={m.label} className="p-6">
+            <div className="text-3xl font-semibold tracking-tight tabular-nums">{m.value}</div>
+            <div className="mt-1 text-sm text-muted">{m.label}</div>
           </div>
         ))}
       </section>

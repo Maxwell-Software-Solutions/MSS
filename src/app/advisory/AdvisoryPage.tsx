@@ -351,7 +351,7 @@ export default function AdvisoryPage(): ReactElement {
 
       {/* FAQ */}
       <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-foreground/5">
-        <div className="max-w-3xl mx-auto px-6 sm:px-10">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 [&>*]:max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}

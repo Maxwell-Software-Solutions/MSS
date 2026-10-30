@@ -9,6 +9,7 @@ export default function TermsPage(): ReactElement {
   return (
     <PageContainer className="text-secondary">
       <PageHeader
+        className="max-w-3xl"
         eyebrow="Terms of Service"
         title="Maxwell Software Solutions Terms of Service"
         meta={`Effective date: ${effectiveDate}`}

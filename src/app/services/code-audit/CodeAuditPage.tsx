@@ -258,7 +258,7 @@ export default function CodeAuditPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="max-w-3xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-labelledby="faq-heading" className="max-w-6xl mx-auto px-6 sm:px-10 [&>*]:max-w-3xl py-16 sm:py-20">
         <motion.div {...fadeUp}>
           <h2
             id="faq-heading"

@@ -192,7 +192,7 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
   if (score <= 15) {
     return {
       label: ht('codeHealth.tier.critical', 'Critical'),
-      color: 'text-red-500',
+      color: 'text-error',
       bgColor: 'bg-red-500/10',
       borderColor: 'border-red-500/30',
       description: ht('codeHealth.tier.critical.desc', 'Your codebase is a ticking time bomb. Critical risks across testing, deployment, and maintainability need urgent attention before they cause a major incident.'),
@@ -201,7 +201,7 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
   if (score <= 30) {
     return {
       label: ht('codeHealth.tier.concerning', 'Concerning'),
-      color: 'text-orange-500',
+      color: 'text-warning',
       bgColor: 'bg-orange-500/10',
       borderColor: 'border-orange-500/30',
       description: ht('codeHealth.tier.concerning.desc', 'Significant risks that will slow you down. Your team is likely spending too much time fighting fires instead of shipping features. Targeted improvements can have a big impact.'),
@@ -210,7 +210,7 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
   if (score <= 45) {
     return {
       label: ht('codeHealth.tier.healthy', 'Healthy'),
-      color: 'text-yellow-500',
+      color: 'text-warning',
       bgColor: 'bg-yellow-500/10',
       borderColor: 'border-yellow-500/30',
       description: ht('codeHealth.tier.healthy.desc', 'Good foundation with room to improve. Your practices are solid in some areas but have gaps that could become problems at scale. A focused audit would help prioritise the next steps.'),
@@ -218,7 +218,7 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
   }
   return {
     label: ht('codeHealth.tier.excellent', 'Excellent'),
-    color: 'text-green-500',
+    color: 'text-success',
     bgColor: 'bg-green-500/10',
     borderColor: 'border-green-500/30',
     description: ht('codeHealth.tier.excellent.desc', 'Your engineering practices are strong. You have mature processes across testing, deployment, and observability. A professional review can help you go from good to exceptional.'),
@@ -226,9 +226,9 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
 }
 
 function getQuestionIndicatorColor(score: number): string {
-  if (score <= 1) return 'bg-red-500';
-  if (score === 2) return 'bg-yellow-500';
-  return 'bg-green-500';
+  if (score <= 1) return 'bg-error-fill';
+  if (score === 2) return 'bg-warning';
+  return 'bg-success-fill';
 }
 
 const CATEGORY_LABELS: Record<string, { en: string; lt: string }> = {
@@ -293,7 +293,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
     return (
       <>
         {/* Results Hero */}
-        <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-6">
+        <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-6">
           <p className="text-[13px] text-muted mb-3" suppressHydrationWarning>
             {ht('codeHealth.results.eyebrow', 'Your Results')}
           </p>
@@ -306,7 +306,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
         </header>
 
         {/* Score Card */}
-        <section className="max-w-5xl mx-auto px-6 sm:px-10 pb-10">
+        <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-10">
           <div className={`rounded-3xl border ${tier.borderColor} ${tier.bgColor} p-8 sm:p-12 text-center`}>
             <div className={`text-[clamp(56px,8vw,96px)] font-semibold ${tier.color} leading-none`}>
               {totalScore}
@@ -322,7 +322,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
         </section>
 
         {/* Category Breakdown */}
-        <section className="max-w-5xl mx-auto px-6 sm:px-10 pb-10">
+        <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-10">
           <h2
             className="text-[clamp(20px,2vw,26px)] leading-[1.25] tracking-tight mb-6"
             suppressHydrationWarning
@@ -346,7 +346,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
         </section>
 
         {/* CTA */}
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
           <div className="rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12 text-center">
             <p className="text-[12px] font-semibold text-accent mb-3" suppressHydrationWarning>
               {ht('codeHealth.cta.eyebrow', 'Next step')}
@@ -392,7 +392,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-6">
+      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-6">
         <p className="text-[13px] text-muted mb-3" suppressHydrationWarning>
           {ht('codeHealth.eyebrow', 'Self-Assessment')}
         </p>
@@ -425,7 +425,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
       </header>
 
       {/* Progress Bar */}
-      <div className="max-w-5xl mx-auto px-6 sm:px-10 pb-2">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-2">
         <div className="flex items-center justify-between text-[12px] text-muted mb-2">
           <span suppressHydrationWarning>
             {ht('codeHealth.progress.question', 'Question')} {currentQuestion + 1} / {totalQuestions}

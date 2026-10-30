@@ -25,7 +25,7 @@ function TermsSection({ number, title, children }: TermsSectionProps): ReactElem
 
 export function TermsContent({ legalEmail }: TermsContentProps): ReactElement {
   return (
-    <section className="mt-12 space-y-10">
+    <section className="mt-12 max-w-3xl space-y-10">
       <TermsSection number={1} title="Who we are & scope">
         <p>
           Maxwell Software Solutions operates the Site to share information about our software quality audits, testing

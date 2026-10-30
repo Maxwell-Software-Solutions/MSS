@@ -416,7 +416,7 @@ terraform apply`}
           <strong>Next Steps:</strong> Audit your current deployment process. Identify the biggest manual bottleneck.
           Automate it this week. Then repeat. Small, incremental improvements compound into transformation.
         </Alert>
-        <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
+        <div className="mt-8 band p-8 sm:p-10 text-center">
           <h3 className="text-xl mb-3">Need Help Optimising Your CI/CD Pipeline?</h3>
           <p className="text-foreground/70 mb-5">
             Our{' '}

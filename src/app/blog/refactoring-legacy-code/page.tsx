@@ -204,7 +204,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <div className="bg-foreground/5 rounded-lg p-6">
+            <div className="bg-surface border border-border rounded-lg p-6">
               <h3 className="text-xl mb-4 text-accent">Types of Technical Debt</h3>
               <div className="space-y-3">
                 <div>
@@ -227,7 +227,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                 </div>
               </div>
             </div>
-            <div className="bg-foreground/5 rounded-lg p-6">
+            <div className="bg-surface border border-border rounded-lg p-6">
               <h3 className="text-xl mb-4 text-accent">Cost of Technical Debt</h3>
               <div className="space-y-3">
                 <div>
@@ -283,7 +283,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                 Instead of rewriting everything at once, gradually replace legacy components with new ones. This
                 approach minimizes risk and allows you to validate improvements incrementally.
               </p>
-              <div className="bg-foreground/5 rounded-lg p-4">
+              <div className="bg-surface border border-border rounded-lg p-4">
                 <h4 className="mb-2">Implementation Steps:</h4>
                 <ol className="list-decimal list-inside space-y-2 text-foreground/70 text-sm">
                   <li>Identify the most problematic legacy components</li>
@@ -303,24 +303,24 @@ export default function RefactoringLegacyCodePost(): ReactElement {
               </p>
               <div className="grid lg:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="mb-2 text-red-600">Before: Monolithic Function</h4>
-                  <div className="bg-foreground/10 rounded-lg p-4 font-mono text-sm">
-                    <div className="text-red-600">function processUserData(user) &#123;</div>
-                    <div className="text-red-600"> {/* 50+ lines of mixed logic */}</div>
-                    <div className="text-red-600"> {/* validation, processing, saving */}</div>
-                    <div className="text-red-600"> {/* error handling, logging */}</div>
-                    <div className="text-red-600">&#125;</div>
+                  <h4 className="mb-2 text-error">Before: Monolithic Function</h4>
+                  <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm">
+                    <div className="text-error">function processUserData(user) &#123;</div>
+                    <div className="text-error"> {/* 50+ lines of mixed logic */}</div>
+                    <div className="text-error"> {/* validation, processing, saving */}</div>
+                    <div className="text-error"> {/* error handling, logging */}</div>
+                    <div className="text-error">&#125;</div>
                   </div>
                 </div>
                 <div>
-                  <h4 className="mb-2 text-green-600">After: Extracted Methods</h4>
-                  <div className="bg-foreground/10 rounded-lg p-4 font-mono text-sm">
-                    <div className="text-green-600">function processUserData(user) &#123;</div>
-                    <div className="text-green-600"> validateUser(user);</div>
-                    <div className="text-green-600"> const processed = processUser(user);</div>
-                    <div className="text-green-600"> saveUser(processed);</div>
-                    <div className="text-green-600"> logUserActivity(user);</div>
-                    <div className="text-green-600">&#125;</div>
+                  <h4 className="mb-2 text-success">After: Extracted Methods</h4>
+                  <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm">
+                    <div className="text-success">function processUserData(user) &#123;</div>
+                    <div className="text-success"> validateUser(user);</div>
+                    <div className="text-success"> const processed = processUser(user);</div>
+                    <div className="text-success"> saveUser(processed);</div>
+                    <div className="text-success"> logUserActivity(user);</div>
+                    <div className="text-success">&#125;</div>
                   </div>
                 </div>
               </div>
@@ -332,7 +332,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                 Replace hardcoded dependencies with injectable interfaces. This makes your code more testable and
                 flexible.
               </p>
-              <div className="bg-foreground/5 rounded-lg p-4">
+              <div className="bg-surface border border-border rounded-lg p-4">
                 <h4 className="mb-2">Benefits:</h4>
                 <ul className="list-disc list-inside space-y-2 text-foreground/70 text-sm">
                   <li>Easier unit testing with mock objects</li>
@@ -432,21 +432,21 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             <div>
               <h3 className="text-xl mb-4">Code Analysis Tools</h3>
               <div className="space-y-3">
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h4 className="mb-2">SonarQube</h4>
                   <p className="text-foreground/70 text-sm">
                     Comprehensive code quality analysis with detailed reports on technical debt, code smells, and
                     security vulnerabilities.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h4 className="mb-2">CodeClimate</h4>
                   <p className="text-foreground/70 text-sm">
                     Automated code review with maintainability scores and detailed insights into code complexity and
                     duplication.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h4 className="mb-2">ESLint / TSLint</h4>
                   <p className="text-foreground/70 text-sm">
                     JavaScript/TypeScript linting tools that identify code quality issues and enforce coding standards.
@@ -458,19 +458,19 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             <div>
               <h3 className="text-xl mb-4">Refactoring Techniques</h3>
               <div className="space-y-3">
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h4 className="mb-2">Extract Method</h4>
                   <p className="text-foreground/70 text-sm">
                     Break large functions into smaller, focused methods that each do one thing well.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h4 className="mb-2">Extract Class</h4>
                   <p className="text-foreground/70 text-sm">
                     Move related functionality into dedicated classes with clear responsibilities.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h4 className="mb-2">Replace Magic Numbers</h4>
                   <p className="text-foreground/70 text-sm">
                     Replace hardcoded values with named constants that clearly express their purpose.
@@ -618,16 +618,16 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                     <div className="text-sm text-foreground/90">Page Load Time</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-semibold text-green-600">↓ 95%</div>
-                    <div className="text-sm text-green-700">Production Outages</div>
+                    <div className="text-2xl font-semibold text-success">↓ 95%</div>
+                    <div className="text-sm text-success">Production Outages</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-semibold text-green-600">↑ 300%</div>
-                    <div className="text-sm text-green-700">Feature Delivery Speed</div>
+                    <div className="text-2xl font-semibold text-success">↑ 300%</div>
+                    <div className="text-sm text-success">Feature Delivery Speed</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-semibold text-green-600">$2M</div>
-                    <div className="text-sm text-green-700">Annual Cost Savings</div>
+                    <div className="text-2xl font-semibold text-success">$2M</div>
+                    <div className="text-sm text-success">Annual Cost Savings</div>
                   </div>
                 </div>
               </Alert>
@@ -659,7 +659,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </section>
 
         {/* Call to Action */}
-        <section className="bg-accent/10 rounded-2xl p-8 text-center">
+        <section className="band p-8 sm:p-10 text-center">
           <h2 className="text-2xl mb-4">Ready to Transform Your Legacy Codebase?</h2>
           <p className="text-foreground/70 mb-6">
             At Maxwell Software Solutions, we specialize in helping teams modernize legacy systems and build

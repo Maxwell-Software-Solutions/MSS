@@ -147,13 +147,13 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                   The Single Responsibility Principle states that a class should have only one reason to change. In
                   other words, a class should have only one responsibility or job.
                 </p>
-                <div className="bg-foreground/5 rounded-lg p-4 mb-4">
+                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
                   <p className="text-foreground/75 text-sm">
                     A class that handles user authentication, sends emails, and manages database connections.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="mb-2">✅ Good Example:</h3>
                   <p className="text-foreground/75 text-sm">
                     Separate classes for UserAuthentication, EmailService, and DatabaseConnection.
@@ -188,11 +188,11 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                   Software entities (classes, modules, functions) should be open for extension but closed for
                   modification. This means you should be able to add new functionality without changing existing code.
                 </p>
-                <div className="bg-foreground/5 rounded-lg p-4 mb-4">
+                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
                   <p className="text-foreground/75 text-sm">Modifying existing classes to add new payment methods.</p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="mb-2">✅ Good Example:</h3>
                   <p className="text-foreground/75 text-sm">
                     Creating new payment method classes that implement a common interface.
@@ -211,13 +211,13 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                   Derived classes must be substitutable for their base classes without affecting the correctness of the
                   program. This ensures that inheritance is used correctly.
                 </p>
-                <div className="bg-foreground/5 rounded-lg p-4 mb-4">
+                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
                   <p className="text-foreground/75 text-sm">
                     A Square class that inherits from Rectangle but changes the behavior of width/height setters.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="mb-2">✅ Good Example:</h3>
                   <p className="text-foreground/75 text-sm">
                     Ensuring that derived classes maintain the contract of their base classes.
@@ -252,13 +252,13 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                   Clients should not be forced to depend on interfaces they don&apos;t use. It&apos;s better to have
                   many specific interfaces than one general-purpose interface.
                 </p>
-                <div className="bg-foreground/5 rounded-lg p-4 mb-4">
+                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
                   <p className="text-foreground/75 text-sm">
                     A large interface with methods for printing, scanning, and faxing that not all clients need.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="mb-2">✅ Good Example:</h3>
                   <p className="text-foreground/75 text-sm">
                     Separate interfaces: IPrinter, IScanner, IFax, allowing clients to implement only what they need.
@@ -277,13 +277,13 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                   High-level modules should not depend on low-level modules. Both should depend on abstractions.
                   Abstractions should not depend on details. Details should depend on abstractions.
                 </p>
-                <div className="bg-foreground/5 rounded-lg p-4 mb-4">
+                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
                   <p className="text-foreground/75 text-sm">
                     A business logic class directly instantiating a specific database implementation.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="mb-2">✅ Good Example:</h3>
                   <p className="text-foreground/75 text-sm">
                     Business logic depending on a database interface, with implementations injected via dependency
@@ -358,7 +358,7 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         </section>
 
         {/* Call to Action */}
-        <section className="bg-accent/10 rounded-2xl p-8 text-center">
+        <section className="band p-8 sm:p-10 text-center">
           <h2 className="text-2xl mb-4">Ready to Improve Your Code Quality?</h2>
           <p className="text-foreground/70 mb-6">
             At Maxwell Software Solutions, we specialize in helping teams write cleaner, more maintainable code. Our{' '}

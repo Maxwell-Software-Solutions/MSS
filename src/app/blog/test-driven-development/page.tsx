@@ -108,14 +108,14 @@ export default function TDDPost(): ReactElement {
             <div>
               <h3 className="text-xl mb-4 text-accent">Cost Reduction</h3>
               <div className="space-y-4">
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="mb-2">Bug Prevention</h3>
                   <p className="text-foreground/70 text-sm">
                     Catching bugs during development costs 10x less than fixing them in production. TDD prevents most
                     bugs from ever reaching your users.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="mb-2">Maintenance Savings</h3>
                   <p className="text-foreground/70 text-sm">
                     Well-tested code is easier to modify and extend, reducing the cost of future development and
@@ -127,14 +127,14 @@ export default function TDDPost(): ReactElement {
             <div>
               <h3 className="text-xl mb-4 text-accent">Revenue Protection</h3>
               <div className="space-y-4">
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="mb-2">Customer Satisfaction</h3>
                   <p className="text-foreground/70 text-sm">
                     Reliable software builds trust and reduces customer churn. Happy customers are more likely to renew
                     and recommend your product.
                   </p>
                 </div>
-                <div className="bg-foreground/5 rounded-lg p-4">
+                <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="mb-2">Faster Time-to-Market</h3>
                   <p className="text-foreground/70 text-sm">
                     TDD reduces debugging time, allowing teams to deliver features faster and capture market
@@ -151,7 +151,7 @@ export default function TDDPost(): ReactElement {
           <h2 className="text-3xl mb-8">How TDD Works: The Red-Green-Refactor Cycle</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-error-fill rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-semibold text-xl">1</span>
               </div>
               <h3 className="text-lg mb-2">Red</h3>
@@ -161,7 +161,7 @@ export default function TDDPost(): ReactElement {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-success-fill rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-semibold text-xl">2</span>
               </div>
               <h3 className="text-lg mb-2">Green</h3>
@@ -170,7 +170,7 @@ export default function TDDPost(): ReactElement {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-accent-fill rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-semibold text-xl">3</span>
               </div>
               <h3 className="text-lg mb-2">Refactor</h3>
@@ -196,26 +196,26 @@ export default function TDDPost(): ReactElement {
             <div className="grid lg:grid-cols-2 gap-8">
               <div>
                 <h3 className="mb-2 text-accent">Test First</h3>
-                <div className="bg-foreground/10 rounded-lg p-4 font-mono text-sm">
-                  <div className="text-blue-600">describe</div>
-                  <div className="text-blue-600"> &apos;PaymentProcessor&apos;</div>
-                  <div className="text-blue-600"> it &apos;should process credit card payment&apos;</div>
-                  <div className="text-blue-600"> expect(processor.process(creditCard)).</div>
-                  <div className="text-blue-600"> toBe(&apos;success&apos;)</div>
-                  <div className="text-blue-600"> end</div>
-                  <div className="text-blue-600">end</div>
+                <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm">
+                  <div className="text-accent">describe</div>
+                  <div className="text-accent"> &apos;PaymentProcessor&apos;</div>
+                  <div className="text-accent"> it &apos;should process credit card payment&apos;</div>
+                  <div className="text-accent"> expect(processor.process(creditCard)).</div>
+                  <div className="text-accent"> toBe(&apos;success&apos;)</div>
+                  <div className="text-accent"> end</div>
+                  <div className="text-accent">end</div>
                 </div>
               </div>
               <div>
                 <h3 className="mb-2 text-accent">Implementation</h3>
-                <div className="bg-foreground/10 rounded-lg p-4 font-mono text-sm">
-                  <div className="text-green-600">class PaymentProcessor</div>
-                  <div className="text-green-600"> def process(payment)</div>
-                  <div className="text-green-600"> return &apos;success&apos; if</div>
-                  <div className="text-green-600"> payment.valid?</div>
-                  <div className="text-green-600"> end</div>
-                  <div className="text-green-600"> end</div>
-                  <div className="text-green-600">end</div>
+                <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm">
+                  <div className="text-success">class PaymentProcessor</div>
+                  <div className="text-success"> def process(payment)</div>
+                  <div className="text-success"> return &apos;success&apos; if</div>
+                  <div className="text-success"> payment.valid?</div>
+                  <div className="text-success"> end</div>
+                  <div className="text-success"> end</div>
+                  <div className="text-success">end</div>
                 </div>
               </div>
             </div>
@@ -249,7 +249,7 @@ export default function TDDPost(): ReactElement {
             <h3 className="text-xl mb-6">Investment vs. Return</h3>
             <div className="grid lg:grid-cols-2 gap-8">
               <div>
-                <h3 className="mb-4 text-red-600">Initial Investment</h3>
+                <h3 className="mb-4 text-error">Initial Investment</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span>Developer Training (2 weeks)</span>
@@ -361,7 +361,7 @@ export default function TDDPost(): ReactElement {
         </section>
 
         {/* Call to Action */}
-        <section className="bg-accent/10 rounded-2xl p-8 text-center">
+        <section className="band p-8 sm:p-10 text-center">
           <h2 className="text-2xl mb-4">Ready to Transform Your Development Process?</h2>
           <p className="text-foreground/70 mb-6">
             At Maxwell Software Solutions, we&apos;ve helped dozens of teams implement TDD and achieve measurable

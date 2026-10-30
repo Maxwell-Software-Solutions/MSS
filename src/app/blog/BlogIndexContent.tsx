@@ -130,7 +130,7 @@ export default function BlogIndexContent(): ReactElement {
             {t('blog.title').split(' ').at(-1)}
           </span>
         </h1>
-        <p className="mt-6 text-lg text-foreground/70 max-w-2xl">{t('blog.subtitle')}</p>
+        <p className="lead mt-6 max-w-2xl">{t('blog.subtitle')}</p>
       </motion.header>
 
       <div className="space-y-8">
@@ -144,18 +144,18 @@ export default function BlogIndexContent(): ReactElement {
             className="group"
           >
             <Link href={post.href} className="block">
-              <div className="card rounded-2xl border border-border bg-foreground/5 overflow-hidden transition-all duration-300">
+              <div className="card overflow-hidden transition-colors group-hover:border-border-strong">
                 <div className="flex flex-col lg:flex-row gap-0">
-                  <div className="relative h-56 lg:h-auto lg:w-72 lg:flex-shrink-0 overflow-hidden bg-foreground/5">
+                  <div className="relative h-56 lg:h-auto lg:w-72 lg:flex-shrink-0 overflow-hidden border-b border-border bg-wash lg:border-b-0 lg:border-r">
                     <Image
                       src={post.imageSrc}
                       alt={post.imageAlt}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                     />
                   </div>
                   <div className="p-6 sm:p-8 flex flex-col justify-center">
-                    <div className="flex items-center gap-2 text-sm text-foreground/60 mb-3">
+                    <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-muted">
                       <time dateTime={post.dateTime}>{t(post.dateKey)}</time>
                       <span>•</span>
                       <span>
@@ -167,7 +167,7 @@ export default function BlogIndexContent(): ReactElement {
                     <h2 className="text-xl sm:text-2xl mb-3 group-hover:text-accent transition-colors">
                       {t(post.titleKey)}
                     </h2>
-                    <p className="text-foreground/70 mb-4 leading-relaxed text-[15px]">{t(post.excerptKey)}</p>
+                    <p className="mb-4 text-[0.9375rem] leading-relaxed text-secondary">{t(post.excerptKey)}</p>
                     <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all">
                       {t('blog.readMore')}
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
