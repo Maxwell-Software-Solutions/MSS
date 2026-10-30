@@ -32,18 +32,12 @@ export default function ContactForm(): ReactNode {
       ref={rootRef}
       role="region"
       aria-label="Contact form"
-      className="relative isolate min-h-[70vh] overflow-hidden py-16 sm:py-20"
+      className="relative isolate min-h-[70vh] py-14 sm:py-20"
     >
-      {/* Dramatic radial purple glow backdrop */}
-      <div aria-hidden={true} className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-[700px] w-[700px] max-w-[100vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(109,40,217,0.25)_0%,rgba(129,140,248,0.08)_40%,transparent_70%)]" />
-        <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.12)_0%,transparent_65%)]" />
-      </div>
-
-      <div className="mx-auto max-w-5xl px-6 sm:px-10">
+      <div className="mx-auto max-w-6xl px-6 sm:px-10">
         <ContactHero />
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)]">
+        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-start lg:gap-8">
           <ContactFormCard status={status} error={error} onSubmit={handleSubmit} />
           <ContactDetailsCard />
         </div>

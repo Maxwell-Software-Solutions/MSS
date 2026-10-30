@@ -16,7 +16,7 @@ export function FeatureCard({ icon, title, description, className = '' }: Featur
     <div className={`flex flex-col p-6 sm:p-7 ${className}`.trim()}>
       {icon && (
         <div
-          className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-wash text-lg grayscale"
+          className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-wash text-lg grayscale brightness-[0.6] contrast-125 dark:brightness-100 dark:contrast-100"
           aria-hidden="true"
         >
           {icon}

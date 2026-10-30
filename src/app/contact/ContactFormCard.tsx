@@ -21,36 +21,36 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
       <form onSubmit={onSubmit}>
         <div className="space-y-5">
           <label className="block">
-            <span className="text-sm font-semibold text-foreground/90">{t('contactForm.name.label')}</span>
+            <span className="text-sm font-medium text-foreground">{t('contactForm.name.label')}</span>
             <input
               name="name"
               placeholder={t('contactForm.name.placeholder')}
               required
               autoComplete="name"
-              className="field mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
+              className="field mt-2 block w-full text-base text-foreground"
             />
           </label>
 
           <label className="block">
-            <span className="text-sm font-semibold text-foreground/90">{t('contactForm.email.label')}</span>
+            <span className="text-sm font-medium text-foreground">{t('contactForm.email.label')}</span>
             <input
               name="email"
               type="email"
               placeholder={t('contactForm.email.placeholder')}
               required
               autoComplete="email"
-              className="field mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
+              className="field mt-2 block w-full text-base text-foreground"
             />
           </label>
 
           <label className="block">
-            <span className="text-sm font-semibold text-foreground/90">{t('contactForm.message.label')}</span>
+            <span className="text-sm font-medium text-foreground">{t('contactForm.message.label')}</span>
             <textarea
               name="message"
               placeholder={t('contactForm.message.placeholder')}
               required
               rows={5}
-              className="field mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
+              className="field mt-2 block w-full text-base text-foreground"
             />
           </label>
 
@@ -77,7 +77,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
             {t('contactForm.submit')}
           </ButtonPrimary>
 
-          <p className="text-xs text-foreground/75">{t('contactForm.privacy')}</p>
+          <p className="text-sm text-muted">{t('contactForm.privacy')}</p>
         </div>
 
         <div aria-live="polite" aria-atomic="true">

@@ -71,7 +71,7 @@ export default function SiteFooter(): ReactElement {
             </p>
 
             <dl className="mt-8 grid gap-5 sm:grid-cols-2">
-              <div>
+              <div className="sm:col-span-2">
                 <dt className="text-muted">Email</dt>
                 <dd className="mt-1">
                   <a className="break-words font-medium text-foreground hover:text-accent" href={CONTACT_EMAIL_MAILTO}>
@@ -87,7 +87,7 @@ export default function SiteFooter(): ReactElement {
                   </a>
                 </dd>
               </div>
-              <div className="sm:col-span-2">
+              <div>
                 <dt className="text-muted">Hours</dt>
                 <dd className="mt-1 text-foreground">Monday – Friday, 8am – 6pm CT</dd>
               </div>

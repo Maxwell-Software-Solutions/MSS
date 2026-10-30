@@ -5,21 +5,18 @@ import { NeuroCard } from '@/app/components/ui';
 
 export default function ContactDetailsCard(): ReactElement {
   return (
-    <NeuroCard as="aside" className="relative overflow-hidden">
-      <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--accent)_0%,rgba(139,107,0,0.35)_100%)]" />
-      <h2 className="text-lg text-foreground">Prefer a direct line?</h2>
-      <p className="mt-3 text-sm leading-relaxed text-foreground/70">
+    <NeuroCard as="aside">
+      <h2 className="text-xl">Prefer a direct line?</h2>
+      <p className="mt-3 text-[0.9375rem] leading-relaxed text-secondary">
         Our team monitors messages around the clock. Drop us a note with your preferred contact method and the right
         specialist will be in touch.
       </p>
 
-      <div className="mt-8 space-y-6 text-sm">
+      <div className="mt-8 space-y-6 border-t border-border pt-6 text-sm">
         <div>
-          <span className="text-xs font-semibold text-[color:var(--accent)]">
-            Phone
-          </span>
+          <span className="text-sm text-muted">Phone</span>
           <a
-            className="mt-2 block text-base font-medium text-foreground transition hover:text-[color:var(--accent)]"
+            className="mt-1 block text-base font-medium text-foreground transition hover:text-accent"
             href={CONTACT_PHONE_TEL}
           >
             {CONTACT_PHONE}
@@ -27,11 +24,9 @@ export default function ContactDetailsCard(): ReactElement {
         </div>
 
         <div>
-          <span className="text-xs font-semibold text-[color:var(--accent)]">
-            Email
-          </span>
+          <span className="text-sm text-muted">Email</span>
           <a
-            className="mt-2 block break-words text-sm font-medium text-foreground transition hover:text-[color:var(--accent)] sm:text-base"
+            className="mt-1 block break-words text-base font-medium text-foreground transition hover:text-accent"
             href={CONTACT_EMAIL_MAILTO}
           >
             {CONTACT_EMAIL}
@@ -39,10 +34,8 @@ export default function ContactDetailsCard(): ReactElement {
         </div>
 
         <div>
-          <span className="text-xs font-semibold text-[color:var(--accent)]">
-            Hours
-          </span>
-          <p className="mt-2 text-base text-foreground/70">Monday – Friday, 8am – 6pm CT</p>
+          <span className="text-sm text-muted">Hours</span>
+          <p className="mt-1 text-base text-foreground">Monday – Friday, 8am – 6pm CT</p>
         </div>
       </div>
     </NeuroCard>
