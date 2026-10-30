@@ -8,7 +8,7 @@ const ParticleField = dynamic(() => import('./ParticleField'), {
   loading: () => (
     <div
       data-testid="particle-field"
-      className="relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-xl border border-border bg-surface lg:h-[460px]"
+      className="relative flex h-[420px] w-full items-center justify-center overflow-hidden rounded-xl border border-border bg-surface bg-[radial-gradient(var(--color-border)_1px,transparent_1px)] bg-[size:24px_24px] lg:h-[460px]"
     >
       <span className="text-sm text-muted">Loading field…</span>
     </div>
@@ -23,7 +23,7 @@ export default function HeroFieldWrapper(): ReactElement {
         fallback={
           <div
             data-testid="particle-field"
-            className="h-[420px] rounded-xl border border-border bg-wash lg:h-[460px]"
+            className="h-[420px] rounded-xl border border-border bg-surface bg-[radial-gradient(var(--color-border)_1px,transparent_1px)] bg-[size:24px_24px] lg:h-[460px]"
             aria-hidden="true"
           />
         }

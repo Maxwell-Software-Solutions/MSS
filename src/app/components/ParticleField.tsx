@@ -636,7 +636,7 @@ export default function ParticleField(): ReactElement {
   return (
     <div
       data-testid="particle-field"
-      className="relative h-[420px] w-full overflow-hidden rounded-xl border border-border bg-surface lg:h-[460px]"
+      className="relative h-[420px] w-full overflow-hidden rounded-xl border border-border bg-surface bg-[radial-gradient(var(--color-border)_1px,transparent_1px)] bg-[size:24px_24px] lg:h-[460px]"
     >
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
     </div>
