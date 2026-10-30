@@ -55,7 +55,7 @@ export default function TwoWeekSprintPost(): ReactElement {
         <p>The categories of work that fit well in a focused 2-week sprint:</p>
         <div className="space-y-4 my-6">
           <div className="bg-muted/50 p-5 rounded-xl">
-            <h4 className="font-semibold mb-2">Authentication and onboarding flows</h4>
+            <h4 className="mb-2">Authentication and onboarding flows</h4>
             <p className="text-sm text-foreground/75">
               Registration, login, password reset, email verification, OAuth integrations. These are well-understood
               patterns with clear acceptance criteria. A senior engineer can implement them cleanly and thoroughly
@@ -63,7 +63,7 @@ export default function TwoWeekSprintPost(): ReactElement {
             </p>
           </div>
           <div className="bg-muted/50 p-5 rounded-xl">
-            <h4 className="font-semibold mb-2">CRUD dashboards and admin interfaces</h4>
+            <h4 className="mb-2">CRUD dashboards and admin interfaces</h4>
             <p className="text-sm text-foreground/75">
               Internal tools, content management screens, reporting dashboards with filtering and export. The scope
               is easy to define (here are the entities, here are the operations) and the delivery is concrete
@@ -71,14 +71,14 @@ export default function TwoWeekSprintPost(): ReactElement {
             </p>
           </div>
           <div className="bg-muted/50 p-5 rounded-xl">
-            <h4 className="font-semibold mb-2">Third-party integrations</h4>
+            <h4 className="mb-2">Third-party integrations</h4>
             <p className="text-sm text-foreground/75">
               Stripe payments, Twilio notifications, HubSpot sync, Slack bots, webhook receivers, OpenAI wrappers.
               Integrations have clear contracts (the API docs) and clear done criteria (data flows end to end).
             </p>
           </div>
           <div className="bg-muted/50 p-5 rounded-xl">
-            <h4 className="font-semibold mb-2">Specific refactors and module rewrites</h4>
+            <h4 className="mb-2">Specific refactors and module rewrites</h4>
             <p className="text-sm text-foreground/75">
               &ldquo;Rewrite the billing module so it handles multiple currencies&rdquo; or &ldquo;break the monolith
               authentication logic into a separate service&rdquo; — when the scope is a specific module and the
@@ -86,7 +86,7 @@ export default function TwoWeekSprintPost(): ReactElement {
             </p>
           </div>
           <div className="bg-muted/50 p-5 rounded-xl">
-            <h4 className="font-semibold mb-2">Adding test coverage to a critical path</h4>
+            <h4 className="mb-2">Adding test coverage to a critical path</h4>
             <p className="text-sm text-foreground/75">
               &ldquo;Our checkout flow has no automated tests and we are afraid to touch it.&rdquo; A two-week sprint
               to instrument a specific high-risk area with meaningful test coverage — integration tests, not just unit
@@ -94,7 +94,7 @@ export default function TwoWeekSprintPost(): ReactElement {
             </p>
           </div>
           <div className="bg-muted/50 p-5 rounded-xl">
-            <h4 className="font-semibold mb-2">Data pipelines and ETL jobs</h4>
+            <h4 className="mb-2">Data pipelines and ETL jobs</h4>
             <p className="text-sm text-foreground/75">
               Moving data between systems, normalising datasets, building scheduled reports. Bounded, logic-heavy,
               and testable. Good fit.
@@ -233,7 +233,7 @@ export default function TwoWeekSprintPost(): ReactElement {
           what done looks like. If you can do that, a sprint can probably deliver it.
         </p>
         <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
-          <h3 className="text-xl font-bold mb-3">Ready to start a sprint?</h3>
+          <h3 className="text-xl mb-3">Ready to start a sprint?</h3>
           <p className="text-foreground/70 mb-5 max-w-md mx-auto">
             Book a 30-minute discovery call. We will confirm fit, agree scope, and start the following Monday.
             Fixed price: €4,800.

@@ -49,7 +49,7 @@ export default function CICDPost(): ReactElement {
         <p>Understanding the core concepts:</p>
         <div className="space-y-4 my-6">
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">Continuous Integration (CI)</h4>
+            <h4 className="mb-2">Continuous Integration (CI)</h4>
             <p className="text-sm">
               Developers integrate code into a shared repository multiple times per day. Each integration triggers
               automated builds and tests to detect problems early.
@@ -62,14 +62,14 @@ export default function CICDPost(): ReactElement {
             </ul>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">Continuous Delivery (CD)</h4>
+            <h4 className="mb-2">Continuous Delivery (CD)</h4>
             <p className="text-sm">
               Every code change that passes automated tests is automatically prepared for release to production. Manual
               approval gate before production deployment.
             </p>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">Continuous Deployment</h4>
+            <h4 className="mb-2">Continuous Deployment</h4>
             <p className="text-sm">
               Takes CD one step further—every change that passes all stages automatically deploys to production without
               human intervention.
@@ -182,7 +182,7 @@ export default function CICDPost(): ReactElement {
         <p>Choose the right deployment strategy for your risk tolerance:</p>
         <div className="space-y-4 my-6">
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">1. Blue-Green Deployment</h4>
+            <h4 className="mb-2">1. Blue-Green Deployment</h4>
             <p className="text-sm mb-2">
               Maintain two identical production environments. Deploy to inactive environment, test, then switch traffic
               instantly.
@@ -195,7 +195,7 @@ export default function CICDPost(): ReactElement {
             </p>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">2. Canary Deployment</h4>
+            <h4 className="mb-2">2. Canary Deployment</h4>
             <p className="text-sm mb-2">
               Route small percentage of traffic to new version. Gradually increase if metrics look good.
             </p>
@@ -207,7 +207,7 @@ export default function CICDPost(): ReactElement {
             </p>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">3. Rolling Deployment</h4>
+            <h4 className="mb-2">3. Rolling Deployment</h4>
             <p className="text-sm mb-2">
               Update instances one at a time or in small batches. Common in Kubernetes environments.
             </p>
@@ -218,7 +218,7 @@ export default function CICDPost(): ReactElement {
             </p>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">4. Feature Flags</h4>
+            <h4 className="mb-2">4. Feature Flags</h4>
             <p className="text-sm mb-2">Deploy code to production but keep features disabled until ready to release.</p>
             <p className="text-sm">
               ✅ Decouple deployment from release
@@ -315,28 +315,28 @@ terraform apply`}
         <p>CI/CD doesn&apos;t end at deployment. Monitor what you deploy:</p>
         <div className="space-y-4 my-6">
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">Metrics</h4>
+            <h4 className="mb-2">Metrics</h4>
             <p className="text-sm">
               Track deployment frequency, lead time, MTTR (Mean Time To Recovery), change failure rate. Use
               Prometheus, CloudWatch, Datadog.
             </p>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">Logging</h4>
+            <h4 className="mb-2">Logging</h4>
             <p className="text-sm">
               Centralized logging with ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, or CloudWatch Logs.
               Structured logging for easier parsing.
             </p>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">Tracing</h4>
+            <h4 className="mb-2">Tracing</h4>
             <p className="text-sm">
               Distributed tracing for microservices with Jaeger, Zipkin, or AWS X-Ray. Understand request flows across
               services.
             </p>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">Alerting</h4>
+            <h4 className="mb-2">Alerting</h4>
             <p className="text-sm">
               PagerDuty, Opsgenie for on-call rotations. Alert on actionable issues, not noise. Define SLOs (Service
               Level Objectives) and SLIs (Service Level Indicators).
@@ -417,7 +417,7 @@ terraform apply`}
           Automate it this week. Then repeat. Small, incremental improvements compound into transformation.
         </Alert>
         <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
-          <h3 className="text-xl font-bold mb-3">Need Help Optimising Your CI/CD Pipeline?</h3>
+          <h3 className="text-xl mb-3">Need Help Optimising Your CI/CD Pipeline?</h3>
           <p className="text-foreground/70 mb-5">
             Our{' '}
             <a href="/services" className="text-accent underline hover:no-underline font-medium">

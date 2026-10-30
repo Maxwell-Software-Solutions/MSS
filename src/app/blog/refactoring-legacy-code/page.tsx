@@ -50,7 +50,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
               ← Back to Insights
             </Link>
           </nav>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+          <h1 className="text-4xl sm:text-5xl mb-6">
             Refactoring Legacy Code: Complete Guide to Modernizing Your Software Architecture
           </h1>
           <div className="flex items-center gap-4 text-foreground/75">
@@ -75,7 +75,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Table of Contents */}
         <section className="mb-12 bg-foreground/5 rounded-2xl p-6">
-          <h2 className="text-2xl font-bold mb-4">Table of Contents</h2>
+          <h2 className="text-2xl mb-4">Table of Contents</h2>
           <div className="grid md:grid-cols-2 gap-4">
             <ul className="space-y-2 text-foreground/70">
               <li>
@@ -126,7 +126,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Introduction */}
         <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-6">What is Legacy Code and Why Should You Care?</h2>
+          <h2 className="text-3xl mb-6">What is Legacy Code and Why Should You Care?</h2>
           <p className="text-xl text-foreground/80 leading-relaxed mb-6">
             Legacy code is the technical debt that accumulates over time in software systems. It&apos;s the code that
             works but is difficult to understand, modify, or extend. While it may seem harmless to leave old code as-is,
@@ -143,10 +143,10 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* What is Legacy Code */}
         <section id="what-is-legacy-code" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">What is Legacy Code?</h2>
+          <h2 className="text-3xl mb-8">What is Legacy Code?</h2>
           <div className="grid lg:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">Characteristics of Legacy Code</h3>
+              <h3 className="text-xl mb-4">Characteristics of Legacy Code</h3>
               <ul className="space-y-3 text-foreground/70">
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
@@ -171,7 +171,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-4">Signs You Have Legacy Code</h3>
+              <h3 className="text-xl mb-4">Signs You Have Legacy Code</h3>
               <div className="space-y-4">
                 <Alert variant="info" icon="🚨" title="Red Flags">
                   <ul className="space-y-1">
@@ -196,7 +196,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Technical Debt */}
         <section id="technical-debt" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Understanding Technical Debt: The Hidden Cost of Legacy Code</h2>
+          <h2 className="text-3xl mb-8">Understanding Technical Debt: The Hidden Cost of Legacy Code</h2>
           <p className="text-lg text-foreground/70 mb-6">
             Technical debt is like financial debt—it accumulates interest over time. Every shortcut taken, every hack
             implemented, and every outdated pattern left in place makes future development more expensive and
@@ -205,22 +205,22 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <div className="bg-foreground/5 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4 text-accent">Types of Technical Debt</h3>
+              <h3 className="text-xl mb-4 text-accent">Types of Technical Debt</h3>
               <div className="space-y-3">
                 <div>
-                  <h4 className="font-semibold mb-2">Deliberate Debt</h4>
+                  <h4 className="mb-2">Deliberate Debt</h4>
                   <p className="text-foreground/70 text-sm">
                     Conscious decisions to take shortcuts for speed, often with plans to pay it back later.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Accidental Debt</h4>
+                  <h4 className="mb-2">Accidental Debt</h4>
                   <p className="text-foreground/70 text-sm">
                     Unintended consequences of poor design decisions or lack of knowledge.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Bit Rot</h4>
+                  <h4 className="mb-2">Bit Rot</h4>
                   <p className="text-foreground/70 text-sm">
                     Code that becomes outdated due to changing requirements or technology evolution.
                   </p>
@@ -228,22 +228,22 @@ export default function RefactoringLegacyCodePost(): ReactElement {
               </div>
             </div>
             <div className="bg-foreground/5 rounded-lg p-6">
-              <h3 className="text-xl font-semibold mb-4 text-accent">Cost of Technical Debt</h3>
+              <h3 className="text-xl mb-4 text-accent">Cost of Technical Debt</h3>
               <div className="space-y-3">
                 <div>
-                  <h4 className="font-semibold mb-2">Development Speed</h4>
+                  <h4 className="mb-2">Development Speed</h4>
                   <p className="text-foreground/70 text-sm">
                     Features take 2-10x longer to implement in legacy systems.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Bug Frequency</h4>
+                  <h4 className="mb-2">Bug Frequency</h4>
                   <p className="text-foreground/70 text-sm">
                     Production issues increase by 40-80% in high-debt codebases.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2">Team Morale</h4>
+                  <h4 className="mb-2">Team Morale</h4>
                   <p className="text-foreground/70 text-sm">
                     Developers become frustrated and less productive over time.
                   </p>
@@ -253,19 +253,19 @@ export default function RefactoringLegacyCodePost(): ReactElement {
           </div>
 
           <div className="bg-accent/10 rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-4">Technical Debt Calculator</h3>
+            <h3 className="text-xl mb-4">Technical Debt Calculator</h3>
             <p className="text-foreground/70 mb-4">Calculate the real cost of your technical debt:</p>
             <div className="grid md:grid-cols-3 gap-4 text-center">
               <div>
-                <div className="text-2xl font-bold text-accent">$50K - $500K</div>
+                <div className="text-2xl font-semibold text-accent">$50K - $500K</div>
                 <div className="text-sm text-foreground/70">Annual Cost for Medium Codebases</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-accent">2-5x</div>
+                <div className="text-2xl font-semibold text-accent">2-5x</div>
                 <div className="text-sm text-foreground/70">Slower Development Speed</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-accent">30-60%</div>
+                <div className="text-2xl font-semibold text-accent">30-60%</div>
                 <div className="text-sm text-foreground/70">Higher Bug Rate</div>
               </div>
             </div>
@@ -274,17 +274,17 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Refactoring Strategies (dynamically loaded below for code splitting) */}
         <section id="refactoring-strategies" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Proven Refactoring Strategies for Legacy Code</h2>
+          <h2 className="text-3xl mb-8">Proven Refactoring Strategies for Legacy Code</h2>
 
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-semibold mb-4">1. Strangler Fig Pattern</h3>
+              <h3 className="text-2xl mb-4">1. Strangler Fig Pattern</h3>
               <p className="text-lg text-foreground/70 mb-4">
                 Instead of rewriting everything at once, gradually replace legacy components with new ones. This
                 approach minimizes risk and allows you to validate improvements incrementally.
               </p>
               <div className="bg-foreground/5 rounded-lg p-4">
-                <h4 className="font-semibold mb-2">Implementation Steps:</h4>
+                <h4 className="mb-2">Implementation Steps:</h4>
                 <ol className="list-decimal list-inside space-y-2 text-foreground/70 text-sm">
                   <li>Identify the most problematic legacy components</li>
                   <li>Create new implementations alongside old ones</li>
@@ -296,14 +296,14 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             </div>
 
             <div>
-              <h3 className="text-2xl font-semibold mb-4">2. Extract Method Refactoring</h3>
+              <h3 className="text-2xl mb-4">2. Extract Method Refactoring</h3>
               <p className="text-lg text-foreground/70 mb-4">
                 Break down large, complex functions into smaller, more manageable pieces. This improves readability,
                 testability, and maintainability.
               </p>
               <div className="grid lg:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-semibold mb-2 text-red-600">Before: Monolithic Function</h4>
+                  <h4 className="mb-2 text-red-600">Before: Monolithic Function</h4>
                   <div className="bg-foreground/10 rounded-lg p-4 font-mono text-sm">
                     <div className="text-red-600">function processUserData(user) &#123;</div>
                     <div className="text-red-600"> {/* 50+ lines of mixed logic */}</div>
@@ -313,7 +313,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-2 text-green-600">After: Extracted Methods</h4>
+                  <h4 className="mb-2 text-green-600">After: Extracted Methods</h4>
                   <div className="bg-foreground/10 rounded-lg p-4 font-mono text-sm">
                     <div className="text-green-600">function processUserData(user) &#123;</div>
                     <div className="text-green-600"> validateUser(user);</div>
@@ -327,13 +327,13 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             </div>
 
             <div>
-              <h3 className="text-2xl font-semibold mb-4">3. Dependency Injection</h3>
+              <h3 className="text-2xl mb-4">3. Dependency Injection</h3>
               <p className="text-lg text-foreground/70 mb-4">
                 Replace hardcoded dependencies with injectable interfaces. This makes your code more testable and
                 flexible.
               </p>
               <div className="bg-foreground/5 rounded-lg p-4">
-                <h4 className="font-semibold mb-2">Benefits:</h4>
+                <h4 className="mb-2">Benefits:</h4>
                 <ul className="list-disc list-inside space-y-2 text-foreground/70 text-sm">
                   <li>Easier unit testing with mock objects</li>
                   <li>Flexible configuration for different environments</li>
@@ -347,15 +347,15 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Step-by-Step Process (dynamic) */}
         <section id="step-by-step-process" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Step-by-Step Refactoring Process</h2>
+          <h2 className="text-3xl mb-8">Step-by-Step Refactoring Process</h2>
 
           <div className="space-y-6">
             <div className="flex items-start gap-4">
               <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-sm">1</span>
+                <span className="text-white font-semibold text-sm">1</span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Assessment and Planning</h3>
+                <h3 className="text-xl mb-2">Assessment and Planning</h3>
                 <p className="text-foreground/70 mb-3">
                   Before starting any refactoring work, thoroughly assess your codebase and create a comprehensive plan.
                 </p>
@@ -370,10 +370,10 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
             <div className="flex items-start gap-4">
               <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-sm">2</span>
+                <span className="text-white font-semibold text-sm">2</span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Establish Safety Nets</h3>
+                <h3 className="text-xl mb-2">Establish Safety Nets</h3>
                 <p className="text-foreground/70 mb-3">
                   Ensure you have comprehensive testing and monitoring in place before making changes.
                 </p>
@@ -388,10 +388,10 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
             <div className="flex items-start gap-4">
               <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-sm">3</span>
+                <span className="text-white font-semibold text-sm">3</span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Incremental Refactoring</h3>
+                <h3 className="text-xl mb-2">Incremental Refactoring</h3>
                 <p className="text-foreground/70 mb-3">
                   Make small, safe changes that can be easily tested and validated.
                 </p>
@@ -406,10 +406,10 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
             <div className="flex items-start gap-4">
               <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold text-sm">4</span>
+                <span className="text-white font-semibold text-sm">4</span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Validation and Testing</h3>
+                <h3 className="text-xl mb-2">Validation and Testing</h3>
                 <p className="text-foreground/70 mb-3">
                   Thoroughly test each refactored component to ensure functionality is preserved.
                 </p>
@@ -426,28 +426,28 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Tools and Techniques (dynamic) */}
         <section id="tools-and-techniques" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Essential Tools and Techniques for Code Refactoring</h2>
+          <h2 className="text-3xl mb-8">Essential Tools and Techniques for Code Refactoring</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">Code Analysis Tools</h3>
+              <h3 className="text-xl mb-4">Code Analysis Tools</h3>
               <div className="space-y-3">
                 <div className="bg-foreground/5 rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">SonarQube</h4>
+                  <h4 className="mb-2">SonarQube</h4>
                   <p className="text-foreground/70 text-sm">
                     Comprehensive code quality analysis with detailed reports on technical debt, code smells, and
                     security vulnerabilities.
                   </p>
                 </div>
                 <div className="bg-foreground/5 rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">CodeClimate</h4>
+                  <h4 className="mb-2">CodeClimate</h4>
                   <p className="text-foreground/70 text-sm">
                     Automated code review with maintainability scores and detailed insights into code complexity and
                     duplication.
                   </p>
                 </div>
                 <div className="bg-foreground/5 rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">ESLint / TSLint</h4>
+                  <h4 className="mb-2">ESLint / TSLint</h4>
                   <p className="text-foreground/70 text-sm">
                     JavaScript/TypeScript linting tools that identify code quality issues and enforce coding standards.
                   </p>
@@ -456,22 +456,22 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-4">Refactoring Techniques</h3>
+              <h3 className="text-xl mb-4">Refactoring Techniques</h3>
               <div className="space-y-3">
                 <div className="bg-foreground/5 rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">Extract Method</h4>
+                  <h4 className="mb-2">Extract Method</h4>
                   <p className="text-foreground/70 text-sm">
                     Break large functions into smaller, focused methods that each do one thing well.
                   </p>
                 </div>
                 <div className="bg-foreground/5 rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">Extract Class</h4>
+                  <h4 className="mb-2">Extract Class</h4>
                   <p className="text-foreground/70 text-sm">
                     Move related functionality into dedicated classes with clear responsibilities.
                   </p>
                 </div>
                 <div className="bg-foreground/5 rounded-lg p-4">
-                  <h4 className="font-semibold mb-2">Replace Magic Numbers</h4>
+                  <h4 className="mb-2">Replace Magic Numbers</h4>
                   <p className="text-foreground/70 text-sm">
                     Replace hardcoded values with named constants that clearly express their purpose.
                   </p>
@@ -483,7 +483,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Common Pitfalls (dynamic) */}
         <section id="common-pitfalls" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Common Pitfalls and How to Avoid Them</h2>
+          <h2 className="text-3xl mb-8">Common Pitfalls and How to Avoid Them</h2>
 
           <div className="space-y-6">
             <Alert variant="error" icon="🚨" title="Refactoring Without Tests">
@@ -523,7 +523,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Measuring Success (dynamic) */}
         <section id="measuring-success" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Measuring Refactoring Success</h2>
+          <h2 className="text-3xl mb-8">Measuring Refactoring Success</h2>
 
           <p className="text-lg text-foreground/70 mb-6">
             To justify continued investment in refactoring, you need to measure and track the impact of your efforts.
@@ -532,7 +532,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl font-semibold mb-4">Code Quality Metrics</h3>
+              <h3 className="text-xl mb-4">Code Quality Metrics</h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span>Test Coverage</span>
@@ -554,7 +554,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-4">Business Impact Metrics</h3>
+              <h3 className="text-xl mb-4">Business Impact Metrics</h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span>Feature Delivery Speed</span>
@@ -579,14 +579,14 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Case Studies (dynamic) */}
         <section id="case-studies" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Real-World Refactoring Case Studies</h2>
+          <h2 className="text-3xl mb-8">Real-World Refactoring Case Studies</h2>
 
           <div className="space-y-8">
             <div className="bg-foreground/5 rounded-2xl p-8">
-              <h3 className="text-2xl font-semibold mb-4">Case Study 1: E-commerce Platform Modernization</h3>
+              <h3 className="text-2xl mb-4">Case Study 1: E-commerce Platform Modernization</h3>
               <div className="grid lg:grid-cols-2 gap-8">
                 <div>
-                  <h4 className="font-semibold mb-3 text-accent">The Challenge</h4>
+                  <h4 className="mb-3 text-accent">The Challenge</h4>
                   <p className="text-foreground/70 mb-4">
                     A 5-year-old e-commerce platform with 500K+ lines of code was experiencing frequent outages, slow
                     performance, and difficulty adding new features.
@@ -599,7 +599,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-3 text-accent">The Solution</h4>
+                  <h4 className="mb-3 text-accent">The Solution</h4>
                   <p className="text-foreground/70 mb-4">
                     Implemented a comprehensive refactoring strategy using the Strangler Fig pattern.
                   </p>
@@ -614,19 +614,19 @@ export default function RefactoringLegacyCodePost(): ReactElement {
               <Alert variant="success" icon="📊" title="Results After 12 Months">
                 <div className="grid md:grid-cols-4 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-accent">↓ 90%</div>
+                    <div className="text-2xl font-semibold text-accent">↓ 90%</div>
                     <div className="text-sm text-foreground/90">Page Load Time</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-green-600">↓ 95%</div>
+                    <div className="text-2xl font-semibold text-green-600">↓ 95%</div>
                     <div className="text-sm text-green-700">Production Outages</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-green-600">↑ 300%</div>
+                    <div className="text-2xl font-semibold text-green-600">↑ 300%</div>
                     <div className="text-sm text-green-700">Feature Delivery Speed</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-green-600">$2M</div>
+                    <div className="text-2xl font-semibold text-green-600">$2M</div>
                     <div className="text-sm text-green-700">Annual Cost Savings</div>
                   </div>
                 </div>
@@ -645,7 +645,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Conclusion */}
         <section className="mb-12">
-          <h2 className="text-3xl font-bold mb-6">The Path Forward: Building a Maintainable Future</h2>
+          <h2 className="text-3xl mb-6">The Path Forward: Building a Maintainable Future</h2>
           <p className="text-lg text-foreground/70 mb-4">
             Refactoring legacy code is not just a technical exercise—it&apos;s an investment in your team&apos;s
             productivity, your product&apos;s reliability, and your business&apos;s ability to compete in an
@@ -660,7 +660,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Call to Action */}
         <section className="bg-accent/10 rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">Ready to Transform Your Legacy Codebase?</h2>
+          <h2 className="text-2xl mb-4">Ready to Transform Your Legacy Codebase?</h2>
           <p className="text-foreground/70 mb-6">
             At Maxwell Software Solutions, we specialize in helping teams modernize legacy systems and build
             maintainable, scalable software architectures. Our{' '}

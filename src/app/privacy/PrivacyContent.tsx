@@ -83,7 +83,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
           </a>
           .
         </p>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-sm text-muted">
           Your choices: manage cookie preferences through the banner on your first visit and at any time via the
           &ldquo;Cookie settings&rdquo; link in our footer.
         </p>
@@ -167,19 +167,19 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
       <ArticleSection title="Controller details">
         <dl className="grid gap-4 sm:grid-cols-2">
           <div>
-            <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+            <dt className="text-xs font-semibold text-muted">
               Legal entity
             </dt>
             <dd className="mt-1">Maxwell Software Solutions, MB</dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+            <dt className="text-xs font-semibold text-muted">
               Company number
             </dt>
             <dd className="mt-1">Details available upon request.</dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+            <dt className="text-xs font-semibold text-muted">
               Email
             </dt>
             <dd className="mt-1">

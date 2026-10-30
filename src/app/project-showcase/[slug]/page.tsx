@@ -226,7 +226,7 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
 
       <header className="mb-8">
         <p className="text-sm text-foreground/75">Case study · {c.meta}</p>
-        <h1 className="text-4xl sm:text-5xl font-bold mt-2">{c.title}</h1>
+        <h1 className="text-4xl sm:text-5xl mt-2">{c.title}</h1>
         <p className="text-lg text-foreground/75 mt-3 max-w-3xl">{c.subtitle}</p>
       </header>
 
@@ -236,7 +236,7 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
 
       <section className="grid md:grid-cols-2 gap-8 mb-12">
         <div>
-          <h2 className="text-2xl font-semibold mb-3">Context</h2>
+          <h2 className="text-2xl mb-3">Context</h2>
           <ul className="list-disc pl-5 space-y-2 text-foreground/80">
             {c.context.map((t) => (
               <li key={t}>{t}</li>
@@ -244,7 +244,7 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
           </ul>
         </div>
         <div>
-          <h2 className="text-2xl font-semibold mb-3">Actions</h2>
+          <h2 className="text-2xl mb-3">Actions</h2>
           <ul className="list-disc pl-5 space-y-2 text-foreground/80">
             {c.actions.map((t) => (
               <li key={t}>{t}</li>
@@ -255,11 +255,11 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
 
       {'process' in c ? (
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Process</h2>
+          <h2 className="text-2xl mb-4">Process</h2>
           <div className="space-y-6">
             {c.process!.map((step) => (
               <div key={step.heading} className="card p-5">
-                <h3 className="text-lg font-semibold mb-2">{step.heading}</h3>
+                <h3 className="text-lg mb-2">{step.heading}</h3>
                 <ul className="list-disc pl-5 space-y-1 text-foreground/80">
                   {step.bullets.map((b) => (
                     <li key={b}>{b}</li>
@@ -272,7 +272,7 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
       ) : null}
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold mb-3">Results</h2>
+        <h2 className="text-2xl mb-3">Results</h2>
         <ul className="list-disc pl-5 space-y-2 text-foreground/80">
           {c.results.map((t) => (
             <li key={t}>{t}</li>
@@ -283,7 +283,7 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
       <section className="grid sm:grid-cols-3 gap-4" data-reveal>
         {c.metrics.map((m) => (
           <div key={m.label} className="card p-5 text-center">
-            <div className="text-3xl font-bold text-accent">{m.value}</div>
+            <div className="text-3xl font-semibold text-accent">{m.value}</div>
             <div className="text-sm text-foreground/70 mt-1">{m.label}</div>
           </div>
         ))}

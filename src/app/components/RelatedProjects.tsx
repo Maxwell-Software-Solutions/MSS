@@ -29,7 +29,7 @@ export default function RelatedProjects({ currentSlug, limit = 3 }: RelatedProje
 
   return (
     <section className="mt-12" aria-labelledby="related-projects-heading">
-      <h3 id="related-projects-heading" className="text-2xl font-semibold mb-6" style={{ color: 'var(--color-text)' }}>
+      <h3 id="related-projects-heading" className="text-2xl mb-6" style={{ color: 'var(--color-text)' }}>
         Related Case Studies
       </h3>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -40,7 +40,7 @@ export default function RelatedProjects({ currentSlug, limit = 3 }: RelatedProje
             className="group p-6 rounded-lg border border-border transition-colors hover:border-[var(--color-accent)]"
           >
             <h4
-              className="font-semibold mb-2 group-hover:text-[var(--color-accent)]"
+              className="mb-2 group-hover:text-[var(--color-accent)]"
               style={{ color: 'var(--color-text)' }}
             >
               {project.title}

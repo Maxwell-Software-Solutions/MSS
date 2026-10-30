@@ -14,8 +14,8 @@ interface TermsSectionProps {
 function TermsSection({ number, title, children }: TermsSectionProps): ReactElement {
   return (
     <article className="space-y-3">
-      <h2 className="flex items-baseline gap-3 text-xl font-semibold text-slate-900 dark:text-slate-100">
-        <span className="text-sm font-bold text-[color:var(--accent)]">{number}.</span>
+      <h2 className="flex items-baseline gap-3 text-xl text-foreground">
+        <span className="text-sm font-semibold text-[color:var(--accent)]">{number}.</span>
         {title}
       </h2>
       {children}
@@ -107,7 +107,7 @@ export function TermsContent({ legalEmail }: TermsContentProps): ReactElement {
         <p>If you have questions about these Terms or the Site, contact us at:</p>
         <dl className="space-y-2">
           <div>
-            <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">
+            <dt className="text-xs font-semibold text-muted">
               Email
             </dt>
             <dd>

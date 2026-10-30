@@ -8,7 +8,7 @@ import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5"
+      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -29,8 +29,8 @@ interface FAQItemProps {
 
 function FAQItem({ question, answer }: FAQItemProps): ReactElement {
   return (
-    <div className="border-b border-violet-500/10 pb-6">
-      <h3 className="text-[15px] font-semibold mb-2">{question}</h3>
+    <div className="border-b border-border pb-6">
+      <h3 className="text-[15px] mb-2">{question}</h3>
       <p className="text-[14px] text-foreground/75 leading-relaxed">{answer}</p>
     </div>
   );
@@ -105,7 +105,7 @@ export default function StartASprintPage(): ReactElement {
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
@@ -114,11 +114,11 @@ export default function StartASprintPage(): ReactElement {
             {ht('sprint.eyebrow', 'Sprint-in-a-Box')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
             {ht('sprint.headline.pre', 'Ship Your MVP in')}{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               {ht('sprint.headline.gradient', '2 Weeks.')}
             </span>{' '}
             {ht('sprint.headline.post', '€4,800 Fixed Price.')}
@@ -134,7 +134,7 @@ export default function StartASprintPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -174,17 +174,17 @@ export default function StartASprintPage(): ReactElement {
       </header>
 
       {/* What you get */}
-      <section aria-labelledby="deliverables-heading" className="py-16 sm:py-20 bg-white/[0.02]">
+      <section aria-labelledby="deliverables-heading" className="py-16 sm:py-20 bg-foreground/5">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <h2
               id="deliverables-heading"
-              className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-6"
+              className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-6"
               suppressHydrationWarning
             >
               {ht('sprint.deliverables.heading', 'What you get in 2 weeks')}
@@ -194,11 +194,11 @@ export default function StartASprintPage(): ReactElement {
             {deliverables.map((item, i) => (
               <motion.li
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="neuro-card flex items-start gap-3 bg-white/[0.03] backdrop-blur rounded-2xl border border-violet-500/15 p-5 hover:-translate-y-1 transition-all duration-300"
+                className="card flex items-start gap-3 bg-foreground/5 rounded-2xl border border-border p-5 transition-all duration-300"
               >
                 <CheckIcon />
                 <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
@@ -212,11 +212,11 @@ export default function StartASprintPage(): ReactElement {
       <section aria-labelledby="process-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <motion.h2
           id="process-heading"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-10"
+          className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-10"
           suppressHydrationWarning
         >
           {ht('sprint.process.heading', 'The process')}
@@ -225,17 +225,17 @@ export default function StartASprintPage(): ReactElement {
           {processSteps.map((step, i) => (
             <motion.div
               key={step.step}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="neuro-card flex gap-5 bg-white/[0.03] backdrop-blur rounded-2xl border border-violet-500/15 p-6 hover:-translate-y-1 transition-all duration-300"
+              className="card flex gap-5 bg-foreground/5 rounded-2xl border border-border p-6 transition-all duration-300"
             >
-              <div className="flex-shrink-0 w-11 h-11 rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-white font-bold text-sm flex items-center justify-center shadow-[0_4px_12px_rgba(124,58,237,0.4)]">
+              <div className="flex-shrink-0 w-11 h-11 rounded-full bg-accent-fill text-accent-contrast font-semibold text-sm flex items-center justify-center">
                 {step.step}
               </div>
               <div>
-                <h3 className="font-semibold mb-1.5">{step.title}</h3>
+                <h3 className="mb-1.5">{step.title}</h3>
                 <p className="text-[14px] text-foreground/75 leading-relaxed">{step.body}</p>
               </div>
             </motion.div>
@@ -244,17 +244,17 @@ export default function StartASprintPage(): ReactElement {
       </section>
 
       {/* Requirements */}
-      <section aria-labelledby="requirements-heading" className="py-16 sm:py-20 bg-white/[0.02]">
+      <section aria-labelledby="requirements-heading" className="py-16 sm:py-20 bg-foreground/5">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <h2
               id="requirements-heading"
-              className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-3"
+              className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-3"
               suppressHydrationWarning
             >
               {ht('sprint.requirements.heading', 'What we need from you')}
@@ -277,16 +277,16 @@ export default function StartASprintPage(): ReactElement {
       {/* Mid-page CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center"
+          className="band p-10 sm:p-14 text-center"
         >
-          <p className="text-[13px] uppercase tracking-widest font-semibold text-violet-400/70 mb-3" suppressHydrationWarning>
+          <p className="text-[13px] font-semibold text-accent mb-3" suppressHydrationWarning>
             {ht('sprint.midcta.eyebrow', 'Ready to move fast?')}
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+          <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
             {ht('sprint.midcta.title', 'Book a 30-minute discovery call')}
           </h2>
           <p className="text-[15px] text-foreground/70 max-w-xl mx-auto mb-6" suppressHydrationWarning>
@@ -297,7 +297,7 @@ export default function StartASprintPage(): ReactElement {
           </p>
           <Link
             href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+            className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
             target="_blank"
             rel="noopener noreferrer"
             suppressHydrationWarning
@@ -308,17 +308,17 @@ export default function StartASprintPage(): ReactElement {
       </div>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-white/[0.02]">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-foreground/5">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <h2
               id="faq-heading"
-              className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
+              className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
               suppressHydrationWarning
             >
               {ht('sprint.faq.heading', 'Frequently asked questions')}
@@ -335,13 +335,13 @@ export default function StartASprintPage(): ReactElement {
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center"
+          className="band p-10 sm:p-14 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+          <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
             {ht('sprint.bottomcta.title', 'Ship something real in 2 weeks.')}
           </h2>
           <p className="text-[15px] text-foreground/70 max-w-lg mx-auto mb-7" suppressHydrationWarning>
@@ -352,7 +352,7 @@ export default function StartASprintPage(): ReactElement {
           </p>
           <Link
             href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-8 py-4 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+            className="inline-flex items-center gap-2 btn btn-accent px-8 py-4 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
             target="_blank"
             rel="noopener noreferrer"
             suppressHydrationWarning

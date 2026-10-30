@@ -7,7 +7,7 @@ const privacyEmail = 'privacy@maxwellsoftwaresolutions.com';
 
 export default function PrivacyPage(): ReactElement {
   return (
-    <PageContainer className="text-slate-700 dark:text-slate-200">
+    <PageContainer className="text-secondary">
       <PageHeader
         eyebrow="Privacy Policy (GDPR)"
         title="Maxwell Software Solutions Privacy Policy"

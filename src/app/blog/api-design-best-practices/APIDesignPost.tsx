@@ -73,7 +73,7 @@ export default function APIDesignPost(): ReactElement {
       <ArticleSection id="resource-naming" title="Resource Naming Conventions">
         <p>Consistent naming conventions make your API intuitive and predictable:</p>
         <div className="bg-muted/50 p-6 rounded-lg my-6">
-          <h4 className="font-semibold mb-3">✅ Good Examples:</h4>
+          <h4 className="mb-3">✅ Good Examples:</h4>
           <ul className="font-mono text-sm space-y-1">
             <li>GET /users</li>
             <li>GET /users/123</li>
@@ -83,7 +83,7 @@ export default function APIDesignPost(): ReactElement {
           </ul>
         </div>
         <div className="bg-muted/50 p-6 rounded-lg my-6">
-          <h4 className="font-semibold mb-3">❌ Avoid:</h4>
+          <h4 className="mb-3">❌ Avoid:</h4>
           <ul className="font-mono text-sm space-y-1">
             <li>GET /getUsers</li>
             <li>POST /user/create</li>
@@ -170,7 +170,7 @@ export default function APIDesignPost(): ReactElement {
         <p>Planning for change is essential. Three common versioning approaches:</p>
         <div className="space-y-4 my-6">
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">1. URL Path Versioning</h4>
+            <h4 className="mb-2">1. URL Path Versioning</h4>
             <code className="block font-mono text-sm">https://api.example.com/v1/users</code>
             <p className="mt-2 text-sm">
               ✅ Most explicit and discoverable
@@ -178,7 +178,7 @@ export default function APIDesignPost(): ReactElement {
             </p>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">2. Header Versioning</h4>
+            <h4 className="mb-2">2. Header Versioning</h4>
             <code className="block font-mono text-sm">Accept: application/vnd.example.v1+json</code>
             <p className="mt-2 text-sm">
               ✅ Clean URLs, follows HTTP standards
@@ -186,7 +186,7 @@ export default function APIDesignPost(): ReactElement {
             </p>
           </div>
           <div className="bg-muted/50 p-6 rounded-lg">
-            <h4 className="font-semibold mb-2">3. Query Parameter Versioning</h4>
+            <h4 className="mb-2">3. Query Parameter Versioning</h4>
             <code className="block font-mono text-sm">https://api.example.com/users?version=1</code>
             <p className="mt-2 text-sm">
               ✅ Simple to implement
@@ -338,7 +338,7 @@ GET /users?limit=20&cursor=abc123
           versioning.
         </Alert>
         <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
-          <h3 className="text-xl font-bold mb-3">Want Expert API Design Guidance?</h3>
+          <h3 className="text-xl mb-3">Want Expert API Design Guidance?</h3>
           <p className="text-foreground/70 mb-5">
             Our{' '}
             <a href="/services" className="text-accent underline hover:no-underline font-medium">

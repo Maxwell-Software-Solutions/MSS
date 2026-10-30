@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 8 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.5 },
@@ -15,7 +15,7 @@ const fadeUp = {
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5"
+      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -36,8 +36,8 @@ interface FAQItemProps {
 
 function FAQItem({ question, answer }: FAQItemProps): ReactElement {
   return (
-    <div className="border-b border-white/5 pb-6">
-      <h3 className="text-[15px] font-semibold mb-2">{question}</h3>
+    <div className="border-b border-border pb-6">
+      <h3 className="text-[15px] mb-2">{question}</h3>
       <p className="text-[14px] text-foreground/75 leading-relaxed">{answer}</p>
     </div>
   );
@@ -108,11 +108,11 @@ export default function CodeAuditPage(): ReactElement {
             {ht('codeAudit.eyebrow', 'Code Audit Service')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
             Find Out Why Your{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               Dev Team Is Slow
             </span>
           </h1>
@@ -126,7 +126,7 @@ export default function CodeAuditPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -138,7 +138,7 @@ export default function CodeAuditPage(): ReactElement {
             </Link>
             <Link
               href="/services/packages"
-              className="border border-white/10 hover:border-white/20 hover:bg-white/5 px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
+              className="btn px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
               suppressHydrationWarning
             >
               {ht('codeAudit.cta.compare', 'Compare all packages')}
@@ -165,11 +165,11 @@ export default function CodeAuditPage(): ReactElement {
       </header>
 
       {/* What we examine */}
-      <section aria-labelledby="areas-heading" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-labelledby="areas-heading" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp} className="mb-8">
           <h2
             id="areas-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight"
+            className="text-3xl sm:text-4xl tracking-tight"
             suppressHydrationWarning
           >
             {ht('codeAudit.areas.heading', 'Six areas we examine')}
@@ -177,19 +177,19 @@ export default function CodeAuditPage(): ReactElement {
         </motion.div>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
           suppressHydrationWarning
         >
           {auditAreas.map((area, i) => (
-            <div key={i} className="neuro-card rounded-2xl p-6 hover:-translate-y-1 transition-all">
+            <div key={i} className="card rounded-2xl p-6 transition-all">
               <div className="flex items-center gap-3 mb-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-violet-500/10 text-violet-400 font-bold text-xs flex items-center justify-center">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 text-accent font-semibold text-xs flex items-center justify-center">
                   {String(i + 1).padStart(2, '0')}
                 </div>
-                <h3 className="font-semibold">{area.title}</h3>
+                <h3>{area.title}</h3>
               </div>
               <p className="text-[14px] text-foreground/75 leading-relaxed">{area.body}</p>
             </div>
@@ -202,17 +202,17 @@ export default function CodeAuditPage(): ReactElement {
         <motion.div {...fadeUp}>
           <h2
             id="deliverables-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight mb-6"
+            className="text-3xl sm:text-4xl tracking-tight mb-6"
             suppressHydrationWarning
           >
             What you{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               get
             </span>
           </h2>
           <ul className="space-y-4">
             {deliverables.map((item, i) => (
-              <li key={i} className="neuro-card flex items-start gap-3 rounded-2xl p-5 hover:-translate-y-1 transition-all">
+              <li key={i} className="card flex items-start gap-3 rounded-2xl p-5 transition-all">
                 <CheckIcon />
                 <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
               </li>
@@ -222,12 +222,12 @@ export default function CodeAuditPage(): ReactElement {
       </section>
 
       {/* Pricing */}
-      <section aria-labelledby="pricing-heading" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-labelledby="pricing-heading" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-8 sm:p-12">
+          <div className="band p-8 sm:p-12">
             <h2
               id="pricing-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-tight mb-4"
+              className="text-2xl sm:text-3xl tracking-tight mb-4"
               suppressHydrationWarning
             >
               {ht('codeAudit.pricing.title', '€2,500 — one-time investment')}
@@ -238,12 +238,12 @@ export default function CodeAuditPage(): ReactElement {
                 'Includes the full six-area review, written report with prioritised remediation roadmap, and a 1-hour walkthrough call. No recurring costs, no hidden fees.'
               )}
             </p>
-            <p className="text-[14px] text-violet-400 font-medium mb-6" suppressHydrationWarning>
+            <p className="text-[14px] text-accent font-medium mb-6" suppressHydrationWarning>
               {ht('codeAudit.pricing.free', 'Not sure yet? Book a free 15-minute architecture review to see if an audit is the right fit.')}
             </p>
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -262,7 +262,7 @@ export default function CodeAuditPage(): ReactElement {
         <motion.div {...fadeUp}>
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight mb-8"
+            className="text-3xl sm:text-4xl tracking-tight mb-8"
             suppressHydrationWarning
           >
             {ht('codeAudit.faq.heading', 'Frequently asked questions')}
@@ -278,10 +278,10 @@ export default function CodeAuditPage(): ReactElement {
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+          <div className="band p-10 sm:p-14 text-center">
+            <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('codeAudit.bottomcta.title', 'Stop guessing. Start with')}{' '}
-              <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              <span>
                 data.
               </span>
             </h2>
@@ -293,7 +293,7 @@ export default function CodeAuditPage(): ReactElement {
             </p>
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning

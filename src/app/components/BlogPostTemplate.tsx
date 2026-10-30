@@ -55,7 +55,7 @@ export default function BlogPostTemplate({ slug, children }: BlogPostTemplatePro
           </Link>
         </nav>
 
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6" style={{ color: 'var(--color-text)' }}>
+        <h1 className="text-4xl sm:text-5xl mb-6" style={{ color: 'var(--color-text)' }}>
           {post.title}
         </h1>
 
@@ -122,7 +122,7 @@ export default function BlogPostTemplate({ slug, children }: BlogPostTemplatePro
           borderColor: 'var(--color-accent-20)',
         }}
       >
-        <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
+        <h3 className="text-2xl mb-4" style={{ color: 'var(--color-text)' }}>
           Need Help Improving Your Code Quality?
         </h3>
         <p className="mb-6" style={{ color: 'var(--color-text-secondary)' }}>

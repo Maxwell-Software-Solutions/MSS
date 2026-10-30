@@ -55,7 +55,7 @@ export default function FAQ({ faqs, title, description }: FAQProps): ReactElemen
         <div className="max-w-4xl mx-auto px-6">
           {/* Header */}
           <div className="mb-8 text-center">
-            <h2 id="faq-heading" className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: 'var(--color-text)' }}>
+            <h2 id="faq-heading" className="text-3xl sm:text-4xl mb-4" style={{ color: 'var(--color-text)' }}>
               {title || 'Frequently Asked Questions'}
             </h2>
             {description && (

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 8 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.5 },
@@ -15,7 +15,7 @@ const fadeUp = {
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5"
+      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -36,8 +36,8 @@ interface FAQItemProps {
 
 function FAQItem({ question, answer }: FAQItemProps): ReactElement {
   return (
-    <div className="border-b border-white/5 pb-6">
-      <h3 className="text-[15px] font-semibold mb-2">{question}</h3>
+    <div className="border-b border-border pb-6">
+      <h3 className="text-[15px] mb-2">{question}</h3>
       <p className="text-[14px] text-foreground/75 leading-relaxed">{answer}</p>
     </div>
   );
@@ -123,11 +123,11 @@ export default function FractionalCTOPage(): ReactElement {
             {ht('fractionalCTO.eyebrow', 'Fractional CTO')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
             Technical Leadership Without the{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               €120K Salary
             </span>
           </h1>
@@ -141,7 +141,7 @@ export default function FractionalCTOPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -153,7 +153,7 @@ export default function FractionalCTOPage(): ReactElement {
             </Link>
             <Link
               href="/services/packages"
-              className="border border-white/10 hover:border-white/20 hover:bg-white/5 px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
+              className="btn px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
               suppressHydrationWarning
             >
               {ht('fractionalCTO.cta.compare', 'Compare all packages')}
@@ -180,11 +180,11 @@ export default function FractionalCTOPage(): ReactElement {
       </header>
 
       {/* What a Fractional CTO does */}
-      <section aria-labelledby="responsibilities-heading" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-labelledby="responsibilities-heading" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp} className="mb-8">
           <h2
             id="responsibilities-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight"
+            className="text-3xl sm:text-4xl tracking-tight"
             suppressHydrationWarning
           >
             {ht('fractionalCTO.resp.heading', 'What a Fractional CTO does')}
@@ -192,19 +192,19 @@ export default function FractionalCTOPage(): ReactElement {
         </motion.div>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
           suppressHydrationWarning
         >
           {responsibilities.map((item, i) => (
-            <div key={i} className="neuro-card rounded-2xl p-6 flex gap-5 hover:-translate-y-1 transition-all">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-violet-500/10 text-violet-400 font-bold text-sm flex items-center justify-center">
+            <div key={i} className="card rounded-2xl p-6 flex gap-5 transition-all">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-accent/10 text-accent font-semibold text-sm flex items-center justify-center">
                 {String(i + 1).padStart(2, '0')}
               </div>
               <div>
-                <h3 className="font-semibold mb-1.5">{item.title}</h3>
+                <h3 className="mb-1.5">{item.title}</h3>
                 <p className="text-[14px] text-foreground/75 leading-relaxed">{item.body}</p>
               </div>
             </div>
@@ -217,14 +217,14 @@ export default function FractionalCTOPage(): ReactElement {
         <motion.div {...fadeUp}>
           <h2
             id="scenarios-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight mb-6"
+            className="text-3xl sm:text-4xl tracking-tight mb-6"
             suppressHydrationWarning
           >
             {ht('fractionalCTO.scenarios.heading', 'When you need a Fractional CTO')}
           </h2>
           <ul className="space-y-3">
             {scenarios.map((item, i) => (
-              <li key={i} className="neuro-card flex items-start gap-3 rounded-2xl p-5 hover:-translate-y-1 transition-all">
+              <li key={i} className="card flex items-start gap-3 rounded-2xl p-5 transition-all">
                 <CheckIcon />
                 <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
               </li>
@@ -234,27 +234,27 @@ export default function FractionalCTOPage(): ReactElement {
       </section>
 
       {/* Comparison table */}
-      <section aria-labelledby="compare-heading" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-labelledby="compare-heading" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
           <h2
             id="compare-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight mb-8"
+            className="text-3xl sm:text-4xl tracking-tight mb-8"
             suppressHydrationWarning
           >
             {ht('fractionalCTO.compare.heading', 'Fractional CTO vs full-time CTO')}
           </h2>
-          <div className="overflow-x-auto rounded-2xl border border-white/5 neuro-card">
+          <div className="overflow-x-auto rounded-2xl border border-border card">
             <table className="w-full text-[13px]" role="table" aria-label="Fractional CTO vs full-time CTO comparison">
               <thead>
-                <tr className="border-b border-white/5">
+                <tr className="border-b border-border">
                   <th className="text-left p-4 font-semibold" scope="col"></th>
                   <th className="text-left p-4 font-semibold" scope="col">{ht('fractionalCTO.compare.col.full', 'Full-time CTO')}</th>
-                  <th className="text-left p-4 font-semibold text-violet-400" scope="col">{ht('fractionalCTO.compare.col.frac', 'Fractional CTO')}</th>
+                  <th className="text-left p-4 font-semibold text-accent" scope="col">{ht('fractionalCTO.compare.col.frac', 'Fractional CTO')}</th>
                 </tr>
               </thead>
               <tbody>
                 {comparison.map((row, i) => (
-                  <tr key={i} className="border-b border-white/5 hover:bg-white/3 transition-colors last:border-b-0">
+                  <tr key={i} className="border-b border-border hover:bg-foreground/5 transition-colors last:border-b-0">
                     <td className="p-4 font-medium">{row.label}</td>
                     <td className="p-4 text-foreground/80">{row.fullTime}</td>
                     <td className="p-4 text-foreground/80">{row.fractional}</td>
@@ -269,11 +269,11 @@ export default function FractionalCTOPage(): ReactElement {
       {/* Mid-page CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center">
+          <div className="band p-10 sm:p-14 text-center">
             <p className="eyebrow mb-3" suppressHydrationWarning>
               {ht('fractionalCTO.midcta.eyebrow', 'From €3,500/month')}
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+            <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('fractionalCTO.midcta.title', 'Book a discovery call')}
             </h2>
             <p className="text-base text-foreground/70 max-w-xl mx-auto mb-8" suppressHydrationWarning>
@@ -284,7 +284,7 @@ export default function FractionalCTOPage(): ReactElement {
             </p>
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -296,11 +296,11 @@ export default function FractionalCTOPage(): ReactElement {
       </div>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="neuro-section-border max-w-3xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-labelledby="faq-heading" className="border-t border-border max-w-3xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight mb-8"
+            className="text-3xl sm:text-4xl tracking-tight mb-8"
             suppressHydrationWarning
           >
             {ht('fractionalCTO.faq.heading', 'Frequently asked questions')}
@@ -316,10 +316,10 @@ export default function FractionalCTOPage(): ReactElement {
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+          <div className="band p-10 sm:p-14 text-center">
+            <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               Technical leadership —{' '}
-              <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              <span>
                 on your terms.
               </span>
             </h2>
@@ -331,7 +331,7 @@ export default function FractionalCTOPage(): ReactElement {
             </p>
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning

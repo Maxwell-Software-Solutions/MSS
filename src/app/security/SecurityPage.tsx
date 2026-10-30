@@ -7,7 +7,7 @@ const securityEmail = 'security@maxwellsoftwaresolutions.com';
 
 export default function SecurityPage(): ReactElement {
   return (
-    <PageContainer className="text-slate-700 dark:text-slate-200">
+    <PageContainer className="text-secondary">
       <PageHeader
         eyebrow="Security Policy"
         title="Security at Maxwell Software Solutions"

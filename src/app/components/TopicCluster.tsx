@@ -35,7 +35,7 @@ export default function TopicCluster({ type, value, title }: TopicClusterProps):
 
   return (
     <section aria-labelledby="topic-cluster-heading">
-      <h2 id="topic-cluster-heading" className="text-3xl font-bold mb-8" style={{ color: 'var(--color-text)' }}>
+      <h2 id="topic-cluster-heading" className="text-3xl mb-8" style={{ color: 'var(--color-text)' }}>
         {title || `${value} Articles`}
       </h2>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -49,7 +49,7 @@ export default function TopicCluster({ type, value, title }: TopicClusterProps):
                 {post.category}
               </div>
               <h3
-                className="text-xl font-semibold mb-3 group-hover:text-[var(--color-accent)]"
+                className="text-xl mb-3 group-hover:text-[var(--color-accent)]"
                 style={{ color: 'var(--color-text)' }}
               >
                 {post.title}

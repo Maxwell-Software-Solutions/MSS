@@ -7,7 +7,7 @@ import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5"
+      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -28,8 +28,8 @@ interface FAQItemProps {
 
 function FAQItem({ question, answer }: FAQItemProps): ReactElement {
   return (
-    <div className="border-b border-violet-500/10 pb-6">
-      <h3 className="text-[15px] font-semibold mb-2">{question}</h3>
+    <div className="border-b border-border pb-6">
+      <h3 className="text-[15px] mb-2">{question}</h3>
       <p className="text-[14px] text-foreground/75 leading-relaxed">{answer}</p>
     </div>
   );
@@ -75,8 +75,8 @@ export default function FreeAuditPage(): ReactElement {
   return (
     <>
       {/* Urgency Banner */}
-      <div className="bg-gradient-to-r from-violet-900/40 to-indigo-900/30 border-b border-violet-500/20 py-2.5 text-center">
-        <p className="text-[13px] font-medium text-violet-300" suppressHydrationWarning>
+      <div className="border-b border-border py-2.5 text-center">
+        <p className="text-[13px] font-medium text-accent" suppressHydrationWarning>
           {ht('freeAudit.urgency', 'Limited to 5 audits per month — currently accepting applications')}
         </p>
       </div>
@@ -84,7 +84,7 @@ export default function FreeAuditPage(): ReactElement {
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
@@ -93,11 +93,11 @@ export default function FreeAuditPage(): ReactElement {
             {ht('freeAudit.eyebrow', 'Free Code Health Audit')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
             {ht('freeAudit.headline.pre', 'Get a Free Code Health Audit')}{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               {ht('freeAudit.headline.gradient', 'Worth €2,500')}
             </span>
           </h1>
@@ -108,7 +108,7 @@ export default function FreeAuditPage(): ReactElement {
             )}
           </p>
           <div className="mt-6 flex flex-wrap gap-3 items-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-border text-accent text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
@@ -130,14 +130,14 @@ export default function FreeAuditPage(): ReactElement {
 
           {/* Left: What you get */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <h2
               id="audit-details-heading"
-              className="text-[clamp(20px,2vw,26px)] font-semibold leading-[1.25] tracking-tight mb-6"
+              className="text-[clamp(20px,2vw,26px)] leading-[1.25] tracking-tight mb-6"
               suppressHydrationWarning
             >
               {ht('freeAudit.whatYouGet.heading', 'What is included')}
@@ -152,7 +152,7 @@ export default function FreeAuditPage(): ReactElement {
             </ul>
 
             <h2
-              className="text-[clamp(20px,2vw,26px)] font-semibold leading-[1.25] tracking-tight mb-5"
+              className="text-[clamp(20px,2vw,26px)] leading-[1.25] tracking-tight mb-5"
               suppressHydrationWarning
             >
               {ht('freeAudit.forWho.heading', 'Who this is for')}
@@ -160,7 +160,7 @@ export default function FreeAuditPage(): ReactElement {
             <ul className="space-y-3">
               {forWho.map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-white text-[11px] font-bold flex items-center justify-center mt-0.5 shadow-[0_2px_8px_rgba(124,58,237,0.4)]">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent-fill text-accent-contrast text-xs font-semibold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
                   <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
@@ -171,13 +171,13 @@ export default function FreeAuditPage(): ReactElement {
 
           {/* Right: Form */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <div className="neuro-card rounded-3xl border border-violet-500/20 bg-white/[0.03] backdrop-blur-xl p-8 sm:p-10 hover:-translate-y-1 transition-all duration-300">
-              <h2 className="text-xl font-bold tracking-tight mb-1" suppressHydrationWarning>
+            <div className="card rounded-3xl border border-border bg-foreground/5 p-8 sm:p-10 transition-all duration-300">
+              <h2 className="text-xl tracking-tight mb-1" suppressHydrationWarning>
                 {ht('freeAudit.form.heading', 'Apply for your free audit')}
               </h2>
               <p className="text-[13px] text-foreground/60 mb-6" suppressHydrationWarning>
@@ -192,7 +192,7 @@ export default function FreeAuditPage(): ReactElement {
               >
                 <div>
                   <label htmlFor="audit-name" className="block text-[13px] font-medium mb-1.5">
-                    {ht('freeAudit.form.name', 'Full name')} <span className="text-violet-400" aria-label="required">*</span>
+                    {ht('freeAudit.form.name', 'Full name')} <span className="text-accent" aria-label="required">*</span>
                   </label>
                   <input
                     id="audit-name"
@@ -201,13 +201,13 @@ export default function FreeAuditPage(): ReactElement {
                     required
                     autoComplete="name"
                     placeholder="Jane Smith"
-                    className="w-full rounded-xl border border-violet-500/20 bg-white/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="audit-email" className="block text-[13px] font-medium mb-1.5">
-                    {ht('freeAudit.form.email', 'Work email')} <span className="text-violet-400" aria-label="required">*</span>
+                    {ht('freeAudit.form.email', 'Work email')} <span className="text-accent" aria-label="required">*</span>
                   </label>
                   <input
                     id="audit-email"
@@ -216,13 +216,13 @@ export default function FreeAuditPage(): ReactElement {
                     required
                     autoComplete="email"
                     placeholder="jane@company.com"
-                    className="w-full rounded-xl border border-violet-500/20 bg-white/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="audit-company" className="block text-[13px] font-medium mb-1.5">
-                    {ht('freeAudit.form.company', 'Company')} <span className="text-violet-400" aria-label="required">*</span>
+                    {ht('freeAudit.form.company', 'Company')} <span className="text-accent" aria-label="required">*</span>
                   </label>
                   <input
                     id="audit-company"
@@ -231,13 +231,13 @@ export default function FreeAuditPage(): ReactElement {
                     required
                     autoComplete="organization"
                     placeholder="Acme Inc."
-                    className="w-full rounded-xl border border-violet-500/20 bg-white/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="audit-stack" className="block text-[13px] font-medium mb-1.5">
-                    {ht('freeAudit.form.stack', 'Primary tech stack')} <span className="text-violet-400" aria-label="required">*</span>
+                    {ht('freeAudit.form.stack', 'Primary tech stack')} <span className="text-accent" aria-label="required">*</span>
                   </label>
                   <input
                     id="audit-stack"
@@ -245,7 +245,7 @@ export default function FreeAuditPage(): ReactElement {
                     type="text"
                     required
                     placeholder="e.g. Node.js, React, PostgreSQL"
-                    className="w-full rounded-xl border border-violet-500/20 bg-white/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
@@ -258,13 +258,13 @@ export default function FreeAuditPage(): ReactElement {
                     name="context"
                     rows={3}
                     placeholder="e.g. we keep missing sprint deadlines, deployment takes 2 hours, etc."
-                    className="w-full rounded-xl border border-violet-500/20 bg-white/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition resize-none"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+                  className="w-full btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
                   suppressHydrationWarning
                 >
                   {ht('freeAudit.form.cta', 'Apply for free audit')}
@@ -280,17 +280,17 @@ export default function FreeAuditPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-white/[0.02]">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-foreground/5">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <h2
               id="faq-heading"
-              className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
+              className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
               suppressHydrationWarning
             >
               {ht('freeAudit.faq.heading', 'Frequently asked questions')}
@@ -307,16 +307,16 @@ export default function FreeAuditPage(): ReactElement {
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center"
+          className="band p-10 sm:p-14 text-center"
         >
-          <p className="text-[12px] font-bold uppercase tracking-widest text-violet-400/70 mb-3" suppressHydrationWarning>
+          <p className="text-[12px] font-semibold text-accent mb-3" suppressHydrationWarning>
             {ht('freeAudit.cta.eyebrow', 'Limited availability')}
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-4" suppressHydrationWarning>
+          <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
             {ht('freeAudit.cta.title', 'Only 5 audit slots open per month')}
           </h2>
           <p className="text-[15px] text-foreground/70 max-w-xl mx-auto mb-6" suppressHydrationWarning>
@@ -327,7 +327,7 @@ export default function FreeAuditPage(): ReactElement {
           </p>
           <a
             href="#audit-name"
-            className="inline-block bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-8 py-3.5 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+            className="inline-block btn btn-accent px-8 py-3.5 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
             suppressHydrationWarning
           >
             {ht('freeAudit.cta.button', 'Apply now — it is free')}

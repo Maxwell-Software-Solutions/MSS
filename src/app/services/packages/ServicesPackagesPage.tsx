@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 8 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.5 },
@@ -15,7 +15,7 @@ const fadeUp = {
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-4 h-4 text-violet-400 flex-shrink-0 mt-0.5"
+      className="w-4 h-4 text-accent flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -54,24 +54,24 @@ function PackageCard({
 }: PackageCardProps): ReactElement {
   return (
     <div
-      className={`neuro-card relative flex flex-col rounded-3xl p-7 sm:p-8 hover:-translate-y-1 transition-all h-full ${
-        highlighted ? 'border border-violet-500/40 shadow-[0_0_40px_rgba(124,58,237,0.15)]' : ''
+      className={`card relative flex flex-col rounded-3xl p-7 sm:p-8 transition-all h-full ${
+        highlighted ? 'border border-accent/40' : ''
       }`}
     >
       {badge && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block bg-gradient-to-r from-violet-600 to-indigo-500 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow">
+        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block bg-accent-fill text-accent-contrast text-xs font-semibold px-4 py-1.5 rounded-full">
           {badge}
         </span>
       )}
 
       {highlighted && (
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent rounded-t-3xl" />
+        <div className="absolute inset-x-0 top-0 h-px rounded-t-3xl" />
       )}
 
       <div className="mb-5">
-        <h2 className="text-lg font-bold tracking-tight">{name}</h2>
+        <h2 className="text-lg tracking-tight">{name}</h2>
         <div className="mt-2.5 flex items-end gap-2">
-          <span className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+          <span className="text-2xl sm:text-3xl font-semibold">
             {price}
           </span>
           {period && <span className="text-sm text-foreground/60 mb-0.5">{period}</span>}
@@ -90,10 +90,10 @@ function PackageCard({
 
       <Link
         href={ctaHref}
-        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60 ${
+        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent ${
           highlighted
-            ? 'bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold shadow-[0_4px_20px_rgba(124,58,237,0.4)]'
-            : 'border border-white/10 hover:border-white/20 hover:bg-white/5'
+            ? 'btn btn-accent'
+            : 'btn'
         }`}
       >
         {ctaLabel}
@@ -199,11 +199,11 @@ export default function ServicesPackagesPage(): ReactElement {
             {ht('packages.eyebrow', 'Service Packages')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
             Choose the{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               Right Engagement
             </span>
           </h1>
@@ -223,7 +223,7 @@ export default function ServicesPackagesPage(): ReactElement {
         </h2>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -236,10 +236,10 @@ export default function ServicesPackagesPage(): ReactElement {
       </section>
 
       {/* Comparison note */}
-      <section aria-label="Engagement guidance" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-label="Engagement guidance" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center max-w-3xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+          <div className="band p-10 sm:p-14 text-center max-w-3xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('packages.unsure.heading', 'Not sure which package fits?')}
             </h2>
             <p className="text-base text-foreground/70 leading-relaxed mb-8" suppressHydrationWarning>
@@ -250,7 +250,7 @@ export default function ServicesPackagesPage(): ReactElement {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               suppressHydrationWarning
             >
               {ht('packages.unsure.cta', 'Book a discovery call')}
@@ -264,15 +264,15 @@ export default function ServicesPackagesPage(): ReactElement {
         <motion.div {...fadeUp}>
           <h2
             id="compare-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight mb-8"
+            className="text-3xl sm:text-4xl tracking-tight mb-8"
             suppressHydrationWarning
           >
             {ht('packages.compare.heading', 'Quick comparison')}
           </h2>
-          <div className="overflow-x-auto rounded-2xl neuro-card">
+          <div className="overflow-x-auto rounded-2xl card">
             <table className="w-full text-[13px]" role="table" aria-label="Service package comparison">
               <thead>
-                <tr className="border-b border-white/5">
+                <tr className="border-b border-border">
                   <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.package', 'Package')}</th>
                   <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.price', 'Price')}</th>
                   <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.duration', 'Duration')}</th>
@@ -280,31 +280,31 @@ export default function ServicesPackagesPage(): ReactElement {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-white/5 hover:bg-white/3 transition-colors">
+                <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
                   <td className="p-4 font-medium">{ht('packages.audit.name', 'Code Health Audit')}</td>
                   <td className="p-4 text-foreground/80">{ht('packages.audit.price', '€2,500')}</td>
                   <td className="p-4 text-foreground/80">{ht('packages.compare.audit.duration', '5 business days')}</td>
                   <td className="p-4 text-foreground/75">{ht('packages.compare.audit.for', 'Pre-investment, new CTOs, legacy systems')}</td>
                 </tr>
-                <tr className="border-b border-white/5 hover:bg-white/3 transition-colors">
+                <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
                   <td className="p-4 font-medium">{ht('packages.sprint.name', 'Sprint-in-a-Box')}</td>
                   <td className="p-4 text-foreground/80">{ht('packages.sprint.price', '€4,800')}</td>
                   <td className="p-4 text-foreground/80">{ht('packages.compare.sprint.duration', '2 weeks')}</td>
                   <td className="p-4 text-foreground/75">{ht('packages.compare.sprint.for', 'MVPs, feature spikes, proof-of-concept')}</td>
                 </tr>
-                <tr className="border-b border-white/5 bg-violet-500/5 hover:bg-violet-500/10 transition-colors">
-                  <td className="p-4 font-medium text-violet-400">{ht('packages.retainer.name', 'Engineering Partner Retainer')}</td>
+                <tr className="border-b border-border bg-accent/10 hover:bg-violet-500/10 transition-colors">
+                  <td className="p-4 font-medium text-accent">{ht('packages.retainer.name', 'Engineering Partner Retainer')}</td>
                   <td className="p-4 text-foreground/80">{ht('packages.retainer.price', '€3,500–€6,500')}/mo</td>
                   <td className="p-4 text-foreground/80">{ht('packages.compare.retainer.duration', 'Ongoing')}</td>
                   <td className="p-4 text-foreground/75">{ht('packages.compare.retainer.for', 'Scale-ups, embedded engineering support')}</td>
                 </tr>
-                <tr className="border-b border-white/5 hover:bg-white/3 transition-colors">
+                <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
                   <td className="p-4 font-medium">{ht('packages.cicd.name', 'CI/CD Accelerator')}</td>
                   <td className="p-4 text-foreground/80">{ht('packages.cicd.price', '€7,500')}</td>
                   <td className="p-4 text-foreground/80">{ht('packages.compare.cicd.duration', '3–4 weeks')}</td>
                   <td className="p-4 text-foreground/75">{ht('packages.compare.cicd.for', 'Slow deploys, broken pipelines, manual releases')}</td>
                 </tr>
-                <tr className="hover:bg-white/3 transition-colors">
+                <tr className="hover:bg-foreground/5 transition-colors">
                   <td className="p-4 font-medium">{ht('packages.cto.name', 'Fractional CTO')}</td>
                   <td className="p-4 text-foreground/80">{ht('packages.cto.price', '€3,500')}/mo</td>
                   <td className="p-4 text-foreground/80">{ht('packages.compare.cto.duration', 'Ongoing')}</td>
@@ -317,13 +317,13 @@ export default function ServicesPackagesPage(): ReactElement {
       </section>
 
       {/* AI Implementation */}
-      <section aria-label="AI implementation capabilities" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-label="AI implementation capabilities" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center max-w-3xl mx-auto">
+          <div className="band p-10 sm:p-14 text-center max-w-3xl mx-auto">
             <div className="eyebrow mb-3" suppressHydrationWarning>
               {ht('packages.ai.eyebrow', 'AI & ML')}
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+            <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('packages.ai.heading', 'We also ship AI into production')}
             </h2>
             <p className="text-base text-foreground/70 leading-relaxed mb-8" suppressHydrationWarning>
@@ -334,7 +334,7 @@ export default function ServicesPackagesPage(): ReactElement {
             </p>
             <Link
               href="/contact"
-              className="border border-white/10 hover:border-white/20 hover:bg-white/5 px-6 py-3 rounded-xl transition-all inline-flex items-center text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="btn px-6 py-3 rounded-xl transition-all inline-flex items-center text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               suppressHydrationWarning
             >
               {ht('packages.ai.cta', 'Discuss an AI project')}

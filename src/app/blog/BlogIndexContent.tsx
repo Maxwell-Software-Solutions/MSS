@@ -117,16 +117,16 @@ export default function BlogIndexContent(): ReactElement {
     <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
       {/* Hero header */}
       <motion.header
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="mb-16"
       >
         <div className="eyebrow mb-4">Engineering Insights</div>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl">
           {t('blog.title').split(' ').slice(0, -1).join(' ')}{' '}
-          <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+          <span>
             {t('blog.title').split(' ').at(-1)}
           </span>
         </h1>
@@ -137,14 +137,14 @@ export default function BlogIndexContent(): ReactElement {
         {posts.map((post, i) => (
           <motion.article
             key={post.href}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.05 }}
             className="group"
           >
             <Link href={post.href} className="block">
-              <div className="neuro-card rounded-2xl border border-violet-500/15 bg-white/[0.03] backdrop-blur overflow-hidden hover:-translate-y-1 transition-all duration-300">
+              <div className="card rounded-2xl border border-border bg-foreground/5 overflow-hidden transition-all duration-300">
                 <div className="flex flex-col lg:flex-row gap-0">
                   <div className="relative h-56 lg:h-auto lg:w-72 lg:flex-shrink-0 overflow-hidden bg-foreground/5">
                     <Image
@@ -164,11 +164,11 @@ export default function BlogIndexContent(): ReactElement {
                       <span>•</span>
                       <Badge>{t(post.categoryKey)}</Badge>
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-bold mb-3 group-hover:text-violet-400 transition-colors">
+                    <h2 className="text-xl sm:text-2xl mb-3 group-hover:text-accent transition-colors">
                       {t(post.titleKey)}
                     </h2>
                     <p className="text-foreground/70 mb-4 leading-relaxed text-[15px]">{t(post.excerptKey)}</p>
-                    <div className="flex items-center gap-2 text-violet-400 font-medium group-hover:gap-3 transition-all">
+                    <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all">
                       {t('blog.readMore')}
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

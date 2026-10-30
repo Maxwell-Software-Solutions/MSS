@@ -7,7 +7,7 @@ export default function ContactDetailsCard(): ReactElement {
   return (
     <NeuroCard as="aside" className="relative overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--accent)_0%,rgba(139,107,0,0.35)_100%)]" />
-      <h2 className="text-lg font-semibold text-foreground">Prefer a direct line?</h2>
+      <h2 className="text-lg text-foreground">Prefer a direct line?</h2>
       <p className="mt-3 text-sm leading-relaxed text-foreground/70">
         Our team monitors messages around the clock. Drop us a note with your preferred contact method and the right
         specialist will be in touch.
@@ -15,7 +15,7 @@ export default function ContactDetailsCard(): ReactElement {
 
       <div className="mt-8 space-y-6 text-sm">
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[color:var(--accent)]">
+          <span className="text-xs font-semibold text-[color:var(--accent)]">
             Phone
           </span>
           <a
@@ -27,7 +27,7 @@ export default function ContactDetailsCard(): ReactElement {
         </div>
 
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[color:var(--accent)]">
+          <span className="text-xs font-semibold text-[color:var(--accent)]">
             Email
           </span>
           <a
@@ -39,7 +39,7 @@ export default function ContactDetailsCard(): ReactElement {
         </div>
 
         <div>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[color:var(--accent)]">
+          <span className="text-xs font-semibold text-[color:var(--accent)]">
             Hours
           </span>
           <p className="mt-2 text-base text-foreground/70">Monday – Friday, 8am – 6pm CT</p>

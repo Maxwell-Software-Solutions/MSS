@@ -98,26 +98,26 @@ export default function CodeHealthAuditPost(): ReactElement {
           Fifty hours per week. Over a quarter, that is more than one full engineer&apos;s capacity.
         </p>
         <div className="bg-muted/50 p-6 rounded-lg my-6">
-          <h4 className="font-semibold mb-3">Common cost sources in an unhealthy codebase:</h4>
+          <h4 className="mb-3">Common cost sources in an unhealthy codebase:</h4>
           <ul className="space-y-2 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-accent font-bold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-0.5">—</span>
               <span><strong>Context-switching overhead:</strong> Engineers hold the whole system in memory because modularity is poor</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-bold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-0.5">—</span>
               <span><strong>Regression testing time:</strong> Manual verification because automated coverage is absent or broken</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-bold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-0.5">—</span>
               <span><strong>Incident investigation time:</strong> Debugging is slow without observability infrastructure</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-bold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-0.5">—</span>
               <span><strong>Security exposure:</strong> Outdated dependencies carry known CVEs that create liability</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-bold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-0.5">—</span>
               <span><strong>Hiring friction:</strong> Good engineers leave or decline offers when they see the codebase</span>
             </li>
           </ul>
@@ -209,7 +209,7 @@ export default function CodeHealthAuditPost(): ReactElement {
           attached.
         </p>
         <div className="mt-8 bg-accent/10 rounded-2xl p-8 text-center">
-          <h3 className="text-xl font-bold mb-3">Get a free Code Health Audit</h3>
+          <h3 className="text-xl mb-3">Get a free Code Health Audit</h3>
           <p className="text-foreground/70 mb-5 max-w-md mx-auto">
             We conduct a full architecture, security, and performance review — and deliver a prioritised remediation
             plan in 5 business days. Completely free. Limited to 5 per month.

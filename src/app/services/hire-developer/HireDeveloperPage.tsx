@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 8 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.5 },
@@ -15,7 +15,7 @@ const fadeUp = {
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5"
+      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -81,11 +81,11 @@ export default function HireDeveloperPage(): ReactElement {
             {ht('hireDev.eyebrow', 'Hire a Developer')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
             Hire a{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               Senior Developer
             </span>{' '}
             — Without the 3-Month Wait
@@ -100,7 +100,7 @@ export default function HireDeveloperPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -112,7 +112,7 @@ export default function HireDeveloperPage(): ReactElement {
             </Link>
             <Link
               href="/services/packages"
-              className="border border-white/10 hover:border-white/20 hover:bg-white/5 px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
+              className="btn px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
               suppressHydrationWarning
             >
               {ht('hireDev.cta.compare', 'Compare all packages')}
@@ -139,11 +139,11 @@ export default function HireDeveloperPage(): ReactElement {
       </header>
 
       {/* Why outsource to MSS */}
-      <section aria-labelledby="reasons-heading" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-labelledby="reasons-heading" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp} className="mb-8">
           <h2
             id="reasons-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight"
+            className="text-3xl sm:text-4xl tracking-tight"
             suppressHydrationWarning
           >
             {ht('hireDev.reasons.heading', 'Why outsource to MSS')}
@@ -151,15 +151,15 @@ export default function HireDeveloperPage(): ReactElement {
         </motion.div>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
           suppressHydrationWarning
         >
           {reasons.map((item, i) => (
-            <div key={i} className="neuro-card rounded-2xl p-6 hover:-translate-y-1 transition-all">
-              <h3 className="font-semibold mb-2">{item.title}</h3>
+            <div key={i} className="card rounded-2xl p-6 transition-all">
+              <h3 className="mb-2">{item.title}</h3>
               <p className="text-[14px] text-foreground/75 leading-relaxed">{item.body}</p>
             </div>
           ))}
@@ -171,7 +171,7 @@ export default function HireDeveloperPage(): ReactElement {
         <motion.div {...fadeUp}>
           <h2
             id="stack-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight mb-6"
+            className="text-3xl sm:text-4xl tracking-tight mb-6"
             suppressHydrationWarning
           >
             {ht('hireDev.stack.heading', 'Tech stack')}
@@ -183,7 +183,7 @@ export default function HireDeveloperPage(): ReactElement {
             {techStack.map((tech) => (
               <span
                 key={tech}
-                className="inline-flex items-center rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-[13px] font-semibold px-4 py-2"
+                className="inline-flex items-center rounded-full bg-accent/10 border border-border text-accent text-[13px] font-semibold px-4 py-2"
               >
                 {tech}
               </span>
@@ -193,11 +193,11 @@ export default function HireDeveloperPage(): ReactElement {
       </section>
 
       {/* Engagement models */}
-      <section aria-labelledby="engagements-heading" className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
+      <section aria-labelledby="engagements-heading" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp} className="mb-8">
           <h2
             id="engagements-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight"
+            className="text-3xl sm:text-4xl tracking-tight"
             suppressHydrationWarning
           >
             {ht('hireDev.engagements.heading', 'Engagement models')}
@@ -205,17 +205,17 @@ export default function HireDeveloperPage(): ReactElement {
         </motion.div>
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
           suppressHydrationWarning
         >
           {engagements.map((eng) => (
-            <div key={eng.name} className="neuro-card flex flex-col rounded-3xl p-7 sm:p-8 h-full hover:-translate-y-1 transition-all">
-              <h3 className="text-lg font-bold tracking-tight">{eng.name}</h3>
+            <div key={eng.name} className="card flex flex-col rounded-3xl p-7 sm:p-8 h-full transition-all">
+              <h3 className="text-lg tracking-tight">{eng.name}</h3>
               <div className="mt-2.5 flex items-end gap-2">
-                <span className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+                <span className="text-2xl sm:text-3xl font-semibold">
                   {eng.price}
                 </span>
                 {eng.period && <span className="text-sm text-foreground/60 mb-0.5">{eng.period}</span>}
@@ -223,7 +223,7 @@ export default function HireDeveloperPage(): ReactElement {
               <p className="mt-3 text-[14px] text-foreground/75 leading-relaxed flex-1">{eng.description}</p>
               <Link
                 href={eng.href}
-                className="mt-6 w-full text-center rounded-xl px-5 py-3 text-sm font-semibold border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+                className="mt-6 w-full text-center rounded-xl px-5 py-3 text-sm font-semibold btn transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
                 suppressHydrationWarning
               >
                 {ht('hireDev.engagements.cta', 'Learn more')}
@@ -236,10 +236,10 @@ export default function HireDeveloperPage(): ReactElement {
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+          <div className="band p-10 sm:p-14 text-center">
+            <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               Ship faster with{' '}
-              <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              <span>
                 senior engineers.
               </span>
             </h2>
@@ -251,7 +251,7 @@ export default function HireDeveloperPage(): ReactElement {
             </p>
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning

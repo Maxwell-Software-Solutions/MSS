@@ -9,7 +9,7 @@ import ProcessTimeline from '@/app/components/ui/ProcessTimeline';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 8 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.5 },
@@ -41,11 +41,11 @@ export default function ServicesPage(): ReactElement {
             {ht('services.hero.eyebrow', 'Our Services')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
             Engineering{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               Quality
             </span>{' '}
             at Scale
@@ -73,7 +73,7 @@ export default function ServicesPage(): ReactElement {
         <motion.div {...fadeUp} className="mb-10">
           <h2
             id="services-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight max-w-3xl"
+            className="text-3xl sm:text-4xl tracking-tight max-w-3xl"
             suppressHydrationWarning
           >
             {ht('services.heading', 'Services')}
@@ -88,14 +88,14 @@ export default function ServicesPage(): ReactElement {
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 auto-rows-fr gap-6 md:gap-8"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
           suppressHydrationWarning
         >
           {mappedServices.map((svc) => (
-            <div key={svc.key} className="neuro-card rounded-2xl hover:-translate-y-1 transition-all p-1">
+            <div key={svc.key} className="card rounded-2xl transition-all p-1">
               <ServiceCard
                 title={svc.title}
                 summary={svc.summary}
@@ -111,16 +111,16 @@ export default function ServicesPage(): ReactElement {
       {/* Process Timeline */}
       <section
         aria-labelledby="process-heading"
-        className="neuro-section-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20"
+        className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20"
       >
         <motion.div {...fadeUp} className="mb-10">
           <h2
             id="process-heading"
-            className="text-3xl sm:text-4xl font-bold tracking-tight max-w-3xl"
+            className="text-3xl sm:text-4xl tracking-tight max-w-3xl"
             suppressHydrationWarning
           >
             {ht('services.process.heading', 'Our')}{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               Process
             </span>
           </h2>
@@ -129,7 +129,7 @@ export default function ServicesPage(): ReactElement {
           </p>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
@@ -142,11 +142,11 @@ export default function ServicesPage(): ReactElement {
       {/* CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-20 sm:pb-24" suppressHydrationWarning>
         <motion.div {...fadeUp}>
-          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+          <div className="band p-10 sm:p-14 text-center">
+            <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('services.cta.title', 'Ready to Improve Your')}
               {' '}
-              <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+              <span>
                 Code Quality?
               </span>
             </h2>
@@ -159,13 +159,13 @@ export default function ServicesPage(): ReactElement {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all"
+                className="btn btn-accent px-6 py-3 rounded-xl transition-all"
               >
                 {ht('services.cta.primary', 'Start a Conversation')}
               </Link>
               <Link
                 href="/project-showcase"
-                className="border border-white/10 hover:border-white/20 hover:bg-white/5 px-6 py-3 rounded-xl transition-all"
+                className="btn px-6 py-3 rounded-xl transition-all"
               >
                 {ht('services.cta.secondary', 'View Case Studies')}
               </Link>

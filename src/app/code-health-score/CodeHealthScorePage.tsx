@@ -294,11 +294,11 @@ export default function CodeHealthScorePage(): ReactElement | null {
       <>
         {/* Results Hero */}
         <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-6">
-          <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
+          <p className="text-[13px] text-muted mb-3" suppressHydrationWarning>
             {ht('codeHealth.results.eyebrow', 'Your Results')}
           </p>
           <h1
-            className="font-semibold leading-[1.1] max-w-3xl text-[clamp(34px,3.4vw,52px)]"
+            className="leading-[1.1] max-w-3xl text-[clamp(34px,3.4vw,52px)]"
             suppressHydrationWarning
           >
             {ht('codeHealth.results.title', 'Code Health Score')}
@@ -308,7 +308,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
         {/* Score Card */}
         <section className="max-w-5xl mx-auto px-6 sm:px-10 pb-10">
           <div className={`rounded-3xl border ${tier.borderColor} ${tier.bgColor} p-8 sm:p-12 text-center`}>
-            <div className={`text-[clamp(56px,8vw,96px)] font-bold ${tier.color} leading-none`}>
+            <div className={`text-[clamp(56px,8vw,96px)] font-semibold ${tier.color} leading-none`}>
               {totalScore}
               <span className="text-[clamp(20px,3vw,32px)] text-foreground/40 font-normal">/{maxScore}</span>
             </div>
@@ -324,7 +324,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
         {/* Category Breakdown */}
         <section className="max-w-5xl mx-auto px-6 sm:px-10 pb-10">
           <h2
-            className="text-[clamp(20px,2vw,26px)] font-semibold leading-[1.25] tracking-tight mb-6"
+            className="text-[clamp(20px,2vw,26px)] leading-[1.25] tracking-tight mb-6"
             suppressHydrationWarning
           >
             {ht('codeHealth.results.breakdown', 'Score Breakdown')}
@@ -348,10 +348,10 @@ export default function CodeHealthScorePage(): ReactElement | null {
         {/* CTA */}
         <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
           <div className="rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12 text-center">
-            <p className="text-[12px] font-bold uppercase tracking-widest text-accent/70 mb-3" suppressHydrationWarning>
+            <p className="text-[12px] font-semibold text-accent/70 mb-3" suppressHydrationWarning>
               {ht('codeHealth.cta.eyebrow', 'Next step')}
             </p>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-4" suppressHydrationWarning>
+            <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('codeHealth.cta.title', 'Want a professional deep-dive?')}
             </h2>
             <p className="text-[15px] text-foreground/70 max-w-xl mx-auto mb-6" suppressHydrationWarning>
@@ -363,7 +363,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-                className="inline-flex items-center gap-2 bg-accent text-white rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent/90 transition-all shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
+                className="inline-flex items-center gap-2 bg-accent text-white rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
                 target="_blank"
                 rel="noopener noreferrer"
                 suppressHydrationWarning
@@ -393,11 +393,11 @@ export default function CodeHealthScorePage(): ReactElement | null {
     <>
       {/* Hero */}
       <header className="max-w-5xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-6">
-        <p className="tracking-wide text-[13px] text-slate-500 dark:text-slate-400 mb-3 uppercase" suppressHydrationWarning>
+        <p className="text-[13px] text-muted mb-3" suppressHydrationWarning>
           {ht('codeHealth.eyebrow', 'Self-Assessment')}
         </p>
         <h1
-          className="font-semibold leading-[1.1] max-w-3xl text-[clamp(34px,3.4vw,52px)]"
+          className="leading-[1.1] max-w-3xl text-[clamp(34px,3.4vw,52px)]"
           suppressHydrationWarning
         >
           {ht('codeHealth.headline', 'Code Health Score')}
@@ -442,8 +442,8 @@ export default function CodeHealthScorePage(): ReactElement | null {
 
       {/* Quiz Card */}
       <section className="max-w-3xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
-        <div className="rounded-3xl border border-border bg-card/80 p-8 sm:p-10 shadow-soft">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight mb-8" suppressHydrationWarning>
+        <div className="rounded-3xl border border-border bg-card/80 p-8 sm:p-10">
+          <h2 className="text-xl sm:text-2xl tracking-tight mb-8" suppressHydrationWarning>
             {ht(question.key, question.fallback)}
           </h2>
 
@@ -491,7 +491,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             {answeredCount === totalQuestions && (
               <button
                 onClick={() => setShowResults(true)}
-                className="bg-accent text-white rounded-xl px-6 py-3 text-sm font-semibold hover:bg-accent/90 transition-all shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
+                className="bg-accent text-white rounded-xl px-6 py-3 text-sm font-semibold hover:bg-accent/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
                 suppressHydrationWarning
               >
                 {ht('codeHealth.nav.results', 'See my results')}

@@ -14,9 +14,9 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
   const founderKey = firstName; // maxwell, petras, marek
 
   return (
-    <figure className="relative rounded-2xl border border-foreground/10 bg-gradient-to-br p-6 sm:p-8 shadow-soft overflow-hidden group min-h-[20rem] sm:min-h-[22rem] flex flex-col">
+    <figure className="relative rounded-2xl border border-foreground/10 p-6 sm:p-8 overflow-hidden group min-h-[20rem] sm:min-h-[22rem] flex flex-col">
       <div
-        className={`absolute inset-0 pointer-events-none rounded-2xl bg-gradient-to-br ${f.gradient} opacity-10 group-hover:opacity-20 transition-opacity`}
+        className={`absolute inset-0 pointer-events-none rounded-2xl ${f.gradient} opacity-10 group-hover:opacity-20 transition-opacity`}
         aria-hidden="true"
       />
       <div className="relative flex flex-col gap-4 sm:gap-5 grow">
@@ -26,7 +26,7 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
               firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras'
                 ? 'w-32 h-36 sm:w-36 sm:h-40'
                 : 'w-28 h-28 sm:w-32 sm:h-32'
-            } rounded-xl shadow-xl ring-2 ring-white/40 bg-foreground/5 overflow-hidden flex-shrink-0`}
+            } rounded-xl ring-2 ring-white/40 bg-foreground/5 overflow-hidden flex-shrink-0`}
           >
             <Image
               src={imageSrc}
@@ -41,10 +41,10 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
             />
           </div>
           <figcaption className="flex flex-col text-center">
-            <h3 className="font-semibold text-lg leading-tight tracking-tight">
+            <h3 className="text-lg leading-tight tracking-tight">
               {t(`about.founder.${founderKey}.name`)}
             </h3>
-            <div className="text-xs uppercase tracking-wide text-foreground/75 mt-1">
+            <div className="text-xs text-foreground/75 mt-1">
               {t(`about.founder.${founderKey}.role`)}
             </div>
           </figcaption>
@@ -53,7 +53,7 @@ export function FounderCard({ f }: { f: FounderInfo }): ReactElement {
           {t(`about.founder.${founderKey}.bio`)}
         </p>
         <div className="mt-auto pt-4">
-          <span className="inline-flex items-center justify-center gap-1 text-[11px] font-medium uppercase tracking-wider text-foreground/70">
+          <span className="inline-flex items-center justify-center gap-1 text-xs font-medium text-foreground/70">
             <span className="h-1.5 w-1.5 rounded-full bg-current" />
             Focus • Craft • Impact
           </span>

@@ -47,7 +47,7 @@ const STUDIES: CaseStudy[] = [
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-4 h-4 text-violet-400 flex-shrink-0 mt-0.5"
+      className="w-4 h-4 text-accent flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -69,7 +69,7 @@ export default function CaseStudiesPage(): ReactElement {
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
@@ -78,11 +78,11 @@ export default function CaseStudiesPage(): ReactElement {
             {ht('caseStudiesPage.eyebrow', 'Client results')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
             Real{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               {ht('caseStudiesPage.title', 'Case Studies')}
             </span>
           </h1>
@@ -107,28 +107,28 @@ export default function CaseStudiesPage(): ReactElement {
           {STUDIES.map((study, i) => (
             <motion.article
               key={study.key}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="neuro-card shadow-soft rounded-3xl border border-violet-500/15 bg-white/[0.03] backdrop-blur-xl overflow-hidden hover:-translate-y-1 transition-all duration-300"
+              className="card rounded-3xl border border-border bg-foreground/5 overflow-hidden transition-all duration-300"
               aria-labelledby={`study-${study.key}-heading`}
             >
               {/* Top accent bar */}
-              <div className={`h-1 w-full bg-gradient-to-r ${study.accentClass}`} aria-hidden="true" />
+              <div className={`h-1 w-full ${study.accentClass}`} aria-hidden="true" />
 
               <div className="p-8 sm:p-10 md:p-12">
                 {/* Tag + Title */}
                 <div className="mb-6">
                   <span
-                    className="inline-block text-xs font-semibold uppercase tracking-widest text-violet-400 mb-3"
+                    className="inline-block text-xs font-semibold text-accent mb-3"
                     suppressHydrationWarning
                   >
                     {ht(`caseStudiesPage.${study.key}.tag`, '')}
                   </span>
                   <h2
                     id={`study-${study.key}-heading`}
-                    className="text-2xl sm:text-3xl font-bold tracking-tight leading-snug"
+                    className="text-2xl sm:text-3xl tracking-tight leading-snug"
                     suppressHydrationWarning
                   >
                     {ht(`caseStudiesPage.${study.key}.title`, '')}
@@ -143,10 +143,10 @@ export default function CaseStudiesPage(): ReactElement {
                   {study.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="inline-flex flex-col items-center rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-300 px-4 py-2.5 min-w-[80px]"
+                      className="inline-flex flex-col items-center rounded-xl bg-accent/10 border border-border text-accent px-4 py-2.5 min-w-[80px]"
                     >
-                      <span className="text-xl font-extrabold leading-none">{metric.value}</span>
-                      <span className="text-[11px] font-medium text-violet-300/70 mt-0.5">{metric.label}</span>
+                      <span className="text-xl font-semibold leading-none">{metric.value}</span>
+                      <span className="text-xs font-medium text-accent mt-0.5">{metric.label}</span>
                     </div>
                   ))}
                 </div>
@@ -156,7 +156,7 @@ export default function CaseStudiesPage(): ReactElement {
                   {/* Left: Challenge + Solution */}
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-xs font-semibold uppercase tracking-widest text-foreground/50 mb-2" suppressHydrationWarning>
+                      <h3 className="text-xs text-foreground/50 mb-2" suppressHydrationWarning>
                         {ht('caseStudiesPage.challenge', 'Challenge')}
                       </h3>
                       <p className="text-[15px] leading-relaxed text-foreground/80" suppressHydrationWarning>
@@ -164,7 +164,7 @@ export default function CaseStudiesPage(): ReactElement {
                       </p>
                     </div>
                     <div>
-                      <h3 className="text-xs font-semibold uppercase tracking-widest text-foreground/50 mb-2" suppressHydrationWarning>
+                      <h3 className="text-xs text-foreground/50 mb-2" suppressHydrationWarning>
                         {ht('caseStudiesPage.solution', 'Solution')}
                       </h3>
                       <p className="text-[15px] leading-relaxed text-foreground/80" suppressHydrationWarning>
@@ -176,7 +176,7 @@ export default function CaseStudiesPage(): ReactElement {
                   {/* Right: Tech stack + Results */}
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-xs font-semibold uppercase tracking-widest text-foreground/50 mb-2" suppressHydrationWarning>
+                      <h3 className="text-xs text-foreground/50 mb-2" suppressHydrationWarning>
                         {ht('caseStudiesPage.techStack', 'Tech stack')}
                       </h3>
                       <p className="text-[13px] font-mono text-foreground/70 leading-relaxed" suppressHydrationWarning>
@@ -184,7 +184,7 @@ export default function CaseStudiesPage(): ReactElement {
                       </p>
                     </div>
                     <div>
-                      <h3 className="text-xs font-semibold uppercase tracking-widest text-foreground/50 mb-3" suppressHydrationWarning>
+                      <h3 className="text-xs text-foreground/50 mb-3" suppressHydrationWarning>
                         {ht('caseStudiesPage.results', 'Results')}
                       </h3>
                       <ul className="space-y-2" suppressHydrationWarning>

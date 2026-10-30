@@ -36,7 +36,7 @@ export default function RelatedArticles({ currentSlug, limit = 3 }: RelatedArtic
       }}
       aria-labelledby="related-articles-heading"
     >
-      <h3 id="related-articles-heading" className="font-semibold text-lg mb-4" style={{ color: 'var(--color-text)' }}>
+      <h3 id="related-articles-heading" className="text-lg mb-4" style={{ color: 'var(--color-text)' }}>
         Related Reading
       </h3>
       <ul className="space-y-3">

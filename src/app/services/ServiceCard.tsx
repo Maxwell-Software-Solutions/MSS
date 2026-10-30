@@ -17,10 +17,10 @@ export default function ServiceCard({ s }: { s: ServiceItem }): ReactElement {
       )}
       <div className="flex items-center gap-3 relative">
         <Image src={s.icon} alt={s.alt} width={32} height={32} />
-        <h2 className="text-lg font-semibold tracking-tight">{s.title}</h2>
+        <h2 className="text-lg tracking-tight">{s.title}</h2>
       </div>
       <p className="mt-2 text-sm text-foreground/75 leading-relaxed relative">{s.body}</p>
-      <p className="mt-2 text-xs uppercase tracking-wide text-foreground/70 relative">{s.tagline}</p>
+      <p className="mt-2 text-xs text-foreground/70 relative">{s.tagline}</p>
     </section>
   );
 }

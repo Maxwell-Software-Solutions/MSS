@@ -8,7 +8,7 @@ import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-5 h-5 text-violet-400 flex-shrink-0 mt-0.5"
+      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -24,7 +24,7 @@ function CheckIcon(): ReactElement {
 
 function VideoIcon(): ReactElement {
   return (
-    <svg className="w-6 h-6 text-violet-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
     </svg>
   );
@@ -32,7 +32,7 @@ function VideoIcon(): ReactElement {
 
 function PhoneIcon(): ReactElement {
   return (
-    <svg className="w-6 h-6 text-violet-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
     </svg>
   );
@@ -40,7 +40,7 @@ function PhoneIcon(): ReactElement {
 
 function ChatIcon(): ReactElement {
   return (
-    <svg className="w-6 h-6 text-violet-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
     </svg>
   );
@@ -48,7 +48,7 @@ function ChatIcon(): ReactElement {
 
 function SearchIcon(): ReactElement {
   return (
-    <svg className="w-6 h-6 text-violet-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <svg className="w-6 h-6 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
     </svg>
   );
@@ -61,8 +61,8 @@ interface FAQItemProps {
 
 function FAQItem({ question, answer }: FAQItemProps): ReactElement {
   return (
-    <div className="border-b border-violet-500/10 pb-6">
-      <h3 className="text-[15px] font-semibold mb-2">{question}</h3>
+    <div className="border-b border-border pb-6">
+      <h3 className="text-[15px] mb-2">{question}</h3>
       <p className="text-[14px] text-foreground/75 leading-relaxed">{answer}</p>
     </div>
   );
@@ -139,7 +139,7 @@ export default function AdvisoryPage(): ReactElement {
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
@@ -148,11 +148,11 @@ export default function AdvisoryPage(): ReactElement {
             {ht('advisory.eyebrow', 'CTO-in-a-Box')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
             Technical Leadership{' '}
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               Without the €120K Salary
             </span>
           </h1>
@@ -165,7 +165,7 @@ export default function AdvisoryPage(): ReactElement {
 
           {/* Price badge */}
           <div className="mt-6 flex flex-wrap gap-3 items-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-[13px] font-bold px-4 py-1.5" suppressHydrationWarning>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-border text-accent text-[13px] font-semibold px-4 py-1.5" suppressHydrationWarning>
               {ht('advisory.price', '€500/month')}
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/70 text-[12px] font-semibold px-3 py-1" suppressHydrationWarning>
@@ -177,7 +177,7 @@ export default function AdvisoryPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -199,15 +199,15 @@ export default function AdvisoryPage(): ReactElement {
       </header>
 
       {/* What you get */}
-      <section aria-labelledby="includes-heading" className="py-16 sm:py-20 bg-white/[0.02]">
+      <section aria-labelledby="includes-heading" className="py-16 sm:py-20 bg-foreground/5">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <motion.h2
             id="includes-heading"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
+            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
             suppressHydrationWarning
           >
             {ht('advisory.includes.heading', 'What you get')}
@@ -216,11 +216,11 @@ export default function AdvisoryPage(): ReactElement {
             {includes.map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="neuro-card flex items-start gap-4 bg-white/[0.03] backdrop-blur rounded-2xl border border-violet-500/15 p-6 hover:-translate-y-1 transition-all duration-300"
+                className="card flex items-start gap-4 bg-foreground/5 rounded-2xl border border-border p-6 transition-all duration-300"
               >
                 {item.icon}
                 <span className="text-[14px] leading-relaxed text-foreground/85">{item.text}</span>
@@ -233,14 +233,14 @@ export default function AdvisoryPage(): ReactElement {
       {/* Perfect for */}
       <section aria-labelledby="perfect-for-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
           <h2
             id="perfect-for-heading"
-            className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-6"
+            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-6"
             suppressHydrationWarning
           >
             {ht('advisory.perfectFor.heading', 'Perfect for')}
@@ -257,15 +257,15 @@ export default function AdvisoryPage(): ReactElement {
       </section>
 
       {/* How it works */}
-      <section aria-labelledby="process-heading" className="py-16 sm:py-20 bg-white/[0.02]">
+      <section aria-labelledby="process-heading" className="py-16 sm:py-20 bg-foreground/5">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
           <motion.h2
             id="process-heading"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-10"
+            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-10"
             suppressHydrationWarning
           >
             {ht('advisory.process.heading', 'How it works')}
@@ -274,17 +274,17 @@ export default function AdvisoryPage(): ReactElement {
             {processSteps.map((step, i) => (
               <motion.div
                 key={step.step}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="neuro-card flex gap-5 bg-white/[0.03] backdrop-blur rounded-2xl border border-violet-500/15 p-6 hover:-translate-y-1 transition-all duration-300"
+                className="card flex gap-5 bg-foreground/5 rounded-2xl border border-border p-6 transition-all duration-300"
               >
-                <div className="flex-shrink-0 w-11 h-11 rounded-full bg-gradient-to-br from-violet-600 to-indigo-600 text-white font-bold text-sm flex items-center justify-center shadow-[0_4px_12px_rgba(124,58,237,0.4)]">
+                <div className="flex-shrink-0 w-11 h-11 rounded-full bg-accent-fill text-accent-contrast font-semibold text-sm flex items-center justify-center">
                   {step.step}
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1.5">{step.title}</h3>
+                  <h3 className="mb-1.5">{step.title}</h3>
                   <p className="text-[14px] text-foreground/75 leading-relaxed">{step.body}</p>
                 </div>
               </motion.div>
@@ -296,52 +296,52 @@ export default function AdvisoryPage(): ReactElement {
       {/* Comparison table */}
       <section aria-labelledby="compare-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
           <h2
             id="compare-heading"
-            className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
+            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
             suppressHydrationWarning
           >
             {ht('advisory.compare.heading', 'How it compares')}
           </h2>
-          <div className="overflow-x-auto rounded-2xl border border-violet-500/15 bg-white/[0.02] backdrop-blur">
+          <div className="overflow-x-auto rounded-2xl border border-border bg-foreground/5">
             <table className="w-full text-[13px]" role="table" aria-label="CTO option comparison">
               <thead>
-                <tr className="border-b border-violet-500/10 bg-white/[0.03]">
+                <tr className="border-b border-border bg-foreground/5">
                   <th className="text-left p-4 font-semibold" scope="col">&nbsp;</th>
                   <th className="text-left p-4 font-semibold" scope="col">{ht('advisory.compare.col.fulltime', 'Full-time CTO')}</th>
                   <th className="text-left p-4 font-semibold" scope="col">{ht('advisory.compare.col.fractional', 'Fractional CTO')}</th>
-                  <th className="text-left p-4 font-semibold text-violet-400" scope="col">{ht('advisory.compare.col.box', 'CTO-in-a-Box')}</th>
+                  <th className="text-left p-4 font-semibold text-accent" scope="col">{ht('advisory.compare.col.box', 'CTO-in-a-Box')}</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-violet-500/10 hover:bg-white/[0.02] transition-colors">
+                <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
                   <td className="p-4 font-medium">{ht('advisory.compare.row.cost', 'Cost')}</td>
                   <td className="p-4 text-foreground/70">{ht('advisory.compare.fulltime.cost', '€8–15K/mo')}</td>
                   <td className="p-4 text-foreground/70">{ht('advisory.compare.fractional.cost', '€3,500/mo')}</td>
-                  <td className="p-4 text-violet-400 font-semibold">{ht('advisory.compare.box.cost', '€500/mo')}</td>
+                  <td className="p-4 text-accent font-semibold">{ht('advisory.compare.box.cost', '€500/mo')}</td>
                 </tr>
-                <tr className="border-b border-violet-500/10 hover:bg-white/[0.02] transition-colors">
+                <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
                   <td className="p-4 font-medium">{ht('advisory.compare.row.commitment', 'Commitment')}</td>
                   <td className="p-4 text-foreground/70">{ht('advisory.compare.fulltime.commitment', 'Full-time hire')}</td>
                   <td className="p-4 text-foreground/70">{ht('advisory.compare.fractional.commitment', 'Monthly retainer')}</td>
-                  <td className="p-4 text-violet-400 font-semibold">{ht('advisory.compare.box.commitment', 'Cancel anytime')}</td>
+                  <td className="p-4 text-accent font-semibold">{ht('advisory.compare.box.commitment', 'Cancel anytime')}</td>
                 </tr>
-                <tr className="border-b border-violet-500/10 hover:bg-white/[0.02] transition-colors">
+                <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
                   <td className="p-4 font-medium">{ht('advisory.compare.row.response', 'Response time')}</td>
                   <td className="p-4 text-foreground/70">{ht('advisory.compare.fulltime.response', 'Immediate')}</td>
                   <td className="p-4 text-foreground/70">{ht('advisory.compare.fractional.response', 'Same day')}</td>
                   <td className="p-4 text-foreground/70">{ht('advisory.compare.box.response', '24 hours')}</td>
                 </tr>
-                <tr className="hover:bg-white/[0.02] transition-colors">
+                <tr className="hover:bg-foreground/5 transition-colors">
                   <td className="p-4 font-medium">{ht('advisory.compare.row.bestFor', 'Best for')}</td>
                   <td className="p-4 text-foreground/70">{ht('advisory.compare.fulltime.bestFor', 'Scale-ups')}</td>
                   <td className="p-4 text-foreground/70">{ht('advisory.compare.fractional.bestFor', 'Growth stage')}</td>
-                  <td className="p-4 text-violet-400 font-semibold">{ht('advisory.compare.box.bestFor', 'Early stage')}</td>
+                  <td className="p-4 text-accent font-semibold">{ht('advisory.compare.box.bestFor', 'Early stage')}</td>
                 </tr>
               </tbody>
             </table>
@@ -350,17 +350,17 @@ export default function AdvisoryPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-white/[0.02]">
+      <section aria-labelledby="faq-heading" className="py-16 sm:py-20 bg-foreground/5">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             <h2
               id="faq-heading"
-              className="text-[clamp(22px,2.2vw,28px)] font-semibold leading-[1.25] tracking-tight mb-8"
+              className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
               suppressHydrationWarning
             >
               {ht('advisory.faq.heading', 'Frequently asked questions')}
@@ -377,13 +377,13 @@ export default function AdvisoryPage(): ReactElement {
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center"
+          className="band p-10 sm:p-14 text-center"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" suppressHydrationWarning>
+          <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
             {ht('advisory.bottomcta.title', 'Senior technical guidance for €500/month.')}
           </h2>
           <p className="text-[15px] text-foreground/70 max-w-lg mx-auto mb-7" suppressHydrationWarning>
@@ -394,7 +394,7 @@ export default function AdvisoryPage(): ReactElement {
           </p>
           <Link
             href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-8 py-4 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+            className="inline-flex items-center gap-2 btn btn-accent px-8 py-4 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
             target="_blank"
             rel="noopener noreferrer"
             suppressHydrationWarning

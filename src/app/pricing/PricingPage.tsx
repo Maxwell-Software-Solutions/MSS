@@ -6,7 +6,7 @@ import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import CTA from '@/app/components/ui/CTA';
 
 const fadeUp = {
-  initial: { opacity: 0, y: 20 },
+  initial: { opacity: 0, y: 8 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.5 },
@@ -15,7 +15,7 @@ const fadeUp = {
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-4 h-4 flex-shrink-0 mt-0.5 text-violet-400"
+      className="w-4 h-4 flex-shrink-0 mt-0.5 text-accent"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -54,26 +54,26 @@ function PricingTier({
 }: TierProps): ReactElement {
   return (
     <div
-      className={`neuro-card relative flex flex-col rounded-3xl p-8 sm:p-10 hover:-translate-y-1 transition-all ${
+      className={`card relative flex flex-col rounded-3xl p-8 sm:p-10 transition-all ${
         highlighted
-          ? 'border border-violet-500/40 shadow-[0_0_40px_rgba(124,58,237,0.15)]'
+          ? 'border border-accent/40'
           : ''
       }`}
     >
       {badge && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block bg-gradient-to-r from-violet-600 to-indigo-500 text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow">
+        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block bg-accent-fill text-accent-contrast text-xs font-semibold px-4 py-1.5 rounded-full">
           {badge}
         </span>
       )}
 
       {highlighted && (
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent rounded-t-3xl" />
+        <div className="absolute inset-x-0 top-0 h-px rounded-t-3xl" />
       )}
 
       <div className="mb-6">
-        <h2 className="text-xl font-bold tracking-tight">{name}</h2>
+        <h2 className="text-xl tracking-tight">{name}</h2>
         <div className="mt-3 flex items-end gap-2">
-          <span className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+          <span className="text-3xl sm:text-4xl font-semibold">
             {price}
           </span>
           <span className="text-sm text-foreground/60 mb-1">{period}</span>
@@ -92,10 +92,10 @@ function PricingTier({
 
       <Link
         href={ctaHref}
-        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60 ${
+        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent ${
           highlighted
-            ? 'bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold shadow-[0_4px_20px_rgba(124,58,237,0.4)]'
-            : 'border border-white/10 hover:border-white/20 hover:bg-white/5'
+            ? 'btn btn-accent'
+            : 'btn'
         }`}
       >
         {ctaLabel}
@@ -111,8 +111,8 @@ interface FAQItemProps {
 
 function FAQItem({ question, answer }: FAQItemProps): ReactElement {
   return (
-    <div className="border-b border-white/5 pb-6">
-      <h3 className="text-[15px] font-semibold mb-2">{question}</h3>
+    <div className="border-b border-border pb-6">
+      <h3 className="text-[15px] mb-2">{question}</h3>
       <p className="text-[14px] text-foreground/75 leading-relaxed">{answer}</p>
     </div>
   );
@@ -208,10 +208,10 @@ export default function PricingPage(): ReactElement {
             {ht('pricing.eyebrow', 'Transparent pricing')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-3xl"
+            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
             suppressHydrationWarning
           >
-            <span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span>
               Transparent
             </span>{' '}
             Pricing
@@ -235,7 +235,7 @@ export default function PricingPage(): ReactElement {
         </h2>
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-start"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -248,12 +248,12 @@ export default function PricingPage(): ReactElement {
       </section>
 
       {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="neuro-section-border py-16 sm:py-20">
+      <section aria-labelledby="faq-heading" className="border-t border-border py-16 sm:py-20">
         <div className="max-w-3xl mx-auto px-6 sm:px-10">
           <motion.div {...fadeUp}>
             <h2
               id="faq-heading"
-              className="text-3xl sm:text-4xl font-bold tracking-tight mb-8"
+              className="text-3xl sm:text-4xl tracking-tight mb-8"
               suppressHydrationWarning
             >
               {ht('pricing.faq.heading', 'Frequently asked questions')}
@@ -270,8 +270,8 @@ export default function PricingPage(): ReactElement {
       {/* Not sure CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20" suppressHydrationWarning>
         <motion.div {...fadeUp}>
-          <div className="rounded-3xl bg-gradient-to-br from-violet-900/30 via-indigo-900/20 to-transparent border border-violet-500/20 p-10 sm:p-14 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight" suppressHydrationWarning>
+          <div className="band p-10 sm:p-14 text-center">
+            <h2 className="text-3xl sm:text-4xl tracking-tight" suppressHydrationWarning>
               {ht('pricing.notSure.title', 'Not sure which plan fits?')}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-foreground/70 max-w-xl mx-auto" suppressHydrationWarning>
@@ -282,7 +282,7 @@ export default function PricingPage(): ReactElement {
             </p>
             <Link
               href="/contact"
-              className="mt-8 inline-flex items-center gap-2 bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white font-bold px-6 py-3 rounded-xl shadow-[0_4px_20px_rgba(124,58,237,0.4)] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-violet-500/60"
+              className="mt-8 inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               suppressHydrationWarning
             >
               {ht('pricing.notSure.cta', 'Talk to us')}

@@ -103,7 +103,7 @@ export function SecurityContent({ securityEmail }: SecurityContentProps): ReactE
       </ArticleSection>
 
       <ArticleSection title="What to do next (internal checklist)">
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-sm text-muted">
           The following actions ensure ongoing compliance and clarity for visitors:
         </p>
         <ul className="list-disc space-y-3 pl-5">

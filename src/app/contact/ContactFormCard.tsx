@@ -27,7 +27,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
               placeholder={t('contactForm.name.placeholder')}
               required
               autoComplete="name"
-              className="neuro-input mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
+              className="field mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
             />
           </label>
 
@@ -39,7 +39,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
               placeholder={t('contactForm.email.placeholder')}
               required
               autoComplete="email"
-              className="neuro-input mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
+              className="field mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
             />
           </label>
 
@@ -50,7 +50,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
               placeholder={t('contactForm.message.placeholder')}
               required
               rows={5}
-              className="neuro-input mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
+              className="field mt-2 block w-full text-base text-foreground placeholder:text-foreground/40"
             />
           </label>
 

@@ -43,7 +43,7 @@ export default function CaseStudiesContent(): ReactElement {
 
   return (
     <div className="container section" data-reveal>
-      <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">{t('caseStudies.title')}</h1>
+      <h1 className="text-3xl sm:text-4xl tracking-tight">{t('caseStudies.title')}</h1>
       <p className="mt-3 lead max-w-2xl">{t('caseStudies.subtitle')}</p>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
@@ -51,7 +51,7 @@ export default function CaseStudiesContent(): ReactElement {
           <Link
             key={c.slug}
             href={`/project-showcase/${c.slug}`}
-            className="card shadow-soft block overflow-hidden group transition-all hover:border-accent/80 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            className="card block overflow-hidden group transition-all hover:border-accent/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             aria-label={`View case study: ${t(`caseStudies.${c.translationKey}.title`)}`}
           >
             <div className="relative h-36 bg-background/80">
@@ -61,15 +61,15 @@ export default function CaseStudiesContent(): ReactElement {
                 fill
                 unoptimized
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover group-hover:scale-[1.02] transition-transform"
+                className="object-cover transition-transform"
                 role="presentation"
               />
             </div>
             <div className="p-5">
-              <div className="text-xs text-foreground/70 mb-1 font-medium uppercase tracking-wider">
+              <div className="text-xs text-foreground/70 mb-1 font-medium">
                 {t(`caseStudies.${c.translationKey}.meta`)}
               </div>
-              <h2 className="text-lg font-semibold group-hover:text-accent transition-colors">
+              <h2 className="text-lg group-hover:text-accent transition-colors">
                 {t(`caseStudies.${c.translationKey}.title`)}
               </h2>
               <p className="mt-2 text-sm text-foreground/85 leading-relaxed">

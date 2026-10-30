@@ -41,7 +41,7 @@ export default function FoundersPage(): React.ReactElement {
     <div className="min-h-screen px-6 sm:px-10 py-16 sm:py-20">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-center" data-reveal>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Founders</h1>
+          <h1 className="text-4xl sm:text-5xl tracking-tight">Founders</h1>
           <p className="mt-4 text-foreground/70 max-w-2xl mx-auto leading-relaxed">
             Meet the core team guiding technical direction, product quality, and sustainable velocity.
           </p>
@@ -51,7 +51,7 @@ export default function FoundersPage(): React.ReactElement {
           {founders.map((founder) => (
             <div
               key={founder.name}
-              className="neuro-card shadow-soft rounded-3xl border bg-card/95 backdrop-blur-xl transition hover:shadow-lg"
+              className="card rounded-3xl border bg-card/95 transition"
             >
               <div
                 className={`grid grid-cols-1 ${
@@ -66,7 +66,7 @@ export default function FoundersPage(): React.ReactElement {
                 >
                   <div className="space-y-6">
                     <div>
-                      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">{founder.name}</h2>
+                      <h2 className="text-3xl sm:text-4xl tracking-tight mb-3">{founder.name}</h2>
                       <p className="text-xl text-foreground/80 font-medium">{founder.title}</p>
                     </div>
                     <p className="text-base sm:text-lg text-foreground/75 leading-relaxed">{founder.bio}</p>
@@ -82,7 +82,7 @@ export default function FoundersPage(): React.ReactElement {
                   <div
                     role="img"
                     aria-label={`${founder.name} — ${founder.title}`}
-                    className="w-full max-w-sm aspect-square rounded-3xl shadow-soft bg-foreground/5 flex items-center justify-center text-sm font-medium uppercase text-foreground/70 neuro-card"
+                    className="w-full max-w-sm aspect-square rounded-3xl bg-foreground/5 flex items-center justify-center text-sm font-medium text-foreground/70 card"
                   >
                     Photo Pending
                   </div>
