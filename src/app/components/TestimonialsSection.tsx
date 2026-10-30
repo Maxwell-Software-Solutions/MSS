@@ -2,9 +2,9 @@ import type { ReactElement } from 'react';
 
 export default function TestimonialsSection(): ReactElement {
   return (
-    <section className="px-6 sm:px-10 py-20 neuro-section-border" aria-labelledby="testimonials-heading">
-      <div className="max-w-6xl mx-auto" data-reveal>
-        <h2 id="testimonials-heading" className="text-3xl sm:text-4xl font-semibold tracking-tight">
+    <section className="border-t border-border" aria-labelledby="testimonials-heading">
+      <div className="max-w-6xl mx-auto px-6 py-20 sm:px-10 sm:py-24" data-reveal>
+        <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight sm:text-4xl">
           Client perspective
         </h2>
         <div className="mt-10 grid gap-8 md:grid-cols-3">
@@ -23,11 +23,9 @@ export default function TestimonialsSection(): ReactElement {
               author: 'Principal Engineer, Retail',
             },
           ].map((t) => (
-            <figure key={t.author} className="card shadow-soft p-6 flex flex-col justify-between">
-              <blockquote className="text-sm leading-relaxed text-foreground/80">“{t.quote}”</blockquote>
-              <figcaption className="mt-4 text-xs font-medium uppercase tracking-wide text-foreground/75">
-                {t.author}
-              </figcaption>
+            <figure key={t.author} className="flex flex-col justify-between border-t border-border-strong pt-6">
+              <blockquote className="text-[0.9375rem] leading-relaxed text-foreground">“{t.quote}”</blockquote>
+              <figcaption className="mt-5 text-sm font-medium text-muted">{t.author}</figcaption>
             </figure>
           ))}
         </div>

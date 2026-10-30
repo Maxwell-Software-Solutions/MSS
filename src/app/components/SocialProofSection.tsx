@@ -117,17 +117,12 @@ const stats = [
 
 export default function SocialProofSection(): ReactElement {
   return (
-    <section
-      className="px-6 sm:px-10 py-14 sm:py-20 neuro-section-border bg-background/40"
-      aria-labelledby="social-proof-heading"
-    >
-      <div className="max-w-6xl mx-auto" data-reveal>
+    <section className="border-t border-border bg-wash" aria-labelledby="social-proof-heading">
+      <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-20" data-reveal>
         {/* Client logos */}
-        <div className="text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-foreground/50 font-medium mb-6">
-            Trusted by forward-thinking teams
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 opacity-70">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-muted">Trusted by forward-thinking teams</p>
+          <div className="flex flex-wrap items-center gap-6 text-foreground sm:gap-8">
             <LogoMiau />
             <LogoNeoNova />
             <LogoFueille />
@@ -135,39 +130,28 @@ export default function SocialProofSection(): ReactElement {
         </div>
 
         {/* Stats row */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+        <div className="ruled mt-10 grid-cols-1 sm:grid-cols-3">
           {stats.map((s) => (
-            <div
-              key={s.value}
-              className="card shadow-soft p-6 text-center border border-accent/10"
-            >
-              <div className="text-3xl sm:text-4xl font-bold text-accent">{s.value}</div>
-              <div className="mt-2 text-sm text-foreground/65 font-medium">{s.label}</div>
+            <div key={s.value} className="p-6 sm:p-7">
+              <div className="text-3xl font-semibold tracking-tight tabular-nums sm:text-4xl">{s.value}</div>
+              <div className="mt-2 text-sm text-muted">{s.label}</div>
             </div>
           ))}
         </div>
 
         {/* Testimonials */}
-        <div className="mt-10 grid gap-6 md:grid-cols-3" id="social-proof-heading" aria-label="Client testimonials">
+        <div className="mt-12 grid gap-8 md:grid-cols-3" id="social-proof-heading" aria-label="Client testimonials">
           <h2 className="sr-only">Client results and testimonials</h2>
           {testimonials.map((item) => (
-            <figure
-              key={item.author}
-              className="card shadow-soft p-6 flex flex-col justify-between border border-foreground/5"
-            >
+            <figure key={item.author} className="flex flex-col justify-between border-t border-border-strong pt-6">
               {/* Quote mark */}
-              <div aria-hidden="true" className="text-accent/30 text-4xl font-serif leading-none mb-3 select-none">
+              <div aria-hidden="true" className="mb-3 select-none text-3xl leading-none text-accent">
                 &ldquo;
               </div>
-              <blockquote className="text-sm leading-relaxed text-foreground/80 flex-1">
+              <blockquote className="flex-1 text-[0.9375rem] leading-relaxed text-foreground">
                 {item.quote}
               </blockquote>
-              <figcaption className="mt-5 flex items-center gap-2">
-                <span className="h-px flex-1 bg-foreground/10" aria-hidden="true" />
-                <span className="text-xs font-semibold uppercase tracking-wide text-foreground/60">
-                  {item.author}
-                </span>
-              </figcaption>
+              <figcaption className="mt-5 text-sm font-medium text-muted">{item.author}</figcaption>
             </figure>
           ))}
         </div>

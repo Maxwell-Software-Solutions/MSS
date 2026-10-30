@@ -187,11 +187,11 @@ export default function ParticleField(): ReactElement {
       // Detect mobile for increased particle density
       const isMobile = canvas.clientWidth < 768;
       const TARGET_MAX_PARTICLES = prefersReducedMotion
-        ? 400
+        ? 300
         : isMobile
-        ? 1800 // More particles on mobile
-        : 1400; // Increased from 1100
-      let dynamicMax = Math.min(isMobile ? 220 : 180, TARGET_MAX_PARTICLES); // progressive ramp, start higher on mobile
+        ? 700
+        : 600; // a calm field: fewer, quieter particles
+      let dynamicMax = Math.min(isMobile ? 160 : 120, TARGET_MAX_PARTICLES); // progressive ramp
       const rampStart = performance.now();
       // double buffer (offscreen) for heavier draws (lines + gradients)
       const bufferCanvas = document.createElement('canvas');
@@ -266,12 +266,13 @@ export default function ParticleField(): ReactElement {
       resize();
       window.addEventListener('resize', resize);
 
+      // Slate and brand-blue tones that read on both the light and the dark theme
       const PALETTE: [number, number, number][] = [
-        [255, 255, 255], // white (replaces prior light purple)
-        [179, 134, 0], // dark gold
-        [255, 215, 0], // bright gold
-        [102, 106, 112], // grey
-        [217, 220, 224], // light grey
+        [100, 116, 139], // slate 500
+        [148, 163, 184], // slate 400
+        [59, 130, 246], // blue 500
+        [37, 99, 235], // blue 600
+        [100, 116, 139], // slate 500
       ];
 
       function spawnBurst(x: number, y: number): void {
@@ -358,7 +359,7 @@ export default function ParticleField(): ReactElement {
               vx: Math.cos(angle) * speed,
               vy: Math.sin(angle) * speed,
               life: 110 + Math.random() * 40,
-              color: [255, 255, 255],
+              color: [100, 116, 139],
             });
           }
         }
@@ -436,9 +437,9 @@ export default function ParticleField(): ReactElement {
         if (!featuresEnabledRef.current.pulses && ts - rampStart > 2200) {
           featuresEnabledRef.current.pulses = true;
         }
-        // Only enable autonomous agents when not in dark mode (they cause visible moving anchors)
+        // Autonomous agents stay off in both themes: the field is a quiet backdrop, not a show
         if (!featuresEnabledRef.current.agents && ts - rampStart > 1600) {
-          featuresEnabledRef.current.agents = !isDark;
+          featuresEnabledRef.current.agents = false;
         }
 
         if (featuresEnabledRef.current.pulses && ts >= pulseRef.current.nextAt && !prefersReducedMotion && !skipHeavy) {
@@ -505,7 +506,7 @@ export default function ParticleField(): ReactElement {
               const age = ts - b.ts;
               const alpha = Math.max(0, 1 - age / trailMaxAge);
               if (alpha <= 0) continue;
-              drawCtx.strokeStyle = `rgba(255,255,255,${alpha * 0.18})`;
+              drawCtx.strokeStyle = `rgba(100,116,139,${alpha * 0.18})`;
               drawCtx.beginPath();
               drawCtx.moveTo(a.x, a.y);
               drawCtx.lineTo(b.x, b.y);
@@ -524,8 +525,8 @@ export default function ParticleField(): ReactElement {
           dynamicMax = TARGET_MAX_PARTICLES;
         }
 
-        // In dark mode we suppress particle connection lines and heavy agent trails so only particles remain
-        const suppressConnections = elapsed < 1800 || skipHeavy || isDark; // delay & dampen
+        // Particle connection lines are suppressed in both themes so only the particles remain
+        const suppressConnections = true;
         const next: Particle[] = [];
         for (const p of particlesRef.current) {
           p.x += p.vx;
@@ -635,7 +636,7 @@ export default function ParticleField(): ReactElement {
   return (
     <div
       data-testid="particle-field"
-      className="relative w-full h-[380px] sm:h-[460px] md:h-[520px] rounded-xl overflow-hidden bg-gradient-to-br from-accent/5 via-transparent to-accent/10 border border-accent/20"
+      className="relative h-[420px] w-full overflow-hidden rounded-xl border border-border bg-surface lg:h-[460px]"
     >
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
     </div>
