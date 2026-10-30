@@ -25,8 +25,8 @@ export function ButtonLink({
 }: ButtonLinkProps): ReactElement {
   const sizeClasses = {
     sm: 'px-4 py-2',
-    md: 'px-6 py-3',
-    lg: 'px-8 py-4',
+    md: 'px-5 py-2.5',
+    lg: 'px-7 py-3.5 text-base',
   };
 
   const variantClasses = {
@@ -35,7 +35,7 @@ export function ButtonLink({
     secondary: 'btn btn-secondary',
   };
 
-  const combinedClasses = `${variantClasses[variant]} ${sizeClasses[size]} font-semibold ${className}`.trim();
+  const combinedClasses = `${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 
   return (
     <a href={href} className={combinedClasses} {...props}>

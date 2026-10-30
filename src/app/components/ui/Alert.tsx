@@ -12,20 +12,27 @@ interface AlertProps {
 
 /**
  * Alert component - consolidates info/warning/success/error boxes used in blog posts
- * Replaces inline `bg-card/50 border border-*-/20 rounded-lg p-4` patterns
+ * Flat panel with a coloured edge; colour comes from the status tokens in styles/tokens.css
  */
 export function Alert({ children, variant = 'info', icon, title, className = '' }: AlertProps): ReactElement {
   const variantClasses = {
-    info: 'bg-card/50 border-foreground/20 text-foreground',
-    success: 'bg-card/50 border-green-500/20 text-green-600 dark:text-green-400',
-    warning: 'bg-card/50 border-accent/20 text-accent',
-    error: 'bg-card/50 border-red-500/20 text-red-600 dark:text-red-400',
+    info: 'border-border border-l-foreground/40 bg-wash',
+    success: 'border-border border-l-success bg-wash',
+    warning: 'border-border border-l-warning bg-wash',
+    error: 'border-border border-l-error bg-wash',
+  };
+
+  const iconClasses = {
+    info: 'text-foreground',
+    success: 'text-success',
+    warning: 'text-warning',
+    error: 'text-error',
   };
 
   return (
-    <div className={`border rounded-lg p-4 ${variantClasses[variant]} ${className}`.trim()}>
+    <div className={`rounded-lg border border-l-4 p-4 ${variantClasses[variant]} ${className}`.trim()}>
       {(title || icon) && (
-        <div className="font-semibold mb-2 flex items-center gap-2">
+        <div className={`mb-2 flex items-center gap-2 font-semibold ${iconClasses[variant]}`}>
           {icon && (
             <span role="img" aria-hidden="true">
               {icon}
@@ -34,7 +41,7 @@ export function Alert({ children, variant = 'info', icon, title, className = '' 
           {title}
         </div>
       )}
-      <div className="text-foreground/90 text-sm">{children}</div>
+      <div className="text-sm text-foreground">{children}</div>
     </div>
   );
 }

@@ -13,19 +13,21 @@ interface BadgeProps {
  */
 export function Badge({ children, variant = 'accent', size = 'sm', className = '' }: BadgeProps): ReactElement {
   const variantClasses = {
-    accent: 'bg-accent/20 text-accent',
-    neutral: 'bg-foreground/10 text-foreground',
-    success: 'bg-green-500/20 text-green-600 dark:text-green-400',
-    warning: 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-400',
+    accent: 'border-accent/30 bg-accent/10 text-accent',
+    neutral: 'border-border bg-wash text-secondary',
+    success: 'border-success/30 bg-success/10 text-success',
+    warning: 'border-warning/30 bg-warning/10 text-warning',
   };
 
   const sizeClasses = {
-    sm: 'px-2 py-1 text-xs',
-    md: 'px-3 py-1.5 text-sm',
+    sm: 'px-2 py-0.5 text-xs',
+    md: 'px-3 py-1 text-sm',
   };
 
   return (
-    <span className={`${variantClasses[variant]} ${sizeClasses[size]} rounded-full ${className}`.trim()}>
+    <span
+      className={`inline-flex items-center rounded-md border font-medium ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim()}
+    >
       {children}
     </span>
   );

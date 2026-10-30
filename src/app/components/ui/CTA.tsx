@@ -11,36 +11,25 @@ interface CTAProps {
 export function CTA({ title, body, primary, secondary }: CTAProps): ReactElement {
   return (
     <section className="mt-16">
-      <div className="relative rounded-3xl bg-card/80 backdrop-blur supports-[backdrop-filter]:shadow-lg px-8 py-12 sm:py-16 overflow-hidden bg-gradient-to-tl from-[rgba(212,175,55,0.1)] via-transparent to-[rgba(139,107,0,0.1)]">
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.15] bg-[radial-gradient(circle_at_75%_25%,rgba(212,175,55,0.3),transparent_60%)]"
-          aria-hidden="true"
-        />
-        <div className="relative max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-tight">{title}</h2>
-          <p className="mt-4 text-lg leading-relaxed text-foreground/80">{body}</p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <div className="band px-8 py-12 sm:px-12 sm:py-14 md:flex md:items-end md:justify-between md:gap-12">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">{title}</h2>
+          <p className="mt-4 text-lg leading-relaxed text-secondary">{body}</p>
+        </div>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row md:mt-0 md:shrink-0">
+          <ButtonLink href={primary.href} variant="accent" size="lg" aria-label={primary.ariaLabel || primary.label}>
+            {primary.label}
+          </ButtonLink>
+          {secondary && (
             <ButtonLink
-              href={primary.href}
-              variant="accent"
+              href={secondary.href}
+              variant="ghost"
               size="lg"
-              className="shadow-soft focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
-              aria-label={primary.ariaLabel || primary.label}
+              aria-label={secondary.ariaLabel || secondary.label}
             >
-              {primary.label}
+              {secondary.label}
             </ButtonLink>
-            {secondary && (
-              <ButtonLink
-                href={secondary.href}
-                variant="ghost"
-                size="lg"
-                className="focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
-                aria-label={secondary.ariaLabel || secondary.label}
-              >
-                {secondary.label}
-              </ButtonLink>
-            )}
-          </div>
+          )}
         </div>
       </div>
     </section>

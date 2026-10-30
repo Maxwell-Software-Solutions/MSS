@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import type { ReactElement } from 'react';
 
 /**
- * Gold progress bar that shows only on first page load
+ * Thin accent progress bar that shows only on first page load
  * Simulates loading progress for better perceived performance
  */
 export default function FirstLoadProgressBar(): ReactElement | null {
@@ -63,7 +63,7 @@ export default function FirstLoadProgressBar(): ReactElement | null {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-[100] h-1 bg-transparent pointer-events-none"
+      className="fixed top-0 left-0 right-0 z-[100] h-0.5 bg-transparent pointer-events-none"
       role="progressbar"
       aria-valuenow={progress}
       aria-valuemin={0}
@@ -71,7 +71,7 @@ export default function FirstLoadProgressBar(): ReactElement | null {
       aria-label="Page loading progress"
     >
       <div
-        className="h-full bg-gradient-to-r from-accent via-yellow-500 to-accent transition-all duration-300 ease-out shadow-lg shadow-accent/50"
+        className="h-full bg-accent transition-all duration-300 ease-out"
         style={{
           width: `${progress}%`,
           opacity: progress === 100 ? 0 : 1,

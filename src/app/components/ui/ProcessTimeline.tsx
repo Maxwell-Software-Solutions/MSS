@@ -10,7 +10,7 @@ interface ProcessTimelineProps {
 }
 
 // Responsive process timeline: horizontal on lg+, vertical otherwise.
-// Features progressive activation animation from left to right
+// Steps activate left to right once the timeline scrolls into view.
 export function ProcessTimeline({ steps }: ProcessTimelineProps): ReactElement {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -56,91 +56,44 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps): ReactElement {
 
   return (
     <div className="relative mt-4" id="process-timeline-container">
-      {/* Desktop horizontal connector line - base */}
+      {/* Desktop horizontal connector line - base, then progress */}
+      <div className="absolute left-0 right-0 top-4 hidden h-px bg-border lg:block" aria-hidden="true" />
       <div
-        className="hidden lg:block absolute top-12 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300/60 dark:via-slate-600/50 to-transparent"
-        aria-hidden="true"
-      />
-      {/* Desktop horizontal progress line - animated */}
-      <div
-        className="hidden lg:block absolute top-12 left-0 h-[2px] bg-gradient-to-r from-accent via-accent to-transparent transition-all duration-500 ease-out shadow-[0_0_8px_rgba(212,175,55,0.6)]"
+        className="absolute left-0 top-4 hidden h-px bg-accent transition-all duration-500 ease-out lg:block"
         style={{ width: `${progressPercent}%` }}
         aria-hidden="true"
       />
-      {/* Desktop moving dot indicator */}
-      {activeIndex >= 0 && (
-        <div
-          className="hidden lg:block absolute top-12 w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_rgba(212,175,55,0.8)] transition-all duration-500 ease-out"
-          style={{
-            left: `${progressPercent}%`,
-            transform: 'translate(-50%, -50%)',
-          }}
-          aria-hidden="true"
-        >
-          <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-75" />
-        </div>
-      )}
 
-      {/* Mobile vertical connector line - base */}
+      {/* Mobile vertical connector line - base, then progress */}
+      <div className="absolute bottom-0 left-4 top-0 w-px bg-border lg:hidden" aria-hidden="true" />
       <div
-        className="lg:hidden absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-slate-300/60 dark:via-slate-600/50 to-transparent"
-        aria-hidden="true"
-      />
-      {/* Mobile vertical progress line - animated */}
-      <div
-        className="lg:hidden absolute left-4 top-0 w-[2px] bg-gradient-to-b from-accent via-accent to-transparent transition-all duration-500 ease-out shadow-[0_0_8px_rgba(212,175,55,0.6)]"
+        className="absolute left-4 top-0 w-px bg-accent transition-all duration-500 ease-out lg:hidden"
         style={{ height: `${progressPercent}%` }}
         aria-hidden="true"
       />
-      {/* Mobile moving dot indicator */}
-      {activeIndex >= 0 && (
-        <div
-          className="lg:hidden absolute left-4 w-2 h-2 rounded-full bg-accent shadow-[0_0_12px_rgba(212,175,55,0.8)] transition-all duration-500 ease-out"
-          style={{
-            top: `${progressPercent}%`,
-            transform: 'translate(-50%, -50%)',
-          }}
-          aria-hidden="true"
-        >
-          <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-75" />
-        </div>
-      )}
 
       <ol className="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-8">
         {steps.map((s, i) => {
           const id = s.title.toLowerCase().replace(/\s+/g, '-');
-          const isActive = activeIndex === i;
-          const hasBeenActive = activeIndex > i && activeIndex >= 0;
+          const reached = activeIndex >= i;
 
           return (
-            <li
-              key={s.title}
-              id={id}
-              className="relative group scroll-mt-28 transition-all duration-300 text-foreground/80"
-              style={{
-                transform: isActive ? 'scale(1.05)' : 'scale(1)',
-                opacity: activeIndex >= 0 && !isActive && !hasBeenActive ? 0.5 : 1,
-              }}
-            >
-              {/* Mobile: horizontal layout with circle on left, content on right */}
-              {/* Desktop: vertical layout with circle on top, content below */}
-              <div className="flex flex-row items-start gap-4 lg:flex-col lg:items-center lg:gap-0 text-left lg:text-center">
+            <li key={s.title} id={id} className="relative scroll-mt-28 lg:flex-1">
+              {/* Mobile: circle on the left, content on the right. Desktop: circle on top, content below. */}
+              <div className="flex flex-row items-start gap-4 text-left lg:flex-col lg:gap-5">
                 <div
                   className={[
-                    'w-8 h-8 flex-shrink-0 rounded-full border shadow flex items-center justify-center lg:mb-4 transition-all duration-300',
-                    'relative overflow-hidden',
-                    isActive || hasBeenActive
-                      ? 'bg-accent text-black border-accent scale-110 shadow-lg shadow-accent/50'
-                      : 'bg-card border-accent/20 text-white group-hover:bg-accent group-hover:text-black',
+                    'relative z-10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border text-sm font-medium transition-colors duration-300',
+                    reached
+                      ? 'border-accent-fill bg-accent-fill text-accent-contrast'
+                      : 'border-border-strong bg-surface text-secondary',
                   ].join(' ')}
                 >
-                  {/* Pulse animation ring for active state */}
-                  {isActive && <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-75" />}
-                  <span className="relative z-10">{i + 1}</span>
+                  <span>{i + 1}</span>
                 </div>
                 <div className="flex-1 lg:flex-none">
-                  <h3 className="text-base font-semibold tracking-tight leading-snug mb-2">{s.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted max-w-xs lg:max-w-[14rem]">{s.desc}</p>
+                  <h3 className="mb-2 text-base font-semibold leading-snug tracking-tight">{s.title}</h3>
+                  <p className="max-w-xs text-sm leading-relaxed text-secondary lg:max-w-[16rem]">{s.desc}</p>
                 </div>
               </div>
             </li>

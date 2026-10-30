@@ -21,12 +21,12 @@ export default function ButtonPrimary({
   ...props
 }: ButtonPrimaryProps): ReactElement {
   const baseClasses =
-    'inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px] min-w-[44px] rounded-xl font-semibold text-base transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center gap-2 px-5 py-2.5 min-h-[44px] min-w-[44px] rounded-lg font-medium text-[0.9375rem] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-offset-background disabled:opacity-60 disabled:cursor-not-allowed';
 
   const variantClasses = {
     accent:
-      'bg-gradient-to-r from-violet-600 to-indigo-500 hover:from-violet-500 hover:to-indigo-400 text-white shadow-[0_4px_24px_rgba(124,58,237,0.35)] hover:shadow-[0_4px_24px_rgba(124,58,237,0.45)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_2px_12px_rgba(124,58,237,0.3)] focus-visible:ring-violet-500',
-    secondary: 'neuro-btn bg-secondary text-white focus-visible:ring-secondary',
+      'bg-accent-fill text-accent-contrast hover:bg-accent-fill-hover focus-visible:ring-accent',
+    secondary: 'neuro-btn border border-border-strong text-foreground hover:bg-foreground/5 focus-visible:ring-accent',
   };
 
   return (

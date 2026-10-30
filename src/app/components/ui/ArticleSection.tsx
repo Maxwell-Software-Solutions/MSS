@@ -14,7 +14,7 @@ interface ArticleSectionProps {
 export function ArticleSection({ id, title, children, className = '' }: ArticleSectionProps): ReactElement {
   return (
     <article id={id} className={`space-y-4 ${className}`.trim()}>
-      <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{title}</h2>
+      <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
       {children}
     </article>
   );

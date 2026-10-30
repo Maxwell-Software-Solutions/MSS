@@ -10,30 +10,18 @@ interface CardProps {
 
 /**
  * Unified Card component - consolidates repeated card patterns across the app
- * Uses neumorphic design from globals.css with .card class
+ * Flat surface with a hairline border (the .card class in globals.css)
  */
-export function Card({
-  children,
-  className = '',
-  padding = 'md',
-  shadow = true,
-  hover = false,
-}: CardProps): ReactElement {
+export function Card({ children, className = '', padding = 'md', hover = false }: CardProps): ReactElement {
   const paddingClasses = {
     sm: 'p-4 sm:p-5',
     md: 'p-6',
     lg: 'p-8',
   };
 
-  const baseClasses = 'card';
-  const shadowClass = shadow ? 'shadow-soft' : '';
-  const hoverClass = hover ? 'transition-all hover:border-accent/80 hover:shadow-lg' : '';
+  const hoverClass = hover ? 'card-interactive' : '';
 
-  return (
-    <div className={`${baseClasses} ${paddingClasses[padding]} ${shadowClass} ${hoverClass} ${className}`.trim()}>
-      {children}
-    </div>
-  );
+  return <div className={`card ${paddingClasses[padding]} ${hoverClass} ${className}`.trim()}>{children}</div>;
 }
 
 export default Card;

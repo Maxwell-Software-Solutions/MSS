@@ -14,8 +14,8 @@ interface ListSectionProps {
 export function ListSection({ title, items, className = '', listClassName = '' }: ListSectionProps): ReactElement {
   return (
     <article className={`space-y-4 ${className}`.trim()}>
-      <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{title}</h2>
-      <ul className={`list-disc space-y-3 pl-5 ${listClassName}`.trim()}>
+      <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
+      <ul className={`list-disc space-y-3 pl-5 marker:text-muted ${listClassName}`.trim()}>
         {items.map((item, index) => (
           <li key={index}>{item}</li>
         ))}

@@ -10,13 +10,13 @@ export default function CalendlyCTA(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <div className="mt-5 sm:mt-6 flex justify-center px-4">
+    <div className="mt-3 flex">
       <a
         href={CALENDLY_URL}
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackCTAClick('hero_calendly')}
-        className="inline-flex items-center gap-2.5 rounded-xl border-2 border-accent bg-accent/10 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold text-accent shadow-soft transition-all duration-200 hover:bg-accent hover:text-background hover:shadow-[0_0_24px_rgba(var(--accent-rgb),0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 min-h-[48px]"
+        className="btn-text rounded-md"
         aria-label={t('hero.calendly.aria')}
       >
         <svg
