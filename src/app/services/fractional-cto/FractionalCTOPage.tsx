@@ -123,7 +123,7 @@ export default function FractionalCTOPage(): ReactElement {
             {ht('fractionalCTO.eyebrow', 'Fractional CTO')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             Technical Leadership Without the{' '}
@@ -269,14 +269,14 @@ export default function FractionalCTOPage(): ReactElement {
       {/* Mid-page CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="band p-10 sm:p-14 text-center">
-            <p className="eyebrow mb-3" suppressHydrationWarning>
+          <div className="band band-split p-8 sm:p-12">
+            <p className="eyebrow" suppressHydrationWarning>
               {ht('fractionalCTO.midcta.eyebrow', 'From €3,500/month')}
             </p>
             <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('fractionalCTO.midcta.title', 'Book a discovery call')}
             </h2>
-            <p className="text-base text-foreground/70 max-w-xl mx-auto mb-8" suppressHydrationWarning>
+            <p className="text-base text-foreground/70 max-w-xl" suppressHydrationWarning>
               {ht(
                 'fractionalCTO.midcta.body',
                 'We will discuss your current challenges, technical goals, and whether a fractional engagement is the right fit. No obligation.'
@@ -316,14 +316,14 @@ export default function FractionalCTOPage(): ReactElement {
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="band p-10 sm:p-14 text-center">
+          <div className="band band-split p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               Technical leadership —{' '}
               <span>
                 on your terms.
               </span>
             </h2>
-            <p className="text-base text-foreground/70 max-w-lg mx-auto mb-8" suppressHydrationWarning>
+            <p className="text-base text-foreground/70 max-w-lg" suppressHydrationWarning>
               {ht(
                 'fractionalCTO.bottomcta.body',
                 'Month-to-month. No long-term contract. Senior leadership from day one.'

@@ -15,7 +15,7 @@ const fadeUp = {
 function CheckIcon(): ReactElement {
   return (
     <svg
-      className="w-4 h-4 flex-shrink-0 mt-0.5 text-accent"
+      className="mt-1 h-4 w-4 flex-shrink-0 text-accent"
       fill="currentColor"
       viewBox="0 0 20 20"
       aria-hidden="true"
@@ -54,11 +54,7 @@ function PricingTier({
 }: TierProps): ReactElement {
   return (
     <div
-      className={`card relative flex flex-col rounded-3xl p-8 sm:p-10 transition-all ${
-        highlighted
-          ? 'border border-accent/40'
-          : ''
-      }`}
+      className={`card relative flex flex-col p-7 sm:p-8 ${highlighted ? 'border-accent' : ''}`}
     >
       {badge && (
         <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block bg-accent-fill text-accent-contrast text-xs font-semibold px-4 py-1.5 rounded-full">
@@ -66,37 +62,27 @@ function PricingTier({
         </span>
       )}
 
-      {highlighted && (
-        <div className="absolute inset-x-0 top-0 h-px rounded-t-3xl" />
-      )}
-
       <div className="mb-6">
         <h2 className="text-xl tracking-tight">{name}</h2>
-        <div className="mt-3 flex items-end gap-2">
-          <span className="text-3xl sm:text-4xl font-semibold">
-            {price}
-          </span>
-          <span className="text-sm text-foreground/60 mb-1">{period}</span>
+        <div className="mt-4 flex flex-col gap-1">
+          <span className="text-3xl font-semibold tracking-tight tabular-nums">{price}</span>
+          <span className="text-sm text-muted">{period}</span>
         </div>
-        <p className="mt-3 text-[13px] text-foreground/65 leading-relaxed">{forWho}</p>
+        <p className="mt-4 text-sm leading-relaxed text-secondary">{forWho}</p>
       </div>
 
       <ul className="flex-1 space-y-3 mb-8">
         {features.map((feat, i) => (
           <li key={i} className="flex items-start gap-2.5">
             <CheckIcon />
-            <span className="text-[14px] text-foreground/80">{feat}</span>
+            <span className="text-[0.9375rem] text-secondary">{feat}</span>
           </li>
         ))}
       </ul>
 
       <Link
         href={ctaHref}
-        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent ${
-          highlighted
-            ? 'btn btn-accent'
-            : 'btn'
-        }`}
+        className={`w-full ${highlighted ? 'btn btn-accent' : 'btn'}`}
       >
         {ctaLabel}
       </Link>
@@ -112,8 +98,8 @@ interface FAQItemProps {
 function FAQItem({ question, answer }: FAQItemProps): ReactElement {
   return (
     <div className="border-b border-border pb-6">
-      <h3 className="text-[15px] mb-2">{question}</h3>
-      <p className="text-[14px] text-foreground/75 leading-relaxed">{answer}</p>
+      <h3 className="mb-2 text-base">{question}</h3>
+      <p className="text-[0.9375rem] leading-relaxed text-secondary">{answer}</p>
     </div>
   );
 }
@@ -208,7 +194,7 @@ export default function PricingPage(): ReactElement {
             {ht('pricing.eyebrow', 'Transparent pricing')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             <span>
@@ -249,8 +235,8 @@ export default function PricingPage(): ReactElement {
 
       {/* FAQ */}
       <section aria-labelledby="faq-heading" className="border-t border-border py-16 sm:py-20">
-        <div className="max-w-3xl mx-auto px-6 sm:px-10">
-          <motion.div {...fadeUp}>
+        <div className="max-w-6xl mx-auto px-6 sm:px-10">
+          <motion.div {...fadeUp} className="max-w-3xl">
             <h2
               id="faq-heading"
               className="text-3xl sm:text-4xl tracking-tight mb-8"
@@ -270,11 +256,11 @@ export default function PricingPage(): ReactElement {
       {/* Not sure CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20" suppressHydrationWarning>
         <motion.div {...fadeUp}>
-          <div className="band p-10 sm:p-14 text-center">
+          <div className="band band-split p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl tracking-tight" suppressHydrationWarning>
               {ht('pricing.notSure.title', 'Not sure which plan fits?')}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-foreground/70 max-w-xl mx-auto" suppressHydrationWarning>
+            <p className="mt-4 text-base leading-relaxed text-foreground/70 max-w-xl" suppressHydrationWarning>
               {ht(
                 'pricing.notSure.body',
                 'Tell us about your project and team size. We will recommend the right engagement model and scope — no hard sell, no obligation.'
@@ -282,7 +268,7 @@ export default function PricingPage(): ReactElement {
             </p>
             <Link
               href="/contact"
-              className="mt-8 inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
+              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent"
               suppressHydrationWarning
             >
               {ht('pricing.notSure.cta', 'Talk to us')}

@@ -81,7 +81,7 @@ export default function HireDeveloperPage(): ReactElement {
             {ht('hireDev.eyebrow', 'Hire a Developer')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             Hire a{' '}
@@ -236,14 +236,14 @@ export default function HireDeveloperPage(): ReactElement {
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="band p-10 sm:p-14 text-center">
+          <div className="band band-split p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               Ship faster with{' '}
               <span>
                 senior engineers.
               </span>
             </h2>
-            <p className="text-base text-foreground/70 max-w-lg mx-auto mb-8" suppressHydrationWarning>
+            <p className="text-base text-foreground/70 max-w-lg" suppressHydrationWarning>
               {ht(
                 'hireDev.bottomcta.body',
                 'No recruitment fees. No ramp-up. Production-ready code from senior engineers who have shipped before.'

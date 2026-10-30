@@ -199,7 +199,7 @@ export default function ServicesPackagesPage(): ReactElement {
             {ht('packages.eyebrow', 'Service Packages')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             Choose the{' '}
@@ -238,11 +238,11 @@ export default function ServicesPackagesPage(): ReactElement {
       {/* Comparison note */}
       <section aria-label="Engagement guidance" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="band p-10 sm:p-14 text-center max-w-3xl mx-auto">
+          <div className="band band-split p-8 sm:p-12">
             <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('packages.unsure.heading', 'Not sure which package fits?')}
             </h2>
-            <p className="text-base text-foreground/70 leading-relaxed mb-8" suppressHydrationWarning>
+            <p className="text-base text-foreground/70 leading-relaxed" suppressHydrationWarning>
               {ht(
                 'packages.unsure.body',
                 'Most clients start with a Code Health Audit. It surfaces the real priorities and often makes the next step obvious. If you already know what you need, book a 30-minute discovery call and we will confirm fit.'
@@ -292,7 +292,7 @@ export default function ServicesPackagesPage(): ReactElement {
                   <td className="p-4 text-foreground/80">{ht('packages.compare.sprint.duration', '2 weeks')}</td>
                   <td className="p-4 text-foreground/75">{ht('packages.compare.sprint.for', 'MVPs, feature spikes, proof-of-concept')}</td>
                 </tr>
-                <tr className="border-b border-border bg-accent/10 hover:bg-violet-500/10 transition-colors">
+                <tr className="border-b border-border bg-accent/10 hover:bg-accent/10 transition-colors">
                   <td className="p-4 font-medium text-accent">{ht('packages.retainer.name', 'Engineering Partner Retainer')}</td>
                   <td className="p-4 text-foreground/80">{ht('packages.retainer.price', '€3,500–€6,500')}/mo</td>
                   <td className="p-4 text-foreground/80">{ht('packages.compare.retainer.duration', 'Ongoing')}</td>
@@ -319,14 +319,14 @@ export default function ServicesPackagesPage(): ReactElement {
       {/* AI Implementation */}
       <section aria-label="AI implementation capabilities" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="band p-10 sm:p-14 text-center max-w-3xl mx-auto">
+          <div className="band band-split p-8 sm:p-12">
             <div className="eyebrow mb-3" suppressHydrationWarning>
               {ht('packages.ai.eyebrow', 'AI & ML')}
             </div>
             <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('packages.ai.heading', 'We also ship AI into production')}
             </h2>
-            <p className="text-base text-foreground/70 leading-relaxed mb-8" suppressHydrationWarning>
+            <p className="text-base text-foreground/70 leading-relaxed" suppressHydrationWarning>
               {ht(
                 'packages.ai.body',
                 'We help AI startups and product teams ship models into production — from RAG pipelines and LLM-powered features to embedding search and AI-assisted workflows. If you are building with AI and need engineering support, talk to us.'

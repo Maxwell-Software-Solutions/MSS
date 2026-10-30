@@ -255,6 +255,18 @@
     border-radius: var(--radius-3xl);
   }
 
+  /* Band with copy on the left and the action on the right (stacked on small screens) */
+  @media (min-width: 768px) {
+    .band-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: 3rem;
+      align-items: end;
+    }
+    .band-split > * { grid-column: 1; }
+    .band-split > :last-child { grid-column: 2; grid-row: 1 / span 4; align-self: end; }
+  }
+
   /* ---- Buttons ---- */
   .btn,
   .btn-ghost,
@@ -449,9 +461,15 @@
   }
 
   /* ---- Mobile navigation ---- */
+  /* The header uses backdrop-filter, which makes it the containing block for fixed children,
+     so the overlay and drawer size themselves against the viewport explicitly. */
   .nav-overlay {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     z-index: 60;
     background: rgba(11, 18, 32, 0.5);
     opacity: 0;
@@ -466,7 +484,8 @@
     position: fixed;
     top: 0;
     right: 0;
-    bottom: 0;
+    height: 100vh;
+    height: 100dvh;
     z-index: 80;
     display: flex;
     flex-direction: column;

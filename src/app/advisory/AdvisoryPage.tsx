@@ -148,7 +148,7 @@ export default function AdvisoryPage(): ReactElement {
             {ht('advisory.eyebrow', 'CTO-in-a-Box')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             Technical Leadership{' '}
@@ -381,12 +381,12 @@ export default function AdvisoryPage(): ReactElement {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="band p-10 sm:p-14 text-center"
+          className="band band-split p-8 sm:p-12"
         >
           <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
             {ht('advisory.bottomcta.title', 'Senior technical guidance for €500/month.')}
           </h2>
-          <p className="text-[15px] text-foreground/70 max-w-lg mx-auto mb-7" suppressHydrationWarning>
+          <p className="text-[15px] text-foreground/70 max-w-lg" suppressHydrationWarning>
             {ht(
               'advisory.bottomcta.body',
               'No hiring risk. No long-term contracts. Cancel anytime. Book a free 15-minute intro call and see if it is a fit.'

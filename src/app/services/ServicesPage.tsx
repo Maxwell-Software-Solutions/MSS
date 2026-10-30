@@ -41,7 +41,7 @@ export default function ServicesPage(): ReactElement {
             {ht('services.hero.eyebrow', 'Our Services')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             Engineering{' '}
@@ -62,7 +62,7 @@ export default function ServicesPage(): ReactElement {
               'We embed with your team to reduce defect rates, improve deployment confidence, and accelerate delivery through systematic engineering practices.'
             )}
           </p>
-          <p className="mt-3 max-w-2xl text-sm text-foreground/50" suppressHydrationWarning>
+          <p className="mt-3 max-w-2xl text-sm text-muted" suppressHydrationWarning>
             {ht('services.hero.note', 'All engagements include measurable outcomes and knowledge transfer.')}
           </p>
         </motion.div>
@@ -95,7 +95,7 @@ export default function ServicesPage(): ReactElement {
           suppressHydrationWarning
         >
           {mappedServices.map((svc) => (
-            <div key={svc.key} className="card rounded-2xl transition-all p-1">
+            <div key={svc.key} className="h-full">
               <ServiceCard
                 title={svc.title}
                 summary={svc.summary}
@@ -142,7 +142,7 @@ export default function ServicesPage(): ReactElement {
       {/* CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-20 sm:pb-24" suppressHydrationWarning>
         <motion.div {...fadeUp}>
-          <div className="band p-10 sm:p-14 text-center">
+          <div className="band band-split p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('services.cta.title', 'Ready to Improve Your')}
               {' '}
@@ -150,13 +150,13 @@ export default function ServicesPage(): ReactElement {
                 Code Quality?
               </span>
             </h2>
-            <p className="mt-2 mb-8 text-base leading-relaxed text-foreground/70 max-w-xl mx-auto" suppressHydrationWarning>
+            <p className="mt-2 text-base leading-relaxed text-foreground/70 max-w-xl" suppressHydrationWarning>
               {ht(
                 'services.cta.body',
                 'Let us help you reduce defects, improve velocity, and build confidence in your deployments.'
               )}
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
                 className="btn btn-accent px-6 py-3 rounded-xl transition-all"

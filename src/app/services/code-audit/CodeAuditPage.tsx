@@ -108,7 +108,7 @@ export default function CodeAuditPage(): ReactElement {
             {ht('codeAudit.eyebrow', 'Code Audit Service')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             Find Out Why Your{' '}
@@ -278,14 +278,14 @@ export default function CodeAuditPage(): ReactElement {
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
         <motion.div {...fadeUp}>
-          <div className="band p-10 sm:p-14 text-center">
+          <div className="band band-split p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
               {ht('codeAudit.bottomcta.title', 'Stop guessing. Start with')}{' '}
               <span>
                 data.
               </span>
             </h2>
-            <p className="text-base text-foreground/70 max-w-lg mx-auto mb-8" suppressHydrationWarning>
+            <p className="text-base text-foreground/70 max-w-lg" suppressHydrationWarning>
               {ht(
                 'codeAudit.bottomcta.body',
                 'A code audit gives you an objective, prioritised view of what is actually slowing your team down — and exactly what to fix first.'

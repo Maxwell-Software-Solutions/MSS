@@ -114,7 +114,7 @@ export default function StartASprintPage(): ReactElement {
             {ht('sprint.eyebrow', 'Sprint-in-a-Box')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             {ht('sprint.headline.pre', 'Ship Your MVP in')}{' '}
@@ -281,15 +281,15 @@ export default function StartASprintPage(): ReactElement {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="band p-10 sm:p-14 text-center"
+          className="band band-split p-8 sm:p-12"
         >
-          <p className="text-[13px] font-semibold text-accent mb-3" suppressHydrationWarning>
+          <p className="text-[13px] font-semibold text-accent" suppressHydrationWarning>
             {ht('sprint.midcta.eyebrow', 'Ready to move fast?')}
           </p>
           <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
             {ht('sprint.midcta.title', 'Book a 30-minute discovery call')}
           </h2>
-          <p className="text-[15px] text-foreground/70 max-w-xl mx-auto mb-6" suppressHydrationWarning>
+          <p className="text-[15px] text-foreground/70 max-w-xl" suppressHydrationWarning>
             {ht(
               'sprint.midcta.body',
               'We will listen to what you need, tell you honestly whether a 2-week sprint is the right fit, and confirm pricing. No sales process.'
@@ -339,12 +339,12 @@ export default function StartASprintPage(): ReactElement {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="band p-10 sm:p-14 text-center"
+          className="band band-split p-8 sm:p-12"
         >
           <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
             {ht('sprint.bottomcta.title', 'Ship something real in 2 weeks.')}
           </h2>
-          <p className="text-[15px] text-foreground/70 max-w-lg mx-auto mb-7" suppressHydrationWarning>
+          <p className="text-[15px] text-foreground/70 max-w-lg" suppressHydrationWarning>
             {ht(
               'sprint.bottomcta.body',
               'Fixed price. Fixed timeline. No retainer required. Book the call, confirm scope, and we start the following Monday.'

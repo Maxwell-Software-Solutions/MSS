@@ -93,7 +93,7 @@ export default function FreeAuditPage(): ReactElement {
             {ht('freeAudit.eyebrow', 'Free Code Health Audit')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             {ht('freeAudit.headline.pre', 'Get a Free Code Health Audit')}{' '}
@@ -201,7 +201,7 @@ export default function FreeAuditPage(): ReactElement {
                     required
                     autoComplete="name"
                     placeholder="Jane Smith"
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
@@ -216,7 +216,7 @@ export default function FreeAuditPage(): ReactElement {
                     required
                     autoComplete="email"
                     placeholder="jane@company.com"
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
@@ -231,7 +231,7 @@ export default function FreeAuditPage(): ReactElement {
                     required
                     autoComplete="organization"
                     placeholder="Acme Inc."
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
@@ -245,7 +245,7 @@ export default function FreeAuditPage(): ReactElement {
                     type="text"
                     required
                     placeholder="e.g. Node.js, React, PostgreSQL"
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
                   />
                 </div>
 
@@ -258,7 +258,7 @@ export default function FreeAuditPage(): ReactElement {
                     name="context"
                     rows={3}
                     placeholder="e.g. we keep missing sprint deadlines, deployment takes 2 hours, etc."
-                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent transition resize-none"
+                    className="w-full rounded-xl border border-border bg-foreground/5 px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition resize-none"
                   />
                 </div>
 
@@ -270,7 +270,7 @@ export default function FreeAuditPage(): ReactElement {
                   {ht('freeAudit.form.cta', 'Apply for free audit')}
                 </button>
 
-                <p className="text-center text-[12px] text-foreground/50" suppressHydrationWarning>
+                <p className="text-center text-[12px] text-muted" suppressHydrationWarning>
                   {ht('freeAudit.form.privacy', 'No spam. We only contact you about your audit request.')}
                 </p>
               </form>
@@ -311,15 +311,15 @@ export default function FreeAuditPage(): ReactElement {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="band p-10 sm:p-14 text-center"
+          className="band band-split p-8 sm:p-12"
         >
-          <p className="text-[12px] font-semibold text-accent mb-3" suppressHydrationWarning>
+          <p className="text-[12px] font-semibold text-accent" suppressHydrationWarning>
             {ht('freeAudit.cta.eyebrow', 'Limited availability')}
           </p>
           <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
             {ht('freeAudit.cta.title', 'Only 5 audit slots open per month')}
           </h2>
-          <p className="text-[15px] text-foreground/70 max-w-xl mx-auto mb-6" suppressHydrationWarning>
+          <p className="text-[15px] text-foreground/70 max-w-xl" suppressHydrationWarning>
             {ht(
               'freeAudit.cta.body',
               'Each audit gets our full attention. We cap intake to ensure quality. If you are curious about your codebase, now is the time to apply.'
