@@ -47,6 +47,8 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'hero.cta.primary',
     'hero.cta.secondary',
     'hero.values',
+    'hero.calendly.cta',
+    'hero.calendly.aria',
 
     // Homepage stats
     'stats.defects',

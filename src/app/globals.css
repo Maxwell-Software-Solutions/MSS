@@ -390,7 +390,8 @@
     backdrop-filter: saturate(1.4) blur(12px);
   }
 
-  .site-logo { height: 2.25rem; width: auto; }
+  .site-logo, .site-logo-on-hero { height: 2.25rem; width: auto; }
+  .site-logo-on-hero { display: none; }
 
   .nav-links { display: none; }
 
@@ -459,7 +460,7 @@
   @media (min-width: 1024px) {
     .nav-links { display: flex; align-items: center; gap: 0.125rem; }
     .menu-toggle, .mobile-nav, .nav-overlay { display: none; }
-    .site-logo { height: 2.5rem; }
+    .site-logo, .site-logo-on-hero { height: 2.5rem; }
   }
 
   /* ---- Mobile navigation ---- */

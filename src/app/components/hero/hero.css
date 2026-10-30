@@ -1,0 +1,210 @@
+/* Home page hero: dark navy in both site themes. Everything here is scoped to .hero-stage,
+   or to pages that contain it, so the rest of the site is untouched. */
+
+html:has(.hero-stage) {
+  --hero-navy: #0a1730;
+}
+
+.hero-stage {
+  --color-text: #f4f6fa;
+  --color-foreground: #f4f6fa;
+  --color-text-secondary: #ccd5e3;
+  --color-secondary: #ccd5e3;
+  --color-muted: #b4bfcf;
+  --color-border: rgba(255, 255, 255, 0.18);
+  --color-border-strong: rgba(255, 255, 255, 0.42);
+  --color-accent: #93bfff;
+  --color-accent-hover: #bcd7ff;
+  --color-hover: rgba(255, 255, 255, 0.1);
+  --color-active: rgba(255, 255, 255, 0.16);
+  color-scheme: dark;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin-top: calc(-1 * var(--header-height));
+  padding-top: calc(var(--header-height) + clamp(1.25rem, 4svh, 4rem));
+  padding-bottom: clamp(3rem, 30svh - 6rem, 18rem);
+  overflow: hidden;
+  background: var(--hero-navy);
+  color: var(--color-text);
+}
+
+.hero-ribbon,
+.hero-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* The poster is on screen from the first paint. It stays quiet until the live lines draw over it,
+   and comes up to full strength if they never arrive. */
+.hero-poster {
+  fill: none;
+  stroke: #b8c6d8;
+  stroke-width: 0.9;
+  opacity: 0.55;
+  transition: opacity 0.9s ease, visibility 0s linear 0.9s;
+}
+
+.hero-poster path {
+  vector-effect: non-scaling-stroke;
+}
+
+.hero-stage[data-ribbon='live'] .hero-poster {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hero-stage[data-ribbon='static'] .hero-poster {
+  opacity: 1;
+}
+
+.hero-stage[data-ribbon='static'] .hero-ribbon {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-poster {
+    opacity: 1;
+    transition: none;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-copy {
+  position: relative;
+  max-width: 41rem;
+}
+
+/* The scrim follows the text block, so it covers any language at any width. It protects the text
+   over the poster; the live lines fade themselves out under the text in the shader instead. */
+.hero-copy::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -3rem;
+  bottom: -5rem;
+  left: -100vw;
+  right: -9rem;
+  background: var(--hero-navy);
+  opacity: 0.82;
+  -webkit-mask-image:
+    linear-gradient(to left, transparent, #000 9rem),
+    linear-gradient(to top, transparent, #000 5rem);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to left, transparent, #000 9rem),
+    linear-gradient(to top, transparent, #000 5rem);
+  mask-composite: intersect;
+  pointer-events: none;
+  /* gives way only once the poster has gone, so the text is covered at every moment */
+  transition: opacity 0.4s ease 0.7s;
+}
+
+.hero-stage[data-ribbon='live'] .hero-copy::before {
+  opacity: 0;
+}
+
+.hero-title {
+  font-size: clamp(2rem, min(1.35rem + 3.3vw, 9.5svh), 4.25rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.032em;
+}
+
+.hero-lede {
+  max-width: 36rem;
+  margin-top: clamp(1rem, 2.8svh, 1.5rem);
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--color-secondary);
+}
+
+/* Spacing tightens on short screens so the ribbon still shows on the first screen */
+.hero-actions {
+  margin-top: clamp(1.5rem, 4.4svh, 2.25rem);
+}
+
+.hero-values {
+  margin-top: clamp(1.25rem, 3.6svh, 2rem);
+}
+
+/* The outline button carries its own backing, so its label never sits directly on a line */
+.hero-stage .hero-btn-quiet {
+  background: rgba(10, 23, 48, 0.72);
+}
+
+.hero-stage .hero-btn-quiet:hover {
+  background: #1a2a48;
+}
+
+/* Phones and portrait screens: the ribbon takes the space left below the text. The live lines read
+   the poster's box, so this one rule places both. */
+@media (max-width: 767px), (max-aspect-ratio: 10/11) {
+  .hero-stage {
+    justify-content: flex-start;
+    padding-bottom: 0;
+  }
+
+  .hero-band {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: clamp(8rem, 24svh, 16rem);
+  }
+
+  .hero-poster {
+    inset: auto 0 calc((100% + 30px) / -15);
+    height: calc((100% + 30px) / 0.75);
+  }
+
+  .hero-copy::before {
+    bottom: -3rem;
+    -webkit-mask-image:
+      linear-gradient(to left, transparent, #000 9rem),
+      linear-gradient(to top, transparent, #000 3rem);
+    mask-image:
+      linear-gradient(to left, transparent, #000 9rem),
+      linear-gradient(to top, transparent, #000 3rem);
+  }
+}
+
+/* ---- Header over the hero ---- */
+html:has(.hero-stage) .site-header {
+  transition: background-color var(--transition-base), border-color var(--transition-base);
+}
+
+html:has(.hero-stage):not([data-hero-passed]) .site-header {
+  background: color-mix(in srgb, var(--hero-navy) 72%, transparent);
+  border-bottom-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+html:has(.hero-stage):not([data-hero-passed]) :is(.nav-links, .menu-toggle) {
+  --color-text: #f4f6fa;
+  --color-text-secondary: #d5dde9;
+  --color-border: rgba(255, 255, 255, 0.24);
+  --color-hover: rgba(255, 255, 255, 0.1);
+  --color-active: rgba(255, 255, 255, 0.16);
+  --color-accent: #93bfff;
+}
+
+html:has(.hero-stage):not([data-hero-passed]) .site-logo {
+  display: none;
+}
+
+html:has(.hero-stage):not([data-hero-passed]) .site-logo-on-hero {
+  display: block;
+}

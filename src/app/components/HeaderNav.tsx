@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useCallback, useEffect, type ReactElement } from 'react';
 import { usePathname } from 'next/navigation';
@@ -60,6 +61,8 @@ export default function HeaderNav(): ReactElement {
         }}
       >
         <ThemeAwareLogo width={210} height={64} className="site-logo w-auto" priority />
+        {/* Light logo for the dark home hero; globals.css hides it everywhere else */}
+        <Image src="/logo-dark.svg" alt="" width={210} height={64} className="site-logo-on-hero w-auto" priority />
       </Link>
       <div className="nav-links" aria-label="Primary navigation">
         <Link href="/services" aria-current={current('/services')} suppressHydrationWarning>

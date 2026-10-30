@@ -4,21 +4,14 @@ import type { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import HeroFieldWrapper from './components/HeroFieldWrapper';
+import HeroStage from './components/hero/HeroStage';
 import DeferredSections from './components/DeferredSections';
-import CalendlyCTA from './components/CalendlyCTA';
 import { useLanguage } from '@/lib/LanguageContext';
-import { trackCTAClick } from '@/lib/analytics';
 import { FeatureCard, ButtonLink } from './components/ui';
 
 /* ---------------------------------------------------------------
    Shared animation variants — short, quiet fades
 --------------------------------------------------------------- */
-const fadeUp = {
-  hidden: { opacity: 0, y: 8 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const staggerContainer = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.06 } },
@@ -44,38 +37,16 @@ export default function HomeContent(): ReactElement {
       {/* ============================================================
           HERO
       ============================================================ */}
+      <HeroStage />
+
+      {/* ============================================================
+          STATS AND VALUE PROPOSITIONS
+      ============================================================ */}
       <section className="relative">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 pb-16 sm:pt-20 sm:pb-20 lg:pt-24 lg:pb-24">
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
-            <motion.div initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.5 }}>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem]">{t('hero.title')}</h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-secondary sm:text-xl">{t('hero.subtitle')}</p>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="btn btn-accent px-6 py-3 text-base"
-                  onClick={() => trackCTAClick('hero_primary')}
-                >
-                  {t('hero.cta.primary')}
-                </Link>
-                <Link
-                  href="/services"
-                  className="btn px-6 py-3 text-base"
-                  onClick={() => trackCTAClick('hero_secondary')}
-                >
-                  {t('hero.cta.secondary')}
-                </Link>
-              </div>
-              <p className="mt-8 text-sm text-muted">{t('hero.values')}</p>
-              <CalendlyCTA />
-            </motion.div>
-
-            <HeroFieldWrapper />
-          </div>
-
+        <div className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
           {/* Stats row — metrics share hairlines */}
           <motion.div
-            className="ruled mt-14 grid-cols-1 sm:mt-16 sm:grid-cols-3"
+            className="ruled grid-cols-1 sm:grid-cols-3"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
