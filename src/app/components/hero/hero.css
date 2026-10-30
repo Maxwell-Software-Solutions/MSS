@@ -27,6 +27,7 @@ html:has(.hero-stage) {
   min-height: 100vh;
   min-height: 100svh;
   margin-top: calc(-1 * var(--header-height));
+  padding-top: calc(var(--header-height) + 2rem);
   padding-top: calc(var(--header-height) + clamp(1.25rem, 4svh, 4rem));
   padding-bottom: clamp(3rem, 30svh - 6rem, 18rem);
   overflow: hidden;

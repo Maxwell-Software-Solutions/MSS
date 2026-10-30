@@ -79,6 +79,7 @@ const VERTEX = /* glsl */ `#version 300 es
 precision highp float;
 precision highp int;
 in vec2 aCell;
+in vec2 aCorner;
 uniform vec2 uGrid;
 uniform vec2 uRes;
 uniform vec2 uBand;
@@ -97,8 +98,8 @@ vec4 place(float col, float row) {
   return vec4(vec2(q.x, uBand.x + uBand.y * q.y) * uRes, q.z, q.w);
 }
 void main() {
-  float end = float(gl_VertexID >> 1);
-  float side = float(gl_VertexID & 1) * 2.0 - 1.0;
+  float end = aCorner.x;
+  float side = aCorner.y;
   float row = aCell.y;
   vec4 a = place(aCell.x, row);
   vec4 b = place(aCell.x + 1.0, row);
@@ -161,7 +162,7 @@ export interface RibbonHandle {
 interface RibbonOptions {
   /** Called once the first frame is on screen, when the poster can give way. */
   onReady: () => void;
-  /** Called if the GPU context goes away, so the poster can come back. */
+  /** Called if the GPU context goes away or the GPU is too slow, so the poster can come back. */
   onLost: () => void;
 }
 
@@ -186,6 +187,7 @@ function buildProgram(gl: WebGL2RenderingContext): WebGLProgram | null {
     gl.attachShader(program, shader);
   }
   gl.bindAttribLocation(program, 0, 'aCell');
+  gl.bindAttribLocation(program, 1, 'aCorner');
   gl.linkProgram(program);
   return gl.getProgramParameter(program, gl.LINK_STATUS) ? program : null;
 }
@@ -209,8 +211,9 @@ export function startRibbon(
   const gl: WebGL2RenderingContext = context;
 
   const program = buildProgram(gl);
+  const corners = gl.createBuffer();
   const cells = gl.createBuffer();
-  if (!program || !cells) return null;
+  if (!program || !corners || !cells) return null;
 
   const uniform = (name: string): WebGLUniformLocation | null => gl.getUniformLocation(program, name);
   const u = {
@@ -226,6 +229,11 @@ export function startRibbon(
   };
 
   gl.useProgram(program);
+  // one quad per line segment: which end of the segment, and which side of the line
+  gl.bindBuffer(gl.ARRAY_BUFFER, corners);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, -1, 0, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(1);
+  gl.vertexAttribPointer(1, 2, gl.FLOAT, false, 0, 0);
   gl.bindBuffer(gl.ARRAY_BUFFER, cells);
   gl.enableVertexAttribArray(0);
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
@@ -314,8 +322,8 @@ export function startRibbon(
   let running = false;
   let inView = true;
   let announced = false;
-  let slowFrames = 0;
-  let sampled = 0;
+  let halted = false;
+  const speed = { frames: 0, ms: 0, slow: 0 };
 
   function draw(dt: number): void {
     if (layoutDirty) layout();
@@ -340,34 +348,41 @@ export function startRibbon(
     gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, cols * rows);
   }
 
+  // weak GPU, judged in the first seconds: drop detail once, then settle on the poster, rather than stutter.
+  // Above 25 fps is fine, since low-power modes cap at 30; one long frame during page load does not count.
+  function checkSpeed(raw: number): void {
+    if (elapsed > 12) return;
+    speed.frames++;
+    speed.ms += raw;
+    if (raw > 40) speed.slow++;
+    if (speed.frames < 24 && speed.ms < 1500) return;
+    const struggling = speed.slow * 2 > speed.frames;
+    speed.frames = speed.ms = speed.slow = 0;
+    if (!struggling) return;
+    if (quality === 1) {
+      quality = 0.6;
+      layoutDirty = true;
+    } else {
+      halt();
+    }
+  }
+
   function frame(now: number): void {
     raf = requestAnimationFrame(frame);
     const raw = now - last;
     last = now;
-    const dt = Math.min(raw / 1000, 0.05);
+    const dt = Math.min(raw / 1000, 0.1);
     elapsed += dt;
     draw(dt);
     if (!announced) {
       announced = true;
       options.onReady();
     }
-    // weak GPU: drop detail once rather than stutter
-    if (quality === 1 && elapsed > 2) {
-      sampled++;
-      if (raw > 40) slowFrames++; // above 25 fps is fine: low-power modes cap at 30
-      if (sampled === 90) {
-        if (slowFrames > 45) {
-          quality = 0.6;
-          layoutDirty = true;
-        }
-        sampled = 0;
-        slowFrames = 0;
-      }
-    }
+    checkSpeed(raw);
   }
 
   function resume(): void {
-    if (running || !inView || document.hidden) return;
+    if (running || halted || !inView || document.hidden) return;
     running = true;
     last = performance.now();
     raf = requestAnimationFrame(frame);
@@ -376,6 +391,12 @@ export function startRibbon(
   function pause(): void {
     running = false;
     cancelAnimationFrame(raf);
+  }
+
+  function halt(): void {
+    halted = true;
+    pause();
+    options.onLost();
   }
 
   const resizes = new ResizeObserver(() => {
@@ -391,8 +412,7 @@ export function startRibbon(
   };
   const onContextLost = (e: Event): void => {
     e.preventDefault();
-    pause();
-    options.onLost();
+    halt();
   };
   stage.addEventListener('pointermove', onMove, { passive: true });
   stage.addEventListener('pointerleave', onLeave, { passive: true });
