@@ -50,7 +50,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
               ← Back to Insights
             </Link>
           </nav>
-          <h1 className="text-4xl sm:text-5xl mb-6">
+          <h1 className="mb-6">
             Refactoring Legacy Code: Complete Guide to Modernizing Your Software Architecture
           </h1>
           <div className="flex items-center gap-4 text-foreground/75">
@@ -149,23 +149,23 @@ export default function RefactoringLegacyCodePost(): ReactElement {
               <h3 className="text-xl mb-4">Characteristics of Legacy Code</h3>
               <ul className="space-y-3 text-foreground/70">
                 <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-accent-fill rounded-full mt-2 flex-shrink-0"></span>
                   <span>No automated tests or outdated test coverage</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-accent-fill rounded-full mt-2 flex-shrink-0"></span>
                   <span>Complex, deeply nested functions with unclear logic</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-accent-fill rounded-full mt-2 flex-shrink-0"></span>
                   <span>Hardcoded values and magic numbers throughout</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-accent-fill rounded-full mt-2 flex-shrink-0"></span>
                   <span>Outdated dependencies and security vulnerabilities</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
+                  <span className="w-2 h-2 bg-accent-fill rounded-full mt-2 flex-shrink-0"></span>
                   <span>Poor documentation or outdated comments</span>
                 </li>
               </ul>
@@ -351,7 +351,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
           <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-accent-fill rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-semibold text-sm">1</span>
               </div>
               <div>
@@ -369,7 +369,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-accent-fill rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-semibold text-sm">2</span>
               </div>
               <div>
@@ -387,7 +387,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-accent-fill rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-semibold text-sm">3</span>
               </div>
               <div>
@@ -405,7 +405,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-accent-fill rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-semibold text-sm">4</span>
               </div>
               <div>

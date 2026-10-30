@@ -140,7 +140,7 @@ function ScoreRing({ score, size = 120 }: { score: number; size?: number }): Rea
   return (
     <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="currentColor" strokeWidth="6" className="text-foreground/10" />
+        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="currentColor" strokeWidth="6" className="text-muted" />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -167,7 +167,7 @@ function MetricCard({ label, value, status }: { label: string; value: string; st
   };
   return (
     <div className="rounded-xl border border-border bg-card/60 p-4">
-      <p className="text-[12px] text-foreground/50 mb-1">{label}</p>
+      <p className="text-[12px] text-muted mb-1">{label}</p>
       <p className={`text-lg font-semibold ${colors[status]}`}>{value}</p>
     </div>
   );
@@ -198,7 +198,7 @@ function SectionCard({ title, description, score, children }: { title: string; d
       <div className="flex items-start justify-between mb-4">
         <div>
           <h3 className="text-lg">{title}</h3>
-          <p className="text-[13px] text-foreground/50 mt-1">{description}</p>
+          <p className="text-[13px] text-muted mt-1">{description}</p>
         </div>
         {score !== undefined && (
           <span className={`text-2xl font-semibold ${scoreColor(score)}`}>{score}</span>
@@ -224,7 +224,7 @@ function ProgressBar({ phase, ht }: { phase: ScanPhase; ht: (k: string, f: strin
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-semibold transition-colors ${
               i < currentIndex ? 'bg-green-400/20 text-green-400' :
               i === currentIndex ? 'bg-accent/20 text-accent animate-pulse' :
-              'bg-foreground/10 text-foreground/40'
+              'bg-foreground/10 text-muted'
             }`}>
               {i < currentIndex ? (
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
@@ -232,13 +232,13 @@ function ProgressBar({ phase, ht }: { phase: ScanPhase; ht: (k: string, f: strin
                 i + 1
               )}
             </div>
-            <span className={`text-[13px] ${i <= currentIndex ? 'text-foreground/80' : 'text-foreground/40'}`}>{step.label}</span>
+            <span className={`text-[13px] ${i <= currentIndex ? 'text-foreground/80' : 'text-muted'}`}>{step.label}</span>
             {i < steps.length - 1 && <div className="flex-1 h-px bg-border ml-2" />}
           </div>
         ))}
       </div>
       <div className="h-1 bg-foreground/10 rounded-full overflow-hidden">
-        <div className="h-full bg-accent rounded-full transition-all duration-700 ease-out" style={{ width: `${(currentIndex / steps.length) * 100}%` }} />
+        <div className="h-full bg-accent-fill rounded-full transition-all duration-700 ease-out" style={{ width: `${(currentIndex / steps.length) * 100}%` }} />
       </div>
     </div>
   );
@@ -346,7 +346,7 @@ export default function WebsiteScannerPage(): ReactElement {
         <p className="text-[13px] text-muted mb-3" suppressHydrationWarning>
           {ht('scanner.eyebrow', 'Free Tool')}
         </p>
-        <h1 className="leading-[1.1] max-w-3xl text-[clamp(34px,3.4vw,52px)]" suppressHydrationWarning>
+        <h1 className="max-w-3xl" suppressHydrationWarning>
           {ht('scanner.headline', 'Website Health Scanner')}
         </h1>
         <p className="mt-5 max-w-2xl text-base md:text-lg leading-[1.65] text-[--muted]" suppressHydrationWarning>
@@ -363,13 +363,13 @@ export default function WebsiteScannerPage(): ReactElement {
             onChange={(e) => setUrl(e.target.value)}
             placeholder="https://example.com"
             disabled={isScanning}
-            className="flex-1 rounded-xl border border-border bg-background px-4 py-3.5 text-[14px] placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-accent/40 transition disabled:opacity-50"
+            className="flex-1 rounded-xl border border-border bg-background px-4 py-3.5 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/40 transition disabled:opacity-50"
             aria-label={ht('scanner.input.aria', 'Enter website URL to scan')}
           />
           <button
             type="submit"
             disabled={isScanning || !url.trim()}
-            className="bg-accent text-white rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+            className="bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
             suppressHydrationWarning
           >
             {isScanning
@@ -389,7 +389,7 @@ export default function WebsiteScannerPage(): ReactElement {
       {isScanning && (
         <section className="max-w-3xl mx-auto px-6 sm:px-10 pb-12">
           <ProgressBar phase={phase} ht={ht} />
-          <p className="text-center text-[13px] text-foreground/50 mt-4" suppressHydrationWarning>
+          <p className="text-center text-[13px] text-muted mt-4" suppressHydrationWarning>
             {phase === 'security'
               ? ht('scanner.progress.security', 'Checking security headers and SSL...')
               : ht('scanner.progress.performance', 'Running performance analysis (this may take 30-60 seconds)...')}
@@ -406,7 +406,7 @@ export default function WebsiteScannerPage(): ReactElement {
             <p className={`text-lg font-semibold mt-3 ${scoreColor(results.overallScore)}`} suppressHydrationWarning>
               {scoreLabel(results.overallScore, ht)}
             </p>
-            <p className="text-[13px] text-foreground/50 mt-1">
+            <p className="text-[13px] text-muted mt-1">
               {results.url}
             </p>
           </div>
@@ -420,7 +420,7 @@ export default function WebsiteScannerPage(): ReactElement {
               { label: ht('scanner.category.security', 'Security'), score: results.security.score },
             ].map((cat) => (
               <div key={cat.label} className={`rounded-xl border p-4 text-center ${scoreBg(cat.score)}`}>
-                <p className="text-[12px] text-foreground/50 mb-1">{cat.label}</p>
+                <p className="text-[12px] text-muted mb-1">{cat.label}</p>
                 <p className={`text-2xl font-semibold ${scoreColor(cat.score)}`}>{cat.score}</p>
               </div>
             ))}
@@ -518,7 +518,7 @@ export default function WebsiteScannerPage(): ReactElement {
               <h3 className="text-lg mb-1" suppressHydrationWarning>
                 {ht('scanner.tech.title', 'Detected Technologies')}
               </h3>
-              <p className="text-[13px] text-foreground/50 mb-4" suppressHydrationWarning>
+              <p className="text-[13px] text-muted mb-4" suppressHydrationWarning>
                 {ht('scanner.tech.desc', 'Frameworks and libraries detected from the page source.')}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -538,7 +538,7 @@ export default function WebsiteScannerPage(): ReactElement {
                   >
                     {t.name}
                     {t.confidence === 'medium' && (
-                      <span className="text-xs text-foreground/40">?</span>
+                      <span className="text-xs text-muted">?</span>
                     )}
                   </span>
                 ))}
@@ -548,7 +548,7 @@ export default function WebsiteScannerPage(): ReactElement {
 
           {/* CTA */}
           <div className="mt-12 rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12 text-center">
-            <p className="text-[12px] font-semibold text-accent/70 mb-3" suppressHydrationWarning>
+            <p className="text-[12px] font-semibold text-accent mb-3" suppressHydrationWarning>
               {ht('scanner.cta.eyebrow', 'Go Deeper')}
             </p>
             <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
@@ -561,7 +561,7 @@ export default function WebsiteScannerPage(): ReactElement {
               href="https://calendly.com/maxwellsoftwaresolutions/discovery"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-accent text-white rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
+              className="inline-block bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
               suppressHydrationWarning
             >
               {ht('scanner.cta.button', 'Book Free Expert Review')}

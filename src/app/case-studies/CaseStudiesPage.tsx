@@ -78,7 +78,7 @@ export default function CaseStudiesPage(): ReactElement {
             {ht('caseStudiesPage.eyebrow', 'Client results')}
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             Real{' '}
@@ -156,7 +156,7 @@ export default function CaseStudiesPage(): ReactElement {
                   {/* Left: Challenge + Solution */}
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-xs text-foreground/50 mb-2" suppressHydrationWarning>
+                      <h3 className="text-xs text-muted mb-2" suppressHydrationWarning>
                         {ht('caseStudiesPage.challenge', 'Challenge')}
                       </h3>
                       <p className="text-[15px] leading-relaxed text-foreground/80" suppressHydrationWarning>
@@ -164,7 +164,7 @@ export default function CaseStudiesPage(): ReactElement {
                       </p>
                     </div>
                     <div>
-                      <h3 className="text-xs text-foreground/50 mb-2" suppressHydrationWarning>
+                      <h3 className="text-xs text-muted mb-2" suppressHydrationWarning>
                         {ht('caseStudiesPage.solution', 'Solution')}
                       </h3>
                       <p className="text-[15px] leading-relaxed text-foreground/80" suppressHydrationWarning>
@@ -176,7 +176,7 @@ export default function CaseStudiesPage(): ReactElement {
                   {/* Right: Tech stack + Results */}
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-xs text-foreground/50 mb-2" suppressHydrationWarning>
+                      <h3 className="text-xs text-muted mb-2" suppressHydrationWarning>
                         {ht('caseStudiesPage.techStack', 'Tech stack')}
                       </h3>
                       <p className="text-[13px] font-mono text-foreground/70 leading-relaxed" suppressHydrationWarning>
@@ -184,7 +184,7 @@ export default function CaseStudiesPage(): ReactElement {
                       </p>
                     </div>
                     <div>
-                      <h3 className="text-xs text-foreground/50 mb-3" suppressHydrationWarning>
+                      <h3 className="text-xs text-muted mb-3" suppressHydrationWarning>
                         {ht('caseStudiesPage.results', 'Results')}
                       </h3>
                       <ul className="space-y-2" suppressHydrationWarning>

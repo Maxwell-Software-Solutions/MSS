@@ -39,7 +39,7 @@ export default function SOLIDPrinciplesPost(): ReactElement {
               ← Back to Insights
             </Link>
           </nav>
-          <h1 className="text-4xl sm:text-5xl mb-6">SOLID Principles: The Foundation of Clean Code</h1>
+          <h1 className="mb-6">SOLID Principles: The Foundation of Clean Code</h1>
           <div className="flex items-center gap-4 text-foreground/75">
             <time dateTime="2024-12-19">December 19, 2024</time>
             <span>•</span>
@@ -308,21 +308,21 @@ export default function SOLIDPrinciplesPost(): ReactElement {
           <h2 className="text-3xl mb-8">Benefits of Following SOLID Principles</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1"></div>
+              <div className="w-6 h-6 bg-accent-fill rounded-full flex-shrink-0 mt-1"></div>
               <div>
                 <h3 className="mb-2">Maintainability</h3>
                 <p className="text-foreground/70 text-sm">Code is easier to understand, modify, and extend.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1"></div>
+              <div className="w-6 h-6 bg-accent-fill rounded-full flex-shrink-0 mt-1"></div>
               <div>
                 <h3 className="mb-2">Testability</h3>
                 <p className="text-foreground/70 text-sm">Smaller, focused classes are easier to unit test.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1"></div>
+              <div className="w-6 h-6 bg-accent-fill rounded-full flex-shrink-0 mt-1"></div>
               <div>
                 <h3 className="mb-2">Reusability</h3>
                 <p className="text-foreground/70 text-sm">
@@ -331,7 +331,7 @@ export default function SOLIDPrinciplesPost(): ReactElement {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-accent rounded-full flex-shrink-0 mt-1"></div>
+              <div className="w-6 h-6 bg-accent-fill rounded-full flex-shrink-0 mt-1"></div>
               <div>
                 <h3 className="mb-2">Flexibility</h3>
                 <p className="text-foreground/70 text-sm">

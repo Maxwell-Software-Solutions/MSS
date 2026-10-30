@@ -124,7 +124,7 @@ export default function BlogIndexContent(): ReactElement {
         className="mb-16"
       >
         <div className="eyebrow mb-4">Engineering Insights</div>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl">
+        <h1 className="max-w-3xl">
           {t('blog.title').split(' ').slice(0, -1).join(' ')}{' '}
           <span>
             {t('blog.title').split(' ').at(-1)}

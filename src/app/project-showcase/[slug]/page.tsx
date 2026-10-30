@@ -226,7 +226,7 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
 
       <header className="mb-8">
         <p className="text-sm text-foreground/75">Case study · {c.meta}</p>
-        <h1 className="text-4xl sm:text-5xl mt-2">{c.title}</h1>
+        <h1 className="mt-2">{c.title}</h1>
         <p className="text-lg text-foreground/75 mt-3 max-w-3xl">{c.subtitle}</p>
       </header>
 

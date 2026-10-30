@@ -428,7 +428,7 @@ terraform apply`}
           </p>
           <a
             href="/contact"
-            className="inline-block px-6 py-3 bg-accent text-white rounded-xl font-semibold hover:opacity-90 transition-opacity"
+            className="inline-block px-6 py-3 bg-accent-fill text-accent-contrast rounded-xl font-semibold hover:opacity-90 transition-opacity"
           >
             Talk to Our Engineering Team
           </a>

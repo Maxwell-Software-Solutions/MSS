@@ -16,7 +16,7 @@ export function PageHeader({ eyebrow, title, subtitle, meta, className = '' }: P
   return (
     <header className={`space-y-3 ${className}`.trim()}>
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h1 className="text-3xl sm:text-4xl">{title}</h1>
+      <h1>{title}</h1>
       {meta && <div className="text-sm text-muted">{meta}</div>}
       {subtitle && <p className="max-w-2xl text-base leading-relaxed text-secondary">{subtitle}</p>}
     </header>

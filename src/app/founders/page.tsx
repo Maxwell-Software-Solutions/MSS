@@ -41,7 +41,7 @@ export default function FoundersPage(): React.ReactElement {
     <div className="min-h-screen px-6 sm:px-10 py-16 sm:py-20">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-center" data-reveal>
-          <h1 className="text-4xl sm:text-5xl tracking-tight">Founders</h1>
+          <h1>Founders</h1>
           <p className="mt-4 text-foreground/70 max-w-2xl mx-auto leading-relaxed">
             Meet the core team guiding technical direction, product quality, and sustainable velocity.
           </p>

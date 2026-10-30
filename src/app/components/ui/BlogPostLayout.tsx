@@ -33,7 +33,7 @@ export function BlogPostLayout({
             ← Back to Insights
           </Link>
         </nav>
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6">{title}</h1>
+        <h1 className="font-bold mb-6">{title}</h1>
         <div className="flex items-center gap-4 text-foreground/75">
           <time dateTime={date}>
             {new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}

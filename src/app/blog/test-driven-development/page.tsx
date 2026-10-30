@@ -39,7 +39,7 @@ export default function TDDPost(): ReactElement {
               ← Back to Insights
             </Link>
           </nav>
-          <h1 className="text-4xl sm:text-5xl mb-6">
+          <h1 className="mb-6">
             Test-Driven Development: Building Business Confidence Through Code Quality
           </h1>
           <div className="flex items-center gap-4 text-foreground/75">

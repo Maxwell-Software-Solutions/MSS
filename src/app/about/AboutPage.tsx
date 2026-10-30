@@ -31,7 +31,7 @@ export default function AboutPage(): ReactElement {
         className="mb-12"
       >
         <div className="eyebrow mb-4">Our Story</div>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight max-w-3xl">
+        <h1 className="max-w-3xl">
           <span>
             {t('about.title')}
           </span>

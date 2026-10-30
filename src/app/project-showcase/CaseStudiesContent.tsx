@@ -43,7 +43,7 @@ export default function CaseStudiesContent(): ReactElement {
 
   return (
     <div className="container section" data-reveal>
-      <h1 className="text-3xl sm:text-4xl tracking-tight">{t('caseStudies.title')}</h1>
+      <h1>{t('caseStudies.title')}</h1>
       <p className="mt-3 lead max-w-2xl">{t('caseStudies.subtitle')}</p>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal>

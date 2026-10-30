@@ -298,7 +298,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             {ht('codeHealth.results.eyebrow', 'Your Results')}
           </p>
           <h1
-            className="leading-[1.1] max-w-3xl text-[clamp(34px,3.4vw,52px)]"
+            className="max-w-3xl"
             suppressHydrationWarning
           >
             {ht('codeHealth.results.title', 'Code Health Score')}
@@ -310,7 +310,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
           <div className={`rounded-3xl border ${tier.borderColor} ${tier.bgColor} p-8 sm:p-12 text-center`}>
             <div className={`text-[clamp(56px,8vw,96px)] font-semibold ${tier.color} leading-none`}>
               {totalScore}
-              <span className="text-[clamp(20px,3vw,32px)] text-foreground/40 font-normal">/{maxScore}</span>
+              <span className="text-[clamp(20px,3vw,32px)] text-muted font-normal">/{maxScore}</span>
             </div>
             <div className={`inline-block mt-3 rounded-full px-4 py-1.5 text-sm font-semibold ${tier.color} ${tier.bgColor}`}>
               {tier.label}
@@ -348,7 +348,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
         {/* CTA */}
         <div className="max-w-5xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
           <div className="rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12 text-center">
-            <p className="text-[12px] font-semibold text-accent/70 mb-3" suppressHydrationWarning>
+            <p className="text-[12px] font-semibold text-accent mb-3" suppressHydrationWarning>
               {ht('codeHealth.cta.eyebrow', 'Next step')}
             </p>
             <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
@@ -363,7 +363,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="https://calendly.com/maxwellsoftwaresolutions/discovery"
-                className="inline-flex items-center gap-2 bg-accent text-white rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
+                className="inline-flex items-center gap-2 bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
                 target="_blank"
                 rel="noopener noreferrer"
                 suppressHydrationWarning
@@ -397,7 +397,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
           {ht('codeHealth.eyebrow', 'Self-Assessment')}
         </p>
         <h1
-          className="leading-[1.1] max-w-3xl text-[clamp(34px,3.4vw,52px)]"
+          className="max-w-3xl"
           suppressHydrationWarning
         >
           {ht('codeHealth.headline', 'Code Health Score')}
@@ -426,7 +426,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
 
       {/* Progress Bar */}
       <div className="max-w-5xl mx-auto px-6 sm:px-10 pb-2">
-        <div className="flex items-center justify-between text-[12px] text-foreground/50 mb-2">
+        <div className="flex items-center justify-between text-[12px] text-muted mb-2">
           <span suppressHydrationWarning>
             {ht('codeHealth.progress.question', 'Question')} {currentQuestion + 1} / {totalQuestions}
           </span>
@@ -434,7 +434,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
         </div>
         <div className="w-full h-2 bg-foreground/10 rounded-full overflow-hidden">
           <div
-            className="h-full bg-accent rounded-full transition-all duration-300 ease-out"
+            className="h-full bg-accent-fill rounded-full transition-all duration-300 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -491,7 +491,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             {answeredCount === totalQuestions && (
               <button
                 onClick={() => setShowResults(true)}
-                className="bg-accent text-white rounded-xl px-6 py-3 text-sm font-semibold hover:bg-accent/90 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
+                className="bg-accent-fill text-accent-contrast rounded-xl px-6 py-3 text-sm font-semibold hover:bg-accent-fill-hover transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent/60"
                 suppressHydrationWarning
               >
                 {ht('codeHealth.nav.results', 'See my results')}
