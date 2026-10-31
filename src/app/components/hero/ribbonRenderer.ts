@@ -120,9 +120,12 @@ void main() {
   float drawn = 1.0 - smoothstep(front - 0.05, front, sx);
   float tip = 0.3 * exp(-pow((sx - front + 0.02) / 0.03, 2.0)) * (1.0 - smoothstep(2.2, 3.0, uReveal));
 
-  // a soft gold light passes along part of the ribbon on the ordered side, following its twist
-  float s = sx + 0.3 * depth - uPulse.x;
-  float across = exp(-pow((depth - uPulse.z) / 0.6, 2.0));
+  // soft gold lights travel along the ordered side of the ribbon, following its twist, each one
+  // uPulse.z behind the last and each on a different part of the bundle
+  float along = sx + 0.3 * depth - uPulse.x;
+  float which = floor(along / uPulse.z + 0.5);
+  float s = along - which * uPulse.z;
+  float across = exp(-pow((depth - 0.35 - 0.4 * fract(which * 0.618)) / 0.6, 2.0));
   float band = exp(-s * s / 0.0028);
   float tail = s < 0.0 ? exp(s / 0.1) : 0.0;
   float pulse = clamp((band + 0.4 * tail) * across * order * order * uPulse.y, 0.0, 1.0);
@@ -180,13 +183,12 @@ const SETTLE_SECONDS = 3.5;
 // Once settled the motion is slow enough that every other frame is imperceptible, and half the GPU work
 const SETTLED_AFTER = 8;
 
-// A gold light is always on its way along the ribbon. It is already bright on the first frame, and each
-// new one sets off as the last leaves the screen, so nobody waits to see something move.
-const PULSE_EVERY = 4;
-const PULSE_FROM = 0.68;
-const PULSE_TO = 1.32;
-const PULSE_LEAD = 0.7;
-const PULSE_STRENGTH = 0.95;
+// A gold light is always on its way along the ribbon: one is already bright on the first frame and a new
+// one sets off every 4 seconds, so nobody waits to see something move.
+const LIGHT_START = 0.85;
+const LIGHT_SPEED = 0.15;
+const LIGHT_SPACING = 0.6;
+const LIGHT_STRENGTH = 0.95;
 const CURSOR_LEAN = 0.07;
 // Past the end of the draw-on, for reduced motion: every line is simply there
 const FULLY_DRAWN = 99;
@@ -358,16 +360,10 @@ export function startRibbon(
 
     if (!reduced) flow += dt * (DRIFT_SPEED + (ARRIVAL_SPEED - DRIFT_SPEED) * Math.exp(-elapsed / SETTLE_SECONDS));
 
-    const light = (elapsed + PULSE_LEAD) / PULSE_EVERY;
-    const sweep = light % 1;
-    const pulsePos = PULSE_FROM + (PULSE_TO - PULSE_FROM) * sweep;
-    const pulseAmp = PULSE_STRENGTH * Math.min(1, sweep * 5, (1 - sweep) * 5);
-    const pulseRow = 0.35 + 0.4 * ((Math.floor(light) * 0.618) % 1);
-
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.uniform1f(u.t, flow);
     gl.uniform1f(u.reveal, reduced ? FULLY_DRAWN : elapsed);
-    gl.uniform3f(u.pulse, pulsePos, pulseAmp, pulseRow);
+    gl.uniform3f(u.pulse, LIGHT_START + LIGHT_SPEED * elapsed, LIGHT_STRENGTH, LIGHT_SPACING);
     gl.uniform3f(u.mouse, (pointer.cx * dpr) / width, (pointer.cy * dpr) / height, reduced ? 0 : pointer.amp * CURSOR_LEAN);
     gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, cols * rows);
   }
