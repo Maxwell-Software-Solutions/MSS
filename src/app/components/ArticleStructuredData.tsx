@@ -15,7 +15,7 @@ export default function ArticleStructuredData({
   datePublished,
   dateModified,
   author = 'Maxwell Software Solutions',
-  imageUrl = 'https://www.maxwellsoftwaresolutions.com/logo.svg',
+  imageUrl = 'https://www.maxwellsoftwaresolutions.com/icon3.png',
 }: ArticleStructuredDataProps): ReactElement {
   const structuredData = {
     '@context': 'https://schema.org',
@@ -34,7 +34,7 @@ export default function ArticleStructuredData({
       name: 'Maxwell Software Solutions',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.maxwellsoftwaresolutions.com/logo.svg',
+        url: 'https://www.maxwellsoftwaresolutions.com/icon3.png',
       },
     },
     image: imageUrl,

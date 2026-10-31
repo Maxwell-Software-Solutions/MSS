@@ -1,47 +1,29 @@
 import { ImageResponse } from 'next/og';
+import { OG_COLORS, OG_SIZE, OgFrame, ogFonts } from '@/lib/brand/og';
 import { SITE_CONFIG, BLOG_POSTS, isValidBlogSlug } from '@/lib/seo/data';
 
 /**
- * Dynamic Blog Post Open Graph Images
- *
- * Generates unique OG image for each blog post using ImageResponse API.
+ * Dynamic blog post Open Graph images: the brand frame with the category, title, excerpt and read time.
  * Data source: BLOG_POSTS registry from central data management.
- *
- * Features:
- * - Category badge
- * - Article title and excerpt
- * - Read time indicator
- * - Consistent branding
  *
  * @param params - Route parameters containing blog slug
  */
 
 export const runtime = 'edge';
-export const size = { width: 1200, height: 630 };
+export const size = OG_SIZE;
 export const contentType = 'image/png';
 
 export default async function Image({ params }: { params: { slug: string } }): Promise<ImageResponse> {
-  // Validate slug and get post data
+  const fonts = await ogFonts();
+
   if (!isValidBlogSlug(params.slug)) {
-    // Return fallback image for invalid slugs
     return new ImageResponse(
       (
-        <div
-          style={{
-            background: '#1a1a1a',
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#ffffff',
-            fontSize: 48,
-          }}
-        >
-          Blog Post Not Found
-        </div>
+        <OgFrame>
+          <div style={{ marginTop: 52, fontSize: 48, fontWeight: 500 }}>Blog Post Not Found</div>
+        </OgFrame>
       ),
-      { ...size }
+      { ...size, fonts }
     );
   }
 
@@ -49,133 +31,27 @@ export default async function Image({ params }: { params: { slug: string } }): P
 
   return new ImageResponse(
     (
-      <div
-        style={{
-          background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '60px 80px',
-          position: 'relative',
-        }}
-      >
-        {/* Header with category badge */}
+      <OgFrame ribbon={0.4}>
+        <div style={{ marginTop: 44, fontSize: 24, color: OG_COLORS.accent }}>{post.category}</div>
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: 40,
-          }}
-        >
-          <div
-            style={{
-              background: 'rgba(184, 134, 11, 0.2)',
-              border: '2px solid #B8860B',
-              borderRadius: '8px',
-              padding: '8px 16px',
-              color: '#B8860B',
-              fontSize: 18,
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-            }}
-          >
-            {post.category}
-          </div>
-        </div>
-
-        {/* Article title */}
-        <h1
-          style={{
-            fontSize: 56,
-            fontWeight: 700,
-            color: '#ffffff',
-            margin: 0,
-            lineHeight: 1.2,
-            marginBottom: 24,
-            maxWidth: '1000px',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
+            marginTop: 14,
+            maxWidth: 980,
+            fontSize: 54,
+            fontWeight: 500,
+            lineHeight: 1.14,
+            letterSpacing: '-0.02em',
           }}
         >
           {post.title}
-        </h1>
-
-        {/* Excerpt/description */}
-        <p
-          style={{
-            fontSize: 24,
-            fontWeight: 400,
-            color: '#cccccc',
-            margin: 0,
-            lineHeight: 1.5,
-            maxWidth: '900px',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-          }}
-        >
-          {post.excerpt}
-        </p>
-
-        {/* Footer */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginTop: 'auto',
-            paddingTop: 40,
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
-        >
-          {/* Company name */}
-          <div
-            style={{
-              fontSize: 20,
-              fontWeight: 600,
-              color: '#B8860B',
-            }}
-          >
-            {SITE_CONFIG.name}
-          </div>
-
-          {/* Read time */}
-          <div
-            style={{
-              fontSize: 18,
-              color: '#999999',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-            }}
-          >
-            <span>📖</span>
-            <span>{post.readTime}</span>
-          </div>
         </div>
-
-        {/* Decorative accent */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '-20%',
-            left: '-10%',
-            width: '400px',
-            height: '400px',
-            background: 'radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%)',
-            borderRadius: '50%',
-          }}
-        />
-      </div>
+        <div style={{ marginTop: 20, maxWidth: 880, fontSize: 24, lineHeight: 1.45, color: OG_COLORS.secondary }}>
+          {post.excerpt}
+        </div>
+        <div style={{ marginTop: 'auto', fontSize: 22, color: OG_COLORS.muted }}>{post.readTime}</div>
+      </OgFrame>
     ),
-    { ...size }
+    { ...size, fonts }
   );
 }
 
@@ -183,15 +59,11 @@ export default async function Image({ params }: { params: { slug: string } }): P
  * Generate alt text for OG image
  * Uses blog post title from central data
  */
-export async function generateImageMetadata({ params }: { params: { slug: string } }): Promise<Array<{ alt: string }>> {
-  if (!isValidBlogSlug(params.slug)) {
-    return [{ alt: 'Blog Post' }];
-  }
-
-  const post = BLOG_POSTS[params.slug]!;
-  return [
-    {
-      alt: `${post.title} — ${SITE_CONFIG.name}`,
-    },
-  ];
+export async function generateImageMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Array<{ id: string; alt: string; size: typeof OG_SIZE; contentType: string }>> {
+  const alt = isValidBlogSlug(params.slug) ? `${BLOG_POSTS[params.slug]!.title} — ${SITE_CONFIG.name}` : 'Blog Post';
+  return [{ id: 'og', alt, size, contentType }];
 }

@@ -120,16 +120,8 @@ export const metadata: Metadata = {
     // bing: process.env.NEXT_PUBLIC_BING_VERIFICATION,
   },
 
-  // App manifest and icons
+  // App manifest. The icons come from favicon.ico, icon.svg, icon1-4.png and apple-icon.png in this folder.
   manifest: '/manifest.json',
-  icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/logo-icon.svg', sizes: '64x64', type: 'image/svg+xml' },
-    ],
-    apple: '/logo-icon.svg',
-    shortcut: '/favicon.svg',
-  },
 
   // Additional metadata for categorization
   category: 'technology',
@@ -148,8 +140,8 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 5, // Allow zoom for accessibility
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#1a1a1a' },
+    { media: '(prefers-color-scheme: light)', color: '#fafbfc' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0e15' },
   ],
 };
 

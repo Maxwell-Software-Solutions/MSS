@@ -13,9 +13,7 @@ describe('AppFooter component', () => {
 
   it('renders the logo and strapline', () => {
     render(<SiteFooter />);
-    const logo = screen.getByAltText('Maxwell Software Solutions');
-    expect(logo).toBeInTheDocument();
-    expect(logo).toHaveAttribute('src', '/logo-simple.svg');
+    expect(screen.getByRole('img', { name: 'Maxwell Software Solutions' })).toBeInTheDocument();
     expect(screen.getByText(/crafting reliable software/i)).toBeInTheDocument();
   });
 

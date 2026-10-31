@@ -1,198 +1,76 @@
 import { ImageResponse } from 'next/og';
+import { OG_COLORS, OG_SIZE, OgFrame, ogFonts } from '@/lib/brand/og';
 import { SITE_CONFIG, PROJECTS, isValidProjectSlug } from '@/lib/seo/data';
 
 /**
- * Dynamic Project Showcase Open Graph Images
- *
- * Generates unique OG image for each case study/project using ImageResponse API.
+ * Dynamic project showcase Open Graph images: the brand frame with the industry, title and up to three metrics.
  * Data source: PROJECTS registry from central data management.
- *
- * Features:
- * - Case study badge + industry
- * - Project title
- * - Key metrics display (up to 3)
- * - Consistent branding
  *
  * @param params - Route parameters containing project slug
  */
 
 export const runtime = 'edge';
-export const size = { width: 1200, height: 630 };
+export const size = OG_SIZE;
 export const contentType = 'image/png';
 
-export default async function Image({ params }: { params: { slug: string } }) {
-  // Validate slug and get project data
+export default async function Image({ params }: { params: { slug: string } }): Promise<ImageResponse> {
+  const fonts = await ogFonts();
+
   if (!isValidProjectSlug(params.slug)) {
-    // Return fallback image for invalid slugs
     return new ImageResponse(
       (
-        <div
-          style={{
-            background: '#1a1a1a',
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#ffffff',
-            fontSize: 48,
-          }}
-        >
-          Project Not Found
-        </div>
+        <OgFrame>
+          <div style={{ marginTop: 52, fontSize: 48, fontWeight: 500 }}>Project Not Found</div>
+        </OgFrame>
       ),
-      { ...size }
+      { ...size, fonts }
     );
   }
 
   const project = PROJECTS[params.slug]!;
-
-  // Get first 3 metrics for display
   const displayMetrics = project.metrics.slice(0, 3);
 
   return new ImageResponse(
     (
-      <div
-        style={{
-          background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '60px 80px',
-          position: 'relative',
-        }}
-      >
-        {/* Header with case study badge */}
+      <OgFrame ribbon={0.4}>
+        <div style={{ marginTop: 44, display: 'flex', gap: 16, fontSize: 24 }}>
+          <span style={{ color: OG_COLORS.accent }}>Case Study</span>
+          <span style={{ color: OG_COLORS.muted }}>{project.industry}</span>
+        </div>
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 16,
-            marginBottom: 40,
-          }}
-        >
-          <div
-            style={{
-              background: 'rgba(184, 134, 11, 0.2)',
-              border: '2px solid #B8860B',
-              borderRadius: '8px',
-              padding: '8px 16px',
-              color: '#B8860B',
-              fontSize: 18,
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-            }}
-          >
-            Case Study
-          </div>
-          <div
-            style={{
-              fontSize: 18,
-              color: '#999999',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-            }}
-          >
-            {project.industry}
-          </div>
-        </div>
-
-        {/* Project title */}
-        <h1
-          style={{
+            marginTop: 14,
+            maxWidth: 1000,
             fontSize: 52,
-            fontWeight: 700,
-            color: '#ffffff',
-            margin: 0,
-            lineHeight: 1.2,
-            marginBottom: 40,
-            maxWidth: '1000px',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
+            fontWeight: 500,
+            lineHeight: 1.14,
+            letterSpacing: '-0.02em',
           }}
         >
           {project.title}
-        </h1>
-
-        {/* Metrics */}
-        <div
-          style={{
-            display: 'flex',
-            gap: 24,
-            marginBottom: 40,
-          }}
-        >
-          {displayMetrics.map((metric, index) => (
+        </div>
+        <div style={{ marginTop: 'auto', display: 'flex', gap: 16 }}>
+          {displayMetrics.map((metric) => (
             <div
-              key={index}
+              key={metric}
               style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRadius: '12px',
-                padding: '20px 24px',
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minWidth: 200,
+                flex: 1,
+                padding: '18px 22px',
+                fontSize: 24,
+                lineHeight: 1.3,
+                border: `1px solid ${OG_COLORS.hairline}`,
+                borderRadius: 8,
+                background: 'rgba(10, 23, 48, 0.72)',
               }}
             >
-              <div
-                style={{
-                  fontSize: 24,
-                  fontWeight: 700,
-                  color: '#B8860B',
-                  textAlign: 'center',
-                  lineHeight: 1.3,
-                }}
-              >
-                {metric}
-              </div>
+              {metric}
             </div>
           ))}
         </div>
-
-        {/* Footer */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginTop: 'auto',
-            paddingTop: 40,
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-          }}
-        >
-          {/* Company name */}
-          <div
-            style={{
-              fontSize: 20,
-              fontWeight: 600,
-              color: '#B8860B',
-            }}
-          >
-            {SITE_CONFIG.name}
-          </div>
-        </div>
-
-        {/* Decorative accent */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '-20%',
-            right: '-10%',
-            width: '500px',
-            height: '500px',
-            background: 'radial-gradient(circle, rgba(184, 134, 11, 0.08) 0%, transparent 70%)',
-            borderRadius: '50%',
-          }}
-        />
-      </div>
+      </OgFrame>
     ),
-    { ...size }
+    { ...size, fonts }
   );
 }
 
@@ -200,15 +78,13 @@ export default async function Image({ params }: { params: { slug: string } }) {
  * Generate alt text for OG image
  * Uses project title from central data
  */
-export async function generateImageMetadata({ params }: { params: { slug: string } }) {
-  if (!isValidProjectSlug(params.slug)) {
-    return [{ alt: 'Project Showcase' }];
-  }
-
-  const project = PROJECTS[params.slug]!;
-  return [
-    {
-      alt: `${project.title} Case Study — ${SITE_CONFIG.name}`,
-    },
-  ];
+export async function generateImageMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Array<{ id: string; alt: string; size: typeof OG_SIZE; contentType: string }>> {
+  const alt = isValidProjectSlug(params.slug)
+    ? `${PROJECTS[params.slug]!.title} Case Study — ${SITE_CONFIG.name}`
+    : 'Project Showcase';
+  return [{ id: 'og', alt, size, contentType }];
 }

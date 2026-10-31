@@ -4,6 +4,7 @@ import { useRef, useEffect, useCallback, type ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import ThemeToggle from '@/app/components/ThemeToggle';
 import ScheduleCallButton from '@/app/components/ScheduleCallButton';
+import BrandLogo from '@/app/components/BrandLogo';
 
 export interface MobileMenuProps {
   open: boolean;
@@ -132,7 +133,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
         tabIndex={-1}
       >
         <div className="flex justify-between items-center mb-2">
-          <span className="text-sm text-muted">Navigate</span>
+          <BrandLogo className="h-8 w-auto text-foreground" label="Maxwell Software Solutions" />
           <button type="button" className="menu-close" aria-label="Close menu" onClick={onClose} data-test="menu-close">
             <svg
               width="24"

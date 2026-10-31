@@ -195,19 +195,11 @@ html:has(.hero-stage):not([data-hero-passed]) .site-header {
   backdrop-filter: none;
 }
 
-html:has(.hero-stage):not([data-hero-passed]) :is(.nav-links, .menu-toggle) {
+html:has(.hero-stage):not([data-hero-passed]) :is(.site-logo, .nav-links, .menu-toggle) {
   --color-text: #f4f6fa;
   --color-text-secondary: #d5dde9;
   --color-border: rgba(255, 255, 255, 0.24);
   --color-hover: rgba(255, 255, 255, 0.1);
   --color-active: rgba(255, 255, 255, 0.16);
   --color-accent: #93bfff;
-}
-
-html:has(.hero-stage):not([data-hero-passed]) .site-logo {
-  display: none;
-}
-
-html:has(.hero-stage):not([data-hero-passed]) .site-logo-on-hero {
-  display: block;
 }
