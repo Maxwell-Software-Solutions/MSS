@@ -14,6 +14,7 @@ const PATHS = {
   chat: 'M21 12c0 4.4-4 8-9 8a10 10 0 0 1-4.2-.9L3 20l1.4-3.7A7.4 7.4 0 0 1 3 12c0-4.4 4-8 9-8s9 3.6 9 8Z',
   arrow: 'M5 12h14M13 6l6 6-6 6',
   check: 'M4.5 12.5 10 18 19.5 7',
+  external: 'M14 4h6v6M20 4 10 14M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4',
 } as const;
 
 export type LineIconName = keyof typeof PATHS;
@@ -34,6 +35,14 @@ export function LineIcon({ name, className }: { name: LineIconName; className?: 
       <path d={PATHS[name]} />
     </svg>
   );
+}
+
+export function CheckIcon(): ReactElement {
+  return <LineIcon name="check" className="check" />;
+}
+
+export function ExternalIcon(): ReactElement {
+  return <LineIcon name="external" className="h-4 w-4" />;
 }
 
 export default LineIcon;

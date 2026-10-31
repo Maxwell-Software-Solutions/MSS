@@ -8,8 +8,8 @@ export default function ContactHero(): ReactElement {
   return (
     <>
       <p className="eyebrow">{t('contactPage.eyebrow')}</p>
-      <h1 className="mt-3 max-w-3xl">{t('contactPage.title')}</h1>
-      <p className="lead mt-5 max-w-2xl">{t('contactPage.subtitle')}</p>
+      <h1>{t('contactPage.title')}</h1>
+      <p className="lead">{t('contactPage.subtitle')}</p>
     </>
   );
 }

@@ -10,6 +10,7 @@ export interface ServiceCardProps {
   tone?: 'default' | 'accent';
 }
 
+/** A service: a short rule above the title, a summary, and its promise. The featured one has the accent rule. */
 export function ServiceCard({
   title,
   summary,
@@ -18,17 +19,11 @@ export function ServiceCard({
   meta,
   tone = 'default',
 }: ServiceCardProps): ReactElement {
-  const accent = tone === 'accent';
   return (
-    <article
-      className={[
-        'card relative flex h-full flex-col p-6 md:p-7',
-        accent ? 'border-accent/40' : '',
-      ].join(' ')}
-    >
-      <h3 className="text-lg font-semibold leading-snug tracking-tight">{title}</h3>
-      <p className="mt-3 max-w-prose text-[0.9375rem] leading-relaxed text-secondary">{summary}</p>
-      {meta && <p className="mt-auto pt-5 text-sm font-medium text-accent">{meta}</p>}
+    <article className={tone === 'accent' ? 'service service-featured' : 'service'}>
+      <h3>{title}</h3>
+      <p>{summary}</p>
+      {meta && <p className="service-meta">{meta}</p>}
       {imageSrc && (
         <div className="mt-3">
           <Image src={imageSrc} alt={imageAlt || title} width={32} height={32} />

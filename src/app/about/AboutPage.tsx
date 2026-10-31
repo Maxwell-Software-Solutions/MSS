@@ -3,135 +3,87 @@ import type { ReactElement } from 'react';
 import Image from 'next/image';
 import { founders } from './founders-data';
 import { useLanguage } from '@/lib/LanguageContext';
-
-function CheckIcon(): ReactElement {
-  return (
-    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-      <path
-        fillRule="evenodd"
-        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
+import { CheckIcon } from '@/app/components/ui';
 
 export default function AboutPage(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-      {/* Hero header */}
-      <header className="mb-12">
-        <div className="eyebrow mb-4">Our Story</div>
-        <h1 className="max-w-3xl">
-          <span>
-            {t('about.title')}
-          </span>
-        </h1>
-        <div className="mt-6 space-y-4 text-foreground/80 leading-relaxed max-w-2xl">
-          <p className="text-lg text-foreground/70">{t('about.intro')}</p>
-          <p className="text-foreground/65">{t('about.description')}</p>
-        </div>
+    <>
+      <header className="wrap page-head">
+        <div className="eyebrow">Our Story</div>
+        <h1>{t('about.title')}</h1>
+        <p className="lead">{t('about.intro')}</p>
+        <p>{t('about.description')}</p>
       </header>
 
-      {/* Principles card */}
-      <div className="card p-8 sm:p-10 mb-16">
-        <h2 className="text-lg mb-6 text-accent">{t('about.principles.heading')}</h2>
-        <ul className="space-y-5">
-          <li className="flex items-start gap-3">
-            <CheckIcon />
-            <div>
-              <strong className="font-semibold">{t('about.principles.correctness.title')}</strong>
-              <span className="text-foreground/70"> {t('about.principles.correctness.body')}</span>
-            </div>
-          </li>
-          <li className="flex items-start gap-3">
-            <CheckIcon />
-            <div>
-              <strong className="font-semibold">{t('about.principles.observability.title')}</strong>
-              <span className="text-foreground/70"> {t('about.principles.observability.body')}</span>
-            </div>
-          </li>
-          <li className="flex items-start gap-3">
-            <CheckIcon />
-            <div>
-              <strong className="font-semibold">{t('about.principles.automation.title')}</strong>
-              <span className="text-foreground/70"> {t('about.principles.automation.body')}</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      {/* Founders */}
-      <section className="mt-4" aria-labelledby="founders-heading">
-        <div className="mb-10">
-          <div className="eyebrow mb-4">The Team</div>
-          <h2 id="founders-heading" className="text-3xl sm:text-4xl tracking-tight mb-4">
-            {t('about.founders.heading')}
-          </h2>
-          <p className="text-base text-foreground/65 max-w-2xl leading-relaxed">
-            {t('about.founders.description')}
-          </p>
-        </div>
-
-        <div className="space-y-8 sm:space-y-12">
-          {founders.map((f, index) => {
-            const firstName = f.name.split(' ')[0]?.toLowerCase() || 'founder';
-            const imageExtension =
-              firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras' ? 'jpg' : 'svg';
-            const imageSrc = `/images/founders/${firstName}.${imageExtension}`;
-            const founderKey = firstName;
-            const imagePosition = index % 2 === 0 ? 'right' : 'left';
-
-            return (
-              <div key={f.name} className="card overflow-hidden">
-                <div
-                  className={`grid grid-cols-1 ${
-                    imagePosition === 'right' ? 'lg:grid-cols-[1.5fr_1fr]' : 'lg:grid-cols-[1fr_1.5fr]'
-                  } gap-0`}
-                >
-                  {/* Description Section */}
-                  <div
-                    className={`flex flex-col justify-center p-8 sm:p-12 ${
-                      imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
-                    }`}
-                  >
-                    <div className="space-y-6">
-                      <div>
-                        <h3 className="text-3xl sm:text-4xl tracking-tight mb-3">
-                          {t(`about.founder.${founderKey}.name`)}
-                        </h3>
-                        <p className="text-lg text-accent font-medium">
-                          {t(`about.founder.${founderKey}.role`)}
-                        </p>
-                      </div>
-                      <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-                        {t(`about.founder.${founderKey}.bio`)}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Image Section */}
-                  <div
-                    className={`relative flex items-center justify-center p-8 sm:p-12 ${
-                      imagePosition === 'right' ? 'lg:order-2' : 'lg:order-1'
-                    }`}
-                  >
-                    <div
-                      className={`absolute inset-0 pointer-events-none ${f.gradient} opacity-10`}
-                      aria-hidden="true"
-                    />
-                    <div className="absolute inset-0 pointer-events-none opacity-50" aria-hidden="true" />
-
-                    <Image src={imageSrc} alt={f.alt} width={400} height={400} className="w-full h-full object-cover relative z-10" />
-                  </div>
-                </div>
+      <section className="section" aria-labelledby="principles-heading">
+        <div className="wrap split">
+          <h2 id="principles-heading">{t('about.principles.heading')}</h2>
+          <ul className="checks rows">
+            <li>
+              <CheckIcon />
+              <div>
+                <strong className="font-medium text-foreground">{t('about.principles.correctness.title')}</strong>
+                <span> {t('about.principles.correctness.body')}</span>
               </div>
-            );
-          })}
+            </li>
+            <li>
+              <CheckIcon />
+              <div>
+                <strong className="font-medium text-foreground">{t('about.principles.observability.title')}</strong>
+                <span> {t('about.principles.observability.body')}</span>
+              </div>
+            </li>
+            <li>
+              <CheckIcon />
+              <div>
+                <strong className="font-medium text-foreground">{t('about.principles.automation.title')}</strong>
+                <span> {t('about.principles.automation.body')}</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
-    </div>
+
+      <section className="section section-tone" aria-labelledby="founders-heading">
+        <div className="wrap">
+          <div className="section-head section-head-split">
+            <div className="eyebrow">The Team</div>
+            <h2 id="founders-heading">{t('about.founders.heading')}</h2>
+            <p className="lead">{t('about.founders.description')}</p>
+          </div>
+
+          <div className="columns columns-3">
+            {founders.map((f) => {
+              const firstName = f.name.split(' ')[0]?.toLowerCase() || 'founder';
+              const imageExtension =
+                firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras' ? 'jpg' : 'svg';
+              const imageSrc = `/images/founders/${firstName}.${imageExtension}`;
+              const founderKey = firstName;
+
+              return (
+                <div key={f.name} className="person">
+                  <div className={`person-photo person-photo-${firstName}`}>
+                    <Image
+                      src={imageSrc}
+                      alt={f.alt}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 40vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3>{t(`about.founder.${founderKey}.name`)}</h3>
+                    <p className="person-role">{t(`about.founder.${founderKey}.role`)}</p>
+                    <p className="person-bio">{t(`about.founder.${founderKey}.bio`)}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

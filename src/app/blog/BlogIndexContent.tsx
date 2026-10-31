@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/lib/LanguageContext';
-import { Badge } from '@/app/components/ui';
+import { LineIcon } from '@/app/components/ui';
 
 interface BlogPost {
   href: string;
@@ -113,62 +113,43 @@ export default function BlogIndexContent(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-      {/* Hero header */}
-      <header className="mb-16">
-        <div className="eyebrow mb-4">Engineering Insights</div>
-        <h1 className="max-w-3xl">
-          {t('blog.title').split(' ').slice(0, -1).join(' ')}{' '}
-          <span>
-            {t('blog.title').split(' ').at(-1)}
-          </span>
-        </h1>
-        <p className="lead mt-6 max-w-2xl">{t('blog.subtitle')}</p>
+    <>
+      <header className="wrap page-head">
+        <div className="eyebrow">Engineering Insights</div>
+        <h1>{t('blog.title')}</h1>
+        <p className="lead">{t('blog.subtitle')}</p>
       </header>
 
-      <div className="space-y-8">
-        {posts.map((post, i) => (
-          <article key={post.href} className="group">
-            <Link href={post.href} className="block">
-              <div className="card overflow-hidden transition-colors group-hover:border-border-strong">
-                <div className="flex flex-col lg:flex-row gap-0">
-                  <div className="relative h-56 lg:h-auto lg:w-72 lg:flex-shrink-0 overflow-hidden border-b border-border bg-wash lg:border-b-0 lg:border-r">
-                    <Image
-                      src={post.imageSrc}
-                      alt={post.imageAlt}
-                      fill
-                      className="object-cover"
-                    />
+      <div className="section">
+        <div className="wrap post-list">
+          {posts.map((post) => (
+            <article key={post.href}>
+              <Link href={post.href} className="post">
+                <div className="post-text">
+                  <div className="work-meta">
+                    <time dateTime={post.dateTime}>{t(post.dateKey)}</time>
+                    <span>•</span>
+                    <span>
+                      {t(post.durationKey)} {t('blog.minRead')}
+                    </span>
+                    <span>•</span>
+                    <span>{t(post.categoryKey)}</span>
                   </div>
-                  <div className="p-6 sm:p-8 flex flex-col justify-center">
-                    <div className="mb-3 flex flex-wrap items-center gap-2 text-sm text-muted">
-                      <time dateTime={post.dateTime}>{t(post.dateKey)}</time>
-                      <span>•</span>
-                      <span>
-                        {t(post.durationKey)} {t('blog.minRead')}
-                      </span>
-                      <span className="inline-flex items-center gap-2">
-                        <span>•</span>
-                        <Badge>{t(post.categoryKey)}</Badge>
-                      </span>
-                    </div>
-                    <h2 className="text-xl sm:text-2xl mb-3 group-hover:text-accent transition-colors">
-                      {t(post.titleKey)}
-                    </h2>
-                    <p className="mb-4 text-[0.9375rem] leading-relaxed text-secondary">{t(post.excerptKey)}</p>
-                    <div className="flex items-center gap-2 text-accent font-medium group-hover:gap-3 transition-all">
-                      {t('blog.readMore')}
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
+                  <h2>{t(post.titleKey)}</h2>
+                  <p>{t(post.excerptKey)}</p>
+                  <div className="more">
+                    {t('blog.readMore')}
+                    <LineIcon name="arrow" />
                   </div>
                 </div>
-              </div>
-            </Link>
-          </article>
-        ))}
+                <div className="art">
+                  <Image src={post.imageSrc} alt={post.imageAlt} fill className="object-cover" />
+                </div>
+              </Link>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

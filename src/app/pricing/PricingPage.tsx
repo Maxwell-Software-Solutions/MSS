@@ -3,23 +3,7 @@ import type { ReactElement } from 'react';
 import Link from 'next/link';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import CTA from '@/app/components/ui/CTA';
-
-function CheckIcon(): ReactElement {
-  return (
-    <svg
-      className="mt-1 h-4 w-4 flex-shrink-0 text-accent"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      aria-hidden="true"
-    >
-      <path
-        fillRule="evenodd"
-        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
+import { CheckIcon, FaqSection } from '@/app/components/ui';
 
 interface TierProps {
   name: string;
@@ -45,53 +29,27 @@ function PricingTier({
   badge,
 }: TierProps): ReactElement {
   return (
-    <div
-      className={`card relative flex flex-col p-7 sm:p-8 ${highlighted ? 'border-accent' : ''}`}
-    >
-      {badge && (
-        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-block whitespace-nowrap bg-accent-fill text-accent-contrast text-xs font-semibold px-4 py-1.5 rounded-full">
-          {badge}
-        </span>
-      )}
-
-      <div className="mb-6">
-        <h2 className="text-xl tracking-tight">{name}</h2>
-        <div className="mt-4 flex flex-col gap-1">
-          <span className="text-3xl font-semibold tracking-tight tabular-nums">{price}</span>
-          <span className="text-sm text-muted">{period}</span>
-        </div>
-        <p className="mt-4 text-sm leading-relaxed text-secondary">{forWho}</p>
+    <div className={highlighted ? 'tier tier-featured' : 'tier'}>
+      <div className="tier-name">
+        {badge && <span className="tier-badge">{badge}</span>}
+        <h2>{name}</h2>
       </div>
+      <div className="price">{price}</div>
+      <div className="price-period">{period}</div>
+      <p className="tier-for">{forWho}</p>
 
-      <ul className="flex-1 space-y-3 mb-8">
+      <ul className="checks">
         {features.map((feat, i) => (
-          <li key={i} className="flex items-start gap-2.5">
+          <li key={i}>
             <CheckIcon />
-            <span className="text-[0.9375rem] text-secondary">{feat}</span>
+            <span>{feat}</span>
           </li>
         ))}
       </ul>
 
-      <Link
-        href={ctaHref}
-        className={`w-full ${highlighted ? 'btn btn-accent' : 'btn'}`}
-      >
+      <Link href={ctaHref} className={highlighted ? 'btn btn-accent' : 'btn'}>
         {ctaLabel}
       </Link>
-    </div>
-  );
-}
-
-interface FAQItemProps {
-  question: string;
-  answer: string;
-}
-
-function FAQItem({ question, answer }: FAQItemProps): ReactElement {
-  return (
-    <div className="border-b border-border pb-6">
-      <h3 className="mb-2 text-base">{question}</h3>
-      <p className="text-[0.9375rem] leading-relaxed text-secondary">{answer}</p>
     </div>
   );
 }
@@ -179,24 +137,12 @@ export default function PricingPage(): ReactElement {
 
   return (
     <>
-      {/* Hero */}
-      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <div className="eyebrow mb-4" suppressHydrationWarning>
+      <header className="wrap page-head">
+        <div className="eyebrow" suppressHydrationWarning>
           {ht('pricing.eyebrow', 'Transparent pricing')}
         </div>
-        <h1
-          className="max-w-3xl"
-          suppressHydrationWarning
-        >
-          <span>
-            Transparent
-          </span>{' '}
-          Pricing
-        </h1>
-        <p
-          className="mt-6 text-lg leading-relaxed text-foreground/70 max-w-2xl"
-          suppressHydrationWarning
-        >
+        <h1 suppressHydrationWarning>Transparent Pricing</h1>
+        <p className="lead" suppressHydrationWarning>
           {ht(
             'pricing.subtitle',
             'Competitive Eastern European rates with Western-grade engineering quality. All engagements are outcome-focused with clear success criteria.'
@@ -204,72 +150,50 @@ export default function PricingPage(): ReactElement {
         </p>
       </header>
 
-      {/* Pricing tiers */}
-      <section aria-labelledby="pricing-tiers-heading" className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <h2 id="pricing-tiers-heading" className="sr-only" suppressHydrationWarning>
-          {ht('pricing.title', 'Pricing')}
-        </h2>
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8 items-start" suppressHydrationWarning>
-          {tiers.map((tier) => (
-            <PricingTier key={tier.name} {...tier} />
-          ))}
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="border-t border-border py-16 sm:py-20">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10">
-          <div className="max-w-3xl">
-            <h2
-              id="faq-heading"
-              className="text-3xl sm:text-4xl tracking-tight mb-8"
-              suppressHydrationWarning
-            >
-              {ht('pricing.faq.heading', 'Frequently asked questions')}
-            </h2>
-            <div className="space-y-6" suppressHydrationWarning>
-              {faqs.map((item, i) => (
-                <FAQItem key={i} question={item.q} answer={item.a} />
-              ))}
-            </div>
+      <section aria-labelledby="pricing-tiers-heading" className="section">
+        <div className="wrap">
+          <h2 id="pricing-tiers-heading" className="sr-only" suppressHydrationWarning>
+            {ht('pricing.title', 'Pricing')}
+          </h2>
+          <div className="tiers tiers-3" suppressHydrationWarning>
+            {tiers.map((tier) => (
+              <PricingTier key={tier.name} {...tier} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Not sure CTA */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20" suppressHydrationWarning>
-        <div className="band band-split p-8 sm:p-12">
-          <h2 className="text-3xl sm:text-4xl tracking-tight" suppressHydrationWarning>
-            {ht('pricing.notSure.title', 'Not sure which plan fits?')}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-foreground/70 max-w-xl" suppressHydrationWarning>
-            {ht(
-              'pricing.notSure.body',
-              'Tell us about your project and team size. We will recommend the right engagement model and scope — no hard sell, no obligation.'
-            )}
-          </p>
-          <Link
-            href="/contact"
-            className="btn btn-accent"
-            suppressHydrationWarning
-          >
-            {ht('pricing.notSure.cta', 'Talk to us')}
-          </Link>
+      <FaqSection
+        title={ht('pricing.faq.heading', 'Frequently asked questions')}
+        items={faqs.map((item) => ({ question: item.q, answer: item.a }))}
+      />
+
+      <div className="section" suppressHydrationWarning>
+        <div className="wrap">
+          <div className="callout band-split">
+            <h2 suppressHydrationWarning>{ht('pricing.notSure.title', 'Not sure which plan fits?')}</h2>
+            <p suppressHydrationWarning>
+              {ht(
+                'pricing.notSure.body',
+                'Tell us about your project and team size. We will recommend the right engagement model and scope — no hard sell, no obligation.'
+              )}
+            </p>
+            <Link href="/contact" className="btn btn-accent" suppressHydrationWarning>
+              {ht('pricing.notSure.cta', 'Talk to us')}
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* CTA band */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-20 sm:pb-24" suppressHydrationWarning>
-        <CTA
-          title={ht('services.cta.title', 'Book a discovery call')}
-          body={ht(
-            'services.cta.body',
-            'Explore fit, clarify goals, and identify the fastest path to measurable impact. No obligation, high signal.'
-          )}
-          primary={{ href: '/contact', label: ht('services.cta.primary', 'Book a discovery call') }}
-          secondary={{ href: '/case-studies', label: ht('services.cta.secondary', 'See case studies') }}
-        />
-      </div>
+      <CTA
+        title={ht('services.cta.title', 'Book a discovery call')}
+        body={ht(
+          'services.cta.body',
+          'Explore fit, clarify goals, and identify the fastest path to measurable impact. No obligation, high signal.'
+        )}
+        primary={{ href: '/contact', label: ht('services.cta.primary', 'Book a discovery call') }}
+        secondary={{ href: '/case-studies', label: ht('services.cta.secondary', 'See case studies') }}
+      />
     </>
   );
 }

@@ -28,16 +28,13 @@ export default function ContactForm(): ReactNode {
   }, []);
 
   return (
-    <div
-      ref={rootRef}
-      role="region"
-      aria-label="Contact form"
-      className="relative isolate min-h-[70vh] py-14 sm:py-20"
-    >
-      <div className="mx-auto max-w-6xl px-6 sm:px-10">
+    <div ref={rootRef} role="region" aria-label="Contact form" className="relative isolate">
+      <div className="wrap page-head">
         <ContactHero />
+      </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-start lg:gap-8">
+      <div className="section">
+        <div className="wrap split">
           <ContactFormCard status={status} error={error} onSubmit={handleSubmit} />
           <ContactDetailsCard />
         </div>

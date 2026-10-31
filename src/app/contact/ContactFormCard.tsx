@@ -4,7 +4,6 @@ import ButtonPrimary from '@/app/components/ButtonPrimary';
 import ContactStatusMessage from './ContactStatusMessage';
 import { CONTACT_FORM_HONEYPOT_FIELD } from './contact.constants';
 import type { ContactFormStatus } from './useContactForm';
-import { NeuroCard } from '@/app/components/ui';
 import { useLanguage } from '@/lib/LanguageContext';
 
 interface ContactFormCardProps {
@@ -17,40 +16,40 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
   const { t } = useLanguage();
 
   return (
-    <NeuroCard as="div" className="p-0">
+    <div>
       <form onSubmit={onSubmit}>
-        <div className="space-y-5">
+        <div className="form-stack">
           <label className="block">
-            <span className="text-sm font-medium text-foreground">{t('contactForm.name.label')}</span>
+            <span className="form-label">{t('contactForm.name.label')}</span>
             <input
               name="name"
               placeholder={t('contactForm.name.placeholder')}
               required
               autoComplete="name"
-              className="field mt-2 block w-full text-base text-foreground"
+              className="field"
             />
           </label>
 
           <label className="block">
-            <span className="text-sm font-medium text-foreground">{t('contactForm.email.label')}</span>
+            <span className="form-label">{t('contactForm.email.label')}</span>
             <input
               name="email"
               type="email"
               placeholder={t('contactForm.email.placeholder')}
               required
               autoComplete="email"
-              className="field mt-2 block w-full text-base text-foreground"
+              className="field"
             />
           </label>
 
           <label className="block">
-            <span className="text-sm font-medium text-foreground">{t('contactForm.message.label')}</span>
+            <span className="form-label">{t('contactForm.message.label')}</span>
             <textarea
               name="message"
               placeholder={t('contactForm.message.placeholder')}
               required
               rows={5}
-              className="field mt-2 block w-full text-base text-foreground"
+              className="field"
             />
           </label>
 
@@ -67,23 +66,22 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="page-actions">
           <ButtonPrimary
             disabled={status === 'sending'}
             loading={status === 'sending'}
             type="submit"
-            className="w-full justify-center sm:w-auto"
           >
             {t('contactForm.submit')}
           </ButtonPrimary>
 
-          <p className="text-sm text-muted">{t('contactForm.privacy')}</p>
+          <p className="form-note">{t('contactForm.privacy')}</p>
         </div>
 
         <div aria-live="polite" aria-atomic="true">
           <ContactStatusMessage status={status} error={error} />
         </div>
       </form>
-    </NeuroCard>
+    </div>
   );
 }

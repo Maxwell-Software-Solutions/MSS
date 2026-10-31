@@ -4,37 +4,7 @@ import type { ReactElement } from 'react';
 import Link from 'next/link';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import { BOOKING_URL } from '@/lib/booking';
-
-function CheckIcon(): ReactElement {
-  return (
-    <svg
-      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      aria-hidden="true"
-    >
-      <path
-        fillRule="evenodd"
-        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
-
-interface FAQItemProps {
-  question: string;
-  answer: string;
-}
-
-function FAQItem({ question, answer }: FAQItemProps): ReactElement {
-  return (
-    <div className="border-b border-border pb-6">
-      <h3 className="text-[15px] mb-2">{question}</h3>
-      <p className="text-[14px] text-foreground/75 leading-relaxed">{answer}</p>
-    </div>
-  );
-}
+import { CheckIcon, ExternalIcon, FaqSection } from '@/app/components/ui';
 
 export default function StartASprintPage(): ReactElement {
   const ht = useHydratedTranslation();
@@ -77,7 +47,7 @@ export default function StartASprintPage(): ReactElement {
     ht('sprint.req4', 'Availability for the 30-minute discovery call and the end-of-sprint demo'),
   ];
 
-  const faqs: FAQItemProps[] = [
+  const faqs = [
     {
       question: ht('sprint.faq.q1', 'What happens if we do not finish everything in 2 weeks?'),
       answer: ht('sprint.faq.a1', 'We scope conservatively to make sure we deliver on time. If the sprint ends and something agreed in scope is not done, we complete it at no extra charge. If you want to add scope mid-sprint, we either defer it to a second sprint or discuss extending the timeline together.'),
@@ -102,63 +72,44 @@ export default function StartASprintPage(): ReactElement {
 
   return (
     <>
-      {/* Hero */}
-      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <div className="eyebrow mb-4" suppressHydrationWarning>
+      <header className="wrap page-head">
+        <div className="eyebrow" suppressHydrationWarning>
           {ht('sprint.eyebrow', 'Sprint-in-a-Box')}
         </div>
-        <h1
-          className="max-w-3xl"
-          suppressHydrationWarning
-        >
-          {ht('sprint.headline.pre', 'Ship Your MVP in')}{' '}
-          <span>
-            {ht('sprint.headline.gradient', '2 Weeks.')}
-          </span>{' '}
+        <h1 suppressHydrationWarning>
+          {ht('sprint.headline.pre', 'Ship Your MVP in')} {ht('sprint.headline.gradient', '2 Weeks.')}{' '}
           {ht('sprint.headline.post', '€4,800 Fixed Price.')}
         </h1>
-        <p className="mt-6 text-lg text-foreground/70 max-w-2xl" suppressHydrationWarning>
+        <p className="lead" suppressHydrationWarning>
           {ht(
             'sprint.subheadline',
             'A focused, self-contained development sprint. You bring the problem statement. We bring a senior engineer, a clear process, and tested code delivered in 10 working days.'
           )}
         </p>
 
-        {/* Primary CTA */}
-        <div className="mt-8 flex flex-wrap gap-4 items-center">
+        <div className="page-actions">
           <Link
             href={BOOKING_URL}
-            className="btn btn-accent"
+            className="btn btn-accent btn-lg"
             target="_blank"
             rel="noopener noreferrer"
             suppressHydrationWarning
           >
             {ht('sprint.cta.primary', 'Start your sprint — €4,800')}
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
+            <ExternalIcon />
           </Link>
-          <Link
-            href="/services/packages"
-            className="text-[14px] font-medium text-foreground/70 hover:text-foreground transition-colors underline underline-offset-2"
-            suppressHydrationWarning
-          >
+          <Link href="/services/packages" className="btn btn-lg" suppressHydrationWarning>
             {ht('sprint.cta.compare', 'Compare all packages')}
           </Link>
         </div>
 
-        {/* Trust signals */}
-        <div className="mt-6 flex flex-wrap gap-4">
+        <div className="assurances">
           {[
             ht('sprint.trust.fixed', 'Fixed price — no surprises'),
             ht('sprint.trust.nda', 'NDA on day one'),
             ht('sprint.trust.handoff', 'Full code ownership at handoff'),
           ].map((item, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center gap-1.5 text-[13px] text-foreground/65"
-              suppressHydrationWarning
-            >
+            <span key={i} suppressHydrationWarning>
               <CheckIcon />
               {item}
             </span>
@@ -166,123 +117,94 @@ export default function StartASprintPage(): ReactElement {
         </div>
       </header>
 
-      {/* What you get */}
-      <section aria-labelledby="deliverables-heading" className="bg-wash border-y border-border py-16 sm:py-20">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10">
-          <h2
-            id="deliverables-heading"
-            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-6"
-            suppressHydrationWarning
-          >
+      <section aria-labelledby="deliverables-heading" className="section">
+        <div className="wrap split">
+          <h2 id="deliverables-heading" suppressHydrationWarning>
             {ht('sprint.deliverables.heading', 'What you get in 2 weeks')}
           </h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <ul className="checks rows">
             {deliverables.map((item, i) => (
-              <li key={i} className="card flex items-start gap-3 rounded-2xl border border-border p-5 transition-all duration-300">
+              <li key={i}>
                 <CheckIcon />
-                <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
+                <span>{item}</span>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* Process */}
-      <section aria-labelledby="process-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
-        <h2 id="process-heading" className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-10" suppressHydrationWarning>
-          {ht('sprint.process.heading', 'The process')}
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" suppressHydrationWarning>
-          {processSteps.map((step, i) => (
-            <div key={step.step} className="card flex gap-5 rounded-2xl border border-border p-6 transition-all duration-300">
-              <div className="flex-shrink-0 w-11 h-11 rounded-full bg-accent-fill text-accent-contrast font-semibold text-sm flex items-center justify-center">
-                {step.step}
+      <section aria-labelledby="process-heading" className="section">
+        <div className="wrap">
+          <h2 id="process-heading" className="section-head" suppressHydrationWarning>
+            {ht('sprint.process.heading', 'The process')}
+          </h2>
+          <div className="steps steps-4" suppressHydrationWarning>
+            {processSteps.map((step) => (
+              <div key={step.step} className="step">
+                <div className="step-index">{step.step}</div>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="mb-1.5">{step.title}</h3>
-                <p className="text-[14px] text-foreground/75 leading-relaxed">{step.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Requirements */}
-      <section aria-labelledby="requirements-heading" className="bg-wash border-y border-border py-16 sm:py-20">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10">
-          <h2
-            id="requirements-heading"
-            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-3"
-            suppressHydrationWarning
-          >
-            {ht('sprint.requirements.heading', 'What we need from you')}
-          </h2>
-          <p className="text-[15px] text-foreground/70 mb-6" suppressHydrationWarning>
-            {ht('sprint.requirements.body', 'A sprint works well when both sides are aligned from the start. This is the minimum we need:')}
-          </p>
-          <ul className="space-y-3">
-            {requirements.map((req, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <CheckIcon />
-                <span className="text-[14px] leading-relaxed text-foreground/85">{req}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Mid-page CTA */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <div className="band band-split p-8 sm:p-12">
-          <p className="text-[13px] font-semibold text-accent" suppressHydrationWarning>
-            {ht('sprint.midcta.eyebrow', 'Ready to move fast?')}
-          </p>
-          <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
-            {ht('sprint.midcta.title', 'Book a 30-minute discovery call')}
-          </h2>
-          <p className="text-[15px] text-foreground/70 max-w-xl" suppressHydrationWarning>
-            {ht(
-              'sprint.midcta.body',
-              'We will listen to what you need, tell you honestly whether a 2-week sprint is the right fit, and confirm pricing. No sales process.'
-            )}
-          </p>
-          <Link
-            href={BOOKING_URL}
-            className="btn btn-accent"
-            target="_blank"
-            rel="noopener noreferrer"
-            suppressHydrationWarning
-          >
-            {ht('sprint.midcta.cta', 'Start your sprint — €4,800')}
-          </Link>
-        </div>
-      </div>
-
-      {/* FAQ */}
-      <section aria-labelledby="faq-heading" className="bg-wash border-y border-border py-16 sm:py-20">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 [&>*]:max-w-3xl">
-          <h2
-            id="faq-heading"
-            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
-            suppressHydrationWarning
-          >
-            {ht('sprint.faq.heading', 'Frequently asked questions')}
-          </h2>
-          <div className="space-y-6">
-            {faqs.map((item, i) => (
-              <FAQItem key={i} question={item.question} answer={item.answer} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <div className="band band-split p-8 sm:p-12">
-          <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
-            {ht('sprint.bottomcta.title', 'Ship something real in 2 weeks.')}
-          </h2>
-          <p className="text-[15px] text-foreground/70 max-w-lg" suppressHydrationWarning>
+      <section aria-labelledby="requirements-heading" className="section section-tone">
+        <div className="wrap split">
+          <div>
+            <h2 id="requirements-heading" suppressHydrationWarning>
+              {ht('sprint.requirements.heading', 'What we need from you')}
+            </h2>
+            <p className="lead" suppressHydrationWarning>
+              {ht('sprint.requirements.body', 'A sprint works well when both sides are aligned from the start. This is the minimum we need:')}
+            </p>
+          </div>
+          <ul className="checks rows">
+            {requirements.map((req, i) => (
+              <li key={i}>
+                <CheckIcon />
+                <span>{req}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <div className="section">
+        <div className="wrap">
+          <div className="callout band-split">
+            <p className="eyebrow" suppressHydrationWarning>
+              {ht('sprint.midcta.eyebrow', 'Ready to move fast?')}
+            </p>
+            <h2 suppressHydrationWarning>{ht('sprint.midcta.title', 'Book a 30-minute discovery call')}</h2>
+            <p suppressHydrationWarning>
+              {ht(
+                'sprint.midcta.body',
+                'We will listen to what you need, tell you honestly whether a 2-week sprint is the right fit, and confirm pricing. No sales process.'
+              )}
+            </p>
+            <Link
+              href={BOOKING_URL}
+              className="btn btn-accent"
+              target="_blank"
+              rel="noopener noreferrer"
+              suppressHydrationWarning
+            >
+              {ht('sprint.midcta.cta', 'Start your sprint — €4,800')}
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <FaqSection title={ht('sprint.faq.heading', 'Frequently asked questions')} items={faqs} />
+
+      <section className="band">
+        <div className="wrap band-split">
+          <h2 suppressHydrationWarning>{ht('sprint.bottomcta.title', 'Ship something real in 2 weeks.')}</h2>
+          <p suppressHydrationWarning>
             {ht(
               'sprint.bottomcta.body',
               'Fixed price. Fixed timeline. No retainer required. Book the call, confirm scope, and we start the following Monday.'
@@ -296,12 +218,10 @@ export default function StartASprintPage(): ReactElement {
             suppressHydrationWarning
           >
             {ht('sprint.bottomcta.cta', 'Start your sprint — €4,800')}
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
+            <ExternalIcon />
           </Link>
         </div>
-      </div>
+      </section>
     </>
   );
 }
