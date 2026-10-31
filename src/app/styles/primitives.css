@@ -319,8 +319,15 @@
     color: var(--color-accent);
   }
   .more svg { width: 0.875rem; height: 0.875rem; transition: transform var(--transition-base); }
-  a:hover > .more svg,
+  a:hover .more svg,
   a.more:hover svg { transform: translateX(3px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .more svg,
+    .art img { transition: none; }
+    a:hover .more svg,
+    a.more:hover svg { transform: none; }
+  }
 
   /* ---- Articles list: rows, with the art kept small ---- */
   .post-list > * { border-top: 1px solid var(--color-border); }
