@@ -105,9 +105,9 @@ export function TermsContent({ legalEmail }: TermsContentProps): ReactElement {
 
       <TermsSection number={10} title="Contact">
         <p>If you have questions about these Terms or the Site, contact us at:</p>
-        <dl >
+        <dl className="mt-4">
           <div>
-            <dt className="text-xs font-semibold text-muted">
+            <dt className="text-sm font-medium text-muted">
               Email
             </dt>
             <dd>
