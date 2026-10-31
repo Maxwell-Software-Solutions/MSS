@@ -3,31 +3,10 @@
 import type { ReactElement } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import HeroStage from './components/hero/HeroStage';
 import DeferredSections from './components/DeferredSections';
 import { useLanguage } from '@/lib/LanguageContext';
 import { FeatureCard, ButtonLink } from './components/ui';
-
-/* ---------------------------------------------------------------
-   Shared animation variants — short, quiet fades
---------------------------------------------------------------- */
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.06 } },
-};
-
-const staggerItem = {
-  hidden: { opacity: 0, y: 8 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
-const inView = {
-  initial: { opacity: 0, y: 8 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.4 },
-};
 
 export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
@@ -45,45 +24,32 @@ export default function HomeContent(): ReactElement {
       <section className="relative">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
           {/* Stats row — metrics share hairlines */}
-          <motion.div
-            className="ruled grid-cols-1 sm:grid-cols-3"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <div className="ruled grid-cols-1 sm:grid-cols-3">
             {[
               { value: t('stats.defects'), label: t('stats.defects.label') },
               { value: t('stats.coverage'), label: t('stats.coverage.label') },
               { value: t('stats.mttr'), label: t('stats.mttr.label') },
             ].map((stat) => (
-              <motion.div key={stat.label} variants={staggerItem} className="p-6 sm:p-7">
+              <div key={stat.label} className="p-6 sm:p-7">
                 <div className="text-3xl font-semibold tracking-tight tabular-nums sm:text-4xl">{stat.value}</div>
                 <div className="mt-2 text-sm text-muted">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Value propositions */}
-          <motion.div
-            className="ruled mt-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-            aria-label="Key value propositions"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <div className="ruled mt-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" aria-label="Key value propositions">
             {[
               { title: t('value.insight.title'), description: t('value.insight.body') },
               { title: t('value.iteration.title'), description: t('value.iteration.body') },
               { title: t('value.reliability.title'), description: t('value.reliability.body') },
               { title: t('value.outcomes.title'), description: t('value.outcomes.body') },
             ].map((card) => (
-              <motion.div key={card.title} variants={staggerItem}>
+              <div key={card.title}>
                 <FeatureCard title={card.title} description={card.description} className="h-full" />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -92,30 +58,24 @@ export default function HomeContent(): ReactElement {
       ============================================================ */}
       <section className="border-t border-border" aria-labelledby="capabilities-heading">
         <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <motion.div className="max-w-3xl" {...inView}>
+          <div className="max-w-3xl">
             <div className="eyebrow mb-3">{t('capabilities.heading')}</div>
             <h2 id="capabilities-heading">{t('capabilities.heading')}</h2>
             <p className="mt-4 text-lg leading-relaxed text-secondary">{t('capabilities.description')}</p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="ruled mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <div className="ruled mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { icon: '🧪', title: t('capabilities.testing.title'), description: t('capabilities.testing.body') },
               { icon: '📦', title: t('capabilities.refactoring.title'), description: t('capabilities.refactoring.body') },
               { icon: '🔍', title: t('capabilities.observability.title'), description: t('capabilities.observability.body') },
               { icon: '🛡️', title: t('capabilities.reliability.title'), description: t('capabilities.reliability.body') },
             ].map((card) => (
-              <motion.div key={card.title} variants={staggerItem}>
+              <div key={card.title}>
                 <FeatureCard icon={card.icon} title={card.title} description={card.description} className="h-full" />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -124,7 +84,7 @@ export default function HomeContent(): ReactElement {
       ============================================================ */}
       <section id="about" className="border-t border-border bg-wash">
         <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <motion.div className="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16" {...inView}>
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
             <h2>{t('about.section.heading')}</h2>
             <p className="text-lg leading-relaxed text-secondary">{t('about.section.description')}</p>
             <div className="lg:col-start-2">
@@ -132,7 +92,7 @@ export default function HomeContent(): ReactElement {
                 {t('about.section.cta')}
               </ButtonLink>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -141,32 +101,26 @@ export default function HomeContent(): ReactElement {
       ============================================================ */}
       <section className="border-t border-border" aria-labelledby="process-heading">
         <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <motion.h2 id="process-heading" {...inView}>
+          <h2 id="process-heading">
             {t('process.heading')}
-          </motion.h2>
+          </h2>
 
-          <motion.ol
-            className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <ol className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { step: '01', titleKey: 'process.step1.title', bodyKey: 'process.step1.body' },
               { step: '02', titleKey: 'process.step2.title', bodyKey: 'process.step2.body' },
               { step: '03', titleKey: 'process.step3.title', bodyKey: 'process.step3.body' },
               { step: '04', titleKey: 'process.step4.title', bodyKey: 'process.step4.body' },
             ].map((s) => (
-              <motion.li key={s.step} className="border-t border-border-strong pt-5" variants={staggerItem}>
+              <li key={s.step} className="border-t border-border-strong pt-5">
                 <div className="text-sm font-medium tabular-nums text-accent" aria-hidden="true">
                   <span>{s.step}</span>
                 </div>
                 <h3 className="mt-3 text-lg font-semibold tracking-tight">{t(s.titleKey)}</h3>
                 <p className="mt-2 max-w-sm text-[0.9375rem] leading-relaxed text-secondary">{t(s.bodyKey)}</p>
-              </motion.li>
+              </li>
             ))}
-          </motion.ol>
+          </ol>
         </div>
       </section>
 
@@ -175,19 +129,13 @@ export default function HomeContent(): ReactElement {
       ============================================================ */}
       <section id="projects" className="border-t border-border bg-wash">
         <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <motion.div className="max-w-3xl" {...inView}>
+          <div className="max-w-3xl">
             <div className="eyebrow mb-3">{t('projects.eyebrow')}</div>
             <h2>{t('projects.heading')}</h2>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-secondary">{t('projects.description')}</p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {[
               {
                 slug: 'retail-platform',
@@ -214,7 +162,7 @@ export default function HomeContent(): ReactElement {
                 image: '/images/case-studies/saas-migration.svg',
               },
             ].map((c) => (
-              <motion.div key={c.slug} variants={staggerItem}>
+              <div key={c.slug}>
                 <Link
                   href={`/project-showcase/${c.slug}`}
                   className="group card flex h-full flex-col overflow-hidden"
@@ -268,9 +216,9 @@ export default function HomeContent(): ReactElement {
                     </span>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           <div className="mt-10">
             <ButtonLink href="/project-showcase" variant="ghost">
@@ -285,7 +233,7 @@ export default function HomeContent(): ReactElement {
       ============================================================ */}
       <section id="contact" className="border-t border-border">
         <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <motion.div className="band grid gap-8 p-8 sm:p-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-x-12" {...inView}>
+          <div className="band grid gap-8 p-8 sm:p-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-x-12">
             <div className="max-w-2xl">
               <h2>{t('contact.heading')}</h2>
               <p className="mt-4 text-lg leading-relaxed text-secondary">{t('contact.description')}</p>
@@ -312,7 +260,7 @@ export default function HomeContent(): ReactElement {
                 {t('contact.linkedin.company')}
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

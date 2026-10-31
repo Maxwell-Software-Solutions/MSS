@@ -1,6 +1,5 @@
 'use client';
 import type { ReactElement } from 'react';
-import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import CTA from '@/app/components/ui/CTA';
 
@@ -68,34 +67,27 @@ export default function CaseStudiesPage(): ReactElement {
     <>
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <div className="eyebrow mb-4" suppressHydrationWarning>
+          {ht('caseStudiesPage.eyebrow', 'Client results')}
+        </div>
+        <h1
+          className="max-w-3xl"
+          suppressHydrationWarning
         >
-          <div className="eyebrow mb-4" suppressHydrationWarning>
-            {ht('caseStudiesPage.eyebrow', 'Client results')}
-          </div>
-          <h1
-            className="max-w-3xl"
-            suppressHydrationWarning
-          >
-            Real{' '}
-            <span>
-              {ht('caseStudiesPage.title', 'Case Studies')}
-            </span>
-          </h1>
-          <p
-            className="lead mt-6 max-w-2xl"
-            suppressHydrationWarning
-          >
-            {ht(
-              'caseStudiesPage.subtitle',
-              'Real engagements with measurable outcomes. Industries include fintech, logistics, and cloud infrastructure.'
-            )}
-          </p>
-        </motion.div>
+          Real{' '}
+          <span>
+            {ht('caseStudiesPage.title', 'Case Studies')}
+          </span>
+        </h1>
+        <p
+          className="lead mt-6 max-w-2xl"
+          suppressHydrationWarning
+        >
+          {ht(
+            'caseStudiesPage.subtitle',
+            'Real engagements with measurable outcomes. Industries include fintech, logistics, and cloud infrastructure.'
+          )}
+        </p>
       </header>
 
       {/* Case Studies */}
@@ -105,15 +97,7 @@ export default function CaseStudiesPage(): ReactElement {
         </h2>
         <div className="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col gap-10 md:gap-14">
           {STUDIES.map((study, i) => (
-            <motion.article
-              key={study.key}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="card overflow-hidden"
-              aria-labelledby={`study-${study.key}-heading`}
-            >
+            <article key={study.key} className="card overflow-hidden" aria-labelledby={`study-${study.key}-heading`}>
               {/* Top accent bar */}
               <div className={`h-1 w-full ${study.accentClass}`} aria-hidden="true" />
 
@@ -201,7 +185,7 @@ export default function CaseStudiesPage(): ReactElement {
                   </div>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       </section>

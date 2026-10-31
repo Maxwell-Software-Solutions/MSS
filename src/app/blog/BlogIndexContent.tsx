@@ -3,7 +3,6 @@
 import type { ReactElement } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { useLanguage } from '@/lib/LanguageContext';
 import { Badge } from '@/app/components/ui';
 
@@ -116,13 +115,7 @@ export default function BlogIndexContent(): ReactElement {
   return (
     <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
       {/* Hero header */}
-      <motion.header
-        initial={{ opacity: 0, y: 8 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="mb-16"
-      >
+      <header className="mb-16">
         <div className="eyebrow mb-4">Engineering Insights</div>
         <h1 className="max-w-3xl">
           {t('blog.title').split(' ').slice(0, -1).join(' ')}{' '}
@@ -131,18 +124,11 @@ export default function BlogIndexContent(): ReactElement {
           </span>
         </h1>
         <p className="lead mt-6 max-w-2xl">{t('blog.subtitle')}</p>
-      </motion.header>
+      </header>
 
       <div className="space-y-8">
         {posts.map((post, i) => (
-          <motion.article
-            key={post.href}
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.05 }}
-            className="group"
-          >
+          <article key={post.href} className="group">
             <Link href={post.href} className="block">
               <div className="card overflow-hidden transition-colors group-hover:border-border-strong">
                 <div className="flex flex-col lg:flex-row gap-0">
@@ -180,7 +166,7 @@ export default function BlogIndexContent(): ReactElement {
                 </div>
               </div>
             </Link>
-          </motion.article>
+          </article>
         ))}
       </div>
     </div>

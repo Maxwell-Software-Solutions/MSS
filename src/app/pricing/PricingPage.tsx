@@ -1,16 +1,8 @@
 'use client';
 import type { ReactElement } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import CTA from '@/app/components/ui/CTA';
-
-const fadeUp = {
-  initial: { opacity: 0, y: 8 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5 },
-};
 
 function CheckIcon(): ReactElement {
   return (
@@ -189,29 +181,27 @@ export default function PricingPage(): ReactElement {
     <>
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <motion.div {...fadeUp}>
-          <div className="eyebrow mb-4" suppressHydrationWarning>
-            {ht('pricing.eyebrow', 'Transparent pricing')}
-          </div>
-          <h1
-            className="max-w-3xl"
-            suppressHydrationWarning
-          >
-            <span>
-              Transparent
-            </span>{' '}
-            Pricing
-          </h1>
-          <p
-            className="mt-6 text-lg leading-relaxed text-foreground/70 max-w-2xl"
-            suppressHydrationWarning
-          >
-            {ht(
-              'pricing.subtitle',
-              'Competitive Eastern European rates with Western-grade engineering quality. All engagements are outcome-focused with clear success criteria.'
-            )}
-          </p>
-        </motion.div>
+        <div className="eyebrow mb-4" suppressHydrationWarning>
+          {ht('pricing.eyebrow', 'Transparent pricing')}
+        </div>
+        <h1
+          className="max-w-3xl"
+          suppressHydrationWarning
+        >
+          <span>
+            Transparent
+          </span>{' '}
+          Pricing
+        </h1>
+        <p
+          className="mt-6 text-lg leading-relaxed text-foreground/70 max-w-2xl"
+          suppressHydrationWarning
+        >
+          {ht(
+            'pricing.subtitle',
+            'Competitive Eastern European rates with Western-grade engineering quality. All engagements are outcome-focused with clear success criteria.'
+          )}
+        </p>
       </header>
 
       {/* Pricing tiers */}
@@ -219,24 +209,17 @@ export default function PricingPage(): ReactElement {
         <h2 id="pricing-tiers-heading" className="sr-only" suppressHydrationWarning>
           {ht('pricing.title', 'Pricing')}
         </h2>
-        <motion.div
-          className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8 items-start"
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          suppressHydrationWarning
-        >
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8 items-start" suppressHydrationWarning>
           {tiers.map((tier) => (
             <PricingTier key={tier.name} {...tier} />
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* FAQ */}
       <section aria-labelledby="faq-heading" className="border-t border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
-          <motion.div {...fadeUp} className="max-w-3xl">
+          <div className="max-w-3xl">
             <h2
               id="faq-heading"
               className="text-3xl sm:text-4xl tracking-tight mb-8"
@@ -249,32 +232,30 @@ export default function PricingPage(): ReactElement {
                 <FAQItem key={i} question={item.q} answer={item.a} />
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Not sure CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20" suppressHydrationWarning>
-        <motion.div {...fadeUp}>
-          <div className="band band-split p-8 sm:p-12">
-            <h2 className="text-3xl sm:text-4xl tracking-tight" suppressHydrationWarning>
-              {ht('pricing.notSure.title', 'Not sure which plan fits?')}
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-foreground/70 max-w-xl" suppressHydrationWarning>
-              {ht(
-                'pricing.notSure.body',
-                'Tell us about your project and team size. We will recommend the right engagement model and scope — no hard sell, no obligation.'
-              )}
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
-              suppressHydrationWarning
-            >
-              {ht('pricing.notSure.cta', 'Talk to us')}
-            </Link>
-          </div>
-        </motion.div>
+        <div className="band band-split p-8 sm:p-12">
+          <h2 className="text-3xl sm:text-4xl tracking-tight" suppressHydrationWarning>
+            {ht('pricing.notSure.title', 'Not sure which plan fits?')}
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-foreground/70 max-w-xl" suppressHydrationWarning>
+            {ht(
+              'pricing.notSure.body',
+              'Tell us about your project and team size. We will recommend the right engagement model and scope — no hard sell, no obligation.'
+            )}
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+            suppressHydrationWarning
+          >
+            {ht('pricing.notSure.cta', 'Talk to us')}
+          </Link>
+        </div>
       </div>
 
       {/* CTA band */}

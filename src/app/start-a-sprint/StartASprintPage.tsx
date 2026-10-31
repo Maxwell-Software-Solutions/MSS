@@ -2,7 +2,6 @@
 
 import type { ReactElement } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import { BOOKING_URL } from '@/lib/booking';
 
@@ -105,105 +104,84 @@ export default function StartASprintPage(): ReactElement {
     <>
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <div className="eyebrow mb-4" suppressHydrationWarning>
+          {ht('sprint.eyebrow', 'Sprint-in-a-Box')}
+        </div>
+        <h1
+          className="max-w-3xl"
+          suppressHydrationWarning
         >
-          <div className="eyebrow mb-4" suppressHydrationWarning>
-            {ht('sprint.eyebrow', 'Sprint-in-a-Box')}
-          </div>
-          <h1
-            className="max-w-3xl"
+          {ht('sprint.headline.pre', 'Ship Your MVP in')}{' '}
+          <span>
+            {ht('sprint.headline.gradient', '2 Weeks.')}
+          </span>{' '}
+          {ht('sprint.headline.post', '€4,800 Fixed Price.')}
+        </h1>
+        <p className="mt-6 text-lg text-foreground/70 max-w-2xl" suppressHydrationWarning>
+          {ht(
+            'sprint.subheadline',
+            'A focused, self-contained development sprint. You bring the problem statement. We bring a senior engineer, a clear process, and tested code delivered in 10 working days.'
+          )}
+        </p>
+
+        {/* Primary CTA */}
+        <div className="mt-8 flex flex-wrap gap-4 items-center">
+          <Link
+            href={BOOKING_URL}
+            className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+            target="_blank"
+            rel="noopener noreferrer"
             suppressHydrationWarning
           >
-            {ht('sprint.headline.pre', 'Ship Your MVP in')}{' '}
-            <span>
-              {ht('sprint.headline.gradient', '2 Weeks.')}
-            </span>{' '}
-            {ht('sprint.headline.post', '€4,800 Fixed Price.')}
-          </h1>
-          <p className="mt-6 text-lg text-foreground/70 max-w-2xl" suppressHydrationWarning>
-            {ht(
-              'sprint.subheadline',
-              'A focused, self-contained development sprint. You bring the problem statement. We bring a senior engineer, a clear process, and tested code delivered in 10 working days.'
-            )}
-          </p>
+            {ht('sprint.cta.primary', 'Start your sprint — €4,800')}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Link>
+          <Link
+            href="/services/packages"
+            className="text-[14px] font-medium text-foreground/70 hover:text-foreground transition-colors underline underline-offset-2"
+            suppressHydrationWarning
+          >
+            {ht('sprint.cta.compare', 'Compare all packages')}
+          </Link>
+        </div>
 
-          {/* Primary CTA */}
-          <div className="mt-8 flex flex-wrap gap-4 items-center">
-            <Link
-              href={BOOKING_URL}
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
-              target="_blank"
-              rel="noopener noreferrer"
+        {/* Trust signals */}
+        <div className="mt-6 flex flex-wrap gap-4">
+          {[
+            ht('sprint.trust.fixed', 'Fixed price — no surprises'),
+            ht('sprint.trust.nda', 'NDA on day one'),
+            ht('sprint.trust.handoff', 'Full code ownership at handoff'),
+          ].map((item, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-1.5 text-[13px] text-foreground/65"
               suppressHydrationWarning
             >
-              {ht('sprint.cta.primary', 'Start your sprint — €4,800')}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </Link>
-            <Link
-              href="/services/packages"
-              className="text-[14px] font-medium text-foreground/70 hover:text-foreground transition-colors underline underline-offset-2"
-              suppressHydrationWarning
-            >
-              {ht('sprint.cta.compare', 'Compare all packages')}
-            </Link>
-          </div>
-
-          {/* Trust signals */}
-          <div className="mt-6 flex flex-wrap gap-4">
-            {[
-              ht('sprint.trust.fixed', 'Fixed price — no surprises'),
-              ht('sprint.trust.nda', 'NDA on day one'),
-              ht('sprint.trust.handoff', 'Full code ownership at handoff'),
-            ].map((item, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-1.5 text-[13px] text-foreground/65"
-                suppressHydrationWarning
-              >
-                <CheckIcon />
-                {item}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+              <CheckIcon />
+              {item}
+            </span>
+          ))}
+        </div>
       </header>
 
       {/* What you get */}
       <section aria-labelledby="deliverables-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <h2
+            id="deliverables-heading"
+            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-6"
+            suppressHydrationWarning
           >
-            <h2
-              id="deliverables-heading"
-              className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-6"
-              suppressHydrationWarning
-            >
-              {ht('sprint.deliverables.heading', 'What you get in 2 weeks')}
-            </h2>
-          </motion.div>
+            {ht('sprint.deliverables.heading', 'What you get in 2 weeks')}
+          </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {deliverables.map((item, i) => (
-              <motion.li
-                key={i}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="card flex items-start gap-3 rounded-2xl border border-border p-5 transition-all duration-300"
-              >
+              <li key={i} className="card flex items-start gap-3 rounded-2xl border border-border p-5 transition-all duration-300">
                 <CheckIcon />
                 <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
@@ -211,27 +189,12 @@ export default function StartASprintPage(): ReactElement {
 
       {/* Process */}
       <section aria-labelledby="process-heading" className="py-16 sm:py-20 max-w-6xl mx-auto px-6 sm:px-10">
-        <motion.h2
-          id="process-heading"
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-10"
-          suppressHydrationWarning
-        >
+        <h2 id="process-heading" className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-10" suppressHydrationWarning>
           {ht('sprint.process.heading', 'The process')}
-        </motion.h2>
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" suppressHydrationWarning>
           {processSteps.map((step, i) => (
-            <motion.div
-              key={step.step}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="card flex gap-5 rounded-2xl border border-border p-6 transition-all duration-300"
-            >
+            <div key={step.step} className="card flex gap-5 rounded-2xl border border-border p-6 transition-all duration-300">
               <div className="flex-shrink-0 w-11 h-11 rounded-full bg-accent-fill text-accent-contrast font-semibold text-sm flex items-center justify-center">
                 {step.step}
               </div>
@@ -239,7 +202,7 @@ export default function StartASprintPage(): ReactElement {
                 <h3 className="mb-1.5">{step.title}</h3>
                 <p className="text-[14px] text-foreground/75 leading-relaxed">{step.body}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -247,43 +210,30 @@ export default function StartASprintPage(): ReactElement {
       {/* Requirements */}
       <section aria-labelledby="requirements-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10">
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <h2
+            id="requirements-heading"
+            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-3"
+            suppressHydrationWarning
           >
-            <h2
-              id="requirements-heading"
-              className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-3"
-              suppressHydrationWarning
-            >
-              {ht('sprint.requirements.heading', 'What we need from you')}
-            </h2>
-            <p className="text-[15px] text-foreground/70 mb-6" suppressHydrationWarning>
-              {ht('sprint.requirements.body', 'A sprint works well when both sides are aligned from the start. This is the minimum we need:')}
-            </p>
-            <ul className="space-y-3">
-              {requirements.map((req, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <CheckIcon />
-                  <span className="text-[14px] leading-relaxed text-foreground/85">{req}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+            {ht('sprint.requirements.heading', 'What we need from you')}
+          </h2>
+          <p className="text-[15px] text-foreground/70 mb-6" suppressHydrationWarning>
+            {ht('sprint.requirements.body', 'A sprint works well when both sides are aligned from the start. This is the minimum we need:')}
+          </p>
+          <ul className="space-y-3">
+            {requirements.map((req, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <CheckIcon />
+                <span className="text-[14px] leading-relaxed text-foreground/85">{req}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* Mid-page CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="band band-split p-8 sm:p-12"
-        >
+        <div className="band band-split p-8 sm:p-12">
           <p className="text-[13px] font-semibold text-accent" suppressHydrationWarning>
             {ht('sprint.midcta.eyebrow', 'Ready to move fast?')}
           </p>
@@ -305,43 +255,30 @@ export default function StartASprintPage(): ReactElement {
           >
             {ht('sprint.midcta.cta', 'Start your sprint — €4,800')}
           </Link>
-        </motion.div>
+        </div>
       </div>
 
       {/* FAQ */}
       <section aria-labelledby="faq-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 [&>*]:max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <h2
+            id="faq-heading"
+            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
+            suppressHydrationWarning
           >
-            <h2
-              id="faq-heading"
-              className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
-              suppressHydrationWarning
-            >
-              {ht('sprint.faq.heading', 'Frequently asked questions')}
-            </h2>
-            <div className="space-y-6">
-              {faqs.map((item, i) => (
-                <FAQItem key={i} question={item.question} answer={item.answer} />
-              ))}
-            </div>
-          </motion.div>
+            {ht('sprint.faq.heading', 'Frequently asked questions')}
+          </h2>
+          <div className="space-y-6">
+            {faqs.map((item, i) => (
+              <FAQItem key={i} question={item.question} answer={item.answer} />
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="band band-split p-8 sm:p-12"
-        >
+        <div className="band band-split p-8 sm:p-12">
           <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
             {ht('sprint.bottomcta.title', 'Ship something real in 2 weeks.')}
           </h2>
@@ -363,7 +300,7 @@ export default function StartASprintPage(): ReactElement {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </>
   );

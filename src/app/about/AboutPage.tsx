@@ -1,7 +1,6 @@
 'use client';
 import type { ReactElement } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { founders } from './founders-data';
 import { useLanguage } from '@/lib/LanguageContext';
 
@@ -23,13 +22,7 @@ export default function AboutPage(): ReactElement {
   return (
     <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
       {/* Hero header */}
-      <motion.header
-        initial={{ opacity: 0, y: 8 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="mb-12"
-      >
+      <header className="mb-12">
         <div className="eyebrow mb-4">Our Story</div>
         <h1 className="max-w-3xl">
           <span>
@@ -40,16 +33,10 @@ export default function AboutPage(): ReactElement {
           <p className="text-lg text-foreground/70">{t('about.intro')}</p>
           <p className="text-foreground/65">{t('about.description')}</p>
         </div>
-      </motion.header>
+      </header>
 
       {/* Principles card */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="card p-8 sm:p-10 mb-16"
-      >
+      <div className="card p-8 sm:p-10 mb-16">
         <h2 className="text-lg mb-6 text-accent">{t('about.principles.heading')}</h2>
         <ul className="space-y-5">
           <li className="flex items-start gap-3">
@@ -74,17 +61,11 @@ export default function AboutPage(): ReactElement {
             </div>
           </li>
         </ul>
-      </motion.div>
+      </div>
 
       {/* Founders */}
       <section className="mt-4" aria-labelledby="founders-heading">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-10"
-        >
+        <div className="mb-10">
           <div className="eyebrow mb-4">The Team</div>
           <h2 id="founders-heading" className="text-3xl sm:text-4xl tracking-tight mb-4">
             {t('about.founders.heading')}
@@ -92,7 +73,7 @@ export default function AboutPage(): ReactElement {
           <p className="text-base text-foreground/65 max-w-2xl leading-relaxed">
             {t('about.founders.description')}
           </p>
-        </motion.div>
+        </div>
 
         <div className="space-y-8 sm:space-y-12">
           {founders.map((f, index) => {
@@ -104,14 +85,7 @@ export default function AboutPage(): ReactElement {
             const imagePosition = index % 2 === 0 ? 'right' : 'left';
 
             return (
-              <motion.div
-                key={f.name}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card overflow-hidden"
-              >
+              <div key={f.name} className="card overflow-hidden">
                 <div
                   className={`grid grid-cols-1 ${
                     imagePosition === 'right' ? 'lg:grid-cols-[1.5fr_1fr]' : 'lg:grid-cols-[1fr_1.5fr]'
@@ -153,7 +127,7 @@ export default function AboutPage(): ReactElement {
                     <Image src={imageSrc} alt={f.alt} width={400} height={400} className="w-full h-full object-cover relative z-10" />
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

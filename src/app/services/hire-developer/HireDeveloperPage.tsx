@@ -2,16 +2,8 @@
 
 import type { ReactElement } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import { BOOKING_URL } from '@/lib/booking';
-
-const fadeUp = {
-  initial: { opacity: 0, y: 8 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5 },
-};
 
 function CheckIcon(): ReactElement {
   return (
@@ -77,71 +69,69 @@ export default function HireDeveloperPage(): ReactElement {
     <>
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <motion.div {...fadeUp}>
-          <div className="eyebrow mb-4" suppressHydrationWarning>
-            {ht('hireDev.eyebrow', 'Hire a Developer')}
-          </div>
-          <h1
-            className="max-w-3xl"
+        <div className="eyebrow mb-4" suppressHydrationWarning>
+          {ht('hireDev.eyebrow', 'Hire a Developer')}
+        </div>
+        <h1
+          className="max-w-3xl"
+          suppressHydrationWarning
+        >
+          Hire a{' '}
+          <span>
+            Senior Developer
+          </span>{' '}
+          — Without the 3-Month Wait
+        </h1>
+        <p className="mt-6 text-lg leading-relaxed text-foreground/70 max-w-2xl" suppressHydrationWarning>
+          {ht(
+            'hireDev.subheadline',
+            'Outsource development to senior engineers in Lithuania and Europe. Start shipping production-ready code in days — not months.'
+          )}
+        </p>
+
+        <div className="mt-8 flex flex-wrap gap-4 items-center">
+          <Link
+            href={BOOKING_URL}
+            className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+            target="_blank"
+            rel="noopener noreferrer"
             suppressHydrationWarning
           >
-            Hire a{' '}
-            <span>
-              Senior Developer
-            </span>{' '}
-            — Without the 3-Month Wait
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-foreground/70 max-w-2xl" suppressHydrationWarning>
-            {ht(
-              'hireDev.subheadline',
-              'Outsource development to senior engineers in Lithuania and Europe. Start shipping production-ready code in days — not months.'
-            )}
-          </p>
+            {ht('hireDev.cta.primary', 'Book a discovery call')}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Link>
+          <Link
+            href="/services/packages"
+            className="btn px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
+            suppressHydrationWarning
+          >
+            {ht('hireDev.cta.compare', 'Compare all packages')}
+          </Link>
+        </div>
 
-          <div className="mt-8 flex flex-wrap gap-4 items-center">
-            <Link
-              href={BOOKING_URL}
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
-              target="_blank"
-              rel="noopener noreferrer"
+        <div className="mt-6 flex flex-wrap gap-4">
+          {[
+            ht('hireDev.trust.start', 'Start in 1-2 weeks'),
+            ht('hireDev.trust.senior', '5+ years experience'),
+            ht('hireDev.trust.flex', 'No long-term contract'),
+          ].map((item, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-1.5 text-[13px] text-foreground/65"
               suppressHydrationWarning
             >
-              {ht('hireDev.cta.primary', 'Book a discovery call')}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </Link>
-            <Link
-              href="/services/packages"
-              className="btn px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
-              suppressHydrationWarning
-            >
-              {ht('hireDev.cta.compare', 'Compare all packages')}
-            </Link>
-          </div>
-
-          <div className="mt-6 flex flex-wrap gap-4">
-            {[
-              ht('hireDev.trust.start', 'Start in 1-2 weeks'),
-              ht('hireDev.trust.senior', '5+ years experience'),
-              ht('hireDev.trust.flex', 'No long-term contract'),
-            ].map((item, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center gap-1.5 text-[13px] text-foreground/65"
-                suppressHydrationWarning
-              >
-                <CheckIcon />
-                {item}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+              <CheckIcon />
+              {item}
+            </span>
+          ))}
+        </div>
       </header>
 
       {/* Why outsource to MSS */}
       <section aria-labelledby="reasons-heading" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div {...fadeUp} className="mb-8">
+        <div className="mb-8">
           <h2
             id="reasons-heading"
             className="text-3xl sm:text-4xl tracking-tight"
@@ -149,53 +139,44 @@ export default function HireDeveloperPage(): ReactElement {
           >
             {ht('hireDev.reasons.heading', 'Why outsource to MSS')}
           </h2>
-        </motion.div>
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          suppressHydrationWarning
-        >
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" suppressHydrationWarning>
           {reasons.map((item, i) => (
             <div key={i} className="card rounded-2xl p-6 transition-all">
               <h3 className="mb-2">{item.title}</h3>
               <p className="text-[14px] text-foreground/75 leading-relaxed">{item.body}</p>
             </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* Tech stack */}
       <section aria-labelledby="stack-heading" className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div {...fadeUp}>
-          <h2
-            id="stack-heading"
-            className="text-3xl sm:text-4xl tracking-tight mb-6"
-            suppressHydrationWarning
-          >
-            {ht('hireDev.stack.heading', 'Tech stack')}
-          </h2>
-          <p className="text-base text-foreground/70 mb-6" suppressHydrationWarning>
-            {ht('hireDev.stack.body', 'Our engineers specialise in the modern web stack. If your project uses these technologies, we can hit the ground running.')}
-          </p>
-          <div className="flex flex-wrap gap-3" suppressHydrationWarning>
-            {techStack.map((tech) => (
-              <span
-                key={tech}
-                className="inline-flex items-center rounded-full bg-accent/10 border border-border text-accent text-[13px] font-semibold px-4 py-2"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+        <h2
+          id="stack-heading"
+          className="text-3xl sm:text-4xl tracking-tight mb-6"
+          suppressHydrationWarning
+        >
+          {ht('hireDev.stack.heading', 'Tech stack')}
+        </h2>
+        <p className="text-base text-foreground/70 mb-6" suppressHydrationWarning>
+          {ht('hireDev.stack.body', 'Our engineers specialise in the modern web stack. If your project uses these technologies, we can hit the ground running.')}
+        </p>
+        <div className="flex flex-wrap gap-3" suppressHydrationWarning>
+          {techStack.map((tech) => (
+            <span
+              key={tech}
+              className="inline-flex items-center rounded-full bg-accent/10 border border-border text-accent text-[13px] font-semibold px-4 py-2"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
       </section>
 
       {/* Engagement models */}
       <section aria-labelledby="engagements-heading" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div {...fadeUp} className="mb-8">
+        <div className="mb-8">
           <h2
             id="engagements-heading"
             className="text-3xl sm:text-4xl tracking-tight"
@@ -203,15 +184,8 @@ export default function HireDeveloperPage(): ReactElement {
           >
             {ht('hireDev.engagements.heading', 'Engagement models')}
           </h2>
-        </motion.div>
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          suppressHydrationWarning
-        >
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6" suppressHydrationWarning>
           {engagements.map((eng) => (
             <div key={eng.name} className="card flex flex-col rounded-3xl p-7 sm:p-8 h-full transition-all">
               <h3 className="text-lg tracking-tight">{eng.name}</h3>
@@ -231,39 +205,37 @@ export default function HireDeveloperPage(): ReactElement {
               </Link>
             </div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div {...fadeUp}>
-          <div className="band band-split p-8 sm:p-12">
-            <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
-              Ship faster with{' '}
-              <span>
-                senior engineers.
-              </span>
-            </h2>
-            <p className="text-base text-foreground/70 max-w-lg" suppressHydrationWarning>
-              {ht(
-                'hireDev.bottomcta.body',
-                'No recruitment fees. No ramp-up. Production-ready code from senior engineers who have shipped before.'
-              )}
-            </p>
-            <Link
-              href={BOOKING_URL}
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
-              target="_blank"
-              rel="noopener noreferrer"
-              suppressHydrationWarning
-            >
-              {ht('hireDev.bottomcta.cta', 'Book a discovery call')}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </Link>
-          </div>
-        </motion.div>
+        <div className="band band-split p-8 sm:p-12">
+          <h2 className="text-3xl sm:text-4xl tracking-tight mb-4" suppressHydrationWarning>
+            Ship faster with{' '}
+            <span>
+              senior engineers.
+            </span>
+          </h2>
+          <p className="text-base text-foreground/70 max-w-lg" suppressHydrationWarning>
+            {ht(
+              'hireDev.bottomcta.body',
+              'No recruitment fees. No ramp-up. Production-ready code from senior engineers who have shipped before.'
+            )}
+          </p>
+          <Link
+            href={BOOKING_URL}
+            className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+            target="_blank"
+            rel="noopener noreferrer"
+            suppressHydrationWarning
+          >
+            {ht('hireDev.bottomcta.cta', 'Book a discovery call')}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Link>
+        </div>
       </div>
     </>
   );

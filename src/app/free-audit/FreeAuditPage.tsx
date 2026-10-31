@@ -1,7 +1,6 @@
 'use client';
 
 import type { ReactElement } from 'react';
-import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 
 function CheckIcon(): ReactElement {
@@ -83,45 +82,38 @@ export default function FreeAuditPage(): ReactElement {
 
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+        <div className="eyebrow mb-4" suppressHydrationWarning>
+          {ht('freeAudit.eyebrow', 'Free Code Health Audit')}
+        </div>
+        <h1
+          className="max-w-3xl"
+          suppressHydrationWarning
         >
-          <div className="eyebrow mb-4" suppressHydrationWarning>
-            {ht('freeAudit.eyebrow', 'Free Code Health Audit')}
-          </div>
-          <h1
-            className="max-w-3xl"
-            suppressHydrationWarning
-          >
-            {ht('freeAudit.headline.pre', 'Get a Free Code Health Audit')}{' '}
-            <span>
-              {ht('freeAudit.headline.gradient', 'Worth €2,500')}
-            </span>
-          </h1>
-          <p className="mt-6 text-lg text-foreground/70 max-w-2xl" suppressHydrationWarning>
-            {ht(
-              'freeAudit.subheadline',
-              'We review your codebase, identify what is slowing your team down, and hand you a prioritised remediation plan — at no cost, no obligation.'
-            )}
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3 items-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-border text-accent text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              {ht('freeAudit.badge.free', 'Completely free')}
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
-              {ht('freeAudit.badge.time', '5 business days')}
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
-              {ht('freeAudit.badge.nda', 'NDA-protected')}
-            </span>
-          </div>
-        </motion.div>
+          {ht('freeAudit.headline.pre', 'Get a Free Code Health Audit')}{' '}
+          <span>
+            {ht('freeAudit.headline.gradient', 'Worth €2,500')}
+          </span>
+        </h1>
+        <p className="mt-6 text-lg text-foreground/70 max-w-2xl" suppressHydrationWarning>
+          {ht(
+            'freeAudit.subheadline',
+            'We review your codebase, identify what is slowing your team down, and hand you a prioritised remediation plan — at no cost, no obligation.'
+          )}
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3 items-center">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-border text-accent text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            {ht('freeAudit.badge.free', 'Completely free')}
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
+            {ht('freeAudit.badge.time', '5 business days')}
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
+            {ht('freeAudit.badge.nda', 'NDA-protected')}
+          </span>
+        </div>
       </header>
 
       {/* Two-column: deliverables + form */}
@@ -129,190 +121,163 @@ export default function FreeAuditPage(): ReactElement {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
           {/* Left: What you get */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <h2
+            id="audit-details-heading"
+            className="text-[clamp(20px,2vw,26px)] leading-[1.25] tracking-tight mb-6"
+            suppressHydrationWarning
           >
-            <h2
-              id="audit-details-heading"
-              className="text-[clamp(20px,2vw,26px)] leading-[1.25] tracking-tight mb-6"
-              suppressHydrationWarning
-            >
-              {ht('freeAudit.whatYouGet.heading', 'What is included')}
-            </h2>
-            <ul className="space-y-4 mb-10">
-              {deliverables.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <CheckIcon />
-                  <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
-                </li>
-              ))}
-            </ul>
+            {ht('freeAudit.whatYouGet.heading', 'What is included')}
+          </h2>
+          <ul className="space-y-4 mb-10">
+            {deliverables.map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <CheckIcon />
+                <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
+              </li>
+            ))}
+          </ul>
 
-            <h2
-              className="text-[clamp(20px,2vw,26px)] leading-[1.25] tracking-tight mb-5"
-              suppressHydrationWarning
-            >
-              {ht('freeAudit.forWho.heading', 'Who this is for')}
-            </h2>
-            <ul className="space-y-3">
-              {forWho.map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent-fill text-accent-contrast text-xs font-semibold flex items-center justify-center mt-0.5">
-                    {i + 1}
-                  </span>
-                  <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+          <h2
+            className="text-[clamp(20px,2vw,26px)] leading-[1.25] tracking-tight mb-5"
+            suppressHydrationWarning
+          >
+            {ht('freeAudit.forWho.heading', 'Who this is for')}
+          </h2>
+          <ul className="space-y-3">
+            {forWho.map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent-fill text-accent-contrast text-xs font-semibold flex items-center justify-center mt-0.5">
+                  {i + 1}
+                </span>
+                <span className="text-[14px] leading-relaxed text-foreground/85">{item}</span>
+              </li>
+            ))}
+          </ul>
 
           {/* Right: Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <div className="card rounded-3xl border border-border p-8 sm:p-10 transition-all duration-300">
-              <h2 className="text-xl tracking-tight mb-1" suppressHydrationWarning>
-                {ht('freeAudit.form.heading', 'Apply for your free audit')}
-              </h2>
-              <p className="text-[13px] text-foreground/60 mb-6" suppressHydrationWarning>
-                {ht('freeAudit.form.subheading', 'We will confirm availability within 1 business day.')}
-              </p>
+          <div className="card rounded-3xl border border-border p-8 sm:p-10 transition-all duration-300">
+            <h2 className="text-xl tracking-tight mb-1" suppressHydrationWarning>
+              {ht('freeAudit.form.heading', 'Apply for your free audit')}
+            </h2>
+            <p className="text-[13px] text-foreground/60 mb-6" suppressHydrationWarning>
+              {ht('freeAudit.form.subheading', 'We will confirm availability within 1 business day.')}
+            </p>
 
-              <form
-                action="https://formspree.io/f/mwpeplnb"
-                method="POST"
-                className="space-y-4"
-                aria-label="Free Code Health Audit application form"
+            <form
+              action="https://formspree.io/f/mwpeplnb"
+              method="POST"
+              className="space-y-4"
+              aria-label="Free Code Health Audit application form"
+            >
+              <div>
+                <label htmlFor="audit-name" className="block text-[13px] font-medium mb-1.5">
+                  {ht('freeAudit.form.name', 'Full name')} <span className="text-accent" aria-label="required">*</span>
+                </label>
+                <input
+                  id="audit-name"
+                  name="name"
+                  type="text"
+                  required
+                  autoComplete="name"
+                  placeholder="Jane Smith"
+                  className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="audit-email" className="block text-[13px] font-medium mb-1.5">
+                  {ht('freeAudit.form.email', 'Work email')} <span className="text-accent" aria-label="required">*</span>
+                </label>
+                <input
+                  id="audit-email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder="jane@company.com"
+                  className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="audit-company" className="block text-[13px] font-medium mb-1.5">
+                  {ht('freeAudit.form.company', 'Company')} <span className="text-accent" aria-label="required">*</span>
+                </label>
+                <input
+                  id="audit-company"
+                  name="company"
+                  type="text"
+                  required
+                  autoComplete="organization"
+                  placeholder="Acme Inc."
+                  className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="audit-stack" className="block text-[13px] font-medium mb-1.5">
+                  {ht('freeAudit.form.stack', 'Primary tech stack')} <span className="text-accent" aria-label="required">*</span>
+                </label>
+                <input
+                  id="audit-stack"
+                  name="tech_stack"
+                  type="text"
+                  required
+                  placeholder="e.g. Node.js, React, PostgreSQL"
+                  className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="audit-context" className="block text-[13px] font-medium mb-1.5">
+                  {ht('freeAudit.form.context', 'What is your main concern? (optional)')}
+                </label>
+                <textarea
+                  id="audit-context"
+                  name="context"
+                  rows={3}
+                  placeholder="e.g. we keep missing sprint deadlines, deployment takes 2 hours, etc."
+                  className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full btn btn-accent px-6 py-3 rounded-xl transition-all"
+                suppressHydrationWarning
               >
-                <div>
-                  <label htmlFor="audit-name" className="block text-[13px] font-medium mb-1.5">
-                    {ht('freeAudit.form.name', 'Full name')} <span className="text-accent" aria-label="required">*</span>
-                  </label>
-                  <input
-                    id="audit-name"
-                    name="name"
-                    type="text"
-                    required
-                    autoComplete="name"
-                    placeholder="Jane Smith"
-                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
-                  />
-                </div>
+                {ht('freeAudit.form.cta', 'Apply for free audit')}
+              </button>
 
-                <div>
-                  <label htmlFor="audit-email" className="block text-[13px] font-medium mb-1.5">
-                    {ht('freeAudit.form.email', 'Work email')} <span className="text-accent" aria-label="required">*</span>
-                  </label>
-                  <input
-                    id="audit-email"
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    placeholder="jane@company.com"
-                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="audit-company" className="block text-[13px] font-medium mb-1.5">
-                    {ht('freeAudit.form.company', 'Company')} <span className="text-accent" aria-label="required">*</span>
-                  </label>
-                  <input
-                    id="audit-company"
-                    name="company"
-                    type="text"
-                    required
-                    autoComplete="organization"
-                    placeholder="Acme Inc."
-                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="audit-stack" className="block text-[13px] font-medium mb-1.5">
-                    {ht('freeAudit.form.stack', 'Primary tech stack')} <span className="text-accent" aria-label="required">*</span>
-                  </label>
-                  <input
-                    id="audit-stack"
-                    name="tech_stack"
-                    type="text"
-                    required
-                    placeholder="e.g. Node.js, React, PostgreSQL"
-                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="audit-context" className="block text-[13px] font-medium mb-1.5">
-                    {ht('freeAudit.form.context', 'What is your main concern? (optional)')}
-                  </label>
-                  <textarea
-                    id="audit-context"
-                    name="context"
-                    rows={3}
-                    placeholder="e.g. we keep missing sprint deadlines, deployment takes 2 hours, etc."
-                    className="w-full rounded-lg border border-border-strong bg-surface px-4 py-3 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent transition resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full btn btn-accent px-6 py-3 rounded-xl transition-all"
-                  suppressHydrationWarning
-                >
-                  {ht('freeAudit.form.cta', 'Apply for free audit')}
-                </button>
-
-                <p className="text-center text-[13px] text-muted" suppressHydrationWarning>
-                  {ht('freeAudit.form.privacy', 'No spam. We only contact you about your audit request.')}
-                </p>
-              </form>
-            </div>
-          </motion.div>
+              <p className="text-center text-[13px] text-muted" suppressHydrationWarning>
+                {ht('freeAudit.form.privacy', 'No spam. We only contact you about your audit request.')}
+              </p>
+            </form>
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
       <section aria-labelledby="faq-heading" className="bg-wash border-y border-border py-16 sm:py-20">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 [&>*]:max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <h2
+            id="faq-heading"
+            className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
+            suppressHydrationWarning
           >
-            <h2
-              id="faq-heading"
-              className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8"
-              suppressHydrationWarning
-            >
-              {ht('freeAudit.faq.heading', 'Frequently asked questions')}
-            </h2>
-            <div className="space-y-6" suppressHydrationWarning>
-              {faqs.map((item, i) => (
-                <FAQItem key={i} question={item.question} answer={item.answer} />
-              ))}
-            </div>
-          </motion.div>
+            {ht('freeAudit.faq.heading', 'Frequently asked questions')}
+          </h2>
+          <div className="space-y-6" suppressHydrationWarning>
+            {faqs.map((item, i) => (
+              <FAQItem key={i} question={item.question} answer={item.answer} />
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Bottom CTA */}
       <div className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="band band-split p-8 sm:p-12"
-        >
+        <div className="band band-split p-8 sm:p-12">
           <p className="text-[13px] font-semibold text-accent" suppressHydrationWarning>
             {ht('freeAudit.cta.eyebrow', 'Limited availability')}
           </p>
@@ -332,7 +297,7 @@ export default function FreeAuditPage(): ReactElement {
           >
             {ht('freeAudit.cta.button', 'Apply now — it is free')}
           </a>
-        </motion.div>
+        </div>
       </div>
     </>
   );

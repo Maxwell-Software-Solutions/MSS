@@ -2,15 +2,7 @@
 
 import type { ReactElement } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
-
-const fadeUp = {
-  initial: { opacity: 0, y: 8 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5 },
-};
 
 function CheckIcon(): ReactElement {
   return (
@@ -194,26 +186,24 @@ export default function ServicesPackagesPage(): ReactElement {
     <>
       {/* Hero */}
       <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-20 sm:pt-24 pb-10">
-        <motion.div {...fadeUp}>
-          <div className="eyebrow mb-4" suppressHydrationWarning>
-            {ht('packages.eyebrow', 'Service Packages')}
-          </div>
-          <h1
-            className="max-w-3xl"
-            suppressHydrationWarning
-          >
-            Choose the{' '}
-            <span>
-              Right Engagement
-            </span>
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-foreground/70 max-w-2xl" suppressHydrationWarning>
-            {ht(
-              'packages.subtitle',
-              'Five focused service packages — from a one-off audit to ongoing strategic leadership. All are fixed in scope and priced transparently.'
-            )}
-          </p>
-        </motion.div>
+        <div className="eyebrow mb-4" suppressHydrationWarning>
+          {ht('packages.eyebrow', 'Service Packages')}
+        </div>
+        <h1
+          className="max-w-3xl"
+          suppressHydrationWarning
+        >
+          Choose the{' '}
+          <span>
+            Right Engagement
+          </span>
+        </h1>
+        <p className="mt-6 text-lg leading-relaxed text-foreground/70 max-w-2xl" suppressHydrationWarning>
+          {ht(
+            'packages.subtitle',
+            'Five focused service packages — from a one-off audit to ongoing strategic leadership. All are fixed in scope and priced transparently.'
+          )}
+        </p>
       </header>
 
       {/* Packages grid */}
@@ -221,126 +211,113 @@ export default function ServicesPackagesPage(): ReactElement {
         <h2 id="packages-heading" className="sr-only" suppressHydrationWarning>
           {ht('packages.title', 'Service Packages')}
         </h2>
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          suppressHydrationWarning
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" suppressHydrationWarning>
           {packages.map((pkg) => (
             <PackageCard key={pkg.name} {...pkg} />
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* Comparison note */}
       <section aria-label="Engagement guidance" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div {...fadeUp}>
-          <div className="band band-split p-8 sm:p-12">
-            <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
-              {ht('packages.unsure.heading', 'Not sure which package fits?')}
-            </h2>
-            <p className="text-base text-foreground/70 leading-relaxed" suppressHydrationWarning>
-              {ht(
-                'packages.unsure.body',
-                'Most clients start with a Code Health Audit. It surfaces the real priorities and often makes the next step obvious. If you already know what you need, book a 30-minute discovery call and we will confirm fit.'
-              )}
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
-              suppressHydrationWarning
-            >
-              {ht('packages.unsure.cta', 'Book a discovery call')}
-            </Link>
-          </div>
-        </motion.div>
+        <div className="band band-split p-8 sm:p-12">
+          <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
+            {ht('packages.unsure.heading', 'Not sure which package fits?')}
+          </h2>
+          <p className="text-base text-foreground/70 leading-relaxed" suppressHydrationWarning>
+            {ht(
+              'packages.unsure.body',
+              'Most clients start with a Code Health Audit. It surfaces the real priorities and often makes the next step obvious. If you already know what you need, book a 30-minute discovery call and we will confirm fit.'
+            )}
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+            suppressHydrationWarning
+          >
+            {ht('packages.unsure.cta', 'Book a discovery call')}
+          </Link>
+        </div>
       </section>
 
       {/* FAQ-style comparison table */}
       <section aria-labelledby="compare-heading" className="max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div {...fadeUp}>
-          <h2
-            id="compare-heading"
-            className="text-3xl sm:text-4xl tracking-tight mb-8"
-            suppressHydrationWarning
-          >
-            {ht('packages.compare.heading', 'Quick comparison')}
-          </h2>
-          <div className="overflow-x-auto rounded-2xl card">
-            <table className="w-full text-[13px]" role="table" aria-label="Service package comparison">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.package', 'Package')}</th>
-                  <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.price', 'Price')}</th>
-                  <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.duration', 'Duration')}</th>
-                  <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.for', 'Best for')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
-                  <td className="p-4 font-medium">{ht('packages.audit.name', 'Code Health Audit')}</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.audit.price', '€2,500')}</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.compare.audit.duration', '5 business days')}</td>
-                  <td className="p-4 text-foreground/75">{ht('packages.compare.audit.for', 'Pre-investment, new CTOs, legacy systems')}</td>
-                </tr>
-                <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
-                  <td className="p-4 font-medium">{ht('packages.sprint.name', 'Sprint-in-a-Box')}</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.sprint.price', '€4,800')}</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.compare.sprint.duration', '2 weeks')}</td>
-                  <td className="p-4 text-foreground/75">{ht('packages.compare.sprint.for', 'MVPs, feature spikes, proof-of-concept')}</td>
-                </tr>
-                <tr className="border-b border-border bg-accent/10 hover:bg-accent/10 transition-colors">
-                  <td className="p-4 font-medium text-accent">{ht('packages.retainer.name', 'Engineering Partner Retainer')}</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.retainer.price', '€3,500–€6,500')}/mo</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.compare.retainer.duration', 'Ongoing')}</td>
-                  <td className="p-4 text-foreground/75">{ht('packages.compare.retainer.for', 'Scale-ups, embedded engineering support')}</td>
-                </tr>
-                <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
-                  <td className="p-4 font-medium">{ht('packages.cicd.name', 'CI/CD Accelerator')}</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.cicd.price', '€7,500')}</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.compare.cicd.duration', '3–4 weeks')}</td>
-                  <td className="p-4 text-foreground/75">{ht('packages.compare.cicd.for', 'Slow deploys, broken pipelines, manual releases')}</td>
-                </tr>
-                <tr className="hover:bg-foreground/5 transition-colors">
-                  <td className="p-4 font-medium">{ht('packages.cto.name', 'Fractional CTO')}</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.cto.price', '€3,500')}/mo</td>
-                  <td className="p-4 text-foreground/80">{ht('packages.compare.cto.duration', 'Ongoing')}</td>
-                  <td className="p-4 text-foreground/75">{ht('packages.compare.cto.for', 'Early-stage startups, post-seed to Series A')}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </motion.div>
+        <h2
+          id="compare-heading"
+          className="text-3xl sm:text-4xl tracking-tight mb-8"
+          suppressHydrationWarning
+        >
+          {ht('packages.compare.heading', 'Quick comparison')}
+        </h2>
+        <div className="overflow-x-auto rounded-2xl card">
+          <table className="w-full text-[13px]" role="table" aria-label="Service package comparison">
+            <thead>
+              <tr className="border-b border-border">
+                <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.package', 'Package')}</th>
+                <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.price', 'Price')}</th>
+                <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.duration', 'Duration')}</th>
+                <th className="text-left p-4 font-semibold" scope="col">{ht('packages.compare.col.for', 'Best for')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
+                <td className="p-4 font-medium">{ht('packages.audit.name', 'Code Health Audit')}</td>
+                <td className="p-4 text-foreground/80">{ht('packages.audit.price', '€2,500')}</td>
+                <td className="p-4 text-foreground/80">{ht('packages.compare.audit.duration', '5 business days')}</td>
+                <td className="p-4 text-foreground/75">{ht('packages.compare.audit.for', 'Pre-investment, new CTOs, legacy systems')}</td>
+              </tr>
+              <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
+                <td className="p-4 font-medium">{ht('packages.sprint.name', 'Sprint-in-a-Box')}</td>
+                <td className="p-4 text-foreground/80">{ht('packages.sprint.price', '€4,800')}</td>
+                <td className="p-4 text-foreground/80">{ht('packages.compare.sprint.duration', '2 weeks')}</td>
+                <td className="p-4 text-foreground/75">{ht('packages.compare.sprint.for', 'MVPs, feature spikes, proof-of-concept')}</td>
+              </tr>
+              <tr className="border-b border-border bg-accent/10 hover:bg-accent/10 transition-colors">
+                <td className="p-4 font-medium text-accent">{ht('packages.retainer.name', 'Engineering Partner Retainer')}</td>
+                <td className="p-4 text-foreground/80">{ht('packages.retainer.price', '€3,500–€6,500')}/mo</td>
+                <td className="p-4 text-foreground/80">{ht('packages.compare.retainer.duration', 'Ongoing')}</td>
+                <td className="p-4 text-foreground/75">{ht('packages.compare.retainer.for', 'Scale-ups, embedded engineering support')}</td>
+              </tr>
+              <tr className="border-b border-border hover:bg-foreground/5 transition-colors">
+                <td className="p-4 font-medium">{ht('packages.cicd.name', 'CI/CD Accelerator')}</td>
+                <td className="p-4 text-foreground/80">{ht('packages.cicd.price', '€7,500')}</td>
+                <td className="p-4 text-foreground/80">{ht('packages.compare.cicd.duration', '3–4 weeks')}</td>
+                <td className="p-4 text-foreground/75">{ht('packages.compare.cicd.for', 'Slow deploys, broken pipelines, manual releases')}</td>
+              </tr>
+              <tr className="hover:bg-foreground/5 transition-colors">
+                <td className="p-4 font-medium">{ht('packages.cto.name', 'Fractional CTO')}</td>
+                <td className="p-4 text-foreground/80">{ht('packages.cto.price', '€3,500')}/mo</td>
+                <td className="p-4 text-foreground/80">{ht('packages.compare.cto.duration', 'Ongoing')}</td>
+                <td className="p-4 text-foreground/75">{ht('packages.compare.cto.for', 'Early-stage startups, post-seed to Series A')}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       {/* AI Implementation */}
       <section aria-label="AI implementation capabilities" className="border-t border-border max-w-6xl mx-auto px-6 sm:px-10 py-16 sm:py-20">
-        <motion.div {...fadeUp}>
-          <div className="band band-split p-8 sm:p-12">
-            <div className="eyebrow mb-3" suppressHydrationWarning>
-              {ht('packages.ai.eyebrow', 'AI & ML')}
-            </div>
-            <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
-              {ht('packages.ai.heading', 'We also ship AI into production')}
-            </h2>
-            <p className="text-base text-foreground/70 leading-relaxed" suppressHydrationWarning>
-              {ht(
-                'packages.ai.body',
-                'We help AI startups and product teams ship models into production — from RAG pipelines and LLM-powered features to embedding search and AI-assisted workflows. If you are building with AI and need engineering support, talk to us.'
-              )}
-            </p>
-            <Link
-              href="/contact"
-              className="btn px-6 py-3 rounded-xl transition-all inline-flex items-center text-sm font-semibold"
-              suppressHydrationWarning
-            >
-              {ht('packages.ai.cta', 'Discuss an AI project')}
-            </Link>
+        <div className="band band-split p-8 sm:p-12">
+          <div className="eyebrow mb-3" suppressHydrationWarning>
+            {ht('packages.ai.eyebrow', 'AI & ML')}
           </div>
-        </motion.div>
+          <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
+            {ht('packages.ai.heading', 'We also ship AI into production')}
+          </h2>
+          <p className="text-base text-foreground/70 leading-relaxed" suppressHydrationWarning>
+            {ht(
+              'packages.ai.body',
+              'We help AI startups and product teams ship models into production — from RAG pipelines and LLM-powered features to embedding search and AI-assisted workflows. If you are building with AI and need engineering support, talk to us.'
+            )}
+          </p>
+          <Link
+            href="/contact"
+            className="btn px-6 py-3 rounded-xl transition-all inline-flex items-center text-sm font-semibold"
+            suppressHydrationWarning
+          >
+            {ht('packages.ai.cta', 'Discuss an AI project')}
+          </Link>
+        </div>
       </section>
     </>
   );
