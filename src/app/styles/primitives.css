@@ -107,6 +107,14 @@
     color: var(--color-accent);
   }
 
+  /* Phones: text items sit closer, and the icon moves beside the text, as step numbers do */
+  @media (max-width: 639px) {
+    .columns:has(> .item) { row-gap: var(--space-5); }
+    .item:has(> .item-icon) { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); }
+    .item:has(> .item-icon) > * { grid-column: 2; }
+    .item > .item-icon { grid-column: 1; grid-row: 1 / span 2; margin-bottom: 0; }
+  }
+
   /* ---- Numbers: the second voice of the page ---- */
   .stats { display: grid; }
   .stat {
@@ -495,6 +503,7 @@
       gap: var(--space-7) var(--column-gap);
     }
     footer[role="contentinfo"] > div > .grid:first-child > :first-child { grid-column: 1 / -1; }
+    footer[role="contentinfo"] dl { margin-top: var(--space-5); gap: var(--space-3) var(--column-gap); }
   }
 
   /* ---- Self-assessment ---- */
@@ -525,7 +534,8 @@
   .article-head h1 { font-size: var(--text-article-title); }
   .article .article-back {
     display: inline-block;
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-4);
+    padding-block: var(--space-1);
     font-size: 0.875rem;
     color: var(--color-text-secondary);
     text-decoration: none;
