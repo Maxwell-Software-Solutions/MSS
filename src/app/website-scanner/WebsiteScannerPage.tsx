@@ -3,6 +3,7 @@
 import type { ReactElement } from 'react';
 import { useState, useCallback } from 'react';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
+import { BOOKING_URL } from '@/lib/booking';
 
 // ============================================================================
 // Types
@@ -558,7 +559,7 @@ export default function WebsiteScannerPage(): ReactElement {
               {ht('scanner.cta.body', 'Book a free 15-minute expert review with Maxwell Software Solutions. We will walk through your results and identify the highest-impact fixes.')}
             </p>
             <a
-              href="https://calendly.com/maxwellsoftwaresolutions/discovery"
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all"

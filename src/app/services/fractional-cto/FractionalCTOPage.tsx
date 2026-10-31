@@ -4,6 +4,7 @@ import type { ReactElement } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
+import { BOOKING_URL } from '@/lib/booking';
 
 const fadeUp = {
   initial: { opacity: 0, y: 8 },
@@ -140,7 +141,7 @@ export default function FractionalCTOPage(): ReactElement {
 
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
-              href="https://calendly.com/maxwellsoftwaresolutions/discovery"
+              href={BOOKING_URL}
               className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"
@@ -283,7 +284,7 @@ export default function FractionalCTOPage(): ReactElement {
               )}
             </p>
             <Link
-              href="https://calendly.com/maxwellsoftwaresolutions/discovery"
+              href={BOOKING_URL}
               className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"
@@ -330,7 +331,7 @@ export default function FractionalCTOPage(): ReactElement {
               )}
             </p>
             <Link
-              href="https://calendly.com/maxwellsoftwaresolutions/discovery"
+              href={BOOKING_URL}
               className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
               target="_blank"
               rel="noopener noreferrer"

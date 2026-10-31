@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { trackCTAClick } from '@/lib/analytics';
 
-const CALENDLY_URL = 'https://calendly.com/maxwellsoftwaresolutions/discovery';
+import { BOOKING_URL as CALENDLY_URL } from '@/lib/booking';
 
 export default function CalendlyCTA(): ReactElement {
   const { t } = useLanguage();

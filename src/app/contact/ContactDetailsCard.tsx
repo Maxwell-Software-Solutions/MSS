@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 
 import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from './contact.constants';
 import { NeuroCard } from '@/app/components/ui';
+import ScheduleCallButton from '@/app/components/ScheduleCallButton';
 
 export default function ContactDetailsCard(): ReactElement {
   return (
@@ -11,6 +12,8 @@ export default function ContactDetailsCard(): ReactElement {
         Our team monitors messages around the clock. Drop us a note with your preferred contact method and the right
         specialist will be in touch.
       </p>
+
+      <ScheduleCallButton className="mt-6 w-full" />
 
       <div className="mt-8 space-y-6 border-t border-border pt-6 text-sm">
         <div>

@@ -419,6 +419,23 @@
     background: var(--color-accent);
   }
 
+  /* Header call-to-action keeps its accent fill inside the link row */
+  .nav-links a.nav-cta {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-accent-fill);
+    color: var(--color-accent-contrast);
+  }
+  .nav-links a.nav-cta:hover { background: var(--color-accent-fill-hover); color: var(--color-accent-contrast); }
+
+  /* Keep the link row on one line at the narrowest desktop widths (longer Lithuanian labels) */
+  @media (min-width: 1024px) and (max-width: 1099px) {
+    .nav-links a { padding-inline: 0.5rem; white-space: nowrap; }
+    .nav-links a[aria-current]::after { left: 0.5rem; right: 0.5rem; }
+    .nav-links a.nav-cta { padding-inline: 0.75rem; margin-left: 0.25rem; }
+  }
+
   .theme-toggle,
   .lang-toggle,
   .menu-toggle {

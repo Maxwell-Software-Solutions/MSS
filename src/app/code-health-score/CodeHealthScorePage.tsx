@@ -3,6 +3,7 @@
 import { useState, type ReactElement } from 'react';
 import Link from 'next/link';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
+import { BOOKING_URL } from '@/lib/booking';
 
 interface Question {
   key: string;
@@ -362,7 +363,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href="https://calendly.com/maxwellsoftwaresolutions/discovery"
+                href={BOOKING_URL}
                 className="inline-flex items-center gap-2 bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all"
                 target="_blank"
                 rel="noopener noreferrer"

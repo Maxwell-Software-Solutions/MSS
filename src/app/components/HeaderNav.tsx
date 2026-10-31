@@ -7,6 +7,7 @@ import { useLanguage } from '@/lib/LanguageContext';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import ThemeToggle from './ThemeToggle';
 import ThemeAwareLogo from './ThemeAwareLogo';
+import ScheduleCallButton from './ScheduleCallButton';
 
 // Concise header + mobile menu toggle (<=60 lines)
 export default function HeaderNav(): ReactElement {
@@ -88,6 +89,7 @@ export default function HeaderNav(): ReactElement {
         >
           {language === 'en' ? 'LT' : 'EN'}
         </button>
+        <ScheduleCallButton className="nav-cta" />
       </div>
       <button
         type="button"

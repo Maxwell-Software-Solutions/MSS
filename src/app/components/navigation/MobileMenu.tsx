@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRef, useEffect, useCallback, type ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import ThemeToggle from '@/app/components/ThemeToggle';
+import ScheduleCallButton from '@/app/components/ScheduleCallButton';
 
 export interface MobileMenuProps {
   open: boolean;
@@ -175,6 +176,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
             </Link>
           </li>
         </ul>
+
+        <ScheduleCallButton className="mt-5 w-full" onClick={handleLink} />
 
         <div className="mobile-nav-bottom-section">
           <div className="flex flex-col gap-3">
