@@ -142,7 +142,7 @@ export default function FractionalCTOPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href={BOOKING_URL}
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+              className="btn btn-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -154,7 +154,7 @@ export default function FractionalCTOPage(): ReactElement {
             </Link>
             <Link
               href="/services/packages"
-              className="btn px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
+              className="btn"
               suppressHydrationWarning
             >
               {ht('fractionalCTO.cta.compare', 'Compare all packages')}
@@ -285,7 +285,7 @@ export default function FractionalCTOPage(): ReactElement {
             </p>
             <Link
               href={BOOKING_URL}
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+              className="btn btn-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -332,7 +332,7 @@ export default function FractionalCTOPage(): ReactElement {
             </p>
             <Link
               href={BOOKING_URL}
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+              className="btn btn-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning

@@ -360,7 +360,7 @@ export default function MicroservicesPost(): ReactElement {
           </p>
           <a
             href="/contact"
-            className="inline-block px-6 py-3 bg-accent-fill text-accent-contrast rounded-xl font-semibold hover:opacity-90 transition-opacity"
+            className="btn btn-accent"
           >
             Talk to Our Engineering Team
           </a>

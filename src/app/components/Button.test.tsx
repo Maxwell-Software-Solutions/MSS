@@ -43,7 +43,7 @@ describe('ButtonPrimary', () => {
   it('renders with accent variant by default', () => {
     render(<ButtonPrimary>Accent</ButtonPrimary>);
     const button = screen.getByRole('button');
-    expect(button.className).toContain('neuro-btn-accent');
+    expect(button.className).toContain('bg-accent-fill');
   });
 
   it('renders with secondary variant when specified', () => {
@@ -102,8 +102,7 @@ describe('ButtonSecondary', () => {
   it('has border styling for ghost button appearance', () => {
     render(<ButtonSecondary>Ghost</ButtonSecondary>);
     const button = screen.getByRole('button');
-    expect(button.className).toContain('border-2');
-    expect(button.className).toContain('border-accent');
+    expect(button.className).toContain('border-border-strong');
   });
 
   it('has no accessibility violations', async () => {

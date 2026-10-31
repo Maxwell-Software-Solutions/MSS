@@ -21,7 +21,7 @@ export default function ButtonPrimary({
   ...props
 }: ButtonPrimaryProps): ReactElement {
   const baseClasses =
-    'inline-flex items-center justify-center gap-2 px-5 py-2.5 min-h-[44px] min-w-[44px] rounded-lg font-medium text-[0.9375rem] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-offset-background disabled:opacity-60 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center gap-2 px-6 py-2.5 min-h-[44px] min-w-[44px] rounded-lg font-medium text-[0.9375rem] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-offset-background disabled:opacity-60 disabled:cursor-not-allowed';
 
   const variantClasses = {
     accent:
