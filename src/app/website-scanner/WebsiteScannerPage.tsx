@@ -100,9 +100,9 @@ function scoreColor(score: number): string {
 }
 
 function scoreBg(score: number): string {
-  if (score >= 90) return 'bg-success/10 border-success/30';
-  if (score >= 50) return 'bg-warning/10 border-warning/30';
-  return 'bg-error/10 border-error/30';
+  if (score >= 90) return 'bg-success/5 border-success/30';
+  if (score >= 50) return 'bg-warning/5 border-warning/30';
+  return 'bg-error/5 border-error/30';
 }
 
 function scoreLabel(score: number, ht: (k: string, f: string) => string): string {
@@ -225,7 +225,7 @@ function ProgressBar({ phase, ht }: { phase: ScanPhase; ht: (k: string, f: strin
           <div key={step.key} className="flex items-center gap-2 flex-1">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
               i < currentIndex ? 'bg-success/20 text-success' :
-              i === currentIndex ? 'bg-accent/20 text-accent animate-pulse' :
+              i === currentIndex ? 'bg-accent/20 text-foreground animate-pulse' :
               'bg-foreground/10 text-muted'
             }`}>
               {i < currentIndex ? (

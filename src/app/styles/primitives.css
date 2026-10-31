@@ -604,7 +604,7 @@
   .prose-flow :where(li + li) { margin-top: var(--space-2); }
   .prose-flow :where(li)::marker { color: var(--color-muted); }
   .prose-flow :where(strong) { color: var(--color-text); }
-  .prose-flow :where(a:not(.btn)) { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-accent); }
+  .prose-flow :where(a:not(.btn)) { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-accent); text-decoration-thickness: 1.5px; }
   .prose-flow :where(a:not(.btn)):hover { color: var(--color-accent-hover); }
   .prose-flow :where(pre) { margin-block: var(--space-4); font-size: 0.875rem; }
   .prose-flow :where(table) { width: 100%; font-size: 0.9375rem; }

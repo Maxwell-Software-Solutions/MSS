@@ -13,7 +13,7 @@ interface BadgeProps {
  */
 export function Badge({ children, variant = 'accent', size = 'sm', className = '' }: BadgeProps): ReactElement {
   const variantClasses = {
-    accent: 'border-accent/30 bg-accent/10 text-accent',
+    accent: 'border-accent/30 bg-accent/10 text-foreground',
     neutral: 'border-border bg-wash text-secondary',
     success: 'border-success/30 bg-success/10 text-success',
     warning: 'border-warning/30 bg-warning/10 text-warning',

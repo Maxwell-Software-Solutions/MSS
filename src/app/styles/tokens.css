@@ -114,7 +114,7 @@
 
   /* Status (text-safe on white) */
   --color-success: #047857;
-  --color-warning: #b45309;
+  --color-warning: var(--gold);
   --color-error:   #b42318;
   --color-info:    #4b4b4b;
 
@@ -172,7 +172,7 @@
   --color-active: rgba(255, 255, 255, 0.08);
 
   --color-success: #4ade80;
-  --color-warning: #fbbf24;
+  --color-warning: var(--gold-tint);
   --color-error:   #f87171;
   --color-info:    #b8b8b4;
 
@@ -222,7 +222,7 @@
     --color-hover:  rgba(255, 255, 255, 0.04);
     --color-active: rgba(255, 255, 255, 0.08);
     --color-success: #4ade80;
-    --color-warning: #fbbf24;
+    --color-warning: var(--gold-tint);
     --color-error:   #f87171;
     --color-info:    #b8b8b4;
     --color-band:        #161616;
@@ -267,7 +267,7 @@
     --color-hover:  rgba(10, 10, 10, 0.04);
     --color-active: rgba(10, 10, 10, 0.08);
     --color-success: #047857;
-    --color-warning: #b45309;
+    --color-warning: var(--gold);
     --color-error:   #b42318;
     --color-info:    #4b4b4b;
     --color-band:        #0a0a0a;

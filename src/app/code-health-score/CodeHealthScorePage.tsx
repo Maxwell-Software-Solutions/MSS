@@ -195,7 +195,7 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
     return {
       label: ht('codeHealth.tier.critical', 'Critical'),
       color: 'text-error',
-      bgColor: 'bg-error/10',
+      bgColor: 'bg-error/5',
       borderColor: 'border-error/30',
       description: ht('codeHealth.tier.critical.desc', 'Your codebase is a ticking time bomb. Critical risks across testing, deployment, and maintainability need urgent attention before they cause a major incident.'),
     };
@@ -204,7 +204,7 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
     return {
       label: ht('codeHealth.tier.concerning', 'Concerning'),
       color: 'text-warning',
-      bgColor: 'bg-warning/10',
+      bgColor: 'bg-warning/5',
       borderColor: 'border-warning/30',
       description: ht('codeHealth.tier.concerning.desc', 'Significant risks that will slow you down. Your team is likely spending too much time fighting fires instead of shipping features. Targeted improvements can have a big impact.'),
     };
@@ -213,7 +213,7 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
     return {
       label: ht('codeHealth.tier.healthy', 'Healthy'),
       color: 'text-warning',
-      bgColor: 'bg-warning/10',
+      bgColor: 'bg-warning/5',
       borderColor: 'border-warning/30',
       description: ht('codeHealth.tier.healthy.desc', 'Good foundation with room to improve. Your practices are solid in some areas but have gaps that could become problems at scale. A focused audit would help prioritise the next steps.'),
     };
@@ -221,7 +221,7 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
   return {
     label: ht('codeHealth.tier.excellent', 'Excellent'),
     color: 'text-success',
-    bgColor: 'bg-success/10',
+    bgColor: 'bg-success/5',
     borderColor: 'border-success/30',
     description: ht('codeHealth.tier.excellent.desc', 'Your engineering practices are strong. You have mature processes across testing, deployment, and observability. A professional review can help you go from good to exceptional.'),
   };
@@ -311,7 +311,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
               {totalScore}
               <span className="text-[clamp(20px,3vw,32px)] text-muted font-normal">/{maxScore}</span>
             </div>
-            <div className={`inline-block mt-3 rounded-md px-3 py-1 text-sm font-medium ${tier.color} ${tier.bgColor}`}>
+            <div className={`inline-block mt-3 rounded-md px-3 py-1 text-sm font-medium text-foreground ${tier.bgColor}`}>
               {tier.label}
             </div>
             <p className="measure mt-4" suppressHydrationWarning>

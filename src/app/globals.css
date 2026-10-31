@@ -27,7 +27,7 @@
   --color-accent-fill-hover: #262626;
   --color-accent-contrast: #ffffff;
   --color-success: #047857;
-  --color-warning: #b45309;
+  --color-warning: #8b6b00;
   --color-error: #b42318;
   --color-info: #4b4b4b;
   --color-success-fill: #047857;
@@ -333,6 +333,7 @@
     color: var(--color-text);
     text-decoration: underline;
     text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 1.5px;
     transition: color var(--transition-base);
   }
   .link:hover { color: var(--color-accent-hover); }
@@ -418,7 +419,7 @@
     background: var(--color-text);
     color: var(--color-bg);
   }
-  .nav-links a.nav-cta:hover { background: var(--color-text-secondary); color: var(--color-bg); }
+  .nav-links a.nav-cta:hover { background: color-mix(in srgb, var(--color-text) 85%, var(--color-bg)); color: var(--color-bg); }
 
   /* Keep the link row on one line at the narrowest desktop widths (longer Lithuanian labels) */
   @media (min-width: 1024px) and (max-width: 1099px) {
