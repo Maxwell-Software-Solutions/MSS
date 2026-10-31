@@ -65,17 +65,23 @@ describe('Home page', () => {
     expect(screen.getByRole('heading', { name: /contact/i })).toBeInTheDocument();
   });
 
-  it('renders the hero field wrapper (particle field deferred)', async () => {
+  it('shows the finished hero picture without waiting for the animation', () => {
     render(<Home />);
-    const wrapper = await screen.findByTestId('hero-field-wrapper');
-    expect(wrapper).toBeInTheDocument();
+    const poster = screen.getByTestId('hero-poster');
+    expect(poster).toHaveAttribute('aria-hidden', 'true');
+    expect(poster.querySelectorAll('path').length).toBeGreaterThan(20);
+    expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
   });
 
-  it('renders the particle field wrapper', async () => {
+  it('hides the animated canvas from assistive technology', () => {
     render(<Home />);
-    const particleField = await screen.findByTestId('hero-field-wrapper');
-    expect(particleField).toBeInTheDocument();
-    expect(particleField).toHaveAttribute('data-parallax', '0.1');
+    expect(screen.getByTestId('hero-ribbon')).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('keeps the hero call-to-action destinations', () => {
+    render(<Home />);
+    expect(screen.getByRole('link', { name: /request your code audit/i })).toHaveAttribute('href', '/contact');
+    expect(screen.getByRole('link', { name: /explore services/i })).toHaveAttribute('href', '/services');
   });
 
   it('checks accessibility and reports violations', async () => {

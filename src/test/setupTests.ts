@@ -84,7 +84,7 @@ if (typeof HTMLCanvasElement !== 'undefined') {
   Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
     value: jest.fn().mockImplementation(() => {
       return {
-        // minimal stub API used in ParticleField
+        // minimal stub API
         clearRect: jest.fn(),
         fillRect: jest.fn(),
         beginPath: jest.fn(),
