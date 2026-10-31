@@ -51,7 +51,7 @@ html:has(.hero-stage) {
   stroke: #b8c6d8;
   stroke-width: 0.9;
   opacity: 0.55;
-  transition: opacity 1.2s ease 0.9s, visibility 0s linear 2.1s;
+  transition: opacity 0.3s ease;
 }
 
 .hero-poster path {
@@ -61,6 +61,7 @@ html:has(.hero-stage) {
 .hero-stage[data-ribbon='live'] .hero-poster {
   opacity: 0;
   visibility: hidden;
+  transition: opacity 1.2s ease 0.9s, visibility 0s linear 2.1s;
 }
 
 .hero-stage[data-ribbon='static'] .hero-poster {
@@ -110,12 +111,13 @@ html:has(.hero-stage) {
     linear-gradient(to top, transparent, #000 5rem);
   mask-composite: intersect;
   pointer-events: none;
-  /* gives way only once the poster has gone, so the text is covered at every moment */
-  transition: opacity 0.5s ease 2.1s;
+  transition: opacity 0.2s ease;
 }
 
+/* gives way only once the poster has gone, and comes back at once if the poster does */
 .hero-stage[data-ribbon='live'] .hero-copy::before {
   opacity: 0;
+  transition: opacity 0.5s ease 2.1s;
 }
 
 .hero-title {
