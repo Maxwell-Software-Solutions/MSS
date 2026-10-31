@@ -112,20 +112,20 @@ void main() {
   float order = here.w;
   float sx = here.x / uRes.x;
 
-  // draw-on: each line has its own pen, the front runs in from the left edge
-  float delay = rnd(int(row), 91) * 0.24;
-  float u = clamp((uReveal - delay) / 1.26, 0.0, 1.0);
-  u = 1.0 - pow(1.0 - u, 2.4);
-  float front = u * 1.2 - 0.08;
-  float drawn = 1.0 - smoothstep(front - 0.003, front + 0.003, sx);
-  float tip = 0.8 * exp(-pow((sx - front) / 0.012, 2.0)) * step(uReveal, 1.7);
+  // draw-on: each line has its own pen; the front runs in from the left and slows as it arrives
+  float delay = rnd(int(row), 91) * 0.5;
+  float u = clamp((uReveal - delay) / 2.6, 0.0, 1.0);
+  u = 1.0 - pow(1.0 - u, 2.2);
+  float front = u * 1.26 - 0.13;
+  float drawn = 1.0 - smoothstep(front - 0.05, front, sx);
+  float tip = 0.3 * exp(-pow((sx - front + 0.02) / 0.03, 2.0)) * (1.0 - smoothstep(2.2, 3.0, uReveal));
 
-  // one pulse runs along part of the ribbon on the ordered side, following its twist
+  // one pulse passes along part of the ribbon on the ordered side, following its twist
   float s = sx + 0.5 * depth - uPulse.x;
   float across = exp(-pow((depth - uPulse.z) / 0.3, 2.0));
-  float band = exp(-s * s / 0.00016);
-  float tail = s < 0.0 ? exp(s / 0.05) : 0.0;
-  float pulse = clamp((band + 0.45 * tail) * across * order * order * uPulse.y, 0.0, 1.0);
+  float band = exp(-s * s / 0.0006);
+  float tail = s < 0.0 ? exp(s / 0.07) : 0.0;
+  float pulse = clamp((band + 0.35 * tail) * across * order * order * uPulse.y, 0.0, 1.0);
 
   float lift = max(pulse, tip);
   float base = mix(0.16, 0.86, depth * depth) * (0.8 + 0.2 * order);
@@ -166,11 +166,26 @@ interface RibbonOptions {
   onLost: () => void;
 }
 
-const PULSE_EVERY = 5.2;
-const PULSE_TIME = 2.8;
+// The ribbon arrives with some energy, then settles into a slow drift. Speeds are relative to the
+// formula's own clock: a visitor sees the arrival once, and the drift for as long as they stay.
+const ARRIVAL_SPEED = 0.7;
+const DRIFT_SPEED = 0.2;
+const SETTLE_SECONDS = 3.5;
+
+/** Time on the formula's clock after `elapsed` real seconds: the integral of the eased speed. */
+const flowTime = (elapsed: number): number =>
+  DRIFT_SPEED * elapsed + (ARRIVAL_SPEED - DRIFT_SPEED) * SETTLE_SECONDS * (1 - Math.exp(-elapsed / SETTLE_SECONDS));
+
+// Once settled the motion is slow enough that every other frame is imperceptible, and half the GPU work
+const SETTLED_AFTER = 8;
+
+const PULSE_EVERY = 13;
+const PULSE_TIME = 4.2;
 const PULSE_FROM = 0.62;
 const PULSE_TO = 1.6;
-const FIRST_PULSE = 2.0;
+const FIRST_PULSE = 4.5;
+const PULSE_STRENGTH = 0.6;
+const CURSOR_LEAN = 0.07;
 
 function buildProgram(gl: WebGL2RenderingContext): WebGLProgram | null {
   const program = gl.createProgram();
@@ -319,6 +334,7 @@ export function startRibbon(
   let elapsed = 0;
   let last = 0;
   let raf = 0;
+  let skipFrame = false;
   let running = false;
   let inView = true;
   let announced = false;
@@ -328,23 +344,23 @@ export function startRibbon(
   function draw(dt: number): void {
     if (layoutDirty) layout();
 
-    const follow = 1 - Math.exp(-dt * 3);
+    const follow = 1 - Math.exp(-dt * 1.6);
     pointer.cx += (pointer.x - pointer.cx) * follow;
     pointer.cy += (pointer.y - pointer.cy) * follow;
-    pointer.amp += (pointer.target - pointer.amp) * (1 - Math.exp(-dt * 1.6));
+    pointer.amp += (pointer.target - pointer.amp) * (1 - Math.exp(-dt * 0.9));
 
     const sinceFirst = elapsed - FIRST_PULSE;
     const k = sinceFirst < 0 ? -1 : sinceFirst % PULSE_EVERY;
     const sweep = k < 0 || k > PULSE_TIME ? -1 : k / PULSE_TIME;
     const pulsePos = sweep < 0 ? -1 : PULSE_FROM + (PULSE_TO - PULSE_FROM) * sweep;
-    const pulseAmp = sweep < 0 ? 0 : Math.min(1, sweep * 8) * Math.min(1, (1 - sweep) * 5);
+    const pulseAmp = sweep < 0 ? 0 : PULSE_STRENGTH * Math.sin(Math.PI * Math.min(1, sweep * 1.02));
     const pulseRow = 0.28 + 0.44 * ((Math.floor(sinceFirst / PULSE_EVERY) * 0.618) % 1);
 
     gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.uniform1f(u.t, RIBBON_START_TIME + elapsed);
+    gl.uniform1f(u.t, RIBBON_START_TIME + flowTime(elapsed));
     gl.uniform1f(u.reveal, elapsed);
     gl.uniform3f(u.pulse, pulsePos, pulseAmp, pulseRow);
-    gl.uniform3f(u.mouse, (pointer.cx * dpr) / width, (pointer.cy * dpr) / height, pointer.amp * 0.13);
+    gl.uniform3f(u.mouse, (pointer.cx * dpr) / width, (pointer.cy * dpr) / height, pointer.amp * CURSOR_LEAN);
     gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, cols * rows);
   }
 
@@ -369,6 +385,8 @@ export function startRibbon(
 
   function frame(now: number): void {
     raf = requestAnimationFrame(frame);
+    skipFrame = !skipFrame;
+    if (skipFrame && elapsed > SETTLED_AFTER) return;
     const raw = now - last;
     last = now;
     const dt = Math.min(raw / 1000, 0.1);
