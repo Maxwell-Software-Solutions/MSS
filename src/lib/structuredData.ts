@@ -7,7 +7,7 @@ export const organizationSchema = {
   name: 'Maxwell Software Solutions',
   alternateName: 'Maxwell',
   url: 'https://www.maxwellsoftwaresolutions.com',
-  logo: 'https://www.maxwellsoftwaresolutions.com/logo.svg',
+  logo: 'https://www.maxwellsoftwaresolutions.com/icon3.png',
   description:
     'Modern web experiences with AI-driven edits. Engineering excellence through test-driven development, clean architecture, and continuous delivery.',
   foundingDate: '2024',
@@ -55,10 +55,10 @@ export function generateArticleSchema(article: {
       name: 'Maxwell Software Solutions',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.maxwellsoftwaresolutions.com/logo.svg',
+        url: 'https://www.maxwellsoftwaresolutions.com/icon3.png',
       },
     },
-    image: article.imageUrl || 'https://www.maxwellsoftwaresolutions.com/logo.svg',
+    image: article.imageUrl || 'https://www.maxwellsoftwaresolutions.com/icon3.png',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': article.url,

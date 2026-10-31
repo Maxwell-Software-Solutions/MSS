@@ -15,7 +15,7 @@ export function generateProfessionalServiceSchema(): ProfessionalService {
     '@type': 'ProfessionalService',
     '@id': `${SITE_CONFIG.url}/#service`,
     name: SITE_CONFIG.name,
-    image: `${SITE_CONFIG.url}/logo.svg`,
+    image: `${SITE_CONFIG.url}/icon3.png`,
     description: SITE_CONFIG.description,
     address: {
       '@type': 'PostalAddress',
