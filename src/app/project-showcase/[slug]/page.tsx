@@ -217,77 +217,79 @@ export default async function Page({ params }: { params: Promise<{ slug: Slug }>
   const c = CASES[slug];
 
   return (
-    <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
-      <nav className="mb-6">
-        <Link href="/project-showcase" className="text-secondary transition-colors hover:text-foreground">
+    <article className="article">
+      <nav>
+        <Link href="/project-showcase" className="article-back">
           ← Back to case studies
         </Link>
       </nav>
 
-      <header className="mb-8">
+      <header className="article-head">
         <p className="text-sm text-muted">Case study · {c.meta}</p>
-        <h1 className="mt-2">{c.title}</h1>
-        <p className="lead mt-3 max-w-3xl">{c.subtitle}</p>
+        <h1 className="mt-3">{c.title}</h1>
+        <p className="lead mt-4">{c.subtitle}</p>
       </header>
 
-      <div className="relative mb-10 aspect-[3/1] overflow-hidden rounded-xl border border-border bg-wash">
+      <div className="art article-art-wide">
         <Image src={c.hero} alt={c.title} fill className="object-cover" priority unoptimized />
       </div>
 
-      <section className="grid md:grid-cols-2 gap-8 mb-12">
-        <div>
-          <h2 className="text-2xl mb-3">Context</h2>
-          <ul className="list-disc pl-5 space-y-2 text-secondary">
-            {c.context.map((t) => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 className="text-2xl mb-3">Actions</h2>
-          <ul className="list-disc pl-5 space-y-2 text-secondary">
-            {c.actions.map((t) => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {'process' in c ? (
-        <section className="mb-12">
-          <h2 className="text-2xl mb-4">Process</h2>
-          <div className="space-y-6">
-            {c.process!.map((step) => (
-              <div key={step.heading} className="card p-5">
-                <h3 className="text-lg mb-2">{step.heading}</h3>
-                <ul className="list-disc pl-5 space-y-1 text-secondary">
-                  {step.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      <div className="prose-flow">
+        <section className="columns columns-2">
+          <div>
+            <h2>Context</h2>
+            <ul>
+              {c.context.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2>Actions</h2>
+            <ul>
+              {c.actions.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
           </div>
         </section>
-      ) : null}
 
-      <section className="mb-12">
-        <h2 className="text-2xl mb-3">Results</h2>
-        <ul className="list-disc pl-5 space-y-2 text-secondary">
-          {c.results.map((t) => (
-            <li key={t}>{t}</li>
+        {'process' in c ? (
+          <section>
+            <h2>Process</h2>
+            <div>
+              {c.process!.map((step) => (
+                <div key={step.heading} className="qa-item">
+                  <h3>{step.heading}</h3>
+                  <ul>
+                    {step.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        <section>
+          <h2>Results</h2>
+          <ul>
+            {c.results.map((t) => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="stats">
+          {c.metrics.map((m) => (
+            <div key={m.label} className="stat">
+              <div className="stat-value">{m.value}</div>
+              <div className="stat-label">{m.label}</div>
+            </div>
           ))}
-        </ul>
-      </section>
-
-      <section className="ruled grid-cols-1 sm:grid-cols-3" data-reveal>
-        {c.metrics.map((m) => (
-          <div key={m.label} className="p-6">
-            <div className="text-3xl font-semibold tracking-tight tabular-nums">{m.value}</div>
-            <div className="mt-1 text-sm text-muted">{m.label}</div>
-          </div>
-        ))}
-      </section>
+        </section>
+      </div>
     </article>
   );
 }

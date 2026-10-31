@@ -12,10 +12,7 @@ interface BlogPostLayoutProps {
   children: ReactNode;
 }
 
-/**
- * Unified blog post layout component
- * Consolidates header, hero image, and article container patterns
- */
+/** Article page: back link, title, meta line, art, then the reading column. */
 export function BlogPostLayout({
   title,
   date,
@@ -26,15 +23,15 @@ export function BlogPostLayout({
   children,
 }: BlogPostLayoutProps): ReactElement {
   return (
-    <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
-      <header className="mb-12">
-        <nav className="mb-6">
-          <Link href="/blog" className="text-foreground/75 hover:text-foreground transition-colors">
+    <article className="article">
+      <header className="article-head">
+        <nav>
+          <Link href="/blog" className="article-back">
             ← Back to Insights
           </Link>
         </nav>
-        <h1 className="font-bold mb-6">{title}</h1>
-        <div className="flex items-center gap-4 text-foreground/75">
+        <h1>{title}</h1>
+        <div className="article-meta">
           <time dateTime={date}>
             {new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
@@ -45,11 +42,11 @@ export function BlogPostLayout({
         </div>
       </header>
 
-      <div className="mb-12 relative aspect-[1200/630] overflow-hidden rounded-xl border border-border bg-wash">
+      <div className="art article-art">
         <Image src={heroImage} alt={heroAlt} fill className="object-cover" priority />
       </div>
 
-      {children}
+      <div className="prose-flow">{children}</div>
     </article>
   );
 }

@@ -45,7 +45,7 @@ export default function APIDesignPost(): ReactElement {
 
       <ArticleSection id="rest-principles" title="RESTful Design Principles">
         <p>REST (Representational State Transfer) is built on six architectural constraints:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Client-Server:</strong> Separation of concerns between UI and data storage
           </li>
@@ -72,7 +72,7 @@ export default function APIDesignPost(): ReactElement {
 
       <ArticleSection id="resource-naming" title="Resource Naming Conventions">
         <p>Consistent naming conventions make your API intuitive and predictable:</p>
-        <div className="bg-muted/50 p-6 rounded-lg my-6">
+        <div className="note my-6">
           <h4 className="mb-3">✅ Good Examples:</h4>
           <ul className="font-mono text-sm space-y-1">
             <li>GET /users</li>
@@ -82,7 +82,7 @@ export default function APIDesignPost(): ReactElement {
             <li>PATCH /users/123</li>
           </ul>
         </div>
-        <div className="bg-muted/50 p-6 rounded-lg my-6">
+        <div className="note my-6">
           <h4 className="mb-3">❌ Avoid:</h4>
           <ul className="font-mono text-sm space-y-1">
             <li>GET /getUsers</li>
@@ -99,46 +99,46 @@ export default function APIDesignPost(): ReactElement {
 
       <ArticleSection id="http-methods" title="HTTP Methods & Status Codes">
         <p>Proper use of HTTP methods and status codes creates a self-documenting API:</p>
-        <div className="overflow-x-auto my-6">
-          <table className="w-full border-collapse">
+        <div className="table-scroll my-6">
+          <table className="table">
             <thead>
-              <tr className="border-b border-border">
-                <th className="text-left p-3 font-semibold">Method</th>
-                <th className="text-left p-3 font-semibold">Purpose</th>
-                <th className="text-left p-3 font-semibold">Success Status</th>
+              <tr>
+                <th>Method</th>
+                <th>Purpose</th>
+                <th>Success Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-border">
-                <td className="p-3 font-mono">GET</td>
-                <td className="p-3">Retrieve resource(s)</td>
-                <td className="p-3">200 OK</td>
+              <tr>
+                <td className="font-mono">GET</td>
+                <td>Retrieve resource(s)</td>
+                <td>200 OK</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3 font-mono">POST</td>
-                <td className="p-3">Create new resource</td>
-                <td className="p-3">201 Created</td>
+              <tr>
+                <td className="font-mono">POST</td>
+                <td>Create new resource</td>
+                <td>201 Created</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3 font-mono">PUT</td>
-                <td className="p-3">Replace entire resource</td>
-                <td className="p-3">200 OK / 204 No Content</td>
+              <tr>
+                <td className="font-mono">PUT</td>
+                <td>Replace entire resource</td>
+                <td>200 OK / 204 No Content</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3 font-mono">PATCH</td>
-                <td className="p-3">Partial update</td>
-                <td className="p-3">200 OK</td>
+              <tr>
+                <td className="font-mono">PATCH</td>
+                <td>Partial update</td>
+                <td>200 OK</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3 font-mono">DELETE</td>
-                <td className="p-3">Remove resource</td>
-                <td className="p-3">204 No Content</td>
+              <tr>
+                <td className="font-mono">DELETE</td>
+                <td>Remove resource</td>
+                <td>204 No Content</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p>Common error status codes:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>400 Bad Request:</strong> Client sent invalid data
           </li>
@@ -169,7 +169,7 @@ export default function APIDesignPost(): ReactElement {
       <ArticleSection id="versioning" title="API Versioning Strategies">
         <p>Planning for change is essential. Three common versioning approaches:</p>
         <div className="space-y-4 my-6">
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">1. URL Path Versioning</h4>
             <code className="block font-mono text-sm">https://api.example.com/v1/users</code>
             <p className="mt-2 text-sm">
@@ -177,7 +177,7 @@ export default function APIDesignPost(): ReactElement {
               <br />❌ Can lead to URL proliferation
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">2. Header Versioning</h4>
             <code className="block font-mono text-sm">Accept: application/vnd.example.v1+json</code>
             <p className="mt-2 text-sm">
@@ -185,7 +185,7 @@ export default function APIDesignPost(): ReactElement {
               <br />❌ Less visible, harder to test manually
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">3. Query Parameter Versioning</h4>
             <code className="block font-mono text-sm">https://api.example.com/users?version=1</code>
             <p className="mt-2 text-sm">
@@ -202,7 +202,7 @@ export default function APIDesignPost(): ReactElement {
 
       <ArticleSection id="documentation" title="Documentation Standards">
         <p>Comprehensive documentation is non-negotiable for API adoption:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>OpenAPI/Swagger:</strong> Industry-standard specification format
           </li>
@@ -222,7 +222,7 @@ export default function APIDesignPost(): ReactElement {
             <strong>Rate Limits:</strong> Specify limits and how to handle 429 responses
           </li>
         </ul>
-        <div className="bg-muted/50 p-6 rounded-lg my-6 font-mono text-sm">
+        <div className="note my-6 font-mono text-sm">
           <pre>
             {`// Example error response format
 {
@@ -243,7 +243,7 @@ export default function APIDesignPost(): ReactElement {
 
       <ArticleSection id="security" title="Security Best Practices">
         <p>Security must be built into your API from day one:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>HTTPS Only:</strong> Enforce TLS 1.2+ for all endpoints
           </li>
@@ -277,7 +277,7 @@ export default function APIDesignPost(): ReactElement {
 
       <ArticleSection id="performance" title="Performance & Scalability">
         <p>Design your API to handle growth efficiently:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Pagination:</strong> Use cursor-based or offset pagination for large datasets
           </li>
@@ -300,7 +300,7 @@ export default function APIDesignPost(): ReactElement {
             <strong>Async Processing:</strong> Use webhooks or polling for long-running operations
           </li>
         </ul>
-        <div className="bg-muted/50 p-6 rounded-lg my-6 font-mono text-sm">
+        <div className="note my-6 font-mono text-sm">
           <pre>
             {`// Pagination example
 GET /users?limit=20&cursor=abc123
@@ -321,7 +321,7 @@ GET /users?limit=20&cursor=abc123
           Building a great API requires balancing multiple concerns: developer experience, performance, security, and
           long-term maintainability. By following these best practices, you create APIs that are:
         </p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>Easy to understand and integrate</li>
           <li>Resilient to change and growth</li>
           <li>Secure by default</li>
@@ -337,9 +337,9 @@ GET /users?limit=20&cursor=abc123
           implement this week—whether it&apos;s better documentation, consistent error handling, or implementing
           versioning.
         </Alert>
-        <div className="mt-8 band p-8 sm:p-10 text-center">
-          <h3 className="text-xl mb-3">Want Expert API Design Guidance?</h3>
-          <p className="text-foreground/70 mb-5">
+        <div className="callout block-gap">
+          <h3 className="mb-3">Want Expert API Design Guidance?</h3>
+          <p className="mb-6">
             Our{' '}
             <a href="/services" className="text-accent underline hover:no-underline font-medium">
               Code Quality Audit service

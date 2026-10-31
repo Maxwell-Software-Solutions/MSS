@@ -33,33 +33,21 @@ export default function BlogPostTemplate({ slug, children }: BlogPostTemplatePro
   }
 
   return (
-    <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
+    <article className="article">
       {/* Breadcrumbs with schema */}
       <Breadcrumbs pathname={`/blog/${slug}`} titleMap={{ [slug]: post.title }} />
 
       {/* Header */}
-      <header className="mb-12">
-        <nav className="mb-6">
-          <Link
-            href="/blog"
-            className="transition-colors"
-            style={{ color: 'var(--color-text-secondary)' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = 'var(--color-accent)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = 'var(--color-text-secondary)';
-            }}
-          >
+      <header className="article-head">
+        <nav>
+          <Link href="/blog" className="article-back">
             ← Back to Insights
           </Link>
         </nav>
 
-        <h1 className="mb-6" style={{ color: 'var(--color-text)' }}>
-          {post.title}
-        </h1>
+        <h1>{post.title}</h1>
 
-        <div className="flex items-center gap-4" style={{ color: 'var(--color-text-secondary)' }}>
+        <div className="article-meta">
           <time dateTime={post.publishedTime}>
             {new Date(post.publishedTime).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -75,34 +63,18 @@ export default function BlogPostTemplate({ slug, children }: BlogPostTemplatePro
       </header>
 
       {/* Hero Image (OG image doubles as hero) */}
-      <div className="mb-12 relative aspect-[1200/630] overflow-hidden rounded-xl border border-border bg-wash">
+      <div className="art article-art">
         <Image src={`${post.canonical}/opengraph-image`} alt={post.title} fill className="object-cover" priority />
       </div>
 
       {/* Content */}
-      <div className="prose prose-lg max-w-none" style={{ color: 'var(--color-text)' }}>
-        {children}
-      </div>
+      <div className="prose-flow">{children}</div>
 
       {/* Tags */}
       {post.tags && post.tags.length > 0 && (
-        <div className="mt-12 flex flex-wrap gap-2">
+        <div className="tag-list block-gap">
           {post.tags.map((tag) => (
-            <Link
-              key={tag}
-              href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-              className="px-4 py-2 rounded-lg transition-colors text-sm"
-              style={{
-                backgroundColor: 'var(--color-accent-10)',
-                color: 'var(--color-accent)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-accent-20)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--color-accent-10)';
-              }}
-            >
+            <Link key={tag} href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`} className="tag">
               #{tag}
             </Link>
           ))}
@@ -113,35 +85,12 @@ export default function BlogPostTemplate({ slug, children }: BlogPostTemplatePro
       <RelatedArticles currentSlug={slug} />
 
       {/* CTA */}
-      <aside
-        className="mt-16 p-8 rounded-2xl"
-        style={{
-          background: 'linear-gradient(135deg, var(--color-accent-10), var(--color-accent-5))',
-          borderWidth: '1px',
-          borderStyle: 'solid',
-          borderColor: 'var(--color-accent-20)',
-        }}
-      >
-        <h3 className="text-2xl mb-4" style={{ color: 'var(--color-text)' }}>
-          Need Help Improving Your Code Quality?
-        </h3>
-        <p className="mb-6" style={{ color: 'var(--color-text-secondary)' }}>
+      <aside className="callout block-gap">
+        <h3 className="text-2xl">Need Help Improving Your Code Quality?</h3>
+        <p className="mb-6 mt-4 text-secondary">
           Our engineering team can help you implement these practices in your organization.
         </p>
-        <Link
-          href="/contact"
-          className="inline-block px-8 py-3 rounded-lg transition-colors font-semibold"
-          style={{
-            backgroundColor: 'var(--color-accent)',
-            color: '#ffffff',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.opacity = '0.9';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.opacity = '1';
-          }}
-        >
+        <Link href="/contact" className="btn btn-accent">
           Schedule a Consultation
         </Link>
       </aside>

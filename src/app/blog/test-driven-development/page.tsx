@@ -31,18 +31,18 @@ export default function TDDPost(): ReactElement {
         datePublished="2024-12-19"
         imageUrl="https://www.maxwellsoftwaresolutions.com/images/blog/tdd-business-value.svg"
       />
-      <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
+      <article className="article prose-flow">
         {/* Header */}
-        <header className="mb-12">
-          <nav className="mb-6">
-            <Link href="/blog" className="text-foreground/75 hover:text-foreground transition-colors">
+        <header className="article-head">
+          <nav>
+            <Link href="/blog" className="article-back">
               ← Back to Insights
             </Link>
           </nav>
-          <h1 className="mb-6">
+          <h1>
             Test-Driven Development: Building Business Confidence Through Code Quality
           </h1>
-          <div className="flex items-center gap-4 text-foreground/75">
+          <div className="article-meta">
             <time dateTime="2024-12-19">December 19, 2024</time>
             <span>•</span>
             <span>10 min read</span>
@@ -52,7 +52,7 @@ export default function TDDPost(): ReactElement {
         </header>
 
         {/* Hero Image */}
-        <div className="mb-12 relative aspect-[1200/630] overflow-hidden rounded-xl border border-border bg-wash">
+        <div className="art article-art">
           <Image
             src="/images/blog/tdd-business-value.svg"
             alt="Test-Driven Development showing business metrics and code quality"
@@ -63,38 +63,38 @@ export default function TDDPost(): ReactElement {
         </div>
 
         {/* Executive Summary */}
-        <section className="mb-12 bg-accent/10 rounded-2xl p-8">
-          <h2 className="text-2xl mb-4 text-accent">Executive Summary</h2>
-          <p className="text-lg text-foreground/80 mb-4">
+        <section className="note">
+          <h2 className="mb-4 text-accent">Executive Summary</h2>
+          <p className="mb-4">
             Test-Driven Development (TDD) isn&apos;t just a development practice—it&apos;s a business strategy that
             reduces costs, improves reliability, and accelerates time-to-market. Companies implementing TDD see
             <strong>40-80% reduction in production bugs</strong> and <strong>25-50% faster delivery cycles</strong>.
           </p>
           <div className="grid md:grid-cols-3 gap-4 mt-6">
             <div className="text-center">
-              <div className="text-3xl font-semibold text-accent">40-80%</div>
-              <div className="text-sm text-foreground/70">Fewer Production Bugs</div>
+              <div className="text-3xl font-light tabular-nums text-accent">40-80%</div>
+              <div className="text-sm">Fewer Production Bugs</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-semibold text-accent">25-50%</div>
-              <div className="text-sm text-foreground/70">Faster Delivery</div>
+              <div className="text-3xl font-light tabular-nums text-accent">25-50%</div>
+              <div className="text-sm">Faster Delivery</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-semibold text-accent">3-5x</div>
-              <div className="text-sm text-foreground/70">ROI on Investment</div>
+              <div className="text-3xl font-light tabular-nums text-accent">3-5x</div>
+              <div className="text-sm">ROI on Investment</div>
             </div>
           </div>
         </section>
 
         {/* Introduction */}
-        <section className="mb-12">
-          <h2 className="text-3xl mb-6">Why TDD Matters for Business</h2>
-          <p className="text-xl text-foreground/80 leading-relaxed mb-6">
+        <section>
+          <h2 className="mb-6">Why TDD Matters for Business</h2>
+          <p className="lead mb-4">
             In today&apos;s competitive market, software quality directly impacts business outcomes. Every bug that
             reaches production costs money—in customer support, lost revenue, and damaged reputation. Test-Driven
             Development turns this equation around by preventing problems before they happen.
           </p>
-          <p className="text-lg text-foreground/70 leading-relaxed">
+          <p>
             TDD isn&apos;t about writing more code—it&apos;s about writing better code. By writing tests first,
             developers create software that&apos;s more reliable, maintainable, and aligned with business requirements.
             The result? Faster feature delivery, fewer production issues, and happier customers.
@@ -102,22 +102,22 @@ export default function TDDPost(): ReactElement {
         </section>
 
         {/* Business Impact Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl mb-8">The Business Impact of TDD</h2>
+        <section>
+          <h2 className="mb-6">The Business Impact of TDD</h2>
           <div className="grid lg:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl mb-4 text-accent">Cost Reduction</h3>
+              <h3 className="mb-4 text-accent">Cost Reduction</h3>
               <div className="space-y-4">
-                <div className="bg-surface border border-border rounded-lg p-4">
+                <div className="note">
                   <h3 className="mb-2">Bug Prevention</h3>
-                  <p className="text-foreground/70 text-sm">
+                  <p className="text-sm">
                     Catching bugs during development costs 10x less than fixing them in production. TDD prevents most
                     bugs from ever reaching your users.
                   </p>
                 </div>
-                <div className="bg-surface border border-border rounded-lg p-4">
+                <div className="note">
                   <h3 className="mb-2">Maintenance Savings</h3>
-                  <p className="text-foreground/70 text-sm">
+                  <p className="text-sm">
                     Well-tested code is easier to modify and extend, reducing the cost of future development and
                     maintenance.
                   </p>
@@ -125,18 +125,18 @@ export default function TDDPost(): ReactElement {
               </div>
             </div>
             <div>
-              <h3 className="text-xl mb-4 text-accent">Revenue Protection</h3>
+              <h3 className="mb-4 text-accent">Revenue Protection</h3>
               <div className="space-y-4">
-                <div className="bg-surface border border-border rounded-lg p-4">
+                <div className="note">
                   <h3 className="mb-2">Customer Satisfaction</h3>
-                  <p className="text-foreground/70 text-sm">
+                  <p className="text-sm">
                     Reliable software builds trust and reduces customer churn. Happy customers are more likely to renew
                     and recommend your product.
                   </p>
                 </div>
-                <div className="bg-surface border border-border rounded-lg p-4">
+                <div className="note">
                   <h3 className="mb-2">Faster Time-to-Market</h3>
-                  <p className="text-foreground/70 text-sm">
+                  <p className="text-sm">
                     TDD reduces debugging time, allowing teams to deliver features faster and capture market
                     opportunities before competitors.
                   </p>
@@ -147,15 +147,15 @@ export default function TDDPost(): ReactElement {
         </section>
 
         {/* TDD Process */}
-        <section className="mb-16">
-          <h2 className="text-3xl mb-8">How TDD Works: The Red-Green-Refactor Cycle</h2>
+        <section>
+          <h2 className="mb-6">How TDD Works: The Red-Green-Refactor Cycle</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-error-fill rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-semibold text-xl">1</span>
               </div>
-              <h3 className="text-lg mb-2">Red</h3>
-              <p className="text-foreground/70 text-sm">
+              <h3 className="mb-2">Red</h3>
+              <p className="text-sm">
                 Write a failing test that describes the desired behavior. This ensures your test is actually testing
                 something meaningful.
               </p>
@@ -164,8 +164,8 @@ export default function TDDPost(): ReactElement {
               <div className="w-16 h-16 bg-success-fill rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-semibold text-xl">2</span>
               </div>
-              <h3 className="text-lg mb-2">Green</h3>
-              <p className="text-foreground/70 text-sm">
+              <h3 className="mb-2">Green</h3>
+              <p className="text-sm">
                 Write the minimum code needed to make the test pass. This keeps your implementation focused and simple.
               </p>
             </div>
@@ -173,8 +173,8 @@ export default function TDDPost(): ReactElement {
               <div className="w-16 h-16 bg-accent-fill rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-semibold text-xl">3</span>
               </div>
-              <h3 className="text-lg mb-2">Refactor</h3>
-              <p className="text-foreground/70 text-sm">
+              <h3 className="mb-2">Refactor</h3>
+              <p className="text-sm">
                 Clean up the code while keeping tests passing. This improves code quality without changing
                 functionality.
               </p>
@@ -183,20 +183,20 @@ export default function TDDPost(): ReactElement {
         </section>
 
         {/* Real-World Example */}
-        <section className="mb-16">
-          <h2 className="text-3xl mb-8">Real-World Example: E-commerce Payment System</h2>
-          <div className="bg-foreground/5 rounded-2xl p-8">
-            <h3 className="text-xl mb-4">The Challenge</h3>
-            <p className="text-foreground/70 mb-6">
+        <section>
+          <h2 className="mb-6">Real-World Example: E-commerce Payment System</h2>
+          <div className="note">
+            <h3 className="mb-4">The Challenge</h3>
+            <p className="mb-6">
               A retail company needed to add multiple payment methods to their checkout system. Without proper testing,
               this could lead to lost sales and security vulnerabilities.
             </p>
 
-            <h3 className="text-xl mb-4">TDD Approach</h3>
+            <h3 className="mb-4">TDD Approach</h3>
             <div className="grid lg:grid-cols-2 gap-8">
               <div className="min-w-0">
                 <h3 className="mb-2 text-accent">Test First</h3>
-                <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                <div className="note font-mono text-sm overflow-x-auto">
                   <div className="text-accent">describe</div>
                   <div className="text-accent"> &apos;PaymentProcessor&apos;</div>
                   <div className="text-accent"> it &apos;should process credit card payment&apos;</div>
@@ -208,7 +208,7 @@ export default function TDDPost(): ReactElement {
               </div>
               <div className="min-w-0">
                 <h3 className="mb-2 text-accent">Implementation</h3>
-                <div className="bg-surface border border-border rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                <div className="note font-mono text-sm overflow-x-auto">
                   <div className="text-success">class PaymentProcessor</div>
                   <div className="text-success"> def process(payment)</div>
                   <div className="text-success"> return &apos;success&apos; if</div>
@@ -220,7 +220,7 @@ export default function TDDPost(): ReactElement {
               </div>
             </div>
 
-            <h3 className="text-xl mb-4 mt-6">Business Results</h3>
+            <h3 className="mb-4 mt-6">Business Results</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <Alert variant="warning" icon="✅" title="What Went Well">
                 <ul className="space-y-1">
@@ -243,10 +243,10 @@ export default function TDDPost(): ReactElement {
         </section>
 
         {/* ROI Calculation */}
-        <section className="mb-16">
-          <h2 className="text-3xl mb-8">Calculating TDD ROI</h2>
-          <div className="bg-foreground/5 rounded-2xl p-8">
-            <h3 className="text-xl mb-6">Investment vs. Return</h3>
+        <section>
+          <h2 className="mb-6">Calculating TDD ROI</h2>
+          <div className="note">
+            <h3 className="mb-6">Investment vs. Return</h3>
             <div className="grid lg:grid-cols-2 gap-8">
               <div>
                 <h3 className="mb-4 text-error">Initial Investment</h3>
@@ -296,19 +296,19 @@ export default function TDDPost(): ReactElement {
               </div>
             </div>
             <div className="mt-6 text-center">
-              <div className="text-2xl font-semibold text-accent">ROI: 212% in Year 1</div>
-              <p className="text-foreground/70">$40K investment → $125K return = $85K net benefit</p>
+              <div className="text-2xl font-light tabular-nums text-accent">ROI: 212% in Year 1</div>
+              <p>$40K investment → $125K return = $85K net benefit</p>
             </div>
           </div>
         </section>
 
         {/* Getting Started */}
-        <section className="mb-16">
-          <h2 className="text-3xl mb-8">Getting Started with TDD</h2>
+        <section>
+          <h2 className="mb-6">Getting Started with TDD</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-xl mb-4">Phase 1: Foundation (Weeks 1-2)</h3>
-              <ul className="space-y-2 text-foreground/70">
+              <h3 className="mb-4">Phase 1: Foundation (Weeks 1-2)</h3>
+              <ul className="space-y-2">
                 <li>• Train development team on TDD principles</li>
                 <li>• Set up testing frameworks and tools</li>
                 <li>• Start with simple, low-risk features</li>
@@ -316,8 +316,8 @@ export default function TDDPost(): ReactElement {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl mb-4">Phase 2: Expansion (Weeks 3-8)</h3>
-              <ul className="space-y-2 text-foreground/70">
+              <h3 className="mb-4">Phase 2: Expansion (Weeks 3-8)</h3>
+              <ul className="space-y-2">
                 <li>• Apply TDD to new feature development</li>
                 <li>• Refactor existing code with tests</li>
                 <li>• Measure and track quality metrics</li>
@@ -325,35 +325,35 @@ export default function TDDPost(): ReactElement {
               </ul>
             </div>
           </div>
-          <div className="mt-8 bg-accent/10 rounded-lg p-6">
-            <h3 className="text-xl mb-4">Success Metrics to Track</h3>
+          <div className="note mt-8">
+            <h3 className="mb-4">Success Metrics to Track</h3>
             <div className="grid md:grid-cols-3 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-semibold text-accent">↓ 50%</div>
-                <div className="text-sm text-foreground/70">Production Bugs</div>
+                <div className="text-2xl font-light tabular-nums text-accent">↓ 50%</div>
+                <div className="text-sm">Production Bugs</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-semibold text-accent">↑ 30%</div>
-                <div className="text-sm text-foreground/70">Development Speed</div>
+                <div className="text-2xl font-light tabular-nums text-accent">↑ 30%</div>
+                <div className="text-sm">Development Speed</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-semibold text-accent">↑ 95%</div>
-                <div className="text-sm text-foreground/70">Code Coverage</div>
+                <div className="text-2xl font-light tabular-nums text-accent">↑ 95%</div>
+                <div className="text-sm">Code Coverage</div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Conclusion */}
-        <section className="mb-12">
-          <h2 className="text-3xl mb-6">The Bottom Line</h2>
-          <p className="text-lg text-foreground/70 mb-4">
+        <section>
+          <h2 className="mb-6">The Bottom Line</h2>
+          <p className="mb-4">
             Test-Driven Development isn&apos;t just a technical practice—it&apos;s a business strategy that pays
             dividends. While the initial investment may seem significant, the long-term benefits in cost reduction,
             faster delivery, and improved reliability make TDD one of the smartest investments a development team can
             make.
           </p>
-          <p className="text-lg text-foreground/70">
+          <p>
             The companies that embrace TDD today will be the ones leading their markets tomorrow. They&apos;ll ship
             faster, with fewer bugs, and maintain the agility needed to respond to changing market conditions. In the
             world of software development, quality isn&apos;t just nice to have—it&apos;s a competitive advantage.
@@ -361,9 +361,9 @@ export default function TDDPost(): ReactElement {
         </section>
 
         {/* Call to Action */}
-        <section className="band p-8 sm:p-10 text-center">
-          <h2 className="text-2xl mb-4">Ready to Transform Your Development Process?</h2>
-          <p className="text-foreground/70 mb-6">
+        <section className="callout block-gap">
+          <h2 className="mb-4">Ready to Transform Your Development Process?</h2>
+          <p className="mb-6">
             At Maxwell Software Solutions, we&apos;ve helped dozens of teams implement TDD and achieve measurable
             business results. Our{' '}
             <Link href="/services" className="text-accent underline hover:no-underline font-medium">
@@ -371,7 +371,7 @@ export default function TDDPost(): ReactElement {
             </Link>{' '}
             gives your team the practices, tools, and confidence to ship reliable software from day one.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="band-actions">
             <ButtonLink href="/contact" variant="accent" size="lg">
               Start Your TDD Journey
             </ButtonLink>

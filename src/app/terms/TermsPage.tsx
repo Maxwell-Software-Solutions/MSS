@@ -7,9 +7,8 @@ const legalEmail = 'legal@maxwellsoftwaresolutions.com';
 
 export default function TermsPage(): ReactElement {
   return (
-    <PageContainer className="text-secondary">
+    <PageContainer>
       <PageHeader
-        className="max-w-3xl"
         eyebrow="Terms of Service"
         title="Maxwell Software Solutions Terms of Service"
         meta={`Effective date: ${effectiveDate}`}

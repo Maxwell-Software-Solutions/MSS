@@ -4,6 +4,7 @@ import { useState, type ReactElement } from 'react';
 import Link from 'next/link';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import { BOOKING_URL } from '@/lib/booking';
+import { CheckIcon } from '@/app/components/ui';
 
 interface Question {
   key: string;
@@ -294,21 +295,18 @@ export default function CodeHealthScorePage(): ReactElement | null {
     return (
       <>
         {/* Results Hero */}
-        <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-6">
-          <p className="text-[13px] text-muted mb-3" suppressHydrationWarning>
+        <header className="wrap page-head">
+          <p className="eyebrow" suppressHydrationWarning>
             {ht('codeHealth.results.eyebrow', 'Your Results')}
           </p>
-          <h1
-            className="max-w-3xl"
-            suppressHydrationWarning
-          >
+          <h1 suppressHydrationWarning>
             {ht('codeHealth.results.title', 'Code Health Score')}
           </h1>
         </header>
 
         {/* Score Card */}
-        <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-10">
-          <div className={`rounded-3xl border ${tier.borderColor} ${tier.bgColor} p-8 sm:p-12 text-center`}>
+        <section className="section wrap">
+          <div className={`rounded-3xl border ${tier.borderColor} ${tier.bgColor} p-8 sm:p-12`}>
             <div className={`text-[clamp(56px,8vw,96px)] font-semibold ${tier.color} leading-none`}>
               {totalScore}
               <span className="text-[clamp(20px,3vw,32px)] text-muted font-normal">/{maxScore}</span>
@@ -316,30 +314,30 @@ export default function CodeHealthScorePage(): ReactElement | null {
             <div className={`inline-block mt-3 rounded-full px-4 py-1.5 text-sm font-semibold ${tier.color} ${tier.bgColor}`}>
               {tier.label}
             </div>
-            <p className="mt-5 text-[15px] text-foreground/75 max-w-xl mx-auto leading-relaxed" suppressHydrationWarning>
+            <p className="measure mt-5" suppressHydrationWarning>
               {tier.description}
             </p>
           </div>
         </section>
 
         {/* Category Breakdown */}
-        <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-10">
+        <section className="section wrap">
           <h2
-            className="text-[clamp(20px,2vw,26px)] leading-[1.25] tracking-tight mb-6"
+            className="section-subhead"
             suppressHydrationWarning
           >
             {ht('codeHealth.results.breakdown', 'Score Breakdown')}
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
             {questions.map((q, i) => {
               const score = answers[i] ?? 0;
               const categoryLabel = CATEGORY_LABELS[q.key];
               const label = categoryLabel ? ht(`${q.key}.category`, categoryLabel.en) : q.fallback;
               return (
-                <div key={i} className="flex items-center gap-3 bg-card/60 rounded-xl border border-border p-4">
+                <div key={i} className="flex items-center gap-3 border-t border-border py-3">
                   <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${getQuestionIndicatorColor(score)}`} />
-                  <span className="text-[13px] text-foreground/75 flex-1 truncate">{label}</span>
-                  <span className="text-[13px] font-semibold text-foreground/90">{score}/4</span>
+                  <span className="text-sm text-secondary flex-1 truncate">{label}</span>
+                  <span className="text-sm font-semibold text-foreground">{score}/4</span>
                 </div>
               );
             })}
@@ -347,21 +345,21 @@ export default function CodeHealthScorePage(): ReactElement | null {
         </section>
 
         {/* CTA */}
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 py-12 sm:py-16">
-          <div className="rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12 text-center">
-            <p className="text-[13px] font-semibold text-accent mb-3" suppressHydrationWarning>
+        <div className="section wrap">
+          <div className="callout">
+            <p className="eyebrow mb-3" suppressHydrationWarning>
               {ht('codeHealth.cta.eyebrow', 'Next step')}
             </p>
-            <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
+            <h2 suppressHydrationWarning>
               {ht('codeHealth.cta.title', 'Want a professional deep-dive?')}
             </h2>
-            <p className="text-[15px] text-foreground/70 max-w-xl mx-auto mb-6" suppressHydrationWarning>
+            <p className="measure mb-6 mt-4 text-secondary" suppressHydrationWarning>
               {ht(
                 'codeHealth.cta.body',
                 'Book a free 15-minute architecture review. We will look at your actual codebase and give you a prioritised action plan \u2014 no obligation.'
               )}
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="page-actions">
               <Link
                 href={BOOKING_URL}
                 className="btn btn-accent btn-lg"
@@ -376,7 +374,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
               </Link>
               <button
                 onClick={handleRestart}
-                className="text-[14px] font-medium text-foreground/70 hover:text-foreground transition-colors underline underline-offset-2"
+                className="text-sm font-medium text-secondary hover:text-foreground transition-colors underline underline-offset-2"
                 suppressHydrationWarning
               >
                 {ht('codeHealth.cta.retake', 'Retake the quiz')}
@@ -393,47 +391,44 @@ export default function CodeHealthScorePage(): ReactElement | null {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-6">
-        <p className="text-[13px] text-muted mb-3" suppressHydrationWarning>
+      <header className="wrap page-head">
+        <p className="eyebrow" suppressHydrationWarning>
           {ht('codeHealth.eyebrow', 'Self-Assessment')}
         </p>
-        <h1
-          className="max-w-3xl"
-          suppressHydrationWarning
-        >
+        <h1 suppressHydrationWarning>
           {ht('codeHealth.headline', 'Code Health Score')}
         </h1>
-        <p className="mt-5 max-w-2xl text-base md:text-lg leading-[1.65] text-[--muted]" suppressHydrationWarning>
+        <p className="lead" suppressHydrationWarning>
           {ht(
             'codeHealth.subheadline',
             'Answer 15 quick questions about your engineering practices. Get an instant score with a breakdown across testing, deployment, security, and more.'
           )}
         </p>
-        <div className="mt-6 flex flex-wrap gap-3 items-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 text-accent text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
+        <div className="assurances">
+          <span suppressHydrationWarning>
+            <CheckIcon />
             {ht('codeHealth.badge.free', '2 minutes')}
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
+          <span suppressHydrationWarning>
+            <CheckIcon />
             {ht('codeHealth.badge.questions', '15 questions')}
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground/5 text-foreground/75 text-[13px] font-semibold px-3 py-1" suppressHydrationWarning>
+          <span suppressHydrationWarning>
+            <CheckIcon />
             {ht('codeHealth.badge.instant', 'Instant results')}
           </span>
         </div>
       </header>
 
       {/* Progress Bar */}
-      <div className="max-w-6xl mx-auto px-6 sm:px-10 pb-2">
-        <div className="flex items-center justify-between text-[13px] text-muted mb-2">
+      <div className="wrap quiz-width">
+        <div className="flex items-center justify-between text-sm text-muted mb-2">
           <span suppressHydrationWarning>
             {ht('codeHealth.progress.question', 'Question')} {currentQuestion + 1} / {totalQuestions}
           </span>
           <span>{progress}%</span>
         </div>
-        <div className="w-full h-2 bg-foreground/10 rounded-full overflow-hidden">
+        <div className="h-1 w-full overflow-hidden rounded-full bg-border">
           <div
             className="h-full bg-accent-fill rounded-full transition-all duration-300 ease-out"
             style={{ width: `${progress}%` }}
@@ -442,9 +437,9 @@ export default function CodeHealthScorePage(): ReactElement | null {
       </div>
 
       {/* Quiz Card */}
-      <section className="max-w-3xl mx-auto px-6 sm:px-10 py-10 sm:py-14">
-        <div className="rounded-3xl border border-border bg-card/80 p-8 sm:p-10">
-          <h2 className="text-xl sm:text-2xl tracking-tight mb-8" suppressHydrationWarning>
+      <section className="section wrap quiz-width">
+        <div>
+          <h2 className="section-subhead" suppressHydrationWarning>
             {ht(question.key, question.fallback)}
           </h2>
 
@@ -455,10 +450,10 @@ export default function CodeHealthScorePage(): ReactElement | null {
                 <button
                   key={optionIndex}
                   onClick={() => handleAnswer(currentQuestion, option.score)}
-                  className={`w-full text-left rounded-xl border p-4 transition-all duration-150 ${
+                  className={`w-full rounded-lg border p-4 text-left transition-colors duration-150 ${
                     isSelected
                       ? 'border-accent bg-accent/10 text-foreground'
-                      : 'border-border bg-background hover:border-accent/40 hover:bg-accent/5 text-foreground/85'
+                      : 'border-border bg-background hover:border-accent/40 hover:bg-accent/5 text-secondary'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -471,7 +466,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
                         </svg>
                       )}
                     </div>
-                    <span className="text-[14px]">{option.label}</span>
+                    <span className="text-sm">{option.label}</span>
                   </div>
                 </button>
               );
@@ -483,7 +478,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             <button
               onClick={handleBack}
               disabled={currentQuestion === 0}
-              className="text-[14px] font-medium text-foreground/60 hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="text-sm font-medium text-secondary hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               suppressHydrationWarning
             >
               {ht('codeHealth.nav.back', '\u2190 Back')}
@@ -502,7 +497,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             {currentQuestion < totalQuestions - 1 && answers[currentQuestion] !== undefined && (
               <button
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
-                className="text-[14px] font-medium text-accent hover:text-accent/80 transition-colors"
+                className="text-sm font-medium text-accent hover:text-accent/80 transition-colors"
                 suppressHydrationWarning
               >
                 {ht('codeHealth.nav.next', 'Next \u2192')}

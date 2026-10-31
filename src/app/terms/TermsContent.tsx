@@ -13,9 +13,9 @@ interface TermsSectionProps {
 
 function TermsSection({ number, title, children }: TermsSectionProps): ReactElement {
   return (
-    <article className="space-y-3">
-      <h2 className="flex items-baseline gap-3 text-xl text-foreground">
-        <span className="text-sm font-semibold text-[color:var(--accent)]">{number}.</span>
+    <article>
+      <h2 className="flex items-baseline gap-3">
+        <span className="step-index">{number}.</span>
         {title}
       </h2>
       {children}
@@ -25,7 +25,7 @@ function TermsSection({ number, title, children }: TermsSectionProps): ReactElem
 
 export function TermsContent({ legalEmail }: TermsContentProps): ReactElement {
   return (
-    <section className="mt-12 max-w-3xl space-y-10">
+    <section className="prose-flow">
       <TermsSection number={1} title="Who we are & scope">
         <p>
           Maxwell Software Solutions operates the Site to share information about our software quality audits, testing
@@ -62,7 +62,7 @@ export function TermsContent({ legalEmail }: TermsContentProps): ReactElement {
       <TermsSection number={5} title="Privacy & cookies">
         <p>
           Your use of the Site is also governed by our{' '}
-          <Link className="text-[color:var(--accent)] underline-offset-4 hover:underline" href="/privacy">
+          <Link className="text-accent underline" href="/privacy">
             Privacy Policy
           </Link>{' '}
           and the cookie practices described there. Please review that policy to understand how we collect and use
@@ -105,14 +105,14 @@ export function TermsContent({ legalEmail }: TermsContentProps): ReactElement {
 
       <TermsSection number={10} title="Contact">
         <p>If you have questions about these Terms or the Site, contact us at:</p>
-        <dl className="space-y-2">
+        <dl >
           <div>
             <dt className="text-xs font-semibold text-muted">
               Email
             </dt>
             <dd>
               <a
-                className="text-[color:var(--accent)] underline-offset-4 hover:underline"
+                className="text-accent underline"
                 href={`mailto:${legalEmail}`}
               >
                 {legalEmail}

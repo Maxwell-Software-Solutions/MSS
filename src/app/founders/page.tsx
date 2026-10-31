@@ -38,60 +38,32 @@ const founders = [
 
 export default function FoundersPage(): React.ReactElement {
   return (
-    <div className="min-h-screen px-6 sm:px-10 py-16 sm:py-20">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-12" data-reveal>
-          <h1>Founders</h1>
-          <p className="lead mt-4 max-w-2xl">
-            Meet the core team guiding technical direction, product quality, and sustainable velocity.
-          </p>
-        </div>
+    <>
+      <header className="wrap page-head">
+        <h1>Founders</h1>
+        <p className="lead">Meet the core team guiding technical direction, product quality, and sustainable velocity.</p>
+      </header>
 
-        <div className="space-y-12 sm:space-y-16" data-reveal>
+      <div className="section">
+        <div className="wrap study-list">
           {founders.map((founder) => (
-            <div
-              key={founder.name}
-              className="card rounded-3xl border bg-card/95 transition"
-            >
+            <div key={founder.name} className="study split">
+              <div>
+                <h2>{founder.name}</h2>
+                <p className="person-role mt-3 text-base">{founder.title}</p>
+                <p className="measure mt-4 text-secondary">{founder.bio}</p>
+              </div>
               <div
-                className={`grid grid-cols-1 ${
-                  founder.imagePosition === 'right' ? 'lg:grid-cols-[1.5fr_1fr]' : 'lg:grid-cols-[1fr_1.5fr]'
-                } gap-0`}
+                role="img"
+                aria-label={`${founder.name} — ${founder.title}`}
+                className="person-pending"
               >
-                {/* Description Section */}
-                <div
-                  className={`flex flex-col justify-center p-8 sm:p-12 ${
-                    founder.imagePosition === 'right' ? 'lg:order-1' : 'lg:order-2'
-                  }`}
-                >
-                  <div className="space-y-6">
-                    <div>
-                      <h2 className="text-3xl sm:text-4xl tracking-tight mb-3">{founder.name}</h2>
-                      <p className="text-xl text-foreground/80 font-medium">{founder.title}</p>
-                    </div>
-                    <p className="text-base sm:text-lg text-foreground/75 leading-relaxed">{founder.bio}</p>
-                  </div>
-                </div>
-
-                {/* Image Section */}
-                <div
-                  className={`flex items-center justify-center p-8 sm:p-12 ${
-                    founder.imagePosition === 'right' ? 'lg:order-2' : 'lg:order-1'
-                  }`}
-                >
-                  <div
-                    role="img"
-                    aria-label={`${founder.name} — ${founder.title}`}
-                    className="w-full max-w-sm aspect-square rounded-3xl flex items-center justify-center text-sm font-medium text-foreground/70 card"
-                  >
-                    Photo Pending
-                  </div>
-                </div>
+                Photo Pending
               </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 }

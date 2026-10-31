@@ -7,15 +7,12 @@ interface ListSectionProps {
   listClassName?: string;
 }
 
-/**
- * Unified list section component for bullet-point content
- * Used in policy pages, documentation, and feature lists
- */
+/** A titled bullet list in a long-form page; spacing and type come from `.prose-flow`. */
 export function ListSection({ title, items, className = '', listClassName = '' }: ListSectionProps): ReactElement {
   return (
-    <article className={`space-y-4 ${className}`.trim()}>
-      <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
-      <ul className={`list-disc space-y-3 pl-5 marker:text-muted ${listClassName}`.trim()}>
+    <article className={className}>
+      <h2>{title}</h2>
+      <ul className={listClassName}>
         {items.map((item, index) => (
           <li key={index}>{item}</li>
         ))}

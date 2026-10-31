@@ -8,17 +8,14 @@ interface PageHeaderProps {
   className?: string;
 }
 
-/**
- * Unified page header component for consistent page titles
- * Consolidates repeated header patterns across pages
- */
+/** Heading block of a long-form page. */
 export function PageHeader({ eyebrow, title, subtitle, meta, className = '' }: PageHeaderProps): ReactElement {
   return (
-    <header className={`space-y-3 ${className}`.trim()}>
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+    <header className={`article-head ${className}`.trim()}>
+      {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
       <h1>{title}</h1>
-      {meta && <div className="text-sm text-muted">{meta}</div>}
-      {subtitle && <p className="max-w-2xl text-base leading-relaxed text-secondary">{subtitle}</p>}
+      {meta && <div className="article-meta">{meta}</div>}
+      {subtitle && <p className="lead mt-5">{subtitle}</p>}
     </header>
   );
 }

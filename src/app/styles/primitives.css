@@ -345,6 +345,19 @@
     .person-photo { margin-bottom: var(--space-5); }
   }
 
+  .person-pending {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 18rem;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-2xl);
+    background: var(--color-wash);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+
   /* ---- Case studies: one long row each ---- */
   .study-list > * + * { margin-top: var(--space-8); }
   .study { padding-top: var(--space-5); border-top: 1px solid var(--color-border-strong); }
@@ -468,6 +481,9 @@
     .band-split > .band-actions { margin-top: 0; }
   }
 
+  /* ---- Self-assessment ---- */
+  .quiz-width > * { max-width: 48rem; }
+
   /* ---- Forms ---- */
   .form-label { display: block; margin-bottom: var(--space-2); font-size: 0.875rem; font-weight: 500; }
   .form-stack > * + * { margin-top: var(--space-5); }
@@ -490,7 +506,7 @@
   }
   .article-head { margin-bottom: var(--head-gap); }
   .article-head h1 { font-size: var(--text-article-title); }
-  .article-back {
+  .article .article-back {
     display: inline-block;
     margin-bottom: var(--space-5);
     font-size: 0.875rem;
@@ -498,7 +514,7 @@
     text-decoration: none;
     transition: color var(--transition-base);
   }
-  .article-back:hover { color: var(--color-accent); }
+  .article .article-back:hover { color: var(--color-accent); }
   .article-meta {
     display: flex;
     flex-wrap: wrap;
@@ -508,6 +524,31 @@
     color: var(--color-muted);
   }
   .article-art { aspect-ratio: 1200 / 630; margin-bottom: var(--head-gap); }
+  .article-art-wide { aspect-ratio: 3 / 1; margin-bottom: var(--head-gap); }
+
+  .toc { margin-bottom: var(--space-7); padding-block: var(--space-5); border-block: 1px solid var(--color-border); }
+  .prose-flow .toc h2 { margin: 0 0 var(--space-3); font-size: 1rem; font-weight: 500; letter-spacing: 0; }
+  .toc ul { padding: 0; list-style: none; font-size: 0.9375rem; }
+  .toc li + li { margin-top: var(--space-1); }
+  .toc a { color: var(--color-text-secondary); text-decoration: none; transition: color var(--transition-base); }
+  .toc a:hover { color: var(--color-accent); }
+
+  @media (min-width: 640px) {
+    .toc-columns { column-count: 2; column-gap: var(--column-gap); }
+  }
+
+  .alert {
+    margin-block: var(--space-5);
+    padding: var(--space-4) var(--space-5);
+    border-left: 2px solid var(--color-border-strong);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    background: var(--color-wash);
+  }
+  .alert-success { border-left-color: var(--color-success); }
+  .alert-warning { border-left-color: var(--color-warning); }
+  .alert-error { border-left-color: var(--color-error); }
+  .alert-title { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); font-weight: 500; color: var(--color-text); }
+  .alert-body { font-size: 0.9375rem; color: var(--color-text); }
 
   .prose-flow { font-size: 1.0625rem; line-height: 1.65; color: var(--color-text-secondary); }
   .prose-flow :where(h2) {
@@ -538,4 +579,17 @@
   .prose-flow :where(section, article) + :where(section, article) { margin-top: var(--space-8); }
   .prose-flow :where(section, article) > :where(h2):first-child { margin-top: 0; }
   .prose-flow > :where(h2):first-child { margin-top: 0; }
+  .prose-flow :where(.note, .callout, .qa-item, .grid > *, .columns > *) > :where(h2, h3, h4):first-child { margin-top: 0; }
+  .prose-flow :where(h1, .stat-value) { color: var(--color-text); }
+  .prose-flow :where(.note, .grid > *) :where(p, ul, ol) { max-width: none; }
+  .prose-flow .lead { max-width: none; }
+
+  .note {
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    background: var(--color-wash);
+    overflow-wrap: anywhere;
+  }
+  .note + .note { margin-top: var(--space-3); }
+  .note :where(pre) { margin: 0; padding: 0; border: 0; background: transparent; }
 }

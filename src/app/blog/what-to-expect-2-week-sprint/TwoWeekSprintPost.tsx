@@ -54,48 +54,48 @@ export default function TwoWeekSprintPost(): ReactElement {
         </p>
         <p>The categories of work that fit well in a focused 2-week sprint:</p>
         <div className="space-y-4 my-6">
-          <div className="bg-muted/50 p-5 rounded-xl">
+          <div className="note">
             <h4 className="mb-2">Authentication and onboarding flows</h4>
-            <p className="text-sm text-foreground/75">
+            <p className="text-sm">
               Registration, login, password reset, email verification, OAuth integrations. These are well-understood
               patterns with clear acceptance criteria. A senior engineer can implement them cleanly and thoroughly
               in a week, leaving time for testing and edge cases.
             </p>
           </div>
-          <div className="bg-muted/50 p-5 rounded-xl">
+          <div className="note">
             <h4 className="mb-2">CRUD dashboards and admin interfaces</h4>
-            <p className="text-sm text-foreground/75">
+            <p className="text-sm">
               Internal tools, content management screens, reporting dashboards with filtering and export. The scope
               is easy to define (here are the entities, here are the operations) and the delivery is concrete
               (you can see it and click it).
             </p>
           </div>
-          <div className="bg-muted/50 p-5 rounded-xl">
+          <div className="note">
             <h4 className="mb-2">Third-party integrations</h4>
-            <p className="text-sm text-foreground/75">
+            <p className="text-sm">
               Stripe payments, Twilio notifications, HubSpot sync, Slack bots, webhook receivers, OpenAI wrappers.
               Integrations have clear contracts (the API docs) and clear done criteria (data flows end to end).
             </p>
           </div>
-          <div className="bg-muted/50 p-5 rounded-xl">
+          <div className="note">
             <h4 className="mb-2">Specific refactors and module rewrites</h4>
-            <p className="text-sm text-foreground/75">
+            <p className="text-sm">
               &ldquo;Rewrite the billing module so it handles multiple currencies&rdquo; or &ldquo;break the monolith
               authentication logic into a separate service&rdquo; — when the scope is a specific module and the
               interface contract is clear, two weeks is achievable.
             </p>
           </div>
-          <div className="bg-muted/50 p-5 rounded-xl">
+          <div className="note">
             <h4 className="mb-2">Adding test coverage to a critical path</h4>
-            <p className="text-sm text-foreground/75">
+            <p className="text-sm">
               &ldquo;Our checkout flow has no automated tests and we are afraid to touch it.&rdquo; A two-week sprint
               to instrument a specific high-risk area with meaningful test coverage — integration tests, not just unit
               tests — can dramatically reduce engineering anxiety.
             </p>
           </div>
-          <div className="bg-muted/50 p-5 rounded-xl">
+          <div className="note">
             <h4 className="mb-2">Data pipelines and ETL jobs</h4>
-            <p className="text-sm text-foreground/75">
+            <p className="text-sm">
               Moving data between systems, normalising datasets, building scheduled reports. Bounded, logic-heavy,
               and testable. Good fit.
             </p>
@@ -112,7 +112,7 @@ export default function TwoWeekSprintPost(): ReactElement {
           Being direct about what does not work in a two-week sprint is as important as knowing what does. A sprint
           sold as the wrong solution creates resentment and bad outcomes.
         </p>
-        <ul className="list-disc pl-6 space-y-3 my-4">
+        <ul className="space-y-3 my-4">
           <li>
             <strong>Platform rebuilds and full rewrites.</strong> If you want to replace your entire backend with a
             new architecture, that is a multi-month project. A sprint can take on one well-scoped module of that
@@ -150,7 +150,7 @@ export default function TwoWeekSprintPost(): ReactElement {
         <p>
           A well-run external sprint follows this structure:
         </p>
-        <ol className="list-decimal pl-6 space-y-4 my-4">
+        <ol className="space-y-4 my-4">
           <li>
             <strong>Discovery call (30 minutes, before any contract):</strong> The goal is fit assessment. We learn
             what you need built, you learn whether we are the right team to build it. If it is not a good fit, we
@@ -193,7 +193,7 @@ export default function TwoWeekSprintPost(): ReactElement {
           of post-sprint support for bugs or deployment questions.
         </p>
         <p>A few things we are deliberate about:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>We only start when scope is agreed in writing.</strong> This protects both sides. It means you
             know exactly what you are getting, and it means we can deliver confidently rather than chasing a moving
@@ -232,9 +232,9 @@ export default function TwoWeekSprintPost(): ReactElement {
           The signal that it is the right time: you can write a two-sentence description of what you need built and
           what done looks like. If you can do that, a sprint can probably deliver it.
         </p>
-        <div className="mt-8 band p-8 sm:p-10 text-center">
-          <h3 className="text-xl mb-3">Ready to start a sprint?</h3>
-          <p className="text-foreground/70 mb-5 max-w-md mx-auto">
+        <div className="callout block-gap">
+          <h3 className="mb-3">Ready to start a sprint?</h3>
+          <p className="mb-6">
             Book a 30-minute discovery call. We will confirm fit, agree scope, and start the following Monday.
             Fixed price: €4,800.
           </p>

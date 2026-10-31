@@ -10,29 +10,12 @@ interface AlertProps {
   className?: string;
 }
 
-/**
- * Alert component - consolidates info/warning/success/error boxes used in blog posts
- * Flat panel with a coloured edge; colour comes from the status tokens in styles/tokens.css
- */
+/** A note inside an article: a coloured edge on a quiet tone, no box around it. */
 export function Alert({ children, variant = 'info', icon, title, className = '' }: AlertProps): ReactElement {
-  const variantClasses = {
-    info: 'border-border border-l-foreground/40 bg-wash',
-    success: 'border-border border-l-success bg-wash',
-    warning: 'border-border border-l-warning bg-wash',
-    error: 'border-border border-l-error bg-wash',
-  };
-
-  const iconClasses = {
-    info: 'text-foreground',
-    success: 'text-success',
-    warning: 'text-warning',
-    error: 'text-error',
-  };
-
   return (
-    <div className={`rounded-lg border border-l-4 p-4 ${variantClasses[variant]} ${className}`.trim()}>
+    <div className={`alert alert-${variant} ${className}`.trim()}>
       {(title || icon) && (
-        <div className={`mb-2 flex items-center gap-2 font-semibold ${iconClasses[variant]}`}>
+        <div className="alert-title">
           {icon && (
             <span role="img" aria-hidden="true">
               {icon}
@@ -41,7 +24,7 @@ export function Alert({ children, variant = 'info', icon, title, className = '' 
           {title}
         </div>
       )}
-      <div className="text-sm text-foreground">{children}</div>
+      <div className="alert-body">{children}</div>
     </div>
   );
 }

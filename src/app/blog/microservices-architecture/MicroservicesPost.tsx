@@ -51,7 +51,7 @@ export default function MicroservicesPost(): ReactElement {
           Microservices architecture structures an application as a collection of loosely coupled, independently
           deployable services. Each service:
         </p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Owns a specific business capability</strong> (e.g., user management, payment processing)
           </li>
@@ -77,34 +77,34 @@ export default function MicroservicesPost(): ReactElement {
       <ArticleSection id="when-to-use" title="When to Use Microservices">
         <p>Microservices make sense when you have:</p>
         <div className="space-y-4 my-6">
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">✅ Large, Growing Teams</h4>
             <p className="text-sm">
               Multiple teams need to work independently without constant coordination. Conway&apos;s Law suggests your
               architecture will mirror your organization structure.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">✅ Different Scaling Needs</h4>
             <p className="text-sm">
               Some parts of your system need 10x more resources than others. Microservices let you scale only what
               needs scaling.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">✅ Varied Technology Requirements</h4>
             <p className="text-sm">
               Different problems benefit from different tools—real-time processing in Go, ML pipelines in Python, web
               APIs in Node.js.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">✅ High Deployment Frequency</h4>
             <p className="text-sm">
               You need to deploy multiple times per day without coordinating releases across teams.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">✅ Isolation Requirements</h4>
             <p className="text-sm">
               Failure in one subsystem must not bring down the entire application (fault isolation).
@@ -119,7 +119,7 @@ export default function MicroservicesPost(): ReactElement {
           <strong>Warning Signs:</strong> Starting a new product? Have a small team? Unclear domain boundaries? Stick
           with a modular monolith until you have concrete evidence that microservices will solve real problems.
         </Alert>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>You&apos;re just starting:</strong> Premature distribution creates unnecessary complexity. Start
             with a well-structured monolith.
@@ -151,7 +151,7 @@ export default function MicroservicesPost(): ReactElement {
               Single entry point for clients that routes requests to appropriate microservices. Handles authentication,
               rate limiting, and request aggregation.
             </p>
-            <div className="bg-muted/50 p-4 rounded font-mono text-xs">
+            <div className="note font-mono text-xs">
               Client → API Gateway → [Auth Service | User Service | Order Service]
             </div>
           </div>
@@ -191,7 +191,7 @@ export default function MicroservicesPost(): ReactElement {
       <ArticleSection id="communication" title="Service Communication">
         <p>Two primary communication patterns:</p>
         <div className="space-y-4 my-6">
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Synchronous (Request/Response)</h4>
             <p className="text-sm mb-3">REST, gRPC, GraphQL</p>
             <p className="text-sm mb-2">
@@ -201,7 +201,7 @@ export default function MicroservicesPost(): ReactElement {
               <strong>Cons:</strong> Tight coupling, cascade failures, higher latency
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Asynchronous (Event-Driven)</h4>
             <p className="text-sm mb-3">Message queues (RabbitMQ, Kafka, SQS)</p>
             <p className="text-sm mb-2">
@@ -221,7 +221,7 @@ export default function MicroservicesPost(): ReactElement {
 
       <ArticleSection id="data-management" title="Data Management Strategies">
         <p>The hardest part of microservices is managing data consistency across services:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Database per Service:</strong> Each service owns its database schema and data
           </li>
@@ -249,26 +249,26 @@ export default function MicroservicesPost(): ReactElement {
       <ArticleSection id="deployment" title="Deployment & Orchestration">
         <p>Modern microservices rely on containerization and orchestration:</p>
         <div className="space-y-4 my-6">
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Containerization (Docker)</h4>
             <p className="text-sm">
               Package each service with its dependencies for consistent deployment across environments.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Orchestration (Kubernetes)</h4>
             <p className="text-sm">
               Automate deployment, scaling, and management of containerized services. Handles service discovery, load
               balancing, and self-healing.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">CI/CD Pipelines</h4>
             <p className="text-sm">
               Automated testing and deployment for each service. Independent pipelines enable true autonomous teams.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Infrastructure as Code</h4>
             <p className="text-sm">Terraform, CloudFormation, or Pulumi to version control your infrastructure.</p>
           </div>
@@ -276,38 +276,38 @@ export default function MicroservicesPost(): ReactElement {
       </ArticleSection>
 
       <ArticleSection id="challenges" title="Common Challenges & Solutions">
-        <div className="overflow-x-auto my-6">
-          <table className="w-full border-collapse">
+        <div className="table-scroll my-6">
+          <table className="table">
             <thead>
-              <tr className="border-b border-border">
-                <th className="text-left p-3 font-semibold">Challenge</th>
-                <th className="text-left p-3 font-semibold">Solution</th>
+              <tr>
+                <th>Challenge</th>
+                <th>Solution</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-border">
-                <td className="p-3">Distributed debugging</td>
-                <td className="p-3">Centralized logging (ELK, Splunk), distributed tracing (Jaeger, Zipkin)</td>
+              <tr>
+                <td>Distributed debugging</td>
+                <td>Centralized logging (ELK, Splunk), distributed tracing (Jaeger, Zipkin)</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3">Data consistency</td>
-                <td className="p-3">Saga pattern, event sourcing, eventual consistency acceptance</td>
+              <tr>
+                <td>Data consistency</td>
+                <td>Saga pattern, event sourcing, eventual consistency acceptance</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3">Service sprawl</td>
-                <td className="p-3">Clear ownership, service catalogs, consolidate when appropriate</td>
+              <tr>
+                <td>Service sprawl</td>
+                <td>Clear ownership, service catalogs, consolidate when appropriate</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3">Network latency</td>
-                <td className="p-3">Async communication, caching, smart service boundaries</td>
+              <tr>
+                <td>Network latency</td>
+                <td>Async communication, caching, smart service boundaries</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3">Testing complexity</td>
-                <td className="p-3">Contract testing (Pact), component testing, service virtualization</td>
+              <tr>
+                <td>Testing complexity</td>
+                <td>Contract testing (Pact), component testing, service virtualization</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3">Operational overhead</td>
-                <td className="p-3">Kubernetes, service mesh (Istio), automated monitoring</td>
+              <tr>
+                <td>Operational overhead</td>
+                <td>Kubernetes, service mesh (Istio), automated monitoring</td>
               </tr>
             </tbody>
           </table>
@@ -320,7 +320,7 @@ export default function MicroservicesPost(): ReactElement {
 
       <ArticleSection id="conclusion" title="Conclusion">
         <p>Microservices are a powerful architectural pattern, but they&apos;re not free:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Start with a monolith</strong> and extract services only when you have clear evidence of need
           </li>
@@ -348,9 +348,9 @@ export default function MicroservicesPost(): ReactElement {
           clear bounded contexts using Domain-Driven Design, and pilot with a single extracted service to learn the
           operational challenges.
         </Alert>
-        <div className="mt-8 band p-8 sm:p-10 text-center">
-          <h3 className="text-xl mb-3">Need Help With Microservices Architecture?</h3>
-          <p className="text-foreground/70 mb-5">
+        <div className="callout block-gap">
+          <h3 className="mb-3">Need Help With Microservices Architecture?</h3>
+          <p className="mb-6">
             Our{' '}
             <a href="/services" className="text-accent underline hover:no-underline font-medium">
               Reliability Engineering service

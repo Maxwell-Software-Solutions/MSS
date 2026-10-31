@@ -8,7 +8,7 @@ interface PrivacyContentProps {
 
 export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElement {
   return (
-    <section className="mt-12 max-w-3xl space-y-8">
+    <section className="prose-flow">
       <ListSection
         title="Summary"
         items={[
@@ -16,7 +16,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
           'You have GDPR rights to access, correct, delete, and object to the processing of your personal data.',
           'We never sell your personal data.',
         ]}
-        listClassName="space-y-2"
+        
       />
 
       <ListSection
@@ -42,7 +42,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         <p>
           We process personal data only when a lawful basis under{' '}
           <a
-            className="text-[color:var(--accent)] underline-offset-4 hover:underline"
+            className="text-accent underline"
             href="https://gdpr-info.eu/art-6-gdpr/"
             target="_blank"
             rel="noreferrer"
@@ -51,7 +51,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
           </a>{' '}
           applies:
         </p>
-        <ul className="list-disc space-y-3 pl-5">
+        <ul >
           <li>
             <strong>Contract:</strong> to provide proposals, statements of work, and deliver the services you request.
           </li>
@@ -74,7 +74,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         <p>
           For more on the GDPR and cookies, see{' '}
           <a
-            className="text-[color:var(--accent)] underline-offset-4 hover:underline"
+            className="text-accent underline"
             href="https://gdpr.eu/cookies/"
             target="_blank"
             rel="noreferrer"
@@ -90,7 +90,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
       </ArticleSection>
 
       <ArticleSection title="Data sharing">
-        <ul className="list-disc space-y-3 pl-5">
+        <ul >
           <li>
             <strong>Service providers (sub-processors):</strong> hosting, email, analytics, and error monitoring
             partners that process data under confidentiality and data processing agreements.
@@ -134,7 +134,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         </p>
         <p>
           To exercise your rights or ask questions, email{' '}
-          <a className="text-[color:var(--accent)] underline-offset-4 hover:underline" href={`mailto:${privacyEmail}`}>
+          <a className="text-accent underline" href={`mailto:${privacyEmail}`}>
             {privacyEmail}
           </a>
           .
@@ -142,7 +142,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         <p>
           If we cannot resolve your concerns, you may contact Lithuania&apos;s supervisory authority, the{' '}
           <a
-            className="text-[color:var(--accent)] underline-offset-4 hover:underline"
+            className="text-accent underline"
             href="https://vdai.lrv.lt/en/"
             target="_blank"
             rel="noreferrer"
@@ -157,7 +157,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         <p>
           We apply encryption in transit, access controls, and least-privilege principles to protect personal data.
           Learn more about our technical and organisational measures on our{' '}
-          <Link className="text-[color:var(--accent)] underline-offset-4 hover:underline" href="/security">
+          <Link className="text-accent underline" href="/security">
             Security page
           </Link>
           .
@@ -167,24 +167,24 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
       <ArticleSection title="Controller details">
         <dl className="grid gap-4 sm:grid-cols-2">
           <div>
-            <dt className="text-xs font-semibold text-muted">
+            <dt className="text-sm font-medium text-muted">
               Legal entity
             </dt>
             <dd className="mt-1">Maxwell Software Solutions, MB</dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold text-muted">
+            <dt className="text-sm font-medium text-muted">
               Company number
             </dt>
             <dd className="mt-1">Details available upon request.</dd>
           </div>
           <div>
-            <dt className="text-xs font-semibold text-muted">
+            <dt className="text-sm font-medium text-muted">
               Email
             </dt>
             <dd className="mt-1">
               <a
-                className="text-[color:var(--accent)] underline-offset-4 hover:underline"
+                className="text-accent underline"
                 href={`mailto:${privacyEmail}`}
               >
                 {privacyEmail}

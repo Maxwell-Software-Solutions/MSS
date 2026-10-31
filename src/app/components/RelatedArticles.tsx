@@ -29,28 +29,16 @@ export default function RelatedArticles({ currentSlug, limit = 3 }: RelatedArtic
   if (relatedPosts.length === 0) return null;
 
   return (
-    <aside
-      className="mt-12 p-6 rounded-lg border border-border"
-      style={{
-        backgroundColor: 'var(--color-bg-secondary)',
-      }}
-      aria-labelledby="related-articles-heading"
-    >
-      <h3 id="related-articles-heading" className="text-lg mb-4" style={{ color: 'var(--color-text)' }}>
+    <aside className="block-gap" aria-labelledby="related-articles-heading">
+      <h3 id="related-articles-heading" className="mb-4 text-xl">
         Related Reading
       </h3>
-      <ul className="space-y-3">
+      <ul>
         {relatedPosts.map((post) => (
-          <li key={post.slug}>
-            <Link
-              href={post.canonical}
-              className="group flex flex-col gap-1 transition-colors"
-              style={{ color: 'var(--color-text)' }}
-            >
-              <span className="font-medium group-hover:underline group-hover:text-[var(--color-accent)]">
-                {post.title}
-              </span>
-              <span className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+          <li key={post.slug} className="qa-item">
+            <Link href={post.canonical} className="group flex flex-col gap-1 no-underline">
+              <span className="font-medium transition-colors group-hover:text-accent">{post.title}</span>
+              <span className="text-sm text-secondary">
                 {post.readTime} • {post.category}
               </span>
             </Link>

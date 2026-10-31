@@ -7,7 +7,7 @@ interface SecurityContentProps {
 
 export function SecurityContent({ securityEmail }: SecurityContentProps): ReactElement {
   return (
-    <section className="mt-12 max-w-3xl space-y-10">
+    <section className="prose-flow">
       <ListSection
         title="Our security practices"
         items={[
@@ -50,7 +50,7 @@ export function SecurityContent({ securityEmail }: SecurityContentProps): ReactE
             authority and affected individuals without undue delay in line with GDPR obligations (within 72 hours where
             required). Learn more at{' '}
             <a
-              className="text-[color:var(--accent)] underline-offset-4 hover:underline"
+              className="text-accent underline"
               href="https://gdpr-info.eu/art-33-gdpr/"
               target="_blank"
               rel="noreferrer"
@@ -75,12 +75,12 @@ export function SecurityContent({ securityEmail }: SecurityContentProps): ReactE
       <ArticleSection title="Responsible disclosure">
         <p>
           If you believe you have found a security vulnerability on our Site, email{' '}
-          <a className="text-[color:var(--accent)] underline-offset-4 hover:underline" href={`mailto:${securityEmail}`}>
+          <a className="text-accent underline" href={`mailto:${securityEmail}`}>
             {securityEmail}
           </a>{' '}
           (PGP optional). Please:
         </p>
-        <ul className="list-disc space-y-3 pl-5">
+        <ul >
           <li>Do not access data that is not yours, degrade our service, or violate laws.</li>
           <li>Give us reasonable time to investigate and remediate before public disclosure.</li>
           <li>Provide enough detail to reproduce the issue. We will acknowledge valid reports and keep you updated.</li>
@@ -89,7 +89,7 @@ export function SecurityContent({ securityEmail }: SecurityContentProps): ReactE
 
       <ArticleSection title="Sub-processors">
         <p>The following providers support the delivery of our Site and services:</p>
-        <ul className="list-disc space-y-2 pl-5">
+        <ul >
           <li>
             <strong>Hosting / CDN:</strong> Vercel (primary hosting) and Cloudflare (edge caching).
           </li>
@@ -106,14 +106,14 @@ export function SecurityContent({ securityEmail }: SecurityContentProps): ReactE
         <p className="text-sm text-muted">
           The following actions ensure ongoing compliance and clarity for visitors:
         </p>
-        <ul className="list-disc space-y-3 pl-5">
+        <ul >
           <li>Confirm public-facing entity details (legal name, registration number, and registered address).</li>
           <li>Launch dedicated inboxes (privacy@, legal@, security@) and route to responsible owners.</li>
           <li>
             Implement a consent-based cookie banner that blocks non-essential cookies until accepted and includes a
             visible &ldquo;Cookie settings&rdquo; link in the footer. Guidance:{' '}
             <a
-              className="text-[color:var(--accent)] underline-offset-4 hover:underline"
+              className="text-accent underline"
               href="https://gdpr.eu/cookies/"
               target="_blank"
               rel="noreferrer"

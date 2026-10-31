@@ -31,16 +31,16 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         datePublished="2024-12-19"
         imageUrl="https://www.maxwellsoftwaresolutions.com/images/blog/solid-principles-hero.svg"
       />
-      <article className="max-w-4xl mx-auto px-6 sm:px-10 py-12">
+      <article className="article prose-flow">
         {/* Header */}
-        <header className="mb-12">
-          <nav className="mb-6">
-            <Link href="/blog" className="text-foreground/75 hover:text-foreground transition-colors">
+        <header className="article-head">
+          <nav>
+            <Link href="/blog" className="article-back">
               ← Back to Insights
             </Link>
           </nav>
-          <h1 className="mb-6">SOLID Principles: The Foundation of Clean Code</h1>
-          <div className="flex items-center gap-4 text-foreground/75">
+          <h1>SOLID Principles: The Foundation of Clean Code</h1>
+          <div className="article-meta">
             <time dateTime="2024-12-19">December 19, 2024</time>
             <span>•</span>
             <span>8 min read</span>
@@ -50,7 +50,7 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         </header>
 
         {/* Hero Image */}
-        <div className="mb-12 relative aspect-[1200/630] overflow-hidden rounded-xl border border-border bg-wash">
+        <div className="art article-art">
           <Image
             src="/images/blog/solid-principles-hero.svg"
             alt="SOLID Principles illustration showing five interconnected building blocks"
@@ -61,13 +61,13 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         </div>
 
         {/* Introduction */}
-        <section className="mb-12">
-          <p className="text-xl text-foreground/80 leading-relaxed mb-6">
+        <section>
+          <p className="lead mb-4">
             In the world of software development, writing code that works is just the beginning. The real challenge lies
             in creating code that&apos;s maintainable, scalable, and easy to understand. This is where SOLID principles
             come into play.
           </p>
-          <p className="text-lg text-foreground/70 leading-relaxed">
+          <p>
             SOLID is an acronym for five design principles that help developers create software that&apos;s easier to
             maintain, extend, and refactor. These principles were introduced by Robert C. Martin and have become
             fundamental to modern software architecture.
@@ -75,59 +75,59 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         </section>
 
         {/* SOLID Overview */}
-        <section className="mb-16">
-          <h2 className="text-3xl mb-8">The Five SOLID Principles</h2>
+        <section>
+          <h2 className="mb-6">The Five SOLID Principles</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent font-semibold text-xl">S</span>
+                <div className="w-8 flex-shrink-0">
+                  <span className="text-xl font-medium text-accent">S</span>
                 </div>
                 <div>
-                  <h3 className="text-xl mb-2">Single Responsibility Principle</h3>
-                  <p className="text-foreground/70">A class should have only one reason to change.</p>
+                  <h3 className="mb-2">Single Responsibility Principle</h3>
+                  <p>A class should have only one reason to change.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent font-semibold text-xl">O</span>
+                <div className="w-8 flex-shrink-0">
+                  <span className="text-xl font-medium text-accent">O</span>
                 </div>
                 <div>
-                  <h3 className="text-xl mb-2">Open/Closed Principle</h3>
-                  <p className="text-foreground/70">
+                  <h3 className="mb-2">Open/Closed Principle</h3>
+                  <p>
                     Software entities should be open for extension but closed for modification.
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent font-semibold text-xl">L</span>
+                <div className="w-8 flex-shrink-0">
+                  <span className="text-xl font-medium text-accent">L</span>
                 </div>
                 <div>
-                  <h3 className="text-xl mb-2">Liskov Substitution Principle</h3>
-                  <p className="text-foreground/70">Derived classes must be substitutable for their base classes.</p>
+                  <h3 className="mb-2">Liskov Substitution Principle</h3>
+                  <p>Derived classes must be substitutable for their base classes.</p>
                 </div>
               </div>
             </div>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent font-semibold text-xl">I</span>
+                <div className="w-8 flex-shrink-0">
+                  <span className="text-xl font-medium text-accent">I</span>
                 </div>
                 <div>
-                  <h3 className="text-xl mb-2">Interface Segregation Principle</h3>
-                  <p className="text-foreground/70">
+                  <h3 className="mb-2">Interface Segregation Principle</h3>
+                  <p>
                     Clients should not be forced to depend on interfaces they don&apos;t use.
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-accent font-semibold text-xl">D</span>
+                <div className="w-8 flex-shrink-0">
+                  <span className="text-xl font-medium text-accent">D</span>
                 </div>
                 <div>
-                  <h3 className="text-xl mb-2">Dependency Inversion Principle</h3>
-                  <p className="text-foreground/70">
+                  <h3 className="mb-2">Dependency Inversion Principle</h3>
+                  <p>
                     High-level modules should not depend on low-level modules. Both should depend on abstractions.
                   </p>
                 </div>
@@ -140,27 +140,27 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         <section className="space-y-16">
           {/* Single Responsibility Principle */}
           <div>
-            <h2 className="text-3xl mb-6">1. Single Responsibility Principle (SRP)</h2>
+            <h2 className="mb-6">1. Single Responsibility Principle (SRP)</h2>
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
-                <p className="text-lg text-foreground/70 mb-4">
+                <p className="mb-4">
                   The Single Responsibility Principle states that a class should have only one reason to change. In
                   other words, a class should have only one responsibility or job.
                 </p>
-                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
+                <div className="note mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/75 text-sm">
+                  <p className="text-sm">
                     A class that handles user authentication, sends emails, and manages database connections.
                   </p>
                 </div>
-                <div className="bg-surface border border-border rounded-lg p-4">
+                <div className="note">
                   <h3 className="mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/75 text-sm">
+                  <p className="text-sm">
                     Separate classes for UserAuthentication, EmailService, and DatabaseConnection.
                   </p>
                 </div>
               </div>
-              <div className="relative h-64 rounded-lg overflow-hidden">
+              <div className="art relative h-64">
                 <Image
                   src="/images/blog/srp-illustration.svg"
                   alt="Single Responsibility Principle showing one class with one responsibility"
@@ -173,9 +173,9 @@ export default function SOLIDPrinciplesPost(): ReactElement {
 
           {/* Open/Closed Principle */}
           <div>
-            <h2 className="text-3xl mb-6">2. Open/Closed Principle (OCP)</h2>
+            <h2 className="mb-6">2. Open/Closed Principle (OCP)</h2>
             <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 rounded-lg overflow-hidden order-2 lg:order-1">
+              <div className="art relative h-64 order-2 lg:order-1">
                 <Image
                   src="/images/blog/ocp-illustration.svg"
                   alt="Open/Closed Principle showing extension without modification"
@@ -184,17 +184,17 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                 />
               </div>
               <div className="order-1 lg:order-2">
-                <p className="text-lg text-foreground/70 mb-4">
+                <p className="mb-4">
                   Software entities (classes, modules, functions) should be open for extension but closed for
                   modification. This means you should be able to add new functionality without changing existing code.
                 </p>
-                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
+                <div className="note mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/75 text-sm">Modifying existing classes to add new payment methods.</p>
+                  <p className="text-sm">Modifying existing classes to add new payment methods.</p>
                 </div>
-                <div className="bg-surface border border-border rounded-lg p-4">
+                <div className="note">
                   <h3 className="mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/75 text-sm">
+                  <p className="text-sm">
                     Creating new payment method classes that implement a common interface.
                   </p>
                 </div>
@@ -204,27 +204,27 @@ export default function SOLIDPrinciplesPost(): ReactElement {
 
           {/* Liskov Substitution Principle */}
           <div>
-            <h2 className="text-3xl mb-6">3. Liskov Substitution Principle (LSP)</h2>
+            <h2 className="mb-6">3. Liskov Substitution Principle (LSP)</h2>
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
-                <p className="text-lg text-foreground/70 mb-4">
+                <p className="mb-4">
                   Derived classes must be substitutable for their base classes without affecting the correctness of the
                   program. This ensures that inheritance is used correctly.
                 </p>
-                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
+                <div className="note mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/75 text-sm">
+                  <p className="text-sm">
                     A Square class that inherits from Rectangle but changes the behavior of width/height setters.
                   </p>
                 </div>
-                <div className="bg-surface border border-border rounded-lg p-4">
+                <div className="note">
                   <h3 className="mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/75 text-sm">
+                  <p className="text-sm">
                     Ensuring that derived classes maintain the contract of their base classes.
                   </p>
                 </div>
               </div>
-              <div className="relative h-64 rounded-lg overflow-hidden">
+              <div className="art relative h-64">
                 <Image
                   src="/images/blog/lsp-illustration.svg"
                   alt="Liskov Substitution Principle showing proper inheritance hierarchy"
@@ -237,9 +237,9 @@ export default function SOLIDPrinciplesPost(): ReactElement {
 
           {/* Interface Segregation Principle */}
           <div>
-            <h2 className="text-3xl mb-6">4. Interface Segregation Principle (ISP)</h2>
+            <h2 className="mb-6">4. Interface Segregation Principle (ISP)</h2>
             <div className="grid lg:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 rounded-lg overflow-hidden order-2 lg:order-1">
+              <div className="art relative h-64 order-2 lg:order-1">
                 <Image
                   src="/images/blog/isp-illustration.svg"
                   alt="Interface Segregation Principle showing focused interfaces"
@@ -248,19 +248,19 @@ export default function SOLIDPrinciplesPost(): ReactElement {
                 />
               </div>
               <div className="order-1 lg:order-2">
-                <p className="text-lg text-foreground/70 mb-4">
+                <p className="mb-4">
                   Clients should not be forced to depend on interfaces they don&apos;t use. It&apos;s better to have
                   many specific interfaces than one general-purpose interface.
                 </p>
-                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
+                <div className="note mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/75 text-sm">
+                  <p className="text-sm">
                     A large interface with methods for printing, scanning, and faxing that not all clients need.
                   </p>
                 </div>
-                <div className="bg-surface border border-border rounded-lg p-4">
+                <div className="note">
                   <h3 className="mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/75 text-sm">
+                  <p className="text-sm">
                     Separate interfaces: IPrinter, IScanner, IFax, allowing clients to implement only what they need.
                   </p>
                 </div>
@@ -270,28 +270,28 @@ export default function SOLIDPrinciplesPost(): ReactElement {
 
           {/* Dependency Inversion Principle */}
           <div>
-            <h2 className="text-3xl mb-6">5. Dependency Inversion Principle (DIP)</h2>
+            <h2 className="mb-6">5. Dependency Inversion Principle (DIP)</h2>
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
-                <p className="text-lg text-foreground/70 mb-4">
+                <p className="mb-4">
                   High-level modules should not depend on low-level modules. Both should depend on abstractions.
                   Abstractions should not depend on details. Details should depend on abstractions.
                 </p>
-                <div className="bg-surface border border-border rounded-lg p-4 mb-4">
+                <div className="note mb-4">
                   <h3 className="mb-2">❌ Bad Example:</h3>
-                  <p className="text-foreground/75 text-sm">
+                  <p className="text-sm">
                     A business logic class directly instantiating a specific database implementation.
                   </p>
                 </div>
-                <div className="bg-surface border border-border rounded-lg p-4">
+                <div className="note">
                   <h3 className="mb-2">✅ Good Example:</h3>
-                  <p className="text-foreground/75 text-sm">
+                  <p className="text-sm">
                     Business logic depending on a database interface, with implementations injected via dependency
                     injection.
                   </p>
                 </div>
               </div>
-              <div className="relative h-64 rounded-lg overflow-hidden">
+              <div className="art relative h-64">
                 <Image
                   src="/images/blog/dip-illustration.svg"
                   alt="Dependency Inversion Principle showing abstraction layers"
@@ -304,37 +304,37 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         </section>
 
         {/* Benefits Section */}
-        <section className="my-16 bg-foreground/5 rounded-2xl p-8">
-          <h2 className="text-3xl mb-8">Benefits of Following SOLID Principles</h2>
+        <section className="note my-8">
+          <h2 className="mb-6">Benefits of Following SOLID Principles</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-accent-fill rounded-full flex-shrink-0 mt-1"></div>
+              <div className="w-2 h-2 bg-accent-fill rounded-full mt-3 flex-shrink-0"></div>
               <div>
                 <h3 className="mb-2">Maintainability</h3>
-                <p className="text-foreground/70 text-sm">Code is easier to understand, modify, and extend.</p>
+                <p className="text-sm">Code is easier to understand, modify, and extend.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-accent-fill rounded-full flex-shrink-0 mt-1"></div>
+              <div className="w-2 h-2 bg-accent-fill rounded-full mt-3 flex-shrink-0"></div>
               <div>
                 <h3 className="mb-2">Testability</h3>
-                <p className="text-foreground/70 text-sm">Smaller, focused classes are easier to unit test.</p>
+                <p className="text-sm">Smaller, focused classes are easier to unit test.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-accent-fill rounded-full flex-shrink-0 mt-1"></div>
+              <div className="w-2 h-2 bg-accent-fill rounded-full mt-3 flex-shrink-0"></div>
               <div>
                 <h3 className="mb-2">Reusability</h3>
-                <p className="text-foreground/70 text-sm">
+                <p className="text-sm">
                   Components can be reused across different parts of the application.
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <div className="w-6 h-6 bg-accent-fill rounded-full flex-shrink-0 mt-1"></div>
+              <div className="w-2 h-2 bg-accent-fill rounded-full mt-3 flex-shrink-0"></div>
               <div>
                 <h3 className="mb-2">Flexibility</h3>
-                <p className="text-foreground/70 text-sm">
+                <p className="text-sm">
                   Easy to add new features without breaking existing functionality.
                 </p>
               </div>
@@ -343,14 +343,14 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         </section>
 
         {/* Conclusion */}
-        <section className="mb-12">
-          <h2 className="text-3xl mb-6">Conclusion</h2>
-          <p className="text-lg text-foreground/70 mb-4">
+        <section>
+          <h2 className="mb-6">Conclusion</h2>
+          <p className="mb-4">
             SOLID principles are not just theoretical concepts—they&apos;re practical guidelines that help developers
             write better code. While it may take time to master these principles, the investment pays off in the long
             run with more maintainable, scalable, and robust software.
           </p>
-          <p className="text-lg text-foreground/70">
+          <p>
             Remember, these principles are meant to guide your design decisions, not to be followed rigidly. The goal is
             to create code that&apos;s easy to understand, modify, and extend—code that your future self and your
             teammates will thank you for.
@@ -358,9 +358,9 @@ export default function SOLIDPrinciplesPost(): ReactElement {
         </section>
 
         {/* Call to Action */}
-        <section className="band p-8 sm:p-10 text-center">
-          <h2 className="text-2xl mb-4">Ready to Improve Your Code Quality?</h2>
-          <p className="text-foreground/70 mb-6">
+        <section className="callout block-gap">
+          <h2 className="mb-4">Ready to Improve Your Code Quality?</h2>
+          <p className="mb-6">
             At Maxwell Software Solutions, we specialize in helping teams write cleaner, more maintainable code. Our{' '}
             <Link href="/services" className="text-accent underline hover:no-underline font-medium">
               Code Quality Audit service
@@ -368,7 +368,7 @@ export default function SOLIDPrinciplesPost(): ReactElement {
             identifies SOLID violations, technical debt, and architectural issues — with actionable recommendations your
             team can implement immediately.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="band-actions">
             <ButtonLink href="/contact" variant="accent" size="lg">
               Request a Code Audit
             </ButtonLink>

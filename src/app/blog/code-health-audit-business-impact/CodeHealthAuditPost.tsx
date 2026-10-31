@@ -52,7 +52,7 @@ export default function CodeHealthAuditPost(): ReactElement {
           Unlike a production incident, a deteriorating codebase does not announce itself. The signals are indirect —
           easy to attribute to other causes. Here is what to look for:
         </p>
-        <ul className="list-disc pl-6 space-y-3 my-4">
+        <ul className="space-y-3 my-4">
           <li>
             <strong>Estimates keep missing, and not by a little.</strong> When engineers consistently underestimate how
             long things take, it is often because they cannot see the hidden complexity — the cascade of changes a
@@ -97,27 +97,27 @@ export default function CodeHealthAuditPost(): ReactElement {
           re-testing, fixing regressions introduced by changes in unrelated areas — that is ten engineer-hours per day.
           Fifty hours per week. Over a quarter, that is more than one full engineer&apos;s capacity.
         </p>
-        <div className="bg-muted/50 p-6 rounded-lg my-6">
+        <div className="note my-6">
           <h4 className="mb-3">Common cost sources in an unhealthy codebase:</h4>
           <ul className="space-y-2 text-sm">
             <li className="flex items-start gap-2">
-              <span className="text-accent font-semibold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-1">—</span>
               <span><strong>Context-switching overhead:</strong> Engineers hold the whole system in memory because modularity is poor</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-semibold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-1">—</span>
               <span><strong>Regression testing time:</strong> Manual verification because automated coverage is absent or broken</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-semibold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-1">—</span>
               <span><strong>Incident investigation time:</strong> Debugging is slow without observability infrastructure</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-semibold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-1">—</span>
               <span><strong>Security exposure:</strong> Outdated dependencies carry known CVEs that create liability</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-accent font-semibold mt-0.5">—</span>
+              <span className="text-accent font-semibold mt-1">—</span>
               <span><strong>Hiring friction:</strong> Good engineers leave or decline offers when they see the codebase</span>
             </li>
           </ul>
@@ -140,7 +140,7 @@ export default function CodeHealthAuditPost(): ReactElement {
           a whole rather than at individual pull requests.
         </p>
         <p>What a thorough audit produces:</p>
-        <ul className="list-disc pl-6 space-y-3 my-4">
+        <ul className="space-y-3 my-4">
           <li>
             <strong>Architecture map:</strong> Where are the real domain boundaries? Which modules are monolithic when
             they should be separated? Which areas have no clear ownership?
@@ -182,7 +182,7 @@ export default function CodeHealthAuditPost(): ReactElement {
         <p>
           But there are moments when an external, structured audit pays for itself many times over:
         </p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>Before a fundraising round or acquisition process</li>
           <li>When a new CTO or VP of Engineering inherits a system they did not build</li>
           <li>When velocity has declined meaningfully over 2+ quarters and internal reviews have not found the cause</li>
@@ -208,9 +208,9 @@ export default function CodeHealthAuditPost(): ReactElement {
           findings are always good news, but because ambiguity is more exhausting than a clear problem with a plan
           attached.
         </p>
-        <div className="mt-8 band p-8 sm:p-10 text-center">
-          <h3 className="text-xl mb-3">Get a free Code Health Audit</h3>
-          <p className="text-foreground/70 mb-5 max-w-md mx-auto">
+        <div className="callout block-gap">
+          <h3 className="mb-3">Get a free Code Health Audit</h3>
+          <p className="mb-6">
             We conduct a full architecture, security, and performance review — and deliver a prioritised remediation
             plan in 5 business days. Completely free. Limited to 5 per month.
           </p>

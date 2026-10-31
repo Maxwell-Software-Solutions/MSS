@@ -4,6 +4,7 @@ import type { ReactElement } from 'react';
 import { useState, useCallback } from 'react';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import { BOOKING_URL } from '@/lib/booking';
+import { LineIcon } from '@/app/components/ui';
 
 // ============================================================================
 // Types
@@ -167,8 +168,8 @@ function MetricCard({ label, value, status }: { label: string; value: string; st
     poor: 'text-error',
   };
   return (
-    <div className="rounded-xl border border-border bg-card/60 p-4">
-      <p className="text-[13px] text-muted mb-1">{label}</p>
+    <div className="note">
+      <p className="text-sm text-muted mb-1">{label}</p>
       <p className={`text-lg font-semibold ${colors[status]}`}>{value}</p>
     </div>
   );
@@ -177,14 +178,14 @@ function MetricCard({ label, value, status }: { label: string; value: string; st
 function HeaderRow({ name, present, ht }: { name: string; present: boolean; ht: (k: string, f: string) => string }): ReactElement {
   return (
     <div className="flex items-center justify-between py-2 border-b border-border/50 last:border-0">
-      <code className="text-[13px] text-foreground/80">{name}</code>
+      <code className="text-sm text-secondary">{name}</code>
       {present ? (
-        <span className="text-success text-[13px] font-medium flex items-center gap-1">
+        <span className="text-success text-sm font-medium flex items-center gap-1">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
           {ht('scanner.present', 'Present')}
         </span>
       ) : (
-        <span className="text-error text-[13px] font-medium flex items-center gap-1">
+        <span className="text-error text-sm font-medium flex items-center gap-1">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
           {ht('scanner.missing', 'Missing')}
         </span>
@@ -195,11 +196,11 @@ function HeaderRow({ name, present, ht }: { name: string; present: boolean; ht: 
 
 function SectionCard({ title, description, score, children }: { title: string; description: string; score?: number; children: React.ReactNode }): ReactElement {
   return (
-    <div className="rounded-2xl border border-border bg-card/60 p-6">
+    <div className="card p-6">
       <div className="flex items-start justify-between mb-4">
         <div>
           <h3 className="text-lg">{title}</h3>
-          <p className="text-[13px] text-muted mt-1">{description}</p>
+          <p className="text-sm text-muted mt-1">{description}</p>
         </div>
         {score !== undefined && (
           <span className={`text-2xl font-semibold ${scoreColor(score)}`}>{score}</span>
@@ -218,11 +219,11 @@ function ProgressBar({ phase, ht }: { phase: ScanPhase; ht: (k: string, f: strin
   const currentIndex = phase === 'security' ? 0 : phase === 'performance' ? 1 : 2;
 
   return (
-    <div className="max-w-lg mx-auto">
+    <div className="max-w-3xl">
       <div className="flex items-center gap-3 mb-4">
         {steps.map((step, i) => (
           <div key={step.key} className="flex items-center gap-2 flex-1">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[13px] font-semibold transition-colors ${
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
               i < currentIndex ? 'bg-green-400/20 text-success' :
               i === currentIndex ? 'bg-accent/20 text-accent animate-pulse' :
               'bg-foreground/10 text-muted'
@@ -233,7 +234,7 @@ function ProgressBar({ phase, ht }: { phase: ScanPhase; ht: (k: string, f: strin
                 i + 1
               )}
             </div>
-            <span className={`text-[13px] ${i <= currentIndex ? 'text-foreground/80' : 'text-muted'}`}>{step.label}</span>
+            <span className={`text-sm ${i <= currentIndex ? 'text-secondary' : 'text-muted'}`}>{step.label}</span>
             {i < steps.length - 1 && <div className="flex-1 h-px bg-border ml-2" />}
           </div>
         ))}
@@ -343,28 +344,28 @@ export default function WebsiteScannerPage(): ReactElement {
   return (
     <>
       {/* Hero */}
-      <header className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 sm:pt-18 pb-8">
-        <p className="text-[13px] text-muted mb-3" suppressHydrationWarning>
+      <header className="wrap page-head">
+        <p className="eyebrow" suppressHydrationWarning>
           {ht('scanner.eyebrow', 'Free Tool')}
         </p>
-        <h1 className="max-w-3xl" suppressHydrationWarning>
+        <h1 suppressHydrationWarning>
           {ht('scanner.headline', 'Website Health Scanner')}
         </h1>
-        <p className="mt-5 max-w-2xl text-base md:text-lg leading-[1.65] text-[--muted]" suppressHydrationWarning>
+        <p className="lead" suppressHydrationWarning>
           {ht('scanner.subheadline', 'Analyze any website for performance, security, SEO, and accessibility issues. Get actionable insights in seconds.')}
         </p>
       </header>
 
       {/* Scanner Input */}
-      <section className="max-w-3xl mx-auto px-6 sm:px-10 pb-10">
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+      <section className="section wrap">
+        <form onSubmit={handleSubmit} className="flex max-w-3xl flex-col gap-3 sm:flex-row">
           <input
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="https://example.com"
             disabled={isScanning}
-            className="flex-1 rounded-xl border border-border bg-background px-4 py-3.5 text-[14px] placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/40 transition disabled:opacity-50"
+            className="field flex-1 disabled:opacity-50"
             aria-label={ht('scanner.input.aria', 'Enter website URL to scan')}
           />
           <button
@@ -380,7 +381,7 @@ export default function WebsiteScannerPage(): ReactElement {
         </form>
 
         {error && (
-          <div className="mt-4 rounded-xl border border-red-400/30 bg-red-400/10 p-4 text-[14px] text-error">
+          <div className="alert alert-error max-w-3xl text-sm text-error">
             {error}
           </div>
         )}
@@ -388,9 +389,9 @@ export default function WebsiteScannerPage(): ReactElement {
 
       {/* Progress */}
       {isScanning && (
-        <section className="max-w-3xl mx-auto px-6 sm:px-10 pb-12">
+        <section className="section wrap">
           <ProgressBar phase={phase} ht={ht} />
-          <p className="text-center text-[13px] text-muted mt-4" suppressHydrationWarning>
+          <p className="form-note mt-4" suppressHydrationWarning>
             {phase === 'security'
               ? ht('scanner.progress.security', 'Checking security headers and SSL...')
               : ht('scanner.progress.performance', 'Running performance analysis (this may take 30-60 seconds)...')}
@@ -400,14 +401,14 @@ export default function WebsiteScannerPage(): ReactElement {
 
       {/* Results */}
       {results && phase === 'done' && (
-        <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-16">
+        <section className="section wrap">
           {/* Overall Score */}
-          <div className="text-center mb-12">
+          <div className="mb-12">
             <ScoreRing score={results.overallScore} size={140} />
             <p className={`text-lg font-semibold mt-3 ${scoreColor(results.overallScore)}`} suppressHydrationWarning>
               {scoreLabel(results.overallScore, ht)}
             </p>
-            <p className="text-[13px] text-muted mt-1">
+            <p className="text-sm text-muted mt-1">
               {results.url}
             </p>
           </div>
@@ -420,8 +421,8 @@ export default function WebsiteScannerPage(): ReactElement {
               { label: ht('scanner.category.accessibility', 'Accessibility'), score: results.accessibility.score },
               { label: ht('scanner.category.security', 'Security'), score: results.security.score },
             ].map((cat) => (
-              <div key={cat.label} className={`rounded-xl border p-4 text-center ${scoreBg(cat.score)}`}>
-                <p className="text-[13px] text-muted mb-1">{cat.label}</p>
+              <div key={cat.label} className={`rounded-lg border p-4 ${scoreBg(cat.score)}`}>
+                <p className="text-sm text-muted mb-1">{cat.label}</p>
                 <p className={`text-2xl font-semibold ${scoreColor(cat.score)}`}>{cat.score}</p>
               </div>
             ))}
@@ -466,7 +467,7 @@ export default function WebsiteScannerPage(): ReactElement {
             >
               <div className="mb-3">
                 <div className="flex items-center gap-2 mb-3">
-                  <span className={`text-[13px] font-medium ${results.security.ssl ? 'text-success' : 'text-error'}`}>
+                  <span className={`text-sm font-medium ${results.security.ssl ? 'text-success' : 'text-error'}`}>
                     {results.security.ssl
                       ? ht('scanner.ssl.secure', 'SSL/HTTPS: Secure')
                       : ht('scanner.ssl.insecure', 'SSL/HTTPS: Not Secure')}
@@ -484,7 +485,7 @@ export default function WebsiteScannerPage(): ReactElement {
               description={ht('scanner.seo.desc', 'SEO score reflects how well the page follows search engine optimization best practices.')}
               score={results.seo.score}
             >
-              <div className={`rounded-xl border p-4 ${scoreBg(results.seo.score)}`}>
+              <div className={`rounded-lg border p-4 ${scoreBg(results.seo.score)}`}>
                 <p className={`text-lg font-semibold ${scoreColor(results.seo.score)}`} suppressHydrationWarning>
                   {results.seo.score >= 90
                     ? ht('scanner.seo.good', 'Strong SEO foundation. Well optimized for search engines.')
@@ -501,7 +502,7 @@ export default function WebsiteScannerPage(): ReactElement {
               description={ht('scanner.a11y.desc', 'Accessibility ensures your website is usable by everyone, including people with disabilities.')}
               score={results.accessibility.score}
             >
-              <div className={`rounded-xl border p-4 ${scoreBg(results.accessibility.score)}`}>
+              <div className={`rounded-lg border p-4 ${scoreBg(results.accessibility.score)}`}>
                 <p className={`text-lg font-semibold ${scoreColor(results.accessibility.score)}`} suppressHydrationWarning>
                   {results.accessibility.score >= 90
                     ? ht('scanner.a11y.good', 'Good accessibility. Most users should have a smooth experience.')
@@ -515,27 +516,23 @@ export default function WebsiteScannerPage(): ReactElement {
 
           {/* Tech Detection */}
           {(results.tech.length > 0 || results.metaGenerator) && (
-            <div className="mt-6 rounded-2xl border border-border bg-card/60 p-6">
+            <div className="card mt-6 p-6">
               <h3 className="text-lg mb-1" suppressHydrationWarning>
                 {ht('scanner.tech.title', 'Detected Technologies')}
               </h3>
-              <p className="text-[13px] text-muted mb-4" suppressHydrationWarning>
+              <p className="text-sm text-muted mb-4" suppressHydrationWarning>
                 {ht('scanner.tech.desc', 'Frameworks and libraries detected from the page source.')}
               </p>
               <div className="flex flex-wrap gap-2">
                 {results.metaGenerator && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 text-accent text-[13px] font-semibold px-3 py-1.5">
+                  <span className="tag text-accent">
                     {results.metaGenerator}
                   </span>
                 )}
                 {results.tech.map((t) => (
                   <span
                     key={t.name}
-                    className={`inline-flex items-center gap-1.5 rounded-full text-[13px] font-semibold px-3 py-1.5 ${
-                      t.confidence === 'high'
-                        ? 'bg-accent/10 text-accent'
-                        : 'bg-foreground/5 text-foreground/70'
-                    }`}
+                    className={`tag gap-1 ${t.confidence === 'high' ? 'text-accent' : ''}`}
                   >
                     {t.name}
                     {t.confidence === 'medium' && (
@@ -548,14 +545,14 @@ export default function WebsiteScannerPage(): ReactElement {
           )}
 
           {/* CTA */}
-          <div className="mt-12 rounded-3xl border border-accent/20 bg-accent/5 p-8 sm:p-12 text-center">
-            <p className="text-[13px] font-semibold text-accent mb-3" suppressHydrationWarning>
+          <div className="callout mt-12">
+            <p className="eyebrow mb-3" suppressHydrationWarning>
               {ht('scanner.cta.eyebrow', 'Go Deeper')}
             </p>
-            <h2 className="text-2xl sm:text-3xl tracking-tight mb-4" suppressHydrationWarning>
+            <h2 suppressHydrationWarning>
               {ht('scanner.cta.title', 'Want a deeper analysis?')}
             </h2>
-            <p className="text-[15px] text-foreground/70 max-w-xl mx-auto mb-6" suppressHydrationWarning>
+            <p className="measure mb-6 mt-4 text-secondary" suppressHydrationWarning>
               {ht('scanner.cta.body', 'Book a free 15-minute expert review with Maxwell Software Solutions. We will walk through your results and identify the highest-impact fixes.')}
             </p>
             <a
@@ -573,37 +570,37 @@ export default function WebsiteScannerPage(): ReactElement {
 
       {/* How it works (shown before scan) */}
       {phase === 'idle' && !results && (
-        <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-16">
-          <h2 className="text-[clamp(22px,2.2vw,28px)] leading-[1.25] tracking-tight mb-8 text-center" suppressHydrationWarning>
+        <section className="section wrap">
+          <h2 className="section-head" suppressHydrationWarning>
             {ht('scanner.how.heading', 'What we check')}
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="columns columns-4">
             {[
               {
-                icon: '⚡',
+                icon: 'bolt' as const,
                 title: ht('scanner.how.perf.title', 'Performance'),
                 desc: ht('scanner.how.perf.desc', 'Core Web Vitals — LCP, TBT, CLS, and FCP. Powered by Google PageSpeed Insights.'),
               },
               {
-                icon: '🔒',
+                icon: 'lock' as const,
                 title: ht('scanner.how.security.title', 'Security'),
                 desc: ht('scanner.how.security.desc', 'SSL certificate and 6 critical security headers that protect against common attacks.'),
               },
               {
-                icon: '🔍',
+                icon: 'search' as const,
                 title: ht('scanner.how.seo.title', 'SEO'),
                 desc: ht('scanner.how.seo.desc', 'Search engine optimization audit covering meta tags, structure, and best practices.'),
               },
               {
-                icon: '♿',
+                icon: 'person' as const,
                 title: ht('scanner.how.a11y.title', 'Accessibility'),
                 desc: ht('scanner.how.a11y.desc', 'WCAG compliance check ensuring your site is usable by everyone.'),
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-border bg-card/60 p-6 text-center">
-                <span className="text-3xl mb-3 block">{item.icon}</span>
-                <h3 className="text-[15px] mb-2">{item.title}</h3>
-                <p className="text-[13px] text-foreground/60 leading-relaxed">{item.desc}</p>
+              <div key={item.title} className="item">
+                <LineIcon name={item.icon} className="item-icon" />
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
               </div>
             ))}
           </div>

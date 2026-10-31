@@ -48,27 +48,27 @@ export default function CICDPost(): ReactElement {
       <ArticleSection id="fundamentals" title="CI/CD Fundamentals">
         <p>Understanding the core concepts:</p>
         <div className="space-y-4 my-6">
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Continuous Integration (CI)</h4>
             <p className="text-sm">
               Developers integrate code into a shared repository multiple times per day. Each integration triggers
               automated builds and tests to detect problems early.
             </p>
-            <ul className="text-sm list-disc pl-5 mt-2 space-y-1">
+            <ul className="text-sm mt-2 space-y-1">
               <li>Frequent code commits (at least daily)</li>
               <li>Automated build on every commit</li>
               <li>Fast-running automated test suite</li>
               <li>Immediate feedback on build status</li>
             </ul>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Continuous Delivery (CD)</h4>
             <p className="text-sm">
               Every code change that passes automated tests is automatically prepared for release to production. Manual
               approval gate before production deployment.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Continuous Deployment</h4>
             <p className="text-sm">
               Takes CD one step further—every change that passes all stages automatically deploys to production without
@@ -80,7 +80,7 @@ export default function CICDPost(): ReactElement {
 
       <ArticleSection id="pipeline-stages" title="Pipeline Stages">
         <p>A robust CI/CD pipeline typically includes these stages:</p>
-        <div className="bg-muted/50 p-6 rounded-lg my-6 font-mono text-sm">
+        <div className="note my-6 font-mono text-sm">
           <pre>
             {`1. Source Control Trigger
    ↓
@@ -115,7 +115,7 @@ export default function CICDPost(): ReactElement {
 
       <ArticleSection id="testing-strategy" title="Automated Testing Strategy">
         <p>The testing pyramid guides your test distribution:</p>
-        <div className="bg-muted/50 p-6 rounded-lg my-6">
+        <div className="note my-6">
           <pre className="text-sm">
             {`        ┌───────────┐
         │    E2E    │  ← Few, slow, expensive
@@ -126,7 +126,7 @@ export default function CICDPost(): ReactElement {
         └───────────┘`}
           </pre>
         </div>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Unit Tests (70%):</strong> Fast, isolated tests of individual functions/components. Run on every
             commit.
@@ -139,35 +139,35 @@ export default function CICDPost(): ReactElement {
             deployment.
           </li>
         </ul>
-        <div className="overflow-x-auto my-6">
-          <table className="w-full border-collapse">
+        <div className="table-scroll my-6">
+          <table className="table">
             <thead>
-              <tr className="border-b border-border">
-                <th className="text-left p-3 font-semibold">Test Type</th>
-                <th className="text-left p-3 font-semibold">When to Run</th>
-                <th className="text-left p-3 font-semibold">Target Duration</th>
+              <tr>
+                <th>Test Type</th>
+                <th>When to Run</th>
+                <th>Target Duration</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-border">
-                <td className="p-3">Unit</td>
-                <td className="p-3">Every commit</td>
-                <td className="p-3">&lt; 2 minutes</td>
+              <tr>
+                <td>Unit</td>
+                <td>Every commit</td>
+                <td>&lt; 2 minutes</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3">Integration</td>
-                <td className="p-3">Every commit</td>
-                <td className="p-3">&lt; 5 minutes</td>
+              <tr>
+                <td>Integration</td>
+                <td>Every commit</td>
+                <td>&lt; 5 minutes</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3">E2E</td>
-                <td className="p-3">Pre-staging/production</td>
-                <td className="p-3">&lt; 15 minutes</td>
+              <tr>
+                <td>E2E</td>
+                <td>Pre-staging/production</td>
+                <td>&lt; 15 minutes</td>
               </tr>
-              <tr className="border-b border-border">
-                <td className="p-3">Performance</td>
-                <td className="p-3">Nightly/pre-release</td>
-                <td className="p-3">Variable</td>
+              <tr>
+                <td>Performance</td>
+                <td>Nightly/pre-release</td>
+                <td>Variable</td>
               </tr>
             </tbody>
           </table>
@@ -181,7 +181,7 @@ export default function CICDPost(): ReactElement {
       <ArticleSection id="deployment-strategies" title="Deployment Strategies">
         <p>Choose the right deployment strategy for your risk tolerance:</p>
         <div className="space-y-4 my-6">
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">1. Blue-Green Deployment</h4>
             <p className="text-sm mb-2">
               Maintain two identical production environments. Deploy to inactive environment, test, then switch traffic
@@ -194,7 +194,7 @@ export default function CICDPost(): ReactElement {
               <br />❌ Requires 2x infrastructure
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">2. Canary Deployment</h4>
             <p className="text-sm mb-2">
               Route small percentage of traffic to new version. Gradually increase if metrics look good.
@@ -206,7 +206,7 @@ export default function CICDPost(): ReactElement {
               <br />❌ Requires feature flags & traffic management
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">3. Rolling Deployment</h4>
             <p className="text-sm mb-2">
               Update instances one at a time or in small batches. Common in Kubernetes environments.
@@ -217,7 +217,7 @@ export default function CICDPost(): ReactElement {
               <br />❌ Mixed versions during rollout
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">4. Feature Flags</h4>
             <p className="text-sm mb-2">Deploy code to production but keep features disabled until ready to release.</p>
             <p className="text-sm">
@@ -236,7 +236,7 @@ export default function CICDPost(): ReactElement {
 
       <ArticleSection id="infrastructure" title="Infrastructure as Code">
         <p>Manage infrastructure through version-controlled code:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Terraform:</strong> Multi-cloud infrastructure provisioning
           </li>
@@ -253,7 +253,7 @@ export default function CICDPost(): ReactElement {
             <strong>Kubernetes Manifests:</strong> Declarative container orchestration
           </li>
         </ul>
-        <div className="bg-muted/50 p-6 rounded-lg my-6 font-mono text-sm">
+        <div className="note my-6 font-mono text-sm">
           <pre>
             {`# Example Terraform snippet
 resource "aws_instance" "web" {
@@ -271,7 +271,7 @@ terraform apply`}
           </pre>
         </div>
         <p>Benefits of Infrastructure as Code:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>Version control for infrastructure changes</li>
           <li>Reproducible environments (dev, staging, production)</li>
           <li>Disaster recovery through code rebuild</li>
@@ -282,7 +282,7 @@ terraform apply`}
 
       <ArticleSection id="security" title="Security in CI/CD">
         <p>Security must be integrated throughout the pipeline (DevSecOps):</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Secret Management:</strong> Use HashiCorp Vault, AWS Secrets Manager, or Azure Key Vault. Never
             commit secrets to version control.
@@ -314,28 +314,28 @@ terraform apply`}
       <ArticleSection id="monitoring" title="Monitoring & Observability">
         <p>CI/CD doesn&apos;t end at deployment. Monitor what you deploy:</p>
         <div className="space-y-4 my-6">
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Metrics</h4>
             <p className="text-sm">
               Track deployment frequency, lead time, MTTR (Mean Time To Recovery), change failure rate. Use
               Prometheus, CloudWatch, Datadog.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Logging</h4>
             <p className="text-sm">
               Centralized logging with ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, or CloudWatch Logs.
               Structured logging for easier parsing.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Tracing</h4>
             <p className="text-sm">
               Distributed tracing for microservices with Jaeger, Zipkin, or AWS X-Ray. Understand request flows across
               services.
             </p>
           </div>
-          <div className="bg-muted/50 p-6 rounded-lg">
+          <div className="note">
             <h4 className="mb-2">Alerting</h4>
             <p className="text-sm">
               PagerDuty, Opsgenie for on-call rotations. Alert on actionable issues, not noise. Define SLOs (Service
@@ -344,7 +344,7 @@ terraform apply`}
           </div>
         </div>
         <p>Key deployment metrics to track:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Deployment Frequency:</strong> How often you deploy to production
           </li>
@@ -362,7 +362,7 @@ terraform apply`}
 
       <ArticleSection id="best-practices" title="Best Practices">
         <p>Proven practices for production-ready CI/CD:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>
             <strong>Keep pipelines fast:</strong> Developers won&apos;t wait 30 minutes for feedback. Optimize for
             &lt;10 minute cycles.
@@ -400,7 +400,7 @@ terraform apply`}
 
       <ArticleSection id="conclusion" title="Conclusion">
         <p>Modern CI/CD pipelines enable elite software delivery performance:</p>
-        <ul className="list-disc pl-6 space-y-2 my-4">
+        <ul className="space-y-2 my-4">
           <li>Deploy on-demand with confidence</li>
           <li>Catch issues early through comprehensive automation</li>
           <li>Reduce manual toil and human error</li>
@@ -416,9 +416,9 @@ terraform apply`}
           <strong>Next Steps:</strong> Audit your current deployment process. Identify the biggest manual bottleneck.
           Automate it this week. Then repeat. Small, incremental improvements compound into transformation.
         </Alert>
-        <div className="mt-8 band p-8 sm:p-10 text-center">
-          <h3 className="text-xl mb-3">Need Help Optimising Your CI/CD Pipeline?</h3>
-          <p className="text-foreground/70 mb-5">
+        <div className="callout block-gap">
+          <h3 className="mb-3">Need Help Optimising Your CI/CD Pipeline?</h3>
+          <p className="mb-6">
             Our{' '}
             <a href="/services" className="text-accent underline hover:no-underline font-medium">
               CI/CD Pipeline Optimisation service
