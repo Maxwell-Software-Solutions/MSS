@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode, AnchorHTMLAttributes } from 'react';
 
 type ButtonLinkVariant = 'accent' | 'ghost' | 'secondary';
-type ButtonLinkSize = 'sm' | 'md' | 'lg';
+type ButtonLinkSize = 'md' | 'lg';
 
 interface ButtonLinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className'> {
   href: string;
@@ -24,9 +24,8 @@ export function ButtonLink({
   ...props
 }: ButtonLinkProps): ReactElement {
   const sizeClasses = {
-    sm: 'px-4 py-2',
-    md: 'px-5 py-2.5',
-    lg: 'px-7 py-3.5 text-base',
+    md: '',
+    lg: 'btn-lg',
   };
 
   const variantClasses = {

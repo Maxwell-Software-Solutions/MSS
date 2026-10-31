@@ -82,11 +82,7 @@ function PackageCard({
 
       <Link
         href={ctaHref}
-        className={`w-full text-center rounded-xl px-5 py-3 text-sm font-semibold transition-all ${
-          highlighted
-            ? 'btn btn-accent'
-            : 'btn'
-        }`}
+        className={`w-full ${highlighted ? 'btn btn-accent' : 'btn'}`}
       >
         {ctaLabel}
       </Link>
@@ -232,7 +228,7 @@ export default function ServicesPackagesPage(): ReactElement {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+            className="btn btn-accent"
             suppressHydrationWarning
           >
             {ht('packages.unsure.cta', 'Book a discovery call')}
@@ -312,7 +308,7 @@ export default function ServicesPackagesPage(): ReactElement {
           </p>
           <Link
             href="/contact"
-            className="btn px-6 py-3 rounded-xl transition-all inline-flex items-center text-sm font-semibold"
+            className="btn"
             suppressHydrationWarning
           >
             {ht('packages.ai.cta', 'Discuss an AI project')}

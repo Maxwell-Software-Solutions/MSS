@@ -239,10 +239,10 @@ export default function HomeContent(): ReactElement {
               <p className="mt-4 text-lg leading-relaxed text-secondary">{t('contact.description')}</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="btn btn-accent px-6 py-3 text-base">
+              <Link href="/contact" className="btn btn-accent btn-lg">
                 {t('contact.cta.primary')}
               </Link>
-              <ButtonLink href="/services" variant="ghost" size="md" className="text-base">
+              <ButtonLink href="/services" variant="ghost" size="lg">
                 {t('contact.cta.secondary')}
               </ButtonLink>
             </div>

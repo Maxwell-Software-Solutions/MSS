@@ -13,10 +13,6 @@ const AppFooter = dynamic(() => import('@/app/components/AppFooter'), {
   loading: () => <div style={{ minHeight: '400px' }} aria-hidden="true" />,
 });
 
-const AutoContrastButtons = dynamic(() => import('@/app/components/AutoContrastButtons'), {
-  ssr: false,
-});
-
 const FirstLoadProgressBar = dynamic(() => import('@/app/components/FirstLoadProgressBar'), {
   ssr: false,
 });
@@ -26,7 +22,6 @@ export default function ClientOnlyComponents(): ReactElement {
     <>
       <FirstLoadProgressBar />
       <ParallaxScrollEffects key="scroll-effects" />
-      <AutoContrastButtons />
       <AppFooter />
     </>
   );

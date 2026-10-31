@@ -116,14 +116,14 @@ export default function HeroStage(): ReactElement {
           <div className="hero-actions flex flex-col gap-3 sm:flex-row">
             <Link
               href="/contact"
-              className="btn btn-accent px-6 py-3 text-base"
+              className="btn btn-accent btn-lg"
               onClick={() => trackCTAClick('hero_primary')}
             >
               {t('hero.cta.primary')}
             </Link>
             <Link
               href="/services"
-              className="btn hero-btn-quiet px-6 py-3 text-base"
+              className="btn hero-btn-quiet btn-lg"
               onClick={() => trackCTAClick('hero_secondary')}
             >
               {t('hero.cta.secondary')}

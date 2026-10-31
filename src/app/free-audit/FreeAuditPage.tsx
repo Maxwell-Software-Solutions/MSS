@@ -243,7 +243,7 @@ export default function FreeAuditPage(): ReactElement {
 
               <button
                 type="submit"
-                className="w-full btn btn-accent px-6 py-3 rounded-xl transition-all"
+                className="w-full btn btn-accent"
                 suppressHydrationWarning
               >
                 {ht('freeAudit.form.cta', 'Apply for free audit')}
@@ -292,7 +292,7 @@ export default function FreeAuditPage(): ReactElement {
           </p>
           <a
             href="#audit-name"
-            className="inline-block btn btn-accent px-8 py-3.5 rounded-xl transition-all"
+            className="btn btn-accent btn-lg"
             suppressHydrationWarning
           >
             {ht('freeAudit.cta.button', 'Apply now — it is free')}

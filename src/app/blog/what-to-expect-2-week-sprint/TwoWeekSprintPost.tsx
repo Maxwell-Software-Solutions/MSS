@@ -240,7 +240,7 @@ export default function TwoWeekSprintPost(): ReactElement {
           </p>
           <a
             href="/start-a-sprint"
-            className="inline-block px-7 py-3 bg-accent-fill text-accent-contrast rounded-xl font-semibold hover:opacity-90 transition-opacity"
+            className="btn btn-accent"
           >
             Start your sprint — €4,800
           </a>

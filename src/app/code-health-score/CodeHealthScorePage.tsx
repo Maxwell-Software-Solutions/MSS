@@ -364,7 +364,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href={BOOKING_URL}
-                className="inline-flex items-center gap-2 bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all"
+                className="btn btn-accent btn-lg"
                 target="_blank"
                 rel="noopener noreferrer"
                 suppressHydrationWarning
@@ -492,7 +492,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             {answeredCount === totalQuestions && (
               <button
                 onClick={() => setShowResults(true)}
-                className="bg-accent-fill text-accent-contrast rounded-xl px-6 py-3 text-sm font-semibold hover:bg-accent-fill-hover transition-all"
+                className="btn btn-accent"
                 suppressHydrationWarning
               >
                 {ht('codeHealth.nav.results', 'See my results')}
