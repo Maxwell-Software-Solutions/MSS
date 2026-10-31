@@ -71,15 +71,15 @@ export default function TDDPost(): ReactElement {
             <strong>40-80% reduction in production bugs</strong> and <strong>25-50% faster delivery cycles</strong>.
           </p>
           <div className="grid md:grid-cols-3 gap-4 mt-6">
-            <div className="text-center">
+            <div>
               <div className="text-3xl font-light tabular-nums text-accent">40-80%</div>
               <div className="text-sm">Fewer Production Bugs</div>
             </div>
-            <div className="text-center">
+            <div>
               <div className="text-3xl font-light tabular-nums text-accent">25-50%</div>
               <div className="text-sm">Faster Delivery</div>
             </div>
-            <div className="text-center">
+            <div>
               <div className="text-3xl font-light tabular-nums text-accent">3-5x</div>
               <div className="text-sm">ROI on Investment</div>
             </div>
@@ -150,9 +150,9 @@ export default function TDDPost(): ReactElement {
         <section>
           <h2 className="mb-6">How TDD Works: The Red-Green-Refactor Cycle</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-error-fill rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-semibold text-xl">1</span>
+            <div>
+              <div className="w-8 h-8 bg-error-fill rounded-full flex items-center justify-center mb-3">
+                <span className="text-sm font-medium text-white">1</span>
               </div>
               <h3 className="mb-2">Red</h3>
               <p className="text-sm">
@@ -160,18 +160,18 @@ export default function TDDPost(): ReactElement {
                 something meaningful.
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-success-fill rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-semibold text-xl">2</span>
+            <div>
+              <div className="w-8 h-8 bg-success-fill rounded-full flex items-center justify-center mb-3">
+                <span className="text-sm font-medium text-white">2</span>
               </div>
               <h3 className="mb-2">Green</h3>
               <p className="text-sm">
                 Write the minimum code needed to make the test pass. This keeps your implementation focused and simple.
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-accent-fill rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-semibold text-xl">3</span>
+            <div>
+              <div className="w-8 h-8 bg-accent-fill rounded-full flex items-center justify-center mb-3">
+                <span className="text-sm font-medium text-white">3</span>
               </div>
               <h3 className="mb-2">Refactor</h3>
               <p className="text-sm">
@@ -223,7 +223,7 @@ export default function TDDPost(): ReactElement {
             <h3 className="mb-4 mt-6">Business Results</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <Alert variant="warning" icon="✅" title="What Went Well">
-                <ul className="space-y-1">
+                <ul className="list-none pl-0 space-y-1">
                   <li>• Zero payment-related bugs in production</li>
                   <li>• 30% faster development cycle</li>
                   <li>• Easy to add new payment methods</li>
@@ -231,7 +231,7 @@ export default function TDDPost(): ReactElement {
                 </ul>
               </Alert>
               <Alert variant="info" icon="📊" title="Measurable Impact">
-                <ul className="space-y-1">
+                <ul className="list-none pl-0 space-y-1">
                   <li>• $50K saved in bug prevention</li>
                   <li>• 2 weeks faster to market</li>
                   <li>• 99.9% payment success rate</li>
@@ -295,7 +295,7 @@ export default function TDDPost(): ReactElement {
                 </div>
               </div>
             </div>
-            <div className="mt-6 text-center">
+            <div className="mt-6">
               <div className="text-2xl font-light tabular-nums text-accent">ROI: 212% in Year 1</div>
               <p>$40K investment → $125K return = $85K net benefit</p>
             </div>
@@ -308,7 +308,7 @@ export default function TDDPost(): ReactElement {
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h3 className="mb-4">Phase 1: Foundation (Weeks 1-2)</h3>
-              <ul className="space-y-2">
+              <ul className="list-none pl-0 space-y-2">
                 <li>• Train development team on TDD principles</li>
                 <li>• Set up testing frameworks and tools</li>
                 <li>• Start with simple, low-risk features</li>
@@ -317,7 +317,7 @@ export default function TDDPost(): ReactElement {
             </div>
             <div>
               <h3 className="mb-4">Phase 2: Expansion (Weeks 3-8)</h3>
-              <ul className="space-y-2">
+              <ul className="list-none pl-0 space-y-2">
                 <li>• Apply TDD to new feature development</li>
                 <li>• Refactor existing code with tests</li>
                 <li>• Measure and track quality metrics</li>
@@ -328,15 +328,15 @@ export default function TDDPost(): ReactElement {
           <div className="note mt-8">
             <h3 className="mb-4">Success Metrics to Track</h3>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="text-center">
+              <div>
                 <div className="text-2xl font-light tabular-nums text-accent">↓ 50%</div>
                 <div className="text-sm">Production Bugs</div>
               </div>
-              <div className="text-center">
+              <div>
                 <div className="text-2xl font-light tabular-nums text-accent">↑ 30%</div>
                 <div className="text-sm">Development Speed</div>
               </div>
-              <div className="text-center">
+              <div>
                 <div className="text-2xl font-light tabular-nums text-accent">↑ 95%</div>
                 <div className="text-sm">Code Coverage</div>
               </div>

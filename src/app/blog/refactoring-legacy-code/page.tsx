@@ -77,46 +77,46 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         <section className="note">
           <h2 className="mb-4">Table of Contents</h2>
           <div className="grid md:grid-cols-2 gap-4">
-            <ul className="space-y-2">
+            <ul className="list-none space-y-2 pl-0">
               <li>
-                <a href="#what-is-legacy-code" className="hover:text-accent transition-colors">
+                <a href="#what-is-legacy-code" className="text-secondary no-underline transition-colors hover:text-accent">
                   • What is Legacy Code?
                 </a>
               </li>
               <li>
-                <a href="#technical-debt" className="hover:text-accent transition-colors">
+                <a href="#technical-debt" className="text-secondary no-underline transition-colors hover:text-accent">
                   • Understanding Technical Debt
                 </a>
               </li>
               <li>
-                <a href="#refactoring-strategies" className="hover:text-accent transition-colors">
+                <a href="#refactoring-strategies" className="text-secondary no-underline transition-colors hover:text-accent">
                   • Refactoring Strategies
                 </a>
               </li>
               <li>
-                <a href="#step-by-step-process" className="hover:text-accent transition-colors">
+                <a href="#step-by-step-process" className="text-secondary no-underline transition-colors hover:text-accent">
                   • Step-by-Step Process
                 </a>
               </li>
             </ul>
-            <ul className="space-y-2">
+            <ul className="list-none space-y-2 pl-0">
               <li>
-                <a href="#tools-and-techniques" className="hover:text-accent transition-colors">
+                <a href="#tools-and-techniques" className="text-secondary no-underline transition-colors hover:text-accent">
                   • Tools and Techniques
                 </a>
               </li>
               <li>
-                <a href="#common-pitfalls" className="hover:text-accent transition-colors">
+                <a href="#common-pitfalls" className="text-secondary no-underline transition-colors hover:text-accent">
                   • Common Pitfalls
                 </a>
               </li>
               <li>
-                <a href="#measuring-success" className="hover:text-accent transition-colors">
+                <a href="#measuring-success" className="text-secondary no-underline transition-colors hover:text-accent">
                   • Measuring Success
                 </a>
               </li>
               <li>
-                <a href="#case-studies" className="hover:text-accent transition-colors">
+                <a href="#case-studies" className="text-secondary no-underline transition-colors hover:text-accent">
                   • Real-World Case Studies
                 </a>
               </li>
@@ -174,7 +174,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
               <h3 className="mb-4">Signs You Have Legacy Code</h3>
               <div className="space-y-4">
                 <Alert variant="info" icon="🚨" title="Red Flags">
-                  <ul className="space-y-1">
+                  <ul className="list-none pl-0 space-y-1">
                     <li>• Developers afraid to make changes</li>
                     <li>• Simple features take weeks to implement</li>
                     <li>• Frequent production bugs and hotfixes</li>
@@ -182,7 +182,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                   </ul>
                 </Alert>
                 <Alert variant="warning" icon="⚠️" title="Warning Signs">
-                  <ul className="space-y-1">
+                  <ul className="list-none pl-0 space-y-1">
                     <li>• Code reviews take longer than coding</li>
                     <li>• New team members struggle to onboard</li>
                     <li>• Deployment frequency decreasing</li>
@@ -591,7 +591,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                     A 5-year-old e-commerce platform with 500K+ lines of code was experiencing frequent outages, slow
                     performance, and difficulty adding new features.
                   </p>
-                  <ul className="text-sm space-y-2">
+                  <ul className="list-none pl-0 text-sm space-y-2">
                     <li>• 15-minute page load times during peak traffic</li>
                     <li>• 3-5 production outages per month</li>
                     <li>• New features took 3-6 months to implement</li>
@@ -603,7 +603,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                   <p className="mb-4">
                     Implemented a comprehensive refactoring strategy using the Strangler Fig pattern.
                   </p>
-                  <ul className="text-sm space-y-2">
+                  <ul className="list-none pl-0 text-sm space-y-2">
                     <li>• Extracted payment processing into microservice</li>
                     <li>• Refactored database queries and added caching</li>
                     <li>• Implemented comprehensive testing strategy</li>
