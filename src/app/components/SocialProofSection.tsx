@@ -2,9 +2,9 @@ import type { ReactElement } from 'react';
 import { StatCard } from './ui';
 
 // SVG placeholder logos — replaced with real brand assets when provided
-function Wordmark({ name, width }: { name: string; width: number }): ReactElement {
+function Wordmark({ name, label, width }: { name: string; label: string; width: number }): ReactElement {
   return (
-    <svg width={width} height="24" viewBox={`0 0 ${width} 24`} fill="none" xmlns="http://www.w3.org/2000/svg" aria-label={name[0] + name.slice(1).toLowerCase()} role="img">
+    <svg width={width} height="24" viewBox={`0 0 ${width} 24`} fill="none" xmlns="http://www.w3.org/2000/svg" aria-label={label} role="img">
       <text
         x="0"
         y="50%"
@@ -52,9 +52,9 @@ export default function SocialProofSection(): ReactElement {
         <div className="logos">
           <p className="text-sm text-muted">Trusted by forward-thinking teams</p>
           <div className="logos-row text-foreground">
-            <Wordmark name="MIAU" width={48} />
-            <Wordmark name="NEONOVA" width={84} />
-            <Wordmark name="FUEILLE" width={72} />
+            <Wordmark name="MIAU" label="Miau" width={48} />
+            <Wordmark name="NEONOVA" label="NeoNova" width={84} />
+            <Wordmark name="FUEILLE" label="Fueille" width={72} />
           </div>
         </div>
 
@@ -68,6 +68,9 @@ export default function SocialProofSection(): ReactElement {
           <h2 className="sr-only">Client results and testimonials</h2>
           {testimonials.map((item) => (
             <figure key={item.author} className="quote">
+              <div aria-hidden="true" className="quote-mark">
+                &ldquo;
+              </div>
               <blockquote>{item.quote}</blockquote>
               <figcaption>{item.author}</figcaption>
             </figure>

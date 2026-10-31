@@ -38,7 +38,7 @@
   --space-10: 8rem;
 
   /* Rhythm: the scale applied to page structure, phone to desktop */
-  --section-space: clamp(3.5rem, 2.25rem + 6.2vw, 7.5rem);
+  --section-space: clamp(3rem, 1.6rem + 6.8vw, 7.5rem);
   --head-gap: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
   --column-gap: 2rem;
   --page-head-top: clamp(3rem, 2.1rem + 3.9vw, 5.5rem);
@@ -48,12 +48,12 @@
   --header-height: 4rem;
   --container-width: 80rem;
   --gutter: 1.5rem;
-  --measure: 34em;
+  --measure: 32em;
 
   /* Type scale, phone to desktop */
   --text-title: clamp(2.25rem, 1.7rem + 2.4vw, 3.5rem);
   --text-heading: clamp(1.75rem, 1.45rem + 1.3vw, 2.5rem);
-  --text-lead: clamp(1.125rem, 1.08rem + 0.25vw, 1.25rem);
+  --text-lead: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
   --text-number: clamp(2rem, 1.6rem + 1.8vw, 3.25rem);
   --text-price: clamp(1.875rem, 1.65rem + 1vw, 2.5rem);
   --text-article-title: clamp(2rem, 1.6rem + 1.8vw, 3rem);
@@ -139,8 +139,8 @@
   --color-background:       #0a0e15;
   --color-surface:          #10151e;
   --color-surface-elevated: #141a26;
-  --color-wash:             #0d1219;
-  --color-bg-secondary:     #0d1219;
+  --color-wash:             #0f141c;
+  --color-bg-secondary:     #0f141c;
   --color-card:             #10151e;
 
   --color-text:           #e8ecf3;
@@ -176,7 +176,7 @@
   --color-band-muted:  #a8b2c3;
   --color-band-border: rgba(255, 255, 255, 0.12);
 
-  --color-code-bg: #0d1219;
+  --color-code-bg: #0f141c;
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
@@ -194,8 +194,8 @@
     --color-background:       #0a0e15;
     --color-surface:          #10151e;
     --color-surface-elevated: #141a26;
-    --color-wash:             #0d1219;
-    --color-bg-secondary:     #0d1219;
+    --color-wash:             #0f141c;
+    --color-bg-secondary:     #0f141c;
     --color-card:             #10151e;
     --color-text:             #e8ecf3;
     --color-foreground:       #e8ecf3;
@@ -224,7 +224,7 @@
     --color-band-text:        #e8ecf3;
     --color-band-muted:       #a8b2c3;
     --color-band-border:      rgba(255, 255, 255, 0.12);
-    --color-code-bg:          #0d1219;
+    --color-code-bg:          #0f141c;
     --shadow-sm:              0 1px 2px rgba(0, 0, 0, 0.5);
     --shadow-md:              0 8px 24px rgba(0, 0, 0, 0.5);
     --shadow-lg:              0 16px 48px rgba(0, 0, 0, 0.6);

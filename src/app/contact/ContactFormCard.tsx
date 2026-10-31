@@ -71,6 +71,7 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
             disabled={status === 'sending'}
             loading={status === 'sending'}
             type="submit"
+            className="w-full justify-center sm:w-auto"
           >
             {t('contactForm.submit')}
           </ButtonPrimary>

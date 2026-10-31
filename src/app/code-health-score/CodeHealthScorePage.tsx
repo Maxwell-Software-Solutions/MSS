@@ -311,10 +311,10 @@ export default function CodeHealthScorePage(): ReactElement | null {
               {totalScore}
               <span className="text-[clamp(20px,3vw,32px)] text-muted font-normal">/{maxScore}</span>
             </div>
-            <div className={`inline-block mt-3 rounded-full px-4 py-1.5 text-sm font-semibold ${tier.color} ${tier.bgColor}`}>
+            <div className={`inline-block mt-3 rounded-md px-3 py-1 text-sm font-medium ${tier.color} ${tier.bgColor}`}>
               {tier.label}
             </div>
-            <p className="measure mt-5" suppressHydrationWarning>
+            <p className="measure mt-4" suppressHydrationWarning>
               {tier.description}
             </p>
           </div>

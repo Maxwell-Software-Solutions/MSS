@@ -414,7 +414,7 @@ export default function WebsiteScannerPage(): ReactElement {
           </div>
 
           {/* Score Summary Cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {[
               { label: ht('scanner.category.performance', 'Performance'), score: results.performance.score },
               { label: ht('scanner.category.seo', 'SEO'), score: results.seo.score },

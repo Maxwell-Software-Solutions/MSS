@@ -142,7 +142,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </section>
 
         {/* What is Legacy Code */}
-        <section id="what-is-legacy-code" >
+        <section id="what-is-legacy-code">
           <h2 className="mb-6">What is Legacy Code?</h2>
           <div className="grid lg:grid-cols-2 gap-8">
             <div>
@@ -195,7 +195,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </section>
 
         {/* Technical Debt */}
-        <section id="technical-debt" >
+        <section id="technical-debt">
           <h2 className="mb-6">Understanding Technical Debt: The Hidden Cost of Legacy Code</h2>
           <p className="mb-6">
             Technical debt is like financial debt—it accumulates interest over time. Every shortcut taken, every hack
@@ -273,7 +273,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </section>
 
         {/* Refactoring Strategies (dynamically loaded below for code splitting) */}
-        <section id="refactoring-strategies" >
+        <section id="refactoring-strategies">
           <h2 className="mb-6">Proven Refactoring Strategies for Legacy Code</h2>
 
           <div className="space-y-8">
@@ -346,7 +346,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </section>
 
         {/* Step-by-Step Process (dynamic) */}
-        <section id="step-by-step-process" >
+        <section id="step-by-step-process">
           <h2 className="mb-6">Step-by-Step Refactoring Process</h2>
 
           <div className="space-y-6">
@@ -425,7 +425,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </section>
 
         {/* Tools and Techniques (dynamic) */}
-        <section id="tools-and-techniques" >
+        <section id="tools-and-techniques">
           <h2 className="mb-6">Essential Tools and Techniques for Code Refactoring</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -482,7 +482,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </section>
 
         {/* Common Pitfalls (dynamic) */}
-        <section id="common-pitfalls" >
+        <section id="common-pitfalls">
           <h2 className="mb-6">Common Pitfalls and How to Avoid Them</h2>
 
           <div className="space-y-6">
@@ -522,7 +522,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </section>
 
         {/* Measuring Success (dynamic) */}
-        <section id="measuring-success" >
+        <section id="measuring-success">
           <h2 className="mb-6">Measuring Refactoring Success</h2>
 
           <p className="mb-6">
@@ -578,7 +578,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
         </section>
 
         {/* Case Studies (dynamic) */}
-        <section id="case-studies" >
+        <section id="case-studies">
           <h2 className="mb-6">Real-World Refactoring Case Studies</h2>
 
           <div className="space-y-8">

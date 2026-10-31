@@ -15,7 +15,7 @@ export function PageHeader({ eyebrow, title, subtitle, meta, className = '' }: P
       {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
       <h1>{title}</h1>
       {meta && <div className="article-meta">{meta}</div>}
-      {subtitle && <p className="lead mt-5">{subtitle}</p>}
+      {subtitle && <p className="lead mt-4">{subtitle}</p>}
     </header>
   );
 }

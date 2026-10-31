@@ -26,7 +26,11 @@
     flex-wrap: wrap;
     align-items: center;
     gap: var(--space-3) var(--space-5);
-    margin-top: var(--space-6);
+    margin-top: var(--space-5);
+  }
+
+  @media (min-width: 640px) {
+    .page-actions { margin-top: var(--space-6); }
   }
 
   /* ---- Section openers ---- */
@@ -36,7 +40,7 @@
   .block-gap { margin-top: var(--head-gap); }
 
   /* Heading on the left half, everything else on the right half */
-  .split { display: grid; gap: var(--head-gap); }
+  .split { display: grid; gap: var(--space-5); }
   .split > * { min-width: 0; }
   .split .lead { margin-top: var(--space-4); }
 
@@ -190,6 +194,7 @@
   .rows > div > p { margin-top: var(--space-2); color: var(--color-text-secondary); }
 
   .checks > li { display: flex; align-items: flex-start; gap: var(--space-3); color: var(--color-text-secondary); }
+  .checks > li > :not(.check) { max-width: var(--measure); }
   .checks:not(.rows) > li + li { margin-top: var(--space-3); }
   .check {
     flex: none;
@@ -232,7 +237,7 @@
   .qa-item { padding-block: var(--space-5); border-top: 1px solid var(--color-border); }
   .qa-item:last-child { border-bottom: 1px solid var(--color-border); }
   .qa-item h3 { font-size: 1rem; line-height: 1.5; }
-  .qa-item p { margin-top: var(--space-2); color: var(--color-text-secondary); }
+  .qa-item p { margin-top: var(--space-2); max-width: var(--measure); color: var(--color-text-secondary); }
 
   /* ---- Quotes ---- */
   .quote {
@@ -243,6 +248,7 @@
     border-top: 1px solid var(--color-border-strong);
   }
   .quote figcaption { margin-top: auto; font-size: 0.875rem; color: var(--color-muted); }
+  .quote-mark { height: 1rem; font-size: 2rem; line-height: 1; color: var(--color-accent); user-select: none; }
 
   /* ---- Logos ---- */
   .logos {
@@ -264,7 +270,8 @@
     border-radius: var(--radius-2xl);
     background: var(--color-band);
   }
-  .art img { filter: saturate(0.45); }
+  .art img { filter: saturate(0.45); transition: filter var(--transition-slow); }
+  a:hover .art img { filter: saturate(0.8); }
 
   /* ---- Linked work ---- */
   .work { display: flex; flex-direction: column; height: 100%; text-decoration: none; }
@@ -381,7 +388,7 @@
   .study-metrics .stat-label { margin-top: var(--space-1); }
   .study-body > * + * { margin-top: var(--space-5); }
   .study-body h3 { margin-bottom: var(--space-2); font-size: 0.875rem; font-weight: 500; letter-spacing: 0; color: var(--color-muted); }
-  .study-body p { color: var(--color-text-secondary); }
+  .study-body p { max-width: var(--measure); color: var(--color-text-secondary); }
 
   @media (min-width: 1024px) {
     .study-list > * + * { margin-top: var(--space-9); }
@@ -481,8 +488,18 @@
     .band-split > .band-actions { margin-top: 0; }
   }
 
+  /* ---- Footer: below desktop the two link lists sit side by side ---- */
+  @media (max-width: 1023px) {
+    footer[role="contentinfo"] > div > .grid:first-child {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-7) var(--column-gap);
+    }
+    footer[role="contentinfo"] > div > .grid:first-child > :first-child { grid-column: 1 / -1; }
+  }
+
   /* ---- Self-assessment ---- */
   .quiz-width > * { max-width: 48rem; }
+  .section.quiz-width { padding-top: var(--space-7); }
 
   /* ---- Forms ---- */
   .form-label { display: block; margin-bottom: var(--space-2); font-size: 0.875rem; font-weight: 500; }
@@ -550,7 +567,7 @@
   .alert-title { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); font-weight: 500; color: var(--color-text); }
   .alert-body { font-size: 0.9375rem; color: var(--color-text); }
 
-  .prose-flow { font-size: 1.0625rem; line-height: 1.65; color: var(--color-text-secondary); }
+  .prose-flow { font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem); line-height: 1.65; color: var(--color-text-secondary); }
   .prose-flow :where(h2) {
     margin-top: var(--space-8);
     margin-bottom: var(--space-4);
@@ -566,7 +583,7 @@
     color: var(--color-text);
   }
   .prose-flow :where(h4) { margin-top: var(--space-5); margin-bottom: var(--space-2); color: var(--color-text); font-weight: 500; }
-  .prose-flow :where(p, ul, ol) { max-width: 36em; }
+  .prose-flow :where(p, ul, ol) { max-width: 33em; }
   .prose-flow :where(p + p, p + ul, p + ol, ul + p, ol + p) { margin-top: var(--space-4); }
   .prose-flow :where(ul) { padding-left: 1.25rem; list-style: disc; }
   .prose-flow :where(ol) { padding-left: 1.25rem; list-style: decimal; }
@@ -581,7 +598,7 @@
   .prose-flow > :where(h2):first-child { margin-top: 0; }
   .prose-flow :where(.note, .callout, .qa-item, .grid > *, .columns > *) > :where(h2, h3, h4):first-child { margin-top: 0; }
   .prose-flow :where(h1, .stat-value) { color: var(--color-text); }
-  .prose-flow :where(.note, .grid > *) :where(p, ul, ol) { max-width: none; }
+  .prose-flow :where(.note, .grid > *) :where(p, ul, ol) { max-width: 34em; }
   .prose-flow .lead { max-width: none; }
 
   .note {

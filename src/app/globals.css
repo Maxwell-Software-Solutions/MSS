@@ -370,16 +370,6 @@
     box-shadow: 0 0 0 3px var(--color-accent-20);
   }
 
-  /* ---- Scroll reveal (kept short and quiet) ---- */
-  [data-reveal] {
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 400ms ease, transform 400ms ease;
-  }
-  [data-reveal].visible { opacity: 1; transform: none; }
-
-  [data-parallax] { transform: none; }
-
   .skip-link {
     position: absolute;
     top: -4rem;
@@ -585,7 +575,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; transition: none; }
   .mobile-nav, .nav-overlay { transition: none; }
 }
 
