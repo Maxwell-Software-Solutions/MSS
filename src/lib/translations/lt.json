@@ -4,6 +4,8 @@
   "hero.cta.primary": "Užsakykite Kodo Auditą",
   "hero.cta.secondary": "Naršyti Paslaugas",
   "hero.values": "KOKYBĖ • PATIKIMUMAS • GREITIS",
+  "hero.motion.pause": "Pristabdyti animaciją",
+  "hero.motion.play": "Paleisti animaciją",
   "stats.defects": "-60%",
   "stats.defects.label": "Praleistų defektų",
   "stats.coverage": "+35%",

@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useEffect, useRef, type ReactElement } from 'react';
+import { memo, useEffect, useRef, useState, type ReactElement } from 'react';
 import Link from 'next/link';
 import CalendlyCTA from '../CalendlyCTA';
 import { useLanguage } from '@/lib/LanguageContext';
@@ -34,6 +34,14 @@ export default function HeroStage(): ReactElement {
   const stageRef = useRef<HTMLElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const copyRef = useRef<HTMLDivElement | null>(null);
+  const ribbonRef = useRef<RibbonHandle | null>(null);
+  const [paused, setPaused] = useState(false);
+  const pauseLabel = t(paused ? 'hero.motion.play' : 'hero.motion.pause');
+
+  const togglePause = (): void => {
+    setPaused(!paused);
+    ribbonRef.current?.setPaused(!paused);
+  };
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -43,7 +51,6 @@ export default function HeroStage(): ReactElement {
     if (!stage || !canvas || !copy || !poster) return undefined;
 
     const root = document.documentElement;
-    let ribbon: RibbonHandle | null = null;
     let inView = true;
     let cancelled = false;
 
@@ -56,42 +63,39 @@ export default function HeroStage(): ReactElement {
       ([entry]) => {
         inView = entry?.isIntersecting ?? true;
         root.toggleAttribute('data-hero-passed', !inView);
-        ribbon?.setVisible(inView);
+        ribbonRef.current?.setVisible(inView);
       },
       { rootMargin: '-64px 0px 0px 0px' }
     );
     observer.observe(stage);
 
+    // Reduced motion does not mean a still picture: the lines hold their shape and the light keeps travelling
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const onMotionChange = (): void => {
-      if (!motion.matches) return;
-      ribbon?.stop();
-      ribbon = null;
-      showPoster();
-    };
+    const onMotionChange = (): void => ribbonRef.current?.setReduced(motion.matches);
     motion.addEventListener?.('change', onMotionChange);
 
-    let boot = 0;
-    if (motion.matches) {
-      showPoster();
-    } else {
-      // after first paint: the page is complete without this, so nothing waits on it
-      boot = window.setTimeout(() => {
-        import('./ribbonRenderer')
-          .then(({ startRibbon }) => {
-            if (cancelled) return;
-            ribbon = startRibbon(canvas, stage, copy, poster, {
-              onReady: () => {
-                stage.dataset.ribbon = 'live';
-              },
-              onLost: showPoster,
-            });
-            if (ribbon) ribbon.setVisible(inView);
-            else showPoster();
-          })
-          .catch(showPoster);
-      }, 0);
-    }
+    // after first paint: the page is complete without this, so nothing waits on it
+    const boot = window.setTimeout(() => {
+      import('./ribbonRenderer')
+        .then(({ startRibbon }) => {
+          if (cancelled) return;
+          const ribbon = startRibbon(canvas, stage, copy, poster, {
+            reduced: motion.matches,
+            onReady: () => {
+              stage.dataset.ribbon = 'live';
+            },
+            onLost: showPoster,
+          });
+          ribbonRef.current = ribbon;
+          if (!ribbon) {
+            showPoster();
+            return;
+          }
+          ribbon.setVisible(inView);
+          ribbon.setPaused(stage.hasAttribute('data-paused'));
+        })
+        .catch(showPoster);
+    }, 0);
 
     return () => {
       cancelled = true;
@@ -99,14 +103,15 @@ export default function HeroStage(): ReactElement {
       motion.removeEventListener?.('change', onMotionChange);
       observer.disconnect();
       root.removeAttribute('data-hero-passed');
-      ribbon?.stop();
+      ribbonRef.current?.stop();
+      ribbonRef.current = null;
     };
   }, []);
 
   return (
-    <section ref={stageRef} className="hero-stage" data-testid="hero-stage">
+    <section ref={stageRef} className="hero-stage" data-testid="hero-stage" data-paused={paused ? '' : undefined}>
       <noscript>
-        <style>{'.hero-poster{opacity:1}'}</style>
+        <style>{'.hero-poster{opacity:1}.hero-glow,.hero-pause{display:none}'}</style>
       </noscript>
       <canvas ref={canvasRef} className="hero-ribbon" aria-hidden="true" data-testid="hero-ribbon" />
       <div className="hero-content mx-auto max-w-6xl px-6 sm:px-10">
@@ -136,6 +141,12 @@ export default function HeroStage(): ReactElement {
       <div className="hero-band">
         <RibbonPoster />
       </div>
+      <div className="hero-glow" aria-hidden="true" />
+      <button type="button" className="hero-pause" onClick={togglePause} aria-label={pauseLabel} title={pauseLabel}>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d={paused ? 'M5 3.5v9l7-4.5z' : 'M5.5 3.5v9M10.5 3.5v9'} />
+        </svg>
+      </button>
     </section>
   );
 }

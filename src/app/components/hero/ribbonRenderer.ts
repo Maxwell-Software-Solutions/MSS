@@ -120,12 +120,12 @@ void main() {
   float drawn = 1.0 - smoothstep(front - 0.05, front, sx);
   float tip = 0.3 * exp(-pow((sx - front + 0.02) / 0.03, 2.0)) * (1.0 - smoothstep(2.2, 3.0, uReveal));
 
-  // one pulse passes along part of the ribbon on the ordered side, following its twist
-  float s = sx + 0.5 * depth - uPulse.x;
-  float across = exp(-pow((depth - uPulse.z) / 0.3, 2.0));
-  float band = exp(-s * s / 0.0006);
-  float tail = s < 0.0 ? exp(s / 0.07) : 0.0;
-  float pulse = clamp((band + 0.35 * tail) * across * order * order * uPulse.y, 0.0, 1.0);
+  // a soft gold light passes along part of the ribbon on the ordered side, following its twist
+  float s = sx + 0.3 * depth - uPulse.x;
+  float across = exp(-pow((depth - uPulse.z) / 0.6, 2.0));
+  float band = exp(-s * s / 0.0028);
+  float tail = s < 0.0 ? exp(s / 0.1) : 0.0;
+  float pulse = clamp((band + 0.4 * tail) * across * order * order * uPulse.y, 0.0, 1.0);
 
   float lift = max(pulse, tip);
   float base = mix(0.16, 0.86, depth * depth) * (0.8 + 0.2 * order);
@@ -134,10 +134,10 @@ void main() {
   float cover = (1.0 - smoothstep(uCopy.x, uCopy.x + uCopy.z, here.x))
               * (1.0 - smoothstep(uCopy.y, uCopy.y + uCopy.w, here.y));
   alpha *= 1.0 - 0.78 * cover;
-  vec3 rgb = mix(vec3(0.722, 0.776, 0.847), vec3(0.302, 0.620, 1.0), lift);
+  vec3 rgb = mix(vec3(0.92), vec3(0.788, 0.635, 0.153), lift);
   vColor = vec4(rgb * alpha, alpha);
 
-  float halfW = uPx * (mix(0.36, 0.62, here.z) + 0.16 * pulse);
+  float halfW = uPx * mix(0.36, 0.62, here.z);
   vHalf = halfW;
   vD = side * (halfW + 1.0);
   vec2 pos = here.xy + n * vD + dir * (end * 2.0 - 1.0) * halfW * 0.5;
@@ -156,36 +156,40 @@ void main() {
 
 export interface RibbonHandle {
   setVisible(visible: boolean): void;
+  /** The visitor's pause control. */
+  setPaused(paused: boolean): void;
+  /** Reduced motion: the lines hold their shape and only the light travels. */
+  setReduced(reduced: boolean): void;
   stop(): void;
 }
 
 interface RibbonOptions {
+  reduced: boolean;
   /** Called once the first frame is on screen, when the poster can give way. */
   onReady: () => void;
   /** Called if the GPU context goes away or the GPU is too slow, so the poster can come back. */
   onLost: () => void;
 }
 
-// The ribbon arrives with some energy, then settles into a slow drift. Speeds are relative to the
-// formula's own clock: a visitor sees the arrival once, and the drift for as long as they stay.
-const ARRIVAL_SPEED = 0.7;
-const DRIFT_SPEED = 0.2;
+// The ribbon arrives with some energy, then keeps a drift you can see at a glance. Speeds are relative
+// to the formula's own clock.
+const ARRIVAL_SPEED = 0.9;
+const DRIFT_SPEED = 0.5;
 const SETTLE_SECONDS = 3.5;
-
-/** Time on the formula's clock after `elapsed` real seconds: the integral of the eased speed. */
-const flowTime = (elapsed: number): number =>
-  DRIFT_SPEED * elapsed + (ARRIVAL_SPEED - DRIFT_SPEED) * SETTLE_SECONDS * (1 - Math.exp(-elapsed / SETTLE_SECONDS));
 
 // Once settled the motion is slow enough that every other frame is imperceptible, and half the GPU work
 const SETTLED_AFTER = 8;
 
-const PULSE_EVERY = 13;
-const PULSE_TIME = 4.2;
-const PULSE_FROM = 0.62;
-const PULSE_TO = 1.6;
-const FIRST_PULSE = 4.5;
-const PULSE_STRENGTH = 0.6;
+// A gold light is always on its way along the ribbon. It is already bright on the first frame, and each
+// new one sets off as the last leaves the screen, so nobody waits to see something move.
+const PULSE_EVERY = 4;
+const PULSE_FROM = 0.68;
+const PULSE_TO = 1.32;
+const PULSE_LEAD = 0.7;
+const PULSE_STRENGTH = 0.95;
 const CURSOR_LEAN = 0.07;
+// Past the end of the draw-on, for reduced motion: every line is simply there
+const FULLY_DRAWN = 99;
 
 function buildProgram(gl: WebGL2RenderingContext): WebGLProgram | null {
   const program = gl.createProgram();
@@ -332,6 +336,9 @@ export function startRibbon(
 
   // time only advances while frames are drawn, so nothing jumps after a pause
   let elapsed = 0;
+  let flow = RIBBON_START_TIME;
+  let reduced = options.reduced;
+  let paused = false;
   let last = 0;
   let raf = 0;
   let skipFrame = false;
@@ -349,25 +356,26 @@ export function startRibbon(
     pointer.cy += (pointer.y - pointer.cy) * follow;
     pointer.amp += (pointer.target - pointer.amp) * (1 - Math.exp(-dt * 0.9));
 
-    const sinceFirst = elapsed - FIRST_PULSE;
-    const k = sinceFirst < 0 ? -1 : sinceFirst % PULSE_EVERY;
-    const sweep = k < 0 || k > PULSE_TIME ? -1 : k / PULSE_TIME;
-    const pulsePos = sweep < 0 ? -1 : PULSE_FROM + (PULSE_TO - PULSE_FROM) * sweep;
-    const pulseAmp = sweep < 0 ? 0 : PULSE_STRENGTH * Math.sin(Math.PI * Math.min(1, sweep * 1.02));
-    const pulseRow = 0.28 + 0.44 * ((Math.floor(sinceFirst / PULSE_EVERY) * 0.618) % 1);
+    if (!reduced) flow += dt * (DRIFT_SPEED + (ARRIVAL_SPEED - DRIFT_SPEED) * Math.exp(-elapsed / SETTLE_SECONDS));
+
+    const light = (elapsed + PULSE_LEAD) / PULSE_EVERY;
+    const sweep = light % 1;
+    const pulsePos = PULSE_FROM + (PULSE_TO - PULSE_FROM) * sweep;
+    const pulseAmp = PULSE_STRENGTH * Math.min(1, sweep * 5, (1 - sweep) * 5);
+    const pulseRow = 0.35 + 0.4 * ((Math.floor(light) * 0.618) % 1);
 
     gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.uniform1f(u.t, RIBBON_START_TIME + flowTime(elapsed));
-    gl.uniform1f(u.reveal, elapsed);
+    gl.uniform1f(u.t, flow);
+    gl.uniform1f(u.reveal, reduced ? FULLY_DRAWN : elapsed);
     gl.uniform3f(u.pulse, pulsePos, pulseAmp, pulseRow);
-    gl.uniform3f(u.mouse, (pointer.cx * dpr) / width, (pointer.cy * dpr) / height, pointer.amp * CURSOR_LEAN);
+    gl.uniform3f(u.mouse, (pointer.cx * dpr) / width, (pointer.cy * dpr) / height, reduced ? 0 : pointer.amp * CURSOR_LEAN);
     gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, cols * rows);
   }
 
   // weak GPU, judged in the first seconds: drop detail once, then settle on the poster, rather than stutter.
   // Above 25 fps is fine, since low-power modes cap at 30; one long frame during page load does not count.
   function checkSpeed(raw: number): void {
-    if (elapsed > 12) return;
+    if (elapsed > SETTLED_AFTER) return;
     speed.frames++;
     speed.ms += raw;
     if (raw > 40) speed.slow++;
@@ -387,7 +395,8 @@ export function startRibbon(
     raf = requestAnimationFrame(frame);
     skipFrame = !skipFrame;
     if (skipFrame && elapsed > SETTLED_AFTER) return;
-    const raw = now - last;
+    // a frame's timestamp can predate the moment the ribbon started
+    const raw = Math.max(0, now - last);
     last = now;
     const dt = Math.min(raw / 1000, 0.1);
     elapsed += dt;
@@ -400,7 +409,7 @@ export function startRibbon(
   }
 
   function resume(): void {
-    if (running || halted || !inView || document.hidden) return;
+    if (running || halted || paused || !inView || document.hidden) return;
     running = true;
     last = performance.now();
     raf = requestAnimationFrame(frame);
@@ -444,6 +453,14 @@ export function startRibbon(
       inView = visible;
       if (visible) resume();
       else pause();
+    },
+    setPaused(value) {
+      paused = value;
+      if (paused) pause();
+      else resume();
+    },
+    setReduced(value) {
+      reduced = value;
     },
     stop() {
       pause();

@@ -4,6 +4,8 @@
   "hero.cta.primary": "Request Your Code Audit",
   "hero.cta.secondary": "Explore Services",
   "hero.values": "QUALITY • RELIABILITY • VELOCITY",
+  "hero.motion.pause": "Pause animation",
+  "hero.motion.play": "Play animation",
   "stats.defects": "-60%",
   "stats.defects.label": "Escaped defects",
   "stats.coverage": "+35%",

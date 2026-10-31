@@ -1,20 +1,23 @@
-/* Home page hero: dark navy in both site themes. Everything here is scoped to .hero-stage,
+/* Home page hero: near-black in both site themes. Everything here is scoped to .hero-stage,
    or to pages that contain it, so the rest of the site is untouched. */
 
 html:has(.hero-stage) {
-  --hero-navy: #0a1730;
+  --hero-ink: #0a0a0a;
 }
 
 .hero-stage {
-  --color-text: #f4f6fa;
-  --color-foreground: #f4f6fa;
-  --color-text-secondary: #ccd5e3;
-  --color-secondary: #ccd5e3;
-  --color-muted: #b4bfcf;
+  --color-text: #f7f7f5;
+  --color-foreground: #f7f7f5;
+  --color-text-secondary: #cfcfcb;
+  --color-secondary: #cfcfcb;
+  --color-muted: #b5b5b0;
   --color-border: rgba(255, 255, 255, 0.18);
   --color-border-strong: rgba(255, 255, 255, 0.42);
-  --color-accent: #93bfff;
-  --color-accent-hover: #bcd7ff;
+  --color-accent: var(--gold-tint);
+  --color-accent-hover: var(--gold-tint-hover);
+  --color-accent-fill: var(--gold-tint);
+  --color-accent-fill-hover: var(--gold-tint-hover);
+  --color-accent-contrast: #0a0a0a;
   --color-hover: rgba(255, 255, 255, 0.1);
   --color-active: rgba(255, 255, 255, 0.16);
   color-scheme: dark;
@@ -31,7 +34,7 @@ html:has(.hero-stage) {
   padding-top: calc(var(--header-height) + clamp(1.25rem, 4svh, 4rem));
   padding-bottom: clamp(3rem, 30svh - 6rem, 18rem);
   overflow: hidden;
-  background: var(--hero-navy);
+  background: var(--hero-ink);
   color: var(--color-text);
 }
 
@@ -48,7 +51,7 @@ html:has(.hero-stage) {
    lets go once they have nearly crossed the page, and comes up to full strength if they never arrive. */
 .hero-poster {
   fill: none;
-  stroke: #b8c6d8;
+  stroke: #ebebeb;
   stroke-width: 0.9;
   opacity: 0.55;
   transition: opacity 0.3s ease;
@@ -72,11 +75,65 @@ html:has(.hero-stage) {
   display: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-poster {
-    opacity: 1;
-    transition: none;
+/* The gold light in plain CSS: it crosses the poster from the first paint, and keeps going for anyone
+   without live lines. Multiply tints only the lines and leaves the black, so only the light moves. */
+.hero-glow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, var(--gold-tint) 50%, transparent);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  animation: hero-glow 4s linear infinite;
+}
+
+@keyframes hero-glow {
+  from {
+    transform: translateX(60%);
+    opacity: 0;
   }
+  12% {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(260%);
+  }
+}
+
+.hero-stage[data-ribbon='live'] .hero-glow {
+  display: none;
+}
+
+.hero-stage[data-paused] .hero-glow,
+html[data-hero-passed] .hero-glow {
+  animation-play-state: paused;
+}
+
+/* Stops the motion for anyone who wants it still. On the page's right edge, clear of the text. */
+.hero-pause {
+  position: absolute;
+  z-index: 3;
+  right: max(var(--gutter), calc((100% - var(--container-width)) / 2 + var(--gutter)));
+  bottom: var(--space-5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(10, 10, 10, 0.72);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+
+.hero-pause:hover {
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
 }
 
 .hero-content {
@@ -100,7 +157,7 @@ html:has(.hero-stage) {
   bottom: -5rem;
   left: -100vw;
   right: -9rem;
-  background: var(--hero-navy);
+  background: var(--hero-ink);
   opacity: 0.82;
   -webkit-mask-image:
     linear-gradient(to left, transparent, #000 9rem),
@@ -118,6 +175,32 @@ html:has(.hero-stage) {
 .hero-stage[data-ribbon='live'] .hero-copy::before {
   opacity: 0;
   transition: opacity 0.5s ease 2.1s;
+}
+
+/* Reduced motion: the same lines, fixed in place, with only the light travelling. There is no draw-on,
+   so the lines are at full strength from the first paint and the two layers simply cross-fade. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-poster {
+    opacity: 1;
+    transition: none;
+  }
+
+  .hero-ribbon {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .hero-stage[data-ribbon='live'] .hero-ribbon {
+    opacity: 1;
+  }
+
+  .hero-stage[data-ribbon='live'] .hero-poster {
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+  }
+
+  .hero-stage[data-ribbon='live'] .hero-copy::before {
+    transition-delay: 0.4s;
+  }
 }
 
 .hero-title {
@@ -146,11 +229,11 @@ html:has(.hero-stage) {
 
 /* The outline button carries its own backing, so its label never sits directly on a line */
 .hero-stage .hero-btn-quiet {
-  background: rgba(10, 23, 48, 0.72);
+  background: rgba(10, 10, 10, 0.72);
 }
 
 .hero-stage .hero-btn-quiet:hover {
-  background: #1a2a48;
+  background: #1f1f1f;
 }
 
 /* Phones and portrait screens: the ribbon takes the space left below the text. The live lines read
@@ -189,17 +272,18 @@ html:has(.hero-stage) .site-header {
 }
 
 html:has(.hero-stage):not([data-hero-passed]) .site-header {
-  background: color-mix(in srgb, var(--hero-navy) 72%, transparent);
+  background: color-mix(in srgb, var(--hero-ink) 72%, transparent);
   border-bottom-color: transparent;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
 
 html:has(.hero-stage):not([data-hero-passed]) :is(.site-logo, .nav-links, .menu-toggle) {
-  --color-text: #f4f6fa;
-  --color-text-secondary: #d5dde9;
+  --color-bg: var(--hero-ink);
+  --color-text: #f7f7f5;
+  --color-text-secondary: #d5d5d1;
   --color-border: rgba(255, 255, 255, 0.24);
   --color-hover: rgba(255, 255, 255, 0.1);
   --color-active: rgba(255, 255, 255, 0.16);
-  --color-accent: #93bfff;
+  --color-accent: var(--gold-tint);
 }
