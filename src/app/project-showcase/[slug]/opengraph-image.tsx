@@ -61,7 +61,7 @@ export default async function Image({ params }: { params: { slug: string } }): P
                 lineHeight: 1.3,
                 border: `1px solid ${OG_COLORS.hairline}`,
                 borderRadius: 8,
-                background: 'rgba(10, 23, 48, 0.72)',
+                background: 'rgba(10, 10, 10, 0.72)',
               }}
             >
               {metric}

@@ -1,21 +1,21 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#06080f"/>
-      <stop offset="100%" stop-color="#0c1325"/>
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#171717"/>
     </linearGradient>
     <radialGradient id="glow1" cx="30%" cy="40%" r="50%">
-      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#818181" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#818181" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glow2" cx="75%" cy="60%" r="40%">
-      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#7f7f7f" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#7f7f7f" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#7c3aed"/>
-      <stop offset="50%" stop-color="#4f46e5"/>
-      <stop offset="100%" stop-color="#2563eb"/>
+      <stop offset="0%" stop-color="#818181"/>
+      <stop offset="50%" stop-color="#797979"/>
+      <stop offset="100%" stop-color="#7f7f7f"/>
     </linearGradient>
     <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
@@ -32,7 +32,7 @@
   <rect width="1200" height="630" fill="url(#glow2)"/>
 
   <!-- Grid pattern -->
-  <g opacity="0.04" stroke="#818cf8" stroke-width="1">
+  <g opacity="0.04" stroke="#ababab" stroke-width="1">
     <line x1="0" y1="90" x2="1200" y2="90"/>
     <line x1="0" y1="180" x2="1200" y2="180"/>
     <line x1="0" y1="270" x2="1200" y2="270"/>
@@ -54,51 +54,51 @@
   <g transform="translate(80, 140)">
     <!-- GET card -->
     <rect x="0" y="0" width="340" height="58" rx="10" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
-    <rect x="0" y="0" width="6" height="58" rx="3" fill="#34d399"/>
-    <text x="22" y="24" font-family="monospace" font-size="13" font-weight="700" fill="#34d399">GET</text>
-    <text x="66" y="24" font-family="monospace" font-size="12" fill="#818cf8">/api/v2/users</text>
-    <text x="22" y="44" font-family="monospace" font-size="11" fill="#94a3b8">200 OK · 24ms</text>
-    <rect x="280" y="18" width="44" height="22" rx="6" fill="#34d399" fill-opacity="0.15"/>
-    <text x="302" y="33" font-family="monospace" font-size="11" font-weight="700" fill="#34d399" text-anchor="middle">200</text>
+    <rect x="0" y="0" width="6" height="58" rx="3" fill="#d7b030"/>
+    <text x="22" y="24" font-family="monospace" font-size="13" font-weight="700" fill="#d7b030">GET</text>
+    <text x="66" y="24" font-family="monospace" font-size="12" fill="#ababab">/api/v2/users</text>
+    <text x="22" y="44" font-family="monospace" font-size="11" fill="#a6a6a6">200 OK · 24ms</text>
+    <rect x="280" y="18" width="44" height="22" rx="6" fill="#d7b030" fill-opacity="0.15"/>
+    <text x="302" y="33" font-family="monospace" font-size="11" font-weight="700" fill="#d7b030" text-anchor="middle">200</text>
 
     <!-- POST card -->
     <rect x="0" y="74" width="340" height="58" rx="10" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
-    <rect x="0" y="74" width="6" height="58" rx="3" fill="#818cf8"/>
-    <text x="22" y="98" font-family="monospace" font-size="13" font-weight="700" fill="#818cf8">POST</text>
-    <text x="76" y="98" font-family="monospace" font-size="12" fill="#818cf8">/api/v2/orders</text>
-    <text x="22" y="118" font-family="monospace" font-size="11" fill="#94a3b8">201 Created · 42ms</text>
-    <rect x="280" y="92" width="44" height="22" rx="6" fill="#818cf8" fill-opacity="0.15"/>
-    <text x="302" y="107" font-family="monospace" font-size="11" font-weight="700" fill="#818cf8" text-anchor="middle">201</text>
+    <rect x="0" y="74" width="6" height="58" rx="3" fill="#ababab"/>
+    <text x="22" y="98" font-family="monospace" font-size="13" font-weight="700" fill="#ababab">POST</text>
+    <text x="76" y="98" font-family="monospace" font-size="12" fill="#ababab">/api/v2/orders</text>
+    <text x="22" y="118" font-family="monospace" font-size="11" fill="#a6a6a6">201 Created · 42ms</text>
+    <rect x="280" y="92" width="44" height="22" rx="6" fill="#ababab" fill-opacity="0.15"/>
+    <text x="302" y="107" font-family="monospace" font-size="11" font-weight="700" fill="#ababab" text-anchor="middle">201</text>
 
     <!-- PATCH card -->
     <rect x="0" y="148" width="340" height="58" rx="10" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
-    <rect x="0" y="148" width="6" height="58" rx="3" fill="#fbbf24"/>
-    <text x="22" y="172" font-family="monospace" font-size="13" font-weight="700" fill="#fbbf24">PATCH</text>
-    <text x="88" y="172" font-family="monospace" font-size="12" fill="#818cf8">/api/v2/users/:id</text>
-    <text x="22" y="192" font-family="monospace" font-size="11" fill="#94a3b8">200 OK · 18ms</text>
-    <rect x="280" y="162" width="44" height="22" rx="6" fill="#fbbf24" fill-opacity="0.15"/>
-    <text x="302" y="177" font-family="monospace" font-size="11" font-weight="700" fill="#fbbf24" text-anchor="middle">200</text>
+    <rect x="0" y="148" width="6" height="58" rx="3" fill="#dbb844"/>
+    <text x="22" y="172" font-family="monospace" font-size="13" font-weight="700" fill="#dbb844">PATCH</text>
+    <text x="88" y="172" font-family="monospace" font-size="12" fill="#ababab">/api/v2/users/:id</text>
+    <text x="22" y="192" font-family="monospace" font-size="11" fill="#a6a6a6">200 OK · 18ms</text>
+    <rect x="280" y="162" width="44" height="22" rx="6" fill="#dbb844" fill-opacity="0.15"/>
+    <text x="302" y="177" font-family="monospace" font-size="11" font-weight="700" fill="#dbb844" text-anchor="middle">200</text>
 
     <!-- DELETE card -->
     <rect x="0" y="222" width="340" height="58" rx="10" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
-    <rect x="0" y="222" width="6" height="58" rx="3" fill="#f87171"/>
-    <text x="22" y="246" font-family="monospace" font-size="13" font-weight="700" fill="#f87171">DELETE</text>
-    <text x="100" y="246" font-family="monospace" font-size="12" fill="#818cf8">/api/v2/orders/:id</text>
-    <text x="22" y="266" font-family="monospace" font-size="11" fill="#94a3b8">204 No Content · 9ms</text>
-    <rect x="280" y="236" width="44" height="22" rx="6" fill="#f87171" fill-opacity="0.15"/>
-    <text x="302" y="251" font-family="monospace" font-size="11" font-weight="700" fill="#f87171" text-anchor="middle">204</text>
+    <rect x="0" y="222" width="6" height="58" rx="3" fill="#aeaeae"/>
+    <text x="22" y="246" font-family="monospace" font-size="13" font-weight="700" fill="#aeaeae">DELETE</text>
+    <text x="100" y="246" font-family="monospace" font-size="12" fill="#ababab">/api/v2/orders/:id</text>
+    <text x="22" y="266" font-family="monospace" font-size="11" fill="#a6a6a6">204 No Content · 9ms</text>
+    <rect x="280" y="236" width="44" height="22" rx="6" fill="#aeaeae" fill-opacity="0.15"/>
+    <text x="302" y="251" font-family="monospace" font-size="11" font-weight="700" fill="#aeaeae" text-anchor="middle">204</text>
   </g>
 
   <!-- Center: label -->
   <g transform="translate(500, 200)">
-    <rect x="0" y="0" width="200" height="30" rx="6" fill="#7c3aed" fill-opacity="0.2" stroke="#7c3aed" stroke-opacity="0.4" stroke-width="1"/>
-    <text x="100" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#a78bfa" text-anchor="middle" letter-spacing="3">API DESIGN</text>
-    <text x="100" y="72" font-family="sans-serif" font-size="32" font-weight="800" fill="#f1f5f9" text-anchor="middle">Best Practices</text>
+    <rect x="0" y="0" width="200" height="30" rx="6" fill="#818181" fill-opacity="0.2" stroke="#818181" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="100" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#b4b4b4" text-anchor="middle" letter-spacing="3">API DESIGN</text>
+    <text x="100" y="72" font-family="sans-serif" font-size="32" font-weight="800" fill="#f5f5f5" text-anchor="middle">Best Practices</text>
     <text x="100" y="100" font-family="sans-serif" font-size="32" font-weight="800" text-anchor="middle">
-      <tspan fill="#818cf8">for Modern</tspan>
-      <tspan fill="#f1f5f9"> APIs</tspan>
+      <tspan fill="#ababab">for Modern</tspan>
+      <tspan fill="#f5f5f5"> APIs</tspan>
     </text>
-    <text x="100" y="140" font-family="sans-serif" font-size="15" fill="#94a3b8" text-anchor="middle">REST · GraphQL · Versioning · Auth</text>
+    <text x="100" y="140" font-family="sans-serif" font-size="15" fill="#a6a6a6" text-anchor="middle">REST · GraphQL · Versioning · Auth</text>
   </g>
 
   <!-- Right: response JSON card -->
@@ -107,26 +107,26 @@
     <!-- card header -->
     <rect x="0" y="0" width="340" height="40" rx="14" fill="#ffffff" fill-opacity="0.04"/>
     <rect x="0" y="26" width="340" height="14" fill="#ffffff" fill-opacity="0.04"/>
-    <circle cx="20" cy="20" r="5" fill="#f87171" fill-opacity="0.8"/>
-    <circle cx="36" cy="20" r="5" fill="#fbbf24" fill-opacity="0.8"/>
-    <circle cx="52" cy="20" r="5" fill="#34d399" fill-opacity="0.8"/>
-    <text x="170" y="25" font-family="monospace" font-size="12" fill="#94a3b8" text-anchor="middle">response.json</text>
+    <circle cx="20" cy="20" r="5" fill="#aeaeae" fill-opacity="0.8"/>
+    <circle cx="36" cy="20" r="5" fill="#dbb844" fill-opacity="0.8"/>
+    <circle cx="52" cy="20" r="5" fill="#d7b030" fill-opacity="0.8"/>
+    <text x="170" y="25" font-family="monospace" font-size="12" fill="#a6a6a6" text-anchor="middle">response.json</text>
     <!-- JSON content -->
-    <text x="20" y="65" font-family="monospace" font-size="12" fill="#94a3b8">{</text>
-    <text x="36" y="85" font-family="monospace" font-size="12"><tspan fill="#818cf8">"status"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#34d399">"success"</tspan><tspan fill="#94a3b8">,</tspan></text>
-    <text x="36" y="105" font-family="monospace" font-size="12"><tspan fill="#818cf8">"version"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#fbbf24">"v2.1.0"</tspan><tspan fill="#94a3b8">,</tspan></text>
-    <text x="36" y="125" font-family="monospace" font-size="12"><tspan fill="#818cf8">"data"</tspan><tspan fill="#94a3b8">: {</tspan></text>
-    <text x="52" y="145" font-family="monospace" font-size="12"><tspan fill="#818cf8">"id"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#f87171">42</tspan><tspan fill="#94a3b8">,</tspan></text>
-    <text x="52" y="165" font-family="monospace" font-size="12"><tspan fill="#818cf8">"name"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#34d399">"John"</tspan><tspan fill="#94a3b8">,</tspan></text>
-    <text x="52" y="185" font-family="monospace" font-size="12"><tspan fill="#818cf8">"role"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#34d399">"admin"</tspan></text>
-    <text x="36" y="205" font-family="monospace" font-size="12" fill="#94a3b8">},</text>
-    <text x="36" y="225" font-family="monospace" font-size="12"><tspan fill="#818cf8">"meta"</tspan><tspan fill="#94a3b8">: { </tspan><tspan fill="#818cf8">"page"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#f87171">1</tspan><tspan fill="#94a3b8"> }</tspan></text>
-    <text x="20" y="245" font-family="monospace" font-size="12" fill="#94a3b8">}</text>
+    <text x="20" y="65" font-family="monospace" font-size="12" fill="#a6a6a6">{</text>
+    <text x="36" y="85" font-family="monospace" font-size="12"><tspan fill="#ababab">"status"</tspan><tspan fill="#a6a6a6">: </tspan><tspan fill="#d7b030">"success"</tspan><tspan fill="#a6a6a6">,</tspan></text>
+    <text x="36" y="105" font-family="monospace" font-size="12"><tspan fill="#ababab">"version"</tspan><tspan fill="#a6a6a6">: </tspan><tspan fill="#dbb844">"v2.1.0"</tspan><tspan fill="#a6a6a6">,</tspan></text>
+    <text x="36" y="125" font-family="monospace" font-size="12"><tspan fill="#ababab">"data"</tspan><tspan fill="#a6a6a6">: {</tspan></text>
+    <text x="52" y="145" font-family="monospace" font-size="12"><tspan fill="#ababab">"id"</tspan><tspan fill="#a6a6a6">: </tspan><tspan fill="#aeaeae">42</tspan><tspan fill="#a6a6a6">,</tspan></text>
+    <text x="52" y="165" font-family="monospace" font-size="12"><tspan fill="#ababab">"name"</tspan><tspan fill="#a6a6a6">: </tspan><tspan fill="#d7b030">"John"</tspan><tspan fill="#a6a6a6">,</tspan></text>
+    <text x="52" y="185" font-family="monospace" font-size="12"><tspan fill="#ababab">"role"</tspan><tspan fill="#a6a6a6">: </tspan><tspan fill="#d7b030">"admin"</tspan></text>
+    <text x="36" y="205" font-family="monospace" font-size="12" fill="#a6a6a6">},</text>
+    <text x="36" y="225" font-family="monospace" font-size="12"><tspan fill="#ababab">"meta"</tspan><tspan fill="#a6a6a6">: { </tspan><tspan fill="#ababab">"page"</tspan><tspan fill="#a6a6a6">: </tspan><tspan fill="#aeaeae">1</tspan><tspan fill="#a6a6a6"> }</tspan></text>
+    <text x="20" y="245" font-family="monospace" font-size="12" fill="#a6a6a6">}</text>
   </g>
 
   <!-- Accent line top -->
   <rect x="0" y="0" width="1200" height="3" fill="url(#accent)"/>
 
   <!-- Bottom label -->
-  <text x="600" y="596" font-family="sans-serif" font-size="13" fill="#64748b" text-anchor="middle" letter-spacing="2">MAXWELL SOFTWARE SOLUTIONS</text>
+  <text x="600" y="596" font-family="sans-serif" font-size="13" fill="#777777" text-anchor="middle" letter-spacing="2">MAXWELL SOFTWARE SOLUTIONS</text>
 </svg>

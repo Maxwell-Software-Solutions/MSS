@@ -7,15 +7,15 @@
   -->
   <defs>
     <linearGradient id="barGrad" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0%" stop-color="#4f46e5"/>
-      <stop offset="100%" stop-color="#7c3aed"/>
+      <stop offset="0%" stop-color="#797979"/>
+      <stop offset="100%" stop-color="#818181"/>
     </linearGradient>
   </defs>
 
   <!-- Bar 1 — short, muted -->
-  <rect x="6"  y="40" width="12" height="20" rx="3" fill="#818cf8" fill-opacity="0.35"/>
+  <rect x="6"  y="40" width="12" height="20" rx="3" fill="#ababab" fill-opacity="0.35"/>
   <!-- Bar 2 — medium -->
-  <rect x="22" y="24" width="12" height="36" rx="3" fill="#818cf8" fill-opacity="0.65"/>
+  <rect x="22" y="24" width="12" height="36" rx="3" fill="#ababab" fill-opacity="0.65"/>
   <!-- Bar 3 — tall, full gradient -->
   <rect x="38" y="8"  width="12" height="52" rx="3" fill="url(#barGrad)"/>
 

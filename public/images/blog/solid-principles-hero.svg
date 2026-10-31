@@ -1,21 +1,21 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#06080f"/>
-      <stop offset="100%" stop-color="#0c1325"/>
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#171717"/>
     </linearGradient>
     <radialGradient id="glow1" cx="30%" cy="40%" r="55%">
-      <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.32"/>
-      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#818181" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#818181" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glow2" cx="75%" cy="65%" r="40%">
-      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.22"/>
-      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#7f7f7f" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#7f7f7f" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#7c3aed"/>
-      <stop offset="50%" stop-color="#4f46e5"/>
-      <stop offset="100%" stop-color="#2563eb"/>
+      <stop offset="0%" stop-color="#818181"/>
+      <stop offset="50%" stop-color="#797979"/>
+      <stop offset="100%" stop-color="#7f7f7f"/>
     </linearGradient>
     <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
@@ -29,7 +29,7 @@
   <rect width="1200" height="630" fill="url(#glow2)"/>
 
   <!-- Grid -->
-  <g opacity="0.04" stroke="#818cf8" stroke-width="1">
+  <g opacity="0.04" stroke="#ababab" stroke-width="1">
     <line x1="0" y1="90" x2="1200" y2="90"/>
     <line x1="0" y1="180" x2="1200" y2="180"/>
     <line x1="0" y1="270" x2="1200" y2="270"/>
@@ -49,87 +49,87 @@
 
   <!-- Title -->
   <g transform="translate(60, 68)">
-    <rect x="0" y="0" width="200" height="28" rx="6" fill="#7c3aed" fill-opacity="0.2" stroke="#7c3aed" stroke-opacity="0.4" stroke-width="1"/>
-    <text x="100" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#a78bfa" text-anchor="middle" letter-spacing="3">CLEAN CODE</text>
-    <text x="0" y="64" font-family="sans-serif" font-size="42" font-weight="800" fill="#f1f5f9">SOLID</text>
-    <text x="0" y="100" font-family="sans-serif" font-size="28" font-weight="800" fill="#818cf8">Principles</text>
-    <text x="0" y="130" font-family="sans-serif" font-size="14" fill="#94a3b8">Foundations of maintainable object-oriented design</text>
+    <rect x="0" y="0" width="200" height="28" rx="6" fill="#818181" fill-opacity="0.2" stroke="#818181" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="100" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#b4b4b4" text-anchor="middle" letter-spacing="3">CLEAN CODE</text>
+    <text x="0" y="64" font-family="sans-serif" font-size="42" font-weight="800" fill="#f5f5f5">SOLID</text>
+    <text x="0" y="100" font-family="sans-serif" font-size="28" font-weight="800" fill="#ababab">Principles</text>
+    <text x="0" y="130" font-family="sans-serif" font-size="14" fill="#a6a6a6">Foundations of maintainable object-oriented design</text>
   </g>
 
   <!-- SOLID cards — horizontal row -->
   <!-- S — Single Responsibility -->
   <g transform="translate(60, 200)">
-    <rect x="0" y="0" width="196" height="300" rx="16" fill="url(#cardGrad)" stroke="#818cf8" stroke-opacity="0.2" stroke-width="1"/>
-    <rect x="0" y="0" width="196" height="4" rx="2" fill="#818cf8"/>
-    <text x="98" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#818cf8" text-anchor="middle">S</text>
+    <rect x="0" y="0" width="196" height="300" rx="16" fill="url(#cardGrad)" stroke="#ababab" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="0" y="0" width="196" height="4" rx="2" fill="#ababab"/>
+    <text x="98" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#ababab" text-anchor="middle">S</text>
     <line x1="30" y1="110" x2="166" y2="110" stroke="#ffffff" stroke-opacity="0.06"/>
-    <text x="98" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Single</text>
-    <text x="98" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Responsibility</text>
-    <text x="98" y="196" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">One class,</text>
-    <text x="98" y="212" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">one reason</text>
-    <text x="98" y="228" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">to change</text>
-    <text x="98" y="270" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">SRP</text>
+    <text x="98" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Single</text>
+    <text x="98" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Responsibility</text>
+    <text x="98" y="196" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">One class,</text>
+    <text x="98" y="212" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">one reason</text>
+    <text x="98" y="228" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">to change</text>
+    <text x="98" y="270" font-family="monospace" font-size="10" fill="#777777" text-anchor="middle">SRP</text>
   </g>
 
   <!-- O — Open/Closed -->
   <g transform="translate(276, 200)">
-    <rect x="0" y="0" width="196" height="300" rx="16" fill="url(#cardGrad)" stroke="#34d399" stroke-opacity="0.2" stroke-width="1"/>
-    <rect x="0" y="0" width="196" height="4" rx="2" fill="#34d399"/>
-    <text x="98" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#34d399" text-anchor="middle">O</text>
+    <rect x="0" y="0" width="196" height="300" rx="16" fill="url(#cardGrad)" stroke="#d7b030" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="0" y="0" width="196" height="4" rx="2" fill="#d7b030"/>
+    <text x="98" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#d7b030" text-anchor="middle">O</text>
     <line x1="30" y1="110" x2="166" y2="110" stroke="#ffffff" stroke-opacity="0.06"/>
-    <text x="98" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Open /</text>
-    <text x="98" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Closed</text>
-    <text x="98" y="196" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Open to extend,</text>
-    <text x="98" y="212" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">closed to</text>
-    <text x="98" y="228" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">modification</text>
-    <text x="98" y="270" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">OCP</text>
+    <text x="98" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Open /</text>
+    <text x="98" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Closed</text>
+    <text x="98" y="196" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">Open to extend,</text>
+    <text x="98" y="212" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">closed to</text>
+    <text x="98" y="228" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">modification</text>
+    <text x="98" y="270" font-family="monospace" font-size="10" fill="#777777" text-anchor="middle">OCP</text>
   </g>
 
   <!-- L — Liskov Substitution -->
   <g transform="translate(492, 200)">
-    <rect x="0" y="0" width="196" height="300" rx="16" fill="url(#cardGrad)" stroke="#fbbf24" stroke-opacity="0.2" stroke-width="1"/>
-    <rect x="0" y="0" width="196" height="4" rx="2" fill="#fbbf24"/>
-    <text x="98" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#fbbf24" text-anchor="middle">L</text>
+    <rect x="0" y="0" width="196" height="300" rx="16" fill="url(#cardGrad)" stroke="#dbb844" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="0" y="0" width="196" height="4" rx="2" fill="#dbb844"/>
+    <text x="98" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#dbb844" text-anchor="middle">L</text>
     <line x1="30" y1="110" x2="166" y2="110" stroke="#ffffff" stroke-opacity="0.06"/>
-    <text x="98" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Liskov</text>
-    <text x="98" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Substitution</text>
-    <text x="98" y="196" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Subtypes must be</text>
-    <text x="98" y="212" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">substitutable for</text>
-    <text x="98" y="228" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">base types</text>
-    <text x="98" y="270" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">LSP</text>
+    <text x="98" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Liskov</text>
+    <text x="98" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Substitution</text>
+    <text x="98" y="196" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">Subtypes must be</text>
+    <text x="98" y="212" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">substitutable for</text>
+    <text x="98" y="228" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">base types</text>
+    <text x="98" y="270" font-family="monospace" font-size="10" fill="#777777" text-anchor="middle">LSP</text>
   </g>
 
   <!-- I — Interface Segregation -->
   <g transform="translate(708, 200)">
-    <rect x="0" y="0" width="196" height="300" rx="16" fill="url(#cardGrad)" stroke="#f87171" stroke-opacity="0.2" stroke-width="1"/>
-    <rect x="0" y="0" width="196" height="4" rx="2" fill="#f87171"/>
-    <text x="98" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#f87171" text-anchor="middle">I</text>
+    <rect x="0" y="0" width="196" height="300" rx="16" fill="url(#cardGrad)" stroke="#aeaeae" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="0" y="0" width="196" height="4" rx="2" fill="#aeaeae"/>
+    <text x="98" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#aeaeae" text-anchor="middle">I</text>
     <line x1="30" y1="110" x2="166" y2="110" stroke="#ffffff" stroke-opacity="0.06"/>
-    <text x="98" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Interface</text>
-    <text x="98" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Segregation</text>
-    <text x="98" y="196" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Many specific</text>
-    <text x="98" y="212" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">interfaces over</text>
-    <text x="98" y="228" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">one general</text>
-    <text x="98" y="270" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">ISP</text>
+    <text x="98" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Interface</text>
+    <text x="98" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Segregation</text>
+    <text x="98" y="196" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">Many specific</text>
+    <text x="98" y="212" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">interfaces over</text>
+    <text x="98" y="228" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">one general</text>
+    <text x="98" y="270" font-family="monospace" font-size="10" fill="#777777" text-anchor="middle">ISP</text>
   </g>
 
   <!-- D — Dependency Inversion -->
   <g transform="translate(924, 200)">
-    <rect x="0" y="0" width="216" height="300" rx="16" fill="url(#cardGrad)" stroke="#a78bfa" stroke-opacity="0.2" stroke-width="1"/>
-    <rect x="0" y="0" width="216" height="4" rx="2" fill="#a78bfa"/>
-    <text x="108" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#a78bfa" text-anchor="middle">D</text>
+    <rect x="0" y="0" width="216" height="300" rx="16" fill="url(#cardGrad)" stroke="#b4b4b4" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="0" y="0" width="216" height="4" rx="2" fill="#b4b4b4"/>
+    <text x="108" y="64" font-family="sans-serif" font-size="72" font-weight="900" fill="#b4b4b4" text-anchor="middle">D</text>
     <line x1="30" y1="110" x2="186" y2="110" stroke="#ffffff" stroke-opacity="0.06"/>
-    <text x="108" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Dependency</text>
-    <text x="108" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f1f5f9" text-anchor="middle">Inversion</text>
-    <text x="108" y="196" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Depend on</text>
-    <text x="108" y="212" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">abstractions,</text>
-    <text x="108" y="228" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">not concretions</text>
-    <text x="108" y="270" font-family="monospace" font-size="10" fill="#64748b" text-anchor="middle">DIP</text>
+    <text x="108" y="142" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Dependency</text>
+    <text x="108" y="160" font-family="sans-serif" font-size="13" font-weight="700" fill="#f5f5f5" text-anchor="middle">Inversion</text>
+    <text x="108" y="196" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">Depend on</text>
+    <text x="108" y="212" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">abstractions,</text>
+    <text x="108" y="228" font-family="sans-serif" font-size="11" fill="#a6a6a6" text-anchor="middle">not concretions</text>
+    <text x="108" y="270" font-family="monospace" font-size="10" fill="#777777" text-anchor="middle">DIP</text>
   </g>
 
   <!-- Accent line top -->
   <rect x="0" y="0" width="1200" height="3" fill="url(#accent)"/>
 
   <!-- Bottom label -->
-  <text x="600" y="596" font-family="sans-serif" font-size="13" fill="#64748b" text-anchor="middle" letter-spacing="2">MAXWELL SOFTWARE SOLUTIONS</text>
+  <text x="600" y="596" font-family="sans-serif" font-size="13" fill="#777777" text-anchor="middle" letter-spacing="2">MAXWELL SOFTWARE SOLUTIONS</text>
 </svg>

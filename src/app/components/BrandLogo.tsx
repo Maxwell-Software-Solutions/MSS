@@ -7,12 +7,12 @@ interface BrandLogoProps {
   label?: string;
 }
 
-/** The Maxwell logo inline, so it takes its colour from the theme with no image swap and no flash. */
+/** The Maxwell logo inline, so it takes its colours from the theme with no image swap and no flash: a gold mark and an ink name. */
 export default function BrandLogo({ className, label }: BrandLogoProps): ReactElement {
   const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true };
   return (
     <svg className={className} width={LOGO_WIDTH} height={LOGO_HEIGHT} viewBox={LOGO_VIEWBOX} fill="currentColor" {...a11y}>
-      <path d={LOGO_MARK} />
+      <path d={LOGO_MARK} fill="var(--color-accent)" />
       <path d={LOGO_WORD} />
       <path d={LOGO_DESCRIPTOR} fillOpacity={0.74} />
     </svg>

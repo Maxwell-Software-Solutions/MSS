@@ -10,8 +10,8 @@ const options = [
 
 export default function LogoOptionsPage() {
   return (
-    <div style={{ background: '#06080f', minHeight: '100vh', padding: '48px 40px', fontFamily: 'Inter, sans-serif' }}>
-      <p style={{ color: '#64748b', fontSize: 12, letterSpacing: 3, marginBottom: 40, textTransform: 'uppercase' }}>
+    <div style={{ background: '#0a0a0a', minHeight: '100vh', padding: '48px 40px', fontFamily: 'Inter, sans-serif' }}>
+      <p style={{ color: '#777777', fontSize: 12, letterSpacing: 3, marginBottom: 40, textTransform: 'uppercase' }}>
         Logo Options — Maxwell Software Solutions
       </p>
 
@@ -19,23 +19,23 @@ export default function LogoOptionsPage() {
         {options.map((opt) => (
           <div key={opt.id} style={{ display: 'flex', alignItems: 'center', gap: 48, padding: '36px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
             {/* Option label */}
-            <div style={{ width: 28, color: '#4f46e5', fontSize: 13, fontWeight: 700, flexShrink: 0 }}>{opt.id}</div>
+            <div style={{ width: 28, color: '#797979', fontSize: 13, fontWeight: 700, flexShrink: 0 }}>{opt.id}</div>
 
             {/* Logo on dark nav background */}
-            <div style={{ background: '#06080f', borderRadius: 12, padding: '20px 32px', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', minWidth: 320, flexShrink: 0 }}>
+            <div style={{ background: '#0a0a0a', borderRadius: 12, padding: '20px 32px', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', minWidth: 320, flexShrink: 0 }}>
               <Image src={opt.file} alt={`Option ${opt.id}`} width={280} height={64} style={{ height: 48, width: 'auto' }} unoptimized />
             </div>
 
             {/* Label + description */}
             <div>
-              <div style={{ color: '#f1f5f9', fontSize: 16, fontWeight: 600, marginBottom: 6 }}>{opt.label}</div>
-              <div style={{ color: '#64748b', fontSize: 14 }}>{opt.desc}</div>
+              <div style={{ color: '#f5f5f5', fontSize: 16, fontWeight: 600, marginBottom: 6 }}>{opt.label}</div>
+              <div style={{ color: '#777777', fontSize: 14 }}>{opt.desc}</div>
             </div>
           </div>
         ))}
       </div>
 
-      <p style={{ color: '#334155', fontSize: 12, marginTop: 48 }}>
+      <p style={{ color: '#444444', fontSize: 12, marginTop: 48 }}>
         /logo-options — internal preview only
       </p>
     </div>

@@ -4,11 +4,11 @@ import { LOGO_DESCRIPTOR, LOGO_HEIGHT, LOGO_MARK, LOGO_VIEWBOX, LOGO_WIDTH, LOGO
 
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_COLORS = {
-  navy: '#0a1730',
-  text: '#f4f6fa',
-  secondary: '#ccd5e3',
-  muted: '#b4bfcf',
-  accent: '#93bfff',
+  ink: '#0a0a0a',
+  text: '#f7f7f5',
+  secondary: '#cfcfcb',
+  muted: '#b5b5b0',
+  accent: '#c9a227',
   hairline: 'rgba(255, 255, 255, 0.18)',
 };
 
@@ -27,7 +27,7 @@ export async function ogFonts(): Promise<Array<{ name: string; data: ArrayBuffer
 function OgLogo({ height }: { height: number }): ReactElement {
   return (
     <svg width={(height * LOGO_WIDTH) / LOGO_HEIGHT} height={height} viewBox={LOGO_VIEWBOX} fill={OG_COLORS.text}>
-      <path d={LOGO_MARK} />
+      <path d={LOGO_MARK} fill={OG_COLORS.accent} />
       <path d={LOGO_WORD} />
       <path d={LOGO_DESCRIPTOR} fillOpacity={0.74} />
     </svg>
@@ -47,13 +47,13 @@ function OgRibbon({ strength }: { strength: number }): ReactElement {
     >
       <defs>
         <linearGradient id="lift" gradientUnits="userSpaceOnUse" x1="1500" y1="0" x2="2700" y2="0">
-          <stop offset="0" stopColor="#4d9eff" stopOpacity="0" />
-          <stop offset="0.5" stopColor="#4d9eff" stopOpacity="1" />
-          <stop offset="1" stopColor="#4d9eff" stopOpacity="0" />
+          <stop offset="0" stopColor="#c9a227" stopOpacity="0" />
+          <stop offset="0.5" stopColor="#c9a227" stopOpacity="1" />
+          <stop offset="1" stopColor="#c9a227" stopOpacity="0" />
         </linearGradient>
       </defs>
       {lines.map((line) => (
-        <path key={line.d} d={line.d} stroke="#b8c6d8" strokeOpacity={line.opacity * strength} strokeWidth={2.4} />
+        <path key={line.d} d={line.d} stroke="#ebebeb" strokeOpacity={line.opacity * strength} strokeWidth={2.4} />
       ))}
       {lines.slice(26, 34).map((line) => (
         <path key={line.d} d={line.d} stroke="url(#lift)" strokeOpacity={strength} strokeWidth={3.2} />
@@ -62,7 +62,7 @@ function OgRibbon({ strength }: { strength: number }): ReactElement {
   );
 }
 
-/** Navy, the ribbon, the logo at the top left, and whatever the image is about beneath it. */
+/** Near-black, the ribbon, the logo at the top left, and whatever the image is about beneath it. */
 export function OgFrame({ children, ribbon = 1 }: { children: ReactNode; ribbon?: number }): ReactElement {
   return (
     <div
@@ -73,7 +73,7 @@ export function OgFrame({ children, ribbon = 1 }: { children: ReactNode; ribbon?
         flexDirection: 'column',
         position: 'relative',
         padding: '60px 72px',
-        background: OG_COLORS.navy,
+        background: OG_COLORS.ink,
         color: OG_COLORS.text,
         fontFamily: 'Maxwell OG Sans',
       }}
