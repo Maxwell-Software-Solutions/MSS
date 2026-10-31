@@ -327,13 +327,6 @@
   "contactForm.message.placeholder": "Tell us about your goals, challenges, and timeline.",
   "contactForm.submit": "Send message",
   "contactForm.privacy": "We respect your privacy and keep information confidential.",
-  "exitIntent.title": "Before you go\u2014",
-  "exitIntent.subtitle": "Get a FREE Code Health Audit report",
-  "exitIntent.description": "We\u2019ll send you a personalised report showing where your codebase scores on quality, test coverage, and reliability.",
-  "exitIntent.emailPlaceholder": "your@email.com",
-  "exitIntent.cta": "Send me the report",
-  "exitIntent.dismiss": "No thanks",
-  "exitIntent.close": "Close",
 
   "freeAudit.eyebrow": "Free Code Health Audit",
   "freeAudit.headline": "Get a Free Code Health Audit Worth €2,500",

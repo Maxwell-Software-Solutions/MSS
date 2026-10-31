@@ -328,13 +328,6 @@
   "contactForm.message.placeholder": "Papasakokite apie savo tikslus, iššūkius ir terminus.",
   "contactForm.submit": "Siųsti žinutę",
   "contactForm.privacy": "Gerbiame jūsų privatumą ir laikome informaciją konfidencialiai.",
-  "exitIntent.title": "Prieš išeidami\u2014",
-  "exitIntent.subtitle": "Gaukite NEMOKAMĄ kodo kokybės audito ataskaitą",
-  "exitIntent.description": "Atsiųsime jums individualizuotą ataskaitą, kurioje pavaizduotas jūsų kodo bazės įvertinimas pagal kokybę, testų aprėptį ir patikimumą.",
-  "exitIntent.emailPlaceholder": "jusu@pastas.lt",
-  "exitIntent.cta": "Siųsti man ataskaitą",
-  "exitIntent.dismiss": "Ne, ačiū",
-  "exitIntent.close": "Uždaryti",
 
   "freeAudit.eyebrow": "Nemokamas kodo sveikatos auditas",
   "freeAudit.headline": "Gaukite nemokamą kodo sveikatos auditą, vertą €2 500",
