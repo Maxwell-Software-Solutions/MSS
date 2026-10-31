@@ -25,10 +25,43 @@
   --transition-base: 0.18s ease;
   --transition-slow: 0.3s ease;
 
-  /* Layout */
+  /* Spacing scale: every distance on the site is one of these */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  /* Rhythm: the scale applied to page structure, phone to desktop */
+  --section-space: clamp(3.5rem, 2.25rem + 6.2vw, 7.5rem);
+  --head-gap: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
+  --column-gap: 2rem;
+  --page-head-top: clamp(3rem, 2.1rem + 3.9vw, 5.5rem);
+  --page-head-bottom: clamp(2.5rem, 1.9rem + 2.6vw, 4rem);
+
+  /* Layout: 1200px of content inside the gutters */
   --header-height: 4rem;
-  --container-width: 72rem;
-  --section-space: clamp(4rem, 2.75rem + 4.5vw, 7rem);
+  --container-width: 80rem;
+  --gutter: 1.5rem;
+  --measure: 34em;
+
+  /* Type scale, phone to desktop */
+  --text-title: clamp(2.25rem, 1.7rem + 2.4vw, 3.5rem);
+  --text-heading: clamp(1.75rem, 1.45rem + 1.3vw, 2.5rem);
+  --text-lead: clamp(1.125rem, 1.08rem + 0.25vw, 1.25rem);
+  --text-number: clamp(2rem, 1.6rem + 1.8vw, 3.25rem);
+  --text-price: clamp(1.875rem, 1.65rem + 1vw, 2.5rem);
+  --text-article-title: clamp(2rem, 1.6rem + 1.8vw, 3rem);
+  --text-article-heading: clamp(1.5rem, 1.35rem + 0.7vw, 1.875rem);
+}
+
+@media (min-width: 640px) {
+  :root { --gutter: 2.5rem; }
 }
 
 /* ============================================
@@ -80,7 +113,7 @@
   --color-info:    #1d4ed8;
 
   /* Inverse band (closing calls to action) */
-  --color-band:        #0b1220;
+  --color-band:        #0a1730;
   --color-band-text:   #f4f6fa;
   --color-band-muted:  #b3bccb;
   --color-band-border: rgba(255, 255, 255, 0.16);
@@ -137,7 +170,7 @@
   --color-error:   #f87171;
   --color-info:    #6ba8ff;
 
-  --color-band:        #131b29;
+  --color-band:        #0a1730;
   --color-band-text:   #e8ecf3;
   --color-band-muted:  #a8b2c3;
   --color-band-border: rgba(255, 255, 255, 0.12);
@@ -186,7 +219,7 @@
     --color-warning:          #fbbf24;
     --color-error:            #f87171;
     --color-info:             #6ba8ff;
-    --color-band:             #131b29;
+    --color-band:        #0a1730;
     --color-band-text:        #e8ecf3;
     --color-band-muted:       #a8b2c3;
     --color-band-border:      rgba(255, 255, 255, 0.12);
@@ -231,7 +264,7 @@
     --color-warning:          #b45309;
     --color-error:            #b42318;
     --color-info:             #1d4ed8;
-    --color-band:             #0b1220;
+    --color-band:        #0a1730;
     --color-band-text:        #f4f6fa;
     --color-band-muted:       #b3bccb;
     --color-band-border:      rgba(255, 255, 255, 0.16);

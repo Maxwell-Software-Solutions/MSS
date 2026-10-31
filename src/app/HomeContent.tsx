@@ -6,88 +6,78 @@ import Link from 'next/link';
 import HeroStage from './components/hero/HeroStage';
 import DeferredSections from './components/DeferredSections';
 import { useLanguage } from '@/lib/LanguageContext';
-import { FeatureCard, ButtonLink } from './components/ui';
+import { FeatureCard, ButtonLink, LineIcon, StatCard } from './components/ui';
+import type { LineIconName } from './components/ui';
 
 export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
 
+  const capabilities: Array<{ icon: LineIconName; title: string; description: string }> = [
+    { icon: 'flask', title: t('capabilities.testing.title'), description: t('capabilities.testing.body') },
+    { icon: 'layers', title: t('capabilities.refactoring.title'), description: t('capabilities.refactoring.body') },
+    { icon: 'signal', title: t('capabilities.observability.title'), description: t('capabilities.observability.body') },
+    { icon: 'shield', title: t('capabilities.reliability.title'), description: t('capabilities.reliability.body') },
+  ];
+
   return (
     <>
-      {/* ============================================================
-          HERO
-      ============================================================ */}
       <HeroStage />
 
-      {/* ============================================================
-          STATS AND VALUE PROPOSITIONS
-      ============================================================ */}
-      <section className="relative">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 pt-14 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-24">
-          {/* Stats row — metrics share hairlines */}
-          <div className="ruled grid-cols-1 sm:grid-cols-3">
+      {/* What changes for a client */}
+      <section className="section">
+        <div className="wrap">
+          <div className="stats">
             {[
               { value: t('stats.defects'), label: t('stats.defects.label') },
               { value: t('stats.coverage'), label: t('stats.coverage.label') },
               { value: t('stats.mttr'), label: t('stats.mttr.label') },
             ].map((stat) => (
-              <div key={stat.label} className="p-6 sm:p-7">
-                <div className="text-3xl font-semibold tracking-tight tabular-nums sm:text-4xl">{stat.value}</div>
-                <div className="mt-2 text-sm text-muted">{stat.label}</div>
-              </div>
+              <StatCard key={stat.label} value={stat.value} label={stat.label} />
             ))}
           </div>
 
-          {/* Value propositions */}
-          <div className="ruled mt-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" aria-label="Key value propositions">
+          <div className="columns columns-4 block-gap" aria-label="Key value propositions">
             {[
               { title: t('value.insight.title'), description: t('value.insight.body') },
               { title: t('value.iteration.title'), description: t('value.iteration.body') },
               { title: t('value.reliability.title'), description: t('value.reliability.body') },
               { title: t('value.outcomes.title'), description: t('value.outcomes.body') },
             ].map((card) => (
-              <div key={card.title}>
-                <FeatureCard title={card.title} description={card.description} className="h-full" />
-              </div>
+              <FeatureCard key={card.title} title={card.title} description={card.description} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============================================================
-          CAPABILITIES
-      ============================================================ */}
-      <section className="border-t border-border" aria-labelledby="capabilities-heading">
-        <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <div className="max-w-3xl">
-            <div className="eyebrow mb-3">{t('capabilities.heading')}</div>
+      {/* What we do */}
+      <section className="section" aria-labelledby="capabilities-heading">
+        <div className="wrap">
+          <div className="section-head section-head-split">
+            <div className="eyebrow">{t('capabilities.heading')}</div>
             <h2 id="capabilities-heading">{t('capabilities.heading')}</h2>
-            <p className="mt-4 text-lg leading-relaxed text-secondary">{t('capabilities.description')}</p>
+            <p className="lead">{t('capabilities.description')}</p>
           </div>
 
-          <div className="ruled mt-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { icon: '🧪', title: t('capabilities.testing.title'), description: t('capabilities.testing.body') },
-              { icon: '📦', title: t('capabilities.refactoring.title'), description: t('capabilities.refactoring.body') },
-              { icon: '🔍', title: t('capabilities.observability.title'), description: t('capabilities.observability.body') },
-              { icon: '🛡️', title: t('capabilities.reliability.title'), description: t('capabilities.reliability.body') },
-            ].map((card) => (
-              <div key={card.title}>
-                <FeatureCard icon={card.icon} title={card.title} description={card.description} className="h-full" />
-              </div>
+          <div className="columns columns-4">
+            {capabilities.map((card) => (
+              <FeatureCard
+                key={card.title}
+                icon={<LineIcon name={card.icon} className="item-icon" />}
+                title={card.title}
+                description={card.description}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============================================================
-          ABOUT TEASER
-      ============================================================ */}
-      <section id="about" className="border-t border-border bg-wash">
-        <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
-            <h2>{t('about.section.heading')}</h2>
-            <p className="text-lg leading-relaxed text-secondary">{t('about.section.description')}</p>
-            <div className="lg:col-start-2">
+      {/* Who we are */}
+      <section id="about" className="section section-tone">
+        <div className="wrap split">
+          <h2>{t('about.section.heading')}</h2>
+          <div>
+            <p className="lead">{t('about.section.description')}</p>
+            <div className="page-actions">
               <ButtonLink href="/about" variant="accent">
                 {t('about.section.cta')}
               </ButtonLink>
@@ -96,46 +86,44 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      {/* ============================================================
-          PROCESS
-      ============================================================ */}
-      <section className="border-t border-border" aria-labelledby="process-heading">
-        <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <h2 id="process-heading">
+      {/* How an engagement runs */}
+      <section className="section" aria-labelledby="process-heading">
+        <div className="wrap">
+          <h2 id="process-heading" className="section-head">
             {t('process.heading')}
           </h2>
 
-          <ol className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="steps steps-4">
             {[
               { step: '01', titleKey: 'process.step1.title', bodyKey: 'process.step1.body' },
               { step: '02', titleKey: 'process.step2.title', bodyKey: 'process.step2.body' },
               { step: '03', titleKey: 'process.step3.title', bodyKey: 'process.step3.body' },
               { step: '04', titleKey: 'process.step4.title', bodyKey: 'process.step4.body' },
             ].map((s) => (
-              <li key={s.step} className="border-t border-border-strong pt-5">
-                <div className="text-sm font-medium tabular-nums text-accent" aria-hidden="true">
+              <li key={s.step} className="step">
+                <div className="step-index" aria-hidden="true">
                   <span>{s.step}</span>
                 </div>
-                <h3 className="mt-3 text-lg font-semibold tracking-tight">{t(s.titleKey)}</h3>
-                <p className="mt-2 max-w-sm text-[0.9375rem] leading-relaxed text-secondary">{t(s.bodyKey)}</p>
+                <div>
+                  <h3>{t(s.titleKey)}</h3>
+                  <p>{t(s.bodyKey)}</p>
+                </div>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* ============================================================
-          PROJECTS
-      ============================================================ */}
-      <section id="projects" className="border-t border-border bg-wash">
-        <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <div className="max-w-3xl">
-            <div className="eyebrow mb-3">{t('projects.eyebrow')}</div>
+      {/* Selected work */}
+      <section id="projects" className="section">
+        <div className="wrap">
+          <div className="section-head section-head-split">
+            <div className="eyebrow">{t('projects.eyebrow')}</div>
             <h2>{t('projects.heading')}</h2>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-secondary">{t('projects.description')}</p>
+            <p className="lead">{t('projects.description')}</p>
           </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          <div className="columns columns-3">
             {[
               {
                 slug: 'retail-platform',
@@ -162,65 +150,41 @@ export default function HomeContent(): ReactElement {
                 image: '/images/case-studies/saas-migration.svg',
               },
             ].map((c) => (
-              <div key={c.slug}>
-                <Link
-                  href={`/project-showcase/${c.slug}`}
-                  className="group card flex h-full flex-col overflow-hidden"
-                  aria-label={`${t(c.titleKey)} case study`}
-                >
-                  <div className="relative aspect-[3/1] overflow-hidden border-b border-border bg-wash">
-                    <Image
-                      src={c.image}
-                      alt={t(c.titleKey)}
-                      fill
-                      unoptimized
-                      sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex grow flex-col p-5 sm:p-6">
-                    <div className="mb-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
-                      <span>{t(c.metaKey)}</span>
-                      <span className="h-1 w-1 rounded-full bg-border-strong" aria-hidden="true" />
-                      <span className="font-medium text-accent">{t(c.outcomeKey)}</span>
-                    </div>
-                    <h3 className="text-lg font-semibold tracking-tight transition-colors group-hover:text-accent">
-                      {t(c.titleKey)}
-                    </h3>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {c.metrics.map((m) => (
-                        <span
-                          key={m}
-                          className="rounded-md border border-border bg-wash px-2 py-1 text-xs font-medium tabular-nums text-secondary"
-                        >
-                          {m}
-                        </span>
-                      ))}
-                    </div>
-                    <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-medium text-accent transition-all group-hover:gap-2.5">
-                      {t('projects.viewStudy')}
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-hidden="true"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </span>
-                  </div>
-                </Link>
-              </div>
+              <Link
+                key={c.slug}
+                href={`/project-showcase/${c.slug}`}
+                className="work"
+                aria-label={`${t(c.titleKey)} case study`}
+              >
+                <div className="art">
+                  <Image
+                    src={c.image}
+                    alt={t(c.titleKey)}
+                    fill
+                    unoptimized
+                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="work-meta">
+                  <span>{t(c.metaKey)}</span>
+                  <strong>{t(c.outcomeKey)}</strong>
+                </div>
+                <h3>{t(c.titleKey)}</h3>
+                <div className="work-metrics">
+                  {c.metrics.map((m) => (
+                    <span key={m}>{m}</span>
+                  ))}
+                </div>
+                <span className="more">
+                  {t('projects.viewStudy')}
+                  <LineIcon name="arrow" />
+                </span>
+              </Link>
             ))}
           </div>
 
-          <div className="mt-10">
+          <div className="page-actions">
             <ButtonLink href="/project-showcase" variant="ghost">
               {t('projects.browseAll')}
             </ButtonLink>
@@ -228,17 +192,13 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      {/* ============================================================
-          CONTACT CTA
-      ============================================================ */}
-      <section id="contact" className="border-t border-border">
-        <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-24">
-          <div className="band grid gap-8 p-8 sm:p-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-x-12">
-            <div className="max-w-2xl">
-              <h2>{t('contact.heading')}</h2>
-              <p className="mt-4 text-lg leading-relaxed text-secondary">{t('contact.description')}</p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
+      {/* First invitation to talk */}
+      <section id="contact" className="section section-tone">
+        <div className="wrap">
+          <div className="band-split">
+            <h2>{t('contact.heading')}</h2>
+            <p>{t('contact.description')}</p>
+            <div className="band-actions">
               <Link href="/contact" className="btn btn-accent btn-lg">
                 {t('contact.cta.primary')}
               </Link>
@@ -246,20 +206,20 @@ export default function HomeContent(): ReactElement {
                 {t('contact.cta.secondary')}
               </ButtonLink>
             </div>
-            <div className="border-t border-border pt-5 lg:col-span-2">
-              <p className="mb-3 text-sm text-secondary">{t('contact.linkedin.label')}</p>
-              <a
-                href="https://www.linkedin.com/company/maxwell-software-solutions"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-accent"
-              >
-                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-                {t('contact.linkedin.company')}
-              </a>
-            </div>
+          </div>
+          <div className="assurances block-gap">
+            <p>{t('contact.linkedin.label')}</p>
+            <a
+              href="https://www.linkedin.com/company/maxwell-software-solutions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-foreground transition-colors hover:text-accent"
+            >
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              {t('contact.linkedin.company')}
+            </a>
           </div>
         </div>
       </section>

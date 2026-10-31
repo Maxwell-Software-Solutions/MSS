@@ -42,7 +42,7 @@ export default function CaseStudiesContent(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <div className="container py-16 sm:py-24" data-reveal>
+    <div className="wrap py-16 sm:py-24" data-reveal>
       <h1>{t('caseStudies.title')}</h1>
       <p className="mt-3 lead max-w-2xl">{t('caseStudies.subtitle')}</p>
 

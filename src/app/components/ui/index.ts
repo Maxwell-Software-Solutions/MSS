@@ -8,6 +8,8 @@ export { Card } from './Card';
 export { CTA } from './CTA';
 export { FeatureCard } from './FeatureCard';
 export { IconChip } from './IconChip';
+export { LineIcon } from './LineIcon';
+export type { LineIconName } from './LineIcon';
 export { ListSection } from './ListSection';
 export { NeuroCard } from './NeuroCard';
 export { PageContainer } from './PageContainer';

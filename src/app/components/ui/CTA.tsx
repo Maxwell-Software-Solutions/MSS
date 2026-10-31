@@ -8,15 +8,14 @@ interface CTAProps {
   secondary?: { href: string; label: string; ariaLabel?: string };
 }
 
+/** The closing call to action of a page: full width, navy, the counterpart of the hero. */
 export function CTA({ title, body, primary, secondary }: CTAProps): ReactElement {
   return (
-    <section className="mt-16">
-      <div className="band px-8 py-12 sm:px-12 sm:py-14 lg:flex lg:items-end lg:justify-between lg:gap-12">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">{title}</h2>
-          <p className="mt-4 text-lg leading-relaxed text-secondary">{body}</p>
-        </div>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0 lg:shrink-0">
+    <section className="band">
+      <div className="wrap band-split">
+        <h2>{title}</h2>
+        <p>{body}</p>
+        <div className="band-actions">
           <ButtonLink href={primary.href} variant="accent" size="lg" aria-label={primary.ariaLabel || primary.label}>
             {primary.label}
           </ButtonLink>

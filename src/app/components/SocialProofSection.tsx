@@ -1,91 +1,21 @@
 import type { ReactElement } from 'react';
+import { StatCard } from './ui';
 
 // SVG placeholder logos — replaced with real brand assets when provided
-function LogoMiau(): ReactElement {
+function Wordmark({ name, width }: { name: string; width: number }): ReactElement {
   return (
-    <svg
-      width="72"
-      height="36"
-      viewBox="0 0 72 36"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Miau"
-      role="img"
-    >
-      <rect width="72" height="36" rx="6" fill="currentColor" fillOpacity="0.06" />
+    <svg width={width} height="24" viewBox={`0 0 ${width} 24`} fill="none" xmlns="http://www.w3.org/2000/svg" aria-label={name[0] + name.slice(1).toLowerCase()} role="img">
       <text
-        x="50%"
+        x="0"
         y="50%"
         dominantBaseline="central"
-        textAnchor="middle"
-        fontSize="13"
-        fontWeight="700"
-        fontFamily="system-ui, sans-serif"
+        fontSize="14"
+        fontWeight="600"
         fill="currentColor"
-        fillOpacity="0.55"
+        fillOpacity="0.7"
         letterSpacing="0.08em"
       >
-        MIAU
-      </text>
-    </svg>
-  );
-}
-
-function LogoNeoNova(): ReactElement {
-  return (
-    <svg
-      width="88"
-      height="36"
-      viewBox="0 0 88 36"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="NeoNova"
-      role="img"
-    >
-      <rect width="88" height="36" rx="6" fill="currentColor" fillOpacity="0.06" />
-      <text
-        x="50%"
-        y="50%"
-        dominantBaseline="central"
-        textAnchor="middle"
-        fontSize="12"
-        fontWeight="700"
-        fontFamily="system-ui, sans-serif"
-        fill="currentColor"
-        fillOpacity="0.55"
-        letterSpacing="0.06em"
-      >
-        NEONOVA
-      </text>
-    </svg>
-  );
-}
-
-function LogoFueille(): ReactElement {
-  return (
-    <svg
-      width="80"
-      height="36"
-      viewBox="0 0 80 36"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Fueille"
-      role="img"
-    >
-      <rect width="80" height="36" rx="6" fill="currentColor" fillOpacity="0.06" />
-      <text
-        x="50%"
-        y="50%"
-        dominantBaseline="central"
-        textAnchor="middle"
-        fontSize="12"
-        fontWeight="700"
-        fontFamily="system-ui, sans-serif"
-        fill="currentColor"
-        fillOpacity="0.55"
-        letterSpacing="0.06em"
-      >
-        FUEILLE
+        {name}
       </text>
     </svg>
   );
@@ -117,41 +47,29 @@ const stats = [
 
 export default function SocialProofSection(): ReactElement {
   return (
-    <section className="border-t border-border bg-wash" aria-labelledby="social-proof-heading">
-      <div className="max-w-6xl mx-auto px-6 py-16 sm:px-10 sm:py-20" data-reveal>
-        {/* Client logos */}
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+    <section className="section" aria-labelledby="social-proof-heading">
+      <div className="wrap">
+        <div className="logos">
           <p className="text-sm text-muted">Trusted by forward-thinking teams</p>
-          <div className="flex flex-wrap items-center gap-6 text-foreground sm:gap-8">
-            <LogoMiau />
-            <LogoNeoNova />
-            <LogoFueille />
+          <div className="logos-row text-foreground">
+            <Wordmark name="MIAU" width={48} />
+            <Wordmark name="NEONOVA" width={84} />
+            <Wordmark name="FUEILLE" width={72} />
           </div>
         </div>
 
-        {/* Stats row */}
-        <div className="ruled mt-10 grid-cols-1 sm:grid-cols-3">
+        <div className="stats">
           {stats.map((s) => (
-            <div key={s.value} className="p-6 sm:p-7">
-              <div className="text-3xl font-semibold tracking-tight tabular-nums sm:text-4xl">{s.value}</div>
-              <div className="mt-2 text-sm text-muted">{s.label}</div>
-            </div>
+            <StatCard key={s.value} value={s.value} label={s.label} />
           ))}
         </div>
 
-        {/* Testimonials */}
-        <div className="mt-12 grid gap-8 md:grid-cols-3" id="social-proof-heading" aria-label="Client testimonials">
+        <div className="columns columns-3 block-gap" id="social-proof-heading" aria-label="Client testimonials">
           <h2 className="sr-only">Client results and testimonials</h2>
           {testimonials.map((item) => (
-            <figure key={item.author} className="flex flex-col justify-between border-t border-border-strong pt-6">
-              {/* Quote mark */}
-              <div aria-hidden="true" className="mb-3 select-none text-3xl leading-none text-accent">
-                &ldquo;
-              </div>
-              <blockquote className="flex-1 text-[0.9375rem] leading-relaxed text-foreground">
-                {item.quote}
-              </blockquote>
-              <figcaption className="mt-5 text-sm font-medium text-muted">{item.author}</figcaption>
+            <figure key={item.author} className="quote">
+              <blockquote>{item.quote}</blockquote>
+              <figcaption>{item.author}</figcaption>
             </figure>
           ))}
         </div>

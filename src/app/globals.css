@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./styles/primitives.css";
 
 /* `dark:` utilities follow the site's own theme switch, not only the OS setting */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
@@ -8,6 +9,9 @@
 @theme {
   --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* The header and footer use max-w-6xl: it is the page container, gutters included */
+  --container-6xl: 80rem;
 
   --color-background: #fafbfc;
   --color-foreground: #0b1220;
@@ -77,23 +81,26 @@
 
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.015em;
     text-wrap: balance;
     overflow-wrap: break-word;
   }
 
+  /* Large type stays light: size carries the hierarchy, not weight */
   h1 {
-    font-size: clamp(2.25rem, 1.65rem + 2.6vw, 3.5rem);
+    font-size: var(--text-title);
+    font-weight: 450;
     line-height: 1.08;
     letter-spacing: -0.03em;
   }
 
   h2 {
-    font-size: clamp(1.625rem, 1.35rem + 1.2vw, 2.25rem);
-    line-height: 1.15;
-    letter-spacing: -0.025em;
+    font-size: var(--text-heading);
+    font-weight: 450;
+    line-height: 1.14;
+    letter-spacing: -0.024em;
   }
 
   h3 {
@@ -169,18 +176,12 @@
    ============================================ */
 @layer components {
   /* ---- Layout ---- */
-  .container {
+  .wrap {
     width: 100%;
     max-width: var(--container-width);
     margin-inline: auto;
-    padding-inline: 1.5rem;
+    padding-inline: var(--gutter);
   }
-
-  @media (min-width: 640px) {
-    .container { padding-inline: 2.5rem; }
-  }
-
-  .section { padding-block: var(--section-space); }
 
   .section-rule,
   .neuro-section-border {
@@ -196,12 +197,13 @@
     line-height: 1.4;
     letter-spacing: 0;
     text-transform: none;
-    color: var(--color-accent);
+    color: var(--color-text-secondary);
   }
 
   .lead {
-    font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
-    line-height: 1.6;
+    max-width: var(--measure);
+    font-size: var(--text-lead);
+    line-height: 1.5;
     color: var(--color-text-secondary);
   }
 
@@ -238,7 +240,7 @@
 
   .ruled > * { background: var(--color-surface); }
 
-  /* Inverse panel for closing calls to action */
+  /* Closing call to action: runs edge to edge and answers the hero at the top of the page */
   .band {
     --color-text: var(--color-band-text);
     --color-foreground: var(--color-band-text);
@@ -247,22 +249,22 @@
     --color-muted: var(--color-band-muted);
     --color-border: var(--color-band-border);
     --color-border-strong: rgba(255, 255, 255, 0.3);
-    --color-accent: #7db4ff;
-    --color-accent-hover: #a5c9ff;
+    --color-accent: #93bfff;
+    --color-accent-hover: #bcd7ff;
     --color-wash: rgba(255, 255, 255, 0.06);
     --color-hover: rgba(255, 255, 255, 0.08);
     --color-active: rgba(255, 255, 255, 0.14);
+    padding-block: var(--section-space);
     background: var(--color-band);
     color: var(--color-band-text);
-    border-radius: var(--radius-3xl);
   }
 
-  /* Band with copy on the left and the action on the right (stacked below 1024px) */
+  /* Copy on the left and the action on the right (stacked below 1024px) */
   @media (min-width: 1024px) {
     .band-split {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      column-gap: 3rem;
+      column-gap: var(--space-7);
       align-items: end;
     }
     .band-split > * { grid-column: 1; }
