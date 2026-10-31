@@ -190,7 +190,7 @@ const LIGHT_SPEED = 0.15;
 const LIGHT_SPACING = 0.6;
 const LIGHT_STRENGTH = 0.95;
 const CURSOR_LEAN = 0.07;
-// Past the end of the draw-on, for reduced motion: every line is simply there
+// Past the end of the draw-on: every line is simply there, for reduced motion and after a pause
 const FULLY_DRAWN = 99;
 
 function buildProgram(gl: WebGL2RenderingContext): WebGLProgram | null {
@@ -341,6 +341,7 @@ export function startRibbon(
   let flow = RIBBON_START_TIME;
   let reduced = options.reduced;
   let paused = false;
+  let drawnOn = false;
   let last = 0;
   let raf = 0;
   let skipFrame = false;
@@ -362,7 +363,7 @@ export function startRibbon(
 
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.uniform1f(u.t, flow);
-    gl.uniform1f(u.reveal, reduced ? FULLY_DRAWN : elapsed);
+    gl.uniform1f(u.reveal, reduced || drawnOn ? FULLY_DRAWN : elapsed);
     gl.uniform3f(u.pulse, LIGHT_START + LIGHT_SPEED * elapsed, LIGHT_STRENGTH, LIGHT_SPACING);
     gl.uniform3f(u.mouse, (pointer.cx * dpr) / width, (pointer.cy * dpr) / height, reduced ? 0 : pointer.amp * CURSOR_LEAN);
     gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, cols * rows);
@@ -452,8 +453,16 @@ export function startRibbon(
     },
     setPaused(value) {
       paused = value;
-      if (paused) pause();
-      else resume();
+      if (!paused) {
+        resume();
+        return;
+      }
+      pause();
+      // a pause during the draw-on still leaves the whole ribbon on screen
+      if (announced) {
+        drawnOn = true;
+        draw(0);
+      }
     },
     setReduced(value) {
       reduced = value;

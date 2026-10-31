@@ -25,21 +25,21 @@ The MSS website now features a complete light/dark theme system with:
 ```css
 /* Light Theme */
 :root[data-theme='light'] {
-  --color-bg: #f8fafc; /* Background (slate-50) */
-  --color-text: #0f172a; /* Text (slate-900) - 17.48:1 */
-  --color-accent: #b8860b; /* Gold accent - 4.52:1 */
+  --color-bg: #fbfbfa; /* Soft off-white background */
+  --color-text: #0a0a0a; /* Text - 19:1 */
+  --color-accent: #8b6b00; /* Brand gold - 4.8:1 */
   --color-card: #ffffff; /* Card background */
-  --color-border: #e2e8f0; /* Borders (slate-200) */
+  --color-border: #e6e6e3; /* Borders */
   /* ... plus hover states, shadows, secondary colors */
 }
 
 /* Dark Theme (Original Design) */
 :root[data-theme='dark'] {
-  --color-bg: #0a0f19; /* Deep navy background */
-  --color-text: #f7fafc; /* Bright text - 15.8:1 */
-  --color-accent: #d4af37; /* Gold accent - 7.2:1 */
-  --color-card: #1a202c; /* Elevated card surface */
-  --color-border: #2d3748; /* Subtle borders */
+  --color-bg: #0a0a0a; /* Near-black background */
+  --color-text: #f5f5f3; /* Bright text - 18:1 */
+  --color-accent: #c9a227; /* Gold tint - 8.2:1 */
+  --color-card: #121212; /* Elevated card surface */
+  --color-border: #262626; /* Subtle borders */
   /* ... matching original design system */
 }
 ```
@@ -117,7 +117,7 @@ const { theme, toggleTheme } = useTheme();
 
 - **File**: `src/app/globals.css` (lines 404-527)
 - **Behavior**: Explicit light/dark mode styles with @media fallbacks
-- **Colors**: Dark menu maintains original design (#f7fafc text, gold accents)
+- **Colors**: Dark menu maintains original design (#f5f5f3 text, gold accents)
 
 ## User Experience
 
@@ -232,8 +232,8 @@ pnpm e2e:ui
 
 ```css
 .card {
-  background: #1a202c;
-  color: #f7fafc;
+  background: #121212;
+  color: #f5f5f3;
 }
 ```
 

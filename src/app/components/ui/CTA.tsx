@@ -8,7 +8,7 @@ interface CTAProps {
   secondary?: { href: string; label: string; ariaLabel?: string };
 }
 
-/** The closing call to action of a page: full width, navy, the counterpart of the hero. */
+/** The closing call to action of a page: full width, near-black, the counterpart of the hero. */
 export function CTA({ title, body, primary, secondary }: CTAProps): ReactElement {
   return (
     <section className="band">

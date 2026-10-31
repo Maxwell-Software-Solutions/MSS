@@ -222,7 +222,7 @@ export default function TDDPost(): ReactElement {
 
             <h3 className="mb-4 mt-6">Business Results</h3>
             <div className="grid md:grid-cols-2 gap-6">
-              <Alert variant="warning" icon="✅" title="What Went Well">
+              <Alert variant="info" icon="✅" title="What Went Well">
                 <ul className="list-none pl-0 space-y-1">
                   <li>• Zero payment-related bugs in production</li>
                   <li>• 30% faster development cycle</li>
