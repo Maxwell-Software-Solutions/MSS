@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useState, type ReactElement } from 'react';
-import Image from 'next/image';
+import type { ReactElement } from 'react';
 import Link from 'next/link';
 
+import BrandLogo from './BrandLogo';
 import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from '../contact/contact.constants';
 
 const primaryLinks = [
@@ -28,44 +28,17 @@ const linkClass = 'text-secondary transition-colors hover:text-foreground';
 export default function SiteFooter(): ReactElement {
   // Use a fixed year or suppress hydration warning since year changes are acceptable
   const currentYear = new Date().getFullYear();
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Check initial theme
-    const checkTheme = (): void => {
-      const theme = document.documentElement.getAttribute('data-theme');
-      setIsDark(theme === 'dark');
-    };
-
-    checkTheme();
-
-    // Watch for theme changes
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-theme'],
-    });
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <footer className="border-t border-border bg-wash text-sm text-secondary" role="contentinfo">
       <div className="mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.7fr)_repeat(2,minmax(0,1fr))]">
           <div>
-            <div className="flex items-center gap-3">
-              <Image
-                src={isDark ? '/logo-icon-dark.svg' : '/logo-icon.svg'}
-                alt="Maxwell Software Solutions"
-                width={40}
-                height={40}
-                className="h-9 w-9"
-              />
-              <span className="text-base font-medium text-foreground">Crafting reliable software</span>
-            </div>
+            <BrandLogo className="h-9 w-auto text-foreground" label="Maxwell Software Solutions" />
 
-            <p className="mt-5 max-w-md leading-relaxed">
+            <p className="mt-5 text-base font-medium text-foreground">Crafting reliable software</p>
+
+            <p className="mt-2 max-w-md leading-relaxed">
               We help engineering leaders modernise legacy systems, accelerate delivery, and build teams that ship with
               confidence.
             </p>
