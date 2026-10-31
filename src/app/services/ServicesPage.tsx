@@ -159,13 +159,13 @@ export default function ServicesPage(): ReactElement {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
-                className="btn btn-accent px-6 py-3 rounded-xl transition-all"
+                className="btn btn-accent"
               >
                 {ht('services.cta.primary', 'Start a Conversation')}
               </Link>
               <Link
                 href="/project-showcase"
-                className="btn px-6 py-3 rounded-xl transition-all"
+                className="btn"
               >
                 {ht('services.cta.secondary', 'View Case Studies')}
               </Link>

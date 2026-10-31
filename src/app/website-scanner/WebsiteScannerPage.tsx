@@ -370,7 +370,7 @@ export default function WebsiteScannerPage(): ReactElement {
           <button
             type="submit"
             disabled={isScanning || !url.trim()}
-            className="bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+            className="btn btn-accent"
             suppressHydrationWarning
           >
             {isScanning
@@ -562,7 +562,7 @@ export default function WebsiteScannerPage(): ReactElement {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-accent-fill text-accent-contrast rounded-xl px-8 py-3.5 text-sm font-semibold hover:bg-accent-fill-hover transition-all"
+              className="btn btn-accent"
               suppressHydrationWarning
             >
               {ht('scanner.cta.button', 'Book Free Expert Review')}

@@ -101,7 +101,7 @@ export default function HireDeveloperPage(): ReactElement {
           <div className="mt-8 flex flex-wrap gap-4 items-center">
             <Link
               href={BOOKING_URL}
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+              className="btn btn-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning
@@ -113,7 +113,7 @@ export default function HireDeveloperPage(): ReactElement {
             </Link>
             <Link
               href="/services/packages"
-              className="btn px-6 py-3 rounded-xl transition-all text-[14px] font-medium"
+              className="btn"
               suppressHydrationWarning
             >
               {ht('hireDev.cta.compare', 'Compare all packages')}
@@ -224,7 +224,7 @@ export default function HireDeveloperPage(): ReactElement {
               <p className="mt-3 text-[14px] text-foreground/75 leading-relaxed flex-1">{eng.description}</p>
               <Link
                 href={eng.href}
-                className="mt-6 w-full text-center rounded-xl px-5 py-3 text-sm font-semibold btn transition-all"
+                className="mt-6 w-full btn"
                 suppressHydrationWarning
               >
                 {ht('hireDev.engagements.cta', 'Learn more')}
@@ -252,7 +252,7 @@ export default function HireDeveloperPage(): ReactElement {
             </p>
             <Link
               href={BOOKING_URL}
-              className="inline-flex items-center gap-2 btn btn-accent px-6 py-3 rounded-xl transition-all"
+              className="btn btn-accent"
               target="_blank"
               rel="noopener noreferrer"
               suppressHydrationWarning

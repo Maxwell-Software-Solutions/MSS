@@ -280,7 +280,8 @@
     gap: 0.5rem;
     min-height: 44px;
     min-width: 44px;
-    padding: 0.625rem 1.25rem;
+    max-width: 100%;
+    padding: 0.625rem 1.5rem;
     border: 1px solid var(--color-border-strong);
     border-radius: var(--radius-lg);
     background: transparent;
@@ -289,6 +290,7 @@
     font-weight: 500;
     line-height: 1.25;
     text-align: center;
+    text-wrap: balance;
     text-decoration: none;
     cursor: pointer;
     transition: background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base);
@@ -309,6 +311,16 @@
 
   .btn:disabled,
   .btn[aria-disabled="true"] { opacity: 0.6; cursor: not-allowed; }
+
+  .btn svg { flex-shrink: 0; }
+
+  /* Large size: the hero and the closing call-to-action bands */
+  .btn-lg { min-height: 52px; padding: 0.75rem 1.75rem; font-size: 1rem; }
+
+  /* Phones: buttons fill the row, so stacked buttons share one width and labels keep their room */
+  @media (max-width: 639px) {
+    .btn, .btn-ghost, .btn-secondary, .neuro-btn { width: 100%; padding-inline: 0.75rem; }
+  }
 
   .btn-accent,
   .btn-accent:hover,
@@ -421,6 +433,7 @@
 
   /* Header call-to-action keeps its accent fill inside the link row */
   .nav-links a.nav-cta {
+    min-height: 2.5rem;
     margin-left: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: var(--radius-lg);
