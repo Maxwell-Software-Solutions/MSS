@@ -46,12 +46,12 @@ const SKIN_HIGHLIGHT = 'rgba(255,255,255,0.35)';
 
 const HAIR_COLOR_POOL = ['#0E0E0E', '#222222', '#5A3825', '#7B3F1F', '#D9B15F', '#8E8E8E'];
 const BG_GRADIENT_POOL: BackgroundGradient[] = [
-  { from: '#5b7fff', to: '#2a38ff' },
-  { from: '#ff7a18', to: '#ff3d54' },
-  { from: '#6366f1', to: '#8b5cf6' },
-  { from: '#0ea5e9', to: '#22d3ee' },
-  { from: '#059669', to: '#10b981' },
-  { from: '#ec4899', to: '#db2777' },
+  { from: '#3a3a3a', to: '#0a0a0a' },
+  { from: '#3a3a3a', to: '#0a0a0a' },
+  { from: '#3a3a3a', to: '#0a0a0a' },
+  { from: '#3a3a3a', to: '#0a0a0a' },
+  { from: '#3a3a3a', to: '#0a0a0a' },
+  { from: '#3a3a3a', to: '#0a0a0a' },
 ];
 const SKIN_KEYS: SkinTone[] = Object.keys(SKIN_TONES) as SkinTone[];
 const HAIR_STYLES: HairStyle[] = ['buzz', 'short', 'wavy', 'curly', 'long', 'bun', 'bald'];

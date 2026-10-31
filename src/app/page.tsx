@@ -4,7 +4,7 @@ import HomeContent from './HomeContent';
 import { generateMetadata as genMeta } from '@/lib/seo/utils';
 
 // Phone browsers tint their toolbars to match the dark hero
-export const viewport: Viewport = { themeColor: '#0a1730' };
+export const viewport: Viewport = { themeColor: '#0a0a0a' };
 
 /**
  * Homepage metadata from central registry

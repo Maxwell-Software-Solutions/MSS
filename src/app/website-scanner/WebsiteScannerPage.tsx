@@ -100,9 +100,9 @@ function scoreColor(score: number): string {
 }
 
 function scoreBg(score: number): string {
-  if (score >= 90) return 'bg-green-400/10 border-green-400/30';
-  if (score >= 50) return 'bg-yellow-400/10 border-yellow-400/30';
-  return 'bg-red-400/10 border-red-400/30';
+  if (score >= 90) return 'bg-success/10 border-success/30';
+  if (score >= 50) return 'bg-warning/10 border-warning/30';
+  return 'bg-error/10 border-error/30';
 }
 
 function scoreLabel(score: number, ht: (k: string, f: string) => string): string {
@@ -137,7 +137,7 @@ function ScoreRing({ score, size = 120 }: { score: number; size?: number }): Rea
   const radius = (size - 12) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (score / 100) * circumference;
-  const color = score >= 90 ? '#4ade80' : score >= 50 ? '#facc15' : '#f87171';
+  const color = score >= 90 ? 'var(--color-success)' : score >= 50 ? 'var(--color-warning)' : 'var(--color-error)';
 
   return (
     <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
@@ -224,7 +224,7 @@ function ProgressBar({ phase, ht }: { phase: ScanPhase; ht: (k: string, f: strin
         {steps.map((step, i) => (
           <div key={step.key} className="flex items-center gap-2 flex-1">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
-              i < currentIndex ? 'bg-green-400/20 text-success' :
+              i < currentIndex ? 'bg-success/20 text-success' :
               i === currentIndex ? 'bg-accent/20 text-accent animate-pulse' :
               'bg-foreground/10 text-muted'
             }`}>

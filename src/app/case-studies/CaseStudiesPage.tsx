@@ -14,7 +14,7 @@ interface CaseStudy {
 const STUDIES: CaseStudy[] = [
   {
     key: 'miau',
-    accentClass: 'from-amber-500/20 to-yellow-500/10',
+    accentClass: 'from-accent/20 to-accent/5',
     results: ['result1', 'result2', 'result3'],
     metrics: [
       { value: '3×', label: 'Faster deploys' },
@@ -24,7 +24,7 @@ const STUDIES: CaseStudy[] = [
   },
   {
     key: 'neonova',
-    accentClass: 'from-blue-500/20 to-cyan-500/10',
+    accentClass: 'from-accent/20 to-accent/5',
     results: ['result1', 'result2', 'result3'],
     metrics: [
       { value: '10×', label: 'Throughput gain' },
@@ -34,7 +34,7 @@ const STUDIES: CaseStudy[] = [
   },
   {
     key: 'fueille',
-    accentClass: 'from-emerald-500/20 to-teal-500/10',
+    accentClass: 'from-accent/20 to-accent/5',
     results: ['result1', 'result2', 'result3'],
     metrics: [
       { value: '5×', label: 'API performance' },

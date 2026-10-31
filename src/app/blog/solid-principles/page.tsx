@@ -362,7 +362,7 @@ export default function SOLIDPrinciplesPost(): ReactElement {
           <h2 className="mb-4">Ready to Improve Your Code Quality?</h2>
           <p className="mb-6">
             At Maxwell Software Solutions, we specialize in helping teams write cleaner, more maintainable code. Our{' '}
-            <Link href="/services" className="text-accent underline hover:no-underline font-medium">
+            <Link href="/services" className="link font-medium">
               Code Quality Audit service
             </Link>{' '}
             identifies SOLID violations, technical debt, and architectural issues — with actionable recommendations your

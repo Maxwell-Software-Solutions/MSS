@@ -13,23 +13,23 @@
   /* The header and footer use max-w-6xl: it is the page container, gutters included */
   --container-6xl: 80rem;
 
-  --color-background: #fafbfc;
-  --color-foreground: #0b1220;
+  --color-background: #fbfbfa;
+  --color-foreground: #0a0a0a;
   --color-surface: #ffffff;
-  --color-wash: #f3f5f8;
+  --color-wash: #f4f4f2;
   --color-card: #ffffff;
-  --color-border: #e3e7ee;
-  --color-border-strong: #cdd4df;
-  --color-muted: #5f6b7d;
-  --color-secondary: #475467;
-  --color-accent: #1d4ed8;
-  --color-accent-fill: #2563eb;
-  --color-accent-fill-hover: #1d4ed8;
+  --color-border: #e6e6e3;
+  --color-border-strong: #cfcfcb;
+  --color-muted: #6b6b6b;
+  --color-secondary: #4b4b4b;
+  --color-accent: #8b6b00;
+  --color-accent-fill: #0a0a0a;
+  --color-accent-fill-hover: #262626;
   --color-accent-contrast: #ffffff;
   --color-success: #047857;
   --color-warning: #b45309;
   --color-error: #b42318;
-  --color-info: #1d4ed8;
+  --color-info: #4b4b4b;
   --color-success-fill: #047857;
   --color-error-fill: #b42318;
 }
@@ -223,8 +223,11 @@
     --color-muted: var(--color-band-muted);
     --color-border: var(--color-band-border);
     --color-border-strong: rgba(255, 255, 255, 0.3);
-    --color-accent: #93bfff;
-    --color-accent-hover: #bcd7ff;
+    --color-accent: var(--gold-tint);
+    --color-accent-hover: var(--gold-tint-hover);
+    --color-accent-fill: var(--gold-tint);
+    --color-accent-fill-hover: var(--gold-tint-hover);
+    --color-accent-contrast: #0a0a0a;
     --color-wash: rgba(255, 255, 255, 0.06);
     --color-hover: rgba(255, 255, 255, 0.08);
     --color-active: rgba(255, 255, 255, 0.14);
@@ -306,7 +309,7 @@
   }
 
   .btn-accent { background: var(--color-accent-fill); }
-  .btn-accent:hover { background: var(--color-accent-fill-hover); }
+  .btn-accent:hover { background: var(--color-accent-fill-hover); box-shadow: inset 0 -2px 0 var(--color-accent); }
   .btn-accent:active { background: var(--color-accent-fill-hover); }
 
   /* Quiet text link with an icon (tertiary action) */
@@ -315,14 +318,24 @@
     align-items: center;
     gap: 0.5rem;
     min-height: 44px;
-    color: var(--color-accent);
+    color: var(--color-text);
     font-size: 0.9375rem;
     font-weight: 500;
     text-decoration: none;
     transition: color var(--transition-base);
   }
 
+  .btn-text svg { color: var(--color-accent); }
   .btn-text:hover { color: var(--color-accent-hover); text-decoration: underline; text-underline-offset: 0.25em; }
+
+  /* Text link: ink with a gold underline, so gold stays a detail */
+  .link {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    transition: color var(--transition-base);
+  }
+  .link:hover { color: var(--color-accent-hover); }
 
   /* ---- Form fields ---- */
   .field {
@@ -396,16 +409,16 @@
     background: var(--color-accent);
   }
 
-  /* Header call-to-action keeps its accent fill inside the link row */
+  /* Header call-to-action: solid ink, so the only gold button near the top is the page's own */
   .nav-links a.nav-cta {
     min-height: 2.5rem;
     margin-left: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: var(--radius-lg);
-    background: var(--color-accent-fill);
-    color: var(--color-accent-contrast);
+    background: var(--color-text);
+    color: var(--color-bg);
   }
-  .nav-links a.nav-cta:hover { background: var(--color-accent-fill-hover); color: var(--color-accent-contrast); }
+  .nav-links a.nav-cta:hover { background: var(--color-text-secondary); color: var(--color-bg); }
 
   /* Keep the link row on one line at the narrowest desktop widths (longer Lithuanian labels) */
   @media (min-width: 1024px) and (max-width: 1099px) {
@@ -467,7 +480,7 @@
     height: 100vh;
     height: 100dvh;
     z-index: 60;
-    background: rgba(11, 18, 32, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -559,7 +572,7 @@
   max-width: none !important;
   margin: 0 !important;
   border-radius: 12px 12px 0 0 !important;
-  box-shadow: 0 -8px 32px rgba(11, 18, 32, 0.18);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.18);
   z-index: 2147483000 !important;
   transform: none !important;
 }
@@ -576,7 +589,7 @@
 #CybotCookiebotDialogBodyUnderlay {
   position: fixed !important;
   inset: 0 !important;
-  background: rgba(11, 18, 32, 0.55) !important;
+  background: rgba(0, 0, 0, 0.55) !important;
   z-index: 2147482999 !important;
 }
 

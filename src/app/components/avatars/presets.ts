@@ -7,15 +7,15 @@ export interface AvatarPreset {
 
 export const presets: Record<string, AvatarPreset> = {
   maxwell: {
-    background: { from: '#2a71ff', to: '#00b0ff' },
+    background: { from: '#3a3a3a', to: '#0a0a0a' },
     hair: { style: 'short' },
   },
   petras: {
-    background: { from: '#7d3cff', to: '#ff3cc7' },
+    background: { from: '#3a3a3a', to: '#0a0a0a' },
     hair: { style: 'wavy' },
   },
   marek: {
-    background: { from: '#ff8a00', to: '#ff3d00' },
+    background: { from: '#3a3a3a', to: '#0a0a0a' },
     hair: { style: 'buzz' },
   },
 };

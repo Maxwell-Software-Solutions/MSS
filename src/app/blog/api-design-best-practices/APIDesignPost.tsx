@@ -341,7 +341,7 @@ GET /users?limit=20&cursor=abc123
           <h3 className="mb-3">Want Expert API Design Guidance?</h3>
           <p className="mb-6">
             Our{' '}
-            <a href="/services" className="text-accent underline hover:no-underline font-medium">
+            <a href="/services" className="link font-medium">
               Code Quality Audit service
             </a>{' '}
             includes API surface reviews — identifying inconsistencies, breaking changes, and missing standards across

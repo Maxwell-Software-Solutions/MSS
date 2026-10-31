@@ -152,7 +152,7 @@ export default function TDDPost(): ReactElement {
           <div className="grid md:grid-cols-3 gap-6">
             <div>
               <div className="w-8 h-8 bg-error-fill rounded-full flex items-center justify-center mb-3">
-                <span className="text-sm font-medium text-white">1</span>
+                <span className="text-sm font-medium text-accent-contrast">1</span>
               </div>
               <h3 className="mb-2">Red</h3>
               <p className="text-sm">
@@ -162,7 +162,7 @@ export default function TDDPost(): ReactElement {
             </div>
             <div>
               <div className="w-8 h-8 bg-success-fill rounded-full flex items-center justify-center mb-3">
-                <span className="text-sm font-medium text-white">2</span>
+                <span className="text-sm font-medium text-accent-contrast">2</span>
               </div>
               <h3 className="mb-2">Green</h3>
               <p className="text-sm">
@@ -171,7 +171,7 @@ export default function TDDPost(): ReactElement {
             </div>
             <div>
               <div className="w-8 h-8 bg-accent-fill rounded-full flex items-center justify-center mb-3">
-                <span className="text-sm font-medium text-white">3</span>
+                <span className="text-sm font-medium text-accent-contrast">3</span>
               </div>
               <h3 className="mb-2">Refactor</h3>
               <p className="text-sm">

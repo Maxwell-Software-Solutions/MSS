@@ -420,7 +420,7 @@ terraform apply`}
           <h3 className="mb-3">Need Help Optimising Your CI/CD Pipeline?</h3>
           <p className="mb-6">
             Our{' '}
-            <a href="/services" className="text-accent underline hover:no-underline font-medium">
+            <a href="/services" className="link font-medium">
               CI/CD Pipeline Optimisation service
             </a>{' '}
             helps teams at Maxwell Software Solutions build faster, safer delivery pipelines with measurable DORA metric

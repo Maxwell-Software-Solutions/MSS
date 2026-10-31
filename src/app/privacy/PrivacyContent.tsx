@@ -42,7 +42,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         <p>
           We process personal data only when a lawful basis under{' '}
           <a
-            className="text-accent underline"
+            className="link"
             href="https://gdpr-info.eu/art-6-gdpr/"
             target="_blank"
             rel="noreferrer"
@@ -74,7 +74,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         <p>
           For more on the GDPR and cookies, see{' '}
           <a
-            className="text-accent underline"
+            className="link"
             href="https://gdpr.eu/cookies/"
             target="_blank"
             rel="noreferrer"
@@ -134,7 +134,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         </p>
         <p>
           To exercise your rights or ask questions, email{' '}
-          <a className="text-accent underline" href={`mailto:${privacyEmail}`}>
+          <a className="link" href={`mailto:${privacyEmail}`}>
             {privacyEmail}
           </a>
           .
@@ -142,7 +142,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         <p>
           If we cannot resolve your concerns, you may contact Lithuania&apos;s supervisory authority, the{' '}
           <a
-            className="text-accent underline"
+            className="link"
             href="https://vdai.lrv.lt/en/"
             target="_blank"
             rel="noreferrer"
@@ -157,7 +157,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
         <p>
           We apply encryption in transit, access controls, and least-privilege principles to protect personal data.
           Learn more about our technical and organisational measures on our{' '}
-          <Link className="text-accent underline" href="/security">
+          <Link className="link" href="/security">
             Security page
           </Link>
           .
@@ -184,7 +184,7 @@ export function PrivacyContent({ privacyEmail }: PrivacyContentProps): ReactElem
             </dt>
             <dd className="mt-1">
               <a
-                className="text-accent underline"
+                className="link"
                 href={`mailto:${privacyEmail}`}
               >
                 {privacyEmail}

@@ -62,7 +62,7 @@ export function TermsContent({ legalEmail }: TermsContentProps): ReactElement {
       <TermsSection number={5} title="Privacy & cookies">
         <p>
           Your use of the Site is also governed by our{' '}
-          <Link className="text-accent underline" href="/privacy">
+          <Link className="link" href="/privacy">
             Privacy Policy
           </Link>{' '}
           and the cookie practices described there. Please review that policy to understand how we collect and use
@@ -112,7 +112,7 @@ export function TermsContent({ legalEmail }: TermsContentProps): ReactElement {
             </dt>
             <dd>
               <a
-                className="text-accent underline"
+                className="link"
                 href={`mailto:${legalEmail}`}
               >
                 {legalEmail}

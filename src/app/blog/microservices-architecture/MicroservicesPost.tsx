@@ -352,7 +352,7 @@ export default function MicroservicesPost(): ReactElement {
           <h3 className="mb-3">Need Help With Microservices Architecture?</h3>
           <p className="mb-6">
             Our{' '}
-            <a href="/services" className="text-accent underline hover:no-underline font-medium">
+            <a href="/services" className="link font-medium">
               Reliability Engineering service
             </a>{' '}
             helps teams design observable, resilient distributed systems — with SLOs, distributed tracing, and incident

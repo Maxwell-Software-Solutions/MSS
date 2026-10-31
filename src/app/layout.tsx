@@ -140,8 +140,8 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 5, // Allow zoom for accessibility
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#fafbfc' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0e15' },
+    { media: '(prefers-color-scheme: light)', color: '#fbfbfa' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
   ],
 };
 

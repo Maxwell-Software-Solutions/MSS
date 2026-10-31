@@ -50,7 +50,7 @@ export function SecurityContent({ securityEmail }: SecurityContentProps): ReactE
             authority and affected individuals without undue delay in line with GDPR obligations (within 72 hours where
             required). Learn more at{' '}
             <a
-              className="text-accent underline"
+              className="link"
               href="https://gdpr-info.eu/art-33-gdpr/"
               target="_blank"
               rel="noreferrer"
@@ -75,7 +75,7 @@ export function SecurityContent({ securityEmail }: SecurityContentProps): ReactE
       <ArticleSection title="Responsible disclosure">
         <p>
           If you believe you have found a security vulnerability on our Site, email{' '}
-          <a className="text-accent underline" href={`mailto:${securityEmail}`}>
+          <a className="link" href={`mailto:${securityEmail}`}>
             {securityEmail}
           </a>{' '}
           (PGP optional). Please:
@@ -113,7 +113,7 @@ export function SecurityContent({ securityEmail }: SecurityContentProps): ReactE
             Implement a consent-based cookie banner that blocks non-essential cookies until accepted and includes a
             visible &ldquo;Cookie settings&rdquo; link in the footer. Guidance:{' '}
             <a
-              className="text-accent underline"
+              className="link"
               href="https://gdpr.eu/cookies/"
               target="_blank"
               rel="noreferrer"

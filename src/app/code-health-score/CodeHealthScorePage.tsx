@@ -195,8 +195,8 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
     return {
       label: ht('codeHealth.tier.critical', 'Critical'),
       color: 'text-error',
-      bgColor: 'bg-red-500/10',
-      borderColor: 'border-red-500/30',
+      bgColor: 'bg-error/10',
+      borderColor: 'border-error/30',
       description: ht('codeHealth.tier.critical.desc', 'Your codebase is a ticking time bomb. Critical risks across testing, deployment, and maintainability need urgent attention before they cause a major incident.'),
     };
   }
@@ -204,8 +204,8 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
     return {
       label: ht('codeHealth.tier.concerning', 'Concerning'),
       color: 'text-warning',
-      bgColor: 'bg-orange-500/10',
-      borderColor: 'border-orange-500/30',
+      bgColor: 'bg-warning/10',
+      borderColor: 'border-warning/30',
       description: ht('codeHealth.tier.concerning.desc', 'Significant risks that will slow you down. Your team is likely spending too much time fighting fires instead of shipping features. Targeted improvements can have a big impact.'),
     };
   }
@@ -213,16 +213,16 @@ function getScoreTier(score: number, ht: (key: string, fallback: string) => stri
     return {
       label: ht('codeHealth.tier.healthy', 'Healthy'),
       color: 'text-warning',
-      bgColor: 'bg-yellow-500/10',
-      borderColor: 'border-yellow-500/30',
+      bgColor: 'bg-warning/10',
+      borderColor: 'border-warning/30',
       description: ht('codeHealth.tier.healthy.desc', 'Good foundation with room to improve. Your practices are solid in some areas but have gaps that could become problems at scale. A focused audit would help prioritise the next steps.'),
     };
   }
   return {
     label: ht('codeHealth.tier.excellent', 'Excellent'),
     color: 'text-success',
-    bgColor: 'bg-green-500/10',
-    borderColor: 'border-green-500/30',
+    bgColor: 'bg-success/10',
+    borderColor: 'border-success/30',
     description: ht('codeHealth.tier.excellent.desc', 'Your engineering practices are strong. You have mature processes across testing, deployment, and observability. A professional review can help you go from good to exceptional.'),
   };
 }
@@ -461,7 +461,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
                       isSelected ? 'border-accent bg-accent' : 'border-foreground/25'
                     }`}>
                       {isSelected && (
-                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <svg className="w-3 h-3 text-accent-contrast" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       )}
@@ -497,7 +497,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             {currentQuestion < totalQuestions - 1 && answers[currentQuestion] !== undefined && (
               <button
                 onClick={() => setCurrentQuestion(currentQuestion + 1)}
-                className="text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+                className="text-sm font-medium text-accent hover:text-foreground transition-colors"
                 suppressHydrationWarning
               >
                 {ht('codeHealth.nav.next', 'Next \u2192')}

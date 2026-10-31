@@ -242,16 +242,16 @@ export function toHaveAdequateContrast(
 
 // Brand colors from globals.css for reference
 export const BRAND_COLORS = {
-  background: '#1a202c',
-  backgroundDark: '#0a0f19',
-  foreground: '#f7fafc',
-  accent: '#d4af37',
-  accentHover: '#e5c158',
-  secondary: '#4299e1',
-  card: '#2d3748',
-  cardDark: '#1a202c',
-  muted: '#cbd5e1',
-  mutedDark: '#e2e8f0',
+  background: '#0a0a0a',
+  backgroundDark: '#0a0a0a',
+  foreground: '#f5f5f3',
+  accent: '#c9a227',
+  accentHover: '#dcb94a',
+  secondary: '#b8b8b4',
+  card: '#121212',
+  cardDark: '#121212',
+  muted: '#94948f',
+  mutedDark: '#b8b8b4',
 } as const;
 
 /**
