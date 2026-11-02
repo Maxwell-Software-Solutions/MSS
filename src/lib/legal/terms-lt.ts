@@ -117,7 +117,7 @@ export const termsLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Galite peržiūrėti svetainę, atsispausdinti ar išsaugoti kopiją savo verslo informacijai ir cituoti trumpas ištraukas aiškiai nurodydami autorių ir pateikdami nuorodą į šaltinį. Bet kokiam kitam naudojimui, pavyzdžiui, kopijavimui, perpublikavimui, platinimui, adaptavimui ar komerciniam pakartotiniam naudojimui, reikia išankstinio mūsų rašytinio leidimo.',
+          text: 'Galite peržiūrėti svetainę, atsispausdinti ar išsaugoti kopiją savo verslo informacijai ir cituoti trumpas ištraukas aiškiai nurodydami autorių ir pateikdami nuorodą į šaltinį. Bet kokiam kitam naudojimui, pavyzdžiui, kopijavimui, perpublikavimui, platinimui, adaptavimui ar komerciniam pakartotiniam naudojimui, reikia išankstinio mūsų rašytinio leidimo, išskyrus atvejus, kai tai leidžia teisė.',
         },
         {
           kind: 'p',
@@ -135,7 +135,7 @@ export const termsLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Svetainėje yra nuorodų į kitas svetaines ir paslaugas, pavyzdžiui, į Google Calendar skambučiams rezervuoti, LinkedIn ir GitHub, o formoms naudojame tokias paslaugas kaip Formspree. Jas valdo kiti asmenys pagal savo sąlygas ir privatumo politiką. Mes jų nekontroliuojame ir neatsakome už jų turinį ar veiklą.',
+          text: 'Svetainėje yra nuorodų į kitas svetaines ir paslaugas, pavyzdžiui, į Google Calendar skambučiams rezervuoti, LinkedIn ir GitHub, o formoms naudojame tokias paslaugas kaip Formspree. Jas valdo kiti asmenys pagal savo sąlygas ir privatumo politiką. Mes jų nekontroliuojame ir neatsakome už jų turinį ar veiklą. Tai neriboja mūsų atsakomybės už savo paties pasirinktų teikėjų naudojimą, kuris aprašytas [Privatumo politikoje](/privacy).',
         },
       ],
     },
@@ -159,7 +159,7 @@ export const termsLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Atsižvelgiant į tai, kadangi svetainė nemokama ir informacinė:',
+          text: 'Atsižvelgiant į tai ir tiek, kiek leidžia teisė, kadangi svetainė nemokama ir informacinė:',
         },
         {
           kind: 'ul',
@@ -170,7 +170,7 @@ export const termsLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Atsakomybė už projektų darbus nustatoma tų darbų rašytine sutartimi.',
+          text: 'Niekas čia neriboja jūsų duomenų apsaugos teisių, įskaitant teisę į kompensaciją pagal BDAR 82 straipsnį. Atsakomybė už projektų darbus nustatoma tų darbų rašytine sutartimi.',
         },
       ],
     },
@@ -190,7 +190,7 @@ export const termsLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Šias sąlygas galime atnaujinti, pavyzdžiui, kai keičiasi svetainė ar teisė. Viršuje nurodyta data rodo galiojančią redakciją, o nauja redakcija taikoma nuo nurodytos datos. Toliau naudodamiesi svetaine po pakeitimo sutinkate su nauja redakcija; jei nesutinkate, svetaine nebesinaudokite.',
+          text: 'Šias sąlygas galime atnaujinti, pavyzdžiui, kai keičiasi svetainė ar teisė. Viršuje nurodyta data rodo galiojančią redakciją, o nauja redakcija taikoma nuo nurodytos datos. Toliau naudodamiesi svetaine po pakeitimo sutinkate su nauja redakcija; jei nesutinkate, svetaine nebesinaudokite. Nauja redakcija nekeičia jau sudarytų sutarčių, pavyzdžiui, projektų sutarčių, ar jau įgytų teisių.',
         },
       ],
     },
@@ -204,7 +204,7 @@ export const termsLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Ginčus nagrinėja Lietuvos Respublikos teismai pagal jurisdikcijos taisykles. Jei esate vartotojas, nė viena čia nurodyta nuostata neatima jūsų teisės kreiptis į teismą ir remtis imperatyviosiomis vartotojų apsaugos normomis ES valstybėje, kurioje gyvenate.',
+          text: 'Ginčus nagrinėja Lietuvos Respublikos teismai pagal jurisdikcijos taisykles. Nė viena čia nurodyta nuostata neatima jūsų teisių pagal imperatyviąsias teisės normas: pavyzdžiui, vartotojas išsaugo teisę kreiptis į teismą ir remtis imperatyviosiomis vartotojų apsaugos normomis ES valstybėje, kurioje gyvena, o jūsų duomenų apsaugos teisės lieka tokios, kaip aprašyta [Privatumo politikoje](/privacy).',
         },
         {
           kind: 'p',
@@ -222,7 +222,7 @@ export const termsLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Šios sąlygos paskelbtos lietuvių ir anglų kalbomis ir reiškia tą patį. Jei pastebėsite skirtumą, praneškite mums adresu ' + legal + ', ir mes jį ištaisysime.',
+          text: 'Šios sąlygos paskelbtos lietuvių ir anglų kalbomis ir turi reikšti tą patį. Jei pastebėsite skirtumą, praneškite mums adresu ' + legal + ', ir mes jį ištaisysime.',
         },
       ],
     },

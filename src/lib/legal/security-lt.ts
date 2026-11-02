@@ -39,7 +39,7 @@ export const securityLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Į apimtį neįeina, todėl apie tai praneškite jų savininkams: mūsų naudojamos trečiųjų šalių paslaugos (Google, Vercel, Cookiebot, Formspree), mūsų klientų sistemos ir viskas, kas nėra mūsų.',
+          text: 'Į apimtį neįeina, todėl apie tai praneškite jų savininkams: mūsų naudojamos trečiųjų šalių paslaugos (Google, Vercel, Cookiebot, Formspree), mūsų klientų sistemos ir viskas, kas nėra mūsų. Į apimtį įeina tai, kaip mūsų svetainė tomis paslaugomis naudojasi.',
         },
         {
           kind: 'p',
@@ -50,9 +50,6 @@ export const securityLt: LegalDoc = {
           items: [
             'automatinių skenerių rezultatai, kurių poveikis neįrodytas;',
             'trūkstamos ar kitokios HTTP antraštės ar slapukų žymos, kai nėra įrodyto išnaudojimo būdo;',
-            'paslaugos trikdymo, didelės apkrovos ar užklausų dažnio ribojimo bandymai;',
-            'šlamštas ar automatinis masinis formų siuntimas;',
-            'socialinė inžinerija, sukčiavimas (angl. phishing) ar fizinės atakos prieš darbuotojus, patalpas ar įrenginius;',
             'spragos, kurioms išnaudoti reikia jau pažeisto įrenginio ar naršyklės.',
           ],
         },
@@ -67,10 +64,10 @@ export const securityLt: LegalDoc = {
           items: [
             'Veikite sąžiningai ir testuokite tik į apimtį įeinančią svetainę.',
             'Naudokite tik tuos duomenis, kurių reikia problemai parodyti. Neperžiūrėkite, nekeiskite, netrinkite ir nesaugokite kitų žmonių duomenų ir sustokite, kai tik problemą parodėte.',
-            'Netrikdykite paslaugos veikimo: jokių paslaugos trikdymo atakų ir apkrovos testų.',
+            'Netrikdykite paslaugos veikimo: jokių paslaugos trikdymo atakų, apkrovos testų ar automatinio masinio formų siuntimo.',
             'Nenaudokite socialinės inžinerijos, sukčiavimo ar fizinių atakų.',
             'Informaciją laikykite privačią, kol ištaisysime problemą arba praeis 90 dienų nuo jūsų pranešimo, atsižvelgiant į tai, kas įvyks anksčiau. Pasakykite mums, jei ketinate skelbti.',
-            'Nereikalaukite apmokėjimo: neturime atlygio už rastas spragas programos ir atlygio nemokame.',
+            'Neprašykite atlygio: neturime atlygio už rastas spragas programos ir atlygio nemokame.',
           ],
         },
       ],
@@ -86,7 +83,7 @@ export const securityLt: LegalDoc = {
             'Įvertiname jį, pasakome, ar pripažįstame tai spraga, ir informuojame apie eigą.',
             'Pagrįstas problemas taisome taip greitai, kaip leidžia jų svarba ir mūsų dydis, ir pranešame, kai tai padaryta.',
             'Jei norite, ištaisę problemą paminėsime jus vardu. Pasakykite, kaip jus nurodyti, arba kad nenorite būti minimi.',
-            'Jūsų pranešimą ir kontaktinius duomenis laikome konfidencialiais ir naudojame tik pranešimui nagrinėti.',
+            'Jūsų pranešimą ir kontaktinius duomenis laikome konfidencialiais. Naudojame juos tik pranešimui nagrinėti ir dalijamės tik tada, kai to reikia problemai ištaisyti arba kai to reikalauja teisės aktai.',
           ],
         },
       ],
@@ -97,7 +94,7 @@ export const securityLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Jei veikiate sąžiningai ir laikotės šios tvarkos, dėl savo tyrimo šioje svetainėje nesikreipsime į teismą ir nepranešime apie jus teisėsaugos institucijoms, o kartu su jumis stengsimės suprasti ir ištaisyti problemą.',
+          text: 'Jei veikiate sąžiningai ir laikotės šios tvarkos, dėl savo tyrimo šioje svetainėje nesiimsime teisinių veiksmų prieš jus ir nepranešime apie jus teisėsaugos institucijoms, o kartu su jumis stengsimės suprasti ir ištaisyti problemą.',
         },
         {
           kind: 'p',
@@ -119,7 +116,7 @@ export const securityLt: LegalDoc = {
           items: [
             'Visas srautas šifruojamas naudojant HTTPS, o naršyklėms nurodoma svetainę naudoti tik per HTTPS (HTTP Strict Transport Security, vieneri metai, įskaitant subdomenus).',
             'Svetainė siunčia saugumo antraštes: draudžia nuspėti turinio tipą, riboja nukreipiančiojo puslapio informacijos perdavimą, išjungia prieigą prie kameros, mikrofono ir vietos duomenų ir riboja įterpimą į kitas svetaines.',
-            'Svetainėje nėra naudotojų paskyrų ar mokėjimų, o lankytojų duomenų bazės nelaikome. Formos perduoda tai, ką siunčiate, Google (kontaktų forma) arba Formspree (prašymas dėl nemokamo audito), kaip aprašyta [Privatumo politikoje](/privacy).',
+            'Pačioje svetainėje nėra naudotojų paskyrų, mokėjimų ar duomenų bazės. Formos perduoda tai, ką siunčiate, Google (kontaktų forma) arba Formspree (prašymas dėl nemokamo audito), kaip aprašyta [Privatumo politikoje](/privacy).',
             'Svetainė neįkelia reklaminių scenarijų, o analitika veikia tik jums sutikus.',
           ],
         },
@@ -130,7 +127,7 @@ export const securityLt: LegalDoc = {
             'Dirbame tik su ta prieiga, kurią klientas suteikia projektui, ir, kai darbas leidžia, prašome prieigos tik skaityti arba išvalytų duomenų eksporto.',
             'Prieš gaudami kodą ar duomenis pasirašome konfidencialumo sutartį.',
             'Slaptažodžių, raktų ir prieigos žetonų nelaikome šaltinio kode ir nesiunčiame el. paštu, o klientų prašome jais dalytis per paslapčių tvarkyklę ar kitą sutartą saugų kanalą.',
-            'Projektui pasibaigus kliento medžiagą ištriname arba grąžiname, išskyrus tai, ką privalome saugoti pagal teisės aktus ar sutartį.',
+            'Projektui pasibaigus kliento medžiagą ištriname arba grąžiname, kaip pasirenka klientas, išskyrus tai, ką privalome saugoti pagal teisės aktus.',
             'Kai klientui tvarkome asmens duomenis, veikiame kaip jo duomenų tvarkytojas pagal duomenų tvarkymo sutartį (žr. [Privatumo politiką](/privacy)).',
           ],
         },
@@ -147,7 +144,7 @@ export const securityLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Jei asmens duomenų saugumo pažeidimas gali sukelti pavojų žmonėms, per 72 valandas nuo sužinojimo apie jį pranešame Valstybinei duomenų apsaugos inspekcijai, o jei pavojus didelis, nepagrįstai nedelsdami pranešame ir paveiktiems asmenims (BDAR 33 ir 34 straipsniai). Kai veikiame kliento vardu, nepagrįstai nedelsdami pranešame klientui. Registruojame kiekvieną pažeidimą ir tai, ką dėl jo padarėme.',
+          text: 'Apie asmens duomenų saugumo pažeidimą Valstybinei duomenų apsaugos inspekcijai pranešame nepagrįstai nedelsdami ir, jei įmanoma, ne vėliau kaip per 72 valandas nuo tada, kai apie jį sužinome, nebent pažeidimas neturėtų kelti pavojaus žmonių teisėms ir laisvėms. Jei pavojus didelis, nepagrįstai nedelsdami pranešame ir paveiktiems asmenims (BDAR 33 ir 34 straipsniai). Kai veikiame kliento vardu, nepagrįstai nedelsdami pranešame klientui. Registruojame kiekvieną pažeidimą ir tai, ką dėl jo padarėme.',
         },
       ],
     },

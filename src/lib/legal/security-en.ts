@@ -39,7 +39,7 @@ export const securityEn: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Out of scope, so please report to their owners instead: the third-party services we use (Google, Vercel, Cookiebot, Formspree), our clients’ systems, and anything that is not ours.',
+          text: 'Out of scope, so please report to their owners instead: the third-party services we use (Google, Vercel, Cookiebot, Formspree), our clients’ systems, and anything that is not ours. How our website uses those services is in scope.',
         },
         {
           kind: 'p',
@@ -50,9 +50,6 @@ export const securityEn: LegalDoc = {
           items: [
             'results of automated scanners with no demonstrated impact;',
             'missing or different HTTP headers or cookie flags where there is no demonstrated exploit;',
-            'denial-of-service, heavy-load or rate-limit tests;',
-            'spam or automated mass submission of forms;',
-            'social engineering, phishing or physical attacks on staff, premises or devices;',
             'issues that need an already compromised device or browser.',
           ],
         },
@@ -67,7 +64,7 @@ export const securityEn: LegalDoc = {
           items: [
             'Act in good faith and test only the in-scope website.',
             'Use only the data you need to show the problem. Do not view, change, delete or keep other people’s data, and stop as soon as you have shown it.',
-            'Do not degrade the service: no denial-of-service attacks and no load tests.',
+            'Do not degrade the service: no denial-of-service attacks, load tests or automated mass submission of forms.',
             'Do not use social engineering, phishing or physical attacks.',
             'Keep the details private until we have fixed the problem or 90 days have passed since your report, whichever comes first. Tell us if you plan to publish.',
             'Do not ask for payment: we run no bounty programme and pay no rewards.',
@@ -86,7 +83,7 @@ export const securityEn: LegalDoc = {
             'We assess it, tell you whether we accept it as a vulnerability, and keep you informed of progress.',
             'We fix valid problems as quickly as their severity and our size allow, and tell you when it is done.',
             'If you wish, we credit you by name once it is fixed. Tell us how to name you, or that you prefer not to be named.',
-            'We treat your report and your contact details as confidential and use them only to handle the report.',
+            'We treat your report and your contact details as confidential. We use them only to handle the report, and share them only where that is needed to fix the problem or the law requires it.',
           ],
         },
       ],
@@ -119,7 +116,7 @@ export const securityEn: LegalDoc = {
           items: [
             'All traffic is encrypted with HTTPS, and browsers are told to use only HTTPS for the site (HTTP Strict Transport Security, one year, including subdomains).',
             'The site sends security headers: it forbids content-type sniffing, limits what is passed in the referrer, switches off camera, microphone and location access, and restricts embedding in other sites.',
-            'The site has no user accounts or payments and keeps no database of visitors. The forms pass what you send to Google (contact form) or Formspree (free audit application), as the [Privacy Policy](/privacy) describes.',
+            'The site itself has no user accounts, payments or database. The forms pass what you send to Google (contact form) or Formspree (free audit application), as the [Privacy Policy](/privacy) describes.',
             'The site loads no advertising scripts, and analytics runs only after you accept it.',
           ],
         },
@@ -130,7 +127,7 @@ export const securityEn: LegalDoc = {
             'We work only with the access a client gives us for the project and, where the work allows, ask for read-only access or a sanitised export.',
             'We sign a non-disclosure agreement before we receive code or data.',
             'We keep passwords, keys and tokens out of source code and out of e-mail, and ask clients to share them through a secrets manager or another agreed secure channel.',
-            'When a project ends we delete or return client material, except what the law or the contract requires us to keep.',
+            'When a project ends we delete or return client material, as the client chooses, except what the law requires us to keep.',
             'Where we handle personal data for a client, we act as its processor under a data processing agreement (see the [Privacy Policy](/privacy)).',
           ],
         },
@@ -147,7 +144,7 @@ export const securityEn: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'If a personal data breach is likely to put people at risk, we notify the State Data Protection Inspectorate within 72 hours of becoming aware of it, and tell the people affected without undue delay if the risk is high (GDPR Articles 33 and 34). When we act for a client, we tell the client without undue delay. We keep a record of each breach and of what we did about it.',
+          text: 'We notify the State Data Protection Inspectorate of a personal data breach without undue delay and, where feasible, within 72 hours of becoming aware of it, unless the breach is unlikely to result in a risk to people’s rights and freedoms. We tell the people affected without undue delay where the risk is high (GDPR Articles 33 and 34). When we act for a client, we tell the client without undue delay. We keep a record of each breach and of what we did about it.',
         },
       ],
     },

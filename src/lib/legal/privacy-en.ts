@@ -92,9 +92,9 @@ export const privacyEn: LegalDoc = {
           rows: [
             { term: 'Data', def: 'Your name, work e-mail, company, main technology stack and, if you wish, a description of your concern.' },
             { term: 'Source', def: 'You.' },
-            { term: 'Why and legal basis', def: 'To assess your application and, if we accept it, carry out the audit: steps at your request before a contract (Art. 6(1)(b)).' },
+            { term: 'Why and legal basis', def: 'To assess your application and, if we accept it, carry out the audit: steps at your request before a contract (Art. 6(1)(b)). If you apply for a company, our legitimate interest in dealing with a business’s request (Art. 6(1)(f)).' },
             { term: 'Who receives it', def: 'Formspree, Inc. (United States), which receives the form for us and passes it on to us by e-mail.' },
-            { term: 'Required?', def: 'No, it is voluntary. Without these details we cannot assess the application.' },
+            { term: 'Required?', def: 'No, applying is voluntary. We need your name, work e-mail, company and technology stack to assess an application; the description of your concern is optional.' },
           ],
         },
         { kind: 'h3', id: 'scanner', text: 'Website scanner' },
@@ -103,7 +103,7 @@ export const privacyEn: LegalDoc = {
           rows: [
             { term: 'Data', def: 'The web address you enter and your IP address.' },
             { term: 'How it works', def: 'Our server (hosted by Vercel) requests the page at that address to check its security headers and the technology it uses. Your browser also asks Google’s PageSpeed Insights service to test the address, so Google receives the address and your IP address and applies its [own privacy policy](https://policies.google.com/privacy). We do not keep the addresses or the results.' },
-            { term: 'Why and legal basis', def: 'To give you the check you asked for (Art. 6(1)(b)). Enter only public website addresses and no personal data.' },
+            { term: 'Why and legal basis', def: 'To give you the check you asked for (Art. 6(1)(b)); if you use it for a company, our legitimate interest in running a tool that visitors use (Art. 6(1)(f)). Enter only public website addresses and no personal data.' },
           ],
         },
         { kind: 'h3', id: 'clients', text: 'Clients and projects' },
@@ -171,8 +171,8 @@ export const privacyEn: LegalDoc = {
           kind: 'ul',
           items: [
             '**How:** reply to any of our e-mails (the word “no” is enough) or write to ' + privacy + '.',
-            '**Who can object:** the head of the company or any employee who uses the address, whether or not the address contains a name.',
-            '**What we do:** we stop without undue delay. We keep the address, the company, the date and your message on a suppression list, only as proof that we acted on it and so that we never write again. We use the list for nothing else.',
+            '**Who can object:** you, as the person whose data we hold, and also the head of the company or any employee who uses the address, whether or not the address contains a name.',
+            '**What we do:** we stop without undue delay. We keep the address, the company, the date and your message on a suppression list, only as proof that we acted on it and so that we never write again (our legitimate interest in respecting your objection and being able to show that we did, Art. 6(1)(f)). We use the list for nothing else.',
           ],
         },
         {
@@ -192,7 +192,7 @@ export const privacyEn: LegalDoc = {
         { kind: 'h3', text: 'Your choice' },
         {
           kind: 'p',
-          text: 'Analytics cookies are set only if you accept them in the cookie banner, which Cookiebot provides. If you have not accepted them, or the banner is not shown in your browser, no analytics cookies are set and no analytics data is sent to Google. You can change or withdraw your choice at any time. Withdrawing consent does not affect what was done before.',
+          text: 'Analytics cookies are set only if you accept them in the cookie banner, which Cookiebot provides. If you have not accepted them, or the banner is not shown in your browser, no analytics cookies are set and no analytics data is sent to Google. You can change or withdraw your choice at any time. Withdrawing consent does not affect the lawfulness of processing based on consent before it was withdrawn.',
         },
         { kind: 'cookieSettings', label: 'Cookie settings', unavailable: 'The cookie banner is not available in your browser right now. No analytics cookies are set unless you have consented.' },
         {
@@ -218,7 +218,7 @@ export const privacyEn: LegalDoc = {
         { kind: 'h3', text: 'What Cookiebot records' },
         {
           kind: 'p',
-          text: 'Cookiebot (Usercentrics A/S, Denmark) keeps a consent record so that we can show your choice was respected: a random consent ID, the date and time, your choices and limited technical data such as your browser type and a shortened IP address. Cookiebot deletes it after 12 months. Its privacy policy is at [cookiebot.com](https://www.cookiebot.com/en/privacy-policy/).',
+          text: 'Cookiebot (Usercentrics A/S, Denmark) keeps a consent record so that we can show your choice was respected (GDPR Art. 7(1)): a random consent ID, the date and time, your choices and limited technical data such as your browser type and a shortened IP address. Cookiebot deletes it after 12 months. Its privacy policy is at [cookiebot.com](https://www.cookiebot.com/en/privacy-policy/).',
         },
         { kind: 'h3', text: 'Other sites' },
         {
@@ -233,7 +233,7 @@ export const privacyEn: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'In client projects we may have access to personal data that the client controls, for example users’ data in a system we build or review. Then the client is the controller and we are its processor (GDPR Art. 28). We use that data only on the client’s documented instructions under a written data processing agreement; keep it confidential and secure; use another processor only with the client’s authorisation; help the client answer requests from individuals; tell the client without undue delay if we learn of a personal data breach; and delete or return the data when the project ends.',
+          text: 'In client projects we may have access to personal data that the client controls, for example users’ data in a system we build or review. Then the client is the controller and we are its processor (GDPR Art. 28). We use that data only on the client’s documented instructions under a written data processing agreement; keep it confidential and secure; use another processor only with the client’s authorisation; help the client answer requests from individuals; tell the client without undue delay if we learn of a personal data breach; and, at the client’s choice, delete or return the data when the project ends, unless the law requires us to keep it.',
         },
         {
           kind: 'p',
@@ -299,12 +299,14 @@ export const privacyEn: LegalDoc = {
             ['Cookie choice and consent record (Cookiebot)', '12 months. The `CookieConsent` cookie lasts up to 1 year.'],
             ['Analytics data (Google Analytics)', 'No longer than 14 months. The cookies last up to 2 years.'],
             ['Contact-form messages, bookings and e-mail with enquirers', 'Up to 12 months after our last contact with you.'],
-            ['Free audit applications', 'Up to 12 months after our last contact with you. Formspree keeps its own copy for the period set by our plan with it.'],
+            ['Free audit applications', 'Up to 12 months after our last contact with you. Formspree keeps its own copy for the period its plan allows (30 days on its free plan, longer on paid plans).'],
             ['Website scanner', 'Not stored.'],
             ['Business e-mails to companies', 'Up to 12 months after our last contact.'],
             ['Suppression list (objections)', 'Only as long as needed to honour the objection, that is, so that we never write to that address again. Used for nothing else.'],
-            ['Clients: contracts, invoices, correspondence', 'For the contract, then for the periods Lithuanian law requires: accounting documents generally 10 years, contracts generally 5 to 10 years after they end.'],
-            ['Anything needed for a legal claim', 'Until the claim is settled and the time for bringing claims has passed.'],
+            ['Clients: accounting records (invoices, payments)', '10 years, as Lithuanian law requires.'],
+            ['Clients: contracts', 'For the contract, then generally 5 to 10 years after it ends, depending on its type, as Lithuanian archive rules require.'],
+            ['Clients: project correspondence', 'For the project, then generally 3 years, as Lithuanian archive rules require.'],
+            ['Anything needed for a legal claim', 'Until the claim is settled and the time for bringing claims has passed (our legitimate interest in establishing, exercising or defending legal claims).'],
           ],
         },
         {
@@ -324,7 +326,7 @@ export const privacyEn: LegalDoc = {
             '**Rectification** (Art. 16): correction of inaccurate or incomplete data.',
             '**Erasure** (Art. 17): deletion where the law gives you that right. If you have objected to marketing, we keep only the suppression-list entry, so that we can honour your objection.',
             '**Restriction** (Art. 18): to limit how we use your data in the cases the law lists.',
-            '**Portability** (Art. 20): the data you gave us, where we process it by automated means on the basis of consent or a contract, in a common format.',
+            '**Portability** (Art. 20): the data you gave us, where we process it by automated means on the basis of consent or a contract, in a structured, commonly used and machine-readable format, and its transmission to another controller where technically feasible.',
             '**Objection** (Art. 21): to marketing at any time, and to processing based on legitimate interests; see [your right to object](#object).',
             '**Withdrawal of consent** (Art. 7(3)): at any time, for example in the cookie settings.',
             '**Complaint** (Art. 77): to a supervisory authority; see [Complaints](#complaints).',
@@ -332,7 +334,7 @@ export const privacyEn: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'To use a right, write to ' + privacy + '. We may ask you to confirm who you are. We answer within one month; for complex or numerous requests we may extend this by up to two months and will tell you why. It is free; if a request is manifestly unfounded or excessive we may charge a reasonable fee or refuse, and we will explain.',
+          text: 'To use a right, write to ' + privacy + '. Where we have reasonable doubts about who you are, we may ask for the information needed to confirm it. We answer without undue delay and within one month. Where requests are complex or numerous we may extend this by up to two further months; we will tell you within the first month and explain why. It is free. If a request is manifestly unfounded or excessive we may charge a reasonable fee based on our administrative costs, or refuse; we will tell you why within one month, and that you can complain to the supervisory authority and go to court.',
         },
       ],
     },
@@ -352,7 +354,7 @@ export const privacyEn: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'We protect personal data with technical and organisational measures that fit the risk; see our [Security page](/security). If a personal data breach is likely to put individuals at risk, we notify the supervisory authority within 72 hours, and tell the people affected without undue delay if the risk is high (Art. 33 and 34).',
+          text: 'We protect personal data with technical and organisational measures that fit the risk; see our [Security page](/security). We notify the supervisory authority of a personal data breach without undue delay and, where feasible, within 72 hours of becoming aware of it, unless the breach is unlikely to result in a risk to people’s rights and freedoms. We tell the people affected without undue delay where the risk is high (Art. 33 and 34).',
         },
       ],
     },

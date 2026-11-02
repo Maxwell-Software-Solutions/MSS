@@ -117,7 +117,7 @@ export const termsEn: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'You may view the website, print or save a copy for your own business information, and quote short extracts with a clear credit and a link to the source. Any other use, such as copying, republishing, distributing, adapting or commercial reuse, needs our prior written permission.',
+          text: 'You may view the website, print or save a copy for your own business information, and quote short extracts with a clear credit and a link to the source. Any other use, such as copying, republishing, distributing, adapting or commercial reuse, needs our prior written permission, except where the law allows it.',
         },
         {
           kind: 'p',
@@ -135,7 +135,7 @@ export const termsEn: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'The website links to other sites and services, for example Google Calendar for booking calls, LinkedIn and GitHub, and we use services such as Formspree for forms. Others run them under their own terms and privacy policies. We do not control them and are not responsible for their content or practices.',
+          text: 'The website links to other sites and services, for example Google Calendar for booking calls, LinkedIn and GitHub, and we use services such as Formspree for forms. Others run them under their own terms and privacy policies. We do not control them and are not responsible for their content or practices. This does not limit our responsibility for our own use of the providers we choose, which the [Privacy Policy](/privacy) describes.',
         },
       ],
     },
@@ -159,7 +159,7 @@ export const termsEn: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Subject to that, because the website is free and informational:',
+          text: 'Subject to that, and to the extent the law permits, because the website is free and informational:',
         },
         {
           kind: 'ul',
@@ -170,7 +170,7 @@ export const termsEn: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Liability for project work is set by the written agreement for that work.',
+          text: 'Nothing here limits your data protection rights, including the right to compensation under Article 82 of the GDPR. Liability for project work is set by the written agreement for that work.',
         },
       ],
     },
@@ -190,7 +190,7 @@ export const termsEn: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'We may update these terms, for example when the website or the law changes. The date at the top shows the current version, and a new version applies from the date shown. If you keep using the website after a change, you accept the new version; if you do not accept it, stop using the website.',
+          text: 'We may update these terms, for example when the website or the law changes. The date at the top shows the current version, and a new version applies from the date shown. If you keep using the website after a change, you accept the new version; if you do not accept it, stop using the website. A new version does not change agreements already made, such as project agreements, or rights already acquired.',
         },
       ],
     },
@@ -204,7 +204,7 @@ export const termsEn: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'The courts of the Republic of Lithuania have jurisdiction, in accordance with the rules on jurisdiction. If you are a consumer, nothing here takes away your right to bring proceedings, and to rely on the mandatory consumer protection rules, in the EU country where you live.',
+          text: 'The courts of the Republic of Lithuania have jurisdiction, in accordance with the rules on jurisdiction. Nothing here takes away rights you have under mandatory law: as a consumer, for example, you keep the right to bring proceedings, and to rely on the mandatory consumer protection rules, in the EU country where you live, and your data protection rights stay as described in the [Privacy Policy](/privacy).',
         },
         {
           kind: 'p',
@@ -222,7 +222,7 @@ export const termsEn: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'These terms are published in Lithuanian and English and say the same thing. If you notice a difference, tell us at ' + legal + ' and we will correct it.',
+          text: 'These terms are published in Lithuanian and English and are meant to say the same thing. If you notice a difference, tell us at ' + legal + ' and we will correct it.',
         },
       ],
     },
