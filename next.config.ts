@@ -64,6 +64,14 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
+
+      // 4. Short booking link for emails; temporary so the calendar page can change later
+      {
+        source: '/book',
+        destination:
+          'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3gh9_O7RuIGp-YoR2kYko8NBkJwtwOpuagiOnzRslqNHnheXWbedMLPLhajGv7DZl9Ks1IQTb9',
+        permanent: false,
+      },
     ];
   },
   // Performance optimizations
