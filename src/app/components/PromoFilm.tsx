@@ -1,10 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, type ReactElement } from 'react';
-import ScheduleCallButton from './ScheduleCallButton';
 import { useLanguage } from '@/lib/LanguageContext';
-import { trackCTAClick } from '@/lib/analytics';
-import { TALL, endScale, filmSources, frameAt, growth, pinProgress, posterOf, settleAt, voiceOf, windowAt } from './promoFilmModel';
+import { TALL, endScale, filmSources, frameAt, growth, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
 import type { Cut, FilmSource, Layout } from './promoFilmModel';
 import './promo-film.css';
 
@@ -59,10 +57,11 @@ function webmFits(video: HTMLVideoElement): boolean {
 }
 
 /**
- * The film right after the hero. As the page scrolls it settles in a card, pins under the header, grows into a
- * film that fills the screen and lets go, without ever taking the scroll away from the visitor. It plays muted
- * while it is on screen, stops when it is not, and the visitor can pause it or turn the sound on. Nothing loads
- * until the page has finished and the film is near, so the hero is never slowed.
+ * The film right after the hero, part of the dark page rather than a player on it. As the page scrolls the picture
+ * settles in the dark, pins under the header, grows until it fills the screen and lets go, without ever taking the
+ * scroll away from the visitor. It plays muted while on screen, stops when it is not, and the visitor can pause it
+ * or turn the sound on. Nothing loads until the page has loaded and the film's runway is in view, so the hero is
+ * never slowed.
  */
 export default function PromoFilm(): ReactElement {
   const { t, language } = useLanguage();
@@ -71,7 +70,6 @@ export default function PromoFilm(): ReactElement {
   const viewRef = useRef<HTMLDivElement | null>(null);
   const cardRef = useRef<HTMLDivElement | null>(null);
   const frameRef = useRef<HTMLDivElement | null>(null);
-  const uiRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const heldRef = useRef(false); // the visitor paused it: scrolling back does not start it again
   const soundRef = useRef(false); // the visitor turned the sound on earlier in this visit
@@ -293,13 +291,17 @@ export default function PromoFilm(): ReactElement {
         )
       : null;
     // the runway has come into view: get ready, so the film starts at once when the stage is half there. A visitor who
-    // never scrolls past the hero fetches nothing but the poster.
+    // never scrolls past the hero fetches nothing but the poster. The runway begins exactly where the hero ends, and an
+    // edge that only touches the screen counts as seen, so the screen is a few pixels shorter for this.
     const near = watch
-      ? new IntersectionObserver(([entry]) => {
-          if (!entry?.isIntersecting) return;
-          ensureSource('metadata');
-          near?.disconnect();
-        })
+      ? new IntersectionObserver(
+          ([entry]) => {
+            if (!entry?.isIntersecting) return;
+            ensureSource('metadata');
+            near?.disconnect();
+          },
+          { rootMargin: '0px 0px -4px 0px' }
+        )
       : null;
 
     // the hero loads first: the poster and the film come in only once the page has loaded and the browser is idle
@@ -326,15 +328,14 @@ export default function PromoFilm(): ReactElement {
     };
   }, [ensureSource, tryPlay]);
 
-  // the pin: while the runway scrolls past, the stage stays put under the header and the card grows into the screen
+  // the pin: while the runway scrolls past, the stage stays put under the header and the picture grows into the screen
   useEffect(() => {
     const track = trackRef.current;
     const stage = stageRef.current;
     const view = viewRef.current;
     const card = cardRef.current;
     const frame = frameRef.current;
-    const ui = uiRef.current;
-    if (!track || !stage || !view || !card || !frame || !ui) return undefined;
+    if (!track || !stage || !view || !card || !frame) return undefined;
 
     let layout: Layout | null = null;
     let scale = 1;
@@ -350,7 +351,6 @@ export default function PromoFilm(): ReactElement {
       shown = -1;
       stage.style.removeProperty('--film-e');
       frame.style.removeProperty('transform');
-      for (const side of ['top', 'right', 'bottom', 'left'] as const) ui.style.removeProperty(side);
     };
 
     const paint = (): void => {
@@ -360,20 +360,15 @@ export default function PromoFilm(): ReactElement {
       if (e === shown) return;
       shown = e;
       const { k, tx, ty } = frameAt(layout, scale, e);
-      const box = windowAt(layout, scale, e);
       stage.style.setProperty('--film-e', String(e));
       frame.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0) scale(${k.toFixed(4)})`;
-      ui.style.top = `${box.top.toFixed(2)}px`;
-      ui.style.right = `${box.right.toFixed(2)}px`;
-      ui.style.bottom = `${box.bottom.toFixed(2)}px`;
-      ui.style.left = `${box.left.toFixed(2)}px`;
     };
 
     const schedule = (): void => {
       if (!frameId) frameId = window.requestAnimationFrame(paint);
     };
 
-    // without a sticky stage (an old browser, no style sheet) there is nothing to pin: the card just stays a card
+    // without a sticky stage (an old browser, no style sheet) there is nothing to pin: the picture just stays as it is
     const measure = (): void => {
       const pinned = getComputedStyle(stage);
       if (pinned.position !== 'sticky') {
@@ -518,61 +513,59 @@ export default function PromoFilm(): ReactElement {
   const soundLabel = t(muted ? (heard ? 'promoFilm.soundOn' : 'promoFilm.playWithSound') : 'promoFilm.soundOff');
 
   return (
-    <section className="section section-tone promo-film" aria-labelledby="promo-film-heading">
+    <section className="promo-film" aria-labelledby="promo-film-heading">
+      <h2 id="promo-film-heading" className="sr-only">
+        {t('promoFilm.heading')}
+      </h2>
+
       <div ref={trackRef} className="promo-film-track">
         <div ref={stageRef} className="promo-film-stage">
           <div ref={viewRef} className="promo-film-view">
-            <div className="wrap section-head promo-film-head">
-              <div className="eyebrow">{t('promoFilm.eyebrow')}</div>
-              <h2 id="promo-film-heading">{t('promoFilm.heading')}</h2>
-            </div>
-
-            <div className="wrap promo-film-slot">
+            <div className="promo-film-slot">
               <div ref={cardRef} className="promo-film-card">
                 <div ref={frameRef} className="promo-film-frame" data-blocked={showStart ? '' : undefined}>
                   <video ref={videoRef} className="promo-film-media" muted loop playsInline preload="none">
                     <track kind="captions" srcLang="en" label="English" src="/video/maxwell-film.en.vtt" />
                     <track kind="captions" srcLang="lt" label="Lietuvių" src="/video/maxwell-film.lt.vtt" />
                   </video>
+                  <div className="promo-film-floor" aria-hidden="true" />
                 </div>
+              </div>
+            </div>
 
-                <div ref={uiRef} className="promo-film-ui">
-                  {caption ? (
-                    <p className="promo-film-caption" lang={language} aria-hidden="true">
-                      <span>{caption}</span>
-                    </p>
-                  ) : null}
-                  {showStart ? (
-                    <button type="button" className="promo-film-start" onClick={startWithSound} aria-label={t('promoFilm.play')} title={t('promoFilm.play')}>
-                      <svg width="28" height="28" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                        <path d="M5 3.2v9.6a.4.4 0 0 0 .6.35l7.6-4.8a.4.4 0 0 0 0-.7L5.6 2.85A.4.4 0 0 0 5 3.2z" />
-                      </svg>
-                    </button>
-                  ) : null}
-                  <div className="promo-film-controls">
-                    <button type="button" className="promo-film-button" onClick={togglePlay} aria-label={playLabel} title={playLabel}>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d={playing ? 'M5.5 3.5v9M10.5 3.5v9' : 'M5 3.5v9l7-4.5z'} />
-                      </svg>
-                    </button>
-                    <button type="button" className="promo-film-button promo-film-sound" data-invite={muted && !heard ? '' : undefined} onClick={toggleSound}>
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M2.5 6v4h2.5l3.5 3V3L5 6z" />
-                        <path d={muted ? 'M11 6.2l3.5 3.6M14.5 6.2L11 9.8' : 'M11 5.8a3 3 0 0 1 0 4.4M12.8 4a5.5 5.5 0 0 1 0 8'} />
-                      </svg>
-                      <span>{soundLabel}</span>
-                    </button>
-                  </div>
-                </div>
+            <div className="promo-film-ui">
+              {caption ? (
+                <p className="promo-film-caption" lang={language} aria-hidden="true">
+                  <span>{caption}</span>
+                </p>
+              ) : null}
+              {showStart ? (
+                <button type="button" className="promo-film-start" onClick={startWithSound} aria-label={t('promoFilm.play')} title={t('promoFilm.play')}>
+                  <svg width="28" height="28" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path d="M5 3.2v9.6a.4.4 0 0 0 .6.35l7.6-4.8a.4.4 0 0 0 0-.7L5.6 2.85A.4.4 0 0 0 5 3.2z" />
+                  </svg>
+                </button>
+              ) : null}
+              <div className="promo-film-controls">
+                <button type="button" className="promo-film-button" onClick={togglePlay} aria-label={playLabel} title={playLabel}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d={playing ? 'M5.5 3.5v9M10.5 3.5v9' : 'M5 3.5v9l7-4.5z'} />
+                  </svg>
+                </button>
+                <button type="button" className="promo-film-button promo-film-sound" data-invite={muted && !heard ? '' : undefined} onClick={toggleSound}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M2.5 6v4h2.5l3.5 3V3L5 6z" />
+                    <path d={muted ? 'M11 6.2l3.5 3.6M14.5 6.2L11 9.8' : 'M11 5.8a3 3 0 0 1 0 4.4M12.8 4a5.5 5.5 0 0 1 0 8'} />
+                  </svg>
+                  <span>{soundLabel}</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="wrap page-actions promo-film-actions">
-        <ScheduleCallButton className="btn-lg" onClick={() => trackCTAClick('promo_film')} />
-      </div>
+      <div className="promo-film-fade" aria-hidden="true" />
     </section>
   );
 }

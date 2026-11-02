@@ -85,22 +85,6 @@ export function frameAt(layout: Layout, scale: number, e: number): { k: number; 
 }
 
 /**
- * The part of the picture that is on screen at growth `e`, as distances in from the card's own edges (negative
- * values reach out beyond the card). Captions and buttons sit inside it, so they are never cropped away and
- * keep their size while the picture grows.
- */
-export function windowAt(layout: Layout, scale: number, e: number): { top: number; right: number; bottom: number; left: number } {
-  const { k, tx, ty } = frameAt(layout, scale, e);
-  const w = layout.cardW * k;
-  const h = layout.cardH * k;
-  const left = Math.max(layout.cardW / 2 + tx - w / 2, -layout.cardX);
-  const right = Math.min(layout.cardW / 2 + tx + w / 2, layout.viewW - layout.cardX);
-  const top = Math.max(layout.cardH / 2 + ty - h / 2, -layout.cardY);
-  const bottom = Math.min(layout.cardH / 2 + ty + h / 2, layout.viewH - layout.cardY);
-  return { top, right: layout.cardW - right, bottom: layout.cardH - bottom, left };
-}
-
-/**
  * Where the page should settle once scrolling has stopped, as pin progress, or null to stay where it is. Only a page
  * resting within `reach` of the pin line or of the end of the growth is moved, to that point, so the film never
  * rests half-way into place by a hair, and nothing in between is ever touched. (CSS scroll-snap does this too, but

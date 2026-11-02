@@ -1,6 +1,5 @@
 import { act, fireEvent, renderWithProviders, screen, waitFor } from '@/test/test-utils';
 import { axe } from 'jest-axe';
-import { BOOKING_URL } from '@/lib/booking';
 import * as LanguageContext from '@/lib/LanguageContext';
 import PromoFilm from './PromoFilm';
 
@@ -18,7 +17,7 @@ describe('PromoFilm', () => {
 
   // the observer that starts and stops the film (thresholds), and the one that brings it in once its runway is in view
   const seen = (): Watcher => watchers.find((item) => Array.isArray(item.options?.threshold)) as Watcher;
-  const near = (): Watcher => watchers.find((item) => !item.options) as Watcher;
+  const near = (): Watcher => watchers.find((item) => item.options?.rootMargin && !item.options.threshold) as Watcher;
   const report = (watcher: Watcher, ratio: number): void => {
     const entry = { isIntersecting: ratio > 0, intersectionRatio: ratio } as IntersectionObserverEntry;
     act(() => watcher.callback([entry], {} as IntersectionObserver));
@@ -81,11 +80,14 @@ describe('PromoFilm', () => {
     expect(load).not.toHaveBeenCalled();
   });
 
-  it('pins a stage under the heading and the card, with the film inside the card', () => {
+  it('is part of the dark page: a heading for screen readers only, and the film in the stage with no box round it', () => {
     const { container } = renderWithProviders(<PromoFilm />);
-    const track = container.querySelector('.promo-film-track');
-    expect(track?.querySelector('.promo-film-stage .promo-film-view .promo-film-card .promo-film-frame video')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'See AI at work' })).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { level: 2, name: 'See AI at work' });
+    expect(heading).toHaveClass('sr-only');
+    expect(container.querySelector('.promo-film-track .promo-film-stage .promo-film-view .promo-film-slot .promo-film-card .promo-film-frame video')).toBeInTheDocument();
+    expect(container.querySelector('.promo-film-fade')).toBeInTheDocument();
+    expect(container.querySelector('.promo-film-head, .section-tone, .eyebrow')).not.toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: /schedule a call/i })).not.toBeInTheDocument();
   });
 
   it('brings the wide cut to a landscape screen and only its header, until it is on screen', () => {
@@ -201,9 +203,8 @@ describe('PromoFilm', () => {
     expect(container.querySelector('.promo-film-frame')).not.toHaveAttribute('data-blocked');
   });
 
-  it('ends with the booking link', async () => {
+  it('is free of accessibility violations before it plays', async () => {
     const { container } = renderWithProviders(<PromoFilm />);
-    expect(screen.getByRole('link', { name: 'Schedule a Call' })).toHaveAttribute('href', BOOKING_URL);
     expect(await axe(container)).toHaveNoViolations();
   });
 });
