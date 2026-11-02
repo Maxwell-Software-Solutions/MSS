@@ -1,6 +1,7 @@
 // Mock for LanguageContext used in tests
-import { createContext, useContext, useCallback } from 'react';
+import { createContext, useContext, useCallback, useState } from 'react';
 import enTranslations from '../translations/en.json';
+import ltTranslations from '../translations/lt.json';
 
 type Language = 'en' | 'lt';
 
@@ -12,19 +13,30 @@ interface LanguageContextType {
 
 const MockLanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const setLanguage = useCallback(() => {
-    // No-op for tests
-  }, []);
+const dictionaries: Record<Language, Record<string, string>> = {
+  en: enTranslations as Record<string, string>,
+  lt: ltTranslations as Record<string, string>,
+};
 
-  const t = useCallback((key: string): string => {
-    return (enTranslations as Record<string, string>)[key] || key;
-  }, []);
+// English unless a test asks for Lithuanian with initialLanguage; setLanguage switches like the real provider
+export function LanguageProvider({
+  children,
+  initialLanguage = 'en',
+}: {
+  children: React.ReactNode;
+  initialLanguage?: Language;
+}): React.ReactElement {
+  const [language, setLanguage] = useState<Language>(initialLanguage);
+
+  const t = useCallback(
+    (key: string): string => {
+      return dictionaries[language][key] || key;
+    },
+    [language],
+  );
 
   return (
-    <MockLanguageContext.Provider value={{ language: 'en', setLanguage, t }}>
-      {children}
-    </MockLanguageContext.Provider>
+    <MockLanguageContext.Provider value={{ language, setLanguage, t }}>{children}</MockLanguageContext.Provider>
   );
 }
 

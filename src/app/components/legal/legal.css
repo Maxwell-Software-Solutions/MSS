@@ -1,0 +1,130 @@
+/* Layout for the legal pages: provider details, tables and notes that stay readable at 390px. */
+@layer components {
+  .legal-dl {
+    display: grid;
+    gap: var(--space-4);
+    margin-block: var(--space-4);
+  }
+  .legal-dl > div {
+    display: grid;
+    gap: var(--space-1);
+  }
+  .legal-dl dt {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+  .legal-dl dd {
+    max-width: 40em;
+    color: var(--color-text);
+    overflow-wrap: anywhere;
+  }
+  .legal-dl dd > :where(p + p, ul) {
+    margin-top: var(--space-3);
+  }
+
+  @media (min-width: 640px) {
+    .legal-dl > div {
+      grid-template-columns: minmax(8.5rem, 11rem) minmax(0, 1fr);
+      gap: var(--space-5);
+    }
+  }
+
+  .legal-table {
+    width: 100%;
+    margin-block: var(--space-4);
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+  .legal-table caption {
+    padding-bottom: var(--space-2);
+    text-align: left;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .legal-table th,
+  .legal-table td {
+    padding: var(--space-3);
+    border-top: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: break-word;
+  }
+  .legal-table code {
+    overflow-wrap: anywhere;
+  }
+  .legal-table th code {
+    white-space: nowrap;
+  }
+  .legal-table thead th {
+    border-top: 0;
+    border-bottom: 1px solid var(--color-border-strong);
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .legal-table tbody th {
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  /* Phones and small tablets: each row becomes a short card, its column names shown above each value */
+  @media (max-width: 767px) {
+    .legal-table,
+    .legal-table caption,
+    .legal-table tbody,
+    .legal-table tr,
+    .legal-table th,
+    .legal-table td {
+      display: block;
+      width: 100%;
+    }
+    .legal-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+    .legal-table tr {
+      padding-block: var(--space-3);
+      border-top: 1px solid var(--color-border);
+    }
+    .legal-table th,
+    .legal-table td {
+      padding: var(--space-1) 0;
+      border: 0;
+    }
+    .legal-table td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--color-muted);
+    }
+  }
+
+  .legal-note {
+    margin-block: var(--space-5);
+  }
+  .legal-note-title {
+    margin-bottom: var(--space-2);
+    font-weight: 500;
+    color: var(--color-text);
+  }
+  .legal-note > :where(p, ul, ol) + :where(p, ul, ol) {
+    margin-top: var(--space-3);
+  }
+
+  .legal-actions {
+    margin-top: var(--space-4);
+  }
+  .legal-actions .btn {
+    width: auto;
+  }
+  .legal-status {
+    display: block;
+    margin-top: var(--space-3);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+}

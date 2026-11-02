@@ -1,15 +1,19 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
-import PrivacyPageComponent from './PrivacyPage';
+import { LEGAL_DOCS } from '@/lib/legal';
+import { parseLanguage, resolveLanguage } from '@/lib/legal/language';
+import PrivacyPage from './PrivacyPage';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy — Maxwell Software Solutions',
-  description: 'How Maxwell Software Solutions collects, uses, and protects personal data in line with the GDPR.',
-  alternates: {
-    canonical: '/privacy',
-  },
-};
+interface PageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
 
-export default function Page(): ReactElement {
-  return <PrivacyPageComponent />;
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const language = await resolveLanguage(parseLanguage((await searchParams).lang));
+  const { title, description } = LEGAL_DOCS.privacy[language].meta;
+  return { title, description, alternates: { canonical: '/privacy' } };
+}
+
+export default async function Page({ searchParams }: PageProps): Promise<ReactElement> {
+  return <PrivacyPage requestedLanguage={parseLanguage((await searchParams).lang)} />;
 }

@@ -1,20 +1,11 @@
 import type { ReactElement } from 'react';
-import { PageContainer, PageHeader } from '@/app/components/ui';
-import PrivacyContent from './PrivacyContent';
+import LegalDocument from '@/app/components/legal/LegalDocument';
+import type { LegalLanguage } from '@/lib/legal/types';
 
-const effectiveDate = '6 October 2025';
-const privacyEmail = 'privacy@maxwellsoftwaresolutions.com';
+interface PrivacyPageProps {
+  requestedLanguage?: LegalLanguage | undefined;
+}
 
-export default function PrivacyPage(): ReactElement {
-  return (
-    <PageContainer>
-      <PageHeader
-        eyebrow="Privacy Policy (GDPR)"
-        title="Maxwell Software Solutions Privacy Policy"
-        meta={`Effective date: ${effectiveDate}`}
-        subtitle='Maxwell Software Solutions ("we", "us", "our") provides software quality audits, testing strategy, refactoring, and observability services. This policy explains how we handle personal data in line with the General Data Protection Regulation (GDPR).'
-      />
-      <PrivacyContent privacyEmail={privacyEmail} />
-    </PageContainer>
-  );
+export default function PrivacyPage({ requestedLanguage }: PrivacyPageProps): ReactElement {
+  return <LegalDocument kind="privacy" requestedLanguage={requestedLanguage} />;
 }
