@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { TALL, endScale, filmSources, frameAt, growth, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
+import { trackCTAClick } from '@/lib/analytics';
+import { TALL, endScale, filmSources, frameAt, growth, holdPoint, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
 import type { Cut, FilmSource, Layout } from './promoFilmModel';
 import './promo-film.css';
 
@@ -59,9 +60,9 @@ function webmFits(video: HTMLVideoElement): boolean {
 /**
  * The film right after the hero, part of the dark page rather than a player on it. As the page scrolls the picture
  * settles in the dark, pins under the header, grows until it fills the screen and lets go, without ever taking the
- * scroll away from the visitor. It plays muted while on screen, stops when it is not, and the visitor can pause it
- * or turn the sound on. Nothing loads until the page has loaded and the film's runway is in view, so the hero is
- * never slowed.
+ * scroll away from the visitor. It plays muted while on screen, stops when it is not, and plays once: on its last
+ * card the live "Book a call" button appears over the one drawn in the film, and "Watch again" is there for anyone
+ * who wants it. Nothing loads until the page has loaded and the film's runway is in view, so the hero is never slowed.
  */
 export default function PromoFilm(): ReactElement {
   const { t, language } = useLanguage();
@@ -72,6 +73,7 @@ export default function PromoFilm(): ReactElement {
   const frameRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const heldRef = useRef(false); // the visitor paused it: scrolling back does not start it again
+  const endedRef = useRef(false); // it has played through: nothing starts it again but a click on "Watch again"
   const soundRef = useRef(false); // the visitor turned the sound on earlier in this visit
   const heardRef = useRef(false); // the film has been heard, so the button no longer promises a restart
   const inViewRef = useRef(false);
@@ -79,10 +81,12 @@ export default function PromoFilm(): ReactElement {
   const noLtRef = useRef<Set<Cut> | null>(null); // cuts with no Lithuanian-voiced file yet, read once the page is up
   const languageRef = useRef(language);
   const cueRef = useRef<(() => void) | null>(null);
+  const loadRef = useRef(0); // counts loads of the film's files and restarts, so a late retry never fights a newer one
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
   const [heard, setHeard] = useState(false);
   const [blocked, setBlocked] = useState(false);
+  const [ended, setEnded] = useState(false);
   const [caption, setCaption] = useState('');
 
   // captions in the site language, drawn here rather than by the browser so they match the site; the track
@@ -133,6 +137,16 @@ export default function PromoFilm(): ReactElement {
     attempt();
   }, []);
 
+  // the film is over: it stays on its last card, and the live button and "Watch again" take over
+  const finish = useCallback((video: HTMLVideoElement): void => {
+    if (endedRef.current) return;
+    endedRef.current = true;
+    video.autoplay = false;
+    if (!video.paused) video.pause();
+    setEnded(true);
+    setCaption('');
+  }, []);
+
   // the cut follows the screen's orientation; in Lithuanian the Lithuanian voice is tried first, then the English one
   const choose = useCallback((video: HTMLVideoElement): Choice => {
     const cut: Cut = window.matchMedia?.(TALL).matches ? 'tall' : 'wide';
@@ -143,7 +157,7 @@ export default function PromoFilm(): ReactElement {
   }, []);
 
   const begin = useCallback(
-    (video: HTMLVideoElement, choice: Choice, preload: 'metadata' | 'auto', resume?: { time: number; playing: boolean }): void => {
+    (video: HTMLVideoElement, choice: Choice, preload: 'metadata' | 'auto', resume?: { time: number; playing: boolean; ended: boolean }): void => {
       video.poster = posterOf(choice.cut);
       video.preload = preload;
       video.querySelectorAll('source').forEach((node) => node.remove());
@@ -158,15 +172,45 @@ export default function PromoFilm(): ReactElement {
       choiceRef.current = choice;
       // the first files go in while nothing has loaded, and that starts the loading by itself; changing them later needs a nudge
       if (video.networkState !== 0) video.load();
+      const mine = (loadRef.current += 1);
       if (resume) {
+        const want = resume.time;
+        const seek = (): void => {
+          if (want > 0 && Number.isFinite(video.duration)) video.currentTime = Math.min(want, video.duration);
+        };
         video.addEventListener(
           'loadedmetadata',
           () => {
-            if (resume.time > 0 && Number.isFinite(video.duration)) video.currentTime = Math.min(resume.time, video.duration);
+            seek();
             if (resume.playing) tryPlay(video);
           },
           { once: true }
         );
+        // WebKit now and then drops a seek made while the new files are still coming in: ask again, a few times, until
+        // the film is where it was. Anything else that moves the film (a click on Watch again) ends the asking. If a film
+        // that had ended cannot be put back on its last card, it is not left showing the wrong picture under the button:
+        // it goes back to its start, waiting for a tap.
+        let tries = 0;
+        const events = ['canplay', 'seeked', 'playing'];
+        const stop = (giveUp: boolean): void => {
+          window.clearTimeout(timer);
+          events.forEach((name) => video.removeEventListener(name, check));
+          if (giveUp && resume.ended && loadRef.current === mine && Math.abs(video.currentTime - want) > 1) {
+            endedRef.current = false;
+            heldRef.current = true;
+            setEnded(false);
+          }
+        };
+        const timer = window.setTimeout(() => stop(true), 4000);
+        function check(): void {
+          if (loadRef.current !== mine || want <= 0) return stop(false);
+          if (video.seeking) return; // a seek in flight reports where it is going; judge it once it has landed
+          if (Math.abs(video.currentTime - want) <= 1) return stop(false);
+          if (tries >= 3) return stop(true);
+          tries += 1;
+          seek();
+        }
+        events.forEach((name) => video.addEventListener(name, check));
       }
       pickCaptions(languageRef.current);
     },
@@ -192,7 +236,7 @@ export default function PromoFilm(): ReactElement {
     if (!video || !current) return;
     const next = choose(video);
     if (next.key === current.key) return;
-    begin(video, next, video.preload === 'metadata' ? 'metadata' : 'auto', { time: video.currentTime, playing: !video.paused });
+    begin(video, next, video.preload === 'metadata' ? 'metadata' : 'auto', { time: video.currentTime, playing: !video.paused, ended: endedRef.current });
   }, [begin, choose]);
 
   useEffect(() => {
@@ -236,12 +280,33 @@ export default function PromoFilm(): ReactElement {
         rememberMissingLt(noLtRef.current);
       }
     };
+    // The film stops on its last card, just before it fades out. The playing time is only reported a few times a
+    // second, so in the last second it is watched frame by frame.
+    let polling = 0;
+    const poll = (): void => {
+      polling = 0;
+      if (video.paused || endedRef.current) return;
+      if (video.currentTime >= holdPoint(video.duration)) finish(video);
+      else polling = window.requestAnimationFrame(poll);
+    };
+    const onTime = (): void => {
+      if (endedRef.current || video.paused) return;
+      const stop = holdPoint(video.duration);
+      if (video.currentTime >= stop) finish(video);
+      else if (!polling && video.currentTime >= stop - 1) polling = window.requestAnimationFrame(poll);
+    };
+    // the browser got to the very end first (a hidden tab, a busy page): back to the card that was meant to be held
+    const onEnded = (): void => {
+      const stop = holdPoint(video.duration);
+      if (Number.isFinite(stop) && video.currentTime > stop) video.currentTime = stop;
+      finish(video);
+    };
     // sound and a hidden tab do not go together
     const onVisibility = (): void => {
       if (!choiceRef.current) return;
       if (document.hidden) {
         if (!video.paused) video.pause();
-      } else if (inViewRef.current && !heldRef.current) {
+      } else if (inViewRef.current && !heldRef.current && !endedRef.current) {
         tryPlay(video);
       }
     };
@@ -249,17 +314,23 @@ export default function PromoFilm(): ReactElement {
     video.addEventListener('pause', onPause);
     video.addEventListener('volumechange', onVolume);
     video.addEventListener('loadedmetadata', onMetadata);
+    video.addEventListener('timeupdate', onTime);
+    video.addEventListener('ended', onEnded);
     document.addEventListener('visibilitychange', onVisibility);
     return () => {
+      window.cancelAnimationFrame(polling);
       video.removeEventListener('play', onPlay);
       video.removeEventListener('pause', onPause);
       video.removeEventListener('volumechange', onVolume);
       video.removeEventListener('loadedmetadata', onMetadata);
+      video.removeEventListener('timeupdate', onTime);
+      video.removeEventListener('ended', onEnded);
       document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, [tryPlay]);
+  }, [finish, tryPlay]);
 
-  // playback: starts once half of the stage is on screen, stops when it has gone, and keeps its place in between
+  // playback: starts once half of the stage is on screen, stops when it has gone, keeps its place in between, and
+  // once it has played through it never starts again by itself
   useEffect(() => {
     const video = videoRef.current;
     const frame = frameRef.current;
@@ -276,6 +347,8 @@ export default function PromoFilm(): ReactElement {
             const share = entry.isIntersecting ? entry.intersectionRatio : 0;
             if (share >= 0.5) {
               inViewRef.current = true;
+              // a film that has played through has everything it needs: touching its files again could only disturb its last card
+              if (endedRef.current) return;
               ensureSource();
               if (heldRef.current || document.hidden) return;
               video.autoplay = true;
@@ -458,7 +531,24 @@ export default function PromoFilm(): ReactElement {
     };
   }, []);
 
+  // from the card's end it goes back to the start, on a click and never otherwise
+  const restart = (): void => {
+    const video = ensureSource();
+    if (!video) return;
+    endedRef.current = false;
+    heldRef.current = false;
+    loadRef.current += 1;
+    setEnded(false);
+    video.currentTime = 0;
+    video.muted = !soundRef.current;
+    tryPlay(video);
+  };
+
   const togglePlay = (): void => {
+    if (endedRef.current) {
+      restart();
+      return;
+    }
     const video = ensureSource();
     if (!video) return;
     if (video.paused) {
@@ -508,8 +598,8 @@ export default function PromoFilm(): ReactElement {
     tryPlay(video);
   };
 
-  const showStart = blocked && !playing;
-  const playLabel = t(playing ? 'promoFilm.pause' : 'promoFilm.play');
+  const showStart = blocked && !playing && !ended;
+  const playLabel = t(ended ? 'promoFilm.watchAgain' : playing ? 'promoFilm.pause' : 'promoFilm.play');
   const soundLabel = t(muted ? (heard ? 'promoFilm.soundOn' : 'promoFilm.playWithSound') : 'promoFilm.soundOff');
 
   return (
@@ -524,11 +614,16 @@ export default function PromoFilm(): ReactElement {
             <div className="promo-film-slot">
               <div ref={cardRef} className="promo-film-card">
                 <div ref={frameRef} className="promo-film-frame" data-blocked={showStart ? '' : undefined}>
-                  <video ref={videoRef} className="promo-film-media" muted loop playsInline preload="none">
+                  <video ref={videoRef} className="promo-film-media" muted playsInline preload="none">
                     <track kind="captions" srcLang="en" label="English" src="/video/maxwell-film.en.vtt" />
                     <track kind="captions" srcLang="lt" label="Lietuvių" src="/video/maxwell-film.lt.vtt" />
                   </video>
                   <div className="promo-film-floor" aria-hidden="true" />
+                  {ended ? (
+                    <a className="promo-film-cta" href="/book" target="_blank" rel="noopener noreferrer" aria-label={t('cta.bookCall.aria')} onClick={() => trackCTAClick('promo_film')}>
+                      {t('cta.bookCall')}
+                    </a>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -547,18 +642,21 @@ export default function PromoFilm(): ReactElement {
                 </button>
               ) : null}
               <div className="promo-film-controls">
-                <button type="button" className="promo-film-button" onClick={togglePlay} aria-label={playLabel} title={playLabel}>
+                <button type="button" className="promo-film-button" data-again={ended ? '' : undefined} onClick={togglePlay} aria-label={playLabel} title={playLabel}>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d={playing ? 'M5.5 3.5v9M10.5 3.5v9' : 'M5 3.5v9l7-4.5z'} />
+                    <path d={ended ? 'M13.5 8a5.5 5.5 0 1 1-1.7-3.95M13.5 2.4v3.3h-3.3' : playing ? 'M5.5 3.5v9M10.5 3.5v9' : 'M5 3.5v9l7-4.5z'} />
                   </svg>
+                  {ended ? <span>{playLabel}</span> : null}
                 </button>
-                <button type="button" className="promo-film-button promo-film-sound" data-invite={muted && !heard ? '' : undefined} onClick={toggleSound}>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M2.5 6v4h2.5l3.5 3V3L5 6z" />
-                    <path d={muted ? 'M11 6.2l3.5 3.6M14.5 6.2L11 9.8' : 'M11 5.8a3 3 0 0 1 0 4.4M12.8 4a5.5 5.5 0 0 1 0 8'} />
-                  </svg>
-                  <span>{soundLabel}</span>
-                </button>
+                {ended ? null : (
+                  <button type="button" className="promo-film-button promo-film-sound" data-invite={muted && !heard ? '' : undefined} onClick={toggleSound}>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M2.5 6v4h2.5l3.5 3V3L5 6z" />
+                      <path d={muted ? 'M11 6.2l3.5 3.6M14.5 6.2L11 9.8' : 'M11 5.8a3 3 0 0 1 0 4.4M12.8 4a5.5 5.5 0 0 1 0 8'} />
+                    </svg>
+                    <span>{soundLabel}</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>

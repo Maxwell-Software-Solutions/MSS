@@ -17,6 +17,16 @@
   --film-grow-to: 0.72;
   --film-max-crop: 1.1; /* the most the full-screen picture may be cropped beyond fitting whole */
 
+  /* Where the film draws its "Book a call" on the last card, as a share of the picture, and the size of its text in
+     hundredths of the picture's width (measured on the last full frame of each cut, at 1920 and 1080 wide). The live
+     button sits exactly over it. */
+  --cta-x: 39.583%;
+  --cta-y: 42.963%;
+  --cta-w: 20.833%;
+  --cta-h: 8.889%;
+  --cta-font: 1.91;
+  --cta-line: 0.09;
+
   position: relative;
   background: var(--film-ink);
   color-scheme: dark;
@@ -25,6 +35,12 @@
 @media (orientation: portrait) {
   .promo-film {
     --film-ratio: 0.8;
+    --cta-x: 28.704%;
+    --cta-y: 40%;
+    --cta-w: 42.593%;
+    --cta-h: 8%;
+    --cta-font: 3.9;
+    --cta-line: 0.17;
   }
 }
 
@@ -64,6 +80,7 @@
 .promo-film-frame {
   position: absolute;
   inset: 0;
+  container-type: inline-size;
   background: var(--film-ink) center / cover no-repeat;
 }
 
@@ -119,6 +136,62 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* The live "Book a call", laid over the one drawn on the film's last card. It covers the drawn one with the same
+   dark and the same gold, so the swap is a fade and nothing seems to change. Its size is a share of the picture's
+   width, so it keeps its place at every size and while the picture grows. */
+.promo-film-cta {
+  position: absolute;
+  z-index: 3;
+  top: var(--cta-y);
+  left: var(--cta-x);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cta-w);
+  height: var(--cta-h);
+  padding-top: 0.1em; /* the drawn text sits a hair lower in its pill than centred text does */
+  border: max(1px, calc(var(--cta-line) * 1cqw)) solid #d2b04a;
+  border-radius: 999px;
+  background: #1f1a0b;
+  box-shadow:
+    inset 0 0 2.4cqw rgba(214, 176, 60, 0.27),
+    0 0 2.4cqw rgba(201, 162, 39, 0.14);
+  color: #d8bd63;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-size: calc(var(--cta-font) * 1cqw);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  animation: promo-film-cta-in 0.5s ease both;
+  transition: color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.promo-film-cta:hover {
+  border-color: #efcd64;
+  box-shadow:
+    inset 0 0 2.2cqw rgba(214, 176, 60, 0.3),
+    0 0 2.8cqw rgba(201, 162, 39, 0.26);
+  color: #f4de96;
+}
+
+.promo-film-cta:focus-visible {
+  outline: 2px solid var(--gold-tint);
+  outline-offset: 0.5cqw;
+}
+
+@keyframes promo-film-cta-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* Captions and buttons keep to the page, not to the picture: they neither grow with it nor sit on its feathered edge */
@@ -204,6 +277,19 @@
 
 .promo-film-sound[data-invite]:hover {
   border-color: var(--gold-tint);
+}
+
+/* After the film: a small, quiet way to see it again, never started by anything but a click */
+.promo-film-button[data-again] {
+  padding-inline: var(--space-3);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: transparent;
+  color: #b8b8b4;
+}
+
+.promo-film-button[data-again]:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
 }
 
 .promo-film-start {

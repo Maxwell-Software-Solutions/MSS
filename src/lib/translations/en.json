@@ -13,6 +13,7 @@
   "promoFilm.pause": "Pause film",
   "promoFilm.soundOn": "Turn sound on",
   "promoFilm.soundOff": "Turn sound off",
+  "promoFilm.watchAgain": "Watch again",
   "value.evals.title": "Evaluations and tests",
   "value.evals.body": "AI features are tested like any other code, with evaluation sets that catch regressions before your users do.",
   "value.foundations.title": "Clean foundations",
