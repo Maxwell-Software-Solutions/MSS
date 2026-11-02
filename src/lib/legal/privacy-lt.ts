@@ -69,17 +69,17 @@ export const privacyLt: LegalDoc = {
         {
           kind: 'dl',
           rows: [
-            { term: 'Duomenys', def: 'Jūsų IP adresas, užklausos data ir laikas, užklausti puslapiai, naršyklės ir įrenginio tipas, puslapis, iš kurio atėjote, ir kalbos nustatymas. Iš šių žurnalų nesudarome lankytojų profilių.' },
-            { term: 'Šaltinis', def: 'Jūsų naršyklė, kai ji prašo mūsų serverio puslapio.' },
-            { term: 'Kodėl ir teisinis pagrindas', def: 'Kad svetainė veiktų, būtų patikima ir saugi. Teisėtas interesas (BDAR 6 straipsnio 1 dalies f punktas).' },
+            { term: 'Duomenys', def: 'Jūsų IP adresas, užklausos data ir laikas, pasiekti puslapiai, naršyklės ir įrenginio tipas, puslapis, iš kurio atėjote, ir kalbos nustatymas. Iš šių žurnalų nesudarome lankytojų profilių.' },
+            { term: 'Šaltinis', def: 'Jūsų naršyklė, kai ji iš mūsų serverio prašo puslapio.' },
+            { term: 'Kodėl ir teisinis pagrindas', def: 'Kad galėtume pateikti svetainę, užtikrinti jos veikimą ir saugumą. Teisėti interesai (BDAR 6 straipsnio 1 dalies f punktas).' },
             { term: 'Kas gauna', def: 'Vercel Inc., kuri mums talpina svetainę.' },
           ],
         },
-        { kind: 'h3', id: 'enquiries', text: 'Kontaktų forma, el. paštas ir pokalbio rezervavimas' },
+        { kind: 'h3', id: 'enquiries', text: 'Kontaktų forma, el. paštas ir skambučio rezervavimas' },
         {
           kind: 'dl',
           rows: [
-            { term: 'Duomenys', def: 'Jūsų vardas ir pavardė, el. pašto adresas ir žinutė bei viskas, ką nuspręsite mums pranešti. Rezervuodami skambutį: vardas, pavardė, el. pašto adresas ir pasirinktas laikas. Mūsų el. laiškai su jumis.' },
+            { term: 'Duomenys', def: 'Jūsų vardas ir pavardė, el. pašto adresas ir žinutė bei viskas, ką nuspręsite mums pranešti. Rezervuodami skambutį: vardas, pavardė, el. pašto adresas ir pasirinktas laikas. Mūsų susirašinėjimas su jumis el. paštu.' },
             { term: 'Šaltinis', def: 'Jūs.' },
             { term: 'Kodėl ir teisinis pagrindas', def: 'Kad atsakytume į jūsų užklausą, suderintume skambutį ir, jei prašysite, parengtume pasiūlymą: veiksmai jūsų prašymu prieš sudarant sutartį (6 straipsnio 1 dalies b punktas). Jei rašote įmonės vardu – mūsų teisėtas interesas nagrinėti verslo užklausas (6 straipsnio 1 dalies f punktas).' },
             { term: 'Kas gauna', def: 'Google, kuri teikia mūsų el. paštą, kalendorių, skaičiuokles ir kontaktų formą priimantį scenarijų (Google Workspace). Forma iš jūsų naršyklės siunčiama į Google Apps Script žiniatinklio programą, kuri persiunčia ją mums el. paštu ir įrašo į Google Sheets lentelę. Rezervavimo puslapis yra Google puslapis: jame lankantis taikoma [pačios Google privatumo politika](https://policies.google.com/privacy?hl=lt).' },
@@ -90,11 +90,11 @@ export const privacyLt: LegalDoc = {
         {
           kind: 'dl',
           rows: [
-            { term: 'Duomenys', def: 'Jūsų vardas ir pavardė, darbo el. paštas, įmonė, pagrindinė technologijų aplinka ir, jei norite, jūsų rūpesčio aprašymas.' },
+            { term: 'Duomenys', def: 'Jūsų vardas ir pavardė, darbo el. paštas, įmonė, pagrindinis technologijų rinkinys ir, jei norite, jūsų rūpesčio aprašymas.' },
             { term: 'Šaltinis', def: 'Jūs.' },
             { term: 'Kodėl ir teisinis pagrindas', def: 'Kad įvertintume jūsų prašymą ir, jei jį patenkintume, atliktume auditą: veiksmai jūsų prašymu prieš sudarant sutartį (6 straipsnio 1 dalies b punktas). Jei kreipiatės įmonės vardu – mūsų teisėtas interesas nagrinėti įmonės prašymą (6 straipsnio 1 dalies f punktas).' },
             { term: 'Kas gauna', def: 'Formspree, Inc. (Jungtinės Amerikos Valstijos), kuri priima formą mūsų vardu ir persiunčia mums el. paštu.' },
-            { term: 'Ar privaloma pateikti', def: 'Ne, kreiptis savanoriška. Prašymui įvertinti mums reikia jūsų vardo, pavardės, darbo el. pašto, įmonės ir technologijų aplinkos; rūpesčio aprašymas neprivalomas.' },
+            { term: 'Ar privaloma pateikti', def: 'Ne, kreiptis savanoriška. Prašymui įvertinti mums reikia jūsų vardo, pavardės, darbo el. pašto, įmonės ir technologijų rinkinio; rūpesčio aprašymas neprivalomas.' },
           ],
         },
         { kind: 'h3', id: 'scanner', text: 'Svetainės skeneris' },
@@ -110,10 +110,10 @@ export const privacyLt: LegalDoc = {
         {
           kind: 'dl',
           rows: [
-            { term: 'Duomenys', def: 'Klientų kontaktinių asmenų vardai ir pavardės, darbo el. paštas, telefonas ir pareigos; pasiūlymai, sutartys, sąskaitos ir mokėjimai; susirašinėjimas projektų klausimais.' },
+            { term: 'Duomenys', def: 'Klientų kontaktinių asmenų vardai ir pavardės, darbo el. paštas, telefonas ir pareigos; pasiūlymai, sutartys, sąskaitos faktūros ir mokėjimai; susirašinėjimas projektų klausimais.' },
             { term: 'Šaltinis', def: 'Jūs arba jūsų įmonė.' },
-            { term: 'Kodėl ir teisinis pagrindas', def: 'Kad parengtume ir vykdytume sutartis (6 straipsnio 1 dalies b punktas; kliento įmonės darbuotojų atveju – mūsų teisėtas interesas valdyti sutartį su ta įmone, 6 straipsnio 1 dalies f punktas) ir vykdytume teisines pareigas, pavyzdžiui, apskaitos ir mokesčių taisykles (6 straipsnio 1 dalies c punktas).' },
-            { term: 'Kas gauna', def: 'Google (Google Workspace); profesionalūs konsultantai, saugantys konfidencialumą, pavyzdžiui, buhalteris ar teisininkas, jei jais naudojamės; valdžios institucijos, kai to reikalauja teisės aktai.' },
+            { term: 'Kodėl ir teisinis pagrindas', def: 'Kad parengtume ir vykdytume sutartis (6 straipsnio 1 dalies b punktas; kliento įmonės darbuotojų atveju – mūsų teisėtas interesas valdyti sutartį su ta įmone, 6 straipsnio 1 dalies f punktas) ir vykdytume teisines prievoles, pavyzdžiui, pagal apskaitos ir mokesčių teisės aktus (6 straipsnio 1 dalies c punktas).' },
+            { term: 'Kas gauna', def: 'Google (Google Workspace); profesionalūs konsultantai, kuriems taikoma konfidencialumo pareiga, pavyzdžiui, buhalteris ar teisininkas, jei jais naudojamės; valdžios institucijos, kai to reikalauja teisės aktai.' },
           ],
         },
       ],
@@ -130,7 +130,7 @@ export const privacyLt: LegalDoc = {
           kind: 'dl',
           rows: [
             { term: 'Kam rašome', def: 'Tik įmonėms (juridiniams asmenims). Pirmiausia Juridinių asmenų registre patikriname teisinę formą. Nerašome fiziniams asmenims ir individualią veiklą ar veiklą pagal verslo liudijimą vykdantiems asmenims.' },
-            { term: 'Kur radome jūsų duomenis', def: 'Jūsų įmonės svetainėje, kurioje adresas skelbiamas; viešuose registruose – Juridinių asmenų registre (Registrų centras) ir rekvizitai.lt – įmonės pavadinimą, kodą, teisinę formą ir vadovo vardą bei pavardę; taip pat kitoje viešoje medžiagoje, pavyzdžiui, naujienų straipsnyje ar interviu, kuriuo remiamės savo laiške. Kontaktų sąrašų nepirkame.' },
+            { term: 'Kur radome jūsų duomenis', def: 'Jūsų įmonės svetainėje, kurioje adresas skelbiamas; viešuose registruose – Juridinių asmenų registre (Registrų centras) ir rekvizitai.lt – iš jų gavome įmonės pavadinimą, kodą, teisinę formą ir vadovo vardą bei pavardę; taip pat kitoje viešoje medžiagoje, pavyzdžiui, naujienų straipsnyje ar interviu, kuriuo remiamės savo laiške. Kontaktų sąrašų nepirkame.' },
             { term: 'Kokius duomenis turime', def: 'Verslo el. pašto adresas (jame gali būti asmens vardas ir pavardė); asmens, kuriam rašome, pavyzdžiui, vadovo, vardas, pavardė ir pareigos; įmonės pavadinimas ir kodas; puslapis, kuriame radome adresą; viešas pareiškimas, kuriuo remiamės; mūsų laiškų data ir tekstas; jūsų atsakymas, jei jį atsiunčiate; ir jūsų nesutikimas, jei jį pareiškiate.' },
             { term: 'Ką darome', def: 'Patys parašome vieną laišką ir ne daugiau kaip vieną priminimą. Nenaudojame sekimo pikselių ar nuorodų sekimo, pirktų sąrašų ir neprofiliuojame.' },
             { term: 'Teisinis pagrindas', def: 'Mūsų teisėtas interesas siūlyti paslaugas įmonėms (BDAR 6 straipsnio 1 dalies f punktas; 47 konstatuojamoji dalis pripažįsta, kad tiesioginė rinkodara gali būti teisėtas interesas). Pagal Lietuvos [Elektroninių ryšių įstatymo](https://www.e-tar.lt/portal/lt/legalAct/TAR.82D8168D3049/asr) 81 straipsnį elektroninį laišką juridiniam asmeniui galima siųsti be išankstinio sutikimo, jei kiekviename pranešime sudaroma aiški, nemokama ir lengvai įgyvendinama galimybė atsisakyti. Mūsų laiškuose tokia galimybė yra.' },
@@ -172,7 +172,7 @@ export const privacyLt: LegalDoc = {
           items: [
             '**Kaip:** atsakykite į bet kurį mūsų laišką (pakanka žodžio „ne“) arba rašykite adresu ' + privacy + '.',
             '**Kas gali nesutikti:** jūs, kaip asmuo, kurio duomenis turime, taip pat įmonės vadovas arba bet kuris darbuotojas, kuris naudojasi tuo adresu, nepriklausomai nuo to, ar adrese yra vardas ir pavardė.',
-            '**Ką darome:** nepagrįstai nedelsdami nustojame rašyti. Adresą, įmonę, datą ir jūsų žinutę laikome nesutikimų sąraše – tik kaip įrodymą, kad nesutikimą įvykdėme, ir kad daugiau nerašytume (mūsų teisėtas interesas gerbti jūsų nesutikimą ir sugebėti parodyti, kad tai padarėme, 6 straipsnio 1 dalies f punktas). Kitiems tikslams sąrašo nenaudojame.',
+            '**Ką darome:** nepagrįstai nedelsdami nustojame rašyti. Adresą, įmonę, datą ir jūsų žinutę laikome nesutikimų sąraše – tik kaip įrodymą, kad nesutikimą įvykdėme, ir tam, kad daugiau nerašytume (mūsų teisėtas interesas gerbti jūsų nesutikimą ir sugebėti parodyti, kad tai padarėme, 6 straipsnio 1 dalies f punktas). Kitiems tikslams sąrašo nenaudojame.',
           ],
         },
         {
@@ -192,7 +192,7 @@ export const privacyLt: LegalDoc = {
         { kind: 'h3', text: 'Jūsų pasirinkimas' },
         {
           kind: 'p',
-          text: 'Analitiniai slapukai nustatomi tik tada, kai juos priimate slapukų juostoje, kurią teikia Cookiebot. Jei jų nepriėmėte arba juosta jūsų naršyklėje nerodoma, analitinių slapukų nenustatome ir analitikos duomenų Google nesiunčiame. Savo pasirinkimą galite bet kada pakeisti arba atšaukti. Atšaukus sutikimą, nedaromas poveikis sutikimu grindžiamo duomenų tvarkymo iki jo atšaukimo teisėtumui.',
+          text: 'Analitiniai slapukai nustatomi tik tada, kai juos priimate slapukų juostoje, kurią teikia Cookiebot. Jei jų nepriėmėte arba juosta jūsų naršyklėje nerodoma, analitinių slapukų nenustatome ir analitikos duomenų Google nesiunčiame. Savo pasirinkimą galite bet kada pakeisti arba atšaukti. Sutikimo atšaukimas nedaro poveikio sutikimu grindžiamo duomenų tvarkymo, atlikto iki sutikimo atšaukimo, teisėtumui.',
         },
         { kind: 'cookieSettings', label: 'Slapukų nustatymai', unavailable: 'Slapukų juosta jūsų naršyklėje šiuo metu nepasiekiama. Analitinių slapukų nenustatome, jei nesutikote.' },
         {
@@ -223,7 +223,7 @@ export const privacyLt: LegalDoc = {
         { kind: 'h3', text: 'Kitos svetainės' },
         {
           kind: 'p',
-          text: 'Jei pereinate į Google rezervavimo puslapį, LinkedIn ar GitHub, tos svetainės pagal savo taisykles gali nustatyti savo slapukus. Jų turinio savo puslapiuose nekeliame. Slapukus taip pat galite ištrinti ar blokuoti naršyklės nustatymuose.',
+          text: 'Jei pereinate į Google rezervavimo puslapį, LinkedIn ar GitHub, tos svetainės pagal savo taisykles gali nustatyti savo slapukus. Jų turinio savo puslapiuose neįterpiame. Slapukus taip pat galite ištrinti ar blokuoti naršyklės nustatymuose.',
         },
       ],
     },
@@ -260,7 +260,7 @@ export const privacyLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Duomenis taip pat atskleidžiame profesionaliems konsultantams, saugantiems konfidencialumą, jei jais naudojamės, ir valdžios institucijoms, kai to reikalauja teisės aktai. Asmens duomenų neparduodame ir neteikiame reklamos davėjams ar duomenų tarpininkams.',
+          text: 'Duomenis taip pat atskleidžiame profesionaliems konsultantams, kuriems taikoma konfidencialumo pareiga, jei jais naudojamės, ir valdžios institucijoms, kai to reikalauja teisės aktai. Asmens duomenų neparduodame ir neteikiame reklamos davėjams ar duomenų tarpininkams.',
         },
       ],
     },
@@ -292,18 +292,18 @@ export const privacyLt: LegalDoc = {
       blocks: [
         {
           kind: 'table',
-          caption: 'Saugojimo terminai',
+          caption: 'Saugojimo laikotarpiai',
           head: ['Kas', 'Kiek laiko'],
           rows: [
-            ['Svetainės serverio žurnalai (Vercel)', 'Trumpai: Vercel juos saugo nuo maždaug vienos valandos iki kelių parų, priklausomai nuo talpinimo plano.'],
+            ['Svetainės serverio žurnalai (Vercel)', 'Trumpą laiką: Vercel juos saugo nuo maždaug vienos valandos iki kelių parų, priklausomai nuo talpinimo plano.'],
             ['Slapukų pasirinkimas ir sutikimo įrašas (Cookiebot)', '12 mėnesių. Slapukas `CookieConsent` galioja iki 1 metų.'],
             ['Analitikos duomenys (Google Analytics)', 'Ne ilgiau kaip 14 mėnesių. Slapukai galioja iki 2 metų.'],
-            ['Kontaktų formos žinutės, rezervacijos ir el. laiškai su užklausų teikėjais', 'Iki 12 mėnesių nuo paskutinio mūsų kontakto su jumis.'],
+            ['Kontaktų formos žinutės, rezervacijos ir susirašinėjimas el. paštu su užklausas pateikusiais asmenimis', 'Iki 12 mėnesių nuo paskutinio mūsų kontakto su jumis.'],
             ['Prašymai dėl nemokamo audito', 'Iki 12 mėnesių nuo paskutinio mūsų kontakto su jumis. Formspree savo kopiją saugo pagal savo plano numatytą laikotarpį (nemokamame plane – 30 dienų, mokamuose – ilgiau).'],
             ['Svetainės skeneris', 'Nesaugoma.'],
             ['Verslo laiškai įmonėms', 'Iki 12 mėnesių nuo paskutinio mūsų kontakto.'],
-            ['Nesutikimų sąrašas', 'Tik tiek, kiek reikia nesutikimui įvykdyti, t. y. kad daugiau niekada nerašytume tuo adresu. Kitiems tikslams nenaudojamas.'],
-            ['Klientai: apskaitos dokumentai (sąskaitos, mokėjimai)', '10 metų, kaip reikalauja Lietuvos teisės aktai.'],
+            ['Nesutikimų sąrašas', 'Tik tiek laiko, kiek reikia nesutikimui įvykdyti, t. y. kad daugiau niekada nerašytume tuo adresu. Kitiems tikslams nenaudojamas.'],
+            ['Klientai: apskaitos dokumentai (sąskaitos faktūros, mokėjimai)', '10 metų, kaip reikalauja Lietuvos teisės aktai.'],
             ['Klientai: sutartys', 'Sutarties galiojimo laikotarpiu, o vėliau paprastai 5–10 metų nuo jos pabaigos, priklausomai nuo rūšies, kaip reikalauja Lietuvos archyvų taisyklės.'],
             ['Klientai: susirašinėjimas projektų klausimais', 'Projekto laikotarpiu, o vėliau paprastai 3 metus, kaip reikalauja Lietuvos archyvų taisyklės.'],
             ['Viskas, ko reikia teisiniam reikalavimui', 'Kol reikalavimas bus išspręstas ir pasibaigs reikalavimų pareiškimo terminas (mūsų teisėtas interesas pareikšti, vykdyti ar apginti teisinius reikalavimus).'],
@@ -311,7 +311,7 @@ export const privacyLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Pasibaigus terminui duomenis ištriname arba padarome anoniminius.',
+          text: 'Pasibaigus laikotarpiui duomenis ištriname arba anonimizuojame.',
         },
       ],
     },
@@ -323,10 +323,10 @@ export const privacyLt: LegalDoc = {
           kind: 'ul',
           items: [
             '**Teisė susipažinti** (15 straipsnis): patvirtinimas, kad tvarkome jūsų duomenis, jų kopija ir šioje politikoje nurodyta informacija.',
-            '**Teisė ištaisyti** (16 straipsnis): netikslių ar neišsamių duomenų ištaisymas.',
+            '**Teisė reikalauti ištaisyti duomenis** (16 straipsnis): netikslių ar neišsamių duomenų ištaisymas.',
             '**Teisė reikalauti ištrinti duomenis** (17 straipsnis): ištrynimas, kai įstatymai jums suteikia tokią teisę. Jei nesutikote su rinkodara, paliekame tik įrašą nesutikimų sąraše, kad galėtume nesutikimą įvykdyti.',
             '**Teisė apriboti duomenų tvarkymą** (18 straipsnis): riboti, kaip naudojame jūsų duomenis, įstatymų nurodytais atvejais.',
-            '**Teisė į duomenų perkeliamumą** (20 straipsnis): jūsų mums pateikti duomenys, kai juos automatizuotomis priemonėmis tvarkome sutikimo ar sutarties pagrindu, susistemintu, įprastai naudojamu ir kompiuterio skaitomu formatu, ir jų persiuntimas kitam duomenų valdytojui, kai tai techniškai įmanoma.',
+            '**Teisė į duomenų perkeliamumą** (20 straipsnis): gauti jūsų mums pateiktus duomenis, kuriuos automatizuotomis priemonėmis tvarkome sutikimo ar sutarties pagrindu, susistemintu, įprastai naudojamu ir kompiuterio skaitomu formatu ir persiųsti juos kitam duomenų valdytojui, kai tai techniškai įmanoma.',
             '**Teisė nesutikti** (21 straipsnis): su rinkodara – bet kada, ir su tvarkymu, grindžiamu teisėtais interesais; žr. [teisę nesutikti](#object).',
             '**Teisė atšaukti sutikimą** (7 straipsnio 3 dalis): bet kada, pavyzdžiui, slapukų nustatymuose.',
             '**Teisė pateikti skundą** (77 straipsnis): priežiūros institucijai; žr. skyrių [Skundai](#complaints).',
@@ -334,7 +334,7 @@ export const privacyLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Norėdami pasinaudoti teise, rašykite adresu ' + privacy + '. Jei turime pagrįstų abejonių dėl jūsų tapatybės, galime paprašyti informacijos, reikalingos ją patvirtinti. Atsakome nepagrįstai nedelsdami ir per vieną mėnesį. Dėl sudėtingų ar gausių prašymų šį terminą galime pratęsti dar iki dviejų mėnesių; apie tai pranešime per pirmąjį mėnesį ir paaiškinsime kodėl. Tai nemokama. Jei prašymas akivaizdžiai nepagrįstas arba perteklinis, galime imti pagrįstą mokestį, pagrįstą administracinėmis išlaidomis, arba atsisakyti jį vykdyti; per vieną mėnesį paaiškinsime kodėl ir pranešime, kad galite pateikti skundą priežiūros institucijai ir kreiptis į teismą.',
+          text: 'Norėdami pasinaudoti teise, rašykite adresu ' + privacy + '. Jei turime pagrįstų abejonių dėl jūsų tapatybės, galime paprašyti informacijos, reikalingos ją patvirtinti. Atsakome nepagrįstai nedelsdami ir per vieną mėnesį. Dėl sudėtingų ar gausių prašymų šį terminą galime pratęsti dar iki dviejų mėnesių; apie tai pranešime per pirmąjį mėnesį ir paaiškinsime kodėl. Tai nemokama. Jei prašymas akivaizdžiai nepagrįstas arba neproporcingas, galime imti pagrįstą mokestį, atsižvelgdami į administracines išlaidas, arba atsisakyti jį vykdyti; per vieną mėnesį paaiškinsime kodėl ir pranešime, kad galite pateikti skundą priežiūros institucijai ir kreiptis į teismą.',
         },
       ],
     },
@@ -354,7 +354,7 @@ export const privacyLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Asmens duomenis saugome techninėmis ir organizacinėmis priemonėmis, atitinkančiomis riziką; žr. mūsų [Saugumo puslapį](/security). Apie asmens duomenų saugumo pažeidimą priežiūros institucijai pranešame nepagrįstai nedelsdami ir, jei įmanoma, ne vėliau kaip per 72 valandas nuo tada, kai apie jį sužinome, nebent pažeidimas neturėtų kelti pavojaus asmenų teisėms ir laisvėms. Jei pavojus didelis, nepagrįstai nedelsdami pranešame ir paveiktiems asmenims (33 ir 34 straipsniai).',
+          text: 'Asmens duomenis saugome techninėmis ir organizacinėmis priemonėmis, atitinkančiomis riziką; žr. mūsų [Saugumo puslapį](/security). Apie asmens duomenų saugumo pažeidimą priežiūros institucijai pranešame nepagrįstai nedelsdami ir, jei įmanoma, ne vėliau kaip per 72 valandas nuo tada, kai apie jį sužinome, nebent mažai tikėtina, kad dėl pažeidimo kiltų pavojus asmenų teisėms ir laisvėms. Jei pavojus didelis, nepagrįstai nedelsdami pranešame ir paveiktiems asmenims (33 ir 34 straipsniai).',
         },
       ],
     },
@@ -364,7 +364,7 @@ export const privacyLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Norėtume pirmiausia išgirsti jus, bet prieš skųsdamiesi su mumis susisiekti neprivalote. Galite pateikti skundą Lietuvos priežiūros institucijai arba ES valstybės narės, kurioje gyvenate ar dirbate, priežiūros institucijai, taip pat galite kreiptis į teismą.',
+          text: 'Norėtume, kad pirmiausia kreiptumėtės į mus, bet prieš skųsdamiesi susisiekti su mumis neprivalote. Galite pateikti skundą Lietuvos priežiūros institucijai arba ES valstybės narės, kurioje gyvenate ar dirbate, priežiūros institucijai, taip pat galite kreiptis į teismą.',
         },
         {
           kind: 'dl',

@@ -122,7 +122,7 @@ describe('AppFooter provider details', () => {
     expect(within(details).getByText(/Gvazdikų Sodų 4-oji g\. 4, LT-10240 Vilnius, Lietuva/)).toBeInTheDocument();
     expect(screen.getAllByRole('link', { name: 'Privatumas' }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole('link', { name: 'Sąlygos' }).length).toBeGreaterThan(0);
-    expect(screen.getAllByRole('link', { name: 'Sauga' }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('link', { name: 'Saugumas' }).length).toBeGreaterThan(0);
   });
 
   it('sends every footer text with the server-rendered page, in both languages', () => {

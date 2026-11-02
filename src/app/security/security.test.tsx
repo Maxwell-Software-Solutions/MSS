@@ -61,7 +61,7 @@ describe('Security page', () => {
 
   it('shows the Lithuanian text when the link asks for it', () => {
     renderPage('lt');
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Sauga');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Saugumas');
     expect(screen.getByRole('heading', { name: 'Apsauga sąžiningiems tyrėjams' })).toBeInTheDocument();
   });
 

@@ -35,7 +35,7 @@ export const termsLt: LegalDoc = {
             { term: 'Registras', def: 'Lietuvos Respublikos juridinių asmenų registras, kurį tvarko VĮ Registrų centras' },
             { term: 'Buveinė', def: office },
             { term: 'El. paštas', def: mail(COMPANY.emails.general) },
-            { term: 'Telefonas', def: COMPANY.phone },
+            { term: 'Telefonas', def: COMPANY.phoneDisplay },
             { term: 'Teisiniai pranešimai', def: legal },
             { term: 'Privatumas', def: mail(COMPANY.emails.privacy) + ' (žr. [Privatumo politiką](/privacy))' },
             { term: 'Pranešimai apie saugumo spragas', def: mail(COMPANY.emails.security) + ' (žr. [Saugumo puslapį](/security))' },
@@ -85,10 +85,10 @@ export const termsLt: LegalDoc = {
           kind: 'ul',
           items: [
             'naudotis svetaine neteisėtai ar siekiant kam nors pakenkti;',
-            'bandyti be leidimo patekti į svetainę, mūsų sistemas ar kitų naudotojų duomenis arba ieškoti ar tikrinti spragų, išskyrus gerų ketinimų pranešimus, kuriuos leidžia mūsų [Saugumo puslapis](/security);',
+            'bandyti be leidimo patekti į svetainę, mūsų sistemas ar kitų naudotojų duomenis arba ieškoti ar tikrinti spragų, išskyrus sąžiningai teikiamus pranešimus apie spragas, kuriuos leidžia mūsų [Saugumo puslapis](/security);',
             'perkrauti ar trikdyti svetainę arba automatiškai rinkti jos turinį taip, kad ji būtų apkraunama ar būtų ignoruojamos mūsų robots.txt taisyklės;',
             'diegti kenkėjišką kodą arba siųsti formas netikru vardu, kaip šlamštą ar su turiniu, kurio neturite teisės siųsti;',
-            'naudoti svetainės skenerį svetainėms, kurių neturite ir kurių tikrinti neįgalioti.',
+            'naudoti svetainės skenerį svetainėms, kurių neturite ir kurių tikrinti nesate įgalioti.',
           ],
         },
         {
@@ -113,7 +113,7 @@ export const termsLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Svetainės turinys ir dizainas, t. y. tekstai, grafika, logotipai, maketas ir programinė įranga, priklauso Maxwell software solutions, MB arba jos licencijų davėjams ir yra saugomi pagal Lietuvos ir ES autorių teisės aktus. Maxwell Software Solutions pavadinimas ir logotipas yra mūsų; be mūsų rašytinio leidimo jų nelicencijuojame.',
+          text: 'Svetainės turinys ir dizainas, t. y. tekstai, grafika, logotipai, maketas ir programinė įranga, priklauso Maxwell software solutions, MB arba jos licencijų davėjams ir yra saugomi pagal Lietuvos ir ES autorių teisės aktus. Maxwell Software Solutions pavadinimas ir logotipas yra mūsų; kiti be mūsų rašytinio leidimo jų naudoti negali.',
         },
         {
           kind: 'p',
@@ -121,7 +121,7 @@ export const termsLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Atvirojo kodo programinei įrangai ir trečiųjų šalių medžiagai svetainėje ar nuorodose taikomos jų pačių licencijos.',
+          text: 'Atvirojo kodo programinei įrangai ir trečiųjų šalių medžiagai, esančiai svetainėje arba pasiekiamai per jos nuorodas, taikomos jų pačių licencijos.',
         },
         {
           kind: 'p',
@@ -155,11 +155,11 @@ export const termsLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Jokia šių sąlygų nuostata neatmeta ir neapriboja atsakomybės, kurios pagal Lietuvos teisę atmesti ar apriboti neleidžiama. Tai apima atsakomybę už žalą, padarytą tyčia ar dėl didelio neatsargumo, už sveikatos sužalojimą ar gyvybės atėmimą ir už neturtinę žalą (Civilinio kodekso 6.252 straipsnis), taip pat jūsų, kaip vartotojo, teises pagal imperatyviąsias teisės normas.',
+          text: 'Jokia šių sąlygų nuostata nepašalina ir neapriboja atsakomybės, kurios pagal Lietuvos teisę pašalinti ar apriboti neleidžiama. Tai apima atsakomybę už žalą, padarytą tyčia ar dėl didelio neatsargumo, už sveikatos sužalojimą ar gyvybės atėmimą ir už neturtinę žalą (Civilinio kodekso 6.252 straipsnis), taip pat jūsų, kaip vartotojo, teises pagal imperatyviąsias teisės normas.',
         },
         {
           kind: 'p',
-          text: 'Atsižvelgiant į tai ir tiek, kiek leidžia teisė, kadangi svetainė nemokama ir informacinė:',
+          text: 'Nepažeidžiant to, kas pasakyta pirmiau, ir tiek, kiek leidžia teisė, kadangi svetainė nemokama ir informacinė:',
         },
         {
           kind: 'ul',
@@ -218,7 +218,7 @@ export const termsLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Jei kuri nors šių sąlygų dalis negalioja ar jos neįmanoma vykdyti, likusi dalis lieka galioti. Tai, kad nesinaudojame kuria nors teise, nereiškia, kad jos atsisakome.',
+          text: 'Jei kuri nors šių sąlygų dalis negalioja arba jos negalima priverstinai įgyvendinti, likusi dalis lieka galioti. Tai, kad nesinaudojame kuria nors teise, nereiškia, kad jos atsisakome.',
         },
         {
           kind: 'p',

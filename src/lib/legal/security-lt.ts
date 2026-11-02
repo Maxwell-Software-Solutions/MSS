@@ -7,14 +7,14 @@ const privacy = mail(COMPANY.emails.privacy);
 export const securityLt: LegalDoc = {
   lang: 'lt',
   eyebrow: 'Atsakingas atskleidimas',
-  title: 'Sauga',
+  title: 'Saugumas',
   updatedLabel: 'Paskutinį kartą atnaujinta',
   updated: LEGAL_UPDATED.lt,
   intro:
     'Kaip pranešti mums apie saugumo problemą, ko galite tikėtis mainais ir kaip saugome duomenis.',
   contentsLabel: 'Turinys',
   meta: {
-    title: 'Sauga',
+    title: 'Saugumas',
     description:
       'Kaip pranešti Maxwell software solutions, MB apie spragą, ko tikėtis, apsauga sąžiningiems tyrėjams ir kaip saugome duomenis.',
   },
@@ -31,15 +31,15 @@ export const securityLt: LegalDoc = {
     },
     {
       id: 'scope',
-      title: 'Kas įeina į apimtį',
+      title: 'Kas patenka į apimtį',
       blocks: [
         {
           kind: 'p',
-          text: 'Į apimtį įeina svetainė www.maxwellsoftwaresolutions.com, jos puslapiai ir formos bei joje esantys įrankiai, pavyzdžiui, svetainės skeneris.',
+          text: 'Į apimtį patenka svetainė www.maxwellsoftwaresolutions.com, jos puslapiai ir formos bei joje esantys įrankiai, pavyzdžiui, svetainės skeneris.',
         },
         {
           kind: 'p',
-          text: 'Į apimtį neįeina, todėl apie tai praneškite jų savininkams: mūsų naudojamos trečiųjų šalių paslaugos (Google, Vercel, Cookiebot, Formspree), mūsų klientų sistemos ir viskas, kas nėra mūsų. Į apimtį įeina tai, kaip mūsų svetainė tomis paslaugomis naudojasi.',
+          text: 'Į apimtį nepatenka, todėl apie tai praneškite jų savininkams: mūsų naudojamos trečiųjų šalių paslaugos (Google, Vercel, Cookiebot, Formspree), mūsų klientų sistemos ir viskas, kas nėra mūsų. Į apimtį patenka tai, kaip mūsų svetainė tomis paslaugomis naudojasi.',
         },
         {
           kind: 'p',
@@ -62,12 +62,12 @@ export const securityLt: LegalDoc = {
         {
           kind: 'ul',
           items: [
-            'Veikite sąžiningai ir testuokite tik į apimtį įeinančią svetainę.',
-            'Naudokite tik tuos duomenis, kurių reikia problemai parodyti. Neperžiūrėkite, nekeiskite, netrinkite ir nesaugokite kitų žmonių duomenų ir sustokite, kai tik problemą parodėte.',
+            'Veikite sąžiningai ir testuokite tik į apimtį patenkančią svetainę.',
+            'Naudokite tik tuos duomenis, kurių reikia problemai parodyti. Neperžiūrėkite, nekeiskite, netrinkite ir nesaugokite kitų žmonių duomenų ir sustokite, kai tik parodysite problemą.',
             'Netrikdykite paslaugos veikimo: jokių paslaugos trikdymo atakų, apkrovos testų ar automatinio masinio formų siuntimo.',
             'Nenaudokite socialinės inžinerijos, sukčiavimo ar fizinių atakų.',
-            'Informaciją laikykite privačią, kol ištaisysime problemą arba praeis 90 dienų nuo jūsų pranešimo, atsižvelgiant į tai, kas įvyks anksčiau. Pasakykite mums, jei ketinate skelbti.',
-            'Neprašykite atlygio: neturime atlygio už rastas spragas programos ir atlygio nemokame.',
+            'Informacijos neviešinkite, kol ištaisysime problemą arba praeis 90 dienų nuo jūsų pranešimo, priklausomai nuo to, kas įvyks anksčiau. Pasakykite mums, jei ketinate skelbti.',
+            'Neprašykite atlygio: nevykdome programos, pagal kurią už rastas spragas mokamas atlygis, ir jokio atlygio nemokame.',
           ],
         },
       ],
@@ -94,11 +94,11 @@ export const securityLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Jei veikiate sąžiningai ir laikotės šios tvarkos, dėl savo tyrimo šioje svetainėje nesiimsime teisinių veiksmų prieš jus ir nepranešime apie jus teisėsaugos institucijoms, o kartu su jumis stengsimės suprasti ir ištaisyti problemą.',
+          text: 'Jei veikiate sąžiningai ir laikotės šios tvarkos, dėl jūsų atlikto tyrimo šioje svetainėje nesiimsime teisinių veiksmų prieš jus ir nepranešime apie jus teisėsaugos institucijoms, o kartu su jumis stengsimės suprasti ir ištaisyti problemą.',
         },
         {
           kind: 'p',
-          text: 'Tai Maxwell software solutions, MB pažadas dėl jos pačios svetainės. Jis nesaisto kitų, pavyzdžiui, mūsų paslaugų teikėjų, klientų ar valstybės institucijų, ir neapima veiksmų, kurie nepatenka į šią tvarką, pavyzdžiui, kitų žmonių duomenų peržiūros ar saugojimo, žalos naudotojams ar paslaugai darymo arba apmokėjimo reikalavimo.',
+          text: 'Tai Maxwell software solutions, MB pažadas dėl jos pačios svetainės. Jis nesaisto kitų, pavyzdžiui, mūsų paslaugų teikėjų, klientų ar valstybės institucijų, ir neapima veiksmų, kurie nepatenka į šią tvarką, pavyzdžiui, kitų žmonių duomenų peržiūros ar saugojimo, žalos darymo naudotojams ar paslaugai arba atlygio reikalavimo.',
         },
         {
           kind: 'p',
@@ -144,7 +144,7 @@ export const securityLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Apie asmens duomenų saugumo pažeidimą Valstybinei duomenų apsaugos inspekcijai pranešame nepagrįstai nedelsdami ir, jei įmanoma, ne vėliau kaip per 72 valandas nuo tada, kai apie jį sužinome, nebent pažeidimas neturėtų kelti pavojaus žmonių teisėms ir laisvėms. Jei pavojus didelis, nepagrįstai nedelsdami pranešame ir paveiktiems asmenims (BDAR 33 ir 34 straipsniai). Kai veikiame kliento vardu, nepagrįstai nedelsdami pranešame klientui. Registruojame kiekvieną pažeidimą ir tai, ką dėl jo padarėme.',
+          text: 'Apie asmens duomenų saugumo pažeidimą Valstybinei duomenų apsaugos inspekcijai pranešame nepagrįstai nedelsdami ir, jei įmanoma, ne vėliau kaip per 72 valandas nuo tada, kai apie jį sužinome, nebent mažai tikėtina, kad dėl pažeidimo kiltų pavojus žmonių teisėms ir laisvėms. Jei pavojus didelis, nepagrįstai nedelsdami pranešame ir paveiktiems asmenims (BDAR 33 ir 34 straipsniai). Kai veikiame kliento vardu, nepagrįstai nedelsdami pranešame klientui. Registruojame kiekvieną pažeidimą ir tai, ką dėl jo padarėme.',
         },
       ],
     },

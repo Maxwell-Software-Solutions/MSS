@@ -35,7 +35,7 @@ export const termsEn: LegalDoc = {
             { term: 'Register', def: 'Register of Legal Entities of the Republic of Lithuania (Juridinių asmenų registras), managed by the State Enterprise Centre of Registers (Registrų centras)' },
             { term: 'Registered office', def: office },
             { term: 'E-mail', def: mail(COMPANY.emails.general) },
-            { term: 'Telephone', def: COMPANY.phone },
+            { term: 'Telephone', def: COMPANY.phoneDisplay },
             { term: 'Legal notices', def: legal },
             { term: 'Privacy', def: mail(COMPANY.emails.privacy) + ' (see the [Privacy Policy](/privacy))' },
             { term: 'Security reports', def: mail(COMPANY.emails.security) + ' (see the [Security page](/security))' },
@@ -113,7 +113,7 @@ export const termsEn: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'The website’s content and design, meaning its texts, graphics, logos, layout and software, belong to Maxwell software solutions, MB or its licensors and are protected by Lithuanian and EU copyright law. The name and logo of Maxwell Software Solutions are ours, and we do not license them without our written permission.',
+          text: 'The website’s content and design, meaning its texts, graphics, logos, layout and software, belong to Maxwell software solutions, MB or its licensors and are protected by Lithuanian and EU copyright law. The name and logo of Maxwell Software Solutions are ours; others may not use them without our written permission.',
         },
         {
           kind: 'p',

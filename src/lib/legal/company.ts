@@ -13,6 +13,8 @@ export const COMPANY = {
   site: `https://www.${DOMAIN}`,
   domain: DOMAIN,
   phone: CONTACT_PHONE,
+  /** The same number in readable groups, e.g. +370 663 60662 */
+  phoneDisplay: CONTACT_PHONE.replace(/^(\+370)(\d{3})(\d{5})$/, '$1 $2 $3'),
   emails: {
     /** The address shown in the footer and on the contact page. */
     general: CONTACT_EMAIL,

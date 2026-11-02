@@ -326,7 +326,7 @@ export const privacyEn: LegalDoc = {
             '**Rectification** (Art. 16): correction of inaccurate or incomplete data.',
             '**Erasure** (Art. 17): deletion where the law gives you that right. If you have objected to marketing, we keep only the suppression-list entry, so that we can honour your objection.',
             '**Restriction** (Art. 18): to limit how we use your data in the cases the law lists.',
-            '**Portability** (Art. 20): the data you gave us, where we process it by automated means on the basis of consent or a contract, in a structured, commonly used and machine-readable format, and its transmission to another controller where technically feasible.',
+            '**Portability** (Art. 20): to receive the data you gave us, where we process it by automated means on the basis of consent or a contract, in a structured, commonly used and machine-readable format, and to have it transmitted to another controller where technically feasible.',
             '**Objection** (Art. 21): to marketing at any time, and to processing based on legitimate interests; see [your right to object](#object).',
             '**Withdrawal of consent** (Art. 7(3)): at any time, for example in the cookie settings.',
             '**Complaint** (Art. 77): to a supervisory authority; see [Complaints](#complaints).',
