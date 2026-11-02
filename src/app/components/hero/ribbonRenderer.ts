@@ -352,6 +352,7 @@ export function startRibbon(
   let drawnOn = reduced;
   let last = 0;
   let raf = 0;
+  let still = 0;
   let skipFrame = false;
   let running = false;
   let inView = true;
@@ -375,6 +376,16 @@ export function startRibbon(
     gl.uniform3f(u.pulse, LIGHT_START + LIGHT_SPEED * elapsed, LIGHT_STRENGTH, LIGHT_SPACING);
     gl.uniform3f(u.mouse, (pointer.cx * dpr) / width, (pointer.cy * dpr) / height, reduced ? 0 : pointer.amp * CURSOR_LEAN);
     gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, cols * rows);
+  }
+
+  // A still picture is drawn again on the next frame: WebKit can hold a lone WebGL frame back until another
+  // one follows, which left the hero blank after a resize while paused
+  function drawStill(): void {
+    draw(0);
+    cancelAnimationFrame(still);
+    still = requestAnimationFrame(() => {
+      if (!running) draw(0);
+    });
   }
 
   // weak GPU, judged in the first seconds: drop detail once, then settle on the poster, rather than stutter.
@@ -433,7 +444,7 @@ export function startRibbon(
 
   const resizes = new ResizeObserver(() => {
     layoutDirty = true;
-    if (!running) draw(0); // a resize clears the canvas, so repaint it while paused
+    if (!running) drawStill(); // a resize clears the canvas, so repaint it while paused
   });
   resizes.observe(stage);
   resizes.observe(copy);
@@ -469,7 +480,7 @@ export function startRibbon(
       // a pause during the draw-on still leaves the whole ribbon on screen
       if (announced) {
         drawnOn = true;
-        draw(0);
+        drawStill();
       }
     },
     setReduced(value) {
@@ -478,6 +489,7 @@ export function startRibbon(
     },
     stop() {
       pause();
+      cancelAnimationFrame(still);
       resizes.disconnect();
       stage.removeEventListener('pointermove', onMove);
       stage.removeEventListener('pointerleave', onLeave);
