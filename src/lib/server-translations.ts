@@ -278,12 +278,18 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'about.principles.automation.body',
   ];
 
+  // Whole groups for pages that read keys without a fallback, so their server HTML never shows a raw key
+  const criticalPrefixes = ['contactPage.', 'contactForm.', 'blog.', 'caseStudies.'];
+
   const critical: Record<string, string> = {};
   for (const key of criticalKeys) {
     if (translations[key]) {
       critical[key] = translations[key];
     }
   }
-  
+  for (const [key, value] of Object.entries(translations)) {
+    if (value && criticalPrefixes.some((prefix) => key.startsWith(prefix))) critical[key] = value;
+  }
+
   return critical;
 }
