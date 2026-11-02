@@ -4,42 +4,96 @@ import { useCallback, useEffect, useRef, useState, type ReactElement } from 'rea
 import ScheduleCallButton from './ScheduleCallButton';
 import { useLanguage } from '@/lib/LanguageContext';
 import { trackCTAClick } from '@/lib/analytics';
+import { TALL, endScale, filmSources, frameAt, growth, pinProgress, posterOf, voiceOf, windowAt } from './promoFilmModel';
+import type { Cut, FilmSource, Layout } from './promoFilmModel';
 import './promo-film.css';
 
-const PHONE = '(max-width: 767px)';
-const FILM = {
-  wide: { webm: '/video/maxwell-film-16x9.webm', mp4: '/video/maxwell-film-16x9.mp4', poster: '/video/maxwell-film-16x9.webp' },
-  tall: { webm: '/video/maxwell-film-4x5.webm', mp4: '/video/maxwell-film-4x5.mp4', poster: '/video/maxwell-film-4x5.webp' },
-};
+const SOUND_KEY = 'mss.film.sound';
 
-function play(video: HTMLVideoElement): void {
-  const pending = video.play();
-  pending?.catch(() => undefined);
+/** The cut and the files chosen for the film, with a key that tells one choice from the next. */
+interface Choice {
+  cut: Cut;
+  sources: FilmSource[];
+  key: string;
+}
+
+function recall(): 'on' | 'off' | null {
+  try {
+    const saved = window.sessionStorage.getItem(SOUND_KEY);
+    return saved === 'on' || saved === 'off' ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+// cuts that have no Lithuanian-voiced file yet, remembered for the visit so a missing file is asked for once
+const NO_LT_KEY = 'mss.film.no-lt';
+
+function missingLt(): Set<Cut> {
+  try {
+    return new Set((window.sessionStorage.getItem(NO_LT_KEY) ?? '').split(',').filter((item): item is Cut => item === 'wide' || item === 'tall'));
+  } catch {
+    return new Set();
+  }
+}
+
+function rememberMissingLt(cuts: Set<Cut>): void {
+  try {
+    window.sessionStorage.setItem(NO_LT_KEY, Array.from(cuts).join(','));
+  } catch {
+    // storage is off: it is asked for again on the next screen
+  }
+}
+
+function remember(choice: 'on' | 'off'): void {
+  try {
+    window.sessionStorage.setItem(SOUND_KEY, choice);
+  } catch {
+    // storage is off: the choice then lasts for this page only
+  }
+}
+
+// the smaller WebM where VP9 is native; Apple's WebKit, iPhones included, always gets the H.264 file
+function webmFits(video: HTMLVideoElement): boolean {
+  return video.canPlayType('video/webm; codecs="vp9, opus"') === 'probably' && !/Apple/.test(navigator.vendor);
 }
 
 /**
- * The short film right after the hero. Nothing loads until the page has finished and the film is near the
- * screen; it plays muted while in view, and the visitor can pause it or turn the sound on.
+ * The film right after the hero. As the page scrolls it settles in a card, pins under the header, grows into a
+ * film that fills the screen and lets go, without ever taking the scroll away from the visitor. It plays muted
+ * while it is on screen, stops when it is not, and the visitor can pause it or turn the sound on. Nothing loads
+ * until the page has finished and the film is near, so the hero is never slowed.
  */
 export default function PromoFilm(): ReactElement {
   const { t, language } = useLanguage();
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const viewRef = useRef<HTMLDivElement | null>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
   const frameRef = useRef<HTMLDivElement | null>(null);
+  const uiRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const heldRef = useRef(false);
-  const heardRef = useRef(false);
-  const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(true);
-  const [caption, setCaption] = useState('');
+  const heldRef = useRef(false); // the visitor paused it: scrolling back does not start it again
+  const soundRef = useRef(false); // the visitor turned the sound on earlier in this visit
+  const heardRef = useRef(false); // the film has been heard, so the button no longer promises a restart
+  const inViewRef = useRef(false);
+  const choiceRef = useRef<Choice | null>(null);
+  const noLtRef = useRef<Set<Cut> | null>(null); // cuts with no Lithuanian-voiced file yet, read once the page is up
   const languageRef = useRef(language);
   const cueRef = useRef<(() => void) | null>(null);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const [heard, setHeard] = useState(false);
+  const [blocked, setBlocked] = useState(false);
+  const [caption, setCaption] = useState('');
 
   // captions in the site language, drawn here rather than by the browser so they match the site; the track
-  // file is only fetched once the film itself is. The cue is looked up from the playback time, which every
+  // files are only fetched once the film itself is. The cue is looked up from the playback time, which every
   // browser keeps current, rather than from activeCues, which some do not.
   const pickCaptions = useCallback((lang: string): void => {
     const video = videoRef.current;
     const tracks = video?.textTracks;
-    if (!video?.getAttribute('src') || !tracks) return;
+    if (!video || !tracks || !choiceRef.current) return;
     cueRef.current?.();
     const list = Array.from(tracks);
     for (const item of list) item.mode = item.language === lang ? 'hidden' : 'disabled';
@@ -63,29 +117,97 @@ export default function PromoFilm(): ReactElement {
     show();
   }, []);
 
+  // Playback the browser refuses (iOS in Low Power Mode, a blocked autoplay setting) leaves the poster with a play
+  // button. Sound that is refused only because nobody has touched the page yet falls back to the muted film.
+  const tryPlay = useCallback((video: HTMLVideoElement): void => {
+    const attempt = (): void => {
+      const pending = video.play();
+      pending?.catch((error: unknown) => {
+        if ((error as { name?: string } | null)?.name === 'AbortError') return;
+        if (!video.muted) {
+          video.muted = true;
+          attempt();
+          return;
+        }
+        setBlocked(true);
+      });
+    };
+    attempt();
+  }, []);
+
+  // the cut follows the screen's orientation; in Lithuanian the Lithuanian voice is tried first, then the English one
+  const choose = useCallback((video: HTMLVideoElement): Choice => {
+    const cut: Cut = window.matchMedia?.(TALL).matches ? 'tall' : 'wide';
+    noLtRef.current ??= missingLt();
+    const lang = noLtRef.current.has(cut) ? 'en' : languageRef.current;
+    const sources = filmSources(cut, lang, webmFits(video));
+    return { cut, sources, key: sources.map((item) => item.src).join('|') };
+  }, []);
+
+  const begin = useCallback(
+    (video: HTMLVideoElement, choice: Choice, preload: 'metadata' | 'auto', resume?: { time: number; playing: boolean }): void => {
+      video.poster = posterOf(choice.cut);
+      video.preload = preload;
+      video.querySelectorAll('source').forEach((node) => node.remove());
+      const files = document.createDocumentFragment();
+      for (const item of choice.sources) {
+        const node = document.createElement('source');
+        node.src = item.src;
+        node.type = item.type;
+        files.append(node);
+      }
+      video.prepend(files);
+      choiceRef.current = choice;
+      // the first files go in while nothing has loaded, and that starts the loading by itself; changing them later needs a nudge
+      if (video.networkState !== 0) video.load();
+      if (resume) {
+        video.addEventListener(
+          'loadedmetadata',
+          () => {
+            if (resume.time > 0 && Number.isFinite(video.duration)) video.currentTime = Math.min(resume.time, video.duration);
+            if (resume.playing) tryPlay(video);
+          },
+          { once: true }
+        );
+      }
+      pickCaptions(languageRef.current);
+    },
+    [pickCaptions, tryPlay]
+  );
+
   // near the screen only the film's header is fetched; the rest streams once it is in view or asked for
   const ensureSource = useCallback(
     (preload: 'metadata' | 'auto' = 'auto'): HTMLVideoElement | null => {
       const video = videoRef.current;
       if (!video) return null;
-      if (preload === 'auto') video.preload = 'auto';
-      if (video.getAttribute('src')) return video;
-      const film = window.matchMedia?.(PHONE).matches ? FILM.tall : FILM.wide;
-      video.poster = film.poster;
-      video.preload = preload;
-      // the smaller WebM where VP9 is native; Apple's WebKit, iPhones included, always gets the H.264 file
-      const webm = video.canPlayType('video/webm; codecs="vp9, opus"') === 'probably' && !/Apple/.test(navigator.vendor);
-      video.src = webm ? film.webm : film.mp4;
-      pickCaptions(languageRef.current);
+      if (!choiceRef.current) begin(video, choose(video), preload);
+      else if (preload === 'auto') video.preload = 'auto';
       return video;
     },
-    [pickCaptions]
+    [begin, choose]
   );
+
+  // a turned phone or a switched site language may call for other files: swap them and carry on from the same second
+  const refresh = useCallback((): void => {
+    const video = videoRef.current;
+    const current = choiceRef.current;
+    if (!video || !current) return;
+    const next = choose(video);
+    if (next.key === current.key) return;
+    begin(video, next, video.preload === 'metadata' ? 'metadata' : 'auto', { time: video.currentTime, playing: !video.paused });
+  }, [begin, choose]);
 
   useEffect(() => {
     languageRef.current = language;
     pickCaptions(language);
-  }, [language, pickCaptions]);
+    refresh();
+  }, [language, pickCaptions, refresh]);
+
+  useEffect(() => {
+    const query = window.matchMedia?.(TALL);
+    query?.addEventListener?.('change', refresh);
+    return () => query?.removeEventListener?.('change', refresh);
+  }, [refresh]);
 
   useEffect(() => () => cueRef.current?.(), []);
 
@@ -96,66 +218,101 @@ export default function PromoFilm(): ReactElement {
     video.muted = true;
     video.defaultMuted = true;
     video.setAttribute('muted', '');
-    const onPlay = (): void => setPlaying(true);
+    // sound the visitor has already asked for stays on for the rest of this visit
+    const saved = recall();
+    soundRef.current = saved === 'on';
+    heardRef.current = saved !== null;
+    setHeard(saved !== null);
+    const onPlay = (): void => {
+      setPlaying(true);
+      setBlocked(false);
+    };
     const onPause = (): void => setPlaying(false);
     const onVolume = (): void => setMuted(video.muted);
+    // no Lithuanian-voiced file yet: the browser has fallen back to the English one, so do not ask again
+    const onMetadata = (): void => {
+      const choice = choiceRef.current;
+      if (choice?.sources.some((item) => voiceOf(item.src) === 'lt') && voiceOf(video.currentSrc) === 'en') {
+        noLtRef.current ??= missingLt();
+        noLtRef.current.add(choice.cut);
+        rememberMissingLt(noLtRef.current);
+      }
+    };
+    // sound and a hidden tab do not go together
+    const onVisibility = (): void => {
+      if (!choiceRef.current) return;
+      if (document.hidden) {
+        if (!video.paused) video.pause();
+      } else if (inViewRef.current && !heldRef.current) {
+        tryPlay(video);
+      }
+    };
     video.addEventListener('play', onPlay);
     video.addEventListener('pause', onPause);
     video.addEventListener('volumechange', onVolume);
+    video.addEventListener('loadedmetadata', onMetadata);
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
       video.removeEventListener('play', onPlay);
       video.removeEventListener('pause', onPause);
       video.removeEventListener('volumechange', onVolume);
+      video.removeEventListener('loadedmetadata', onMetadata);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, []);
+  }, [tryPlay]);
 
+  // playback: starts once half of the stage is on screen, stops when it has gone, and keeps its place in between
   useEffect(() => {
     const video = videoRef.current;
     const frame = frameRef.current;
-    if (!video || !frame) return undefined;
+    const view = viewRef.current;
+    const track = trackRef.current;
+    if (!video || !frame || !view || !track) return undefined;
     const watch = typeof IntersectionObserver === 'function';
 
-    // in view: play unless the visitor paused it; out of view: stop, so it never plays unseen
     const seen = watch
       ? new IntersectionObserver(
-          ([entry]) => {
-            if (entry?.isIntersecting) {
+          (entries) => {
+            const entry = entries[entries.length - 1];
+            if (!entry) return;
+            const share = entry.isIntersecting ? entry.intersectionRatio : 0;
+            if (share >= 0.5) {
+              inViewRef.current = true;
               ensureSource();
-              if (heldRef.current) return;
+              if (heldRef.current || document.hidden) return;
               video.autoplay = true;
-              // iOS loads nothing on its own, so ask for playback once the browser has a source to load
-              if (video.networkState !== 0) play(video);
-            } else {
+              video.muted = !soundRef.current;
+              tryPlay(video);
+            } else if (share < 0.3) {
+              inViewRef.current = false;
               video.autoplay = false;
               if (!video.paused) video.pause();
             }
           },
-          { threshold: 0.35 }
+          { threshold: [0, 0.3, 0.5] }
         )
       : null;
-    // close to the screen: get ready, so the film starts at once when it arrives
+    // the runway has come into view: get ready, so the film starts at once when the stage is half there. A visitor who
+    // never scrolls past the hero fetches nothing but the poster.
     const near = watch
-      ? new IntersectionObserver(
-          ([entry]) => {
-            if (!entry?.isIntersecting) return;
-            ensureSource('metadata');
-            near?.disconnect();
-          },
-          { rootMargin: '0px 0px 50% 0px' }
-        )
+      ? new IntersectionObserver(([entry]) => {
+          if (!entry?.isIntersecting) return;
+          ensureSource('metadata');
+          near?.disconnect();
+        })
       : null;
 
     // the hero loads first: the poster and the film come in only once the page has loaded and the browser is idle
     let timer = 0;
     let cancelled = false;
-    const begin = (): void => {
+    const arm = (): void => {
       if (cancelled) return;
       frame.dataset.armed = '';
-      seen?.observe(frame);
-      near?.observe(frame);
+      seen?.observe(view);
+      near?.observe(track);
     };
     const start = (): void => {
-      timer = window.setTimeout(() => (window.requestIdleCallback ? window.requestIdleCallback(begin, { timeout: 1500 }) : begin()), 0);
+      timer = window.setTimeout(() => (window.requestIdleCallback ? window.requestIdleCallback(arm, { timeout: 1500 }) : arm()), 0);
     };
     if (document.readyState === 'complete') start();
     else window.addEventListener('load', start, { once: true });
@@ -167,14 +324,105 @@ export default function PromoFilm(): ReactElement {
       seen?.disconnect();
       near?.disconnect();
     };
-  }, [ensureSource]);
+  }, [ensureSource, tryPlay]);
+
+  // the pin: while the runway scrolls past, the stage stays put under the header and the card grows into the screen
+  useEffect(() => {
+    const track = trackRef.current;
+    const stage = stageRef.current;
+    const view = viewRef.current;
+    const card = cardRef.current;
+    const frame = frameRef.current;
+    const ui = uiRef.current;
+    if (!track || !stage || !view || !card || !frame || !ui) return undefined;
+
+    let layout: Layout | null = null;
+    let scale = 1;
+    let pin = 0;
+    let run = 0;
+    let from = 0.05;
+    let to = 0.72;
+    let shown = -1;
+    let frameId = 0;
+
+    const clear = (): void => {
+      layout = null;
+      shown = -1;
+      stage.style.removeProperty('--film-e');
+      frame.style.removeProperty('transform');
+      for (const side of ['top', 'right', 'bottom', 'left'] as const) ui.style.removeProperty(side);
+    };
+
+    const paint = (): void => {
+      frameId = 0;
+      if (!layout) return;
+      const e = Math.round(growth(pinProgress(track.getBoundingClientRect().top, pin, run), from, to) * 1000) / 1000;
+      if (e === shown) return;
+      shown = e;
+      const { k, tx, ty } = frameAt(layout, scale, e);
+      const box = windowAt(layout, scale, e);
+      stage.style.setProperty('--film-e', String(e));
+      frame.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0) scale(${k.toFixed(4)})`;
+      ui.style.top = `${box.top.toFixed(2)}px`;
+      ui.style.right = `${box.right.toFixed(2)}px`;
+      ui.style.bottom = `${box.bottom.toFixed(2)}px`;
+      ui.style.left = `${box.left.toFixed(2)}px`;
+    };
+
+    const schedule = (): void => {
+      if (!frameId) frameId = window.requestAnimationFrame(paint);
+    };
+
+    // without a sticky stage (an old browser, no style sheet) there is nothing to pin: the card just stays a card
+    const measure = (): void => {
+      const pinned = getComputedStyle(stage);
+      if (pinned.position !== 'sticky') {
+        clear();
+        return;
+      }
+      const tuning = getComputedStyle(track);
+      const read = (name: string, fallback: number): number => {
+        const value = parseFloat(tuning.getPropertyValue(name));
+        return Number.isFinite(value) ? value : fallback;
+      };
+      from = read('--film-grow-from', 0.05);
+      to = read('--film-grow-to', 0.72);
+      pin = parseFloat(pinned.top) || 0;
+      run = track.offsetHeight - stage.offsetHeight;
+      const box = view.getBoundingClientRect();
+      const at = card.getBoundingClientRect();
+      layout = { viewW: box.width, viewH: box.height, cardX: at.left - box.left, cardY: at.top - box.top, cardW: at.width, cardH: at.height };
+      scale = endScale(layout, read('--film-max-crop', 1.1));
+      shown = -1;
+      schedule();
+    };
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    const resize = typeof ResizeObserver === 'function' ? new ResizeObserver(measure) : null;
+    if (resize) {
+      resize.observe(track);
+      resize.observe(view);
+      resize.observe(card);
+    } else {
+      window.addEventListener('resize', measure);
+      measure();
+    }
+
+    return () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', measure);
+      window.cancelAnimationFrame(frameId);
+      resize?.disconnect();
+    };
+  }, []);
 
   const togglePlay = (): void => {
     const video = ensureSource();
     if (!video) return;
     if (video.paused) {
       heldRef.current = false;
-      play(video);
+      video.muted = !soundRef.current;
+      tryPlay(video);
     } else {
       heldRef.current = true;
       video.autoplay = false;
@@ -187,59 +435,98 @@ export default function PromoFilm(): ReactElement {
     if (!video) return;
     if (!video.muted) {
       video.muted = true;
-      setMuted(true);
+      soundRef.current = false;
+      remember('off');
       return;
     }
     // the first time the sound comes on, the film starts again so the voice is heard from the top
     if (!heardRef.current) {
       heardRef.current = true;
+      setHeard(true);
       video.currentTime = 0;
     }
     video.muted = false;
-    setMuted(false);
+    soundRef.current = true;
+    remember('on');
     heldRef.current = false;
-    play(video);
+    tryPlay(video);
   };
 
+  // the poster's own button: when the browser would not start the film by itself, a tap starts it, with its sound
+  const startWithSound = (): void => {
+    const video = ensureSource();
+    if (!video) return;
+    heardRef.current = true;
+    setHeard(true);
+    soundRef.current = true;
+    remember('on');
+    video.muted = false;
+    heldRef.current = false;
+    setBlocked(false);
+    tryPlay(video);
+  };
+
+  const showStart = blocked && !playing;
   const playLabel = t(playing ? 'promoFilm.pause' : 'promoFilm.play');
-  const soundLabel = t(muted ? 'promoFilm.soundOn' : 'promoFilm.soundOff');
+  const soundLabel = t(muted ? (heard ? 'promoFilm.soundOn' : 'promoFilm.playWithSound') : 'promoFilm.soundOff');
 
   return (
     <section className="section section-tone promo-film" aria-labelledby="promo-film-heading">
-      <div className="wrap">
-        <div className="section-head">
-          <div className="eyebrow">{t('promoFilm.eyebrow')}</div>
-          <h2 id="promo-film-heading">{t('promoFilm.heading')}</h2>
-        </div>
+      <div ref={trackRef} className="promo-film-track">
+        <span className="promo-film-snap" data-at="start" aria-hidden="true" />
+        <span className="promo-film-snap" data-at="lock" aria-hidden="true" />
+        <div ref={stageRef} className="promo-film-stage">
+          <div ref={viewRef} className="promo-film-view">
+            <div className="wrap section-head promo-film-head">
+              <div className="eyebrow">{t('promoFilm.eyebrow')}</div>
+              <h2 id="promo-film-heading">{t('promoFilm.heading')}</h2>
+            </div>
 
-        <div ref={frameRef} className="promo-film-frame">
-          <video ref={videoRef} className="promo-film-media" muted loop playsInline preload="none">
-            <track kind="captions" srcLang="en" label="English" src="/video/maxwell-film.en.vtt" />
-            <track kind="captions" srcLang="lt" label="Lietuvių" src="/video/maxwell-film.lt.vtt" />
-          </video>
-          {caption ? (
-            <p className="promo-film-caption" lang={language} aria-hidden="true">
-              <span>{caption}</span>
-            </p>
-          ) : null}
-          <div className="promo-film-controls">
-            <button type="button" className="promo-film-button" onClick={togglePlay} aria-label={playLabel} title={playLabel}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d={playing ? 'M5.5 3.5v9M10.5 3.5v9' : 'M5 3.5v9l7-4.5z'} />
-              </svg>
-            </button>
-            <button type="button" className="promo-film-button" onClick={toggleSound} aria-label={soundLabel} title={soundLabel}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M2.5 6v4h2.5l3.5 3V3L5 6z" />
-                <path d={muted ? 'M11 6.2l3.5 3.6M14.5 6.2L11 9.8' : 'M11 5.8a3 3 0 0 1 0 4.4M12.8 4a5.5 5.5 0 0 1 0 8'} />
-              </svg>
-            </button>
+            <div className="wrap promo-film-slot">
+              <div ref={cardRef} className="promo-film-card">
+                <div ref={frameRef} className="promo-film-frame" data-blocked={showStart ? '' : undefined}>
+                  <video ref={videoRef} className="promo-film-media" muted loop playsInline preload="none">
+                    <track kind="captions" srcLang="en" label="English" src="/video/maxwell-film.en.vtt" />
+                    <track kind="captions" srcLang="lt" label="Lietuvių" src="/video/maxwell-film.lt.vtt" />
+                  </video>
+                </div>
+
+                <div ref={uiRef} className="promo-film-ui">
+                  {caption ? (
+                    <p className="promo-film-caption" lang={language} aria-hidden="true">
+                      <span>{caption}</span>
+                    </p>
+                  ) : null}
+                  {showStart ? (
+                    <button type="button" className="promo-film-start" onClick={startWithSound} aria-label={t('promoFilm.play')} title={t('promoFilm.play')}>
+                      <svg width="28" height="28" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                        <path d="M5 3.2v9.6a.4.4 0 0 0 .6.35l7.6-4.8a.4.4 0 0 0 0-.7L5.6 2.85A.4.4 0 0 0 5 3.2z" />
+                      </svg>
+                    </button>
+                  ) : null}
+                  <div className="promo-film-controls">
+                    <button type="button" className="promo-film-button" onClick={togglePlay} aria-label={playLabel} title={playLabel}>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d={playing ? 'M5.5 3.5v9M10.5 3.5v9' : 'M5 3.5v9l7-4.5z'} />
+                      </svg>
+                    </button>
+                    <button type="button" className="promo-film-button promo-film-sound" data-invite={muted && !heard ? '' : undefined} onClick={toggleSound}>
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M2.5 6v4h2.5l3.5 3V3L5 6z" />
+                        <path d={muted ? 'M11 6.2l3.5 3.6M14.5 6.2L11 9.8' : 'M11 5.8a3 3 0 0 1 0 4.4M12.8 4a5.5 5.5 0 0 1 0 8'} />
+                      </svg>
+                      <span>{soundLabel}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className="page-actions promo-film-actions">
-          <ScheduleCallButton className="btn-lg" onClick={() => trackCTAClick('promo_film')} />
-        </div>
+      <div className="wrap page-actions promo-film-actions">
+        <ScheduleCallButton className="btn-lg" onClick={() => trackCTAClick('promo_film')} />
       </div>
     </section>
   );

@@ -1,19 +1,80 @@
-/* The film after the hero. The frame holds its shape before anything loads, so nothing below it moves;
-   it is dark in both themes, like the film itself. */
+/* The film after the hero. It starts as a framed card under its heading. Scrolling pins it under the header,
+   grows it until it fills the screen, holds it there for a moment and lets go, and the page carries on. The
+   script only reports how far the growth has come (--film-e, 0 to 1) and where the picture sits; the look is
+   here. Without a sticky stage (an old browser, or no script) it is simply the card. Dark in both themes, like
+   the film itself. There are no reduced-motion rules on purpose: the film and its growth are the same for
+   everyone, and the pause button is always there. */
+
+.promo-film {
+  --film-ratio: 1.77778; /* 16:9; portrait screens get the 4:5 cut */
+  --film-run-ratio: 1.25; /* how far the page scrolls while the film is pinned, in screens */
+  --film-grow-from: 0.05; /* where in that scroll the growth starts and ends; the film holds after that */
+  --film-grow-to: 0.72;
+  --film-max-crop: 1.1; /* the most the full-screen picture may be cropped beyond fitting whole */
+}
+
+@media (orientation: portrait) {
+  .promo-film {
+    --film-ratio: 0.8;
+  }
+}
+
+/* a shorter pin on phones and upright screens */
+@media (orientation: portrait), (max-width: 767px) {
+  .promo-film {
+    --film-run-ratio: 0.9;
+  }
+}
+
+.promo-film-snap {
+  display: none;
+}
+
+/* The card holds its shape before anything loads, so nothing below it moves */
+.promo-film-card {
+  position: relative;
+  aspect-ratio: var(--film-ratio);
+}
 
 .promo-film-frame {
-  position: relative;
-  aspect-ratio: 16 / 9;
+  position: absolute;
+  inset: 0;
   overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-3xl);
+  border-radius: calc(var(--radius-3xl) * (1 - var(--film-e, 0)));
   background: #0a0a0a center / cover no-repeat;
   color-scheme: dark;
+}
+
+/* The hairline round the card lets go as the card grows */
+.promo-film-frame::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border: 1px solid var(--color-border);
+  border-radius: inherit;
+  opacity: calc(1 - var(--film-e, 0) * 2);
+  pointer-events: none;
 }
 
 /* The poster arrives with the film, after the page has loaded, so it never competes with the hero */
 .promo-film-frame[data-armed] {
   background-image: url('/video/maxwell-film-16x9.webp');
+}
+
+@media (orientation: portrait) {
+  .promo-film-frame[data-armed] {
+    background-image: url('/video/maxwell-film-4x5.webp');
+  }
+}
+
+/* When the browser will not start the film by itself, the poster is shown over it, with a play button */
+.promo-film-frame[data-blocked]::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: inherit;
 }
 
 .promo-film-media {
@@ -22,6 +83,15 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Captions and buttons sit in a layer that follows the part of the picture that is on screen, so they never
+   grow with the picture and are never cropped away */
+.promo-film-ui {
+  position: absolute;
+  inset: 0;
+  contain: layout style;
+  pointer-events: none;
 }
 
 /* Captions in the site's own type, low and centred, clear of the controls in the top corner */
@@ -35,7 +105,6 @@
   transform: translateX(-50%);
   text-align: center;
   white-space: pre-line;
-  pointer-events: none;
 }
 
 .promo-film-caption span {
@@ -55,19 +124,25 @@
   right: var(--space-3);
   display: flex;
   gap: var(--space-2);
+  pointer-events: auto;
 }
 
 .promo-film-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
+  gap: var(--space-2);
+  min-width: 2.5rem;
   height: 2.5rem;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: var(--radius-md);
   background: rgba(10, 10, 10, 0.72);
   color: #e6e6e3;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
   cursor: pointer;
   transition: color var(--transition-base), border-color var(--transition-base);
 }
@@ -77,26 +152,176 @@
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-.promo-film-button:focus-visible {
+.promo-film-button:focus-visible,
+.promo-film-start:focus-visible {
   outline: 2px solid var(--gold-tint);
   outline-offset: 2px;
 }
 
-/* a full 44px target for a thumb */
+/* The sound button says what it does; gold until the visitor has heard the film, so it reads as the invitation */
+.promo-film-sound {
+  padding-inline: var(--space-3);
+}
+
+.promo-film-sound[data-invite] {
+  border-color: rgba(201, 162, 39, 0.65);
+}
+
+.promo-film-sound[data-invite]:hover {
+  border-color: var(--gold-tint);
+}
+
+.promo-film-start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  padding: 0 0 0 0.2rem;
+  border: 1px solid var(--gold-tint);
+  border-radius: 50%;
+  background: rgba(10, 10, 10, 0.72);
+  color: var(--gold-tint);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  transition: color var(--transition-base), border-color var(--transition-base), background-color var(--transition-base);
+}
+
+.promo-film-start:hover {
+  border-color: var(--gold-tint-hover);
+  background: rgba(10, 10, 10, 0.88);
+  color: var(--gold-tint-hover);
+}
+
+/* a full 44px target for a thumb, and captions that are never below 16px */
 @media (max-width: 1023px) {
   .promo-film-button {
-    width: 2.75rem;
+    min-width: 2.75rem;
     height: 2.75rem;
   }
 }
 
-/* Phones get the portrait cut of the film */
 @media (max-width: 767px) {
-  .promo-film-frame {
-    aspect-ratio: 4 / 5;
+  .promo-film-caption span {
+    font-size: 1rem;
   }
+}
 
-  .promo-film-frame[data-armed] {
-    background-image: url('/video/maxwell-film-4x5.webp');
+/* ---- The pin ----
+   Needs a sticky stage that can work, so it is only built where the browser has everything it takes. Elsewhere
+   the card above is the whole story. */
+@media (scripting: enabled) {
+  @supports (overflow: clip) and (height: 100lvh) and (container-type: size) and selector(:has(*)) {
+    /* The page's body hides sideways overflow, which makes it a scroll container, and nothing sticks inside one.
+       Clipping hides the same overflow without becoming a scroll container; the window still does the scrolling. */
+    body:has(.promo-film-track) {
+      overflow-x: clip;
+    }
+
+    /* After a scroll, settle on the framed card or on the full-screen film, never between: proximity only
+       pulls when the page has stopped close by, and never takes the scroll from anyone */
+    html:has(.promo-film-track) {
+      scroll-snap-type: y proximity;
+    }
+
+    .promo-film.section {
+      padding-block: calc(var(--section-space) - var(--space-6)) var(--section-space);
+    }
+
+    /* The runway: the stage pins for as long as it takes the page to scroll this far. Its height is set in screens
+       (the large one, so a phone's collapsing toolbar never shows what is behind) plus the distance of the pin. */
+    .promo-film-track {
+      position: relative;
+      height: calc(100lvh - var(--header-height) + 100svh * var(--film-run-ratio));
+    }
+
+    .promo-film-snap {
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 1px;
+      height: 1px;
+      /* the page's own scroll padding keeps a header's depth and a little more clear; the pin sits at the header */
+      scroll-margin-top: -1rem;
+      scroll-snap-align: start;
+      pointer-events: none;
+    }
+
+    .promo-film-snap[data-at='start'] {
+      top: 0;
+    }
+
+    .promo-film-snap[data-at='lock'] {
+      top: calc(100svh * var(--film-run-ratio) * var(--film-grow-to));
+    }
+
+    .promo-film-stage {
+      position: sticky;
+      top: var(--header-height);
+      height: calc(100lvh - var(--header-height));
+      overflow: clip;
+    }
+
+    /* The lights go down over the second half of the growth, so a picture that does not reach every edge ends
+       framed in black, and the page never sits half-grey behind a small card */
+    .promo-film-stage::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #0a0a0a;
+      opacity: calc((var(--film-e, 0) - 0.4) / 0.6);
+    }
+
+    /* What a visitor is certain to see, with a phone's toolbars out: the picture fills this, never the stage below it */
+    .promo-film-view {
+      position: relative;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      height: calc(100svh - var(--header-height));
+      padding-block: var(--space-6);
+      overflow: clip;
+    }
+
+    .promo-film-head {
+      margin-bottom: var(--space-5);
+      text-align: center;
+      opacity: calc(1 - var(--film-e, 0) * 4);
+      transform: translate3d(0, calc(var(--film-e, 0) * -1.5rem), 0);
+    }
+
+    /* The card is the biggest 16:9 (or 4:5) box that fits the space left under the heading */
+    .promo-film-slot {
+      display: grid;
+      place-items: center;
+      min-height: 0;
+      container-type: size;
+    }
+
+    .promo-film-card {
+      width: min(100cqw, calc(100cqh * var(--film-ratio)));
+    }
+
+    .promo-film-frame {
+      will-change: transform;
+    }
+
+    .promo-film-actions {
+      justify-content: center;
+    }
+
+    @media (max-width: 767px) {
+      .promo-film-view {
+        padding-block: var(--space-4);
+      }
+
+      .promo-film-head {
+        margin-bottom: var(--space-4);
+      }
+    }
   }
 }
