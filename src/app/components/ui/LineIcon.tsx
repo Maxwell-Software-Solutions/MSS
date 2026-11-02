@@ -15,6 +15,10 @@ const PATHS = {
   arrow: 'M5 12h14M13 6l6 6-6 6',
   check: 'M4.5 12.5 10 18 19.5 7',
   external: 'M14 4h6v6M20 4 10 14M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4',
+  document: 'M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1ZM14 3v5h5M9.5 13h5M9.5 17h5',
+  loop: 'M17 3l4 4-4 4M3 11V9a2 2 0 0 1 2-2h16M7 21l-4-4 4-4M21 13v2a2 2 0 0 1-2 2H3',
+  route:
+    'M12 3.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM12 7.5v9M12 11H5v5.5M12 11h7v5.5M5 16.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM12 16.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM19 16.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z',
 } as const;
 
 export type LineIconName = keyof typeof PATHS;

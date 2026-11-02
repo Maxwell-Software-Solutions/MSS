@@ -326,6 +326,60 @@
     a.more:hover svg { transform: none; }
   }
 
+  /* ---- Real work: projects and platforms we can name. Open columns; cards in a rail on phones (home.css) ---- */
+  /* Positioned so the screen-reader text inside a card is clipped by the rail, not the page */
+  .proof { position: relative; display: flex; flex-direction: column; min-width: 0; }
+  .proof-icon { display: block; width: 1.5rem; height: 1.5rem; margin-bottom: var(--space-4); color: var(--color-accent); }
+  .proof h2,
+  .proof h3 { font-size: 1.25rem; line-height: 1.3; letter-spacing: -0.012em; }
+  .proof-meta { margin-top: var(--space-1); font-size: 0.875rem; line-height: 1.4; color: var(--color-muted); }
+  .proof-body { margin-top: var(--space-3); color: var(--color-text-secondary); }
+  .proof-note { margin-top: auto; padding-top: var(--space-4); font-size: 0.875rem; color: var(--color-muted); }
+  .proof .more { align-self: flex-start; }
+
+  @media (max-width: 1023px) {
+    .proof .more { min-height: 44px; }
+  }
+
+  /* The smaller card is one row under the others, its three parts on the same columns */
+  @media (min-width: 768px) {
+    .proofs > .proof-small {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: var(--column-gap);
+      align-items: baseline;
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--color-border-strong);
+    }
+    .proof-small .proof-body { margin-top: 0; }
+    .proof-small .more { align-self: baseline; justify-self: start; margin-top: 0; padding-top: 0; }
+  }
+
+  /* Founder experience: a labelled note about the founder's past work, set apart so it never reads as a client */
+  .founder-note {
+    display: grid;
+    gap: var(--space-4);
+    margin-top: var(--space-7);
+    padding: var(--space-5);
+    border-radius: var(--radius-3xl);
+    background: var(--color-wash);
+  }
+  .founder-logo { display: block; width: auto; height: 2.5rem; color: var(--color-logo-mono); }
+  .founder-lead { font-size: 1.0625rem; font-weight: 500; color: var(--color-text); }
+  .founder-about { margin-top: var(--space-1); font-size: 0.9375rem; color: var(--color-text-secondary); }
+
+  @media (min-width: 640px) {
+    .founder-note {
+      grid-template-columns: 5.5rem minmax(0, 1fr);
+      column-gap: var(--space-6);
+      align-items: center;
+      padding: var(--space-6);
+    }
+    .founder-note > .eyebrow { grid-column: 1 / -1; }
+    .founder-logo { width: 100%; height: auto; }
+  }
+
   /* ---- Articles list: rows, with the art kept small ---- */
   .post-list > * { border-top: 1px solid var(--color-border); }
   .post-list > :last-child { border-bottom: 1px solid var(--color-border); }

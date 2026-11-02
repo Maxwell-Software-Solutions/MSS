@@ -127,6 +127,9 @@
   /* Code */
   --color-code-bg: #f4f4f2;
 
+  /* Logos shown in one colour, unaltered: black on light, white on dark */
+  --color-logo-mono: #000000;
+
   /* Elevation, for floating layers only */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -183,6 +186,9 @@
 
   --color-code-bg: #131313;
 
+  /* Logos shown in one colour, unaltered: black on light, white on dark */
+  --color-logo-mono: #ffffff;
+
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
@@ -230,6 +236,9 @@
     --color-band-muted:  #b8b8b4;
     --color-band-border: rgba(255, 255, 255, 0.12);
     --color-code-bg: #131313;
+
+    /* Logos shown in one colour, unaltered: black on light, white on dark */
+    --color-logo-mono: #ffffff;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
     --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
@@ -275,6 +284,9 @@
     --color-band-muted:  #b8b8b4;
     --color-band-border: rgba(255, 255, 255, 0.16);
     --color-code-bg: #f4f4f2;
+
+    /* Logos shown in one colour, unaltered: black on light, white on dark */
+    --color-logo-mono: #000000;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);

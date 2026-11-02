@@ -153,11 +153,16 @@
     scroll-snap-align: start;
   }
 
-  .rail > :is(.item, .quote) {
+  .rail > :is(.item, .quote, .proof) {
     padding: var(--space-5);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-3xl);
     background: var(--color-surface);
+  }
+
+  /* The smaller card in the real-work rail is narrower, so the next card peeks in sooner */
+  .rail > .proof-small {
+    flex-basis: min(72%, 17rem);
   }
 
   .rail > .item:has(> .item-icon) {
