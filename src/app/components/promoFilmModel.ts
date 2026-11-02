@@ -96,3 +96,15 @@ export function settleAt(raw: number, to: number, reach: number): number | null 
   if (raw > to - reach && raw < to) return to;
   return null;
 }
+
+/** The film ends on a card that holds still and then fades to black over its last moments. */
+export const HOLD_BEFORE_END = 0.9;
+
+/**
+ * Where the film stops: on the end card at full strength, just before that fade, so the last thing a visitor sees is
+ * the card with its call to action, and the live button laid over the drawn one matches it exactly. Unknown length: never.
+ * (If the film is cut again with a different ending, this is the one number to look at.)
+ */
+export function holdPoint(duration: number): number {
+  return Number.isFinite(duration) ? Math.max(0, duration - HOLD_BEFORE_END) : Infinity;
+}

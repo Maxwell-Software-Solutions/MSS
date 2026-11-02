@@ -64,6 +64,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'promoFilm.pause',
     'promoFilm.soundOn',
     'promoFilm.soundOff',
+    'promoFilm.watchAgain',
 
 
     // Homepage engineering foundation

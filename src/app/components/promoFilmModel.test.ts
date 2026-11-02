@@ -1,4 +1,4 @@
-import { clamp01, endScale, filmSources, frameAt, growth, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
+import { HOLD_BEFORE_END, clamp01, endScale, filmSources, frameAt, growth, holdPoint, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
 import type { Layout } from './promoFilmModel';
 
 const srcs = (list: Array<{ src: string }>): string[] => list.map((item) => item.src);
@@ -84,5 +84,17 @@ describe('settling once scrolling has stopped', () => {
     expect(settleAt(0.3, 0.72, 0.08)).toBeNull(); // mid-growth stays where the hand left it
     expect(settleAt(-0.5, 0.72, 0.08)).toBeNull(); // still far above
     expect(settleAt(0.9, 0.72, 0.08)).toBeNull(); // holding the full film, or let go of it
+  });
+});
+
+describe('where the film stops', () => {
+  it('holds the end card just before the film fades to black', () => {
+    expect(holdPoint(58.1)).toBeCloseTo(58.1 - HOLD_BEFORE_END, 5);
+    expect(holdPoint(0.5)).toBe(0);
+  });
+
+  it('never stops a film whose length is not known yet', () => {
+    expect(holdPoint(NaN)).toBe(Infinity);
+    expect(holdPoint(Infinity)).toBe(Infinity);
   });
 });

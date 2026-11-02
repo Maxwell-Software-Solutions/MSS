@@ -24,6 +24,17 @@ describe('PromoFilm', () => {
   };
   const sourcesOf = (container: HTMLElement): string[] => Array.from(container.querySelectorAll('video source'), (node) => node.getAttribute('src') ?? '');
 
+  // a 58 second film whose clock the test moves, as a browser would, and whose timeupdate it fires
+  const playTo = (container: HTMLElement, seconds: number): HTMLVideoElement => {
+    const video = container.querySelector('video') as HTMLVideoElement;
+    Object.defineProperty(video, 'duration', { configurable: true, value: 58.1 });
+    Object.defineProperty(video, 'currentTime', { configurable: true, writable: true, value: seconds });
+    act(() => {
+      video.dispatchEvent(new Event('timeupdate'));
+    });
+    return video;
+  };
+
   // jsdom has no media playback: play and pause flip the paused flag and fire their events, as a browser does
   beforeEach(() => {
     watchers = [];
@@ -72,7 +83,7 @@ describe('PromoFilm', () => {
     expect(video).not.toHaveAttribute('src');
     expect(container.querySelectorAll('video source')).toHaveLength(0);
     expect(video).toHaveAttribute('playsinline');
-    expect(video).toHaveAttribute('loop');
+    expect(video).not.toHaveAttribute('loop'); // it plays once
     expect(Array.from(container.querySelectorAll('track'), (track) => track.getAttribute('srclang'))).toEqual(['en', 'lt']);
     const frame = container.querySelector('.promo-film-frame');
     expect(frame).not.toHaveAttribute('data-armed');
@@ -201,6 +212,114 @@ describe('PromoFilm', () => {
     await waitFor(() => expect(container.querySelector('.promo-film-start')).not.toBeInTheDocument());
     expect(container.querySelector('video')?.muted).toBe(false);
     expect(container.querySelector('.promo-film-frame')).not.toHaveAttribute('data-blocked');
+  });
+
+  describe('when the film has played through', () => {
+    it('stops on its last card, just before the fade, and lays the live Book a call over the drawn one', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      expect(container.querySelector('.promo-film-cta')).not.toBeInTheDocument();
+      playTo(container, 56); // the card is still on its way
+      expect(container.querySelector('.promo-film-cta')).not.toBeInTheDocument();
+      const video = playTo(container, 57.3); // 58.1 minus the fade
+      expect(video.paused).toBe(true);
+      const button = screen.getByRole('link', { name: 'Book a call (opens in new tab)' });
+      expect(button).toHaveAttribute('href', '/book');
+      expect(button).toHaveAttribute('target', '_blank');
+      expect(button).toHaveAttribute('rel', 'noopener noreferrer');
+      expect(button).toHaveTextContent('Book a call');
+      expect(container.querySelector('.promo-film-frame .promo-film-cta')).toBe(button); // inside the picture, so it keeps its place
+      expect(screen.getByRole('button', { name: 'Watch again' })).toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: 'Pause film' })).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: /sound/i })).not.toBeInTheDocument();
+    });
+
+    it('goes back to the last card if the browser got to the very end first', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 58.1);
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument(); // the timeupdate caught it
+      Object.defineProperty(video, 'currentTime', { configurable: true, writable: true, value: 58.1 });
+      act(() => {
+        video.dispatchEvent(new Event('ended'));
+      });
+      expect(video.currentTime).toBeCloseTo(57.2, 5);
+    });
+
+    it('never starts again by itself: not on scrolling back, not on coming back to the tab', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      playTo(container, 57.3);
+      play.mockClear();
+      report(seen(), 0.05); // scrolled away
+      report(seen(), 0.9); // and back
+      act(() => {
+        document.dispatchEvent(new Event('visibilitychange'));
+      });
+      expect(play).not.toHaveBeenCalled();
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument();
+    });
+
+    it('stays on its last card, with the button, when the phone is turned and the other cut takes over', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 57.3);
+      Object.defineProperty(video, 'networkState', { configurable: true, value: 2 });
+      play.mockClear();
+      upright = true;
+      act(() => turned.forEach((listener) => listener()));
+      expect(video.querySelector('source')).toHaveAttribute('src', '/video/maxwell-film-4x5.mp4');
+      act(() => {
+        video.dispatchEvent(new Event('loadedmetadata'));
+      });
+      expect(video.currentTime).toBeCloseTo(57.3, 5); // put back where it was
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument();
+      expect(play).not.toHaveBeenCalled(); // and not started
+    });
+
+    it('goes back to its start, waiting for a tap, if the other cut cannot be put back on its last card', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 57.3);
+      Object.defineProperty(video, 'networkState', { configurable: true, value: 2 });
+      upright = true;
+      act(() => turned.forEach((listener) => listener()));
+      // a browser that drops every seek made while the new files come in
+      Object.defineProperty(video, 'currentTime', { configurable: true, get: () => 0, set: () => undefined });
+      act(() => {
+        video.dispatchEvent(new Event('loadedmetadata'));
+      });
+      for (let i = 0; i < 5; i++) {
+        act(() => {
+          video.dispatchEvent(new Event('canplay'));
+        });
+      }
+      expect(screen.queryByRole('link', { name: /Book a call/ })).not.toBeInTheDocument(); // no button over the wrong picture
+      expect(screen.getByRole('button', { name: 'Play film' })).toBeInTheDocument(); // waiting for a tap
+    });
+
+    it('plays again from the start on a click on Watch again, and the button gives way to the film', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 57.3);
+      play.mockClear();
+      fireEvent.click(screen.getByRole('button', { name: 'Watch again' }));
+      expect(video.currentTime).toBe(0);
+      expect(play).toHaveBeenCalledTimes(1);
+      expect(screen.queryByRole('link', { name: /Book a call/ })).not.toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Pause film' })).toBeInTheDocument();
+      // and it ends on its card again
+      playTo(container, 57.3);
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument();
+    });
+
+    it('is free of accessibility violations, with the button on', async () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      playTo(container, 57.3);
+      // with files loaded, axe would try to fetch the film itself to check its captions, and jsdom has no network
+      expect(await axe(container, { preload: false })).toHaveNoViolations();
+    });
   });
 
   it('is free of accessibility violations before it plays', async () => {
