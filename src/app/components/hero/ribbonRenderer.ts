@@ -477,10 +477,13 @@ export function startRibbon(
         return;
       }
       pause();
-      // a pause during the draw-on still leaves the whole ribbon on screen
-      if (announced) {
-        drawnOn = true;
-        drawStill();
+      if (halted) return;
+      // a pause during the draw-on, or a remembered one before the first frame, still shows the whole ribbon
+      drawnOn = true;
+      drawStill();
+      if (!announced) {
+        announced = true;
+        options.onReady();
       }
     },
     setReduced(value) {

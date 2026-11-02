@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { renderWithProviders as render } from '@/test/test-utils';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import Home from './HomePage';
@@ -89,6 +89,19 @@ describe('Home page', () => {
   it('hides the animated canvas from assistive technology', () => {
     render(<Home />);
     expect(screen.getByTestId('hero-ribbon')).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('remembers a paused hero on later visits until play is pressed', () => {
+    localStorage.clear();
+    const first = render(<Home />);
+    fireEvent.click(screen.getByRole('button', { name: /pause animation/i }));
+    expect(localStorage.getItem('site.heroPaused')).toBe('true');
+    first.unmount();
+
+    render(<Home />);
+    fireEvent.click(screen.getByRole('button', { name: /play animation/i }));
+    expect(localStorage.getItem('site.heroPaused')).toBeNull();
+    expect(screen.getByRole('button', { name: /pause animation/i })).toBeInTheDocument();
   });
 
   it('keeps the hero call-to-action destinations', () => {

@@ -11,6 +11,26 @@ import './hero.css';
 
 const posterLines = ribbonPosterLines();
 
+// A pause lasts: the hero stays still on later pages and visits until the visitor presses play
+const PAUSE_KEY = 'site.heroPaused';
+
+function storedPause(): boolean {
+  try {
+    return window.localStorage.getItem(PAUSE_KEY) === 'true';
+  } catch {
+    return false;
+  }
+}
+
+function storePause(paused: boolean): void {
+  try {
+    if (paused) window.localStorage.setItem(PAUSE_KEY, 'true');
+    else window.localStorage.removeItem(PAUSE_KEY);
+  } catch {
+    // storage blocked: the pause holds for this page only
+  }
+}
+
 /** The finished picture as plain markup: there at first paint, and all that is needed without WebGL. */
 const RibbonPoster = memo(function RibbonPoster(): ReactElement {
   return (
@@ -35,12 +55,16 @@ export default function HeroStage(): ReactElement {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const copyRef = useRef<HTMLDivElement | null>(null);
   const ribbonRef = useRef<RibbonHandle | null>(null);
+  const pausedRef = useRef(false);
   const [paused, setPaused] = useState(false);
   const pauseLabel = t(paused ? 'hero.motion.play' : 'hero.motion.pause');
 
   const togglePause = (): void => {
-    setPaused(!paused);
-    ribbonRef.current?.setPaused(!paused);
+    const next = !pausedRef.current;
+    pausedRef.current = next;
+    setPaused(next);
+    storePause(next);
+    ribbonRef.current?.setPaused(next);
   };
 
   useEffect(() => {
@@ -53,6 +77,11 @@ export default function HeroStage(): ReactElement {
     const root = document.documentElement;
     let inView = true;
     let cancelled = false;
+
+    if (storedPause()) {
+      pausedRef.current = true;
+      setPaused(true);
+    }
 
     const showPoster = (): void => {
       stage.dataset.ribbon = 'static';
@@ -92,7 +121,7 @@ export default function HeroStage(): ReactElement {
             return;
           }
           ribbon.setVisible(inView);
-          ribbon.setPaused(stage.hasAttribute('data-paused'));
+          ribbon.setPaused(pausedRef.current);
         })
         .catch(showPoster);
     }, 0);

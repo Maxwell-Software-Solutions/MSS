@@ -114,7 +114,8 @@ html[data-hero-passed] .hero-glow {
   animation-play-state: paused;
 }
 
-/* Stops the motion for anyone who wants it still. On the page's right edge, clear of the text. */
+/* Stops the motion for anyone who wants it still, on this visit and later ones. On the page's right edge,
+   clear of the text. */
 .hero-pause {
   position: absolute;
   z-index: 3;
