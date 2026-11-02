@@ -162,7 +162,7 @@ export interface RibbonHandle {
   setVisible(visible: boolean): void;
   /** The visitor's pause control. */
   setPaused(paused: boolean): void;
-  /** Reduced motion: the lines hold their shape and only the light travels. */
+  /** Reduced motion: no draw-on and no cursor lean. The drift and the light are the same for everyone. */
   setReduced(reduced: boolean): void;
   stop(): void;
 }
@@ -348,7 +348,8 @@ export function startRibbon(
   let flow = RIBBON_START_TIME;
   let reduced = options.reduced;
   let paused = false;
-  let drawnOn = false;
+  // reduced motion skips the draw-on; once skipped it never starts over
+  let drawnOn = reduced;
   let last = 0;
   let raf = 0;
   let skipFrame = false;
@@ -366,11 +367,11 @@ export function startRibbon(
     pointer.cy += (pointer.y - pointer.cy) * follow;
     pointer.amp += (pointer.target - pointer.amp) * (1 - Math.exp(-dt * 0.9));
 
-    if (!reduced) flow += dt * (DRIFT_SPEED + (ARRIVAL_SPEED - DRIFT_SPEED) * Math.exp(-elapsed / SETTLE_SECONDS));
+    flow += dt * (DRIFT_SPEED + (ARRIVAL_SPEED - DRIFT_SPEED) * Math.exp(-elapsed / SETTLE_SECONDS));
 
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.uniform1f(u.t, flow);
-    gl.uniform1f(u.reveal, reduced || drawnOn ? FULLY_DRAWN : elapsed);
+    gl.uniform1f(u.reveal, drawnOn ? FULLY_DRAWN : elapsed);
     gl.uniform3f(u.pulse, LIGHT_START + LIGHT_SPEED * elapsed, LIGHT_STRENGTH, LIGHT_SPACING);
     gl.uniform3f(u.mouse, (pointer.cx * dpr) / width, (pointer.cy * dpr) / height, reduced ? 0 : pointer.amp * CURSOR_LEAN);
     gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, cols * rows);
@@ -473,6 +474,7 @@ export function startRibbon(
     },
     setReduced(value) {
       reduced = value;
+      if (value) drawnOn = true;
     },
     stop() {
       pause();

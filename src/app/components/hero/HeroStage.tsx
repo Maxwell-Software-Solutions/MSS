@@ -69,7 +69,7 @@ export default function HeroStage(): ReactElement {
     );
     observer.observe(stage);
 
-    // Reduced motion does not mean a still picture: the lines hold their shape and the light keeps travelling
+    // Everyone sees the same drifting lines; reduced motion only skips the draw-on and the cursor lean
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const onMotionChange = (): void => ribbonRef.current?.setReduced(motion.matches);
     motion.addEventListener?.('change', onMotionChange);

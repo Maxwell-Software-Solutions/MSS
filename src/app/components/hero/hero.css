@@ -188,8 +188,8 @@ html[data-hero-passed] .hero-glow {
   transition: opacity 0.5s ease 2.1s;
 }
 
-/* Reduced motion: the same lines, fixed in place, with only the light travelling. There is no draw-on,
-   so the lines are at full strength from the first paint and the two layers simply cross-fade. */
+/* Reduced motion skips the draw-on, so the lines are at full strength from the first paint and the two
+   layers simply cross-fade. From then on it is everyone's hero: the lines drift and the light travels. */
 @media (prefers-reduced-motion: reduce) {
   .hero-poster {
     opacity: 1;
