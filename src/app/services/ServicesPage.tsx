@@ -81,7 +81,7 @@ export default function ServicesPage(): ReactElement {
         <div className="wrap">
           <div className="section-head section-head-split">
             <h2 id="process-heading" suppressHydrationWarning>
-              {ht('services.process.heading', 'Our')} Process
+              {ht('services.process.heading', 'Our process')}
             </h2>
             <p className="lead" suppressHydrationWarning>
               {ht('services.process.description', 'A systematic approach to improving code quality and team velocity.')}
@@ -94,7 +94,7 @@ export default function ServicesPage(): ReactElement {
       <section className="band" suppressHydrationWarning>
         <div className="wrap band-split">
           <h2 suppressHydrationWarning>
-            {ht('services.cta.title', 'Ready to Improve Your')} Code Quality?
+            {ht('services.cta.title', 'Book a discovery call')}
           </h2>
           <p suppressHydrationWarning>
             {ht(
