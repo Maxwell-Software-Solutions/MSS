@@ -1,4 +1,5 @@
 import type { FormEvent, ReactElement } from 'react';
+import Link from 'next/link';
 
 import ButtonPrimary from '@/app/components/ButtonPrimary';
 import ContactStatusMessage from './ContactStatusMessage';
@@ -76,7 +77,12 @@ export default function ContactFormCard({ status, error, onSubmit }: ContactForm
             {t('contactForm.submit')}
           </ButtonPrimary>
 
-          <p className="form-note">{t('contactForm.privacy')}</p>
+          <p className="form-note">
+            {t('contactForm.privacy')}{' '}
+            <Link className="link" href="/privacy">
+              {t('contactForm.privacy.link')}
+            </Link>
+          </p>
         </div>
 
         <div aria-live="polite" aria-atomic="true">

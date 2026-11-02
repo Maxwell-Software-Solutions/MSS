@@ -203,7 +203,10 @@ export default function FreeAuditPage(): ReactElement {
               </button>
 
               <p className="form-note text-center" suppressHydrationWarning>
-                {ht('freeAudit.form.privacy', 'No spam. We only contact you about your audit request.')}
+                {ht('freeAudit.form.privacy', 'No spam. We only contact you about your audit request.')}{' '}
+                <a className="link" href="/privacy">
+                  {ht('freeAudit.form.privacy.link', 'Privacy Policy')}
+                </a>
               </p>
             </form>
           </div>

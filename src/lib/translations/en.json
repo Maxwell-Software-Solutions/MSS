@@ -308,6 +308,7 @@
   "contactForm.message.placeholder": "Tell us about your goals, challenges, and timeline.",
   "contactForm.submit": "Send message",
   "contactForm.privacy": "We respect your privacy and keep information confidential.",
+  "contactForm.privacy.link": "Privacy Policy",
 
   "freeAudit.eyebrow": "Free Code Health Audit",
   "freeAudit.headline": "Get a Free Code Health Audit Worth €2,500",
@@ -336,6 +337,7 @@
   "freeAudit.form.context": "What is your main concern? (optional)",
   "freeAudit.form.cta": "Apply for free audit",
   "freeAudit.form.privacy": "No spam. We only contact you about your audit request.",
+  "freeAudit.form.privacy.link": "Privacy Policy",
   "freeAudit.faq.heading": "Frequently asked questions",
   "freeAudit.faq.q1": "What does \"free\" actually mean? Is there a catch?",
   "freeAudit.faq.a1": "No catch. We conduct a genuine 5-day audit of your codebase at no charge. Our goal is to demonstrate value upfront. Some companies go on to hire us for a full engagement; many do not — and that is fine. We publish our findings regardless.",

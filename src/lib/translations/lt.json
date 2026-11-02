@@ -308,6 +308,7 @@
   "contactForm.message.placeholder": "Papasakokite apie savo tikslus, iššūkius ir terminus.",
   "contactForm.submit": "Siųsti žinutę",
   "contactForm.privacy": "Gerbiame jūsų privatumą ir laikome informaciją konfidencialiai.",
+  "contactForm.privacy.link": "Privatumo politika",
 
   "freeAudit.eyebrow": "Nemokamas kodo sveikatos auditas",
   "freeAudit.headline": "Gaukite nemokamą kodo sveikatos auditą, vertą €2 500",
@@ -336,6 +337,7 @@
   "freeAudit.form.context": "Koks jūsų pagrindinis rūpestis? (neprivaloma)",
   "freeAudit.form.cta": "Teikti prašymą nemokamam auditui",
   "freeAudit.form.privacy": "Jokio šlamšto. Susisiekiame tik dėl jūsų audito prašymo.",
+  "freeAudit.form.privacy.link": "Privatumo politika",
   "freeAudit.faq.heading": "Dažniausiai užduodami klausimai",
   "freeAudit.faq.q1": "Ką iš tikrūjų reiškia 'nemokama'? Ar yra kokių nors sąlygų?",
   "freeAudit.faq.a1": "Jokių sąlygų. Atliekame tikrą 5 dienų jūsų kodų bazės auditą nemokamai. Mūsų tikslas — iš anksto parodyti vertę. Kai kurios įmonės vėliau samdosi mums pilnam projektui; daugelis to nedaro — ir tai gerai.",
