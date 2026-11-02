@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { renderWithProviders as render, screen } from '@/test/test-utils';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { CONTACT_EMAIL, CONTACT_PHONE } from '../contact/contact.constants';
 import SiteFooter from './AppFooter';
@@ -14,7 +14,8 @@ describe('AppFooter component', () => {
   it('renders the logo and strapline', () => {
     render(<SiteFooter />);
     expect(screen.getByRole('img', { name: 'Maxwell Software Solutions' })).toBeInTheDocument();
-    expect(screen.getByText(/crafting reliable software/i)).toBeInTheDocument();
+    expect(screen.getByText(/^AI software development$/i)).toBeInTheDocument();
+    expect(screen.getByText(/adopt AI, build AI agents and launch AI products/i)).toBeInTheDocument();
   });
 
   it('displays contact information', () => {

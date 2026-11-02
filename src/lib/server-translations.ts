@@ -44,6 +44,8 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'cta.scheduleCall',
     'cta.bookCall',
     'cta.bookCall.aria',
+    'footer.tagline',
+    'footer.description',
 
     // Homepage hero (P0 — must render server-side for Google to see H1)
     'hero.title',

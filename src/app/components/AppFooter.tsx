@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import BrandLogo from './BrandLogo';
 import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from '../contact/contact.constants';
+import { useLanguage } from '@/lib/LanguageContext';
 
 const primaryLinks = [
   { href: '/services', label: 'Services' },
@@ -28,6 +29,7 @@ const linkClass =
   'inline-flex min-h-11 min-w-11 items-center text-secondary transition-colors hover:text-foreground lg:min-h-0 lg:min-w-0';
 
 export default function SiteFooter(): ReactElement {
+  const { t } = useLanguage();
   // Use a fixed year or suppress hydration warning since year changes are acceptable
   const currentYear = new Date().getFullYear();
 
@@ -38,12 +40,9 @@ export default function SiteFooter(): ReactElement {
           <div>
             <BrandLogo className="h-9 w-auto text-foreground" label="Maxwell Software Solutions" />
 
-            <p className="mt-5 text-base font-medium text-foreground">Crafting reliable software</p>
+            <p className="mt-5 text-base font-medium text-foreground">{t('footer.tagline')}</p>
 
-            <p className="mt-2 max-w-md text-base leading-relaxed lg:text-sm">
-              We help engineering leaders modernise legacy systems, accelerate delivery, and build teams that ship with
-              confidence.
-            </p>
+            <p className="mt-2 max-w-md text-base leading-relaxed lg:text-sm">{t('footer.description')}</p>
 
             <dl className="mt-8 grid gap-5 sm:grid-cols-2">
               <div className="sm:col-span-2">
