@@ -15,7 +15,7 @@ export const aiServices: ServiceItem[] = [
     title: 'AI adoption and strategy',
     icon: 'adoption',
     alt: 'AI adoption icon',
-    body: 'We find the use cases worth doing, assess your data and systems for readiness, and set out a roadmap with governance and training for your team.',
+    body: 'We find the use cases worth doing, assess your data and systems for readiness, set out a roadmap and governance, and train your team.',
     tagline: 'Clear priorities before you spend',
   },
   {
