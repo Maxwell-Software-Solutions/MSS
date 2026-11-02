@@ -370,13 +370,14 @@
   .founder-about { margin-top: var(--space-1); font-size: 0.9375rem; color: var(--color-text-secondary); }
 
   @media (min-width: 640px) {
-    .founder-note {
+    .founder-note { padding: var(--space-6); }
+    .founder-note > .eyebrow { grid-column: 1 / -1; }
+    /* Two columns only while the logo is there, so the note reads the same without it */
+    .founder-note:has(> .founder-logo) {
       grid-template-columns: 5.5rem minmax(0, 1fr);
       column-gap: var(--space-6);
       align-items: center;
-      padding: var(--space-6);
     }
-    .founder-note > .eyebrow { grid-column: 1 / -1; }
     .founder-logo { width: 100%; height: auto; }
   }
 
