@@ -28,15 +28,16 @@ beforeAll(() => {
 });
 
 describe('Home page', () => {
-  it('renders the primary headline', () => {
+  it('leads with AI in the headline and subheading', () => {
     render(<Home />);
-    expect(screen.getByText(/Software Engineering Consultancy/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /put ai to work in your business/i })).toBeInTheDocument();
+    expect(screen.getByText(/AI software development company in Vilnius, Lithuania/i)).toBeInTheDocument();
   });
 
   it('renders the main call-to-action buttons', () => {
     render(<Home />);
-    expect(screen.getByRole('link', { name: /request your code audit/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /explore services/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /discuss your ai project/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /see ai services/i })).toBeInTheDocument();
   });
 
   it('renders the statistics section', () => {
@@ -80,8 +81,8 @@ describe('Home page', () => {
 
   it('keeps the hero call-to-action destinations', () => {
     render(<Home />);
-    expect(screen.getByRole('link', { name: /request your code audit/i })).toHaveAttribute('href', '/contact');
-    expect(screen.getByRole('link', { name: /explore services/i })).toHaveAttribute('href', '/services');
+    expect(screen.getByRole('link', { name: /discuss your ai project/i })).toHaveAttribute('href', '/contact');
+    expect(screen.getByRole('link', { name: /see ai services/i })).toHaveAttribute('href', '/services');
   });
 
   it('checks accessibility and reports violations', async () => {
