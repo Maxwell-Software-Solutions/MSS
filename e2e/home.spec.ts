@@ -9,7 +9,7 @@ test.describe('Home Page', () => {
     // Accept either translated text or translation keys (in case translations don't load in test)
     await expect(page.getByRole('heading', { name: /Put AI to work in your business|hero\.title/i })).toBeVisible();
     await expect(page.getByRole('link', { name: /Discuss your AI project|hero\.cta\.primary/i }).first()).toBeVisible();
-    await expect(page.getByRole('heading', { name: /Case studies|projects\.heading/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Real AI work|realWork\.heading/i })).toBeVisible();
   });
 
   test('navigation links work', async ({ page }) => {
@@ -65,10 +65,10 @@ test.describe('Home Page', () => {
     await expect(process).toBeVisible();
     await process.screenshot({ path: 'e2e/screenshots/home-process-heading.png' });
 
-    // Wait for testimonials heading
-    const testimonials = page.locator('h2').filter({ hasText: /Client perspective/ }).first();
-    await expect(testimonials).toBeVisible();
-    await testimonials.screenshot({ path: 'e2e/screenshots/home-testimonials-heading.png' });
+    // Wait for the real AI work heading
+    const realWork = page.locator('h2').filter({ hasText: /^(Real AI work|realWork\.heading)$/i }).first();
+    await expect(realWork).toBeVisible();
+    await realWork.screenshot({ path: 'e2e/screenshots/home-real-work-heading.png' });
 
     // Capture a focused screenshot of the engineering foundation grid using its aria-label
     const valueProps = page.getByLabel('The engineering behind production AI');

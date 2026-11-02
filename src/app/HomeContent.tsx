@@ -1,15 +1,15 @@
 'use client';
 
 import type { ReactElement } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import HeroStage from './components/hero/HeroStage';
 import DeferredSections from './components/DeferredSections';
 import DarkShowcaseSection from './components/DarkShowcaseSection';
+import RealAiWork from './components/RealAiWork';
 import Rail from './components/Rail';
 import { useReveal } from './components/useReveal';
 import { useLanguage } from '@/lib/LanguageContext';
-import { FeatureCard, ButtonLink, LineIcon, StatCard } from './components/ui';
+import { FeatureCard, ButtonLink, LineIcon } from './components/ui';
 import type { LineIconName } from './components/ui';
 import './home.css';
 
@@ -40,7 +40,8 @@ export default function HomeContent(): ReactElement {
             </p>
           </div>
 
-          <Rail className="columns columns-4" label={t('capabilities.heading')}>
+          {/* A group, not a region: the section already carries this name as a landmark */}
+          <Rail className="columns columns-4" role="group" aria-label={t('capabilities.heading')} label={t('capabilities.heading')}>
             {aiServices.map((card) => (
               <FeatureCard
                 key={card.title}
@@ -99,21 +100,12 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      {/* The engineering behind it: results, and what makes AI hold up in production */}
+      {/* The engineering behind it: what makes AI hold up in production */}
       <section className="section">
         <div className="wrap">
-          <h2 className="section-head phone-only">{t('value.label')}</h2>
-          <div className="stats">
-            {[
-              { value: t('stats.defects'), label: t('stats.defects.label') },
-              { value: t('stats.coverage'), label: t('stats.coverage.label') },
-              { value: t('stats.mttr'), label: t('stats.mttr.label') },
-            ].map((stat) => (
-              <StatCard key={stat.label} value={stat.value} label={stat.label} />
-            ))}
-          </div>
+          <h2 className="section-head">{t('value.label')}</h2>
 
-          <Rail className="columns columns-4 block-gap" role="group" aria-label={t('value.label')} label={t('value.label')}>
+          <Rail className="columns columns-4" role="group" aria-label={t('value.label')} label={t('value.label')}>
             {[
               { title: t('value.evals.title'), description: t('value.evals.body') },
               { title: t('value.foundations.title'), description: t('value.foundations.body') },
@@ -126,86 +118,8 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      {/* Selected work */}
-      <section id="projects" className="section">
-        <div className="wrap">
-          <div className="section-head section-head-split">
-            <div className="eyebrow">{t('projects.eyebrow')}</div>
-            <h2>{t('projects.heading')}</h2>
-            <p className="lead">
-              <span className="copy-long">{t('projects.description')}</span>
-              <span className="copy-short">{t('projects.description.short')}</span>
-            </p>
-          </div>
-
-          <Rail className="columns columns-3" label={t('projects.heading')}>
-            {[
-              {
-                slug: 'retail-platform',
-                titleKey: 'projects.retail.title',
-                metaKey: 'projects.retail.meta',
-                outcomeKey: 'projects.retail.outcome',
-                metrics: ['-58% defects', '+28% deploys', '+12 CSAT'],
-                image: '/images/case-studies/retail-platform.svg',
-              },
-              {
-                slug: 'fintech-api',
-                titleKey: 'projects.fintech.title',
-                metaKey: 'projects.fintech.meta',
-                outcomeKey: 'projects.fintech.outcome',
-                metrics: ['+32% coverage', '-24% incidents', '-18% p99'],
-                image: '/images/case-studies/fintech-api.svg',
-              },
-              {
-                slug: 'saas-migration',
-                titleKey: 'projects.saas.title',
-                metaKey: 'projects.saas.meta',
-                outcomeKey: 'projects.saas.outcome',
-                metrics: ['-45% MTTR', '-60% noise', '4/4 SLOs'],
-                image: '/images/case-studies/saas-migration.svg',
-              },
-            ].map((c) => (
-              <Link
-                key={c.slug}
-                href={`/project-showcase/${c.slug}`}
-                className="work"
-                aria-label={`${t(c.titleKey)} case study`}
-              >
-                <div className="art">
-                  <Image
-                    src={c.image}
-                    alt={t(c.titleKey)}
-                    fill
-                    unoptimized
-                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="work-meta">
-                  <span>{t(c.metaKey)}</span>
-                  <strong>{t(c.outcomeKey)}</strong>
-                </div>
-                <h3>{t(c.titleKey)}</h3>
-                <div className="work-metrics">
-                  {c.metrics.map((m) => (
-                    <span key={m}>{m}</span>
-                  ))}
-                </div>
-                <span className="more">
-                  {t('projects.viewStudy')}
-                  <LineIcon name="arrow" />
-                </span>
-              </Link>
-            ))}
-          </Rail>
-
-          <div className="page-actions">
-            <ButtonLink href="/project-showcase" variant="ghost" className="link-quiet">
-              {t('projects.browseAll')}
-            </ButtonLink>
-          </div>
-        </div>
-      </section>
+      {/* Real AI work, and the founder's past work at Sage */}
+      <RealAiWork />
 
       {/* First invitation to talk */}
       <section id="contact" className="section section-tone">

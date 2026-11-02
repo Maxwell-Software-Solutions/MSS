@@ -40,26 +40,34 @@ describe('Home page', () => {
     expect(screen.getByRole('link', { name: /see ai services/i })).toBeInTheDocument();
   });
 
-  it('puts the four AI services and AI agents before the engineering results', () => {
+  it('puts the four AI services and AI agents before the engineering foundations', () => {
     render(<Home />);
     const aiServices = screen.getByRole('heading', { level: 2, name: /^ai services$/i });
     for (const name of [/ai adoption and strategy/i, /ai agents and automation/i, /ai product development/i, /ai innovation and prototyping/i]) {
       expect(screen.getByRole('heading', { level: 3, name })).toBeInTheDocument();
     }
     const agents = screen.getByRole('heading', { level: 2, name: /ai agents that do real work/i });
-    const stats = screen.getByText('-60%');
+    const foundations = screen.getByRole('heading', { level: 2, name: /the engineering behind production ai/i });
     expect(aiServices.compareDocumentPosition(agents) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(agents.compareDocumentPosition(stats) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(agents.compareDocumentPosition(foundations) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
-  it('renders the statistics section', () => {
+  it('keeps the four engineering foundations without any made-up figures', () => {
     render(<Home />);
-    expect(screen.getByText('-60%')).toBeInTheDocument();
-    expect(screen.getByText('+35%')).toBeInTheDocument();
-    expect(screen.getByText('-45%')).toBeInTheDocument();
-    expect(screen.getByText('Escaped defects')).toBeInTheDocument();
-    expect(screen.getByText('Test coverage')).toBeInTheDocument();
-    expect(screen.getByText('MTTR')).toBeInTheDocument();
+    for (const name of [/evaluations and tests/i, /clean foundations/i, /^monitoring$/i, /safe rollout/i]) {
+      expect(screen.getByRole('heading', { level: 3, name })).toBeInTheDocument();
+    }
+    for (const text of [/-60%/, /\+35%/, /-45%/, /escaped defects/i, /test coverage/i, /mttr/i]) {
+      expect(screen.queryByText(text)).not.toBeInTheDocument();
+    }
+  });
+
+  it('has no client strip, testimonials or old case studies', () => {
+    render(<Home />);
+    for (const text of [/trusted by/i, /client perspective/i, /^miau$/i, /fueille/i, /retail platform/i, /fintech api/i, /saas migration/i]) {
+      expect(screen.queryByText(text)).not.toBeInTheDocument();
+    }
+    expect(screen.queryByRole('link', { name: /case study/i })).not.toBeInTheDocument();
   });
 
   it('renders the about section', () => {
@@ -67,10 +75,17 @@ describe('Home page', () => {
     expect(screen.getByRole('heading', { name: /about/i })).toBeInTheDocument();
   });
 
-  it('renders the case studies section', () => {
+  it('renders the Real AI work section after the engineering foundations', () => {
     render(<Home />);
-    expect(screen.getByRole('heading', { name: /case studies/i })).toBeInTheDocument();
+    const work = screen.getByRole('heading', { level: 2, name: /^real ai work$/i });
     expect(screen.getByText('Selected work')).toBeInTheDocument();
+    for (const name of [/^irwin mitchell$/i, /^miausairovi cattery$/i, /^our multi-model ai orchestrator$/i, /^neonova$/i]) {
+      expect(screen.getByRole('heading', { level: 3, name })).toBeInTheDocument();
+    }
+    const foundations = screen.getByRole('heading', { level: 2, name: /the engineering behind production ai/i });
+    const contact = screen.getByRole('heading', { level: 2, name: /^contact$/i });
+    expect(foundations.compareDocumentPosition(work) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(work.compareDocumentPosition(contact) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it('renders the contact section', () => {
