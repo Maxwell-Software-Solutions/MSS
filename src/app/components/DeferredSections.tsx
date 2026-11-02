@@ -10,9 +10,6 @@ const SocialProofSection = dynamic(() => import('@/app/components/SocialProofSec
 const TestimonialsSection = dynamic(() => import('@/app/components/TestimonialsSection'), {
   loading: () => <div style={{ minHeight: '400px' }} aria-hidden="true" />,
 });
-const DarkShowcaseSection = dynamic(() => import('@/app/components/DarkShowcaseSection'), {
-  loading: () => <div style={{ minHeight: '500px' }} aria-hidden="true" />,
-});
 const FinalCtaSection = dynamic(() => import('@/app/components/FinalCtaSection'), {
   loading: () => <div style={{ minHeight: '300px' }} aria-hidden="true" />,
 });
@@ -23,7 +20,6 @@ export default function DeferredSections(): ReactElement {
     <>
       <SocialProofSection />
       <TestimonialsSection />
-      <DarkShowcaseSection />
       <FinalCtaSection />
     </>
   );

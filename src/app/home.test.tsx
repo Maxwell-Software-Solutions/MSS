@@ -31,13 +31,25 @@ describe('Home page', () => {
   it('leads with AI in the headline and subheading', () => {
     render(<Home />);
     expect(screen.getByRole('heading', { level: 1, name: /put ai to work in your business/i })).toBeInTheDocument();
-    expect(screen.getByText(/AI software development company in Vilnius, Lithuania/i)).toBeInTheDocument();
+    expect(screen.getByText(/^We are an AI software development company in Vilnius, Lithuania/i)).toBeInTheDocument();
   });
 
   it('renders the main call-to-action buttons', () => {
     render(<Home />);
     expect(screen.getByRole('link', { name: /discuss your ai project/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /see ai services/i })).toBeInTheDocument();
+  });
+
+  it('puts the four AI services and AI agents before the engineering results', () => {
+    render(<Home />);
+    const aiServices = screen.getByRole('heading', { level: 2, name: /^ai services$/i });
+    for (const name of [/ai adoption and strategy/i, /ai agents and automation/i, /ai product development/i, /ai innovation and prototyping/i]) {
+      expect(screen.getByRole('heading', { level: 3, name })).toBeInTheDocument();
+    }
+    const agents = screen.getByRole('heading', { level: 2, name: /ai agents that do real work/i });
+    const stats = screen.getByText('-60%');
+    expect(aiServices.compareDocumentPosition(agents) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(agents.compareDocumentPosition(stats) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it('renders the statistics section', () => {

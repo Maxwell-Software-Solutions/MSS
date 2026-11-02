@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import HeroStage from './components/hero/HeroStage';
 import DeferredSections from './components/DeferredSections';
+import DarkShowcaseSection from './components/DarkShowcaseSection';
 import { useLanguage } from '@/lib/LanguageContext';
 import { FeatureCard, ButtonLink, LineIcon, StatCard } from './components/ui';
 import type { LineIconName } from './components/ui';
@@ -12,54 +13,28 @@ import type { LineIconName } from './components/ui';
 export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
 
-  const capabilities: Array<{ icon: LineIconName; title: string; description: string }> = [
-    { icon: 'flask', title: t('capabilities.testing.title'), description: t('capabilities.testing.body') },
-    { icon: 'layers', title: t('capabilities.refactoring.title'), description: t('capabilities.refactoring.body') },
-    { icon: 'signal', title: t('capabilities.observability.title'), description: t('capabilities.observability.body') },
-    { icon: 'shield', title: t('capabilities.reliability.title'), description: t('capabilities.reliability.body') },
+  const aiServices: Array<{ icon: LineIconName; title: string; description: string }> = [
+    { icon: 'search', title: t('capabilities.adoption.title'), description: t('capabilities.adoption.body') },
+    { icon: 'bolt', title: t('capabilities.agents.title'), description: t('capabilities.agents.body') },
+    { icon: 'chat', title: t('capabilities.products.title'), description: t('capabilities.products.body') },
+    { icon: 'flask', title: t('capabilities.innovation.title'), description: t('capabilities.innovation.body') },
   ];
 
   return (
     <>
       <HeroStage />
 
-      {/* What changes for a client */}
-      <section className="section">
-        <div className="wrap">
-          <div className="stats">
-            {[
-              { value: t('stats.defects'), label: t('stats.defects.label') },
-              { value: t('stats.coverage'), label: t('stats.coverage.label') },
-              { value: t('stats.mttr'), label: t('stats.mttr.label') },
-            ].map((stat) => (
-              <StatCard key={stat.label} value={stat.value} label={stat.label} />
-            ))}
-          </div>
-
-          <div className="columns columns-4 block-gap" aria-label="Key value propositions">
-            {[
-              { title: t('value.insight.title'), description: t('value.insight.body') },
-              { title: t('value.iteration.title'), description: t('value.iteration.body') },
-              { title: t('value.reliability.title'), description: t('value.reliability.body') },
-              { title: t('value.outcomes.title'), description: t('value.outcomes.body') },
-            ].map((card) => (
-              <FeatureCard key={card.title} title={card.title} description={card.description} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What we do */}
+      {/* What we build with AI */}
       <section className="section" aria-labelledby="capabilities-heading">
         <div className="wrap">
           <div className="section-head section-head-split">
-            <div className="eyebrow">{t('capabilities.heading')}</div>
+            <div className="eyebrow">{t('capabilities.eyebrow')}</div>
             <h2 id="capabilities-heading">{t('capabilities.heading')}</h2>
             <p className="lead">{t('capabilities.description')}</p>
           </div>
 
           <div className="columns columns-4">
-            {capabilities.map((card) => (
+            {aiServices.map((card) => (
               <FeatureCard
                 key={card.title}
                 icon={<LineIcon name={card.icon} className="item-icon" />}
@@ -71,22 +46,10 @@ export default function HomeContent(): ReactElement {
         </div>
       </section>
 
-      {/* Who we are */}
-      <section id="about" className="section section-tone">
-        <div className="wrap split">
-          <h2>{t('about.section.heading')}</h2>
-          <div>
-            <p className="lead">{t('about.section.description')}</p>
-            <div className="page-actions">
-              <ButtonLink href="/about" variant="accent">
-                {t('about.section.cta')}
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* AI agents that do real work */}
+      <DarkShowcaseSection />
 
-      {/* How an engagement runs */}
+      {/* How an AI project runs */}
       <section className="section" aria-labelledby="process-heading">
         <div className="wrap">
           <h2 id="process-heading" className="section-head">
@@ -111,6 +74,47 @@ export default function HomeContent(): ReactElement {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* Who we are */}
+      <section id="about" className="section section-tone">
+        <div className="wrap split">
+          <h2>{t('about.section.heading')}</h2>
+          <div>
+            <p className="lead">{t('about.section.description')}</p>
+            <div className="page-actions">
+              <ButtonLink href="/about" variant="accent">
+                {t('about.section.cta')}
+              </ButtonLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The engineering behind it: results, and what makes AI hold up in production */}
+      <section className="section">
+        <div className="wrap">
+          <div className="stats">
+            {[
+              { value: t('stats.defects'), label: t('stats.defects.label') },
+              { value: t('stats.coverage'), label: t('stats.coverage.label') },
+              { value: t('stats.mttr'), label: t('stats.mttr.label') },
+            ].map((stat) => (
+              <StatCard key={stat.label} value={stat.value} label={stat.label} />
+            ))}
+          </div>
+
+          <div className="columns columns-4 block-gap" role="group" aria-label={t('value.label')}>
+            {[
+              { title: t('value.evals.title'), description: t('value.evals.body') },
+              { title: t('value.foundations.title'), description: t('value.foundations.body') },
+              { title: t('value.monitoring.title'), description: t('value.monitoring.body') },
+              { title: t('value.rollout.title'), description: t('value.rollout.body') },
+            ].map((card) => (
+              <FeatureCard key={card.title} title={card.title} description={card.description} />
+            ))}
+          </div>
         </div>
       </section>
 

@@ -64,27 +64,45 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'stats.mttr',
     'stats.mttr.label',
 
-    // Homepage value propositions
-    'value.insight.title',
-    'value.insight.body',
-    'value.iteration.title',
-    'value.iteration.body',
-    'value.reliability.title',
-    'value.reliability.body',
-    'value.outcomes.title',
-    'value.outcomes.body',
+    // Homepage engineering foundation
+    'value.evals.title',
+    'value.evals.body',
+    'value.foundations.title',
+    'value.foundations.body',
+    'value.monitoring.title',
+    'value.monitoring.body',
+    'value.rollout.title',
+    'value.rollout.body',
+    'value.label',
 
-    // Homepage capabilities section
+    // Homepage AI services
+    'capabilities.eyebrow',
     'capabilities.heading',
     'capabilities.description',
-    'capabilities.testing.title',
-    'capabilities.testing.body',
-    'capabilities.refactoring.title',
-    'capabilities.refactoring.body',
-    'capabilities.observability.title',
-    'capabilities.observability.body',
-    'capabilities.reliability.title',
-    'capabilities.reliability.body',
+    'capabilities.adoption.title',
+    'capabilities.adoption.body',
+    'capabilities.agents.title',
+    'capabilities.agents.body',
+    'capabilities.products.title',
+    'capabilities.products.body',
+    'capabilities.innovation.title',
+    'capabilities.innovation.body',
+
+    // Homepage AI agents
+    'showcase.heading',
+    'showcase.description',
+    'showcase.connected.title',
+    'showcase.connected.body',
+    'showcase.control.title',
+    'showcase.control.body',
+    'showcase.measured.title',
+    'showcase.measured.body',
+
+    // Homepage closing call to action
+    'finalCta.heading',
+    'finalCta.body',
+    'finalCta.primary',
+    'finalCta.secondary',
 
     // Homepage about section
     'about.section.heading',
