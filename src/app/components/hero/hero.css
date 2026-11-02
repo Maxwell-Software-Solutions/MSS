@@ -282,6 +282,13 @@ html[data-hero-passed] .hero-glow {
   display: none;
 }
 
+/* Below 1024px the header has its own Book a call button, so the hero keeps one booking prompt, not two */
+@media (max-width: 1023px) {
+  .hero-calendly {
+    display: none;
+  }
+}
+
 /* ---- Phones: one full screen. The headline at the top, the ribbon filling the screen behind it, and one
    gold action at the bottom within reach of a thumb. Each text block carries its own scrim, so the
    shader's fade under the text is switched off (--ribbon-cover). ---- */
@@ -347,8 +354,7 @@ html[data-hero-passed] .hero-glow {
     gap: var(--space-2);
   }
 
-  .hero-values,
-  .hero-calendly {
+  .hero-values {
     display: none;
   }
 
