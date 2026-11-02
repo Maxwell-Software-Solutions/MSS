@@ -26,7 +26,7 @@
   --cta-w: 20.833%;
   --cta-h: 8.889%;
   --cta-font: 1.91;
-  --cta-line: 0.09;
+  --cta-line: 0.0833; /* the outline, 1.6px of the film's 1920 */
 
   position: relative;
   background: var(--film-ink);
@@ -41,7 +41,7 @@
     --cta-w: 42.593%;
     --cta-h: 8%;
     --cta-font: 3.9;
-    --cta-line: 0.17;
+    --cta-line: 0.148; /* 1.6px of the film's 1080 */
   }
 }
 
@@ -160,8 +160,12 @@
 }
 
 /* The live "Book a call", laid over the one drawn on the film's last card. It covers the drawn one with the same
-   dark and the same gold, so the swap is a fade and nothing seems to change. Its size is a share of the picture's
-   width, so it keeps its place at every size and while the picture grows. */
+   fill, the same outline and the same gold, so the swap is a fade and nothing seems to change. Fill, outline and
+   text colour were tuned until the difference between it and the drawn one, as the browser shows each, was as small as
+   it gets (the film's own picture is softer than live text, so they are close, not equal). The drawn button's glow
+   is part of the film and stays under the live one, so the live one adds none of its own. The outline is an inset ring
+   rather than a border so that it can be a fraction of a pixel wide, as the drawn one is on most screens. Its size is a
+   share of the picture's width, so it keeps its place at every size and while the picture grows. */
 .promo-film-cta {
   position: absolute;
   z-index: 3;
@@ -173,13 +177,11 @@
   width: var(--cta-w);
   height: var(--cta-h);
   padding-top: 0.1em; /* the drawn text sits a hair lower in its pill than centred text does */
-  border: max(1px, calc(var(--cta-line) * 1cqw)) solid #d2b04a;
+  border: 0;
   border-radius: 999px;
-  background: #1f1a0b;
-  box-shadow:
-    inset 0 0 2.4cqw rgba(214, 176, 60, 0.27),
-    0 0 2.4cqw rgba(201, 162, 39, 0.14);
-  color: #d8bd63;
+  background: radial-gradient(ellipse 50% 73% at 50% 50%, rgb(50 43 16), rgb(44 38 14) 50%, rgb(30 25 11));
+  box-shadow: inset 0 0 0 calc(var(--cta-line) * 1cqw) #c2af63;
+  color: #d8be62;
   font-family: var(--font-sans);
   font-size: 1.1rem;
   font-size: calc(var(--cta-font) * 1cqw);
@@ -189,15 +191,20 @@
   text-decoration: none;
   white-space: nowrap;
   animation: promo-film-cta-in 0.5s ease both;
-  transition: color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  transition: color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .promo-film-cta:hover {
-  border-color: #efcd64;
   box-shadow:
-    inset 0 0 2.2cqw rgba(214, 176, 60, 0.3),
-    0 0 2.8cqw rgba(201, 162, 39, 0.26);
+    inset 0 0 0 calc(var(--cta-line) * 1cqw) #efcd64,
+    0 0 2.4cqw rgba(201, 162, 39, 0.3);
   color: #f4de96;
+}
+
+@media (forced-colors: active) {
+  .promo-film-cta {
+    border: 1px solid ButtonText;
+  }
 }
 
 .promo-film-cta:focus-visible {
