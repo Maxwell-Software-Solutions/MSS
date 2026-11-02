@@ -116,7 +116,7 @@ test.describe('Preview UI checks', () => {
 
     if (isSticky) {
       // Get the first visible text content element (skip decorative background elements)
-      const mainContent = page.locator('main .container > *').filter({ hasText: /.+/ }).first();
+      const mainContent = page.locator('main .wrap > *').filter({ hasText: /.+/ }).first();
       const contentBounds = await mainContent.boundingBox();
 
       if (contentBounds) {
@@ -133,7 +133,7 @@ test.describe('Preview UI checks', () => {
     await page.waitForLoadState('networkidle');
 
     // Find the primary CTA button (accepting either translated text or translation key)
-    const ctaButton = page.locator('a:has-text("Request Your Code Audit"), a:has-text("hero.cta.primary"), button:has-text("Request Your Code Audit"), button:has-text("hero.cta.primary")').first();
+    const ctaButton = page.locator('a:has-text("Discuss your AI project"), a:has-text("hero.cta.primary"), button:has-text("Discuss your AI project"), button:has-text("hero.cta.primary")').first();
     await ctaButton.scrollIntoViewIfNeeded();
 
     // Check initial state

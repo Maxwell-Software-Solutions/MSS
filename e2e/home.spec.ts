@@ -7,8 +7,8 @@ test.describe('Home Page', () => {
   test('loads hero and primary elements', async ({ page }) => {
     await page.goto('/');
     // Accept either translated text or translation keys (in case translations don't load in test)
-    await expect(page.getByRole('heading', { name: /Build with confidence|hero\.title/i })).toBeVisible();
-    await expect(page.getByRole('link', { name: /Request Your Code Audit|hero\.cta\.primary/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Put AI to work in your business|hero\.title/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Discuss your AI project|hero\.cta\.primary/i }).first()).toBeVisible();
     await expect(page.getByRole('heading', { name: /Case studies|projects\.heading/i })).toBeVisible();
   });
 
@@ -55,13 +55,13 @@ test.describe('Home Page', () => {
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
 
-    // Wait for translations to load and look for the main capabilities heading (not sub-headings)
-    const capabilities = page.locator('h2').filter({ hasText: /^(Capabilities|capabilities\.heading)$/i }).first();
+    // Wait for translations to load and look for the AI services heading (not sub-headings)
+    const capabilities = page.locator('h2').filter({ hasText: /^(AI services|capabilities\.heading)$/i }).first();
     await expect(capabilities).toBeVisible();
     await capabilities.screenshot({ path: 'e2e/screenshots/home-capabilities-heading.png' });
 
     // Wait for process heading
-    const process = page.locator('h2').filter({ hasText: /(How engagements work|process\.heading)/ }).first();
+    const process = page.locator('h2').filter({ hasText: /(How an AI project runs|process\.heading)/ }).first();
     await expect(process).toBeVisible();
     await process.screenshot({ path: 'e2e/screenshots/home-process-heading.png' });
 
@@ -70,8 +70,8 @@ test.describe('Home Page', () => {
     await expect(testimonials).toBeVisible();
     await testimonials.screenshot({ path: 'e2e/screenshots/home-testimonials-heading.png' });
 
-    // Capture a focused screenshot of the value propositions grid using its aria-label
-    const valueProps = page.getByLabel('Key value propositions');
+    // Capture a focused screenshot of the engineering foundation grid using its aria-label
+    const valueProps = page.getByLabel('The engineering behind production AI');
     await expect(valueProps).toBeVisible();
     await valueProps.screenshot({ path: 'e2e/screenshots/home-value-props.png' });
   });
