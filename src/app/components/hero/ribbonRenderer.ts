@@ -83,6 +83,7 @@ in vec2 aCorner;
 uniform vec2 uGrid;
 uniform vec2 uRes;
 uniform vec2 uBand;
+uniform vec2 uSpan;
 uniform float uT;
 uniform float uPx;
 uniform float uReveal;
@@ -95,7 +96,7 @@ out vec4 vColor;
 ${RIBBON_GLSL}
 vec4 place(float col, float row) {
   vec4 q = ribbon(mix(-0.02, 1.02, col / uGrid.x), row, uGrid.y, uT);
-  return vec4(vec2(q.x, uBand.x + uBand.y * q.y) * uRes, q.z, q.w);
+  return vec4(vec2(uSpan.x + uSpan.y * q.x, uBand.x + uBand.y * q.y) * uRes, q.z, q.w);
 }
 void main() {
   float end = aCorner.x;
@@ -241,6 +242,7 @@ export function startRibbon(
     grid: uniform('uGrid'),
     res: uniform('uRes'),
     band: uniform('uBand'),
+    span: uniform('uSpan'),
     t: uniform('uT'),
     px: uniform('uPx'),
     reveal: uniform('uReveal'),
@@ -277,6 +279,11 @@ export function startRibbon(
     layoutDirty = false;
     const cssWidth = stage.clientWidth;
     const cssHeight = stage.clientHeight;
+    const stageBox = stage.getBoundingClientRect();
+    const copyBox = copy.getBoundingClientRect();
+    const posterBox = poster.getBoundingClientRect();
+    // on phones the poster runs wider than the stage; the lines keep the same density across it
+    const span = posterBox.width / stageBox.width;
     // at least two samples per CSS pixel, even on standard screens: dense lines stay smooth, not shimmering
     dpr = quality < 1 ? 1 : Math.min(3, Math.max(2, window.devicePixelRatio || 1));
     width = Math.round(cssWidth * dpr);
@@ -286,7 +293,7 @@ export function startRibbon(
     gl.viewport(0, 0, width, height);
 
     const nextRows = Math.round(ribbonRows(cssWidth) * quality);
-    const nextCols = Math.round(ribbonColumns(cssWidth) * quality);
+    const nextCols = Math.round(ribbonColumns(cssWidth * span) * quality);
     if (nextRows !== rows || nextCols !== cols) {
       rows = nextRows;
       cols = nextCols;
@@ -301,18 +308,18 @@ export function startRibbon(
       gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
     }
 
-    const stageBox = stage.getBoundingClientRect();
-    const copyBox = copy.getBoundingClientRect();
-    const posterBox = poster.getBoundingClientRect();
     const band = posterBox.height / stageBox.height;
     gl.uniform2f(u.grid, cols, rows);
     gl.uniform2f(u.res, width, height);
     gl.uniform1f(u.px, dpr);
     // CSS places the poster; the live lines draw into the same box so the two line up
     gl.uniform2f(u.band, (posterBox.top - stageBox.top) / stageBox.height, band);
+    gl.uniform2f(u.span, (posterBox.left - stageBox.left) / stageBox.width, span);
+    // Phones shade the text with their own CSS scrim (--ribbon-cover: none), so no line fades here
+    const cover = getComputedStyle(stage).getPropertyValue('--ribbon-cover').trim() !== 'none';
     gl.uniform4f(
       u.copy,
-      (copyBox.right - stageBox.left) * dpr,
+      cover ? (copyBox.right - stageBox.left) * dpr : -1e6,
       (copyBox.bottom - stageBox.top) * dpr,
       144 * dpr,
       (band < 0.99 ? 48 : 80) * dpr

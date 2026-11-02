@@ -117,7 +117,10 @@ export default function HeroStage(): ReactElement {
       <div className="hero-content mx-auto max-w-6xl px-6 sm:px-10">
         <div ref={copyRef} className="hero-copy">
           <h1 className="hero-title">{t('hero.title')}</h1>
-          <p className="hero-lede">{t('hero.subtitle')}</p>
+          <p className="hero-lede">
+            <span className="hero-lede-full">{t('hero.subtitle')}</span>
+            <span className="hero-lede-short">{t('hero.subtitle.short')}</span>
+          </p>
           <div className="hero-actions flex flex-col gap-3 sm:flex-row">
             <Link
               href="/contact"

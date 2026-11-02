@@ -35,6 +35,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     // Homepage hero (P0 — must render server-side for Google to see H1)
     'hero.title',
     'hero.subtitle',
+    'hero.subtitle.short',
     'hero.cta.primary',
     'hero.cta.secondary',
     'hero.values',

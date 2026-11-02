@@ -277,6 +277,156 @@ html[data-hero-passed] .hero-glow {
   }
 }
 
+/* The one-line subheading is for phones */
+.hero-lede-short {
+  display: none;
+}
+
+/* ---- Phones: one full screen. The headline at the top, the ribbon filling the screen behind it, and one
+   gold action at the bottom within reach of a thumb. Each text block carries its own scrim, so the
+   shader's fade under the text is switched off (--ribbon-cover). ---- */
+@media (max-width: 767px) {
+  .hero-stage {
+    --ribbon-cover: none;
+    --hero-scrim: color-mix(in srgb, var(--hero-ink) 72%, transparent);
+    --hero-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+    padding-top: calc(var(--header-height) + clamp(1rem, 4svh, 2.5rem));
+    padding-bottom: var(--space-5);
+  }
+
+  .hero-content,
+  .hero-copy {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  /* The ribbon runs wider than the screen, so it keeps the proportions it has on a desktop: noise
+     coming in low on the left, the twist in the middle and the wave rising behind the headline. */
+  .hero-band {
+    position: absolute;
+    inset: -2% 0 10%;
+    min-height: 0;
+  }
+
+  .hero-poster {
+    inset: 0 auto 0 -35%;
+    width: 165%;
+    height: 100%;
+  }
+
+  .hero-copy::before {
+    display: none;
+  }
+
+  .hero-title {
+    font-size: clamp(2.25rem, min(12vw, 6.4svh), 3.5rem);
+    line-height: 1.02;
+  }
+
+  .hero-lede {
+    position: relative;
+    max-width: 24rem;
+    margin-top: var(--space-4);
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  .hero-lede-full {
+    display: none;
+  }
+
+  .hero-lede-short {
+    display: inline;
+  }
+
+  .hero-actions {
+    position: relative;
+    margin-top: auto;
+    padding-top: var(--space-6);
+    gap: var(--space-2);
+  }
+
+  .hero-values,
+  .hero-calendly {
+    display: none;
+  }
+
+  .hero-lede::before,
+  .hero-actions::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: -100vw;
+    right: -100vw;
+    pointer-events: none;
+  }
+
+  .hero-lede::before {
+    top: -100svh;
+    bottom: -4rem;
+    background: linear-gradient(to top, transparent, var(--hero-scrim) 4rem);
+  }
+
+  .hero-actions::before {
+    top: -2rem;
+    bottom: -100svh;
+    background: linear-gradient(to bottom, transparent, var(--hero-scrim) 4rem);
+  }
+
+  /* the second action is a quiet text link */
+  .hero-stage .hero-btn-quiet,
+  .hero-stage .hero-btn-quiet:hover,
+  .hero-stage .hero-btn-quiet:active {
+    align-self: flex-start;
+    justify-content: flex-start;
+    width: auto;
+    min-height: 44px;
+    padding: 0;
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .hero-stage .hero-btn-quiet:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 0.3em;
+  }
+
+  .hero-stage .hero-btn-quiet::after {
+    content: '';
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-accent);
+    -webkit-mask: var(--hero-arrow) center / contain no-repeat;
+    mask: var(--hero-arrow) center / contain no-repeat;
+    transition: transform var(--transition-base);
+  }
+
+  .hero-stage .hero-btn-quiet:hover::after {
+    transform: translateX(3px);
+  }
+}
+
+/* a phone on its side is already wide, so the ribbon only spans the screen */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hero-poster {
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .hero-stage .hero-btn-quiet::after {
+    transition: none;
+  }
+
+  .hero-stage .hero-btn-quiet:hover::after {
+    transform: none;
+  }
+}
+
 /* ---- Header over the hero ---- */
 html:has(.hero-stage) .site-header {
   transition: background-color var(--transition-base), border-color var(--transition-base);

@@ -10,7 +10,7 @@ export default function CalendlyCTA(): ReactElement {
   const { t } = useLanguage();
 
   return (
-    <div className="mt-3 flex">
+    <div className="hero-calendly mt-3 flex">
       <a
         href={CALENDLY_URL}
         target="_blank"
