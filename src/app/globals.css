@@ -610,3 +610,20 @@ html:has(#CybotCookiebotDialog) { scroll-padding-bottom: 220px; }
 @media (max-width: 639px) {
   html:has(#CybotCookiebotDialog) { scroll-padding-bottom: 140px; }
 }
+
+/* ============================================
+   PHONES AND TABLETS — running text is never smaller than 16px.
+   Unlayered, so it outranks the text-sm utilities used inside articles. Code keeps its size.
+   ============================================ */
+@media (max-width: 1023px) {
+  .prose-flow :is(.text-sm, .text-xs):not(pre, code, .font-mono, .article-head *),
+  .toc ul,
+  .alert-body,
+  .page-head .lead + p + p,
+  .tier-for,
+  .tier .checks,
+  .table,
+  .prose-flow table {
+    font-size: 1rem;
+  }
+}
