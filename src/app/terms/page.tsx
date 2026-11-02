@@ -1,15 +1,19 @@
 ﻿import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
-import TermsPageComponent from './TermsPage';
+import { LEGAL_DOCS } from '@/lib/legal';
+import { parseLanguage, resolveLanguage } from '@/lib/legal/language';
+import TermsPage from './TermsPage';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service — Maxwell Software Solutions',
-  description: 'The conditions that govern use of the Maxwell Software Solutions website and related content.',
-  alternates: {
-    canonical: '/terms',
-  },
-};
+interface PageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
 
-export default function Page(): ReactElement {
-  return <TermsPageComponent />;
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const language = await resolveLanguage(parseLanguage((await searchParams).lang));
+  const { title, description } = LEGAL_DOCS.terms[language].meta;
+  return { title, description, alternates: { canonical: '/terms' } };
+}
+
+export default async function Page({ searchParams }: PageProps): Promise<ReactElement> {
+  return <TermsPage requestedLanguage={parseLanguage((await searchParams).lang)} />;
 }
