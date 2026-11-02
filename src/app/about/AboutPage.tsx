@@ -54,24 +54,31 @@ export default function AboutPage(): ReactElement {
             <p className="lead">{t('about.founders.description')}</p>
           </div>
 
-          <div className="columns columns-3">
+          <div className="columns columns-4">
             {founders.map((f) => {
               const firstName = f.name.split(' ')[0]?.toLowerCase() || 'founder';
-              const imageExtension =
-                firstName === 'maxwell' || firstName === 'marek' || firstName === 'petras' ? 'jpg' : 'svg';
-              const imageSrc = `/images/founders/${firstName}.${imageExtension}`;
+              const initials = f.name
+                .split(' ')
+                .map((word) => word.charAt(0))
+                .join('');
               const founderKey = firstName;
 
               return (
                 <div key={f.name} className="person">
                   <div className={`person-photo person-photo-${firstName}`}>
-                    <Image
-                      src={imageSrc}
-                      alt={f.alt}
-                      fill
-                      sizes="(min-width: 768px) 33vw, 40vw"
-                      className="object-cover"
-                    />
+                    {f.photo ? (
+                      <Image
+                        src={f.photo}
+                        alt={f.alt}
+                        fill
+                        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 40vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <span className="person-monogram" aria-hidden="true">
+                        {initials}
+                      </span>
+                    )}
                   </div>
                   <div>
                     <h3>{t(`about.founder.${founderKey}.name`)}</h3>
