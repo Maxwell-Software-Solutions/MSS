@@ -3,6 +3,7 @@
 import type { ReactElement } from 'react';
 import Link from 'next/link';
 import HeroStage from './components/hero/HeroStage';
+import PromoFilm from './components/PromoFilm';
 import DeferredSections from './components/DeferredSections';
 import DarkShowcaseSection from './components/DarkShowcaseSection';
 import RealAiWork from './components/RealAiWork';
@@ -27,6 +28,9 @@ export default function HomeContent(): ReactElement {
   return (
     <>
       <HeroStage />
+
+      {/* Our work, in a short film */}
+      <PromoFilm />
 
       {/* What we build with AI */}
       <section className="section" aria-labelledby="capabilities-heading">
