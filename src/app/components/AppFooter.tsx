@@ -23,7 +23,8 @@ const socialLinks = [
   { href: 'https://github.com/Maxwell-Software-Solutions', label: 'GitHub' },
 ];
 
-const linkClass = 'text-secondary transition-colors hover:text-foreground';
+// Below desktop every link is a 44px row, so a thumb hits the one it means
+const linkClass = 'inline-flex min-h-11 items-center text-secondary transition-colors hover:text-foreground lg:min-h-0';
 
 export default function SiteFooter(): ReactElement {
   // Use a fixed year or suppress hydration warning since year changes are acceptable
@@ -38,7 +39,7 @@ export default function SiteFooter(): ReactElement {
 
             <p className="mt-5 text-base font-medium text-foreground">Crafting reliable software</p>
 
-            <p className="mt-2 max-w-md leading-relaxed">
+            <p className="mt-2 max-w-md text-base leading-relaxed lg:text-sm">
               We help engineering leaders modernise legacy systems, accelerate delivery, and build teams that ship with
               confidence.
             </p>
@@ -47,7 +48,10 @@ export default function SiteFooter(): ReactElement {
               <div className="sm:col-span-2">
                 <dt className="text-muted">Email</dt>
                 <dd className="mt-1">
-                  <a className="break-words font-medium text-foreground hover:text-accent" href={CONTACT_EMAIL_MAILTO}>
+                  <a
+                    className="inline-flex min-h-11 items-center break-words font-medium text-foreground hover:text-accent lg:min-h-0"
+                    href={CONTACT_EMAIL_MAILTO}
+                  >
                     {CONTACT_EMAIL}
                   </a>
                 </dd>
@@ -55,7 +59,10 @@ export default function SiteFooter(): ReactElement {
               <div>
                 <dt className="text-muted">Phone</dt>
                 <dd className="mt-1">
-                  <a className="font-medium text-foreground hover:text-accent" href={CONTACT_PHONE_TEL}>
+                  <a
+                    className="inline-flex min-h-11 items-center font-medium text-foreground hover:text-accent lg:min-h-0"
+                    href={CONTACT_PHONE_TEL}
+                  >
                     {CONTACT_PHONE}
                   </a>
                 </dd>
@@ -69,7 +76,7 @@ export default function SiteFooter(): ReactElement {
 
           <nav aria-label="Company">
             <p className="font-medium text-foreground">Company</p>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-2 lg:mt-4 lg:space-y-3">
               {primaryLinks.map((link) => (
                 <li key={link.href}>
                   <Link className={linkClass} href={link.href}>
@@ -82,7 +89,7 @@ export default function SiteFooter(): ReactElement {
 
           <nav aria-label="Resources">
             <p className="font-medium text-foreground">Resources</p>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-2 lg:mt-4 lg:space-y-3">
               {resourceLinks.map((link) => (
                 <li key={link.href}>
                   <Link className={linkClass} href={link.href}>
@@ -94,14 +101,14 @@ export default function SiteFooter(): ReactElement {
 
             <div className="mt-8">
               <p className="font-medium text-foreground">Connect</p>
-              <ul className="mt-4 flex flex-col gap-3">
+              <ul className="mt-2 flex flex-col lg:mt-4 lg:gap-3">
                 {socialLinks.map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className={`inline-flex items-center gap-2 ${linkClass}`}
+                      className={`gap-2 ${linkClass}`}
                     >
                       {link.label === 'LinkedIn' && (
                         <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -126,11 +133,15 @@ export default function SiteFooter(): ReactElement {
           </nav>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between lg:text-xs">
           <p suppressHydrationWarning>© {currentYear} Maxwell Software Solutions. All rights reserved.</p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
+          <div className="flex flex-wrap gap-x-5">
             {resourceLinks.map((link) => (
-              <Link key={link.href} className="transition-colors hover:text-foreground" href={link.href}>
+              <Link
+                key={link.href}
+                className="inline-flex min-h-11 items-center transition-colors hover:text-foreground lg:min-h-0"
+                href={link.href}
+              >
                 {link.label}
               </Link>
             ))}
