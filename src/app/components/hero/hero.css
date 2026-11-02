@@ -84,6 +84,9 @@ html:has(.hero-stage) {
   left: 0;
   width: 40%;
   background: linear-gradient(100deg, transparent, var(--gold-tint) 50%, transparent);
+  /* the tilted gradient is already gold at the band's side edges on a tall phone hero; this keeps them soft */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 35%, #000 65%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 35%, #000 65%, transparent);
   mix-blend-mode: multiply;
   pointer-events: none;
   animation: hero-glow 4s linear infinite;
