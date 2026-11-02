@@ -44,14 +44,6 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'hero.calendly.cta',
     'hero.calendly.aria',
 
-    // Homepage stats
-    'stats.defects',
-    'stats.defects.label',
-    'stats.coverage',
-    'stats.coverage.label',
-    'stats.mttr',
-    'stats.mttr.label',
-
     // Homepage engineering foundation
     'value.evals.title',
     'value.evals.body',
@@ -110,23 +102,6 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'process.step3.body',
     'process.step4.title',
     'process.step4.body',
-
-    // Homepage projects section
-    'projects.eyebrow',
-    'projects.heading',
-    'projects.description',
-    'projects.description.short',
-    'projects.retail.title',
-    'projects.retail.meta',
-    'projects.retail.outcome',
-    'projects.fintech.title',
-    'projects.fintech.meta',
-    'projects.fintech.outcome',
-    'projects.saas.title',
-    'projects.saas.meta',
-    'projects.saas.outcome',
-    'projects.viewStudy',
-    'projects.browseAll',
 
     // Real AI work (home page and case studies page) and the founder note
     'realWork.eyebrow',
@@ -296,7 +271,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
   ];
 
   // Whole groups for pages that read keys without a fallback, so their server HTML never shows a raw key
-  const criticalPrefixes = ['contactPage.', 'contactForm.', 'blog.', 'caseStudies.'];
+  const criticalPrefixes = ['contactPage.', 'contactForm.', 'blog.'];
 
   const critical: Record<string, string> = {};
   for (const key of criticalKeys) {
