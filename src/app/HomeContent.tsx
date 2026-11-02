@@ -7,6 +7,7 @@ import HeroStage from './components/hero/HeroStage';
 import DeferredSections from './components/DeferredSections';
 import DarkShowcaseSection from './components/DarkShowcaseSection';
 import Rail from './components/Rail';
+import { useReveal } from './components/useReveal';
 import { useLanguage } from '@/lib/LanguageContext';
 import { FeatureCard, ButtonLink, LineIcon, StatCard } from './components/ui';
 import type { LineIconName } from './components/ui';
@@ -14,6 +15,7 @@ import './home.css';
 
 export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
+  useReveal();
 
   const aiServices: Array<{ icon: LineIconName; title: string; description: string }> = [
     { icon: 'search', title: t('capabilities.adoption.title'), description: t('capabilities.adoption.body') },
