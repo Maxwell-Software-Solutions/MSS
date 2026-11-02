@@ -12,9 +12,12 @@ export default function DarkShowcaseSection(): ReactElement {
       <div className="wrap">
         <div className="section-head section-head-split">
           <h2 id="showcase-heading">{t('showcase.heading')}</h2>
-          <p className="lead">{t('showcase.description')}</p>
+          <p className="lead">
+            <span className="copy-long">{t('showcase.description')}</span>
+            <span className="copy-short">{t('showcase.description.short')}</span>
+          </p>
         </div>
-        <div className="columns columns-3">
+        <div className="columns columns-3 home-points">
           {['connected', 'control', 'measured'].map((key) => (
             <div key={key} className="item">
               <h3>{t(`showcase.${key}.title`)}</h3>

@@ -67,6 +67,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'capabilities.eyebrow',
     'capabilities.heading',
     'capabilities.description',
+    'capabilities.description.short',
     'capabilities.adoption.title',
     'capabilities.adoption.body',
     'capabilities.agents.title',
@@ -79,6 +80,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     // Homepage AI agents
     'showcase.heading',
     'showcase.description',
+    'showcase.description.short',
     'showcase.connected.title',
     'showcase.connected.body',
     'showcase.control.title',
@@ -89,6 +91,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     // Homepage closing call to action
     'finalCta.heading',
     'finalCta.body',
+    'finalCta.body.short',
     'finalCta.primary',
     'finalCta.secondary',
 
@@ -112,6 +115,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'projects.eyebrow',
     'projects.heading',
     'projects.description',
+    'projects.description.short',
     'projects.retail.title',
     'projects.retail.meta',
     'projects.retail.outcome',
@@ -127,6 +131,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     // Homepage contact section
     'contact.heading',
     'contact.description',
+    'contact.description.short',
     'contact.cta.primary',
     'contact.cta.secondary',
     'contact.linkedin.label',

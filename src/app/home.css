@@ -1,0 +1,171 @@
+/* The home page on phones: fewer words on each screen, bigger headings and more air. Every rule sits
+   below 768px, except the ones that keep phone-only copy hidden, so tablets and desktops are untouched.
+   The page is the one whose <main> starts with the hero. */
+
+.copy-short,
+.phone-only {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .copy-long {
+    display: none;
+  }
+
+  .copy-short {
+    display: inline;
+  }
+
+  .phone-only {
+    display: block;
+  }
+
+  main:has(> .hero-stage) {
+    --section-space: 4.5rem;
+    --arrow-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  }
+
+  main:has(> .hero-stage) :is(.section, .band) h2 {
+    font-size: clamp(2rem, 9.4vw, 2.5rem);
+    line-height: 1.08;
+  }
+
+  main:has(> .hero-stage) .section-head .lead {
+    margin-top: var(--space-4);
+  }
+
+  /* On a phone the story runs services, agents, process, contact. The company profile is one tap away
+     in the menu, so its section folds away here. */
+  .home-about {
+    display: none;
+  }
+
+  .home-about + .section {
+    padding-top: 0;
+  }
+
+  /* AI agents: three short promises, each under a gold rule */
+  .home-points {
+    row-gap: var(--space-6);
+  }
+
+  .home-points > .item::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 2px;
+    margin-bottom: var(--space-4);
+    background: var(--color-accent);
+  }
+
+  .home-points h3 {
+    font-size: 1.25rem;
+  }
+
+  /* How a project runs: one thread through the four steps */
+  main:has(> .hero-stage) .steps {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+  }
+
+  main:has(> .hero-stage) .step {
+    position: relative;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    padding: 0 0 var(--space-6);
+    border-top: 0;
+  }
+
+  main:has(> .hero-stage) .step:last-child {
+    padding-bottom: 0;
+  }
+
+  main:has(> .hero-stage) .step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 2.75rem;
+    bottom: 0.5rem;
+    left: calc(1.125rem - 0.5px);
+    width: 1px;
+    background: var(--color-border-strong);
+  }
+
+  main:has(> .hero-stage) .step-index span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    font-size: 0.8125rem;
+    line-height: 1;
+  }
+
+  main:has(> .hero-stage) .step h3 {
+    padding-top: 0.25rem;
+    font-size: 1.25rem;
+  }
+
+  /* Results read as one row of three numbers */
+  main:has(> .hero-stage) .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--space-4);
+  }
+
+  main:has(> .hero-stage) .stat {
+    display: block;
+    padding-block: var(--space-4) 0;
+  }
+
+  main:has(> .hero-stage) .stat-value {
+    font-size: clamp(1.625rem, 7.6vw, 2.25rem);
+  }
+
+  main:has(> .hero-stage) .stat-label {
+    margin-top: var(--space-2);
+  }
+
+  /* The second action in a band is a quiet text link, as in the hero */
+  .link-quiet,
+  .link-quiet:hover,
+  .link-quiet:active {
+    align-self: flex-start;
+    justify-content: flex-start;
+    width: auto;
+    min-height: 44px;
+    padding: 0;
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .link-quiet:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 0.3em;
+  }
+
+  .link-quiet::after {
+    content: '';
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-accent);
+    -webkit-mask: var(--arrow-mask) center / contain no-repeat;
+    mask: var(--arrow-mask) center / contain no-repeat;
+    transition: transform var(--transition-base);
+  }
+
+  .link-quiet:hover::after {
+    transform: translateX(3px);
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .link-quiet::after {
+    transition: none;
+  }
+
+  .link-quiet:hover::after {
+    transform: none;
+  }
+}

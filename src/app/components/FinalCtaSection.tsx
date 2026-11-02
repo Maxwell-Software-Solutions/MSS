@@ -11,12 +11,15 @@ export default function FinalCtaSection(): ReactElement {
     <section className="band" aria-labelledby="final-cta-heading">
       <div className="wrap band-split">
         <h2 id="final-cta-heading">{t('finalCta.heading')}</h2>
-        <p>{t('finalCta.body')}</p>
+        <p>
+          <span className="copy-long">{t('finalCta.body')}</span>
+          <span className="copy-short">{t('finalCta.body.short')}</span>
+        </p>
         <div className="band-actions">
           <ButtonLink href="/contact" variant="accent" size="lg">
             {t('finalCta.primary')}
           </ButtonLink>
-          <ButtonLink href="/services" variant="ghost" size="lg">
+          <ButtonLink href="/services" variant="ghost" size="lg" className="link-quiet">
             {t('finalCta.secondary')}
           </ButtonLink>
         </div>

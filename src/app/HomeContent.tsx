@@ -9,6 +9,7 @@ import DarkShowcaseSection from './components/DarkShowcaseSection';
 import { useLanguage } from '@/lib/LanguageContext';
 import { FeatureCard, ButtonLink, LineIcon, StatCard } from './components/ui';
 import type { LineIconName } from './components/ui';
+import './home.css';
 
 export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
@@ -30,7 +31,10 @@ export default function HomeContent(): ReactElement {
           <div className="section-head section-head-split">
             <div className="eyebrow">{t('capabilities.eyebrow')}</div>
             <h2 id="capabilities-heading">{t('capabilities.heading')}</h2>
-            <p className="lead">{t('capabilities.description')}</p>
+            <p className="lead">
+              <span className="copy-long">{t('capabilities.description')}</span>
+              <span className="copy-short">{t('capabilities.description.short')}</span>
+            </p>
           </div>
 
           <div className="columns columns-4">
@@ -78,7 +82,7 @@ export default function HomeContent(): ReactElement {
       </section>
 
       {/* Who we are */}
-      <section id="about" className="section section-tone">
+      <section id="about" className="section section-tone home-about">
         <div className="wrap split">
           <h2>{t('about.section.heading')}</h2>
           <div>
@@ -95,6 +99,7 @@ export default function HomeContent(): ReactElement {
       {/* The engineering behind it: results, and what makes AI hold up in production */}
       <section className="section">
         <div className="wrap">
+          <h2 className="section-head phone-only">{t('value.label')}</h2>
           <div className="stats">
             {[
               { value: t('stats.defects'), label: t('stats.defects.label') },
@@ -124,7 +129,10 @@ export default function HomeContent(): ReactElement {
           <div className="section-head section-head-split">
             <div className="eyebrow">{t('projects.eyebrow')}</div>
             <h2>{t('projects.heading')}</h2>
-            <p className="lead">{t('projects.description')}</p>
+            <p className="lead">
+              <span className="copy-long">{t('projects.description')}</span>
+              <span className="copy-short">{t('projects.description.short')}</span>
+            </p>
           </div>
 
           <div className="columns columns-3">
@@ -201,12 +209,15 @@ export default function HomeContent(): ReactElement {
         <div className="wrap">
           <div className="band-split">
             <h2>{t('contact.heading')}</h2>
-            <p>{t('contact.description')}</p>
+            <p>
+              <span className="copy-long">{t('contact.description')}</span>
+              <span className="copy-short">{t('contact.description.short')}</span>
+            </p>
             <div className="band-actions">
               <Link href="/contact" className="btn btn-accent btn-lg">
                 {t('contact.cta.primary')}
               </Link>
-              <ButtonLink href="/services" variant="ghost" size="lg">
+              <ButtonLink href="/services" variant="ghost" size="lg" className="link-quiet">
                 {t('contact.cta.secondary')}
               </ButtonLink>
             </div>
