@@ -9,6 +9,7 @@ interface CookieSettingsButtonProps {
   /** Said when the consent banner cannot be opened on this page. */
   unavailable: string;
   className?: string;
+  statusClassName?: string;
 }
 
 /** Opens the Cookiebot banner so a visitor can change or withdraw consent; says so if the banner is not there. */
@@ -16,6 +17,7 @@ export default function CookieSettingsButton({
   label,
   unavailable,
   className = 'btn',
+  statusClassName = 'legal-status',
 }: CookieSettingsButtonProps): ReactElement {
   const [missing, setMissing] = useState(false);
 
@@ -29,7 +31,7 @@ export default function CookieSettingsButton({
         {label}
       </button>
       {missing && (
-        <span role="status" className="legal-status">
+        <span role="status" className={statusClassName}>
           {unavailable}
         </span>
       )}

@@ -32,6 +32,19 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'footer.tagline',
     'footer.description',
 
+    // Footer: provider details and legal links, on every page
+    'footer.privacy',
+    'footer.terms',
+    'footer.security',
+    'footer.cookieSettings',
+    'footer.cookieUnavailable',
+    'footer.legal.heading',
+    'footer.legal.code',
+    'footer.legal.register',
+    'footer.legal.office',
+    'footer.legal.country',
+    'footer.legal.email',
+
     // Homepage hero (P0 — must render server-side for Google to see H1)
     'hero.title',
     'hero.subtitle',

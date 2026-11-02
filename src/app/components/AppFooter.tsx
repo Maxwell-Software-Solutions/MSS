@@ -3,8 +3,10 @@ import type { ReactElement } from 'react';
 import Link from 'next/link';
 
 import BrandLogo from './BrandLogo';
+import CookieSettingsButton from './legal/CookieSettingsButton';
 import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from '../contact/contact.constants';
 import { useLanguage } from '@/lib/LanguageContext';
+import { COMPANY } from '@/lib/legal/company';
 
 const primaryLinks = [
   { href: '/services', label: 'Services' },
@@ -14,9 +16,9 @@ const primaryLinks = [
 ];
 
 const resourceLinks = [
-  { href: '/privacy', label: 'Privacy' },
-  { href: '/terms', label: 'Terms' },
-  { href: '/security', label: 'Security' },
+  { href: '/privacy', labelKey: 'footer.privacy' },
+  { href: '/terms', labelKey: 'footer.terms' },
+  { href: '/security', labelKey: 'footer.security' },
 ];
 
 const socialLinks = [
@@ -93,7 +95,7 @@ export default function SiteFooter(): ReactElement {
               {resourceLinks.map((link) => (
                 <li key={link.href}>
                   <Link className={linkClass} href={link.href}>
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -133,18 +135,56 @@ export default function SiteFooter(): ReactElement {
           </nav>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between lg:text-xs">
-          <p suppressHydrationWarning>© {currentYear} Maxwell Software Solutions. All rights reserved.</p>
-          <div className="flex flex-wrap gap-x-5">
-            {resourceLinks.map((link) => (
-              <Link
-                key={link.href}
+        <div className="mt-12 border-t border-border pt-6 text-sm text-muted lg:text-xs">
+          {/* Who runs the site: legal name, company code, seat and e-mail, in the visitor's language */}
+          <address className="not-italic" aria-label={t('footer.legal.heading')}>
+            <p className="font-medium text-foreground">{COMPANY.registerName}</p>
+            <dl className="mt-2 flex flex-wrap gap-x-6 gap-y-1">
+              <div className="flex flex-wrap items-center gap-x-1.5">
+                <dt>{t('footer.legal.code')}:</dt>
+                <dd className="text-foreground">
+                  {COMPANY.code}, {t('footer.legal.register')}
+                </dd>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-1.5">
+                <dt>{t('footer.legal.office')}:</dt>
+                <dd className="text-foreground">
+                  {COMPANY.street}, {COMPANY.city}, {t('footer.legal.country')}
+                </dd>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-1.5">
+                <dt>{t('footer.legal.email')}:</dt>
+                <dd>
+                  <a
+                    className="inline-flex min-h-11 items-center break-words text-foreground hover:text-accent lg:min-h-0"
+                    href={CONTACT_EMAIL_MAILTO}
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </address>
+
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p suppressHydrationWarning>© {currentYear} Maxwell Software Solutions. All rights reserved.</p>
+            <div className="flex flex-wrap gap-x-5">
+              {resourceLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  className="inline-flex min-h-11 min-w-11 items-center transition-colors hover:text-foreground lg:min-h-0 lg:min-w-0"
+                  href={link.href}
+                >
+                  {t(link.labelKey)}
+                </Link>
+              ))}
+              <CookieSettingsButton
+                label={t('footer.cookieSettings')}
+                unavailable={t('footer.cookieUnavailable')}
                 className="inline-flex min-h-11 min-w-11 items-center transition-colors hover:text-foreground lg:min-h-0 lg:min-w-0"
-                href={link.href}
-              >
-                {link.label}
-              </Link>
-            ))}
+                statusClassName="block w-full text-xs"
+              />
+            </div>
           </div>
         </div>
       </div>
