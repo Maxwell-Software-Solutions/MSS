@@ -24,7 +24,8 @@ const socialLinks = [
 ];
 
 // Below desktop every link is a 44px row, so a thumb hits the one it means
-const linkClass = 'inline-flex min-h-11 items-center text-secondary transition-colors hover:text-foreground lg:min-h-0';
+const linkClass =
+  'inline-flex min-h-11 min-w-11 items-center text-secondary transition-colors hover:text-foreground lg:min-h-0 lg:min-w-0';
 
 export default function SiteFooter(): ReactElement {
   // Use a fixed year or suppress hydration warning since year changes are acceptable
@@ -139,7 +140,7 @@ export default function SiteFooter(): ReactElement {
             {resourceLinks.map((link) => (
               <Link
                 key={link.href}
-                className="inline-flex min-h-11 items-center transition-colors hover:text-foreground lg:min-h-0"
+                className="inline-flex min-h-11 min-w-11 items-center transition-colors hover:text-foreground lg:min-h-0 lg:min-w-0"
                 href={link.href}
               >
                 {link.label}
