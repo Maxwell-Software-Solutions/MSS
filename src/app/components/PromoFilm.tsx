@@ -619,6 +619,7 @@ export default function PromoFilm(): ReactElement {
                     <track kind="captions" srcLang="lt" label="Lietuvių" src="/video/maxwell-film.lt.vtt" />
                   </video>
                   <div className="promo-film-floor" aria-hidden="true" />
+                  <div className="promo-film-veil" aria-hidden="true" />
                   {ended ? (
                     <a className="promo-film-cta" href="/book" target="_blank" rel="noopener noreferrer" aria-label={t('cta.bookCall.aria')} onClick={() => trackCTAClick('promo_film')}>
                       {t('cta.bookCall')}

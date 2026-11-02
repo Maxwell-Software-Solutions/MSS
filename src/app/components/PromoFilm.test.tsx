@@ -97,6 +97,9 @@ describe('PromoFilm', () => {
     expect(heading).toHaveClass('sr-only');
     expect(container.querySelector('.promo-film-track .promo-film-stage .promo-film-view .promo-film-slot .promo-film-card .promo-film-frame video')).toBeInTheDocument();
     expect(container.querySelector('.promo-film-fade')).toBeInTheDocument();
+    // the layers that melt the picture into the page are decoration, not content
+    expect(container.querySelector('.promo-film-frame > .promo-film-floor')).toHaveAttribute('aria-hidden', 'true');
+    expect(container.querySelector('.promo-film-frame > .promo-film-veil')).toHaveAttribute('aria-hidden', 'true');
     expect(container.querySelector('.promo-film-head, .section-tone, .eyebrow')).not.toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /schedule a call/i })).not.toBeInTheDocument();
   });

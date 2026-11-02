@@ -7,8 +7,9 @@
    and its growth are the same for everyone, and the pause button is always there. */
 
 .promo-film {
-  /* The film's own background: the most common colour of its rim over 29 frames of each cut (the hero's is #0a0a0a,
-     one step lighter, and the join between them is feathered). If the film is rendered again, measure it again. */
+  /* The film's own background: the colour of its rim over 30 frames of each cut of version 2 (mean #090908 and #0a0a09,
+     median #080808; the open picture inside is #0a0a0a and the corners vignette down to #060606). The hero's is #0a0a0a,
+     one step lighter, and the join between them is feathered. If the film is rendered again, measure it again. */
   --film-ink-rgb: 9 9 9;
   --film-ink: rgb(var(--film-ink-rgb));
   --film-ratio: 1.77778; /* 16:9; portrait screens get the 4:5 cut */
@@ -96,18 +97,38 @@
 }
 
 /* No box: the picture's edges melt into the page in the film's own colour, in a soft eased fade that stays clear of
-   the film's own margins (its words start 7% in). Where the picture runs off the screen the fade is off the screen too. */
+   the film's own margins (its words start 7% in). Where the picture runs off the screen the fade is off the screen too.
+   It reaches 2px past the picture: where the picture sits between two pixels its last row is only partly drawn, and a
+   fade that stopped at the same line would leave a fifth of the film's brightest line there as a hairline. */
 .promo-film-frame::after {
   content: '';
   position: absolute;
   z-index: 2;
-  inset: 0;
+  inset: -2px;
   background:
     linear-gradient(to right, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) left / 8% 100% no-repeat,
     linear-gradient(to left, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) right / 8% 100% no-repeat,
     linear-gradient(to bottom, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) top / 100% 12% no-repeat,
     linear-gradient(to top, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) bottom / 100% 12% no-repeat;
   pointer-events: none;
+}
+
+/* While the picture is still a card its sides melt away further than they do once it fills the screen: the film's
+   ribbons and sliding pages run off its sides, and this lets them go into the page instead of ending on a line. It lets
+   go as the picture grows, so the words at the film's margins are at full strength on the big picture, and it keeps clear
+   of the top, where the film sets its titles. */
+.promo-film-veil {
+  position: absolute;
+  z-index: 2;
+  inset: -2px;
+  background:
+    linear-gradient(to right, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.9) 8%, rgb(var(--film-ink-rgb) / 0.6) 26%, rgb(var(--film-ink-rgb) / 0.3) 48%, rgb(var(--film-ink-rgb) / 0.1) 72%, transparent 100%) left / 15% 100% no-repeat,
+    linear-gradient(to left, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.9) 8%, rgb(var(--film-ink-rgb) / 0.6) 26%, rgb(var(--film-ink-rgb) / 0.3) 48%, rgb(var(--film-ink-rgb) / 0.1) 72%, transparent 100%) right / 15% 100% no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 18%, #000 42%);
+  mask-image: linear-gradient(to bottom, transparent 18%, #000 42%);
+  opacity: calc(1 - var(--film-e, 0));
+  pointer-events: none;
+  will-change: opacity;
 }
 
 /* The poster arrives with the film, after the page has loaded, so it never competes with the hero */
