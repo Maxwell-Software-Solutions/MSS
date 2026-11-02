@@ -11,9 +11,9 @@ describe('About page', () => {
     expect(screen.getByRole('heading', { name: /about/i })).toBeInTheDocument();
   });
 
-  it('renders the mission statement', () => {
+  it('presents MSS as an AI software development company', () => {
     render(<AboutPage />);
-    expect(screen.getByText(/Maxwell Software Solutions focuses on code quality and reliability/i)).toBeInTheDocument();
+    expect(screen.getByText(/is an AI software development company in Vilnius, Lithuania/i)).toBeInTheDocument();
   });
 
   it('renders the core principles list', () => {
@@ -23,9 +23,9 @@ describe('About page', () => {
     expect(screen.getByText(/Automation and reproducibility/i)).toBeInTheDocument();
   });
 
-  it('renders the belief statement', () => {
+  it('describes the team as AI software engineers grounded in classic engineering', () => {
     render(<AboutPage />);
-    expect(screen.getByText(/We believe correctness and simplicity enable speed/i)).toBeInTheDocument();
+    expect(screen.getByText(/AI software engineers with deep grounding in classic software engineering/i)).toBeInTheDocument();
   });
 
   it('has proper list structure', () => {

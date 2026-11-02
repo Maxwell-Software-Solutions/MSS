@@ -11,7 +11,7 @@ export default function AboutPage(): ReactElement {
   return (
     <>
       <header className="wrap page-head">
-        <div className="eyebrow">Our Story</div>
+        <div className="eyebrow">{t('about.eyebrow')}</div>
         <h1>{t('about.title')}</h1>
         <p className="lead">{t('about.intro')}</p>
         <p>{t('about.description')}</p>
@@ -49,7 +49,7 @@ export default function AboutPage(): ReactElement {
       <section className="section section-tone" aria-labelledby="founders-heading">
         <div className="wrap">
           <div className="section-head section-head-split">
-            <div className="eyebrow">The Team</div>
+            <div className="eyebrow">{t('about.team.eyebrow')}</div>
             <h2 id="founders-heading">{t('about.founders.heading')}</h2>
             <p className="lead">{t('about.founders.description')}</p>
           </div>

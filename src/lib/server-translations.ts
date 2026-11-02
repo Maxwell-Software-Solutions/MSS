@@ -150,6 +150,8 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'services.hero.title',
 
     // Hero content
+    'about.eyebrow',
+    'about.team.eyebrow',
     'about.intro',
     'about.description',
     'blog.subtitle',
