@@ -293,7 +293,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
   ];
 
   // Whole groups for pages that read keys without a fallback, so their server HTML never shows a raw key
-  const criticalPrefixes = ['contactPage.', 'contactForm.', 'blog.'];
+  const criticalPrefixes = ['contactPage.', 'contactForm.', 'blog.', 'footer.'];
 
   const critical: Record<string, string> = {};
   for (const key of criticalKeys) {
