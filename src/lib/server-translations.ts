@@ -60,6 +60,7 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     // Homepage film after the hero
     'promoFilm.eyebrow',
     'promoFilm.heading',
+    'promoFilm.playWithSound',
     'promoFilm.play',
     'promoFilm.pause',
     'promoFilm.soundOn',
