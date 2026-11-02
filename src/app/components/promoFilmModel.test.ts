@@ -1,4 +1,4 @@
-import { clamp01, endScale, filmSources, frameAt, growth, pinProgress, posterOf, voiceOf, windowAt } from './promoFilmModel';
+import { clamp01, endScale, filmSources, frameAt, growth, pinProgress, posterOf, settleAt, voiceOf, windowAt } from './promoFilmModel';
 import type { Layout } from './promoFilmModel';
 
 const srcs = (list: Array<{ src: string }>): string[] => list.map((item) => item.src);
@@ -92,5 +92,16 @@ describe('the growing card', () => {
     expect(full.right).toBeCloseTo(-30.5, 5);
     const picture = 415 + full.top * -1 + full.bottom * -1;
     expect(picture).toBeCloseTo(415 * endScale(phone, 1.1), 3);
+  });
+});
+
+describe('settling once scrolling has stopped', () => {
+  it('moves a page that rests close to the card or to the full film, and nothing else', () => {
+    expect(settleAt(-0.05, 0.72, 0.08)).toBe(0); // on its way to the pin line
+    expect(settleAt(0.03, 0.72, 0.08)).toBe(0); // just pinned
+    expect(settleAt(0.68, 0.72, 0.08)).toBe(0.72); // all but grown
+    expect(settleAt(0.3, 0.72, 0.08)).toBeNull(); // mid-growth stays where the hand left it
+    expect(settleAt(-0.5, 0.72, 0.08)).toBeNull(); // still far above
+    expect(settleAt(0.9, 0.72, 0.08)).toBeNull(); // holding the full film, or let go of it
   });
 });

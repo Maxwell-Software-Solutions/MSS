@@ -26,10 +26,6 @@
   }
 }
 
-.promo-film-snap {
-  display: none;
-}
-
 /* The card holds its shape before anything loads, so nothing below it moves */
 .promo-film-card {
   position: relative;
@@ -223,12 +219,6 @@
       overflow-x: clip;
     }
 
-    /* After a scroll, settle on the framed card or on the full-screen film, never between: proximity only
-       pulls when the page has stopped close by, and never takes the scroll from anyone */
-    html:has(.promo-film-track) {
-      scroll-snap-type: y proximity;
-    }
-
     .promo-film.section {
       padding-block: calc(var(--section-space) - var(--space-6)) var(--section-space);
     }
@@ -238,26 +228,6 @@
     .promo-film-track {
       position: relative;
       height: calc(100lvh - var(--header-height) + 100svh * var(--film-run-ratio));
-    }
-
-    .promo-film-snap {
-      position: absolute;
-      left: 0;
-      display: block;
-      width: 1px;
-      height: 1px;
-      /* the page's own scroll padding keeps a header's depth and a little more clear; the pin sits at the header */
-      scroll-margin-top: -1rem;
-      scroll-snap-align: start;
-      pointer-events: none;
-    }
-
-    .promo-film-snap[data-at='start'] {
-      top: 0;
-    }
-
-    .promo-film-snap[data-at='lock'] {
-      top: calc(100svh * var(--film-run-ratio) * var(--film-grow-to));
     }
 
     .promo-film-stage {
