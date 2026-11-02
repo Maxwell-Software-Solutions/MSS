@@ -136,6 +136,14 @@ html[data-hero-passed] .hero-glow {
   border-color: var(--color-border-strong);
 }
 
+/* a full 44px target for a thumb */
+@media (max-width: 1023px) {
+  .hero-pause {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
