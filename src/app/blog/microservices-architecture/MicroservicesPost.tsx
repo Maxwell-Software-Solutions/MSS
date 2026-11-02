@@ -276,7 +276,7 @@ export default function MicroservicesPost(): ReactElement {
       </ArticleSection>
 
       <ArticleSection id="challenges" title="Common Challenges & Solutions">
-        <div className="table-scroll my-6">
+        <div className="table-scroll my-6" tabIndex={0}>
           <table className="table">
             <thead>
               <tr>

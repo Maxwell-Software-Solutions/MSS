@@ -99,7 +99,7 @@ export default function APIDesignPost(): ReactElement {
 
       <ArticleSection id="http-methods" title="HTTP Methods & Status Codes">
         <p>Proper use of HTTP methods and status codes creates a self-documenting API:</p>
-        <div className="table-scroll my-6">
+        <div className="table-scroll my-6" tabIndex={0}>
           <table className="table">
             <thead>
               <tr>
@@ -223,7 +223,7 @@ export default function APIDesignPost(): ReactElement {
           </li>
         </ul>
         <div className="note my-6 font-mono text-sm">
-          <pre>
+          <pre tabIndex={0}>
             {`// Example error response format
 {
   "error": {
@@ -301,7 +301,7 @@ export default function APIDesignPost(): ReactElement {
           </li>
         </ul>
         <div className="note my-6 font-mono text-sm">
-          <pre>
+          <pre tabIndex={0}>
             {`// Pagination example
 GET /users?limit=20&cursor=abc123
 

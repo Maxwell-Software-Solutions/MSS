@@ -81,7 +81,7 @@ export default function CICDPost(): ReactElement {
       <ArticleSection id="pipeline-stages" title="Pipeline Stages">
         <p>A robust CI/CD pipeline typically includes these stages:</p>
         <div className="note my-6 font-mono text-sm">
-          <pre>
+          <pre tabIndex={0}>
             {`1. Source Control Trigger
    ↓
 2. Build & Compile
@@ -116,7 +116,7 @@ export default function CICDPost(): ReactElement {
       <ArticleSection id="testing-strategy" title="Automated Testing Strategy">
         <p>The testing pyramid guides your test distribution:</p>
         <div className="note my-6">
-          <pre className="text-sm">
+          <pre className="text-sm" tabIndex={0}>
             {`        ┌───────────┐
         │    E2E    │  ← Few, slow, expensive
         ├───────────┤
@@ -139,7 +139,7 @@ export default function CICDPost(): ReactElement {
             deployment.
           </li>
         </ul>
-        <div className="table-scroll my-6">
+        <div className="table-scroll my-6" tabIndex={0}>
           <table className="table">
             <thead>
               <tr>
@@ -254,7 +254,7 @@ export default function CICDPost(): ReactElement {
           </li>
         </ul>
         <div className="note my-6 font-mono text-sm">
-          <pre>
+          <pre tabIndex={0}>
             {`# Example Terraform snippet
 resource "aws_instance" "web" {
   ami           = var.ami_id
