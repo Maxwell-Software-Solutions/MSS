@@ -6,6 +6,14 @@ const LINK = /^\[([^\]]+)\]\(([^)\s]+)\)$/;
 
 function renderLink(label: string, href: string, key: number): ReactNode {
   if (href.startsWith('/')) {
+    // A file such as /.well-known/security.txt is not a page of the app, so it gets a plain link
+    if (/\.[a-z0-9]+$/i.test(href)) {
+      return (
+        <a key={key} className="link" href={href}>
+          {label}
+        </a>
+      );
+    }
     return (
       <Link key={key} className="link" href={href}>
         {label}

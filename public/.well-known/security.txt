@@ -1,0 +1,6 @@
+# Security contact for www.maxwellsoftwaresolutions.com (RFC 9116)
+Contact: mailto:security@maxwellsoftwaresolutions.com
+Expires: 2027-11-01T00:00:00.000Z
+Preferred-Languages: en, lt
+Canonical: https://www.maxwellsoftwaresolutions.com/.well-known/security.txt
+Policy: https://www.maxwellsoftwaresolutions.com/security

@@ -14,7 +14,7 @@ const KNOWN_MAILBOXES = new Set<string>([
   COMPANY.emails.legal,
   'ada@ada.lt',
 ]);
-const INTERNAL_PATHS = new Set(['/privacy', '/terms', '/security', '/contact']);
+const INTERNAL_PATHS = new Set(['/privacy', '/terms', '/security', '/contact', '/.well-known/security.txt']);
 
 /** Every string in a block, in order, so markup and links can be checked wherever they are. */
 function textsOf(block: LegalBlock): string[] {

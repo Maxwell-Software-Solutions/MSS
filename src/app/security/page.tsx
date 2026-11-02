@@ -1,15 +1,19 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
-import SecurityPageComponent from './SecurityPage';
+import { LEGAL_DOCS } from '@/lib/legal';
+import { parseLanguage, resolveLanguage } from '@/lib/legal/language';
+import SecurityPage from './SecurityPage';
 
-export const metadata: Metadata = {
-  title: 'Security Policy — Maxwell Software Solutions',
-  description: 'Security practices, incident response approach, and contact details for Maxwell Software Solutions.',
-  alternates: {
-    canonical: '/security',
-  },
-};
+interface PageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
 
-export default function Page(): ReactElement {
-  return <SecurityPageComponent />;
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const language = await resolveLanguage(parseLanguage((await searchParams).lang));
+  const { title, description } = LEGAL_DOCS.security[language].meta;
+  return { title, description, alternates: { canonical: '/security' } };
+}
+
+export default async function Page({ searchParams }: PageProps): Promise<ReactElement> {
+  return <SecurityPage requestedLanguage={parseLanguage((await searchParams).lang)} />;
 }
