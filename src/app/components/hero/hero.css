@@ -286,7 +286,7 @@ html:has(.hero-stage):not([data-hero-passed]) .site-header {
   backdrop-filter: none;
 }
 
-html:has(.hero-stage):not([data-hero-passed]) :is(.site-logo, .nav-links, .menu-toggle) {
+html:has(.hero-stage):not([data-hero-passed]) :is(.site-logo, .nav-links, .menu-toggle, .header-book) {
   --color-bg: var(--hero-ink);
   --color-text: #f7f7f5;
   --color-text-secondary: #d5d5d1;

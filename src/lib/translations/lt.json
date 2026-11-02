@@ -195,6 +195,8 @@
   "nav.caseStudiesDeep": "Atvejų studijos",
   "nav.pricing": "Kainos",
   "cta.scheduleCall": "Suplanuoti skambutį",
+  "cta.bookCall": "Skambutis",
+  "cta.bookCall.aria": "Suplanuoti skambutį (atsidaro naujame skirtuke)",
   "caseStudiesPage.eyebrow": "Klientų rezultatai",
   "caseStudiesPage.title": "Atvejų studijos",
   "caseStudiesPage.subtitle": "Tikri projektai su išmatuojamais rezultatais. Pramonės šakos apima finansų technologijas, logistiką ir debesijos infrastruktūrą.",

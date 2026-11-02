@@ -8,6 +8,7 @@ import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import ThemeToggle from './ThemeToggle';
 import BrandLogo from './BrandLogo';
 import ScheduleCallButton from './ScheduleCallButton';
+import { BOOKING_URL } from '@/lib/booking';
 
 // Concise header + mobile menu toggle (<=60 lines)
 export default function HeaderNav(): ReactElement {
@@ -91,6 +92,17 @@ export default function HeaderNav(): ReactElement {
         </button>
         <ScheduleCallButton className="nav-cta" />
       </div>
+      {/* Phones and tablets: booking stays one tap away on every page, beside the menu button */}
+      <a
+        href={BOOKING_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="header-book"
+        aria-label={ht('cta.bookCall.aria', 'Schedule a Call (opens in new tab)')}
+        suppressHydrationWarning
+      >
+        {ht('cta.bookCall', 'Book a call')}
+      </a>
       <button
         type="button"
         className="menu-toggle"

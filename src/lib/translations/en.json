@@ -195,6 +195,8 @@
   "nav.caseStudiesDeep": "Case studies",
   "nav.pricing": "Pricing",
   "cta.scheduleCall": "Schedule a Call",
+  "cta.bookCall": "Book a call",
+  "cta.bookCall.aria": "Book a call (opens in new tab)",
   "caseStudiesPage.eyebrow": "Client results",
   "caseStudiesPage.title": "Case Studies",
   "caseStudiesPage.subtitle": "Real engagements with measurable outcomes. Industries include fintech, logistics, and cloud infrastructure.",

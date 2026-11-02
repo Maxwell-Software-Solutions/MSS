@@ -562,6 +562,30 @@
   }
   .mobile-nav-lang-btn:hover { background: var(--color-hover); border-color: var(--color-text-secondary); }
 
+  /* Phones and tablets: the booking link sits beside the menu button, in the same solid ink as the desktop one */
+  .header-book {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-left: auto;
+    margin-right: 0.25rem;
+    padding: 0 0.75rem;
+    border-radius: var(--radius-lg);
+    background: var(--color-text);
+    color: var(--color-bg);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background-color var(--transition-base);
+  }
+  .header-book:hover { background: color-mix(in srgb, var(--color-text) 85%, var(--color-bg)); }
+
+  @media (min-width: 1024px) {
+    .header-book { display: none; }
+  }
+
   /* Phones and tablets: the controls a thumb uses are at least 44px square */
   @media (max-width: 1023px) {
     .menu-toggle,

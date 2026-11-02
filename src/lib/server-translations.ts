@@ -40,6 +40,10 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'nav.about',
     'nav.blog',
     'nav.founders',
+    'nav.pricing',
+    'cta.scheduleCall',
+    'cta.bookCall',
+    'cta.bookCall.aria',
 
     // Homepage hero (P0 — must render server-side for Google to see H1)
     'hero.title',
