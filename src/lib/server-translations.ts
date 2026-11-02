@@ -1,31 +1,16 @@
-import fs from 'fs';
-import path from 'path';
+import en from './translations/en.json';
+import lt from './translations/lt.json';
 
 type Language = 'en' | 'lt';
 
-// Cache translations to avoid repeated file reads
-const translationsCache: Partial<Record<Language, Record<string, string>>> = {};
+// Imported rather than read from disk: Vercel's server functions don't ship src/, so a file read returned nothing
+const bundledTranslations: Record<Language, Record<string, string>> = { en, lt };
 
 /**
  * Load translations for server-side rendering
- * This runs on the server only and caches the results
  */
 export async function loadServerTranslations(language: Language): Promise<Record<string, string>> {
-  if (translationsCache[language]) {
-    return translationsCache[language];
-  }
-
-  try {
-    const translationsPath = path.join(process.cwd(), 'src', 'lib', 'translations', `${language}.json`);
-    const translationsFile = fs.readFileSync(translationsPath, 'utf8');
-    const translations = JSON.parse(translationsFile);
-    
-    translationsCache[language] = translations;
-    return translations;
-  } catch (error) {
-    console.error(`Failed to load server translations for ${language}:`, error);
-    return {};
-  }
+  return bundledTranslations[language] ?? {};
 }
 
 /**
