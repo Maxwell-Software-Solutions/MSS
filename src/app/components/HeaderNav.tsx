@@ -44,7 +44,7 @@ export default function HeaderNav(): ReactElement {
       {/* Mark navigation as "in-flight" on pointer down/touch so heavy background work can pause */}
       <Link
         href="/"
-        className="flex items-center"
+        className="flex min-h-11 items-center"
         aria-label="Homepage"
         onMouseDown={() => {
           try {

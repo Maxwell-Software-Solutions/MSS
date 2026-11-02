@@ -362,6 +362,9 @@
     top: -4rem;
     left: 0.75rem;
     z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     padding: 0.5rem 1rem;
     border-radius: var(--radius-md);
     background: var(--color-accent-fill);
@@ -557,6 +560,13 @@
     transition: background-color var(--transition-base), border-color var(--transition-base);
   }
   .mobile-nav-lang-btn:hover { background: var(--color-hover); border-color: var(--color-text-secondary); }
+
+  /* Phones and tablets: the controls a thumb uses are at least 44px square */
+  @media (max-width: 1023px) {
+    .menu-toggle,
+    .mobile-nav .menu-close,
+    .mobile-nav .theme-toggle { width: 2.75rem; height: 2.75rem; }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
