@@ -44,6 +44,14 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'hero.calendly.cta',
     'hero.calendly.aria',
 
+    // Homepage film after the hero
+    'promoFilm.eyebrow',
+    'promoFilm.heading',
+    'promoFilm.play',
+    'promoFilm.pause',
+    'promoFilm.soundOn',
+    'promoFilm.soundOff',
+
     // Homepage stats
     'stats.defects',
     'stats.defects.label',
