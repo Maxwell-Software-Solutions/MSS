@@ -85,7 +85,6 @@ describe('PromoFilm', () => {
     const { container } = renderWithProviders(<PromoFilm />);
     const track = container.querySelector('.promo-film-track');
     expect(track?.querySelector('.promo-film-stage .promo-film-view .promo-film-card .promo-film-frame video')).toBeInTheDocument();
-    expect(track?.querySelectorAll('.promo-film-snap')).toHaveLength(2);
     expect(screen.getByRole('heading', { level: 2, name: 'See AI at work' })).toBeInTheDocument();
   });
 

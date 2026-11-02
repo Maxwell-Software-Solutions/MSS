@@ -99,3 +99,16 @@ export function windowAt(layout: Layout, scale: number, e: number): { top: numbe
   const bottom = Math.min(layout.cardH / 2 + ty + h / 2, layout.viewH - layout.cardY);
   return { top, right: layout.cardW - right, bottom: layout.cardH - bottom, left };
 }
+
+/**
+ * Where the page should settle once scrolling has stopped, as pin progress, or null to stay where it is. Only a page
+ * resting within `reach` of the pin line or of the end of the growth is moved, to that point, so the film never
+ * rests half-way into place by a hair, and nothing in between is ever touched. (CSS scroll-snap does this too, but
+ * Chromium applies it to every wheel step and so holds the wheel back; this is asked for only after the hand is off.)
+ * `raw` is the unclamped progress, negative while the stage is still on its way to the pin line.
+ */
+export function settleAt(raw: number, to: number, reach: number): number | null {
+  if (raw > -reach && raw < reach) return 0;
+  if (raw > to - reach && raw < to) return to;
+  return null;
+}

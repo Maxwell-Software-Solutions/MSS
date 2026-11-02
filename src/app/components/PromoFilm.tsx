@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState, type ReactElement } from 'rea
 import ScheduleCallButton from './ScheduleCallButton';
 import { useLanguage } from '@/lib/LanguageContext';
 import { trackCTAClick } from '@/lib/analytics';
-import { TALL, endScale, filmSources, frameAt, growth, pinProgress, posterOf, voiceOf, windowAt } from './promoFilmModel';
+import { TALL, endScale, filmSources, frameAt, growth, pinProgress, posterOf, settleAt, voiceOf, windowAt } from './promoFilmModel';
 import type { Cut, FilmSource, Layout } from './promoFilmModel';
 import './promo-film.css';
 
@@ -397,7 +397,47 @@ export default function PromoFilm(): ReactElement {
       schedule();
     };
 
-    window.addEventListener('scroll', schedule, { passive: true });
+    // Once the hand is off, a page resting close to the card or to the full film glides the last bit there. It is asked
+    // for only after the scrolling has stopped and is dropped the moment anyone touches the page again, so nothing is
+    // held back: CSS scroll-snap is applied by Chromium to every wheel step, and so keeps the wheel from leaving it.
+    let idle = 0;
+    let pointers = 0;
+    let fingers = 0;
+    const settle = (): void => {
+      if (!layout || pointers > 0 || fingers > 0 || document.hidden) return;
+      const raw = run > 0 ? (pin - track.getBoundingClientRect().top) / run : 0;
+      const goal = settleAt(raw, to, 0.08);
+      if (goal === null) return;
+      const distance = (goal - raw) * run;
+      if (Math.abs(distance) >= 2) window.scrollTo({ top: window.scrollY + distance, behavior: 'smooth' });
+    };
+    const rest = (): void => {
+      window.clearTimeout(idle);
+      idle = window.setTimeout(settle, 220);
+    };
+    const onScroll = (): void => {
+      schedule();
+      rest();
+    };
+    const onDown = (): void => {
+      pointers += 1;
+    };
+    const onUp = (): void => {
+      pointers = Math.max(0, pointers - 1);
+      rest();
+    };
+    const onTouch = (event: TouchEvent): void => {
+      fingers = event.touches.length;
+      rest();
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('pointerdown', onDown, { passive: true });
+    window.addEventListener('pointerup', onUp, { passive: true });
+    window.addEventListener('pointercancel', onUp, { passive: true });
+    window.addEventListener('touchstart', onTouch, { passive: true });
+    window.addEventListener('touchend', onTouch, { passive: true });
+    window.addEventListener('touchcancel', onTouch, { passive: true });
     const resize = typeof ResizeObserver === 'function' ? new ResizeObserver(measure) : null;
     if (resize) {
       resize.observe(track);
@@ -409,8 +449,15 @@ export default function PromoFilm(): ReactElement {
     }
 
     return () => {
-      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('pointerdown', onDown);
+      window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+      window.removeEventListener('touchstart', onTouch);
+      window.removeEventListener('touchend', onTouch);
+      window.removeEventListener('touchcancel', onTouch);
       window.removeEventListener('resize', measure);
+      window.clearTimeout(idle);
       window.cancelAnimationFrame(frameId);
       resize?.disconnect();
     };
@@ -473,8 +520,6 @@ export default function PromoFilm(): ReactElement {
   return (
     <section className="section section-tone promo-film" aria-labelledby="promo-film-heading">
       <div ref={trackRef} className="promo-film-track">
-        <span className="promo-film-snap" data-at="start" aria-hidden="true" />
-        <span className="promo-film-snap" data-at="lock" aria-hidden="true" />
         <div ref={stageRef} className="promo-film-stage">
           <div ref={viewRef} className="promo-film-view">
             <div className="wrap section-head promo-film-head">
