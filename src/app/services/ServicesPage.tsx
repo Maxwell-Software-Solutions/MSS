@@ -121,7 +121,7 @@ export default function ServicesPage(): ReactElement {
             <Link href="/contact" className="btn btn-accent btn-lg">
               {ht('services.cta.primary', 'Book a discovery call')}
             </Link>
-            <Link href="/project-showcase" className="btn btn-lg">
+            <Link href="/case-studies" className="btn btn-lg">
               {ht('services.cta.secondary', 'See case studies')}
             </Link>
           </div>

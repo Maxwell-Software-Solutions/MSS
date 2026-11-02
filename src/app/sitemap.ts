@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_CONFIG, PAGES, BLOG_POSTS, PROJECTS } from '@/lib/seo/data';
+import { SITE_CONFIG, PAGES, BLOG_POSTS } from '@/lib/seo/data';
 import { CANONICAL_BASE_URL } from '@/lib/seo/url';
 
 /**
@@ -9,7 +9,7 @@ import { CANONICAL_BASE_URL } from '@/lib/seo/url';
  * All URLs, dates, and priorities are calculated from the central data,
  * ensuring the sitemap stays in sync without manual updates.
  *
- * @returns Sitemap entries for all pages, blog posts, and projects
+ * @returns Sitemap entries for all pages and blog posts
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = CANONICAL_BASE_URL ?? SITE_CONFIG.url;
@@ -23,7 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       services: 0.9,
       about: 0.8,
       blog: 0.8,
-      projectShowcase: 0.7,
       caseStudies: 0.8,
       pricing: 0.8,
       servicesPackages: 0.8,
@@ -46,7 +45,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       services: 'monthly',
       about: 'monthly',
       blog: 'weekly',
-      projectShowcase: 'monthly',
       caseStudies: 'monthly',
       pricing: 'monthly',
       servicesPackages: 'monthly',
@@ -80,14 +78,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Project showcases from PROJECTS registry
-  const projects = Object.values(PROJECTS).map((project) => ({
-    url: `${baseUrl}/project-showcase/${project.slug}`,
-    lastModified: new Date(project.publishedDate),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }));
-
   // Combine all entries
-  return [...staticPages, ...blogPosts, ...projects];
+  return [...staticPages, ...blogPosts];
 }

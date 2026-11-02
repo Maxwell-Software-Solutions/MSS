@@ -7,7 +7,7 @@ module.exports = {
         'http://localhost:3000/blog',
         'http://localhost:3000/services',
         'http://localhost:3000/contact',
-        'http://localhost:3000/project-showcase',
+        'http://localhost:3000/case-studies',
       ],
       numberOfRuns: 3,
       settings: {

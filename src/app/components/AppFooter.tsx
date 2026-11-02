@@ -8,7 +8,7 @@ import { useLanguage } from '@/lib/LanguageContext';
 
 const primaryLinks = [
   { href: '/services', label: 'Services' },
-  { href: '/project-showcase', label: 'Project showcase' },
+  { href: '/case-studies', label: 'Case studies' },
   { href: '/consulting-process', label: 'Consulting process' },
   { href: '/blog', label: 'Insights & articles' },
 ];

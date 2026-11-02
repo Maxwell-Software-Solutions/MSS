@@ -8,17 +8,7 @@
  */
 
 import type { Metadata } from 'next';
-import {
-  SITE_CONFIG,
-  PAGES,
-  BLOG_POSTS,
-  PROJECTS,
-  isValidPageKey,
-  isValidBlogSlug,
-  isValidProjectSlug,
-  type BlogPostMeta,
-  type ProjectMeta,
-} from './data';
+import { SITE_CONFIG, PAGES, BLOG_POSTS, isValidPageKey, isValidBlogSlug, type BlogPostMeta } from './data';
 
 // ============================================================================
 // Error Classes
@@ -28,7 +18,7 @@ import {
  * Custom error for SEO data not found scenarios
  */
 export class SEODataNotFoundError extends Error {
-  constructor(type: 'page' | 'blog' | 'project', identifier: string) {
+  constructor(type: 'page' | 'blog', identifier: string) {
     super(`${type} not found in SEO registry: "${identifier}"`);
     this.name = 'SEODataNotFoundError';
   }
@@ -138,51 +128,6 @@ export function generateBlogMetadata(slug: string): Metadata {
   };
 }
 
-/**
- * Generate project showcase metadata
- *
- * @param slug - Project slug
- * @returns Next.js Metadata object
- * @throws {SEODataNotFoundError} If project doesn't exist
- *
- * @example
- * ```ts
- * // In project-showcase/[slug]/page.tsx
- * export async function generateMetadata({ params }: { params: { slug: string } }) {
- *   return generateProjectMetadata(params.slug);
- * }
- * ```
- */
-export function generateProjectMetadata(slug: string): Metadata {
-  if (!isValidProjectSlug(slug)) {
-    throw new SEODataNotFoundError('project', slug);
-  }
-
-  const project = PROJECTS[slug]!;
-
-  return {
-    title: `${project.title} — Case Study | ${SITE_CONFIG.name}`,
-    description: project.description,
-    keywords: [...project.technologies, project.industry, 'case study', 'success story'],
-    alternates: {
-      canonical: `/project-showcase/${slug}`,
-    },
-    openGraph: {
-      title: project.title,
-      description: project.description,
-      type: 'article',
-      url: `${SITE_CONFIG.url}/project-showcase/${slug}`,
-      siteName: SITE_CONFIG.name,
-      locale: SITE_CONFIG.locale,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: project.title,
-      description: project.description,
-    },
-  };
-}
-
 // ============================================================================
 // Data Retrieval Functions
 // ============================================================================
@@ -205,15 +150,6 @@ export function getAllBlogSlugs(): string[] {
 }
 
 /**
- * Get all project slugs for sitemap/static path generation
- *
- * @returns Array of all project slugs
- */
-export function getAllProjectSlugs(): string[] {
-  return Object.keys(PROJECTS);
-}
-
-/**
  * Get all blog posts sorted by publication date (newest first)
  *
  * @returns Array of blog post metadata sorted by date
@@ -221,17 +157,6 @@ export function getAllProjectSlugs(): string[] {
 export function getAllBlogPosts(): BlogPostMeta[] {
   return Object.values(BLOG_POSTS).sort(
     (a, b) => new Date(b.publishedTime).getTime() - new Date(a.publishedTime).getTime()
-  );
-}
-
-/**
- * Get all projects sorted by publication date (newest first)
- *
- * @returns Array of project metadata sorted by date
- */
-export function getAllProjects(): ProjectMeta[] {
-  return Object.values(PROJECTS).sort(
-    (a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
   );
 }
 
@@ -335,44 +260,6 @@ export function getRelatedPosts(currentSlug: string, limit = 3): BlogPostMeta[] 
     .map((item) => item.item);
 }
 
-/**
- * Get related projects based on technologies and industry
- *
- * @param currentSlug - Current project slug
- * @param limit - Maximum number of related projects (default: 2)
- * @returns Array of related projects sorted by relevance
- */
-export function getRelatedProjects(currentSlug: string, limit = 2): ProjectMeta[] {
-  if (!isValidProjectSlug(currentSlug)) {
-    console.warn(`Invalid project slug for related projects: ${currentSlug}`);
-    return [];
-  }
-
-  const current = PROJECTS[currentSlug]!;
-  const allProjects = Object.values(PROJECTS).filter((proj) => proj.slug !== currentSlug);
-
-  // Score by technology and industry overlap
-  const scored: ScoredContent<ProjectMeta>[] = allProjects.map((project) => {
-    let score = 0;
-
-    // Same industry
-    if (project.industry === current.industry) {
-      score += 10;
-    }
-
-    // Matching technologies
-    const matchingTech = project.technologies.filter((tech) => current.technologies.includes(tech));
-    score += matchingTech.length * 5;
-
-    return { item: project, score };
-  });
-
-  return scored
-    .sort((a, b) => b.score - a.score)
-    .slice(0, limit)
-    .map((item) => item.item);
-}
-
 // ============================================================================
 // Validation Functions
 // ============================================================================
@@ -396,16 +283,6 @@ export function validateSEOData(): { valid: boolean; errors: string[] } {
     }
     if (!post.publishedTime) {
       errors.push(`Blog post "${key}" missing publishedTime`);
-    }
-  });
-
-  // Validate projects
-  Object.entries(PROJECTS).forEach(([key, project]) => {
-    if (project.slug !== key) {
-      errors.push(`Project key mismatch: "${key}" !== "${project.slug}"`);
-    }
-    if (project.description.length > 160) {
-      errors.push(`Project "${key}" description too long: ${project.description.length} chars`);
     }
   });
 

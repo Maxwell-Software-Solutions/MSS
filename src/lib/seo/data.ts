@@ -58,26 +58,6 @@ export interface BlogPostMeta extends PageMetadata {
 }
 
 /**
- * Project showcase metadata
- */
-export interface ProjectMeta {
-  /** URL-friendly slug */
-  slug: string;
-  /** Project title */
-  title: string;
-  /** Detailed description */
-  description: string;
-  /** Key performance metrics */
-  metrics: string[];
-  /** Industry/sector */
-  industry: string;
-  /** Technologies used */
-  technologies: string[];
-  /** ISO 8601 publication date */
-  publishedDate: string;
-}
-
-/**
  * Service offering structure
  */
 export interface ServiceOffering {
@@ -277,13 +257,6 @@ export const PAGES: Record<string, PageMetadata> = {
     keywords: [...KEYWORD_SETS.architecture, ...KEYWORD_SETS.testing, 'software engineering blog'],
     canonical: '/blog',
   },
-  projectShowcase: {
-    title: 'Case Studies — Software Engineering Success Stories | Vilnius, Lithuania',
-    description:
-      'Explore our portfolio of successful software quality transformations, reliability improvements, and engineering excellence initiatives by Maxwell Software Solutions, based in Vilnius, Lithuania.',
-    keywords: ['software case studies', 'engineering portfolio', ...KEYWORD_SETS.core, 'software consultancy Lithuania', 'code quality case studies Vilnius'],
-    canonical: '/project-showcase',
-  },
   founders: {
     title: 'Our Founders — Leadership in Software Engineering',
     description:
@@ -316,9 +289,16 @@ export const PAGES: Record<string, PageMetadata> = {
     canonical: '/pricing',
   },
   caseStudies: {
-    title: 'Case Studies — Software Engineering Results | Maxwell Software Solutions',
-    description: 'Real-world engineering transformations: code quality improvements, reliability uplifts, and CI/CD acceleration delivered by Maxwell Software Solutions.',
-    keywords: ['software engineering case studies', 'code quality results', ...KEYWORD_SETS.core],
+    title: 'Real AI Work — Case Studies',
+    description:
+      'Real AI work: AI document processing for a UK law firm, an AI review loop on a live website, a multi-model AI orchestrator and an LED neon-sign builder.',
+    keywords: [
+      'AI case studies',
+      'AI document processing',
+      'AI agents',
+      'multi-model AI orchestration',
+      'AI development company Vilnius',
+    ],
     canonical: '/case-studies',
   },
   freeAudit: {
@@ -493,46 +473,6 @@ export const BLOG_POSTS: Record<string, BlogPostMeta> = {
     category: 'API Design',
     section: 'Software Engineering',
     tags: ['API Design', 'REST', 'Web Services', 'Best Practices'],
-  },
-};
-
-// ============================================================================
-// Project Showcase Registry
-// ============================================================================
-
-/**
- * Central registry of project case studies
- * @constant
- */
-export const PROJECTS: Record<string, ProjectMeta> = {
-  'retail-platform': {
-    slug: 'retail-platform',
-    title: 'E-Commerce Platform Quality Transformation',
-    description: 'Reduced defects by 58% and improved deployment frequency by 28% for a high-traffic retail platform.',
-    metrics: ['-58% defects', '+28% deploys', '+12 CSAT'],
-    industry: 'Retail',
-    technologies: ['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'Docker'],
-    publishedDate: '2024-12-15',
-  },
-  'fintech-api': {
-    slug: 'fintech-api',
-    title: 'FinTech API Reliability Engineering',
-    description:
-      'Achieved 99.95% uptime and reduced MTTR by 73% through comprehensive testing and observability improvements.',
-    metrics: ['99.95% uptime', '-73% MTTR', '100% test coverage'],
-    industry: 'Financial Technology',
-    technologies: ['Java', 'Spring Boot', 'Kafka', 'Redis', 'Kubernetes'],
-    publishedDate: '2024-12-10',
-  },
-  'saas-migration': {
-    slug: 'saas-migration',
-    title: 'SaaS Platform CI/CD Modernization',
-    description:
-      'Modernized deployment pipeline reducing release time from 4 hours to 12 minutes with zero-downtime deployments.',
-    metrics: ['-95% release time', '0 downtime', '+40% developer velocity'],
-    industry: 'SaaS',
-    technologies: ['Python', 'Django', 'GitLab CI', 'Terraform', 'AWS'],
-    publishedDate: '2024-12-05',
   },
 };
 
@@ -778,13 +718,4 @@ export function isValidPageKey(key: string): key is keyof typeof PAGES {
  */
 export function isValidBlogSlug(slug: string): slug is keyof typeof BLOG_POSTS {
   return slug in BLOG_POSTS;
-}
-
-/**
- * Validate that a project slug exists in the registry
- * @param slug - Project slug to validate
- * @returns true if project exists
- */
-export function isValidProjectSlug(slug: string): slug is keyof typeof PROJECTS {
-  return slug in PROJECTS;
 }

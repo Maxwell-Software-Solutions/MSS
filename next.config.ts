@@ -64,6 +64,12 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
+      // The old case studies were removed; the index and every detail page now land on the real AI work page
+      {
+        source: '/project-showcase/:path*',
+        destination: '/case-studies',
+        permanent: true,
+      },
 
       // 4. Short booking link for emails; temporary so the calendar page can change later
       {

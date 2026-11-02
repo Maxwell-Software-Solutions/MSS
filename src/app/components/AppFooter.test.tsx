@@ -30,7 +30,7 @@ describe('AppFooter component', () => {
   it('renders primary navigation links', () => {
     render(<SiteFooter />);
     expect(screen.getByRole('link', { name: /services/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /project showcase/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /case studies/i })).toHaveAttribute('href', '/case-studies');
     expect(screen.getByRole('link', { name: /consulting process/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /insights & articles/i })).toBeInTheDocument();
   });
