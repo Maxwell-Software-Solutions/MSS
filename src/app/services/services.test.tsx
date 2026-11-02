@@ -6,32 +6,48 @@ import ServicesPage from './ServicesPage';
 expect.extend(toHaveNoViolations);
 
 describe('Services & Process page', () => {
-  it('renders the combined main heading', () => {
+  it('renders the main heading', () => {
     render(<ServicesPage />);
-    expect(screen.getByRole('heading', { name: /service capabilities/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /AI services, built on solid engineering/i })).toBeInTheDocument();
   });
 
   it('renders the lead description', () => {
     render(<ServicesPage />);
-    expect(screen.getByText(/We help teams ship correct, maintainable, and observable software/i)).toBeInTheDocument();
+    expect(screen.getByText(/We help companies adopt AI, build AI agents and launch AI products/i)).toBeInTheDocument();
   });
 
-  it('lists all service offerings', () => {
+  it('leads with the four AI services', () => {
     render(<ServicesPage />);
-    expect(screen.getByText(/Code Quality Audit/i)).toBeInTheDocument();
-    expect(screen.getByText(/Reliability Engineering/i)).toBeInTheDocument();
-    expect(screen.getByText(/Refactoring & Modernization/i)).toBeInTheDocument();
-    expect(screen.getByText(/Testing Strategy/i)).toBeInTheDocument();
-    expect(screen.getByText(/CI\/CD Hardening/i)).toBeInTheDocument();
+    const aiHeading = screen.getByRole('heading', { level: 2, name: /^AI services$/i });
+    const foundationHeading = screen.getByRole('heading', { level: 2, name: /the engineering foundation/i });
+    expect(aiHeading.compareDocumentPosition(foundationHeading) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    for (const name of [/AI adoption and strategy/i, /AI agents and automation/i, /AI product development/i, /AI innovation and prototyping/i]) {
+      expect(screen.getByRole('heading', { level: 3, name })).toBeInTheDocument();
+    }
   });
 
-  it('renders abbreviated service descriptions', () => {
+  it('keeps every engineering service', () => {
     render(<ServicesPage />);
-    expect(screen.getByText(/architecture review & coverage mapping/i)).toBeInTheDocument();
-    expect(screen.getByText(/error budgets, observability & incident rehearsal/i)).toBeInTheDocument();
-    expect(screen.getByText(/Pay down debt safely/i)).toBeInTheDocument();
-    expect(screen.getByText(/Pragmatic pyramid, flaky test control/i)).toBeInTheDocument();
-    expect(screen.getByText(/Fast, reliable pipelines with quality gates/i)).toBeInTheDocument();
+    expect(screen.getByText(/Code and AI readiness audit/i)).toBeInTheDocument();
+    expect(screen.getByText(/Reliability and monitoring/i)).toBeInTheDocument();
+    expect(screen.getByText(/Refactoring and modernisation/i)).toBeInTheDocument();
+    expect(screen.getByText(/Testing and AI evaluations/i)).toBeInTheDocument();
+    expect(screen.getByText(/CI\/CD and safe rollout/i)).toBeInTheDocument();
+  });
+
+  it('renders the service descriptions', () => {
+    render(<ServicesPage />);
+    expect(screen.getByText(/architecture review and test coverage mapping/i)).toBeInTheDocument();
+    expect(screen.getByText(/error budgets, tracing and incident drills/i)).toBeInTheDocument();
+    expect(screen.getByText(/Pay down technical debt step by step/i)).toBeInTheDocument();
+    expect(screen.getByText(/practical test pyramid, flaky test control/i)).toBeInTheDocument();
+    expect(screen.getByText(/Fast pipelines with quality gates/i)).toBeInTheDocument();
+  });
+
+  it('renders the process and closing headings without stray words', () => {
+    render(<ServicesPage />);
+    expect(screen.getByRole('heading', { level: 2, name: 'Our process' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Book a discovery call' })).toBeInTheDocument();
   });
 
   it('renders the process steps', () => {

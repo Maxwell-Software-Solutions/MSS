@@ -173,7 +173,23 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'services.cta.primary',
     'services.cta.secondary',
     
-    // Service cards (very visible)
+    // AI service cards (lead the page)
+    'services.ai.heading',
+    'services.ai.description',
+    'services.adoption.title',
+    'services.adoption.body',
+    'services.adoption.tagline',
+    'services.agents.title',
+    'services.agents.body',
+    'services.agents.tagline',
+    'services.product.title',
+    'services.product.body',
+    'services.product.tagline',
+    'services.prototype.title',
+    'services.prototype.body',
+    'services.prototype.tagline',
+
+    // Engineering service cards
     'services.audit.title',
     'services.audit.body',
     'services.audit.tagline',
