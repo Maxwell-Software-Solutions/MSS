@@ -478,7 +478,7 @@ export default function CodeHealthScorePage(): ReactElement | null {
             <button
               onClick={handleBack}
               disabled={currentQuestion === 0}
-              className="text-sm font-medium text-secondary hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+              className="inline-flex min-h-11 items-center text-sm font-medium text-secondary hover:text-foreground disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
               suppressHydrationWarning
             >
               {ht('codeHealth.nav.back', '\u2190 Back')}

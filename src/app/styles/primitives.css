@@ -624,4 +624,14 @@
   }
   .note + .note { margin-top: var(--space-3); }
   .note :where(pre) { margin: 0; padding: 0; border: 0; background: transparent; }
+
+  /* ---- Phones and tablets: a link that stands on its own line is a 44px target ---- */
+  @media (max-width: 1023px) {
+    .article .article-back { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; }
+    .toc li + li { margin-top: 0; }
+    .toc a,
+    .note li > a[href^="#"]:only-child,
+    .contact-link { display: flex; align-items: center; min-height: 44px; }
+    dd > a.link:only-child { display: inline-flex; align-items: center; min-height: 44px; }
+  }
 }
