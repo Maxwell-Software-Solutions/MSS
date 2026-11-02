@@ -462,8 +462,9 @@
   .lang-toggle { width: auto; min-width: 2.5rem; padding: 0 0.625rem; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em; border-color: var(--color-border); }
 
   .theme-icon { position: absolute; transition: opacity var(--transition-base), transform var(--transition-base); }
-  .theme-icon.visible { opacity: 1; transform: none; }
-  .theme-icon.hidden { opacity: 0; transform: rotate(60deg) scale(0.6); pointer-events: none; }
+  /* is-on/is-off, not visible/hidden: those are Tailwind utilities that set visibility and display */
+  .theme-icon.is-on { opacity: 1; transform: none; }
+  .theme-icon.is-off { opacity: 0; transform: rotate(60deg) scale(0.6); pointer-events: none; }
 
   .menu-toggle { color: var(--color-text); }
   .menu-toggle[aria-expanded="true"] { opacity: 0; pointer-events: none; }

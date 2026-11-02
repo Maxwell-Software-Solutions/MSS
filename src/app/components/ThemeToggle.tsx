@@ -41,7 +41,7 @@ export default function ThemeToggle(): ReactElement {
 
       {/* Sun icon for dark mode (clicking shows light) */}
       <svg
-        className={`theme-icon ${isDark ? 'visible' : 'hidden'}`}
+        className={`theme-icon ${isDark ? 'is-on' : 'is-off'}`}
         width="20"
         height="20"
         viewBox="0 0 24 24"
@@ -65,7 +65,7 @@ export default function ThemeToggle(): ReactElement {
 
       {/* Moon icon for light mode (clicking shows dark) */}
       <svg
-        className={`theme-icon ${!isDark ? 'visible' : 'hidden'}`}
+        className={`theme-icon ${!isDark ? 'is-on' : 'is-off'}`}
         width="20"
         height="20"
         viewBox="0 0 24 24"
