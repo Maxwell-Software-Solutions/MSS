@@ -1,0 +1,102 @@
+/* The film after the hero. The frame holds its shape before anything loads, so nothing below it moves;
+   it is dark in both themes, like the film itself. */
+
+.promo-film-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-3xl);
+  background: #0a0a0a center / cover no-repeat;
+  color-scheme: dark;
+}
+
+/* The poster arrives with the film, after the page has loaded, so it never competes with the hero */
+.promo-film-frame[data-armed] {
+  background-image: url('/video/maxwell-film-16x9.webp');
+}
+
+.promo-film-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Captions in the site's own type, low and centred, clear of the controls in the top corner */
+.promo-film-caption {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(0.75rem, 4%, 1.75rem);
+  width: max-content;
+  max-width: min(44rem, 90%);
+  margin: 0;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: pre-line;
+  pointer-events: none;
+}
+
+.promo-film-caption span {
+  padding: 0.12em 0.45em;
+  border-radius: var(--radius-sm);
+  background: rgba(10, 10, 10, 0.8);
+  color: #f7f7f5;
+  font-size: clamp(0.875rem, 0.8rem + 0.4vw, 1.125rem);
+  line-height: 1.75;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.promo-film-controls {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: flex;
+  gap: var(--space-2);
+}
+
+.promo-film-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: var(--radius-md);
+  background: rgba(10, 10, 10, 0.72);
+  color: #e6e6e3;
+  cursor: pointer;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+
+.promo-film-button:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.promo-film-button:focus-visible {
+  outline: 2px solid var(--gold-tint);
+  outline-offset: 2px;
+}
+
+/* a full 44px target for a thumb */
+@media (max-width: 1023px) {
+  .promo-film-button {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+/* Phones get the portrait cut of the film */
+@media (max-width: 767px) {
+  .promo-film-frame {
+    aspect-ratio: 4 / 5;
+  }
+
+  .promo-film-frame[data-armed] {
+    background-image: url('/video/maxwell-film-4x5.webp');
+  }
+}
