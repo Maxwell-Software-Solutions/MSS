@@ -1,16 +1,25 @@
-/* The film after the hero. It starts as a framed card under its heading. Scrolling pins it under the header,
-   grows it until it fills the screen, holds it there for a moment and lets go, and the page carries on. The
-   script only reports how far the growth has come (--film-e, 0 to 1) and where the picture sits; the look is
-   here. Without a sticky stage (an old browser, or no script) it is simply the card. Dark in both themes, like
-   the film itself. There are no reduced-motion rules on purpose: the film and its growth are the same for
-   everyone, and the pause button is always there. */
+/* The film after the hero, as part of the dark page rather than a player on it. The section is the film's own
+   background colour, so the hero runs straight into it and the picture has no edge: it is feathered into the dark.
+   Scrolling pins it under the header and grows it until it fills the screen, holds it there for a moment and lets
+   go; below it the page fades from dark into the next section. The script only reports how far the growth has come
+   (--film-e, 0 to 1) and where the picture sits; the look is here. Without a sticky stage (an old browser, or no
+   script) it is the same dark band with the picture in it. There are no reduced-motion rules on purpose: the film
+   and its growth are the same for everyone, and the pause button is always there. */
 
 .promo-film {
+  /* The film's own background: the most common colour of its rim over 29 frames of each cut (the hero's is #0a0a0a,
+     one step lighter, and the join between them is feathered). If the film is rendered again, measure it again. */
+  --film-ink-rgb: 9 9 9;
+  --film-ink: rgb(var(--film-ink-rgb));
   --film-ratio: 1.77778; /* 16:9; portrait screens get the 4:5 cut */
   --film-run-ratio: 1.25; /* how far the page scrolls while the film is pinned, in screens */
   --film-grow-from: 0.05; /* where in that scroll the growth starts and ends; the film holds after that */
   --film-grow-to: 0.72;
   --film-max-crop: 1.1; /* the most the full-screen picture may be cropped beyond fitting whole */
+
+  position: relative;
+  background: var(--film-ink);
+  color-scheme: dark;
 }
 
 @media (orientation: portrait) {
@@ -26,30 +35,61 @@
   }
 }
 
+/* The hero's black runs on into the film's: the join is feathered, so not even a step of one in the colour shows */
+.promo-film::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom, var(--hero-ink, #0a0a0a), transparent);
+  pointer-events: none;
+}
+
+.promo-film-view {
+  position: relative;
+  padding: clamp(2rem, 8vw, 5rem) var(--gutter);
+}
+
 /* The card holds its shape before anything loads, so nothing below it moves */
 .promo-film-card {
   position: relative;
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
   aspect-ratio: var(--film-ratio);
 }
 
 .promo-film-frame {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  border-radius: calc(var(--radius-3xl) * (1 - var(--film-e, 0)));
-  background: #0a0a0a center / cover no-repeat;
-  color-scheme: dark;
+  background: var(--film-ink) center / cover no-repeat;
 }
 
-/* The hairline round the card lets go as the card grows */
+/* The film's own picture is a little darker than its background towards the corners (a vignette); this lifts anything
+   darker than the page to the page's colour and leaves everything lighter alone, so the picture's edge has no ring */
+.promo-film-floor {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: var(--film-ink);
+  mix-blend-mode: lighten;
+  pointer-events: none;
+}
+
+/* No box: the picture's edges melt into the page in the film's own colour, in a soft eased fade that stays clear of
+   the film's own margins (its words start 7% in). Where the picture runs off the screen the fade is off the screen too. */
 .promo-film-frame::after {
   content: '';
   position: absolute;
   z-index: 2;
   inset: 0;
-  border: 1px solid var(--color-border);
-  border-radius: inherit;
-  opacity: calc(1 - var(--film-e, 0) * 2);
+  background:
+    linear-gradient(to right, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) left / 8% 100% no-repeat,
+    linear-gradient(to left, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) right / 8% 100% no-repeat,
+    linear-gradient(to bottom, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) top / 100% 12% no-repeat,
+    linear-gradient(to top, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) bottom / 100% 12% no-repeat;
   pointer-events: none;
 }
 
@@ -81,12 +121,10 @@
   object-fit: cover;
 }
 
-/* Captions and buttons sit in a layer that follows the part of the picture that is on screen, so they never
-   grow with the picture and are never cropped away */
+/* Captions and buttons keep to the page, not to the picture: they neither grow with it nor sit on its feathered edge */
 .promo-film-ui {
   position: absolute;
   inset: 0;
-  contain: layout style;
   pointer-events: none;
 }
 
@@ -94,7 +132,7 @@
 .promo-film-caption {
   position: absolute;
   left: 50%;
-  bottom: clamp(0.75rem, 4%, 1.75rem);
+  bottom: clamp(1rem, 5svh, 2.5rem);
   width: max-content;
   max-width: min(44rem, 90%);
   margin: 0;
@@ -114,10 +152,11 @@
   box-decoration-break: clone;
 }
 
+/* On the page's right edge, like the hero's own pause button, clear of the captions */
 .promo-film-controls {
   position: absolute;
-  top: var(--space-3);
-  right: var(--space-3);
+  top: var(--space-4);
+  right: max(var(--gutter), calc((100% - var(--container-width)) / 2 + var(--gutter)));
   display: flex;
   gap: var(--space-2);
   pointer-events: auto;
@@ -208,19 +247,35 @@
   }
 }
 
+/* Below the film the page fades from the film's dark into whatever follows, in the theme's own colour, rather than
+   ending on an edge. The fade takes the place of the next section's top padding. */
+.promo-film-fade {
+  height: calc(var(--section-space) + clamp(2rem, 8svh, 5rem));
+  background: linear-gradient(to bottom, var(--film-ink), var(--color-bg));
+  background: linear-gradient(
+    to bottom,
+    var(--film-ink) 0%,
+    color-mix(in srgb, var(--color-bg) 4%, var(--film-ink)) 20%,
+    color-mix(in srgb, var(--color-bg) 20%, var(--film-ink)) 40%,
+    color-mix(in srgb, var(--color-bg) 55%, var(--film-ink)) 60%,
+    color-mix(in srgb, var(--color-bg) 90%, var(--film-ink)) 80%,
+    var(--color-bg) 100%
+  );
+}
+
+.promo-film + .section {
+  padding-top: 0;
+}
+
 /* ---- The pin ----
    Needs a sticky stage that can work, so it is only built where the browser has everything it takes. Elsewhere
-   the card above is the whole story. */
+   the picture in its dark band, above, is the whole story. */
 @media (scripting: enabled) {
   @supports (overflow: clip) and (height: 100lvh) and (container-type: size) and selector(:has(*)) {
     /* The page's body hides sideways overflow, which makes it a scroll container, and nothing sticks inside one.
        Clipping hides the same overflow without becoming a scroll container; the window still does the scrolling. */
     body:has(.promo-film-track) {
       overflow-x: clip;
-    }
-
-    .promo-film.section {
-      padding-block: calc(var(--section-space) - var(--space-6)) var(--section-space);
     }
 
     /* The runway: the stage pins for as long as it takes the page to scroll this far. Its height is set in screens
@@ -237,61 +292,26 @@
       overflow: clip;
     }
 
-    /* The lights go down over the second half of the growth, so a picture that does not reach every edge ends
-       framed in black, and the page never sits half-grey behind a small card */
-    .promo-film-stage::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: #0a0a0a;
-      opacity: calc((var(--film-e, 0) - 0.4) / 0.6);
-    }
-
     /* What a visitor is certain to see, with a phone's toolbars out: the picture fills this, never the stage below it */
     .promo-film-view {
-      position: relative;
-      display: grid;
-      grid-template-rows: auto minmax(0, 1fr);
       height: calc(100svh - var(--header-height));
-      padding-block: var(--space-6);
+      padding: 0;
       overflow: clip;
     }
 
-    .promo-film-head {
-      margin-bottom: var(--space-5);
-      text-align: center;
-      opacity: calc(1 - var(--film-e, 0) * 4);
-      transform: translate3d(0, calc(var(--film-e, 0) * -1.5rem), 0);
-    }
-
-    /* The card is the biggest 16:9 (or 4:5) box that fits the space left under the heading */
+    /* The picture starts as the biggest 16:9 (or 4:5) box that fits in the dark with room round it */
     .promo-film-slot {
       display: grid;
       place-items: center;
-      min-height: 0;
+      height: 100%;
+      padding: clamp(0.75rem, 6svh, 3.5rem) clamp(1rem, 7vw, 7rem);
       container-type: size;
     }
 
     .promo-film-card {
       width: min(100cqw, calc(100cqh * var(--film-ratio)));
-    }
-
-    .promo-film-frame {
-      will-change: transform;
-    }
-
-    .promo-film-actions {
-      justify-content: center;
-    }
-
-    @media (max-width: 767px) {
-      .promo-film-view {
-        padding-block: var(--space-4);
-      }
-
-      .promo-film-head {
-        margin-bottom: var(--space-4);
-      }
+      max-width: none;
+      margin-inline: 0;
     }
   }
 }

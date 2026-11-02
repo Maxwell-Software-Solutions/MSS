@@ -1,4 +1,4 @@
-import { clamp01, endScale, filmSources, frameAt, growth, pinProgress, posterOf, settleAt, voiceOf, windowAt } from './promoFilmModel';
+import { clamp01, endScale, filmSources, frameAt, growth, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
 import type { Layout } from './promoFilmModel';
 
 const srcs = (list: Array<{ src: string }>): string[] => list.map((item) => item.src);
@@ -73,25 +73,6 @@ describe('the growing card', () => {
     const end = frameAt(lowCard, 1.4, 1);
     expect(end.k).toBeCloseTo(1.4, 5);
     expect(end.ty).toBeCloseTo(836 / 2 - (160 + 290), 5);
-  });
-
-  it('keeps captions and buttons on the card while it is a card, and on the screen once it fills it', () => {
-    const scale = endScale(desktop, 1.1);
-    expect(windowAt(desktop, scale, 0)).toEqual({ top: 0, right: 0, bottom: 0, left: 0 });
-    const full = windowAt(desktop, scale, 1);
-    expect(full.top).toBeCloseTo(-103, 5);
-    expect(full.bottom).toBeCloseTo(-103, 5);
-    expect(full.left).toBeCloseTo(-160, 5);
-    expect(full.right).toBeCloseTo(-160, 5);
-  });
-
-  it('follows the picture, not the screen, when the picture does not reach the edges', () => {
-    const full = windowAt(phone, endScale(phone, 1.1), 1);
-    // the picture is 432 x 540 on a 393 x 595 screen: cropped at the sides, black above and below
-    expect(full.left).toBeCloseTo(-30.5, 5);
-    expect(full.right).toBeCloseTo(-30.5, 5);
-    const picture = 415 + full.top * -1 + full.bottom * -1;
-    expect(picture).toBeCloseTo(415 * endScale(phone, 1.1), 3);
   });
 });
 
