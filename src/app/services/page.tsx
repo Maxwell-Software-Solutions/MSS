@@ -3,15 +3,9 @@ import type { ReactElement } from 'react';
 import ServicesPage from './ServicesPage';
 import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
+import { generateMetadata as genMeta } from '@/lib/seo/utils';
 
-export const metadata: Metadata = {
-  title: 'Code Quality Audits & Engineering Consulting — Maxwell Software Solutions | Vilnius, Lithuania',
-  description:
-    'Professional software engineering services in Vilnius, Lithuania: code quality audits, reliability engineering, testing strategy, CI/CD hardening, and technical debt reduction.',
-  alternates: {
-    canonical: '/services',
-  },
-};
+export const metadata: Metadata = genMeta('services');
 
 export default function ServicesPageWrapper(): ReactElement {
   const breadcrumb = generateBreadcrumbSchema([

@@ -171,9 +171,9 @@ export interface SiteConfig {
  */
 export const SITE_CONFIG: Readonly<SiteConfig> = {
   name: 'Maxwell Software Solutions',
-  title: 'Engineering Excellence Through Quality & Reliability',
+  title: 'AI Software Development, Built for Production',
   description:
-    'Elite software engineering consultancy specializing in code quality audits, test-driven development, CI/CD optimization, and reliability engineering.',
+    'AI software development company in Vilnius, Lithuania. We help businesses adopt AI, build AI agents that work inside their systems, and launch AI products.',
   url: CANONICAL_BASE_URL,
   locale: 'en_US',
   alternateLocale: 'lt_LT',
@@ -202,6 +202,18 @@ export const SITE_CONFIG: Readonly<SiteConfig> = {
  * @constant
  */
 export const KEYWORD_SETS = {
+  ai: [
+    'AI software development',
+    'AI development company',
+    'AI agents',
+    'agentic AI',
+    'AI adoption',
+    'AI strategy',
+    'AI consulting',
+    'LLM integration',
+    'generative AI development',
+    'AI prototyping',
+  ],
   core: [
     'software engineering consultancy',
     'code quality audit',
@@ -223,31 +235,39 @@ export const KEYWORD_SETS = {
  */
 export const PAGES: Record<string, PageMetadata> = {
   home: {
-    title: 'Software Engineering Consultancy in Vilnius, Lithuania — Maxwell Software Solutions',
+    title: 'AI Software Development Company in Vilnius, Lithuania — Maxwell Software Solutions',
     description: SITE_CONFIG.description,
-    keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.testing, ...KEYWORD_SETS.devops, 'software consultancy Lithuania', 'software development company Vilnius'],
+    keywords: [
+      ...KEYWORD_SETS.ai,
+      'AI development company Vilnius',
+      'AI agents Lithuania',
+      'AI consulting Lithuania',
+      'software development company Vilnius',
+      ...KEYWORD_SETS.core,
+    ],
     canonical: '/',
     ogType: 'website',
   },
+  // Child pages get " | Maxwell Software Solutions" from the root title template
   about: {
-    title: 'About Maxwell Software Solutions — Elite Software Consultancy, Vilnius Lithuania',
+    title: 'About Us — AI Software Engineers in Vilnius, Lithuania',
     description:
-      'Maxwell Software Solutions is a software engineering consultancy based in Vilnius, Lithuania, specialising in code quality audits, TDD, and reliability engineering. Meet the team.',
-    keywords: [...KEYWORD_SETS.core, 'software consulting team', 'engineering expertise', 'software consultancy Vilnius', 'Lithuania engineering team'],
+      'Maxwell Software Solutions is an AI software development company in Vilnius, Lithuania. Our AI software engineers are grounded in architecture, testing and reliability. Meet the team.',
+    keywords: [...KEYWORD_SETS.ai, 'AI engineers Vilnius', 'AI development team Lithuania', 'software consultancy Vilnius'],
     canonical: '/about',
   },
   services: {
-    title: 'Code Quality Audits & Engineering Consulting — Maxwell Software Solutions | Vilnius, Lithuania',
+    title: 'AI Services in Vilnius — AI Agents, AI Adoption and AI Product Development',
     description:
-      'Professional software engineering services in Vilnius, Lithuania: code quality audits, reliability engineering, testing strategy, CI/CD hardening, and technical debt reduction.',
-    keywords: [...KEYWORD_SETS.core, ...KEYWORD_SETS.testing, ...KEYWORD_SETS.devops, 'software consultancy Lithuania', 'code quality audit Vilnius'],
+      'AI services from Vilnius, Lithuania: AI adoption and strategy, AI agents and automation, AI product development and prototyping, on a foundation of audits, testing and CI/CD.',
+    keywords: [...KEYWORD_SETS.ai, 'AI agents Vilnius', 'AI services Lithuania', ...KEYWORD_SETS.core, 'code quality audit Vilnius'],
     canonical: '/services',
   },
   contact: {
-    title: 'Contact Maxwell Software Solutions | Vilnius, Lithuania',
+    title: 'Contact Us — Vilnius, Lithuania',
     description:
-      "Get in touch with our engineering team in Vilnius, Lithuania to discuss your code quality, testing, or DevOps challenges. We're here to help.",
-    keywords: ['software consulting contact', 'engineering services inquiry', ...KEYWORD_SETS.core, 'software consultancy Vilnius'],
+      'Talk to our team in Vilnius, Lithuania about AI adoption, AI agents or a new AI product, or about the quality and reliability of your software.',
+    keywords: ['AI project inquiry', 'AI consulting contact', 'software consultancy Vilnius', ...KEYWORD_SETS.core],
     canonical: '/contact',
   },
   blog: {
@@ -526,29 +546,47 @@ export const PROJECTS: Record<string, ProjectMeta> = {
  */
 export const SERVICES: ReadonlyArray<ServiceOffering> = [
   {
-    name: 'Code Quality Audit',
+    name: 'AI Adoption and Strategy',
     description:
-      'Comprehensive code quality analysis identifying technical debt, vulnerabilities, and improvement opportunities with actionable recommendations.',
+      "Finding the AI use cases worth doing, a readiness assessment of data and systems, a roadmap, governance, and training for the client's team.",
   },
   {
-    name: 'Reliability Engineering',
+    name: 'AI Agents and Automation',
     description:
-      'Build resilient systems with proper monitoring, alerting, incident response, and chaos engineering practices.',
+      'Agentic workflows connected to business systems such as CRM, ERP, documents and ticketing, with people approving the steps that matter.',
   },
   {
-    name: 'Testing Strategy & Implementation',
+    name: 'AI Product Development',
     description:
-      'Design and implement comprehensive testing strategies including unit, integration, E2E, and performance testing.',
+      'LLM features, knowledge assistants, and integration with the major model providers and with open or local models.',
   },
   {
-    name: 'CI/CD Pipeline Optimization',
-    description:
-      'Optimize build pipelines, automate deployments, and implement continuous delivery best practices for faster, safer releases.',
+    name: 'AI Innovation and Prototyping',
+    description: 'Working proofs of concept for new AI ideas, built in weeks and tested with real users.',
   },
   {
-    name: 'Technical Debt Reduction',
+    name: 'Code and AI Readiness Audit',
     description:
-      'Strategic refactoring and modernization to reduce technical debt while maintaining business continuity.',
+      'Static analysis, architecture review and test coverage mapping, with a prioritised plan of what to fix before adding AI.',
+  },
+  {
+    name: 'Testing and AI Evaluations',
+    description:
+      'Test strategy plus evaluation sets for AI features, so model and prompt changes are checked like any other code.',
+  },
+  {
+    name: 'Refactoring and Modernisation',
+    description:
+      'Step-by-step technical debt reduction that gives AI features clean interfaces and reliable data to work with.',
+  },
+  {
+    name: 'Reliability and Monitoring',
+    description:
+      'SLOs, tracing and incident response, extended to tracking AI quality, latency and cost in production.',
+  },
+  {
+    name: 'CI/CD and Safe Rollout',
+    description: 'Fast pipelines with quality gates, preview environments and staged releases for safer deployments.',
   },
   {
     name: 'Software Architecture Consulting',

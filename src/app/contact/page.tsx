@@ -3,15 +3,9 @@ import type { ReactElement } from 'react';
 import ContactClient from './ContactClient';
 import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
+import { generateMetadata as genMeta } from '@/lib/seo/utils';
 
-export const metadata: Metadata = {
-  title: 'Contact Maxwell Software Solutions | Vilnius, Lithuania',
-  description:
-    "Get in touch with our engineering team in Vilnius, Lithuania to discuss your code quality, testing, or DevOps challenges. We're here to help.",
-  alternates: {
-    canonical: '/contact',
-  },
-};
+export const metadata: Metadata = genMeta('contact');
 
 export default function ContactPage(): ReactElement {
   const breadcrumb = generateBreadcrumbSchema([

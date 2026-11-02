@@ -80,7 +80,7 @@ export function generateLocalBusinessSchema(): object {
     priceRange: '$$$',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Software Engineering Services',
+      name: 'AI and Software Engineering Services',
       itemListElement: SERVICES.map((service) => ({
         '@type': 'Offer',
         itemOffered: {

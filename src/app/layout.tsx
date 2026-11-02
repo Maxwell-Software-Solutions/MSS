@@ -70,7 +70,7 @@ export const metadata: Metadata = {
 
   // Enhanced Open Graph metadata
   openGraph: {
-    title: SITE_CONFIG.name,
+    title: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`,
     description: SITE_CONFIG.description,
     type: 'website',
     url: SITE_CONFIG.url,
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
   // Twitter Card metadata
   twitter: {
     card: 'summary_large_image',
-    title: SITE_CONFIG.name,
+    title: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`,
     description: SITE_CONFIG.description,
     creator: SITE_CONFIG.social.twitter,
     images: ['/opengraph-image'],

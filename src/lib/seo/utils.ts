@@ -57,6 +57,8 @@ export function generateMetadata(pageKey: string): Metadata {
   }
 
   const page = PAGES[pageKey]!;
+  // A page's own openGraph replaces the layout's, so it names the site image itself
+  const image = { url: '/opengraph-image', width: 1200, height: 630, alt: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}` };
 
   return {
     title: page.title,
@@ -72,6 +74,7 @@ export function generateMetadata(pageKey: string): Metadata {
       url: `${SITE_CONFIG.url}${page.canonical}`,
       siteName: SITE_CONFIG.name,
       locale: SITE_CONFIG.locale,
+      images: [image],
       ...(page.publishedTime ? { publishedTime: page.publishedTime } : {}),
       ...(page.modifiedTime ? { modifiedTime: page.modifiedTime } : {}),
     },
@@ -79,6 +82,7 @@ export function generateMetadata(pageKey: string): Metadata {
       card: 'summary_large_image',
       title: page.title,
       description: page.description,
+      images: [image.url],
     },
   };
 }
