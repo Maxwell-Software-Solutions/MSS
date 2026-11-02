@@ -46,6 +46,7 @@ test.describe('Horizontal Scroll Prevention', () => {
     });
     
     expect(overflowSettings.htmlOverflow).toBe('hidden');
-    expect(overflowSettings.bodyOverflow).toBe('hidden');
+    // the home page's body clips instead of hiding, so that the film's pinned stage can stick inside it
+    expect(['hidden', 'clip']).toContain(overflowSettings.bodyOverflow);
   });
 });
