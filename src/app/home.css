@@ -3,7 +3,8 @@
    The page is the one whose <main> starts with the hero. */
 
 .copy-short,
-.phone-only {
+.phone-only,
+.rail-progress {
   display: none;
 }
 
@@ -123,6 +124,68 @@
 
   main:has(> .hero-stage) .stat-label {
     margin-top: var(--space-2);
+  }
+
+  /* Long rows of cards become rails that scroll sideways. The next card peeks in and a gold line under
+     the rail shows how far along it you are. */
+  .rail {
+    display: flex;
+    gap: var(--space-3);
+    margin-inline: calc(-1 * var(--gutter));
+    padding: var(--space-1) var(--gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rail:focus-visible {
+    outline-offset: -2px;
+  }
+
+  .rail > :not(.sr-only) {
+    flex: 0 0 min(86%, 21rem);
+    scroll-snap-align: start;
+  }
+
+  .rail > :is(.item, .quote) {
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-3xl);
+    background: var(--color-surface);
+  }
+
+  .rail > .item:has(> .item-icon) {
+    display: block;
+  }
+
+  .rail > .item > .item-icon {
+    margin-bottom: var(--space-4);
+  }
+
+  .rail-progress {
+    display: block;
+    position: relative;
+    width: 4.5rem;
+    height: 2px;
+    margin-top: var(--space-5);
+    overflow: hidden;
+    border-radius: 1px;
+    background: var(--color-border-strong);
+  }
+
+  .rail-progress > span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: calc(var(--seen, 0.3) * 100%);
+    border-radius: inherit;
+    background: var(--color-accent);
+    transform: translateX(calc(var(--at, 0) * (1 / var(--seen, 0.3) - 1) * 100%));
   }
 
   /* The second action in a band is a quiet text link, as in the hero */

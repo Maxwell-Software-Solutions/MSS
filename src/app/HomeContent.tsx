@@ -6,6 +6,7 @@ import Link from 'next/link';
 import HeroStage from './components/hero/HeroStage';
 import DeferredSections from './components/DeferredSections';
 import DarkShowcaseSection from './components/DarkShowcaseSection';
+import Rail from './components/Rail';
 import { useLanguage } from '@/lib/LanguageContext';
 import { FeatureCard, ButtonLink, LineIcon, StatCard } from './components/ui';
 import type { LineIconName } from './components/ui';
@@ -37,7 +38,7 @@ export default function HomeContent(): ReactElement {
             </p>
           </div>
 
-          <div className="columns columns-4">
+          <Rail className="columns columns-4" label={t('capabilities.heading')}>
             {aiServices.map((card) => (
               <FeatureCard
                 key={card.title}
@@ -46,7 +47,7 @@ export default function HomeContent(): ReactElement {
                 description={card.description}
               />
             ))}
-          </div>
+          </Rail>
         </div>
       </section>
 
@@ -110,7 +111,7 @@ export default function HomeContent(): ReactElement {
             ))}
           </div>
 
-          <div className="columns columns-4 block-gap" role="group" aria-label={t('value.label')}>
+          <Rail className="columns columns-4 block-gap" role="group" aria-label={t('value.label')} label={t('value.label')}>
             {[
               { title: t('value.evals.title'), description: t('value.evals.body') },
               { title: t('value.foundations.title'), description: t('value.foundations.body') },
@@ -119,7 +120,7 @@ export default function HomeContent(): ReactElement {
             ].map((card) => (
               <FeatureCard key={card.title} title={card.title} description={card.description} />
             ))}
-          </div>
+          </Rail>
         </div>
       </section>
 
@@ -135,7 +136,7 @@ export default function HomeContent(): ReactElement {
             </p>
           </div>
 
-          <div className="columns columns-3">
+          <Rail className="columns columns-3" label={t('projects.heading')}>
             {[
               {
                 slug: 'retail-platform',
@@ -194,10 +195,10 @@ export default function HomeContent(): ReactElement {
                 </span>
               </Link>
             ))}
-          </div>
+          </Rail>
 
           <div className="page-actions">
-            <ButtonLink href="/project-showcase" variant="ghost">
+            <ButtonLink href="/project-showcase" variant="ghost" className="link-quiet">
               {t('projects.browseAll')}
             </ButtonLink>
           </div>

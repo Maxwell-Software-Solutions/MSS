@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import Rail from './Rail';
 
 export default function TestimonialsSection(): ReactElement {
   return (
@@ -7,7 +8,7 @@ export default function TestimonialsSection(): ReactElement {
         <h2 id="testimonials-heading" className="section-head">
           Client perspective
         </h2>
-        <div className="columns columns-3">
+        <Rail className="columns columns-3" label="Client perspective">
           {[
             {
               quote:
@@ -28,7 +29,7 @@ export default function TestimonialsSection(): ReactElement {
               <figcaption>{t.author}</figcaption>
             </figure>
           ))}
-        </div>
+        </Rail>
       </div>
     </section>
   );

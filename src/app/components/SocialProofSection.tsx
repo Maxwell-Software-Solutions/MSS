@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import { StatCard } from './ui';
+import Rail from './Rail';
 
 // SVG placeholder logos — replaced with real brand assets when provided
 function Wordmark({ name, label, width }: { name: string; label: string; width: number }): ReactElement {
@@ -64,7 +65,7 @@ export default function SocialProofSection(): ReactElement {
           ))}
         </div>
 
-        <div className="columns columns-3 block-gap" id="social-proof-heading" aria-label="Client testimonials">
+        <Rail className="columns columns-3 block-gap" id="social-proof-heading" aria-label="Client testimonials" label="Client testimonials">
           <h2 className="sr-only">Client results and testimonials</h2>
           {testimonials.map((item) => (
             <figure key={item.author} className="quote">
@@ -75,7 +76,7 @@ export default function SocialProofSection(): ReactElement {
               <figcaption>{item.author}</figcaption>
             </figure>
           ))}
-        </div>
+        </Rail>
       </div>
     </section>
   );
