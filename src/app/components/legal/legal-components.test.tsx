@@ -19,7 +19,7 @@ describe('renderInline', () => {
     render(
       <p>
         {renderInline(
-          '[inside](/privacy) [anchor](#cookies) [mail](mailto:privacy@maxwellsoftwaresolutions.com) [outside](https://vdai.lrv.lt/)',
+          '[inside](/privacy) [anchor](#cookies) [mail](mailto:support@maxwellsoftwaresolutions.com) [outside](https://vdai.lrv.lt/)',
         )}
       </p>,
     );
@@ -27,7 +27,7 @@ describe('renderInline', () => {
     expect(screen.getByRole('link', { name: 'anchor' })).toHaveAttribute('href', '#cookies');
     expect(screen.getByRole('link', { name: 'mail' })).toHaveAttribute(
       'href',
-      'mailto:privacy@maxwellsoftwaresolutions.com',
+      'mailto:support@maxwellsoftwaresolutions.com',
     );
     const outside = screen.getByRole('link', { name: 'outside' });
     expect(outside).toHaveAttribute('href', 'https://vdai.lrv.lt/');

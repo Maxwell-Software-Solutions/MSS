@@ -1,6 +1,8 @@
 import { CONTACT_EMAIL, CONTACT_PHONE } from '@/app/contact/contact.constants';
 
 const DOMAIN = 'maxwellsoftwaresolutions.com';
+/** The one public mailbox for privacy, security and legal mail. */
+const SUPPORT_EMAIL = `support@${DOMAIN}`;
 
 /** Provider details shown in the footer and in the legal pages. One source, so they cannot drift apart. */
 export const COMPANY = {
@@ -18,9 +20,9 @@ export const COMPANY = {
   emails: {
     /** The address shown in the footer and on the contact page. */
     general: CONTACT_EMAIL,
-    privacy: `privacy@${DOMAIN}`,
-    security: `security@${DOMAIN}`,
-    legal: `legal@${DOMAIN}`,
+    privacy: SUPPORT_EMAIL,
+    security: SUPPORT_EMAIL,
+    legal: SUPPORT_EMAIL,
   },
 } as const;
 

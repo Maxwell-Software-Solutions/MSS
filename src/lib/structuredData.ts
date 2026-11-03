@@ -14,7 +14,7 @@ export const organizationSchema = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
-    email: 'contact@maxwellsoftwaresolutions.com',
+    email: 'support@maxwellsoftwaresolutions.com',
     availableLanguage: ['English', 'Lithuanian'],
   },
   sameAs: [

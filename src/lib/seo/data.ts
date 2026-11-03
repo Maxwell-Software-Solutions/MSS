@@ -157,7 +157,7 @@ export const SITE_CONFIG: Readonly<SiteConfig> = {
   url: CANONICAL_BASE_URL,
   locale: 'en_US',
   alternateLocale: 'lt_LT',
-  email: 'contact@maxwellsoftwaresolutions.com',
+  email: 'support@maxwellsoftwaresolutions.com',
   foundingDate: '2024-01-01',
   address: {
     country: 'LT',
