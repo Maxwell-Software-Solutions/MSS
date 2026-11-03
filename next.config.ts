@@ -71,6 +71,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // Retired pages: /pricing and /free-audit, with any subpath or /en, /lt prefix, go to the contact page.
+      // Temporary, so the pages can come back. ":path*" also matches the bare path.
+      ...['pricing', 'free-audit'].flatMap((page) => [
+        { source: `/${page}/:path*`, destination: '/contact', permanent: false },
+        { source: `/:lang(en|lt)/${page}/:path*`, destination: '/contact', permanent: false },
+      ]),
+
       // 4. Short booking link for emails; temporary so the calendar page can change later
       {
         source: '/book',

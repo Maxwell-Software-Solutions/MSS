@@ -72,7 +72,7 @@ export default function ServicesPackagesPage(): ReactElement {
         ht('packages.audit.include6', '60-minute findings walkthrough call'),
       ],
       ctaLabel: ht('packages.audit.cta', 'Book an audit'),
-      ctaHref: '/free-audit',
+      ctaHref: '/contact',
     },
     {
       name: ht('packages.sprint.name', 'Sprint-in-a-Box'),

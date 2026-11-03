@@ -163,8 +163,8 @@ export const SITE_CONFIG: Readonly<SiteConfig> = {
     country: 'LT',
     locality: 'Vilnius',
     region: 'Vilnius County',
-    postalCode: 'LT-01108',
-    streetAddress: 'Gedimino pr. 1',
+    postalCode: 'LT-10240',
+    streetAddress: 'Gvazdikų Sodų 4-oji g. 4',
   },
   social: {
     linkedin: 'https://www.linkedin.com/company/maxwell-software-solutions',
@@ -282,12 +282,6 @@ export const PAGES: Record<string, PageMetadata> = {
     keywords: ['terms of service', 'legal'],
     canonical: '/terms',
   },
-  pricing: {
-    title: 'Pricing — Engineering Service Packages | Maxwell Software Solutions',
-    description: 'Transparent pricing for code quality audits, sprint delivery, engineering retainers, CI/CD hardening, and fractional CTO services. Fixed-price and retainer options.',
-    keywords: ['software engineering pricing', 'code audit cost', 'engineering retainer pricing', ...KEYWORD_SETS.core],
-    canonical: '/pricing',
-  },
   caseStudies: {
     title: 'Real AI Work — Case Studies',
     description:
@@ -300,12 +294,6 @@ export const PAGES: Record<string, PageMetadata> = {
       'AI development company Vilnius',
     ],
     canonical: '/case-studies',
-  },
-  freeAudit: {
-    title: 'Free Code Health Audit — Maxwell Software Solutions',
-    description: 'Request a free code health audit from Maxwell Software Solutions. Get an objective assessment of your codebase quality, test coverage, and reliability posture.',
-    keywords: ['free code audit', 'code health check', 'codebase review', ...KEYWORD_SETS.core],
-    canonical: '/free-audit',
   },
   startASprint: {
     title: 'Start a Sprint — Sprint-in-a-Box Service | Maxwell Software Solutions',

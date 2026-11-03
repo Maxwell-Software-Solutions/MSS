@@ -71,7 +71,7 @@ export default function SiteFooter(): ReactElement {
               </div>
               <div>
                 <dt className="text-muted">Hours</dt>
-                <dd className="mt-1 text-foreground">Monday – Friday, 8am – 6pm CT</dd>
+                <dd className="mt-1 text-foreground">{t('footer.hours')}</dd>
               </div>
             </dl>
           </div>

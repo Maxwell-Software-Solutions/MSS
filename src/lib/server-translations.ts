@@ -25,7 +25,6 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'nav.about',
     'nav.blog',
     'nav.founders',
-    'nav.pricing',
     'cta.scheduleCall',
     'cta.bookCall',
     'cta.bookCall.aria',

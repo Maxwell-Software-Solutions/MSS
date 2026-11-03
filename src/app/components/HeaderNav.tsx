@@ -70,9 +70,6 @@ export default function HeaderNav(): ReactElement {
         <Link href="/case-studies" aria-current={current('/case-studies')} suppressHydrationWarning>
           {ht('nav.caseStudies', 'Case studies')}
         </Link>
-        <Link href="/pricing" aria-current={current('/pricing')} suppressHydrationWarning>
-          {ht('nav.pricing', 'Pricing')}
-        </Link>
         <Link href="/about" aria-current={current('/about')} suppressHydrationWarning>
           {ht('nav.about', 'About')}
         </Link>

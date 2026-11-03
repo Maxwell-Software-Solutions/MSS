@@ -59,13 +59,9 @@ export const metadata: Metadata = {
   // Metadata base URL for all relative paths
   metadataBase: new URL(siteUrl),
 
-  // Canonical URL and language alternates
+  // Canonical URL. No hreflang: the language switches by cookie on the same URL, so there is no per-language URL to point at.
   alternates: {
     canonical: '/',
-    languages: {
-      'en-US': '/en',
-      'lt-LT': '/lt',
-    },
   },
 
   // Enhanced Open Graph metadata
@@ -173,10 +169,6 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="//fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="//fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* hreflang tags for bilingual EN/LT site — required to avoid duplicate content penalties */}
-        <link rel="alternate" hrefLang="en" href={`${siteUrl}/en`} />
-        <link rel="alternate" hrefLang="lt" href={`${siteUrl}/lt`} />
-        <link rel="alternate" hrefLang="x-default" href={siteUrl} />
       </head>
       <body className="antialiased">
         <LanguageProvider initialLanguage={initialLang} criticalTranslations={criticalTranslations}>
