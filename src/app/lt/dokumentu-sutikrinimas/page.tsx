@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactElement, ReactNode } from 'react';
 import StructuredData from '@/app/components/StructuredData';
+import DemoClip from './DemoClip';
 import { PAGES, SITE_CONFIG } from '@/lib/seo/data';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
@@ -136,27 +137,32 @@ export default function DocumentCrossCheckPage(): ReactElement {
       <StructuredData schema={[breadcrumb, webPage]} />
 
       <header className="wrap page-head">
-        <div className="eyebrow">Dokumentų sutikrinimas su DI</div>
-        <h1>Sąskaitoje vienas kiekis, važtaraštyje – kitas. Mes randame nesutapimus.</h1>
-        <p className="lead">
-          DI palygina jūsų dokumentus tarpusavyje – sąskaitą su važtaraščiu, CMR su pakavimo lapu, brėžinį su detalių
-          sąrašu, sertifikatus su užsakymu – ir pažymi, kas nesutampa. Kiekvieną eilutę tvirtina žmogus.
-        </p>
-        <p>
-          Tai ne sąskaitų nuskaitymas. Mes lyginame skirtingų tipų dokumentus, taip pat užsienio kalbomis, ir parodome, kur
-          jie prieštarauja vienas kitam.
-        </p>
-        <p>
-          Dirbame nuotoliu. Iš jūsų reikia tik dokumentų: be vizitų ir be diegimo. Jei laiško langas neatsidaro, rašykite
-          adresu mantas@maxwellsoftwaresolutions.com.
-        </p>
-        <div className="page-actions">
-          <a href={CHECK_MAILTO} className="btn btn-accent btn-lg">
-            {CHECK_LABEL}
-          </a>
-          <a href="/book" className="btn btn-lg" target="_blank" rel="noopener noreferrer">
-            {BOOK_LABEL}
-          </a>
+        <div className="doc-hero">
+          <div className="doc-hero-copy">
+            <div className="eyebrow">Dokumentų sutikrinimas su DI</div>
+            <h1>Sąskaitoje vienas kiekis, važtaraštyje – kitas. Mes randame nesutapimus.</h1>
+            <p className="lead">
+              DI palygina jūsų dokumentus tarpusavyje – sąskaitą su važtaraščiu, CMR su pakavimo lapu, brėžinį su detalių
+              sąrašu, sertifikatus su užsakymu – ir pažymi, kas nesutampa. Kiekvieną eilutę tvirtina žmogus.
+            </p>
+            <p>
+              Tai ne sąskaitų nuskaitymas. Mes lyginame skirtingų tipų dokumentus, taip pat užsienio kalbomis, ir parodome,
+              kur jie prieštarauja vienas kitam.
+            </p>
+            <p>
+              Iš jūsų reikia tik dokumentų: be vizitų, viskas nuotoliu. Jei laiško langas neatsidaro, rašykite adresu
+              mantas@maxwellsoftwaresolutions.com.
+            </p>
+            <div className="page-actions">
+              <a href={CHECK_MAILTO} className="btn btn-accent btn-lg">
+                {CHECK_LABEL}
+              </a>
+              <a href="/book" className="btn btn-lg" target="_blank" rel="noopener noreferrer">
+                {BOOK_LABEL}
+              </a>
+            </div>
+          </div>
+          <DemoClip />
         </div>
       </header>
 
