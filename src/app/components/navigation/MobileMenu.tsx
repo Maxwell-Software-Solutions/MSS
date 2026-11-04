@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useRef, useEffect, useCallback, type ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
+import { useLanguageToggle } from '@/lib/useLanguageToggle';
 import ThemeToggle from '@/app/components/ThemeToggle';
 import ScheduleCallButton from '@/app/components/ScheduleCallButton';
 import BrandLogo from '@/app/components/BrandLogo';
@@ -12,14 +13,11 @@ export interface MobileMenuProps {
 }
 
 export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
-  const { t, language, setLanguage } = useLanguage();
+  const { t } = useLanguage();
+  const { language, toggleLanguage } = useLanguageToggle();
   const panelRef = useRef<HTMLDivElement | null>(null);
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
   const prevFocus = useRef<HTMLElement | null>(null);
-
-  const toggleLanguage = useCallback(() => {
-    setLanguage(language === 'en' ? 'lt' : 'en');
-  }, [language, setLanguage]);
 
   // Side effects when opening / closing
   useEffect(() => {

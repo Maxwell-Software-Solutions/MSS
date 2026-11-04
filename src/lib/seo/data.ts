@@ -343,6 +343,22 @@ export const PAGES: Record<string, PageMetadata> = {
     keywords: ['website scanner', 'website health check', 'site speed test', 'security headers check', 'SEO audit tool', 'web performance', ...KEYWORD_SETS.core],
     canonical: '/website-scanner',
   },
+  // Lithuanian-only page on its own /lt/ address; the title is used whole (no brand suffix), see the page file
+  documentCrossCheckLt: {
+    title: 'Dokumentų nesutapimai: sąskaita, važtaraštis, CMR | Maxwell',
+    description:
+      'DI palygina sąskaitas, važtaraščius, CMR, brėžinius ir sertifikatus ir pažymi, kas nesutampa. Kiekvieną eilutę tvirtina žmogus. Dirbame nuotoliu.',
+    keywords: [
+      'dokumentų sutikrinimas',
+      'dokumentų nesutapimai',
+      'važtaraščio ir sąskaitos palyginimas',
+      'CMR tikrinimas',
+      'DI dokumentų tikrinimas',
+      'dirbtinis intelektas verslui',
+    ],
+    canonical: '/lt/dokumentu-sutikrinimas',
+    modifiedTime: '2026-11-04T00:00:00Z',
+  },
 };
 
 // ============================================================================
