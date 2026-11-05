@@ -14,7 +14,7 @@ import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
  *
  * Its own /lt/ address (not the site's cookie or `?lang=` switch) so search engines and shared links always get
  * Lithuanian text. The middleware marks /lt/ requests, and the root layout then renders <html lang="lt">.
- * No price, client name or figure belongs on this page.
+ * No price, client name or figure belongs on this page; the only offer is a free first check.
  */
 const PAGE = PAGES.documentCrossCheckLt!;
 const PAGE_URL = `${SITE_CONFIG.url}${PAGE.canonical}`;
@@ -150,7 +150,8 @@ export default function DocumentCrossCheckPage(): ReactElement {
               kur jie prieštarauja vienas kitam.
             </p>
             <p>
-              Iš jūsų reikia tik dokumentų: be vizitų, viskas nuotoliu. Jei laiško langas neatsidaro, rašykite adresu
+              Pirmą rinkinį patikriname nemokamai. Iš jūsų reikia tik dokumentų: be vizitų, viskas nuotoliu. Jei laiško
+              langas neatsidaro, rašykite adresu
               mantas@maxwellsoftwaresolutions.com.
             </p>
             <div className="page-actions">
@@ -226,7 +227,7 @@ export default function DocumentCrossCheckPage(): ReactElement {
           <h2 id="start-heading">Pradėkite nuo vieno rinkinio</h2>
           <p>
             Atsiųskite vieną dokumentų rinkinį adresu mantas@maxwellsoftwaresolutions.com. Grąžinsime patikrintą:
-            nesutapimai pažymėti, kiekvieną eilutę patvirtino žmogus. Viskas vyksta nuotoliu.
+            nesutapimai pažymėti, kiekvieną eilutę patvirtino žmogus. Pirmas rinkinys – nemokamai. Viskas vyksta nuotoliu.
           </p>
           <div className="band-actions">
             <a href={CHECK_MAILTO} className="btn btn-accent btn-lg">

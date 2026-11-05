@@ -44,6 +44,7 @@ describe('Lithuanian document cross-check page', () => {
     expect(screen.getByRole('heading', { name: 'Sertifikatai' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Kiekvieną eilutę tvirtina žmogus' })).toBeInTheDocument();
     expect(document.body.textContent).toMatch(/nuotoliu/);
+    expect(document.body.textContent).toMatch(/nemokamai/);
   });
 
   it('offers the send-a-set mailto and the /book link, twice each', () => {
