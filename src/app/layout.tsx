@@ -14,6 +14,7 @@ import { headers } from 'next/headers';
 import { loadServerTranslations, getCriticalTranslations } from '@/lib/server-translations';
 import { SITE_CONFIG, PAGES } from '@/lib/seo/data';
 import { CANONICAL_BASE_URL } from '@/lib/seo/url';
+import { PAGE_LANGUAGE_HEADER } from '@/lib/page-language';
 
 const siteUrl = CANONICAL_BASE_URL;
 
@@ -151,7 +152,8 @@ export default async function RootLayout({
   const hdrs = await headers();
   const cookieHeader = hdrs.get('cookie') || '';
   const match = cookieHeader.match(/(?:^|; )language=(lt|en)(?:;|$)/);
-  const initialLang = match?.[1] === 'lt' ? 'lt' : 'en';
+  // A page with a fixed language (everything under /lt/) ignores the cookie
+  const initialLang = hdrs.get(PAGE_LANGUAGE_HEADER) === 'lt' || match?.[1] === 'lt' ? 'lt' : 'en';
 
   // Load critical translations for server-side injection to reduce flashes
   const fullTranslations = await loadServerTranslations(initialLang);

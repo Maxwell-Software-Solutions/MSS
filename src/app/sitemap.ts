@@ -29,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       codeAudit: 0.8,
       fractionalCTO: 0.8,
       hireDeveloper: 0.8,
+      documentCrossCheckLt: 0.8,
       contact: 0.7,
       consultingProcess: 0.6,
       founders: 0.6,
@@ -49,6 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       codeAudit: 'monthly',
       fractionalCTO: 'monthly',
       hireDeveloper: 'monthly',
+      documentCrossCheckLt: 'monthly',
       contact: 'monthly',
       consultingProcess: 'monthly',
       founders: 'monthly',
@@ -59,7 +61,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return {
       url: `${baseUrl}${page.canonical}`,
-      lastModified: now,
+      // A page that records its own modified date uses it; the rest report the time of the request
+      lastModified: page.modifiedTime ? new Date(page.modifiedTime) : now,
       changeFrequency: changefreqMap[key] || 'monthly',
       priority: priorityMap[key] || 0.5,
     };

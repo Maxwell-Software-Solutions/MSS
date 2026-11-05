@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState, useCallback, useEffect, type ReactElement } from 'react';
 import { usePathname } from 'next/navigation';
 import MobileMenu from './navigation/MobileMenu';
-import { useLanguage } from '@/lib/LanguageContext';
+import { useLanguageToggle } from '@/lib/useLanguageToggle';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import ThemeToggle from './ThemeToggle';
 import BrandLogo from './BrandLogo';
@@ -16,12 +16,9 @@ export default function HeaderNav(): ReactElement {
   const toggle = useCallback(() => setOpen((o) => !o), []);
   const close = useCallback(() => setOpen(false), []);
   const pathname = usePathname();
-  const { language, setLanguage } = useLanguage();
+  const { language, toggleLanguage } = useLanguageToggle();
   const ht = useHydratedTranslation();
 
-  const toggleLanguage = useCallback(() => {
-    setLanguage(language === 'en' ? 'lt' : 'en');
-  }, [language, setLanguage]);
   useEffect(() => {
     function onResize(): void {
       if (window.innerWidth >= 1024) setOpen(false);
