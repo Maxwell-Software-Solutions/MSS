@@ -16,9 +16,9 @@ async function runAxe(page: Page): Promise<{ violations: Array<{ id: string; imp
 
 /**
  * Expected Burger Menu Behaviour (Spec):
- * 1. Closed by default under 600px: toggle visible (aria-expanded=false), panel off-screen (translateX), aria-hidden=true, no overlay in DOM.
+ * 1. Closed by default under 1024px: toggle visible (aria-expanded=false), panel off-screen (translateX), aria-hidden=true, no overlay in DOM.
  * 2. Open on toggle click: toggle aria-expanded=true, panel aria-hidden=false + role=dialog aria-modal=true, overlay appears, body scroll locked, focus moves to first nav link, non-menu content inert.
- * 3. Close triggers: toggle click, Escape key, overlay click, link activation (before navigation), viewport resize >=600px.
+ * 3. Close triggers: toggle click, Escape key, overlay click, link activation (before navigation), viewport resize >=1024px.
  * 4. After close: focus returns to toggle, aria-expanded=false, panel aria-hidden=true, overlay removed, body scroll restored, inert removed.
  * 5. Focus trap: Tab cycles within menu; Shift+Tab on first goes to last; Tab on last goes to first.
  * 6. Accessibility: No focusable outside receives focus while open; overlay is not focusable; panel is top-layer with dialog semantics only while open.
@@ -110,13 +110,15 @@ test.describe('Mobile burger menu', () => {
     await page.goto('/');
   await page.click(toggleBtn);
   await expect(page.locator(toggleBtn)).toHaveAttribute('aria-expanded', 'true');
-    await page.setViewportSize({ width: 900, height: 844 });
+    await page.setViewportSize({ width: 1024, height: 844 });
     await expect(page.locator(menuToggle)).toHaveAttribute('aria-expanded', 'false');
     await expect(page.locator(panel)).toHaveAttribute('aria-hidden', 'true');
   });
 
   test('applies inert and restores it correctly', async ({ page }) => {
     await page.goto('/');
+    // The footer can mount after the load event; open the menu once it is there
+    await page.locator('footer').waitFor({ state: 'attached' });
     await page.click(toggleBtn);
     await waitForFirstLinkFocus(page);
     const inertApplied = await page.evaluate(() => ({
@@ -209,8 +211,8 @@ test.describe('Mobile burger menu', () => {
     // On mobile hidden
     const displayMobile = await navLinks.evaluate(el => window.getComputedStyle(el).display);
     expect(displayMobile).toBe('none');
-    await page.setViewportSize({ width: 900, height: 844 });
-    const displayDesktop = await navLinks.evaluate(el => window.getComputedStyle(el).display);
-    expect(displayDesktop).not.toBe('none');
+    await page.setViewportSize({ width: 1024, height: 844 });
+    // Retry: WebKit can report the old style for a moment after the resize
+    await expect(navLinks).not.toHaveCSS('display', 'none');
   });
 });
