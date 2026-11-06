@@ -1,3 +1,5 @@
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { fireEvent, render as renderPlain, within } from '@testing-library/react';
 import { renderWithProviders as render, screen } from '@/test/test-utils';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -8,6 +10,7 @@ import en from '@/lib/translations/en.json';
 import lt from '@/lib/translations/lt.json';
 import { getCriticalTranslations } from '@/lib/server-translations';
 import { COMPANY } from '@/lib/legal/company';
+import { meetsWCAG_AA } from '@/test/contrast-checker';
 
 expect.extend(toHaveNoViolations);
 
@@ -70,10 +73,17 @@ describe('AppFooter component', () => {
     it('footer text has adequate contrast against background', () => {
       const { container } = render(<SiteFooter />);
       const footer = container.querySelector('footer');
-      expect(footer).toBeInTheDocument();
+      expect(footer).toHaveClass('bg-wash', 'text-secondary');
 
-      // Check that footer has neumorphic border applied
-      expect(footer).toHaveClass('neuro-footer-border');
+      // The footer sets secondary, muted and foreground text on the wash background, in both themes
+      const tokens = readFileSync(join(process.cwd(), 'src', 'app', 'styles', 'tokens.css'), 'utf8');
+      for (const theme of ['light', 'dark']) {
+        const block = tokens.split(`:root[data-theme="${theme}"] {`)[1]!.split('}')[0]!;
+        const color = (name: string): string => block.match(new RegExp(`--color-${name}:\\s*(#[0-9a-f]{6})`, 'i'))![1]!;
+        for (const text of ['secondary', 'muted', 'foreground']) {
+          expect(meetsWCAG_AA(color(text), color('wash')).passes).toBe(true);
+        }
+      }
     });
 
     it('email and phone links maintain adequate contrast', () => {
