@@ -63,9 +63,12 @@ export function MobileMenu({ open, onClose }: MobileMenuProps): ReactElement {
 
       main?.removeAttribute('inert');
       footer?.removeAttribute('inert');
-      // Ensure focus restoration happens after a brief delay
+      // Ensure focus restoration happens after a brief delay.
+      // Safari does not focus a clicked button, so fall back to the menu toggle.
       setTimeout(() => {
-        prevFocus.current?.focus?.();
+        const prev = prevFocus.current;
+        const target = prev && prev !== document.body ? prev : document.querySelector<HTMLElement>('[aria-controls="mobile-nav-panel"]');
+        target?.focus?.();
       }, 10);
     };
   }, [open]);

@@ -16,8 +16,8 @@ test.describe('Accessibility - Skip Link', () => {
   test('skip link navigates to main content', async ({ page }) => {
     await page.goto('/');
 
-    // Tab to skip link and press Enter
-    await page.keyboard.press('Tab');
+    // Focus the skip link and press Enter (WebKit, like Safari, leaves links out of the Tab order)
+    await page.locator('a.skip-link').focus();
     await page.keyboard.press('Enter');
 
     // Main content should be focused

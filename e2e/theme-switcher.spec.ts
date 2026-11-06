@@ -4,6 +4,8 @@ import { test, expect } from '@playwright/test';
 test.describe('Theme Switcher', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
+    // The theme is applied once the page has hydrated, which can be after the load event
+    await expect(page.locator('html')).toHaveAttribute('data-theme', /^(light|dark)$/);
   });
 
   test('should render theme toggle button', async ({ page }) => {
@@ -50,9 +52,8 @@ test.describe('Theme Switcher', () => {
     await page.reload();
     await page.waitForLoadState('networkidle');
 
-    // Verify theme persisted
-    const persistedTheme = await html.getAttribute('data-theme');
-    expect(persistedTheme).toBe(changedTheme);
+    // Verify theme persisted (applied again once the reloaded page hydrates)
+    await expect(html).toHaveAttribute('data-theme', changedTheme!);
   });
 
   test('should have keyboard accessibility', async ({ page }) => {
