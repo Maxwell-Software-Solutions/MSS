@@ -1,7 +1,7 @@
 // Mock MUST be first, before ANY other imports
 jest.mock('@/lib/LanguageContext');
 
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import BlogIndexPage from './page';
 import { renderWithProviders as render } from '@/test/test-utils';
@@ -21,10 +21,12 @@ describe('Blog page', () => {
 
   it('renders the SOLID Principles blog post', () => {
     render(<BlogIndexPage />);
-    expect(screen.getByRole('link', { name: /SOLID Principles|SOLID Principai/i })).toBeInTheDocument();
+    const solidPost = screen.getByRole('link', { name: /SOLID Principles|SOLID Principai/i });
+    expect(solidPost).toBeInTheDocument();
     expect(screen.getByText(/Master the five SOLID principles|Išmokite penkis SOLID principus/i)).toBeInTheDocument();
     expect(screen.getAllByText(/December 19, 2024|2024 m. gruodžio 19 d./i)).toHaveLength(3);
-    expect(screen.getByText(/8 min read|8 min skaitymo/i)).toBeInTheDocument();
+    // Other posts are 8 minutes long too, so look inside this post's card
+    expect(within(solidPost).getByText(/8 min read|8 min skaitymo/i)).toBeInTheDocument();
     // Category appears multiple times (badge and potentially in content), so use getAllByText
     expect(screen.getAllByText(/Software Architecture|Programinės įrangos architektūra/i).length).toBeGreaterThanOrEqual(1);
   });
@@ -47,10 +49,8 @@ describe('Blog page', () => {
 
   it('renders blog post images with proper alt text', () => {
     render(<BlogIndexPage />);
-    expect(screen.getByAltText('SOLID Principles illustration')).toBeInTheDocument();
-    expect(
-      screen.getByAltText('Test-Driven Development cycle diagram')
-    ).toBeInTheDocument();
+    expect(screen.getByAltText('Abstract coloured vertical blocks representing the five SOLID principles')).toBeInTheDocument();
+    expect(screen.getByAltText('Abstract red green and blue circles representing the TDD cycle')).toBeInTheDocument();
   });
 
   it('renders "Read more" links for each post', () => {
