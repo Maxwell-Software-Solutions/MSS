@@ -60,10 +60,15 @@ export interface ProfessionalService extends SchemaBase {
   image?: string;
   description?: string;
   address?: Organization['address'];
-  areaServed?: string;
+  areaServed?: string | AreaServed[];
   priceRange?: string;
   serviceType?: string[];
   hasOfferCatalog?: OfferCatalog;
+}
+
+export interface AreaServed {
+  '@type': 'City' | 'Country' | 'Continent' | 'AdministrativeArea';
+  name: string;
 }
 
 export interface OfferCatalog {
