@@ -28,7 +28,7 @@ export function generateOrganizationSchema(): Organization {
       ...(SITE_CONFIG.address.postalCode ? { postalCode: SITE_CONFIG.address.postalCode } : {}),
       addressCountry: SITE_CONFIG.address.country,
     },
-    sameAs: [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.github],
+    sameAs: [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.github, SITE_CONFIG.social.rekvizitai],
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -90,6 +90,6 @@ export function generateLocalBusinessSchema(): object {
         },
       })),
     },
-    sameAs: [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.github],
+    sameAs: [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.github, SITE_CONFIG.social.rekvizitai],
   };
 }

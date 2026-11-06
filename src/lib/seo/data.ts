@@ -137,6 +137,7 @@ export interface SiteConfig {
   social: {
     linkedin: string;
     github: string;
+    rekvizitai: string;
     twitter: string;
   };
 }
@@ -158,7 +159,7 @@ export const SITE_CONFIG: Readonly<SiteConfig> = {
   locale: 'en_US',
   alternateLocale: 'lt_LT',
   email: 'support@maxwellsoftwaresolutions.com',
-  foundingDate: '2024-01-01',
+  foundingDate: '2025-10-03',
   address: {
     country: 'LT',
     locality: 'Vilnius',
@@ -169,6 +170,7 @@ export const SITE_CONFIG: Readonly<SiteConfig> = {
   social: {
     linkedin: 'https://www.linkedin.com/company/maxwell-software-solutions',
     github: 'https://github.com/Maxwell-Software-Solutions',
+    rekvizitai: 'https://rekvizitai.vz.lt/imone/maxwell_software_solutions_mb/',
     twitter: '@maxwellsoftware',
   },
 } as const;

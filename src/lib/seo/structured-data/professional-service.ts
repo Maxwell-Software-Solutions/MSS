@@ -21,7 +21,10 @@ export function generateProfessionalServiceSchema(): ProfessionalService {
       '@type': 'PostalAddress',
       addressCountry: SITE_CONFIG.address.country,
     },
-    areaServed: 'Worldwide',
+    areaServed: [
+      { '@type': 'Country', name: 'Lithuania' },
+      { '@type': 'AdministrativeArea', name: 'European Union' },
+    ],
     priceRange: '$$$',
     serviceType: SERVICES.map((s) => s.name),
     hasOfferCatalog: {
