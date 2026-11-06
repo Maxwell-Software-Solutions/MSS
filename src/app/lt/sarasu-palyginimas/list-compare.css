@@ -1,0 +1,30 @@
+/* Free list-compare tool on the Lithuanian page: two pasted lists, then a table of what does not match. */
+.compare-input { min-height: 14rem; resize: vertical; font-family: var(--font-mono); font-size: 0.875rem; line-height: 1.5; }
+
+.compare-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-5); margin-top: var(--space-5); }
+.compare-actions .form-note { flex: 1 1 16rem; }
+.compare-privacy { margin-top: var(--space-4); }
+
+/* Shown only while the column guess is uncertain */
+.compare-picker { min-width: 0; margin-top: var(--space-3); padding: var(--space-3) var(--space-4) var(--space-4); border: 1px solid var(--color-border-strong); border-radius: var(--radius-lg); }
+.compare-picker legend { padding-inline: var(--space-1); font-size: 0.875rem; font-weight: 500; }
+.compare-picker-grid { display: grid; gap: var(--space-3); margin-top: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); }
+
+.compare-result { margin-top: var(--space-7); }
+.compare-summary { margin-bottom: var(--space-4); font-size: 1.125rem; font-weight: 500; color: var(--color-text); }
+.compare-result .form-note { margin-bottom: var(--space-4); }
+
+.compare-table :is(th, td) { padding-right: var(--space-3); }
+.compare-table :is(th, td):first-child { padding-left: var(--space-3); }
+.compare-table td:first-child { white-space: nowrap; }
+
+/* Phones: tighter, so the four columns fit without much sideways scrolling */
+@media (max-width: 639px) {
+  .compare-table { font-size: 0.8125rem; }
+  .compare-table :is(th, td) { padding-right: var(--space-2); }
+  .compare-table th { font-size: 0.75rem; }
+}
+.compare-table .compare-num { text-align: right; font-variant-numeric: tabular-nums; }
+.compare-table .compare-status { color: var(--color-success); }
+.compare-table tr:not([data-status="match"]) .compare-status { color: var(--color-error); font-weight: 500; }
+.compare-table tr:not([data-status="match"]) td:first-child { box-shadow: inset 3px 0 0 var(--color-error); }

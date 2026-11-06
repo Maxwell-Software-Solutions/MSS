@@ -60,6 +60,13 @@ describe('Lithuanian document cross-check page', () => {
     for (const link of book) expect(link).toHaveAttribute('href', '/book');
   });
 
+  it('links to the free list-compare tool, in the hero beside the first call to action', () => {
+    render(<Page />);
+    const link = screen.getByRole('link', { name: 'nemokamas sąrašų palyginimo įrankis' });
+    expect(link).toHaveAttribute('href', '/lt/sarasu-palyginimas');
+    expect(link.closest('.doc-hero-copy')).toContainElement(screen.getAllByRole('link', { name: CTA })[0]!);
+  });
+
   it('carries no price, client name or figure', () => {
     const { container } = render(<Page />);
     const copy = container.cloneNode(true) as HTMLElement;
