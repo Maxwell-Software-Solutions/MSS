@@ -66,24 +66,10 @@ export default function TDDPost(): ReactElement {
         <section className="note">
           <h2 className="mb-4 text-accent">Executive Summary</h2>
           <p className="mb-4">
-            Test-Driven Development (TDD) isn&apos;t just a development practice—it&apos;s a business strategy that
-            reduces costs, improves reliability, and accelerates time-to-market. Companies implementing TDD see
-            <strong>40-80% reduction in production bugs</strong> and <strong>25-50% faster delivery cycles</strong>.
+            Test-Driven Development (TDD) isn&apos;t just a development practice. It is a business strategy that
+            reduces costs, improves reliability, and accelerates time-to-market. Teams that adopt it report
+            <strong>fewer production bugs</strong> and <strong>faster delivery cycles</strong>.
           </p>
-          <div className="grid md:grid-cols-3 gap-4 mt-6">
-            <div>
-              <div className="text-3xl font-light tabular-nums text-accent">40-80%</div>
-              <div className="text-sm">Fewer Production Bugs</div>
-            </div>
-            <div>
-              <div className="text-3xl font-light tabular-nums text-accent">25-50%</div>
-              <div className="text-sm">Faster Delivery</div>
-            </div>
-            <div>
-              <div className="text-3xl font-light tabular-nums text-accent">3-5x</div>
-              <div className="text-sm">ROI on Investment</div>
-            </div>
-          </div>
         </section>
 
         {/* Introduction */}
@@ -111,7 +97,7 @@ export default function TDDPost(): ReactElement {
                 <div className="note">
                   <h3 className="mb-2">Bug Prevention</h3>
                   <p className="text-sm">
-                    Catching bugs during development costs 10x less than fixing them in production. TDD prevents most
+                    Catching bugs during development costs far less than fixing them in production. TDD prevents most
                     bugs from ever reaching your users.
                   </p>
                 </div>
@@ -184,11 +170,11 @@ export default function TDDPost(): ReactElement {
 
         {/* Real-World Example */}
         <section>
-          <h2 className="mb-6">Real-World Example: E-commerce Payment System</h2>
+          <h2 className="mb-6">Worked Example: E-commerce Payment System</h2>
           <div className="note">
             <h3 className="mb-4">The Challenge</h3>
             <p className="mb-6">
-              A retail company needed to add multiple payment methods to their checkout system. Without proper testing,
+              Suppose a retail company needs to add multiple payment methods to its checkout system. Without proper testing,
               this could lead to lost sales and security vulnerabilities.
             </p>
 
@@ -220,32 +206,23 @@ export default function TDDPost(): ReactElement {
               </div>
             </div>
 
-            <h3 className="mb-4 mt-6">Business Results</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Alert variant="info" icon="✅" title="What Went Well">
-                <ul className="list-none pl-0 space-y-1">
-                  <li>• Zero payment-related bugs in production</li>
-                  <li>• 30% faster development cycle</li>
-                  <li>• Easy to add new payment methods</li>
-                  <li>• Confident deployment to production</li>
-                </ul>
-              </Alert>
-              <Alert variant="info" icon="📊" title="Measurable Impact">
-                <ul className="list-none pl-0 space-y-1">
-                  <li>• $50K saved in bug prevention</li>
-                  <li>• 2 weeks faster to market</li>
-                  <li>• 99.9% payment success rate</li>
-                  <li>• 40% reduction in support tickets</li>
-                </ul>
-              </Alert>
-            </div>
+            <h3 className="mb-4 mt-6">What Goes Well</h3>
+            <Alert variant="info" icon="✅" title="With TDD in place">
+              <ul className="list-none pl-0 space-y-1">
+                <li>• Payment-related bugs are caught before production</li>
+                <li>• A faster development cycle once the tests exist</li>
+                <li>• Easy to add new payment methods</li>
+                <li>• Confident deployment to production</li>
+              </ul>
+            </Alert>
           </div>
         </section>
 
         {/* ROI Calculation */}
         <section>
-          <h2 className="mb-6">Calculating TDD ROI</h2>
+          <h2 className="mb-6">Calculating TDD ROI: an Illustration</h2>
           <div className="note">
+            <p className="mb-6">Illustrative figures for a small team. Put your own numbers in.</p>
             <h3 className="mb-6">Investment vs. Return</h3>
             <div className="grid lg:grid-cols-2 gap-8">
               <div>

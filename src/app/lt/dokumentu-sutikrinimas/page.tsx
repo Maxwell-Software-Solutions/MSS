@@ -14,14 +14,15 @@ import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
  *
  * Its own /lt/ address (not the site's cookie or `?lang=` switch) so search engines and shared links always get
  * Lithuanian text. The middleware marks /lt/ requests, and the root layout then renders <html lang="lt">.
- * No price, client name or figure belongs on this page; the only offer is a free first check.
+ * No price, client name or figure belongs on this page. The first conversation and a written architecture
+ * note are free; the pilot is paid.
  */
 const PAGE = PAGES.documentCrossCheckLt!;
 const PAGE_URL = `${SITE_CONFIG.url}${PAGE.canonical}`;
 
 /** Where the "send one set" button writes to, with the subject already filled in. */
 const CHECK_MAILTO = `mailto:mantas@maxwellsoftwaresolutions.com?subject=${encodeURIComponent('Dokumentų rinkinys patikrai')}`;
-const CHECK_LABEL = 'Atsiųskite vieną dokumentų rinkinį – grąžinsime patikrintą';
+const CHECK_LABEL = 'Atsiųskite vieną dokumentų rinkinį – gausite rašytinį sprendimo aprašą';
 const BOOK_LABEL = 'Rezervuoti 30 min. pokalbį';
 
 const image = { url: '/opengraph-image', width: 1200, height: 630, alt: SITE_CONFIG.name };
@@ -150,8 +151,8 @@ export default function DocumentCrossCheckPage(): ReactElement {
               kur jie prieštarauja vienas kitam.
             </p>
             <p>
-              Pirmą rinkinį patikriname nemokamai. Iš jūsų reikia tik dokumentų: be vizitų, viskas nuotoliu. Jei laiško
-              langas neatsidaro, rašykite adresu
+              Pirmas pokalbis ir rašytinis sprendimo aprašas – nemokamai, bandomasis projektas – mokamas. Iš jūsų reikia
+              tik dokumentų: be vizitų, viskas nuotoliu. Jei laiško langas neatsidaro, rašykite adresu
               mantas@maxwellsoftwaresolutions.com.
             </p>
             <div className="page-actions">
@@ -226,8 +227,9 @@ export default function DocumentCrossCheckPage(): ReactElement {
         <div className="wrap band-split">
           <h2 id="start-heading">Pradėkite nuo vieno rinkinio</h2>
           <p>
-            Atsiųskite vieną dokumentų rinkinį adresu mantas@maxwellsoftwaresolutions.com. Grąžinsime patikrintą:
-            nesutapimai pažymėti, kiekvieną eilutę patvirtino žmogus. Pirmas rinkinys – nemokamai. Viskas vyksta nuotoliu.
+            Atsiųskite vieną dokumentų rinkinį adresu mantas@maxwellsoftwaresolutions.com. Pagal jį aprašysime, kaip DI
+            jį tikrintų ir ką tvirtintų žmogus. Pirmas pokalbis ir rašytinis sprendimo aprašas – nemokamai, bandomasis
+            projektas – mokamas. Viskas vyksta nuotoliu.
           </p>
           <div className="band-actions">
             <a href={CHECK_MAILTO} className="btn btn-accent btn-lg">

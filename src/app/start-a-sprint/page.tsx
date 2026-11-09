@@ -5,11 +5,11 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Sprint-in-a-Box — Ship Your MVP in 2 Weeks for €4,800 | Maxwell Software Solutions',
+  title: 'Sprint-in-a-Box: Ship Your MVP in 2 Weeks at a Fixed Price | Maxwell Software Solutions',
   description:
-    'A self-serve 2-week development sprint for founders and product teams. Fixed price at €4,800. Discovery call, scoped sprint, tested code, full handoff. Book your sprint today.',
+    'A self-serve 2-week development sprint for founders and product teams. Fixed price, agreed before the sprint starts. Discovery call, scoped sprint, tested code, full handoff. Book your sprint today.',
   openGraph: {
-    title: 'Sprint-in-a-Box — 2-Week MVP for €4,800',
+    title: 'Sprint-in-a-Box: a 2-Week MVP Sprint at a Fixed Price',
     description:
       'Fixed price, fixed timeline, no retainer. A senior engineer builds your MVP or feature in 10 working days. Full code ownership at handoff.',
     type: 'website',

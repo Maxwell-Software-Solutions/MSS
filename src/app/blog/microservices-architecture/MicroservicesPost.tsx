@@ -314,7 +314,7 @@ export default function MicroservicesPost(): ReactElement {
         </div>
         <Alert variant="error">
           <strong>Critical Mistake:</strong> Splitting a monolith into microservices without addressing organizational
-          structure, DevOps capabilities, and monitoring first. Technology is only 30% of the challenge.
+          structure, DevOps capabilities, and monitoring first. Technology is only part of the challenge.
         </Alert>
       </ArticleSection>
 

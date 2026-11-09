@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'What to Expect From a 2-Week Software Sprint',
     description:
-      'Rapid software development guide: what fits in a 2-week sprint, how the MSS Sprint-in-a-Box works, and when it makes sense for your team.',
+      'Rapid software development guide: what fits in a 2-week sprint, how the Maxwell Sprint-in-a-Box works, and when it makes sense for your team.',
     type: 'article',
     publishedTime: '2026-03-28T00:00:00.000Z',
   },

@@ -7,7 +7,7 @@ import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 export const metadata: Metadata = {
   title: 'Code Audit Services — Technical Debt Assessment | Maxwell Software Solutions',
   description:
-    'Professional code audit services: architecture review, security scan, performance analysis, and technical debt assessment. Get a prioritised remediation roadmap in 5 business days. €2,500 one-time.',
+    'Professional code audit services: architecture review, security scan, performance analysis, and technical debt assessment. Get a prioritised remediation roadmap in 5 business days.',
   openGraph: {
     title: 'Code Audit — Find Out Why Your Dev Team Is Slow',
     description:

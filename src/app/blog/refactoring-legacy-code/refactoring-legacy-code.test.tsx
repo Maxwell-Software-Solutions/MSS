@@ -50,7 +50,7 @@ describe('Refactoring Legacy Code blog post', () => {
     expect(screen.getByRole('link', { name: /• Tools and Techniques/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /• Common Pitfalls/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /• Measuring Success/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /• Real-World Case Studies/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /• Worked Example/i })).toBeInTheDocument();
   });
 
   it('renders the introduction section', () => {

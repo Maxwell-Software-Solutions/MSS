@@ -209,16 +209,16 @@ export default function CodeHealthAuditPost(): ReactElement {
           attached.
         </p>
         <div className="callout block-gap">
-          <h3 className="mb-3">Get a free Code Health Audit</h3>
+          <h3 className="mb-3">Ask about a Code Health Audit</h3>
           <p className="mb-6">
-            We conduct a full architecture, security, and performance review — and deliver a prioritised remediation
-            plan in 5 business days. Completely free. Limited to 5 per month.
+            We conduct a full architecture, security, and performance review and deliver a prioritised remediation
+            plan in 5 business days. Start with a free discovery call.
           </p>
           <a
-            href="/free-audit"
+            href="/contact"
             className="btn btn-accent"
           >
-            Apply for your free audit
+            Book a discovery call
           </a>
         </div>
       </ArticleSection>

@@ -9,7 +9,7 @@ export default function TwoWeekSprintPost(): ReactElement {
     { href: '#what-fits', label: 'What actually fits in 2 weeks' },
     { href: '#what-doesnt-fit', label: 'What does not fit — and why that matters' },
     { href: '#the-process', label: 'How a well-run sprint actually works' },
-    { href: '#mss-approach', label: 'The MSS approach' },
+    { href: '#mss-approach', label: 'The Maxwell approach' },
     { href: '#conclusion', label: 'When to start one' },
   ];
 
@@ -186,9 +186,9 @@ export default function TwoWeekSprintPost(): ReactElement {
         </p>
       </ArticleSection>
 
-      <ArticleSection id="mss-approach" title="The MSS approach">
+      <ArticleSection id="mss-approach" title="The Maxwell approach">
         <p>
-          Our Sprint-in-a-Box engagement is built around this process. The fixed price of €4,800 covers two weeks of
+          Our Sprint-in-a-Box engagement is built around this process. The fixed price covers two weeks of
           focused delivery, the discovery and scoping session, daily updates, the demo and handoff call, and 30 days
           of post-sprint support for bugs or deployment questions.
         </p>
@@ -236,13 +236,13 @@ export default function TwoWeekSprintPost(): ReactElement {
           <h3 className="mb-3">Ready to start a sprint?</h3>
           <p className="mb-6">
             Book a 30-minute discovery call. We will confirm fit, agree scope, and start the following Monday.
-            Fixed price: €4,800.
+            Fixed price, agreed before the sprint starts.
           </p>
           <a
             href="/start-a-sprint"
             className="btn btn-accent"
           >
-            Start your sprint — €4,800
+            Start your sprint
           </a>
         </div>
       </ArticleSection>

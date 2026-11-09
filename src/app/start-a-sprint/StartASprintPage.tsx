@@ -53,7 +53,7 @@ export default function StartASprintPage(): ReactElement {
       answer: ht('sprint.faq.a1', 'We scope conservatively to make sure we deliver on time. If the sprint ends and something agreed in scope is not done, we complete it at no extra charge. If you want to add scope mid-sprint, we either defer it to a second sprint or discuss extending the timeline together.'),
     },
     {
-      question: ht('sprint.faq.q2', 'Is €4,800 really the full price? What is not included?'),
+      question: ht('sprint.faq.q2', 'Is the fixed price really the full price? What is not included?'),
       answer: ht('sprint.faq.a2', 'The fixed price covers two weeks of focused development and the demo handoff. It does not include third-party service costs (hosting, APIs, subscriptions) or work added outside the agreed scope. Everything else is included.'),
     },
     {
@@ -78,7 +78,7 @@ export default function StartASprintPage(): ReactElement {
         </div>
         <h1 suppressHydrationWarning>
           {ht('sprint.headline.pre', 'Ship Your MVP in')} {ht('sprint.headline.gradient', '2 Weeks.')}{' '}
-          {ht('sprint.headline.post', '€4,800 Fixed Price.')}
+          {ht('sprint.headline.post', 'Fixed Price.')}
         </h1>
         <p className="lead" suppressHydrationWarning>
           {ht(
@@ -95,7 +95,7 @@ export default function StartASprintPage(): ReactElement {
             rel="noopener noreferrer"
             suppressHydrationWarning
           >
-            {ht('sprint.cta.primary', 'Start your sprint — €4,800')}
+            {ht('sprint.cta.primary', 'Start your sprint')}
             <ExternalIcon />
           </Link>
           <Link href="/services/packages" className="btn btn-lg" suppressHydrationWarning>
@@ -193,7 +193,7 @@ export default function StartASprintPage(): ReactElement {
               rel="noopener noreferrer"
               suppressHydrationWarning
             >
-              {ht('sprint.midcta.cta', 'Start your sprint — €4,800')}
+              {ht('sprint.midcta.cta', 'Start your sprint')}
             </Link>
           </div>
         </div>
@@ -217,7 +217,7 @@ export default function StartASprintPage(): ReactElement {
             rel="noopener noreferrer"
             suppressHydrationWarning
           >
-            {ht('sprint.bottomcta.cta', 'Start your sprint — €4,800')}
+            {ht('sprint.bottomcta.cta', 'Start your sprint')}
             <ExternalIcon />
           </Link>
         </div>

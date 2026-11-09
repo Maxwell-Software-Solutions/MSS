@@ -117,7 +117,7 @@ export default function RefactoringLegacyCodePost(): ReactElement {
               </li>
               <li>
                 <a href="#case-studies" className="text-secondary no-underline transition-colors hover:text-accent">
-                  • Real-World Case Studies
+                  • Worked Example
                 </a>
               </li>
             </ul>
@@ -233,13 +233,13 @@ export default function RefactoringLegacyCodePost(): ReactElement {
                 <div>
                   <h4 className="mb-2">Development Speed</h4>
                   <p className="text-sm">
-                    Features take 2-10x longer to implement in legacy systems.
+                    Features take far longer to implement in legacy systems.
                   </p>
                 </div>
                 <div>
                   <h4 className="mb-2">Bug Frequency</h4>
                   <p className="text-sm">
-                    Production issues increase by 40-80% in high-debt codebases.
+                    Production issues are more frequent in high-debt codebases.
                   </p>
                 </div>
                 <div>
@@ -252,24 +252,6 @@ export default function RefactoringLegacyCodePost(): ReactElement {
             </div>
           </div>
 
-          <div className="note">
-            <h3 className="mb-4">Technical Debt Calculator</h3>
-            <p className="mb-4">Calculate the real cost of your technical debt:</p>
-            <div className="grid md:grid-cols-3 gap-4">
-              <div>
-                <div className="text-2xl font-light tabular-nums text-accent">$50K - $500K</div>
-                <div className="text-sm">Annual Cost for Medium Codebases</div>
-              </div>
-              <div>
-                <div className="text-2xl font-light tabular-nums text-accent">2-5x</div>
-                <div className="text-sm">Slower Development Speed</div>
-              </div>
-              <div>
-                <div className="text-2xl font-light tabular-nums text-accent">30-60%</div>
-                <div className="text-sm">Higher Bug Rate</div>
-              </div>
-            </div>
-          </div>
         </section>
 
         {/* Refactoring Strategies (dynamically loaded below for code splitting) */}
@@ -579,57 +561,45 @@ export default function RefactoringLegacyCodePost(): ReactElement {
 
         {/* Case Studies (dynamic) */}
         <section id="case-studies">
-          <h2 className="mb-6">Real-World Refactoring Case Studies</h2>
+          <h2 className="mb-6">A Worked Refactoring Example</h2>
 
           <div className="space-y-8">
             <div className="note">
-              <h3 className="mb-4">Case Study 1: E-commerce Platform Modernization</h3>
+              <h3 className="mb-4">Scenario: E-commerce Platform Modernization</h3>
               <div className="grid lg:grid-cols-2 gap-8">
                 <div>
                   <h4 className="mb-3 text-accent">The Challenge</h4>
                   <p className="mb-4">
-                    A 5-year-old e-commerce platform with 500K+ lines of code was experiencing frequent outages, slow
-                    performance, and difficulty adding new features.
+                    Picture a five-year-old e-commerce platform with hundreds of thousands of lines of code, frequent
+                    outages, slow performance, and difficulty adding new features.
                   </p>
                   <ul className="list-none pl-0 text-sm space-y-2">
-                    <li>• 15-minute page load times during peak traffic</li>
-                    <li>• 3-5 production outages per month</li>
-                    <li>• New features took 3-6 months to implement</li>
+                    <li>• Slow page loads during peak traffic</li>
+                    <li>• Production outages every month</li>
+                    <li>• New features take months to implement</li>
                     <li>• High developer turnover due to frustration</li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="mb-3 text-accent">The Solution</h4>
                   <p className="mb-4">
-                    Implemented a comprehensive refactoring strategy using the Strangler Fig pattern.
+                    A comprehensive refactoring strategy built on the Strangler Fig pattern.
                   </p>
                   <ul className="list-none pl-0 text-sm space-y-2">
-                    <li>• Extracted payment processing into microservice</li>
-                    <li>• Refactored database queries and added caching</li>
-                    <li>• Implemented comprehensive testing strategy</li>
-                    <li>• Gradual migration of legacy components</li>
+                    <li>• Extract payment processing into a microservice</li>
+                    <li>• Refactor database queries and add caching</li>
+                    <li>• Put a comprehensive testing strategy in place</li>
+                    <li>• Migrate legacy components gradually</li>
                   </ul>
                 </div>
               </div>
-              <Alert variant="success" icon="📊" title="Results After 12 Months">
-                <div className="grid md:grid-cols-4 gap-4">
-                  <div>
-                    <div className="text-2xl font-light tabular-nums text-accent">↓ 90%</div>
-                    <div className="text-sm">Page Load Time</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-light tabular-nums text-success">↓ 95%</div>
-                    <div className="text-sm text-success">Production Outages</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-light tabular-nums text-success">↑ 300%</div>
-                    <div className="text-sm text-success">Feature Delivery Speed</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-light tabular-nums text-success">$2M</div>
-                    <div className="text-sm text-success">Annual Cost Savings</div>
-                  </div>
-                </div>
+              <Alert variant="success" icon="📊" title="What to Expect Over the Following Year">
+                <ul className="list-none pl-0 text-sm space-y-2">
+                  <li>• Faster page loads, because the hot paths are measured and cached</li>
+                  <li>• Far fewer production outages, because the riskiest code now has tests</li>
+                  <li>• Quicker feature delivery, because new work lands in the extracted services</li>
+                  <li>• Lower running costs, because the platform does less wasted work</li>
+                </ul>
               </Alert>
             </div>
           </div>

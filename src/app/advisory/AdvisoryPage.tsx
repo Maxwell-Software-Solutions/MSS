@@ -68,7 +68,7 @@ export default function AdvisoryPage(): ReactElement {
     },
     {
       question: ht('advisory.faq.q4', 'What if I need more than 4 reviews in a month?'),
-      answer: ht('advisory.faq.a4', 'Additional reviews are available at €100 each, or you can upgrade to the Engineering Partner Retainer for unlimited access.'),
+      answer: ht('advisory.faq.a4', 'Additional reviews are available at an hourly rate, or you can upgrade to the Engineering Partner Retainer for unlimited access.'),
     },
   ];
 
@@ -78,7 +78,7 @@ export default function AdvisoryPage(): ReactElement {
         <div className="eyebrow" suppressHydrationWarning>
           {ht('advisory.eyebrow', 'CTO-in-a-Box')}
         </div>
-        <h1 suppressHydrationWarning>Technical Leadership Without the €120K Salary</h1>
+        <h1 suppressHydrationWarning>Technical Leadership Without the Full-Time Salary</h1>
         <p className="lead" suppressHydrationWarning>
           {ht(
             'advisory.subheadline',
@@ -88,7 +88,7 @@ export default function AdvisoryPage(): ReactElement {
 
         <div className="assurances">
           <span className="price-inline" suppressHydrationWarning>
-            {ht('advisory.price', '€500/month')}
+            {ht('advisory.price', 'Monthly subscription')}
           </span>
           <span suppressHydrationWarning>
             <CheckIcon />
@@ -181,12 +181,6 @@ export default function AdvisoryPage(): ReactElement {
               </thead>
               <tbody>
                 <tr>
-                  <td>{ht('advisory.compare.row.cost', 'Cost')}</td>
-                  <td>{ht('advisory.compare.fulltime.cost', '€8–15K/mo')}</td>
-                  <td>{ht('advisory.compare.fractional.cost', '€3,500/mo')}</td>
-                  <td className="is-featured">{ht('advisory.compare.box.cost', '€500/mo')}</td>
-                </tr>
-                <tr>
                   <td>{ht('advisory.compare.row.commitment', 'Commitment')}</td>
                   <td>{ht('advisory.compare.fulltime.commitment', 'Full-time hire')}</td>
                   <td>{ht('advisory.compare.fractional.commitment', 'Monthly retainer')}</td>
@@ -214,7 +208,7 @@ export default function AdvisoryPage(): ReactElement {
 
       <section className="band">
         <div className="wrap band-split">
-          <h2 suppressHydrationWarning>{ht('advisory.bottomcta.title', 'Senior technical guidance for €500/month.')}</h2>
+          <h2 suppressHydrationWarning>{ht('advisory.bottomcta.title', 'Senior technical guidance on a monthly subscription.')}</h2>
           <p suppressHydrationWarning>
             {ht(
               'advisory.bottomcta.body',

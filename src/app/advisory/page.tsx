@@ -7,9 +7,9 @@ import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 export const metadata: Metadata = {
   title: 'CTO-in-a-Box — Async Advisory for Startup Founders | Maxwell Software Solutions',
   description:
-    'Technical leadership without the €120K salary. Async Loom video reviews, monthly strategy call, and Slack access for €500/month. Cancel anytime. Book a free intro call.',
+    'Technical leadership without the full-time salary. Async Loom video reviews, monthly strategy call, and Slack access on a monthly subscription. Cancel anytime. Book a free intro call.',
   openGraph: {
-    title: 'CTO-in-a-Box — Technical Leadership for €500/month',
+    title: 'CTO-in-a-Box: Technical Leadership on a Monthly Subscription',
     description:
       'Async advisory for startup founders who need senior engineering guidance but aren\u2019t ready for a full-time hire. 4 video reviews, monthly call, Slack access.',
     type: 'website',

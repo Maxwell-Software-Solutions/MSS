@@ -41,11 +41,6 @@ export default function FractionalCTOPage(): ReactElement {
 
   const comparison = [
     {
-      label: ht('fractionalCTO.compare.cost', 'Annual cost'),
-      fullTime: ht('fractionalCTO.compare.cost.full', '€120,000–€180,000+'),
-      fractional: ht('fractionalCTO.compare.cost.frac', 'From €3,500/month'),
-    },
-    {
       label: ht('fractionalCTO.compare.commitment', 'Commitment'),
       fullTime: ht('fractionalCTO.compare.commitment.full', 'Full-time, long-term'),
       fractional: ht('fractionalCTO.compare.commitment.frac', 'Month-to-month, flexible'),
@@ -83,7 +78,7 @@ export default function FractionalCTOPage(): ReactElement {
         <div className="eyebrow" suppressHydrationWarning>
           {ht('fractionalCTO.eyebrow', 'Fractional CTO')}
         </div>
-        <h1 suppressHydrationWarning>Technical Leadership Without the €120K Salary</h1>
+        <h1 suppressHydrationWarning>Technical Leadership Without the Full-Time Salary</h1>
         <p className="lead" suppressHydrationWarning>
           {ht(
             'fractionalCTO.subheadline',
@@ -109,7 +104,7 @@ export default function FractionalCTOPage(): ReactElement {
 
         <div className="assurances">
           {[
-            ht('fractionalCTO.trust.price', 'From €3,500/month'),
+            ht('fractionalCTO.trust.price', 'Monthly retainer'),
             ht('fractionalCTO.trust.flex', 'Month-to-month — cancel any time'),
             ht('fractionalCTO.trust.exp', 'Cross-industry experience'),
           ].map((item, i) => (
@@ -188,7 +183,7 @@ export default function FractionalCTOPage(): ReactElement {
         <div className="wrap">
           <div className="callout band-split">
             <p className="eyebrow" suppressHydrationWarning>
-              {ht('fractionalCTO.midcta.eyebrow', 'From €3,500/month')}
+              {ht('fractionalCTO.midcta.eyebrow', 'Monthly retainer')}
             </p>
             <h2 suppressHydrationWarning>{ht('fractionalCTO.midcta.title', 'Book a discovery call')}</h2>
             <p suppressHydrationWarning>
