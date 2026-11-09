@@ -177,7 +177,7 @@ export default function ServicesPackagesPage(): ReactElement {
             <p suppressHydrationWarning>
               {ht(
                 'packages.unsure.body',
-                'Most clients start with a Code Health Audit. It surfaces the real priorities and often makes the next step obvious. If you already know what you need, book a 30-minute discovery call and we will confirm fit.'
+                'A Code Health Audit is the natural starting point. It surfaces the real priorities and often makes the next step obvious. If you already know what you need, book a 30-minute discovery call and we will confirm fit.'
               )}
             </p>
             <Link href="/contact" className="btn btn-accent" suppressHydrationWarning>

@@ -64,7 +64,7 @@ export default function FractionalCTOPage(): ReactElement {
     },
     {
       question: ht('fractionalCTO.faq.q2', 'Can you work alongside our existing CTO?'),
-      answer: ht('fractionalCTO.faq.a2', 'Yes. Some clients bring us in as a technical advisor or sounding board for their existing leadership. We adapt to the role that adds the most value.'),
+      answer: ht('fractionalCTO.faq.a2', 'Yes. We can work as a technical advisor or sounding board for your existing leadership. We adapt to the role that adds the most value.'),
     },
     {
       question: ht('fractionalCTO.faq.q3', 'What if we decide to hire a full-time CTO?'),

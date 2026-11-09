@@ -62,7 +62,7 @@ export default function StartASprintPage(): ReactElement {
     },
     {
       question: ht('sprint.faq.q4', 'Can we run multiple sprints?'),
-      answer: ht('sprint.faq.a4', 'Yes, and many clients do. Each sprint is scoped and priced independently. Repeat clients get priority scheduling.'),
+      answer: ht('sprint.faq.a4', 'Yes. Each sprint is scoped and priced independently, and a follow-on sprint can start as soon as the scope is agreed.'),
     },
     {
       question: ht('sprint.faq.q5', 'Do you sign an NDA?'),

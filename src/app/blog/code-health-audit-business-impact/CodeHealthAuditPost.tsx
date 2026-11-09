@@ -204,7 +204,7 @@ export default function CodeHealthAuditPost(): ReactElement {
           decisions — about priorities, about investment, about what to refactor and what to rebuild.
         </p>
         <p>
-          Most teams that go through a code health audit describe it the same way: clarifying. Not because the
+          The word that fits a code health audit best is: clarifying. Not because the
           findings are always good news, but because ambiguity is more exhausting than a clear problem with a plan
           attached.
         </p>
