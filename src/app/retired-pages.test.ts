@@ -24,6 +24,26 @@ describe('retired pages /pricing and /free-audit', () => {
   });
 });
 
+describe('retired page /founders', () => {
+  it('is not in the sitemap', () => {
+    const urls = sitemap().map((entry) => entry.url);
+    expect(urls.filter((url) => url.includes('/founders'))).toEqual([]);
+  });
+
+  it('redirects to /about, not permanently, with or without an /en, /lt prefix', async () => {
+    const redirects = (await nextConfig.redirects?.()) ?? [];
+    for (const source of ['/founders', '/:lang(en|lt)/founders']) {
+      expect(redirects).toContainEqual({ source, destination: '/about', permanent: false });
+    }
+  });
+
+  it('leaves no name of a former team member in either language', () => {
+    for (const text of [...Object.values(en), ...Object.values(lt)]) {
+      expect(text).not.toMatch(/Maxwell Archer|Rolinskij|Wolosewicz/);
+    }
+  });
+});
+
 describe('structured data address', () => {
   it('is the registered seat shown in the footer', () => {
     type Located = { address: { streetAddress: string; postalCode: string; addressLocality: string } };

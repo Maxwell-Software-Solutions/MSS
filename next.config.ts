@@ -78,6 +78,11 @@ const nextConfig: NextConfig = {
         { source: `/:lang(en|lt)/${page}/:path*`, destination: '/contact', permanent: false },
       ]),
 
+      // Retired page: /founders, with an /en or /lt prefix too, goes to the about page.
+      // Temporary, so the page can come back.
+      { source: '/founders', destination: '/about', permanent: false },
+      { source: '/:lang(en|lt)/founders', destination: '/about', permanent: false },
+
       // 4. Short booking link for emails; temporary so the calendar page can change later
       {
         source: '/book',

@@ -232,9 +232,9 @@ export const PAGES: Record<string, PageMetadata> = {
   },
   // Child pages get " | Maxwell Software Solutions" from the root title template
   about: {
-    title: 'About Us — AI Software Engineers in Vilnius, Lithuania',
+    title: 'About Us — AI Software Engineering in Vilnius, Lithuania',
     description:
-      'Maxwell Software Solutions is an AI software development company in Vilnius, Lithuania. Our AI software engineers are grounded in architecture, testing and reliability. Meet the team.',
+      'Maxwell Software Solutions is an AI software development company in Vilnius, Lithuania. Our AI engineering is grounded in architecture, testing and reliability. Meet the founder.',
     keywords: [...KEYWORD_SETS.ai, 'AI engineers Vilnius', 'AI development team Lithuania', 'software consultancy Vilnius'],
     canonical: '/about',
   },
@@ -258,13 +258,6 @@ export const PAGES: Record<string, PageMetadata> = {
       'Expert insights on software engineering, testing, architecture, and DevOps best practices from the Maxwell Software Solutions team.',
     keywords: [...KEYWORD_SETS.architecture, ...KEYWORD_SETS.testing, 'software engineering blog'],
     canonical: '/blog',
-  },
-  founders: {
-    title: 'Our Founders — Leadership in Software Engineering',
-    description:
-      'Meet the experienced software engineers leading Maxwell Software Solutions with decades of combined expertise.',
-    keywords: ['software engineering leadership', 'founders', 'engineering team'],
-    canonical: '/founders',
   },
   privacy: {
     title: 'Privacy Policy',
