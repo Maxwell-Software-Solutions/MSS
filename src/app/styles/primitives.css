@@ -409,7 +409,6 @@
   .person { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: var(--space-4); align-items: start; }
   .person-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius-2xl); background: var(--color-border); container-type: inline-size; }
   .person-photo img { object-position: 50% 12%; filter: grayscale(1); }
-  .person-photo-maxwell img { object-position: 50% 0; transform: scale(1.55); transform-origin: 50% 8%; }
   /* No portrait yet: the initials fill the same frame in the dark band tone, sized to the frame's width (cqw) */
   .person-monogram {
     position: absolute;
@@ -433,19 +432,6 @@
   @media (min-width: 640px) {
     .person { display: block; }
     .person-photo { margin-bottom: var(--space-5); }
-  }
-
-  .person-pending {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 18rem;
-    aspect-ratio: 4 / 5;
-    border-radius: var(--radius-2xl);
-    background: var(--color-wash);
-    font-size: 0.875rem;
-    color: var(--color-muted);
   }
 
   /* ---- Case studies: one long row each ---- */
