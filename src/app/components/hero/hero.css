@@ -1,26 +1,102 @@
-/* Home page hero: near-black in both site themes. Everything here is scoped to .hero-stage,
-   or to pages that contain it, so the rest of the site is untouched. */
+/* Home page hero: near-black with white lines in the dark theme, near-white with black lines in the light one, and
+   the gold light in both. Everything here is scoped to .hero-stage, or to pages that contain it, so the rest of the
+   site is untouched. The colours are set once here, per theme; the rules below only use them. */
 
 html:has(.hero-stage) {
   --hero-ink: #0a0a0a;
+  --hero-text: #f7f7f5;
+  --hero-text-2: #cfcfcb;
+  --hero-muted: #b5b5b0;
+  --hero-nav-text-2: #d5d5d1;
+  --hero-border: rgba(255, 255, 255, 0.18);
+  --hero-border-strong: rgba(255, 255, 255, 0.42);
+  --hero-nav-border: rgba(255, 255, 255, 0.24);
+  --hero-hover: rgba(255, 255, 255, 0.1);
+  --hero-active: rgba(255, 255, 255, 0.16);
+  --hero-accent: var(--gold-tint);
+  --hero-accent-hover: var(--gold-tint-hover);
+  --hero-fill: var(--gold-tint);
+  --hero-fill-hover: var(--gold-tint-hover);
+  --hero-fill-text: #0a0a0a;
+  --hero-glass: rgba(10, 10, 10, 0.72);
+  --hero-glass-hover: #1f1f1f;
+  /* the lines and their gold light, as r g b: the poster reads them here and the live lines read them in the renderer */
+  --ribbon-line: 235 235 235;
+  --ribbon-gold: 201 162 39;
+  /* the CSS light tints the lines: multiply leaves a black page as it is, screen lifts a light one by 2 levels at most */
+  --hero-glow-blend: multiply;
+  --hero-scheme: dark;
+}
+
+/* Light: the site's own light page colour, black text and lines, and the brand gold, which holds 5:1 on it. The text
+   is a step darker than the site's own, so it stays above 4.5:1 where a line runs behind it. */
+:root[data-theme='light']:has(.hero-stage) {
+  --hero-ink: #fbfbfa;
+  --hero-text: #0a0a0a;
+  --hero-text-2: #333333;
+  --hero-muted: #4b4b4b;
+  --hero-nav-text-2: #333333;
+  --hero-border: rgba(10, 10, 10, 0.2);
+  --hero-border-strong: rgba(10, 10, 10, 0.5);
+  --hero-nav-border: rgba(10, 10, 10, 0.2);
+  --hero-hover: rgba(10, 10, 10, 0.05);
+  --hero-active: rgba(10, 10, 10, 0.1);
+  --hero-accent: var(--gold);
+  --hero-accent-hover: #6f5600;
+  --hero-fill: #0a0a0a;
+  --hero-fill-hover: #262626;
+  --hero-fill-text: #ffffff;
+  --hero-glass: rgba(251, 251, 250, 0.8);
+  --hero-glass-hover: #f0f0ee;
+  --ribbon-line: 26 26 26;
+  --ribbon-gold: 139 107 0;
+  --hero-glow-blend: screen;
+  --hero-scheme: light;
+}
+
+/* the same, for the moment before the theme script has run */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]):has(.hero-stage) {
+    --hero-ink: #fbfbfa;
+    --hero-text: #0a0a0a;
+    --hero-text-2: #333333;
+    --hero-muted: #4b4b4b;
+    --hero-nav-text-2: #333333;
+    --hero-border: rgba(10, 10, 10, 0.2);
+    --hero-border-strong: rgba(10, 10, 10, 0.5);
+    --hero-nav-border: rgba(10, 10, 10, 0.2);
+    --hero-hover: rgba(10, 10, 10, 0.05);
+    --hero-active: rgba(10, 10, 10, 0.1);
+    --hero-accent: var(--gold);
+    --hero-accent-hover: #6f5600;
+    --hero-fill: #0a0a0a;
+    --hero-fill-hover: #262626;
+    --hero-fill-text: #ffffff;
+    --hero-glass: rgba(251, 251, 250, 0.8);
+    --hero-glass-hover: #f0f0ee;
+    --ribbon-line: 26 26 26;
+    --ribbon-gold: 139 107 0;
+    --hero-glow-blend: screen;
+    --hero-scheme: light;
+  }
 }
 
 .hero-stage {
-  --color-text: #f7f7f5;
-  --color-foreground: #f7f7f5;
-  --color-text-secondary: #cfcfcb;
-  --color-secondary: #cfcfcb;
-  --color-muted: #b5b5b0;
-  --color-border: rgba(255, 255, 255, 0.18);
-  --color-border-strong: rgba(255, 255, 255, 0.42);
-  --color-accent: var(--gold-tint);
-  --color-accent-hover: var(--gold-tint-hover);
-  --color-accent-fill: var(--gold-tint);
-  --color-accent-fill-hover: var(--gold-tint-hover);
-  --color-accent-contrast: #0a0a0a;
-  --color-hover: rgba(255, 255, 255, 0.1);
-  --color-active: rgba(255, 255, 255, 0.16);
-  color-scheme: dark;
+  --color-text: var(--hero-text);
+  --color-foreground: var(--hero-text);
+  --color-text-secondary: var(--hero-text-2);
+  --color-secondary: var(--hero-text-2);
+  --color-muted: var(--hero-muted);
+  --color-border: var(--hero-border);
+  --color-border-strong: var(--hero-border-strong);
+  --color-accent: var(--hero-accent);
+  --color-accent-hover: var(--hero-accent-hover);
+  --color-accent-fill: var(--hero-fill);
+  --color-accent-fill-hover: var(--hero-fill-hover);
+  --color-accent-contrast: var(--hero-fill-text);
+  --color-hover: var(--hero-hover);
+  --color-active: var(--hero-active);
+  color-scheme: var(--hero-scheme);
 
   position: relative;
   isolation: isolate;
@@ -51,7 +127,7 @@ html:has(.hero-stage) {
    lets go once they have nearly crossed the page, and comes up to full strength if they never arrive. */
 .hero-poster {
   fill: none;
-  stroke: #ebebeb;
+  stroke: rgb(var(--ribbon-line));
   stroke-width: 0.9;
   opacity: 0.55;
   transition: opacity 0.3s ease;
@@ -76,18 +152,18 @@ html:has(.hero-stage) {
 }
 
 /* The gold light in plain CSS: it crosses the poster from the first paint, and keeps going for anyone
-   without live lines. Multiply tints only the lines and leaves the black, so only the light moves. */
+   without live lines. The blend tints only the lines and leaves the page colour, so only the light moves. */
 .hero-glow {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   width: 40%;
-  background: linear-gradient(100deg, transparent, var(--gold-tint) 50%, transparent);
+  background: linear-gradient(100deg, transparent, rgb(var(--ribbon-gold)) 50%, transparent);
   /* the tilted gradient is already gold at the band's side edges on a tall phone hero; this keeps them soft */
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 35%, #000 65%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 35%, #000 65%, transparent);
-  mix-blend-mode: multiply;
+  mix-blend-mode: var(--hero-glow-blend);
   pointer-events: none;
   animation: hero-glow 4s linear infinite;
 }
@@ -129,7 +205,7 @@ html[data-hero-passed] .hero-glow {
   padding: 0;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  background: rgba(10, 10, 10, 0.72);
+  background: var(--hero-glass);
   color: var(--color-text-secondary);
   cursor: pointer;
   transition: color var(--transition-base), border-color var(--transition-base);
@@ -241,11 +317,11 @@ html[data-hero-passed] .hero-glow {
 
 /* The outline button carries its own backing, so its label never sits directly on a line */
 .hero-stage .hero-btn-quiet {
-  background: rgba(10, 10, 10, 0.72);
+  background: var(--hero-glass);
 }
 
 .hero-stage .hero-btn-quiet:hover {
-  background: #1f1f1f;
+  background: var(--hero-glass-hover);
 }
 
 /* Phones and portrait screens: the ribbon takes the space left below the text. The live lines read
@@ -448,10 +524,10 @@ html:has(.hero-stage):not([data-hero-passed]) .site-header {
 
 html:has(.hero-stage):not([data-hero-passed]) :is(.site-logo, .nav-links, .menu-toggle, .header-book) {
   --color-bg: var(--hero-ink);
-  --color-text: #f7f7f5;
-  --color-text-secondary: #d5d5d1;
-  --color-border: rgba(255, 255, 255, 0.24);
-  --color-hover: rgba(255, 255, 255, 0.1);
-  --color-active: rgba(255, 255, 255, 0.16);
-  --color-accent: var(--gold-tint);
+  --color-text: var(--hero-text);
+  --color-text-secondary: var(--hero-nav-text-2);
+  --color-border: var(--hero-nav-border);
+  --color-hover: var(--hero-hover);
+  --color-active: var(--hero-active);
+  --color-accent: var(--hero-accent);
 }
