@@ -23,10 +23,9 @@ describe('About page', () => {
     expect(screen.getByText(/Automation and reproducibility/i)).toBeInTheDocument();
   });
 
-  it('describes the work as AI software grounded in classic engineering, without claiming a team', () => {
+  it('describes the team as AI software engineers grounded in classic engineering', () => {
     render(<AboutPage />);
-    expect(screen.getByText(/We build AI software with deep grounding in classic software engineering/i)).toBeInTheDocument();
-    expect(screen.queryByText(/our team|our engineers|senior team/i)).not.toBeInTheDocument();
+    expect(screen.getByText(/AI software engineers with deep grounding in classic software engineering/i)).toBeInTheDocument();
   });
 
   it('has proper list structure', () => {
@@ -43,21 +42,32 @@ describe('About page', () => {
     expect(results).toHaveNoViolations();
   });
 
-  it('shows the founder with his role and bio', () => {
+  it('renders founders with roles and bios', () => {
     render(<AboutPage />);
-    expect(screen.getByRole('heading', { name: /Who builds your system/i })).toBeInTheDocument();
-    expect(screen.getByText('Mantas Brasiunas')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Founders/i })).toBeInTheDocument();
+    expect(screen.getAllByText('Mantas Brasiunas')[0]).toBeInTheDocument();
     expect(screen.getByText(/Founder & AI Engineering Lead/i)).toBeInTheDocument();
-    expect(screen.getByText(/Builds AI agents and AI products/i)).toBeInTheDocument();
-    expect(screen.getByText(/years of work for Sage/i)).toBeInTheDocument();
+    expect(screen.getAllByText('Maxwell Archer')[0]).toBeInTheDocument();
+    expect(screen.getByText(/Software Engineer & SEO/i)).toBeInTheDocument();
+    expect(screen.getAllByText('Petras Rolinskij')[0]).toBeInTheDocument();
+    expect(screen.getByText(/Design Director/i)).toBeInTheDocument();
+    expect(screen.getAllByText('Marek Wolosewicz')[0]).toBeInTheDocument();
+    expect(screen.getByText(/Managing Director/i)).toBeInTheDocument();
   });
 
-  it('shows nobody else as part of the company', () => {
+  it('renders accessible founder portrait avatars', () => {
+    render(<AboutPage />);
+    expect(screen.getByRole('img', { name: /Professional photo of Maxwell Archer/i })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /Professional photo of Petras Rolinskij/i })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /Professional photo of Marek Wolosewicz/i })).toBeInTheDocument();
+  });
+
+  it('lists Mantas Brasiunas first, with his bio', () => {
     render(<AboutPage />);
     const names = screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent);
-    expect(names).toEqual(['Mantas Brasiunas']);
-    expect(screen.queryByText(/Maxwell Archer|Petras Rolinskij|Marek Wolosewicz/)).not.toBeInTheDocument();
-    expect(screen.queryByText(/Managing Director|Design Director|Software Engineer & SEO/i)).not.toBeInTheDocument();
+    expect(names[0]).toBe('Mantas Brasiunas');
+    expect(screen.getByText(/Builds AI agents and AI products/i)).toBeInTheDocument();
+    expect(screen.getByText(/years of work for Sage/i)).toBeInTheDocument();
   });
 
   it('shows his initials instead of a portrait until a photo is added', () => {
