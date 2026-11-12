@@ -28,9 +28,49 @@
   --cta-font: 1.91;
   --cta-line: 0.0833; /* the outline, 1.6px of the film's 1920 */
 
+  /* What is round the picture while it is still a card. In the dark theme that is the film's own colour, and the
+     picture melts into it. The light theme keeps the page light there, so the picture is a dark screen with round
+     corners and a soft shadow; as it grows the page dims into the film's colour, where the corners and the shadow no
+     longer show, so the full-screen film is exactly the dark one. Below it the page fades back into the light. */
+  --film-rest: var(--film-ink); /* the section's colour with no growth running */
+  --film-surround: transparent; /* the stage's colour round the card, before the dimming */
+  --film-corner: 0px;
+  --film-shadow: 0;
+  --film-clip: visible;
+  --film-reach: -2px; /* how far the feathers reach past the picture (see the feather, below) */
+  --film-glass: rgba(10, 10, 10, 0.72);
+  --film-again: transparent;
+  --film-fade-from: var(--film-rest);
+
   position: relative;
-  background: var(--film-ink);
+  background: var(--film-rest);
   color-scheme: dark;
+}
+
+/* A dark screen on the light page: the controls get a solid enough backing to read on either */
+:root[data-theme='light'] .promo-film {
+  --film-rest: var(--color-bg);
+  --film-surround: var(--color-bg);
+  --film-corner: var(--radius-3xl);
+  --film-shadow: 0.22;
+  --film-clip: clip;
+  --film-reach: 0px;
+  --film-glass: rgba(10, 10, 10, 0.86);
+  --film-again: var(--film-glass);
+}
+
+/* the same, for the moment before the theme script has run */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .promo-film {
+    --film-rest: var(--color-bg);
+    --film-surround: var(--color-bg);
+    --film-corner: var(--radius-3xl);
+    --film-shadow: 0.22;
+    --film-clip: clip;
+    --film-reach: 0px;
+    --film-glass: rgba(10, 10, 10, 0.86);
+    --film-again: var(--film-glass);
+  }
 }
 
 @media (orientation: portrait) {
@@ -64,6 +104,11 @@
   pointer-events: none;
 }
 
+/* --film-e is set here by the script, so the dimming is worked out here and not on the section */
+.promo-film-stage {
+  background: color-mix(in srgb, var(--film-ink) calc(var(--film-e, 0) * 100%), var(--film-surround));
+}
+
 .promo-film-view {
   position: relative;
   padding: clamp(2rem, 8vw, 5rem) var(--gutter);
@@ -82,7 +127,10 @@
   position: absolute;
   inset: 0;
   container-type: inline-size;
+  overflow: var(--film-clip);
+  border-radius: var(--film-corner);
   background: var(--film-ink) center / cover no-repeat;
+  box-shadow: 0 1.5rem 4rem -1rem rgb(0 0 0 / calc(var(--film-shadow) * (1 - var(--film-e, 0))));
 }
 
 /* The film's own picture is a little darker than its background towards the corners (a vignette); this lifts anything
@@ -99,12 +147,13 @@
 /* No box: the picture's edges melt into the page in the film's own colour, in a soft eased fade that stays clear of
    the film's own margins (its words start 7% in). Where the picture runs off the screen the fade is off the screen too.
    It reaches 2px past the picture: where the picture sits between two pixels its last row is only partly drawn, and a
-   fade that stopped at the same line would leave a fifth of the film's brightest line there as a hairline. */
+   fade that stopped at the same line would leave a fifth of the film's brightest line there as a hairline. On the light
+   page the picture is clipped to its card instead, so there the fade stops at the card's edge. */
 .promo-film-frame::after {
   content: '';
   position: absolute;
   z-index: 2;
-  inset: -2px;
+  inset: var(--film-reach);
   background:
     linear-gradient(to right, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) left / 8% 100% no-repeat,
     linear-gradient(to left, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.85) 14%, rgb(var(--film-ink-rgb) / 0.5) 38%, rgb(var(--film-ink-rgb) / 0.17) 66%, transparent 100%) right / 8% 100% no-repeat,
@@ -120,7 +169,7 @@
 .promo-film-veil {
   position: absolute;
   z-index: 2;
-  inset: -2px;
+  inset: var(--film-reach);
   background:
     linear-gradient(to right, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.9) 8%, rgb(var(--film-ink-rgb) / 0.6) 26%, rgb(var(--film-ink-rgb) / 0.3) 48%, rgb(var(--film-ink-rgb) / 0.1) 72%, transparent 100%) left / 15% 100% no-repeat,
     linear-gradient(to left, rgb(var(--film-ink-rgb)), rgb(var(--film-ink-rgb) / 0.9) 8%, rgb(var(--film-ink-rgb) / 0.6) 26%, rgb(var(--film-ink-rgb) / 0.3) 48%, rgb(var(--film-ink-rgb) / 0.1) 72%, transparent 100%) right / 15% 100% no-repeat;
@@ -276,7 +325,7 @@
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: var(--radius-md);
-  background: rgba(10, 10, 10, 0.72);
+  background: var(--film-glass);
   color: #e6e6e3;
   font-size: 0.875rem;
   font-weight: 500;
@@ -314,7 +363,7 @@
 .promo-film-button[data-again] {
   padding-inline: var(--space-3);
   border-color: rgba(255, 255, 255, 0.14);
-  background: transparent;
+  background: var(--film-again);
   color: #b8b8b4;
 }
 
@@ -368,14 +417,14 @@
    ending on an edge. The fade takes the place of the next section's top padding. */
 .promo-film-fade {
   height: calc(var(--section-space) + clamp(2rem, 8svh, 5rem));
-  background: linear-gradient(to bottom, var(--film-ink), var(--color-bg));
+  background: linear-gradient(to bottom, var(--film-fade-from), var(--color-bg));
   background: linear-gradient(
     to bottom,
-    var(--film-ink) 0%,
-    color-mix(in srgb, var(--color-bg) 4%, var(--film-ink)) 20%,
-    color-mix(in srgb, var(--color-bg) 20%, var(--film-ink)) 40%,
-    color-mix(in srgb, var(--color-bg) 55%, var(--film-ink)) 60%,
-    color-mix(in srgb, var(--color-bg) 90%, var(--film-ink)) 80%,
+    var(--film-fade-from) 0%,
+    color-mix(in srgb, var(--color-bg) 4%, var(--film-fade-from)) 20%,
+    color-mix(in srgb, var(--color-bg) 20%, var(--film-fade-from)) 40%,
+    color-mix(in srgb, var(--color-bg) 55%, var(--film-fade-from)) 60%,
+    color-mix(in srgb, var(--color-bg) 90%, var(--film-fade-from)) 80%,
     var(--color-bg) 100%
   );
 }
@@ -393,6 +442,11 @@
        Clipping hides the same overflow without becoming a scroll container; the window still does the scrolling. */
     body:has(.promo-film-track) {
       overflow-x: clip;
+    }
+
+    /* the pin always lets go with the film full screen, in its own colour, so the fade below starts from that */
+    .promo-film {
+      --film-fade-from: var(--film-ink);
     }
 
     /* The runway: the stage pins for as long as it takes the page to scroll this far. Its height is set in screens
