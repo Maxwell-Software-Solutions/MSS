@@ -54,7 +54,7 @@ export default function AboutPage(): ReactElement {
             <p className="lead">{t('about.founders.description')}</p>
           </div>
 
-          <div className="columns columns-4">
+          <div className="columns columns-3">
             {founders.map((f) => {
               const firstName = f.name.split(' ')[0]?.toLowerCase() || 'founder';
               const initials = f.name

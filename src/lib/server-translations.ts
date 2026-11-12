@@ -234,9 +234,6 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'services.process.sustain.body',
     
     // Founder names and roles (most visible in cards)
-    'about.founder.mantas.name',
-    'about.founder.mantas.role',
-    'about.founder.mantas.bio',
     'about.founder.maxwell.name',
     'about.founder.maxwell.role', 
     'about.founder.maxwell.bio',
