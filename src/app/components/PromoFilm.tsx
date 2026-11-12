@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { trackCTAClick } from '@/lib/analytics';
-import { TALL, endScale, filmSources, frameAt, growth, holdPoint, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
+import { TALL, ctaPoint, endScale, filmSources, frameAt, growth, holdPoint, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
 import type { Cut, FilmSource, Layout } from './promoFilmModel';
 import './promo-film.css';
 
@@ -60,9 +60,10 @@ function webmFits(video: HTMLVideoElement): boolean {
 /**
  * The film right after the hero, part of the dark page rather than a player on it. As the page scrolls the picture
  * settles in the dark, pins under the header, grows until it fills the screen and lets go, without ever taking the
- * scroll away from the visitor. It plays muted while on screen, stops when it is not, and plays once: on its last
- * card the live "Book a call" button appears over the one drawn in the film, and "Watch again" is there for anyone
- * who wants it. Nothing loads until the page has loaded and the film's runway is in view, so the hero is never slowed.
+ * scroll away from the visitor. It plays muted while on screen, stops when it is not, and plays once: the live
+ * "Book a call" button goes in over the one drawn in the film the moment that one starts to appear, so it can be clicked
+ * from its first frame, the film stops on its last card, and "Watch again" is there for anyone who wants it. Nothing
+ * loads until the page has loaded and the film's runway is in view, so the hero is never slowed.
  */
 export default function PromoFilm(): ReactElement {
   const { t, language } = useLanguage();
@@ -87,6 +88,7 @@ export default function PromoFilm(): ReactElement {
   const [heard, setHeard] = useState(false);
   const [blocked, setBlocked] = useState(false);
   const [ended, setEnded] = useState(false);
+  const [cta, setCta] = useState(false); // the live "Book a call" is in: from the drawn button's first frame, not from the end
   const [caption, setCaption] = useState('');
 
   // captions in the site language, drawn here rather than by the browser so they match the site; the track
@@ -144,6 +146,7 @@ export default function PromoFilm(): ReactElement {
     video.autoplay = false;
     if (!video.paused) video.pause();
     setEnded(true);
+    setCta(true);
     setCaption('');
   }, []);
 
@@ -199,6 +202,7 @@ export default function PromoFilm(): ReactElement {
             endedRef.current = false;
             heldRef.current = true;
             setEnded(false);
+            setCta(false);
           }
         };
         const timer = window.setTimeout(() => stop(true), 4000);
@@ -280,20 +284,30 @@ export default function PromoFilm(): ReactElement {
         rememberMissingLt(noLtRef.current);
       }
     };
-    // The film stops on its last card, just before it fades out. The playing time is only reported a few times a
-    // second, so in the last second it is watched frame by frame.
+    // The live button goes in at the first frame of the one the film draws, while the film is still playing, so it is
+    // there to be clicked as soon as anyone can see a button; the film then stops on its last card, just before it
+    // fades out. The playing time is only reported a few times a second, so from a second before the button it is
+    // watched frame by frame. The button follows the clock both ways: a film put back to its start takes it away.
     let polling = 0;
     const poll = (): void => {
       polling = 0;
       if (video.paused || endedRef.current) return;
-      if (video.currentTime >= holdPoint(video.duration)) finish(video);
-      else polling = window.requestAnimationFrame(poll);
+      const now = video.currentTime;
+      if (now >= holdPoint(video.duration)) {
+        finish(video);
+        return;
+      }
+      if (now >= ctaPoint(video.duration)) setCta(true);
+      polling = window.requestAnimationFrame(poll);
     };
     const onTime = (): void => {
-      if (endedRef.current || video.paused) return;
-      const stop = holdPoint(video.duration);
-      if (video.currentTime >= stop) finish(video);
-      else if (!polling && video.currentTime >= stop - 1) polling = window.requestAnimationFrame(poll);
+      if (endedRef.current) return;
+      const now = video.currentTime;
+      const cue = ctaPoint(video.duration);
+      setCta(now >= cue);
+      if (video.paused) return;
+      if (now >= holdPoint(video.duration)) finish(video);
+      else if (!polling && now >= cue - 1) polling = window.requestAnimationFrame(poll);
     };
     // the browser got to the very end first (a hidden tab, a busy page): back to the card that was meant to be held
     const onEnded = (): void => {
@@ -539,6 +553,7 @@ export default function PromoFilm(): ReactElement {
     heldRef.current = false;
     loadRef.current += 1;
     setEnded(false);
+    setCta(false);
     video.currentTime = 0;
     video.muted = !soundRef.current;
     tryPlay(video);
@@ -620,7 +635,7 @@ export default function PromoFilm(): ReactElement {
                   </video>
                   <div className="promo-film-floor" aria-hidden="true" />
                   <div className="promo-film-veil" aria-hidden="true" />
-                  {ended ? (
+                  {cta ? (
                     <a className="promo-film-cta" href="/book" target="_blank" rel="noopener noreferrer" aria-label={t('cta.bookCall.aria')} onClick={() => trackCTAClick('promo_film')}>
                       {t('cta.bookCall')}
                     </a>

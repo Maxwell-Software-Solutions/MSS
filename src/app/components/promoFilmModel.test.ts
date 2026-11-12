@@ -1,4 +1,4 @@
-import { HOLD_BEFORE_END, clamp01, endScale, filmSources, frameAt, growth, holdPoint, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
+import { HOLD_BEFORE_END, clamp01, ctaPoint, endScale, filmSources, frameAt, growth, holdPoint, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
 import type { Layout } from './promoFilmModel';
 
 const srcs = (list: Array<{ src: string }>): string[] => list.map((item) => item.src);
@@ -96,5 +96,23 @@ describe('where the film stops', () => {
   it('never stops a film whose length is not known yet', () => {
     expect(holdPoint(NaN)).toBe(Infinity);
     expect(holdPoint(Infinity)).toBe(Infinity);
+  });
+});
+
+describe('where the live Book a call goes in', () => {
+  it('is at the first frame of the drawn button, about 55.5 s into the 59.13 s film, well before the hold', () => {
+    expect(ctaPoint(59.1333)).toBeCloseTo(55.53, 1);
+    expect(ctaPoint(59.1333)).toBeLessThanOrEqual(55.6); // the drawn button starts to show at 55.6 s in both cuts
+    expect(ctaPoint(59.1333)).toBeLessThan(holdPoint(59.1333) - 2);
+  });
+
+  it('is never later than the hold, and never before the start', () => {
+    expect(ctaPoint(58.1)).toBeLessThanOrEqual(holdPoint(58.1));
+    expect(ctaPoint(1)).toBe(0);
+  });
+
+  it('never goes in while the length of the film is not known yet', () => {
+    expect(ctaPoint(NaN)).toBe(Infinity);
+    expect(ctaPoint(Infinity)).toBe(Infinity);
   });
 });
