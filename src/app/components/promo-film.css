@@ -159,7 +159,10 @@
   object-fit: cover;
 }
 
-/* The live "Book a call", laid over the one drawn on the film's last card. It covers the drawn one with the same
+/* The live "Book a call", laid over the one drawn on the film's last card. It is in the page, and takes clicks, from the
+   first frame of the drawn one (see ctaPoint), while the film is still playing; only its picture waits, as the delay
+   below, until the drawn one is fully in, so the two never add up to a brighter button in the middle of the fade (an
+   opacity of 0 still takes clicks and shows the pointer). It covers the drawn one with the same
    fill, the same outline and the same gold, so the swap is a fade and nothing seems to change. Fill, outline and
    text colour were tuned until the difference between it and the drawn one, as the browser shows each, was as small as
    it gets (the film's own picture is softer than live text, so they are close, not equal). The drawn button's glow
@@ -190,7 +193,7 @@
   letter-spacing: 0.01em;
   text-decoration: none;
   white-space: nowrap;
-  animation: promo-film-cta-in 0.5s ease both;
+  animation: promo-film-cta-in 0.4s ease 0.7s both;
   transition: color var(--transition-base), box-shadow var(--transition-base);
 }
 
