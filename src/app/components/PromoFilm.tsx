@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, type ReactElement } from 'react';
+import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
 import { trackCTAClick } from '@/lib/analytics';
 import { TALL, ctaPoint, endScale, filmSources, frameAt, growth, holdPoint, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
@@ -63,7 +63,8 @@ function webmFits(video: HTMLVideoElement): boolean {
  * scroll away from the visitor. It plays muted while on screen, stops when it is not, and plays once: the live
  * "Book a call" button goes in over the one drawn in the film the moment that one starts to appear, so it can be clicked
  * from its first frame, the film stops on its last card, and "Watch again" is there for anyone who wants it. Nothing
- * loads until the page has loaded and the film's runway is in view, so the hero is never slowed.
+ * loads until the page has loaded and the film's runway is in view, so the hero is never slowed. A click or tap on the
+ * picture while it is muted turns the sound on.
  */
 export default function PromoFilm(): ReactElement {
   const { t, language } = useLanguage();
@@ -599,6 +600,21 @@ export default function PromoFilm(): ReactElement {
     tryPlay(video);
   };
 
+  // A click or tap on the picture itself turns the sound on while it is off, where the film is, and never turns it off.
+  // The live "Book a call" is in the picture but is not a click on the film, and the buttons are outside it.
+  const onFilmClick = (event: ReactMouseEvent<HTMLDivElement>): void => {
+    if (endedRef.current || (event.target as Element).closest('.promo-film-cta')) return;
+    const video = ensureSource();
+    if (!video?.muted) return;
+    heardRef.current = true;
+    setHeard(true);
+    video.muted = false;
+    soundRef.current = true;
+    remember('on');
+    // a film the visitor paused stays paused; one the browser would not start is started by the click
+    if (video.paused && !heldRef.current) tryPlay(video);
+  };
+
   // the poster's own button: when the browser would not start the film by itself, a tap starts it, with its sound
   const startWithSound = (): void => {
     const video = ensureSource();
@@ -628,7 +644,7 @@ export default function PromoFilm(): ReactElement {
           <div ref={viewRef} className="promo-film-view">
             <div className="promo-film-slot">
               <div ref={cardRef} className="promo-film-card">
-                <div ref={frameRef} className="promo-film-frame" data-blocked={showStart ? '' : undefined}>
+                <div ref={frameRef} className="promo-film-frame" data-blocked={showStart ? '' : undefined} onClick={onFilmClick}>
                   <video ref={videoRef} className="promo-film-media" muted playsInline preload="none">
                     <track kind="captions" srcLang="en" label="English" src="/video/maxwell-film.en.vtt" />
                     <track kind="captions" srcLang="lt" label="Lietuvių" src="/video/maxwell-film.lt.vtt" />

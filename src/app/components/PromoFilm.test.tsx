@@ -308,6 +308,124 @@ describe('PromoFilm', () => {
     });
   });
 
+  describe('a click on the film itself', () => {
+    const filmOf = (container: HTMLElement): HTMLVideoElement => container.querySelector('video') as HTMLVideoElement;
+
+    it('turns the sound on while it is off, keeps the film playing where it is, and keeps the choice for the visit', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 20);
+      expect(video.muted).toBe(true);
+      play.mockClear();
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      expect(video.paused).toBe(false);
+      expect(video.currentTime).toBe(20); // not sent back to the start
+      expect(play).not.toHaveBeenCalled();
+      expect(screen.getByRole('button', { name: 'Pause film' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Turn sound off' })).toBeInTheDocument();
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBe('on');
+    });
+
+    it('does nothing to the sound when it is already on, however often it is clicked', () => {
+      window.sessionStorage.setItem('mss.film.sound', 'on');
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = filmOf(container);
+      expect(video.muted).toBe(false);
+      play.mockClear();
+      fireEvent.click(video);
+      fireEvent.click(container.querySelector('.promo-film-frame') as HTMLElement);
+      expect(video.muted).toBe(false);
+      expect(video.paused).toBe(false);
+      expect(play).not.toHaveBeenCalled();
+      expect(screen.getByRole('button', { name: 'Turn sound off' })).toBeInTheDocument();
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBe('on');
+    });
+
+    it('never turns the sound off: the sound button does that, and a click after it turns it on again', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = filmOf(container);
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      fireEvent.click(screen.getByRole('button', { name: 'Turn sound off' }));
+      expect(video.muted).toBe(true);
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBe('off');
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBe('on');
+    });
+
+    it('does not count a click on the live Book a call, which still opens its link and is still tracked', () => {
+      const track = jest.spyOn(analytics, 'trackCTAClick').mockImplementation(() => undefined);
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 55.6, 59.1333);
+      const link = screen.getByRole('link', { name: /Book a call/ });
+      link.addEventListener('click', (event) => event.preventDefault()); // jsdom cannot open a tab
+      fireEvent.click(link);
+      fireEvent.click(link.firstChild as Node); // its text
+      expect(track).toHaveBeenCalledTimes(2);
+      expect(video.muted).toBe(true);
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBeNull();
+      expect(video.paused).toBe(false);
+      fireEvent.click(video); // but the picture around it still counts
+      expect(video.muted).toBe(false);
+    });
+
+    it('leaves the buttons as they were: pause does not turn the sound on, and Play with sound still starts it from the top', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 20);
+      fireEvent.click(screen.getByRole('button', { name: 'Pause film' }));
+      expect(video.paused).toBe(true);
+      expect(video.muted).toBe(true);
+      fireEvent.click(screen.getByRole('button', { name: 'Play with sound' }));
+      expect(video.muted).toBe(false);
+      expect(video.currentTime).toBe(0);
+      expect(video.paused).toBe(false);
+    });
+
+    it('turns the sound on in a film the visitor paused, and leaves it paused', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = filmOf(container);
+      fireEvent.click(screen.getByRole('button', { name: 'Pause film' }));
+      play.mockClear();
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      expect(video.paused).toBe(true);
+      expect(play).not.toHaveBeenCalled();
+    });
+
+    it('starts a film the browser would not start by itself, with its sound, when the poster is clicked', async () => {
+      play.mockImplementationOnce(() => Promise.reject(new DOMException('blocked', 'NotAllowedError')));
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      await waitFor(() => expect(container.querySelector('.promo-film-start')).toBeInTheDocument());
+      fireEvent.click(container.querySelector('.promo-film-frame') as HTMLElement); // the poster laid over the film is the frame's own
+      await waitFor(() => expect(container.querySelector('.promo-film-start')).not.toBeInTheDocument());
+      expect(filmOf(container).muted).toBe(false);
+      expect(filmOf(container).paused).toBe(false);
+    });
+
+    it('does nothing once the film has played through: only Watch again brings it back', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 57.3);
+      expect(video.paused).toBe(true);
+      play.mockClear();
+      fireEvent.click(video);
+      expect(video.muted).toBe(true);
+      expect(play).not.toHaveBeenCalled();
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Watch again' })).toBeInTheDocument();
+    });
+  });
+
   describe('when the film has played through', () => {
     it('stops on its last card, just before the fade, and keeps the live Book a call over the drawn one', () => {
       const { container } = renderWithProviders(<PromoFilm />);
