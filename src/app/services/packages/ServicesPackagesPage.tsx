@@ -60,7 +60,7 @@ export default function ServicesPackagesPage(): ReactElement {
   const packages: PackageCardProps[] = [
     {
       name: ht('packages.audit.name', 'Code Health Audit'),
-      price: ht('packages.audit.price', '€2,500'),
+      price: ht('packages.audit.price', 'Price on request'),
       period: ht('packages.audit.period', 'one-time'),
       idealFor: ht('packages.audit.idealFor', 'Ideal for: teams that need an objective assessment before committing to a larger engagement or ahead of a fundraise.'),
       includes: [
@@ -76,7 +76,7 @@ export default function ServicesPackagesPage(): ReactElement {
     },
     {
       name: ht('packages.sprint.name', 'Sprint-in-a-Box'),
-      price: ht('packages.sprint.price', '€4,800'),
+      price: ht('packages.sprint.price', 'Price on request'),
       period: ht('packages.sprint.period', 'fixed price'),
       idealFor: ht('packages.sprint.idealFor', 'Ideal for: founders and product teams who need a working MVP or feature shipped in 2 weeks without hiring a full team.'),
       includes: [
@@ -92,8 +92,8 @@ export default function ServicesPackagesPage(): ReactElement {
     },
     {
       name: ht('packages.retainer.name', 'Engineering Partner Retainer'),
-      price: ht('packages.retainer.price', '€3,500–€6,500'),
-      period: ht('packages.retainer.period', '/month'),
+      price: ht('packages.retainer.price', 'Price on request'),
+      period: ht('packages.retainer.period', 'per month'),
       idealFor: ht('packages.retainer.idealFor', 'Ideal for: growing companies that need ongoing senior engineering capacity without the overhead of a full-time hire.'),
       includes: [
         ht('packages.retainer.include1', 'Dedicated senior engineer, 3–5 days/week'),
@@ -110,7 +110,7 @@ export default function ServicesPackagesPage(): ReactElement {
     },
     {
       name: ht('packages.cicd.name', 'CI/CD Accelerator'),
-      price: ht('packages.cicd.price', '€7,500'),
+      price: ht('packages.cicd.price', 'Price on request'),
       period: ht('packages.cicd.period', 'one-time'),
       idealFor: ht('packages.cicd.idealFor', 'Ideal for: teams spending hours on manual deployments, flaky pipelines, or struggling with slow feedback loops.'),
       includes: [
@@ -126,8 +126,8 @@ export default function ServicesPackagesPage(): ReactElement {
     },
     {
       name: ht('packages.cto.name', 'Fractional CTO'),
-      price: ht('packages.cto.price', '€3,500'),
-      period: ht('packages.cto.period', '/month'),
+      price: ht('packages.cto.price', 'Price on request'),
+      period: ht('packages.cto.period', 'per month'),
       idealFor: ht('packages.cto.idealFor', 'Ideal for: early-stage startups and scale-ups needing strategic technical leadership without a full-time C-suite cost.'),
       includes: [
         ht('packages.cto.include1', 'Technical strategy and roadmap ownership'),
@@ -177,7 +177,7 @@ export default function ServicesPackagesPage(): ReactElement {
             <p suppressHydrationWarning>
               {ht(
                 'packages.unsure.body',
-                'Most clients start with a Code Health Audit. It surfaces the real priorities and often makes the next step obvious. If you already know what you need, book a 30-minute discovery call and we will confirm fit.'
+                'A Code Health Audit is the natural starting point. It surfaces the real priorities and often makes the next step obvious. If you already know what you need, book a 30-minute discovery call and we will confirm fit.'
               )}
             </p>
             <Link href="/contact" className="btn btn-accent" suppressHydrationWarning>
@@ -205,31 +205,31 @@ export default function ServicesPackagesPage(): ReactElement {
               <tbody>
                 <tr>
                   <td>{ht('packages.audit.name', 'Code Health Audit')}</td>
-                  <td>{ht('packages.audit.price', '€2,500')}</td>
+                  <td>{ht('packages.audit.price', 'Price on request')}</td>
                   <td>{ht('packages.compare.audit.duration', '5 business days')}</td>
                   <td>{ht('packages.compare.audit.for', 'Pre-investment, new CTOs, legacy systems')}</td>
                 </tr>
                 <tr>
                   <td>{ht('packages.sprint.name', 'Sprint-in-a-Box')}</td>
-                  <td>{ht('packages.sprint.price', '€4,800')}</td>
+                  <td>{ht('packages.sprint.price', 'Price on request')}</td>
                   <td>{ht('packages.compare.sprint.duration', '2 weeks')}</td>
                   <td>{ht('packages.compare.sprint.for', 'MVPs, feature spikes, proof-of-concept')}</td>
                 </tr>
                 <tr>
                   <td className="is-featured">{ht('packages.retainer.name', 'Engineering Partner Retainer')}</td>
-                  <td>{ht('packages.retainer.price', '€3,500–€6,500')}/mo</td>
+                  <td>{ht('packages.retainer.price', 'Price on request')}</td>
                   <td>{ht('packages.compare.retainer.duration', 'Ongoing')}</td>
                   <td>{ht('packages.compare.retainer.for', 'Scale-ups, embedded engineering support')}</td>
                 </tr>
                 <tr>
                   <td>{ht('packages.cicd.name', 'CI/CD Accelerator')}</td>
-                  <td>{ht('packages.cicd.price', '€7,500')}</td>
+                  <td>{ht('packages.cicd.price', 'Price on request')}</td>
                   <td>{ht('packages.compare.cicd.duration', '3–4 weeks')}</td>
                   <td>{ht('packages.compare.cicd.for', 'Slow deploys, broken pipelines, manual releases')}</td>
                 </tr>
                 <tr>
                   <td>{ht('packages.cto.name', 'Fractional CTO')}</td>
-                  <td>{ht('packages.cto.price', '€3,500')}/mo</td>
+                  <td>{ht('packages.cto.price', 'Price on request')}</td>
                   <td>{ht('packages.compare.cto.duration', 'Ongoing')}</td>
                   <td>{ht('packages.compare.cto.for', 'Early-stage startups, post-seed to Series A')}</td>
                 </tr>

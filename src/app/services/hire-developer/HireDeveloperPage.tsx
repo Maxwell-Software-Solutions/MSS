@@ -16,11 +16,11 @@ export default function HireDeveloperPage(): ReactElement {
     },
     {
       title: ht('hireDev.reason2.title', 'Senior-level from day one'),
-      body: ht('hireDev.reason2.body', 'No juniors, no ramp-up. Every engineer has 5+ years of production experience and a track record of shipping.'),
+      body: ht('hireDev.reason2.body', 'No juniors, no ramp-up. Every engineer has years of production experience and a track record of shipping.'),
     },
     {
       title: ht('hireDev.reason3.title', 'No recruitment fees'),
-      body: ht('hireDev.reason3.body', 'Hiring agencies charge 20-30% of annual salary. With us, you pay for engineering output — not a finder\'s fee.'),
+      body: ht('hireDev.reason3.body', 'Hiring agencies charge a share of the annual salary. With us, you pay for engineering output, not a finder\'s fee.'),
     },
     {
       title: ht('hireDev.reason4.title', 'Flexible commitment'),
@@ -35,15 +35,15 @@ export default function HireDeveloperPage(): ReactElement {
   const engagements = [
     {
       name: ht('hireDev.engagement1.name', 'Sprint-in-a-Box'),
-      price: ht('hireDev.engagement1.price', '€4,800'),
+      price: ht('hireDev.engagement1.price', 'Price on request'),
       period: ht('hireDev.engagement1.period', 'fixed price'),
       description: ht('hireDev.engagement1.desc', 'A focused 2-week delivery sprint. Ideal for MVPs, proof-of-concepts, or shipping a specific feature fast.'),
       href: '/start-a-sprint',
     },
     {
       name: ht('hireDev.engagement2.name', 'Engineering Partner Retainer'),
-      price: ht('hireDev.engagement2.price', '€3,500–€6,500'),
-      period: ht('hireDev.engagement2.period', '/month'),
+      price: ht('hireDev.engagement2.price', 'Price on request'),
+      period: ht('hireDev.engagement2.period', 'per month'),
       description: ht('hireDev.engagement2.desc', 'A dedicated senior engineer, 3-5 days per week. Ongoing delivery, code review, architecture guidance, and async access.'),
       href: '/contact',
     },
@@ -82,7 +82,7 @@ export default function HireDeveloperPage(): ReactElement {
         <div className="assurances">
           {[
             ht('hireDev.trust.start', 'Start in 1-2 weeks'),
-            ht('hireDev.trust.senior', '5+ years experience'),
+            ht('hireDev.trust.senior', 'Senior engineers only'),
             ht('hireDev.trust.flex', 'No long-term contract'),
           ].map((item, i) => (
             <span key={i} suppressHydrationWarning>
@@ -96,7 +96,7 @@ export default function HireDeveloperPage(): ReactElement {
       <section aria-labelledby="reasons-heading" className="section">
         <div className="wrap">
           <h2 id="reasons-heading" className="section-head" suppressHydrationWarning>
-            {ht('hireDev.reasons.heading', 'Why outsource to MSS')}
+            {ht('hireDev.reasons.heading', 'Why outsource to Maxwell')}
           </h2>
           <div className="columns columns-2" suppressHydrationWarning>
             {reasons.map((item, i) => (

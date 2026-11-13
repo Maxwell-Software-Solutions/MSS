@@ -6,7 +6,7 @@ import { PAGES } from '@/lib/seo/data';
 import { isLithuanianPath } from '@/lib/page-language';
 
 const PATH = '/lt/dokumentu-sutikrinimas';
-const CTA = 'Atsiųskite vieną dokumentų rinkinį – grąžinsime patikrintą';
+const CTA = 'Atsiųskite vieną dokumentų rinkinį – gausite rašytinį sprendimo aprašą';
 
 describe('Lithuanian document cross-check page', () => {
   // jsdom cannot play media; the hero clip calls play() when it mounts

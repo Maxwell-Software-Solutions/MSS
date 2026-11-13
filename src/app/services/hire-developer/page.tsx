@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hire a Senior Developer — Without the 3-Month Hiring Process',
     description:
-      'Outsource development to senior engineers in Europe. Sprint-in-a-Box from €4,800 or Engineering Partner Retainer from €3,500/month.',
+      'Outsource development to senior engineers in Europe. Sprint-in-a-Box at a fixed price or Engineering Partner Retainer by the month.',
     type: 'website',
   },
   alternates: {

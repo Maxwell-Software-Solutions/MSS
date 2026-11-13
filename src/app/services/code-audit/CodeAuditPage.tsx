@@ -54,7 +54,7 @@ export default function CodeAuditPage(): ReactElement {
     },
     {
       question: ht('codeAudit.faq.q3', 'What happens after the audit?'),
-      answer: ht('codeAudit.faq.a3', 'You own the report and roadmap completely. Many clients use it to prioritise their next quarter of engineering work. If you want help implementing the recommendations, we can discuss a Sprint-in-a-Box or Retainer engagement.'),
+      answer: ht('codeAudit.faq.a3', 'You own the report and roadmap completely. It is written to prioritise your next quarter of engineering work. If you want help implementing the recommendations, we can discuss a Sprint-in-a-Box or Retainer engagement.'),
     },
     {
       question: ht('codeAudit.faq.q4', 'What tech stacks do you cover?'),
@@ -94,7 +94,7 @@ export default function CodeAuditPage(): ReactElement {
 
         <div className="assurances">
           {[
-            ht('codeAudit.trust.price', '€2,500 one-time'),
+            ht('codeAudit.trust.price', 'One-time fee'),
             ht('codeAudit.trust.time', 'Report in 5 business days'),
             ht('codeAudit.trust.free', 'Free 15-min preview available'),
           ].map((item, i) => (
@@ -144,7 +144,7 @@ export default function CodeAuditPage(): ReactElement {
       <section aria-labelledby="pricing-heading" className="section section-tone">
         <div className="wrap split">
           <h2 id="pricing-heading" suppressHydrationWarning>
-            {ht('codeAudit.pricing.title', '€2,500 — one-time investment')}
+            {ht('codeAudit.pricing.title', 'A one-time investment')}
           </h2>
           <div>
             <p className="lead" suppressHydrationWarning>

@@ -40,14 +40,12 @@ describe('Test-Driven Development blog post', () => {
     expect(screen.getByText(/Test-Driven Development \(TDD\) isn't just a development practice/i)).toBeInTheDocument();
   });
 
-  it('renders the business metrics', () => {
+  it('carries no unsourced percentage claims in the summary', () => {
     render(<TDDPost />);
-    expect(screen.getByText('40-80%')).toBeInTheDocument();
-    expect(screen.getByText('25-50%')).toBeInTheDocument();
-    expect(screen.getByText('3-5x')).toBeInTheDocument();
-    expect(screen.getByText('Fewer Production Bugs')).toBeInTheDocument();
-    expect(screen.getByText('Faster Delivery')).toBeInTheDocument();
-    expect(screen.getByText('ROI on Investment')).toBeInTheDocument();
+    expect(screen.queryByText('40-80%')).not.toBeInTheDocument();
+    expect(screen.queryByText('25-50%')).not.toBeInTheDocument();
+    expect(screen.queryByText('3-5x')).not.toBeInTheDocument();
+    expect(screen.getByText('fewer production bugs')).toBeInTheDocument();
   });
 
   it('renders the introduction section', () => {
