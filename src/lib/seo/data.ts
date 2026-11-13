@@ -361,6 +361,21 @@ export const PAGES: Record<string, PageMetadata> = {
     canonical: '/lt/dokumentu-sutikrinimas',
     modifiedTime: '2026-11-04T00:00:00Z',
   },
+  // Free in-browser tool, Lithuanian only, same /lt/ rules as the page above
+  listCompareLt: {
+    title: 'Nemokamas sąrašų palyginimas iš Excel ir PDF | Maxwell',
+    description:
+      'Įklijuokite du sąrašus iš Excel ar PDF ir iš karto pamatykite, kurie kodai ar kiekiai nesutampa. Veikia naršyklėje, duomenys niekur nesiunčiami.',
+    keywords: [
+      'sąrašų palyginimas',
+      'Excel sąrašų palyginimas',
+      'sąskaitos ir važtaraščio palyginimas',
+      'kiekių palyginimas',
+      'nemokamas įrankis',
+    ],
+    canonical: '/lt/sarasu-palyginimas',
+    modifiedTime: '2026-11-06T00:00:00Z',
+  },
 };
 
 // ============================================================================
