@@ -45,7 +45,7 @@ describe('About page', () => {
   it('renders founders with roles and bios', () => {
     render(<AboutPage />);
     expect(screen.getByRole('heading', { name: /Founders/i })).toBeInTheDocument();
-    expect(screen.getAllByText('Maxwell Archer')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Mantas Maxwell Brasiunas')[0]).toBeInTheDocument();
     expect(screen.getByText(/Software Engineer & SEO/i)).toBeInTheDocument();
     expect(screen.getAllByText('Petras Rolinskij')[0]).toBeInTheDocument();
     expect(screen.getByText(/Design Director/i)).toBeInTheDocument();
@@ -55,7 +55,7 @@ describe('About page', () => {
 
   it('renders accessible founder portrait avatars', () => {
     render(<AboutPage />);
-    expect(screen.getByRole('img', { name: /Professional photo of Maxwell Archer/i })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /Professional photo of Mantas Maxwell Brasiunas/i })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /Professional photo of Petras Rolinskij/i })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: /Professional photo of Marek Wolosewicz/i })).toBeInTheDocument();
   });

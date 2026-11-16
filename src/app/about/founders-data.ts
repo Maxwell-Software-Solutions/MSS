@@ -10,10 +10,10 @@ export interface FounderInfo {
 
 export const founders: FounderInfo[] = [
   {
-    name: 'Maxwell Archer',
+    name: 'Mantas Maxwell Brasiunas',
     role: 'Software Engineer & SEO',
     bio: 'Sculpts sustainable velocity: clarity, automation, measurable quality signals—and removing drag.',
-    alt: 'Professional photo of Maxwell Archer',
+    alt: 'Professional photo of Mantas Maxwell Brasiunas',
     gradient: 'from-neutral-800 via-neutral-600 to-neutral-400',
     photo: '/images/founders/maxwell.jpg',
   },

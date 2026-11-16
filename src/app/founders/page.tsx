@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 
 const founders = [
   {
-    name: 'Maxwell Archer',
+    name: 'Mantas Maxwell Brasiunas',
     title: 'Founder & Principal Engineer',
-    bio: 'Drives product vision and leads strategic architecture decisions with a focus on reliability and maintainability. With extensive experience in building scalable systems, Maxwell ensures that every technical decision aligns with long-term business objectives while maintaining code quality and team velocity.',
+    bio: 'Drives product vision and leads strategic architecture decisions with a focus on reliability and maintainability. With extensive experience in building scalable systems, Mantas ensures that every technical decision aligns with long-term business objectives while maintaining code quality and team velocity.',
     imagePosition: 'right' as const,
   },
   {
