@@ -1,25 +1,67 @@
-import { lookup } from 'node:dns/promises';
-import { isIP } from 'node:net';
+import { lookup } from 'node:dns';
+import { type IncomingMessage, request as httpRequest } from 'node:http';
+import { request as httpsRequest } from 'node:https';
+import { isIP, type LookupFunction } from 'node:net';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 const MAX_REDIRECTS = 5;
+const MAX_BODY_BYTES = 2 * 1024 * 1024;
+const TIMEOUT_MS = 15000;
+const BLOCKED = 'EBLOCKED';
 const PRIVATE_IPV4 = /^(0|10|127|169\.254|172\.(1[6-9]|2\d|3[01])|192\.168|100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])|22[4-9]|2[3-5]\d)\./;
 
-// Public web addresses on the standard ports only: no localhost, private networks, cloud metadata or other internal services.
+// Public addresses only: no localhost, private networks, cloud metadata or other internal services.
 // IPv6 is allowed only in the global unicast range (2000::/3).
-async function isPublicTarget(url: URL): Promise<boolean> {
-  if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) return false;
-  if (url.port && url.port !== '80' && url.port !== '443') return false;
+const isPublicAddress = (address: string): boolean =>
+  isIP(address) === 6 ? /^[23][0-9a-f]{3}:/i.test(address) : !PRIVATE_IPV4.test(address);
+
+// Runs as the connection's own lookup, so the address checked is the address connected to.
+const publicLookup: LookupFunction = (hostname, options, callback) =>
+  lookup(hostname, { ...options, all: true }, (err, addresses) => {
+    if (err) return callback(err, '');
+    const [first] = addresses;
+    if (!first || !addresses.every((a) => isPublicAddress(a.address))) {
+      return callback(Object.assign(new Error('Blocked address'), { code: BLOCKED }), '');
+    }
+    callback(null, options.all ? addresses : first.address, first.family);
+  });
+
+// Standard ports only, no credentials. Literal IPs are checked here because no lookup runs for them.
+function isAllowedUrl(url: URL): boolean {
   const host = url.hostname.replace(/^\[|\]$/g, '');
-  const addresses = isIP(host)
-    ? [host]
-    : (await lookup(host, { all: true }).catch(() => [] as { address: string }[])).map((a) => a.address);
   return (
-    addresses.length > 0 &&
-    addresses.every((a) => (isIP(a) === 6 ? /^[23][0-9a-f]{0,3}:/i.test(a) : !PRIVATE_IPV4.test(a)))
+    ['http:', 'https:'].includes(url.protocol) &&
+    !url.username &&
+    !url.password &&
+    (!url.port || url.port === '80' || url.port === '443') &&
+    (!isIP(host) || isPublicAddress(host))
   );
 }
+
+function get(url: URL, signal: AbortSignal): Promise<IncomingMessage> {
+  return new Promise((resolve, reject) => {
+    const options = {
+      lookup: publicLookup,
+      signal,
+      headers: { 'User-Agent': 'MSS-WebsiteScanner/1.0 (https://maxwellsoftwaresolutions.com)' },
+    };
+    const req = url.protocol === 'https:' ? httpsRequest(url, options, resolve) : httpRequest(url, options, resolve);
+    req.on('error', reject).end();
+  });
+}
+
+async function readBody(response: IncomingMessage): Promise<string> {
+  const chunks: Buffer[] = [];
+  let size = 0;
+  for await (const chunk of response) {
+    chunks.push(chunk);
+    if ((size += chunk.length) >= MAX_BODY_BYTES) break;
+  }
+  return Buffer.concat(chunks).toString('utf8', 0, MAX_BODY_BYTES);
+}
+
+const blocked = (): NextResponse => NextResponse.json({ error: 'This address cannot be scanned' }, { status: 400 });
 
 const SECURITY_HEADERS = [
   'content-security-policy',
@@ -79,79 +121,57 @@ function extractMetaGenerator(html: string): string | null {
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
+  const body: unknown = await request.json().catch(() => null);
+  const url = (body as { url?: unknown } | null)?.url;
+
+  if (!url || typeof url !== 'string') {
+    return NextResponse.json({ error: 'URL is required' }, { status: 400 });
+  }
+
+  let target: URL;
   try {
-    const body = await request.json();
-    const { url } = body as { url: string };
+    target = new URL(url);
+  } catch {
+    return NextResponse.json({ error: 'Invalid URL format' }, { status: 400 });
+  }
 
-    if (!url || typeof url !== 'string') {
-      return NextResponse.json({ error: 'URL is required' }, { status: 400 });
+  if (!['http:', 'https:'].includes(target.protocol)) {
+    return NextResponse.json({ error: 'Only HTTP and HTTPS URLs are supported' }, { status: 400 });
+  }
+
+  // One time limit covers every redirect and the body
+  const signal = AbortSignal.timeout(TIMEOUT_MS);
+  try {
+    let response: IncomingMessage;
+    // Redirects are followed by hand so every hop is checked
+    for (let hop = 0; ; hop++) {
+      if (hop > MAX_REDIRECTS || !isAllowedUrl(target)) return blocked();
+      response = await get(target, signal);
+      const status = response.statusCode ?? 0;
+      const location = response.headers.location;
+      if (status < 300 || status >= 400 || !location) break;
+      response.destroy();
+      target = new URL(location, target);
     }
-
-    let parsedUrl: URL;
-    try {
-      parsedUrl = new URL(url);
-    } catch {
-      return NextResponse.json({ error: 'Invalid URL format' }, { status: 400 });
-    }
-
-    if (!['http:', 'https:'].includes(parsedUrl.protocol)) {
-      return NextResponse.json({ error: 'Only HTTP and HTTPS URLs are supported' }, { status: 400 });
-    }
-
-    const ssl = parsedUrl.protocol === 'https:';
-
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
-
-    let response: Response;
-    let target = parsedUrl;
-    try {
-      // Redirects are followed by hand so every hop is checked
-      for (let hop = 0; ; hop++) {
-        if (hop > MAX_REDIRECTS || !(await isPublicTarget(target))) {
-          clearTimeout(timeout);
-          return NextResponse.json({ error: 'This address cannot be scanned' }, { status: 400 });
-        }
-        response = await fetch(target, {
-          signal: controller.signal,
-          headers: {
-            'User-Agent': 'MSS-WebsiteScanner/1.0 (https://maxwellsoftwaresolutions.com)',
-          },
-          redirect: 'manual',
-        });
-        const location = response.headers.get('location');
-        if (response.status < 300 || response.status >= 400 || !location) break;
-        await response.body?.cancel();
-        target = new URL(location, target);
-      }
-    } catch (err) {
-      clearTimeout(timeout);
-      const message = err instanceof Error ? err.message : 'Failed to fetch';
-      return NextResponse.json({ error: `Could not reach the website: ${message}` }, { status: 502 });
-    }
-    clearTimeout(timeout);
 
     const headers: Record<string, boolean> = {};
     for (const header of SECURITY_HEADERS) {
-      headers[header] = response.headers.has(header);
+      headers[header] = header in response.headers;
     }
 
-    const html = await response.text();
-
-    const tech = detectTech(html);
-    const metaGenerator = extractMetaGenerator(html);
+    const html = await readBody(response);
 
     const result: ScanResult = {
-      ssl,
+      ssl: target.protocol === 'https:',
       headers,
-      tech,
-      metaGenerator,
-      statusCode: response.status,
+      tech: detectTech(html),
+      metaGenerator: extractMetaGenerator(html),
+      statusCode: response.statusCode ?? 0,
     };
 
     return NextResponse.json(result);
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Internal server error';
-    return NextResponse.json({ error: message }, { status: 500 });
+    if ((err as NodeJS.ErrnoException).code === BLOCKED) return blocked();
+    return NextResponse.json({ error: 'Could not reach the website' }, { status: 502 });
   }
 }
