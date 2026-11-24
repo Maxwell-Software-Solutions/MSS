@@ -86,7 +86,6 @@ Copilot supports custom **chat modes** to adjust behavior based on your current 
 
 ### Build & Deployment Details
 
-- Build helper: `postbuild:autocommit` attempts an automatic git commit after successful build — avoid unexpected commits when testing patches locally
 - Webpack/optimization: `next.config.ts` contains custom chunking, compression, and terser settings — avoid large, global changes that break these optimizations
 - Accessibility & performance: repository includes explicit docs under `docs/` (e.g. `accessibility.md`, `performance-optimization.md`) and the project enforces high Lighthouse and WCAG targets. When changing markup, preserve semantic structure and a11y affordances (skip links, ARIA where present)
 

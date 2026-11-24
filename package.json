@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:local": "next build && pnpm postbuild:autocommit",
-    "postbuild:autocommit": "git add . && git diff --cached --quiet && echo No changes to commit || (git commit -m \"chore: auto commit after successful build\" && git push origin HEAD)",
     "build:test": "pnpm run test && next build",
     "start": "next start",
     "lint": "next lint && node scripts/check-no-pngs.cjs",
