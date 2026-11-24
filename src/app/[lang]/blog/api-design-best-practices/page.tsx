@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import APIDesignPost from './APIDesignPost';
 import StructuredData from '@/app/components/StructuredData';
@@ -9,11 +10,15 @@ export const metadata: Metadata = {
   description:
     'Learn essential API design principles, RESTful best practices, versioning strategies, and documentation standards for building scalable, maintainable APIs.',
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: 'API Design Best Practices: Building RESTful APIs That Scale',
     description:
       'Learn essential API design principles, RESTful best practices, versioning strategies, and documentation standards for building scalable, maintainable APIs.',
     type: 'article',
     publishedTime: '2024-12-20T00:00:00.000Z',
+  },
+  alternates: {
+    canonical: '/blog/api-design-best-practices',
   },
 };
 

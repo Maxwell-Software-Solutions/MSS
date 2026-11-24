@@ -70,12 +70,10 @@ export const metadata: Metadata = {
     canonical: '/',
   },
 
-  // Enhanced Open Graph metadata
+  // Open Graph defaults for pages that set none of their own. No title, description or url here: those would give
+  // every such page the home page's, and sharing sites fall back to the page's own title and description instead.
   openGraph: {
-    title: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`,
-    description: SITE_CONFIG.description,
     type: 'website',
-    url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
     locale: SITE_CONFIG.locale,
     alternateLocale: [SITE_CONFIG.alternateLocale],
@@ -92,12 +90,9 @@ export const metadata: Metadata = {
     ],
   },
 
-  // Twitter Card metadata
+  // Twitter Card defaults, for the same reason without a title or description
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`,
-    description: SITE_CONFIG.description,
-    creator: SITE_CONFIG.social.twitter,
     images: ['/opengraph-image'],
   },
 

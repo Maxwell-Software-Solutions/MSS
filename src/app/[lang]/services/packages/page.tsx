@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import ServicesPackagesPage from './ServicesPackagesPage';
 import StructuredData from '@/app/components/StructuredData';
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   description:
     'Compare all five Maxwell Software Solutions service packages: Code Health Audit, Sprint-in-a-Box, Engineering Partner Retainer, CI/CD Accelerator, and Fractional CTO.',
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: 'Service Packages — Maxwell Software Solutions',
     description:
       'Five focused service packages from a one-off audit to ongoing fractional CTO leadership. Transparent pricing, clear scope.',

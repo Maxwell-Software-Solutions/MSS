@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import FractionalCTOPage from './FractionalCTOPage';
 import StructuredData from '@/app/components/StructuredData';
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   description:
     'Fractional CTO services in Europe and Lithuania. Senior technical leadership: architecture decisions, team hiring, vendor selection, and investor due diligence, on a monthly retainer. No long-term contract.',
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: 'Fractional CTO: Technical Leadership Without the Full-Time Salary',
     description:
       'Part-time CTO for startups and scale-ups. Architecture, hiring, strategy, and investor-ready technical communication. Monthly retainer, no long-term contract.',

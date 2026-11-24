@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import CodeHealthAuditPost from './CodeHealthAuditPost';
 import StructuredData from '@/app/components/StructuredData';
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   description:
     'Technical debt has a real business cost: missed estimates, slow onboarding, and compounding maintenance overhead. Learn the symptoms of an unhealthy codebase and what a code health audit actually surfaces.',
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: 'How to Know When Your Codebase Is Slowing Down Your Business',
     description:
       'Technical debt and code health audit guide for CTOs and engineering leaders. Learn the real symptoms and business costs of an unhealthy codebase.',

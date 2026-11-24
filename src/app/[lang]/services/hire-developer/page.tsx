@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import HireDeveloperPage from './HireDeveloperPage';
 import StructuredData from '@/app/components/StructuredData';
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   description:
     'Hire senior React, Next.js, and Node.js developers in Lithuania and Europe. No recruitment fees, no 3-month hiring process. Start shipping production-ready code in 1-2 weeks.',
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: 'Hire a Senior Developer — Without the 3-Month Hiring Process',
     description:
       'Outsource development to senior engineers in Europe. Sprint-in-a-Box at a fixed price or Engineering Partner Retainer by the month.',

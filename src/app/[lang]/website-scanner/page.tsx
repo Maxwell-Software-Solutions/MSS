@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import WebsiteScannerPage from './WebsiteScannerPage';
 import StructuredData from '@/app/components/StructuredData';
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   description:
     'Scan any website for free. Get instant scores for performance (Core Web Vitals), security headers, SEO, and accessibility. Powered by Google PageSpeed Insights.',
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: 'Free Website Health Scanner',
     description:
       'Analyze any website for performance, security, SEO, and accessibility issues. Get actionable insights in seconds — completely free.',

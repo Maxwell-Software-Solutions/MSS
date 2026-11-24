@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import CICDPost from './CICDPost';
 import StructuredData from '@/app/components/StructuredData';
@@ -9,11 +10,15 @@ export const metadata: Metadata = {
   description:
     'Learn how to build modern CI/CD pipelines with automated testing, deployment strategies, and DevOps best practices for faster, safer releases.',
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: 'Modern CI/CD Pipelines: Automating Your Software Delivery',
     description:
       'Learn how to build modern CI/CD pipelines with automated testing, deployment strategies, and DevOps best practices for faster, safer releases.',
     type: 'article',
     publishedTime: '2024-12-22T00:00:00.000Z',
+  },
+  alternates: {
+    canonical: '/blog/ci-cd-pipelines',
   },
 };
 

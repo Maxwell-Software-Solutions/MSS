@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import TwoWeekSprintPost from './TwoWeekSprintPost';
 import StructuredData from '@/app/components/StructuredData';
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   description:
     'A practical guide to rapid software development sprints. Learn what fits in 2 weeks, what does not, how a well-run sprint works, and when an MVP sprint makes sense for your team.',
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: 'What to Expect From a 2-Week Software Sprint',
     description:
       'Rapid software development guide: what fits in a 2-week sprint, how the Maxwell Sprint-in-a-Box works, and when it makes sense for your team.',

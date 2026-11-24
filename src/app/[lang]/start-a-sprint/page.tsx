@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import StartASprintPage from './StartASprintPage';
 import StructuredData from '@/app/components/StructuredData';
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   description:
     'A self-serve 2-week development sprint for founders and product teams. Fixed price, agreed before the sprint starts. Discovery call, scoped sprint, tested code, full handoff. Book your sprint today.',
   openGraph: {
+    images: [SITE_OG_IMAGE],
     title: 'Sprint-in-a-Box: a 2-Week MVP Sprint at a Fixed Price',
     description:
       'Fixed price, fixed timeline, no retainer. A senior engineer builds your MVP or feature in 10 working days. Full code ownership at handoff.',

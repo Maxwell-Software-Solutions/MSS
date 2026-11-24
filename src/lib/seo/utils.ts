@@ -28,6 +28,14 @@ export class SEODataNotFoundError extends Error {
 // Metadata Generation Functions
 // ============================================================================
 
+/** The site's share image. A page's own openGraph replaces the layout's, so every page that sets one names this too. */
+export const SITE_OG_IMAGE = {
+  url: '/opengraph-image',
+  width: 1200,
+  height: 630,
+  alt: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`,
+};
+
 /**
  * Generate Next.js Metadata object from page key
  *
@@ -47,8 +55,7 @@ export function generateMetadata(pageKey: string): Metadata {
   }
 
   const page = PAGES[pageKey]!;
-  // A page's own openGraph replaces the layout's, so it names the site image itself
-  const image = { url: '/opengraph-image', width: 1200, height: 630, alt: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}` };
+  const image = SITE_OG_IMAGE;
 
   return {
     title: page.title,
