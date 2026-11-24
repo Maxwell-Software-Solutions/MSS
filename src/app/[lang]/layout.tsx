@@ -172,10 +172,6 @@ export default async function RootLayout({
   return (
     <html lang={initialLang} className={plexSans.variable}>
       <head>
-        {/* Preconnect to critical origins for faster resource loading */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="preconnect" href="//fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="//fonts.gstatic.com" crossOrigin="anonymous" />
         <script dangerouslySetInnerHTML={{ __html: FIRST_LOAD_SCRIPT }} />
       </head>
       <body className="antialiased">
