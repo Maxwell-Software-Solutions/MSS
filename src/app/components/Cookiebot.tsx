@@ -8,7 +8,9 @@ interface CookiebotProps {
 }
 
 /**
- * Cookiebot component for cookie consent management
+ * Cookiebot component for cookie consent management.
+ * Manual blocking mode: Google Analytics already waits for consent in code. Auto mode wraps addEventListener and
+ * swallows stylesheet load events, so React held every navigation to a page with new CSS for its 60-second timeout.
  * @param cbid - Cookiebot ID for the consent banner
  */
 export default function Cookiebot({ cbid }: CookiebotProps): ReactElement {
@@ -17,7 +19,6 @@ export default function Cookiebot({ cbid }: CookiebotProps): ReactElement {
       id="Cookiebot"
       src="https://consent.cookiebot.com/uc.js"
       data-cbid={cbid}
-      data-blockingmode="auto"
       type="text/javascript"
       strategy="lazyOnload"
     />

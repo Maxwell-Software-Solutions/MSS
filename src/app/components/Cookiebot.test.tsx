@@ -43,7 +43,8 @@ describe('Cookiebot', () => {
     
     expect(cookiebotScript).toBeDefined();
     expect(cookiebotScript?.getAttribute('data-cbid')).toBe('c99c6734-f40a-4c0f-842f-aea763f24ee7');
-    expect(cookiebotScript?.getAttribute('data-blockingmode')).toBe('auto');
+    // Auto blocking swallows stylesheet load events and stalls page navigation for 60 seconds
+    expect(cookiebotScript?.getAttribute('data-blockingmode')).toBeNull();
     expect(cookiebotScript?.getAttribute('type')).toBe('text/javascript');
   });
 
