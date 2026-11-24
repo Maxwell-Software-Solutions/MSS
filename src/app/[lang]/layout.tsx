@@ -17,6 +17,12 @@ import { CANONICAL_BASE_URL } from '@/lib/seo/url';
 
 const siteUrl = CANONICAL_BASE_URL;
 
+// First load only: if the page is still loading 0.4 s in, html[data-loading] shows the header's loader until the load
+// event (10 s at most). A fast page never sets it, and nothing on the page waits for it.
+const FIRST_LOAD_SCRIPT =
+  "(function(){var d=document.documentElement,s=setTimeout(function(){d.setAttribute('data-loading','')},400);" +
+  "function done(){clearTimeout(s);d.removeAttribute('data-loading')}addEventListener('load',done);setTimeout(done,10000)})()";
+
 // One variable family for the whole site. latin-ext covers the Lithuanian letters (ą č ę ė į š ų ū ž);
 // the browser only downloads that subset when a page actually uses those characters.
 const plexSans = IBM_Plex_Sans({
@@ -175,6 +181,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="//fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="//fonts.gstatic.com" crossOrigin="anonymous" />
+        <script dangerouslySetInnerHTML={{ __html: FIRST_LOAD_SCRIPT }} />
       </head>
       <body className="antialiased">
         <LanguageProvider initialLanguage={initialLang} criticalTranslations={criticalTranslations}>
@@ -190,6 +197,7 @@ export default async function RootLayout({
 
           <header className="site-header fixed top-0 left-0 right-0 z-50" role="banner">
             <HeaderNav />
+            <div className="site-loader" aria-hidden="true" />
           </header>
           <div style={{ height: 'var(--header-height)' }} aria-hidden="true" />
           <main id="main-content" role="main" tabIndex={-1}>

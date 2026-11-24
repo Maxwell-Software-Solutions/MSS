@@ -600,6 +600,50 @@
 }
 
 /* ============================================
+   FIRST-LOAD LOADER: only while html[data-loading] is set (see the layout's head script). A gold thread runs
+   along the header's lower edge and the logo's M lights up stroke by stroke; nothing is covered or delayed.
+   With reduced motion the thread moves at half speed and the strokes breathe together.
+   ============================================ */
+.site-loader {
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.site-loader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 25%, var(--color-accent) 45% 55%, transparent 75%);
+}
+html[data-loading] .site-loader { opacity: 1; }
+html[data-loading] .site-loader::after { animation: loader-thread 1.4s ease-in-out infinite; }
+html[data-loading] .site-header .logo-stroke { animation: loader-stroke 1.4s ease-in-out infinite; }
+html[data-loading] .site-header .logo-stroke:nth-child(2) { animation-delay: 0.15s; }
+html[data-loading] .site-header .logo-stroke:nth-child(3) { animation-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-loading] .site-loader::after { animation-duration: 2.8s; }
+  html[data-loading] .site-header .logo-stroke:nth-child(n) { animation: loader-breathe 2.8s ease-in-out infinite; }
+}
+
+@keyframes loader-thread {
+  from { transform: translateX(-75%); }
+  to { transform: translateX(75%); }
+}
+@keyframes loader-stroke {
+  0%, 100% { opacity: 1; }
+  45% { opacity: 0.3; }
+}
+@keyframes loader-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ============================================
    COOKIEBOT — placement only (third-party markup)
    ============================================ */
 #CybotCookiebotDialog {

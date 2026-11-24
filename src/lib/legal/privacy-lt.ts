@@ -208,7 +208,7 @@ export const privacyLt: LegalDoc = {
         { kind: 'h3', text: 'Kiti jūsų naršyklėje saugomi duomenys' },
         {
           kind: 'p',
-          text: 'Jūsų nustatymams įsiminti svetainė taip pat naudoja naršyklės saugyklą: `language` (kalba), `site.theme` (šviesi ar tamsi tema), `site.heroPaused` (ar sustabdėte animaciją pagrindiniame puslapyje) ir, vienam naršyklės skirtukui, `has-loaded` (kad įkėlimo juosta nesikartotų). Šie įrašai lieka jūsų įrenginyje, jokio identifikatoriaus neturi ir naudojami tik jūsų naudojamai funkcijai.',
+          text: 'Jūsų nustatymams įsiminti svetainė taip pat naudoja naršyklės saugyklą: `language` (kalba), `site.theme` (šviesi ar tamsi tema) ir `site.heroPaused` (ar sustabdėte animaciją pagrindiniame puslapyje). Šie įrašai lieka jūsų įrenginyje, jokio identifikatoriaus neturi ir naudojami tik jūsų naudojamai funkcijai.',
         },
         { kind: 'h3', text: 'Ką renka Google Analytics' },
         {

@@ -208,7 +208,7 @@ export const privacyEn: LegalDoc = {
         { kind: 'h3', text: 'Other data kept in your browser' },
         {
           kind: 'p',
-          text: 'To remember your settings the site also uses your browser’s storage: `language` (the language), `site.theme` (light or dark), `site.heroPaused` (whether you paused the animation on the home page) and, for one browser tab, `has-loaded` (so the loading bar is not repeated). These items stay on your device, hold no identifier and are used only for the feature you use.',
+          text: 'To remember your settings the site also uses your browser’s storage: `language` (the language), `site.theme` (light or dark) and `site.heroPaused` (whether you paused the animation on the home page). These items stay on your device, hold no identifier and are used only for the feature you use.',
         },
         { kind: 'h3', text: 'What Google Analytics collects' },
         {
