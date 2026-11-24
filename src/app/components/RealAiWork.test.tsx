@@ -20,7 +20,7 @@ describe('RealAiWork', () => {
   it('says whose project the law firm work is', () => {
     render(<RealAiWork />);
     expect(screen.getByText("Our founder's own project")).toBeInTheDocument();
-    expect(screen.getByText(/UK law firm/i)).toBeInTheDocument();
+    expect(screen.getByText(/^a law firm$/i)).toBeInTheDocument();
   });
 
   it('links the cattery and the neon-sign builder to their own sites, in a new tab', () => {
@@ -48,7 +48,7 @@ describe('RealAiWork', () => {
     const note = screen.getByRole('group', { name: /^founder experience$/i });
     expect(within(note).getByText('Before Maxwell, our founder spent years engineering software for Sage.')).toBeInTheDocument();
     expect(
-      within(note).getByText('Sage is a UK software company whose accounting, payroll and HR software is used by businesses around the world.')
+      within(note).getByText('Sage is a software company whose accounting, payroll and HR software is used by businesses around the world.')
     ).toBeInTheDocument();
     expect(within(note).getByRole('img', { name: 'Sage' })).toBeInTheDocument();
     expect(screen.queryByText(/client.{0,20}sage|sage.{0,20}client|trusted by/i)).not.toBeInTheDocument();

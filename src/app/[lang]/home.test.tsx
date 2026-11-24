@@ -79,7 +79,7 @@ describe('Home page', () => {
     render(<Home />);
     const work = screen.getByRole('heading', { level: 2, name: /^real ai work$/i });
     expect(screen.getByText('Selected work')).toBeInTheDocument();
-    for (const name of [/^a uk law firm$/i, /^miausairovi cattery$/i, /^our multi-model ai orchestrator$/i, /^neonova$/i]) {
+    for (const name of [/^a law firm$/i, /^miausairovi cattery$/i, /^our multi-model ai orchestrator$/i, /^neonova$/i]) {
       expect(screen.getByRole('heading', { level: 3, name })).toBeInTheDocument();
     }
     const foundations = screen.getByRole('heading', { level: 2, name: /the engineering behind production ai/i });
