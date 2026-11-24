@@ -389,7 +389,7 @@ These are not required but could be considered for future improvements:
 
 **Root Cause Discovery**
 
-- Googlebot was requesting `/&` and `/$` URLs it discovered inside the inline React Flight streaming script (see `tmp_root.html`). These markers are part of React's internal protocol rather than real navigation links, so crawlers ended up generating false 404s.
+- Googlebot was requesting `/&` and `/$` URLs it discovered inside the inline React Flight streaming script. These markers are part of React's internal protocol rather than real navigation links, so crawlers ended up generating false 404s.
 
 **Mitigation**
 
