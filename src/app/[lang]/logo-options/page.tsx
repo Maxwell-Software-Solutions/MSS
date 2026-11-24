@@ -1,4 +1,7 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+
+export const metadata: Metadata = { title: 'Logo options', robots: { index: false, follow: false } };
 
 const options = [
   { id: 'A', file: '/logo-options/option-a.svg', label: 'Signal Bars', desc: 'Three ascending bars — growth, momentum, signal strength' },

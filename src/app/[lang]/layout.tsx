@@ -68,11 +68,6 @@ export const metadata: Metadata = {
   // Metadata base URL for all relative paths
   metadataBase: new URL(siteUrl),
 
-  // Canonical URL. No hreflang: the language switches by cookie on the same URL, so there is no per-language URL to point at.
-  alternates: {
-    canonical: '/',
-  },
-
   // Open Graph defaults for pages that set none of their own. No title, description or url here: those would give
   // every such page the home page's, and sharing sites fall back to the page's own title and description instead.
   openGraph: {
