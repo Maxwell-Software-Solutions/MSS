@@ -6,7 +6,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Microservices Architecture: When to Use & How to Succeed | Maxwell Software Solutions',
+  title: 'Microservices Architecture: When to Use & How to Succeed',
   description:
     'Learn when microservices make sense, common patterns, pitfalls to avoid, and proven strategies for building distributed systems that scale.',
   openGraph: {

@@ -6,7 +6,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Code Health Score — Free Self-Assessment Quiz | Maxwell Software Solutions',
+  title: 'Code Health Score — Free Self-Assessment Quiz',
   description:
     'Rate your codebase health in 2 minutes. Answer 15 questions about testing, deployment, security, and engineering practices. Get an instant score with actionable insights.',
   openGraph: {

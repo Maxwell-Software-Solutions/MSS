@@ -8,7 +8,7 @@ import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 import { Alert, ButtonLink } from '@/app/components/ui';
 
 export const metadata: Metadata = {
-  title: 'Test-Driven Development: Building Business Confidence Through Code Quality — Maxwell Software Solutions',
+  title: 'Test-Driven Development: Building Business Confidence Through Code Quality',
   description:
     'Discover how TDD reduces costs, improves reliability, and delivers business value. Learn why leading companies invest in test-driven development.',
   alternates: {

@@ -6,7 +6,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Free Website Health Scanner — Performance, Security & SEO | Maxwell Software Solutions',
+  title: 'Free Website Health Scanner — Performance, Security & SEO',
   description:
     'Scan any website for free. Get instant scores for performance (Core Web Vitals), security headers, SEO, and accessibility. Powered by Google PageSpeed Insights.',
   openGraph: {

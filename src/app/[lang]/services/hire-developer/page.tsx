@@ -6,7 +6,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Hire a Senior Developer — React, Next.js, Node.js | Maxwell Software Solutions',
+  title: 'Hire a Senior Developer — React, Next.js, Node.js',
   description:
     'Hire senior React, Next.js, and Node.js developers in Lithuania and Europe. No recruitment fees, no 3-month hiring process. Start shipping production-ready code in 1-2 weeks.',
   openGraph: {

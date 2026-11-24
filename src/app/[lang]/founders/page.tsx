@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Founders — Maxwell Software Solutions',
+  title: 'Founders',
   description:
     'Meet the founders driving engineering strategy, design, and platform quality at Maxwell Software Solutions.',
   alternates: {

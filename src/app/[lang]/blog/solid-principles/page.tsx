@@ -8,7 +8,7 @@ import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 import { ButtonLink } from '@/app/components/ui';
 
 export const metadata: Metadata = {
-  title: 'SOLID Principles: The Foundation of Clean Code — Maxwell Software Solutions',
+  title: 'SOLID Principles: The Foundation of Clean Code',
   description:
     'Master the five SOLID principles that form the foundation of clean, maintainable, and scalable software architecture.',
   alternates: {

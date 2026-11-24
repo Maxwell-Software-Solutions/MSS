@@ -6,7 +6,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'CTO-in-a-Box — Async Advisory for Startup Founders | Maxwell Software Solutions',
+  title: 'CTO-in-a-Box — Async Advisory for Startup Founders',
   description:
     'Technical leadership without the full-time salary. Async Loom video reviews, monthly strategy call, and Slack access on a monthly subscription. Cancel anytime. Book a free intro call.',
   openGraph: {

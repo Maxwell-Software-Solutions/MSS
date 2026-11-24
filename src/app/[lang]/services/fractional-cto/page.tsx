@@ -6,7 +6,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Fractional CTO Services — Part-Time Technical Leadership | Maxwell Software Solutions',
+  title: 'Fractional CTO Services — Part-Time Technical Leadership',
   description:
     'Fractional CTO services in Europe and Lithuania. Senior technical leadership: architecture decisions, team hiring, vendor selection, and investor due diligence, on a monthly retainer. No long-term contract.',
   openGraph: {

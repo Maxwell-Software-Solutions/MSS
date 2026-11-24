@@ -5,7 +5,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Insights — Maxwell Software Solutions',
+  title: 'Insights',
   description: 'Short, high-signal posts on testing, refactoring, and reliability.',
   alternates: {
     canonical: '/blog',

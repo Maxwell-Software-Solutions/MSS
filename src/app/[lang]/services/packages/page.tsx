@@ -6,7 +6,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Service Packages — Code Audit, Sprint, Retainer & More | Maxwell Software Solutions',
+  title: 'Service Packages — Code Audit, Sprint, Retainer & More',
   description:
     'Compare all five Maxwell Software Solutions service packages: Code Health Audit, Sprint-in-a-Box, Engineering Partner Retainer, CI/CD Accelerator, and Fractional CTO.',
   openGraph: {
