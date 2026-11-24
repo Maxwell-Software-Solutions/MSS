@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { ReactElement } from 'react';
 import { BlogPostLayout, TableOfContents, ArticleSection, Alert } from '@/app/components/ui';
 
@@ -341,18 +342,18 @@ GET /users?limit=20&cursor=abc123
           <h3 className="mb-3">Want Expert API Design Guidance?</h3>
           <p className="mb-6">
             Our{' '}
-            <a href="/services" className="link font-medium">
+            <Link href="/services" className="link font-medium">
               Code Quality Audit service
-            </a>{' '}
+            </Link>{' '}
             includes API surface reviews — identifying inconsistencies, breaking changes, and missing standards across
             your services before they reach production.
           </p>
-          <a
+          <Link
             href="/contact"
             className="btn btn-accent"
           >
             Request an API Audit
-          </a>
+          </Link>
         </div>
       </ArticleSection>
     </BlogPostLayout>

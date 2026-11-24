@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { ReactElement } from 'react';
 import { BlogPostLayout, TableOfContents, ArticleSection, Alert } from '@/app/components/ui';
 
@@ -420,18 +421,18 @@ terraform apply`}
           <h3 className="mb-3">Need Help Optimising Your CI/CD Pipeline?</h3>
           <p className="mb-6">
             Our{' '}
-            <a href="/services" className="link font-medium">
+            <Link href="/services" className="link font-medium">
               CI/CD Pipeline Optimisation service
-            </a>{' '}
+            </Link>{' '}
             helps teams at Maxwell Software Solutions build faster, safer delivery pipelines with measurable DORA metric
             improvements.
           </p>
-          <a
+          <Link
             href="/contact"
             className="btn btn-accent"
           >
             Talk to Our Engineering Team
-          </a>
+          </Link>
         </div>
       </ArticleSection>
     </BlogPostLayout>

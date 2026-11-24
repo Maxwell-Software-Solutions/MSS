@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { ReactElement } from 'react';
 import { BlogPostLayout, TableOfContents, ArticleSection, Alert } from '@/app/components/ui';
 
@@ -238,12 +239,12 @@ export default function TwoWeekSprintPost(): ReactElement {
             Book a 30-minute discovery call. We will confirm fit, agree scope, and start the following Monday.
             Fixed price, agreed before the sprint starts.
           </p>
-          <a
+          <Link
             href="/start-a-sprint"
             className="btn btn-accent"
           >
             Start your sprint
-          </a>
+          </Link>
         </div>
       </ArticleSection>
     </BlogPostLayout>

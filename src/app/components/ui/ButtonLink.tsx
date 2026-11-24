@@ -1,9 +1,10 @@
-import type { ReactElement, ReactNode, AnchorHTMLAttributes } from 'react';
+import Link from 'next/link';
+import type { ComponentProps, ReactElement, ReactNode } from 'react';
 
 type ButtonLinkVariant = 'accent' | 'ghost' | 'secondary';
 type ButtonLinkSize = 'md' | 'lg';
 
-interface ButtonLinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className'> {
+interface ButtonLinkProps extends Omit<ComponentProps<typeof Link>, 'className' | 'href'> {
   href: string;
   children: ReactNode;
   variant?: ButtonLinkVariant;
@@ -36,10 +37,11 @@ export function ButtonLink({
 
   const combinedClasses = `${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 
+  // next/link: a page change without reloading the whole site
   return (
-    <a href={href} className={combinedClasses} {...props}>
+    <Link href={href} className={combinedClasses} {...props}>
       {children}
-    </a>
+    </Link>
   );
 }
 

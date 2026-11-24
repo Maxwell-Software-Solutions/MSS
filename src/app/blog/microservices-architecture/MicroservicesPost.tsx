@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { ReactElement } from 'react';
 import { BlogPostLayout, TableOfContents, ArticleSection, Alert } from '@/app/components/ui';
 
@@ -352,18 +353,18 @@ export default function MicroservicesPost(): ReactElement {
           <h3 className="mb-3">Need Help With Microservices Architecture?</h3>
           <p className="mb-6">
             Our{' '}
-            <a href="/services" className="link font-medium">
+            <Link href="/services" className="link font-medium">
               Reliability Engineering service
-            </a>{' '}
+            </Link>{' '}
             helps teams design observable, resilient distributed systems — with SLOs, distributed tracing, and incident
             response practices built in from the start.
           </p>
-          <a
+          <Link
             href="/contact"
             className="btn btn-accent"
           >
             Talk to Our Engineering Team
-          </a>
+          </Link>
         </div>
       </ArticleSection>
     </BlogPostLayout>
