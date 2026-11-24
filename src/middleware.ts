@@ -4,6 +4,8 @@ import { isLithuanianPath } from '@/lib/page-language';
 
 const CANONICAL_HOST = process.env.NEXT_PUBLIC_CANONICAL_HOST ?? 'www.maxwellsoftwaresolutions.com';
 const CANONICAL_PROTOCOL = 'https';
+// The folders under src/app/[lang]/lt
+const LITHUANIAN_ONLY_PAGES = ['sarasu-palyginimas', 'dokumentu-sutikrinimas'];
 
 const isLocalLikeHost = (host: string): boolean =>
   host.includes('localhost') || host.startsWith('127.0.0.1') || host.endsWith('.vercel.app');
@@ -66,7 +68,17 @@ export function middleware(request: NextRequest): NextResponse | void {
   // 4. Public files and the site-wide share image keep their own addresses
   if (pathname.includes('.') || pathname === '/opengraph-image') return NextResponse.next();
 
-  // 5. Serve the page prebuilt in the visitor's language: /lt/ addresses are always Lithuanian; elsewhere a ?lang= link
+  // 5. Old language-prefixed addresses move to the clean path (/en/services → /services, /lt/services →
+  //    /services?lang=lt). The Lithuanian-only pages really live under /lt/ and stay.
+  const legacy = /^\/(en|lt)(\/([^/]+).*)$/.exec(pathname);
+  if (legacy && !(legacy[1] === 'lt' && LITHUANIAN_ONLY_PAGES.includes(legacy[3]!))) {
+    const url = request.nextUrl.clone();
+    url.pathname = legacy[2]!;
+    if (legacy[1] === 'lt') url.searchParams.set('lang', 'lt');
+    return NextResponse.redirect(url, { status: 308 });
+  }
+
+  // 6. Serve the page prebuilt in the visitor's language: /lt/ addresses are always Lithuanian; elsewhere a ?lang= link
   //    decides, then the language cookie. The /en or /lt prefix stays internal, the address bar keeps the clean path.
   const query = request.nextUrl.searchParams.get('lang');
   const asked = query === 'lt' || query === 'en' ? query : request.cookies.get('language')?.value;

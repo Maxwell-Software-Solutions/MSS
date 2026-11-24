@@ -1,4 +1,6 @@
 /** @jest-environment node */
+import { readdirSync } from 'fs';
+import { join } from 'path';
 import { NextRequest } from 'next/server';
 import { middleware } from './middleware';
 
@@ -35,6 +37,31 @@ describe('middleware page language', () => {
   it('leaves public files and the share image at their own addresses', () => {
     for (const path of ['/logo.svg', '/.well-known/security.txt', '/opengraph-image']) {
       expect(rewrittenTo(middleware(request(path)))).toBeNull();
+    }
+  });
+});
+
+describe('middleware old language-prefixed addresses', () => {
+  const redirectedTo = (response: Response | void): string | null => {
+    if (!response || response.status !== 308) return null;
+    const target = new URL(response.headers.get('location')!);
+    return target.pathname + target.search;
+  };
+
+  it('moves /en/ and /lt/ addresses to the clean path, keeping Lithuanian by ?lang=lt', () => {
+    expect(redirectedTo(middleware(request('/en/services')))).toBe('/services');
+    expect(redirectedTo(middleware(request('/en/blog/some-post')))).toBe('/blog/some-post');
+    expect(redirectedTo(middleware(request('/lt/services')))).toBe('/services?lang=lt');
+    expect(redirectedTo(middleware(request('/lt/about?ref=x')))).toBe('/about?ref=x&lang=lt');
+  });
+
+  it('keeps every Lithuanian-only page under /lt/', () => {
+    const pages = readdirSync(join(__dirname, 'app', '[lang]', 'lt'));
+    expect(pages.length).toBeGreaterThan(0);
+    for (const page of pages) {
+      const response = middleware(request(`/lt/${page}`));
+      expect(redirectedTo(response)).toBeNull();
+      expect(rewrittenTo(response)).toBe(`/lt/lt/${page}`);
     }
   });
 });
