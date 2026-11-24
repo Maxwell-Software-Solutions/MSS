@@ -17,11 +17,16 @@ import { CANONICAL_BASE_URL } from '@/lib/seo/url';
 
 const siteUrl = CANONICAL_BASE_URL;
 
-// First load only: if the page is still loading 0.4 s in, html[data-loading] shows the header's loader until the load
-// event (10 s at most). A fast page never sets it, and nothing on the page waits for it.
+// First load only: if the page is still loading 0.4 s in, html[data-loading] shows the header's loader. At the load
+// event (10 s at most) each loader animation plays out the cycle it is in, so a shown loader always completes at least
+// one full cycle and never stops mid-stroke; then the attribute goes. A fast page never sets it; nothing waits for it.
 const FIRST_LOAD_SCRIPT =
-  "(function(){var d=document.documentElement,s=setTimeout(function(){d.setAttribute('data-loading','')},400);" +
-  "function done(){clearTimeout(s);d.removeAttribute('data-loading')}addEventListener('load',done);setTimeout(done,10000)})()";
+  "(function(){var d=document.documentElement,e,s=setTimeout(function(){d.setAttribute('data-loading','')},400);" +
+  "function done(){clearTimeout(s);if(e||!d.hasAttribute('data-loading'))return;e=1;" +
+  "var a=document.getAnimations?document.getAnimations().filter(function(x){return/^loader-/.test(x.animationName)}):[];" +
+  "a.forEach(function(x){x.effect.updateTiming({iterations:(x.effect.getComputedTiming().currentIteration||0)+1})});" +
+  "function f(){d.removeAttribute('data-loading')}Promise.all(a.map(function(x){return x.finished})).then(f,f)}" +
+  "addEventListener('load',done);setTimeout(done,10000)})()";
 
 // One variable family for the whole site. latin-ext covers the Lithuanian letters (ą č ę ė į š ų ū ž);
 // the browser only downloads that subset when a page actually uses those characters.

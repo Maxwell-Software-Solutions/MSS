@@ -602,6 +602,7 @@
 /* ============================================
    FIRST-LOAD LOADER: only while html[data-loading] is set (see the layout's head script). A gold thread runs
    along the header's lower edge and the logo's M lights up stroke by stroke; nothing is covered or delayed.
+   When the page has loaded, each animation finishes its cycle: the thread leaves on the right, where it rests.
    With reduced motion the thread moves at half speed and the strokes breathe together.
    ============================================ */
 .site-loader {
@@ -618,6 +619,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, transparent 25%, var(--color-accent) 45% 55%, transparent 75%);
+  transform: translateX(75%);
 }
 html[data-loading] .site-loader { opacity: 1; }
 html[data-loading] .site-loader::after { animation: loader-thread 1.4s ease-in-out infinite; }
