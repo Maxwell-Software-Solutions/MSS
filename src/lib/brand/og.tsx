@@ -12,12 +12,15 @@ export const OG_COLORS = {
   hairline: 'rgba(255, 255, 255, 0.18)',
 };
 
-// IBM Plex Sans, renamed subsets. See fonts/OFL.txt.
-const regular = fetch(new URL('./fonts/MaxwellOGSans-Regular.ttf', import.meta.url)).then((res) => res.arrayBuffer());
-const medium = fetch(new URL('./fonts/MaxwellOGSans-Medium.ttf', import.meta.url)).then((res) => res.arrayBuffer());
+// IBM Plex Sans, renamed subsets. See fonts/OFL.txt. Fetched when an image is drawn, not when the module loads: the build
+// reads this module for the image size, and a fetch started then fails with "Failed to parse URL".
+const font = (url: URL): Promise<ArrayBuffer> => fetch(url).then((res) => res.arrayBuffer());
 
 export async function ogFonts(): Promise<Array<{ name: string; data: ArrayBuffer; weight: 400 | 500; style: 'normal' }>> {
-  const [regularData, mediumData] = await Promise.all([regular, medium]);
+  const [regularData, mediumData] = await Promise.all([
+    font(new URL('./fonts/MaxwellOGSans-Regular.ttf', import.meta.url)),
+    font(new URL('./fonts/MaxwellOGSans-Medium.ttf', import.meta.url)),
+  ]);
   return [
     { name: 'Maxwell OG Sans', data: regularData, weight: 400, style: 'normal' },
     { name: 'Maxwell OG Sans', data: mediumData, weight: 500, style: 'normal' },
