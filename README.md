@@ -55,7 +55,6 @@ npm run e2e:report   # Show test report
 
 # Performance
 npm run lighthouse   # Run Lighthouse audit
-npm run analyze      # Analyze bundle size
 ```
 
 ## Architecture

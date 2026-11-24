@@ -35,7 +35,6 @@ Copilot supports custom **chat modes** to adjust behavior based on your current 
 | E2E tests         | `pnpm e2e` (Playwright auto-starts dev server) |
 | E2E with UI       | `pnpm e2e:ui`                                  |
 | Performance audit | `pnpm lighthouse` (90+ score required)         |
-| Bundle analysis   | `pnpm analyze`                                 |
 
 ### Architecture & Conventions
 
@@ -92,7 +91,6 @@ Copilot supports custom **chat modes** to adjust behavior based on your current 
 ### Integration Points
 
 - No analytics, tracking cookies or consent banner: the privacy policy (`src/lib/legal/privacy-*.ts`) says so, so adding any needs a policy change first
-- External services: `@vercel/kv` and `openai` appear in dependencies — be explicit about not committing secret keys; prefer using `.env.local` and the environment
 - Images: Next image optimization is enabled (`next.config.ts` image formats). Avoid adding unoptimized large raster assets
 
 ### Component Patterns

@@ -27,27 +27,6 @@ This document outlines the webpack performance optimizations implemented in the 
 - **Threshold**: Only compresses files larger than 10KB
 - **Compression Ratio**: Minimum 80% compression ratio
 
-### 5. Bundle Analysis
-- **Webpack Bundle Analyzer**: Visual bundle analysis
-- **Performance Monitoring**: Bundle size warnings
-- **Custom Reports**: Detailed performance reports
-
-## 📊 Available Scripts
-
-```bash
-# Basic bundle analysis
-pnpm run analyze
-
-# Server-side bundle analysis
-pnpm run analyze:server
-
-# Client-side bundle analysis
-pnpm run analyze:browser
-
-# Full performance analysis with report
-pnpm run analyze:full
-```
-
 ## 🔧 Configuration Details
 
 ### Chunk Splitting Strategy
