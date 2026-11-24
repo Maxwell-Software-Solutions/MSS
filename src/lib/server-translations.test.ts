@@ -23,7 +23,16 @@ describe('translations', () => {
 
   it.each(dictionaries)('%s: the removed proof leaves no keys behind', (_language, dictionary) => {
     const stale = Object.keys(dictionary).filter((key) =>
-      ['stats.', 'socialProof.', 'projects.', 'caseStudies.', 'caseStudiesPage.'].some((prefix) => key.startsWith(prefix))
+      [
+        'stats.',
+        'socialProof.',
+        'projects.',
+        'caseStudies.',
+        'caseStudiesPage.',
+        'contactForm.service.',
+        'contactForm.timeline.',
+        'contactForm.budget.',
+      ].some((prefix) => key.startsWith(prefix))
     );
     expect(stale).toEqual([]);
   });
