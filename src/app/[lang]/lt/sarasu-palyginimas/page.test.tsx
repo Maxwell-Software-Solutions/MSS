@@ -102,7 +102,8 @@ describe('Lithuanian list-compare page', () => {
     expect(screen.getByRole('link', { name: /Dokumentų sutikrinimas su DI agentu/ })).toHaveAttribute('href', '/lt/dokumentu-sutikrinimas');
   });
 
-  it('carries no price, client name or em dash, and sends nothing anywhere', () => {
+  // Client and employer names are not listed in this test: the repository is public
+  it('carries no price or em dash, and sends nothing anywhere', () => {
     const fetchSpy = jest.fn();
     const original = global.fetch;
     global.fetch = fetchSpy;
@@ -113,7 +114,6 @@ describe('Lithuanian list-compare page', () => {
     copy.querySelectorAll('script').forEach((node) => node.remove());
     const text = copy.textContent ?? '';
     expect(text).not.toMatch(/[€$£%—]|\bEUR\b|\bEur\b/);
-    expect(text).not.toMatch(/Irwin|Sage|Ethisys/i);
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 

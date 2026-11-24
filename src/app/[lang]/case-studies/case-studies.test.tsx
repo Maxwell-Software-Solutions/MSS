@@ -14,7 +14,7 @@ describe('Case studies page', () => {
 
   it('shows the four pieces of real work as h2 sections', () => {
     render(<CaseStudiesPage />);
-    for (const name of [/^irwin mitchell$/i, /^miausairovi cattery$/i, /^our multi-model ai orchestrator$/i, /^neonova$/i]) {
+    for (const name of [/^a uk law firm$/i, /^miausairovi cattery$/i, /^our multi-model ai orchestrator$/i, /^neonova$/i]) {
       expect(screen.getByRole('heading', { level: 2, name })).toBeInTheDocument();
     }
   });

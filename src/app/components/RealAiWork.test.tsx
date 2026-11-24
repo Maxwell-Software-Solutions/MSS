@@ -17,7 +17,7 @@ describe('RealAiWork', () => {
     expect(screen.getByText(/design your own sign and watch it glow as you type/i)).toBeInTheDocument();
   });
 
-  it('says whose project the Irwin Mitchell work is', () => {
+  it('says whose project the law firm work is', () => {
     render(<RealAiWork />);
     expect(screen.getByText("Our founder's own project")).toBeInTheDocument();
     expect(screen.getByText(/UK law firm/i)).toBeInTheDocument();
@@ -36,10 +36,9 @@ describe('RealAiWork', () => {
     expect(screen.getAllByRole('link')).toHaveLength(2);
   });
 
-  it('shows no Irwin Mitchell logo, and no pictures at all', () => {
+  it('shows no client logo, and no pictures at all', () => {
     const { container } = render(<RealAiWork />);
     expect(container.querySelectorAll('img')).toHaveLength(0);
-    expect(screen.queryByRole('img', { name: /irwin|mitchell/i })).not.toBeInTheDocument();
     // The only picture with a name is the Sage logo
     expect(screen.getAllByRole('img').map((el) => el.getAttribute('aria-label'))).toEqual(['Sage']);
   });

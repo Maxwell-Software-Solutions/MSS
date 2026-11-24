@@ -10,7 +10,7 @@ import { useLanguage } from '@/lib/LanguageContext';
 // A relative path: Jest maps the "@/" alias before its stylesheet stub, so only relative CSS imports are stubbed.
 import '../home.css';
 
-type WorkKey = 'irwin' | 'cattery' | 'orchestrator' | 'neonova';
+type WorkKey = 'lawfirm' | 'cattery' | 'orchestrator' | 'neonova';
 
 interface Work {
   key: WorkKey;
@@ -22,9 +22,9 @@ interface Work {
   small?: boolean;
 }
 
-// Only work we can stand behind. Irwin Mitchell is named in text only, never with a logo.
+// Only work we can stand behind. The law firm is not named and has no logo here.
 const WORK: Work[] = [
-  { key: 'irwin', icon: 'document', note: true },
+  { key: 'lawfirm', icon: 'document', note: true },
   { key: 'cattery', icon: 'loop', link: { href: 'https://miausairovi.com', label: 'miausairovi.com' } },
   { key: 'orchestrator', icon: 'route' },
   { key: 'neonova', small: true, link: { href: 'https://neonova.company', label: 'neonova.company' } },

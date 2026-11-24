@@ -67,14 +67,14 @@ describe('Lithuanian document cross-check page', () => {
     expect(link.closest('.doc-hero-copy')).toContainElement(screen.getAllByRole('link', { name: CTA })[0]!);
   });
 
-  it('carries no price, client name or figure', () => {
+  // Client and employer names are not listed in this test: the repository is public
+  it('carries no price or figure', () => {
     const { container } = render(<Page />);
     const copy = container.cloneNode(true) as HTMLElement;
     copy.querySelectorAll('script, .step-index').forEach((node) => node.remove());
     // The only number left in the text is the length of the booked call
     const text = (copy.textContent ?? '').replaceAll('30 min.', '');
     expect(text).not.toMatch(/[€$£%]|\bEUR\b|\bEur\b|\d/);
-    expect(text).not.toMatch(/Irwin|Sage|Ethisys/i);
   });
 
   it('has no accessibility violations', async () => {
