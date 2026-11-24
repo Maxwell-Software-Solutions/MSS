@@ -62,6 +62,9 @@ const nextConfig: NextConfig = {
         destination: '/services',
         permanent: true,
       },
+      // Bare language prefixes search engines still know: the home page, in English or by the ?lang= convention in Lithuanian
+      { source: '/en', destination: '/', permanent: true },
+      { source: '/lt', destination: '/?lang=lt', permanent: true },
       // The old case studies were removed; the index and every detail page now land on the real AI work page
       {
         source: '/project-showcase/:path*',
