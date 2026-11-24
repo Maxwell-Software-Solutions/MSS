@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import CodeHealthAuditPost from './CodeHealthAuditPost';
+import ArticleStructuredData from '@/app/components/ArticleStructuredData';
 import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
@@ -31,6 +32,11 @@ export default function Page(): ReactElement {
   return (
     <>
       <StructuredData schema={breadcrumb} />
+      <ArticleStructuredData
+        title="How to Know When Your Codebase Is Slowing Down Your Business"
+        description="Technical debt has a real business cost: missed estimates, slow onboarding, and compounding maintenance overhead. Learn the symptoms of an unhealthy codebase and what a code health audit actually surfaces."
+        datePublished="2026-03-28"
+      />
       <CodeHealthAuditPost />
     </>
   );

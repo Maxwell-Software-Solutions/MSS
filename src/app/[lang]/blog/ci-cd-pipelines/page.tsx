@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import CICDPost from './CICDPost';
+import ArticleStructuredData from '@/app/components/ArticleStructuredData';
 import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
@@ -31,6 +32,11 @@ export default function Page(): ReactElement {
   return (
     <>
       <StructuredData schema={breadcrumb} />
+      <ArticleStructuredData
+        title="Modern CI/CD Pipelines: Automating Your Software Delivery"
+        description="Learn how to build modern CI/CD pipelines with automated testing, deployment strategies, and DevOps best practices for faster, safer releases."
+        datePublished="2024-12-22"
+      />
       <CICDPost />
     </>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import MicroservicesPost from './MicroservicesPost';
+import ArticleStructuredData from '@/app/components/ArticleStructuredData';
 import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
@@ -31,6 +32,11 @@ export default function Page(): ReactElement {
   return (
     <>
       <StructuredData schema={breadcrumb} />
+      <ArticleStructuredData
+        title="Microservices Architecture: When to Use & How to Succeed"
+        description="Learn when microservices make sense, common patterns, pitfalls to avoid, and proven strategies for building distributed systems that scale."
+        datePublished="2024-12-21"
+      />
       <MicroservicesPost />
     </>
   );

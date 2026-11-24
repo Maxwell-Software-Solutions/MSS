@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { SITE_OG_IMAGE } from '@/lib/seo/utils';
 import type { ReactElement } from 'react';
 import TwoWeekSprintPost from './TwoWeekSprintPost';
+import ArticleStructuredData from '@/app/components/ArticleStructuredData';
 import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
@@ -31,6 +32,11 @@ export default function Page(): ReactElement {
   return (
     <>
       <StructuredData schema={breadcrumb} />
+      <ArticleStructuredData
+        title="What to Expect From a 2-Week Software Sprint (And When It Makes Sense)"
+        description="A practical guide to rapid software development sprints. Learn what fits in 2 weeks, what does not, how a well-run sprint works, and when an MVP sprint makes sense for your team."
+        datePublished="2026-03-28"
+      />
       <TwoWeekSprintPost />
     </>
   );

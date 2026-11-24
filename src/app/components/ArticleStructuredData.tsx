@@ -15,7 +15,7 @@ export default function ArticleStructuredData({
   datePublished,
   dateModified,
   author = 'Maxwell Software Solutions',
-  imageUrl = 'https://www.maxwellsoftwaresolutions.com/icon3.png',
+  imageUrl = 'https://www.maxwellsoftwaresolutions.com/opengraph-image',
 }: ArticleStructuredDataProps): ReactElement {
   const structuredData = {
     '@context': 'https://schema.org',
