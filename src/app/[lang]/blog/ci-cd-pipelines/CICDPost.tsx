@@ -33,8 +33,8 @@ export default function CICDPost(): ReactElement {
         <p>
           Continuous Integration and Continuous Delivery (CI/CD) has become the backbone of modern software
           development. Organizations with mature CI/CD practices deploy code 200x more frequently, recover from
-          incidents 24x faster, and have 3x lower change failure rates according to the 2023 DORA State of DevOps
-          Report.
+          incidents 24x faster, and have 3x lower change failure rates according to the 2016 State of DevOps
+          Report (Puppet and DORA).
         </p>
         <p>
           This guide covers building production-ready CI/CD pipelines that enable fast, reliable, and safe software
