@@ -1,7 +1,5 @@
 import type { NextConfig } from 'next';
 import path from 'path';
-import TerserPlugin from 'terser-webpack-plugin';
-import CompressionPlugin from 'compression-webpack-plugin';
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -107,109 +105,11 @@ const nextConfig: NextConfig = {
   },
   // Compression
   compress: true,
-  // Webpack configuration for performance
-  webpack: (config, { dev, isServer }) => {
-    // Production optimizations
-    if (!dev && !isServer) {
-      // Enable tree shaking
-      config.optimization.usedExports = true;
-      config.optimization.sideEffects = false;
-
-      // Base minimizer list
-      config.optimization.minimizer = [];
-
-      // Split chunks for better caching
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        maxInitialRequests: 25,
-        minSize: 20000,
-        cacheGroups: {
-          default: false,
-          vendors: false,
-          // Vendor chunk
-          vendor: {
-            name: 'vendor',
-            chunks: 'all',
-            test: /[\\/]node_modules[\\/]/,
-            priority: 20,
-            enforce: true,
-          },
-          // Common chunk
-          common: {
-            name: 'common',
-            minChunks: 2,
-            chunks: 'all',
-            priority: 10,
-            reuseExistingChunk: true,
-            enforce: true,
-          },
-          // React chunk
-          react: {
-            name: 'react',
-            chunks: 'all',
-            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-            priority: 30,
-            enforce: true,
-          },
-          // Next.js chunk
-          next: {
-            name: 'next',
-            chunks: 'all',
-            test: /[\\/]node_modules[\\/](next)[\\/]/,
-            priority: 25,
-            enforce: true,
-          },
-          // Fonts chunk
-          fonts: {
-            name: 'fonts',
-            chunks: 'all',
-            test: /[\\/]node_modules[\\/].*\.(woff|woff2|eot|ttf|otf)$/,
-            priority: 15,
-            enforce: true,
-          },
-        },
-      };
-
-      // Add compression plugin for gzip
-      config.plugins.push(
-        new CompressionPlugin({
-          filename: '[path][base].gz',
-          algorithm: 'gzip',
-          test: /\.(js|css|html|svg)$/,
-          threshold: 10240,
-          minRatio: 0.8,
-        })
-      );
-
-      // Bundle analyzer is handled separately via @next/bundle-analyzer
-
-      // Minimize CSS
-      config.optimization.minimize = true;
-
-      // Single Terser pass (removed duplicate config)
-      config.optimization.minimizer.push(
-        new TerserPlugin({
-          terserOptions: {
-            compress: {
-              drop_console: true,
-              drop_debugger: true,
-              pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
-            },
-            mangle: { safari10: true },
-            format: { comments: false },
-          },
-          extractComments: false,
-        })
-      );
-
-      // Increase bundle size limits for better performance
-      config.performance = {
-        hints: 'warning',
-        maxEntrypointSize: 1024 * 1024, // 1MB
-        maxAssetSize: 1024 * 1024, // 1MB
-      };
-    }
-
+  // Production builds keep Next's own chunking and minifiers; only console noise is stripped from them
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' && { exclude: ['error'] },
+  },
+  webpack: (config, { dev }) => {
     // Development optimizations
     if (dev) {
       // Faster builds in development
@@ -224,15 +124,6 @@ const nextConfig: NextConfig = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, 'src'),
     };
-
-    // Performance hints
-    config.performance = dev
-      ? { hints: false }
-      : {
-          hints: 'warning',
-          maxEntrypointSize: 1024 * 1024,
-          maxAssetSize: 1024 * 1024,
-        };
 
     return config;
   },
