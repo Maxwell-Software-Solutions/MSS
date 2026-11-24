@@ -11,7 +11,7 @@ import { COMPANY } from '@/lib/legal/company';
 const primaryLinks = [
   { href: '/services', label: 'Services' },
   { href: '/case-studies', label: 'Case studies' },
-  { href: '/consulting-process', label: 'Consulting process' },
+  { href: '/services#process-heading', label: 'Consulting process' },
   { href: '/blog', label: 'Insights & articles' },
 ];
 

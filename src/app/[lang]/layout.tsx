@@ -7,7 +7,7 @@ import '../globals.css';
 import '../styles/tokens.css';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
 import Cookiebot from '@/app/components/Cookiebot';
-import ClientOnlyComponents from '@/app/components/ClientOnlyComponents';
+import AppFooter from '@/app/components/AppFooter';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import StructuredData from '@/app/components/StructuredData';
 import { generateOrganizationSchema, generateWebSiteSchema, generateLocalBusinessSchema } from '@/lib/seo/structured-data';
@@ -198,7 +198,7 @@ export default async function RootLayout({
           <main id="main-content" role="main" tabIndex={-1}>
             {children}
           </main>
-          <ClientOnlyComponents />
+          <AppFooter />
         </LanguageProvider>
       </body>
     </html>
