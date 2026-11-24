@@ -136,7 +136,6 @@ const DynamicComponent = dynamic(() => import('./Component'), {
 ### Bundle Size
 - Keep initial bundle < 200KB (gzipped)
 - Use tree shaking to remove unused code
-- Analyze bundle with webpack-bundle-analyzer
 - Use dynamic imports for large dependencies
 
 ### Minification and Compression
