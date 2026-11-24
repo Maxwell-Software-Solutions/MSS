@@ -50,3 +50,6 @@
 @media (prefers-reduced-motion: reduce) {
   .doc-clip-toggle svg { transition: none; }
 }
+
+/* The line under the hero buttons that points to the free list-compare tool */
+.doc-hero-copy .page-actions + p { margin-top: var(--space-4); }

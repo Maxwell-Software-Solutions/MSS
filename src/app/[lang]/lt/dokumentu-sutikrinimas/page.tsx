@@ -163,6 +163,13 @@ export default function DocumentCrossCheckPage(): ReactElement {
                 {BOOK_LABEL}
               </a>
             </div>
+            <p className="form-note">
+              Paprastus sąrašus galite palyginti patys:{' '}
+              <Link href="/lt/sarasu-palyginimas" className="link">
+                nemokamas sąrašų palyginimo įrankis
+              </Link>
+              .
+            </p>
           </div>
           <DemoClip />
         </div>
