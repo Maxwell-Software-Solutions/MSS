@@ -171,7 +171,7 @@ export const SITE_CONFIG: Readonly<SiteConfig> = {
     linkedin: 'https://www.linkedin.com/company/maxwell-software-solutions',
     github: 'https://github.com/Maxwell-Software-Solutions',
     rekvizitai: 'https://rekvizitai.vz.lt/imone/maxwell_software_solutions_mb/',
-    twitter: '@maxwellsoftware',
+    twitter: '@MaxwellSoftSol',
   },
 } as const;
 

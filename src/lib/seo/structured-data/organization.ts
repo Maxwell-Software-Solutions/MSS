@@ -1,6 +1,14 @@
 import { SITE_CONFIG, SERVICES } from '../data';
 import type { Organization } from './types';
 
+/** The company's own profiles elsewhere, listed as sameAs in both schemas below */
+const PROFILES = [
+  SITE_CONFIG.social.linkedin,
+  SITE_CONFIG.social.github,
+  SITE_CONFIG.social.rekvizitai,
+  `https://x.com/${SITE_CONFIG.social.twitter.slice(1)}`,
+];
+
 /**
  * Enhanced Organization schema from central data
  *
@@ -28,7 +36,7 @@ export function generateOrganizationSchema(): Organization {
       ...(SITE_CONFIG.address.postalCode ? { postalCode: SITE_CONFIG.address.postalCode } : {}),
       addressCountry: SITE_CONFIG.address.country,
     },
-    sameAs: [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.github, SITE_CONFIG.social.rekvizitai],
+    sameAs: PROFILES,
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -90,6 +98,6 @@ export function generateLocalBusinessSchema(): object {
         },
       })),
     },
-    sameAs: [SITE_CONFIG.social.linkedin, SITE_CONFIG.social.github, SITE_CONFIG.social.rekvizitai],
+    sameAs: PROFILES,
   };
 }

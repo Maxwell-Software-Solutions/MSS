@@ -77,6 +77,7 @@ export function generateMetadata(pageKey: string): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
+      site: SITE_CONFIG.social.twitter,
       title: page.title,
       description: page.description,
       images: [image.url],

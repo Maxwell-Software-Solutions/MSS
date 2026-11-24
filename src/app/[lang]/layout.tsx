@@ -93,6 +93,7 @@ export const metadata: Metadata = {
   // Twitter Card defaults, for the same reason without a title or description
   twitter: {
     card: 'summary_large_image',
+    site: SITE_CONFIG.social.twitter,
     images: ['/opengraph-image'],
   },
 

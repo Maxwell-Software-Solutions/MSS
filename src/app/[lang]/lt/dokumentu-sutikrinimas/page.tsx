@@ -49,6 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: SITE_CONFIG.social.twitter,
     title: PAGE.title,
     description: PAGE.description,
     images: [image.url],
