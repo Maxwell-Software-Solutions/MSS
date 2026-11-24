@@ -1,5 +1,25 @@
+import { lookup } from 'node:dns/promises';
+import { isIP } from 'node:net';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+
+const MAX_REDIRECTS = 5;
+const PRIVATE_IPV4 = /^(0|10|127|169\.254|172\.(1[6-9]|2\d|3[01])|192\.168|100\.(6[4-9]|[7-9]\d|1[01]\d|12[0-7])|22[4-9]|2[3-5]\d)\./;
+
+// Public web addresses on the standard ports only: no localhost, private networks, cloud metadata or other internal services.
+// IPv6 is allowed only in the global unicast range (2000::/3).
+async function isPublicTarget(url: URL): Promise<boolean> {
+  if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password) return false;
+  if (url.port && url.port !== '80' && url.port !== '443') return false;
+  const host = url.hostname.replace(/^\[|\]$/g, '');
+  const addresses = isIP(host)
+    ? [host]
+    : (await lookup(host, { all: true }).catch(() => [] as { address: string }[])).map((a) => a.address);
+  return (
+    addresses.length > 0 &&
+    addresses.every((a) => (isIP(a) === 6 ? /^[23][0-9a-f]{0,3}:/i.test(a) : !PRIVATE_IPV4.test(a)))
+  );
+}
 
 const SECURITY_HEADERS = [
   'content-security-policy',
@@ -84,14 +104,26 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const timeout = setTimeout(() => controller.abort(), 15000);
 
     let response: Response;
+    let target = parsedUrl;
     try {
-      response = await fetch(parsedUrl.toString(), {
-        signal: controller.signal,
-        headers: {
-          'User-Agent': 'MSS-WebsiteScanner/1.0 (https://maxwellsoftwaresolutions.com)',
-        },
-        redirect: 'follow',
-      });
+      // Redirects are followed by hand so every hop is checked
+      for (let hop = 0; ; hop++) {
+        if (hop > MAX_REDIRECTS || !(await isPublicTarget(target))) {
+          clearTimeout(timeout);
+          return NextResponse.json({ error: 'This address cannot be scanned' }, { status: 400 });
+        }
+        response = await fetch(target, {
+          signal: controller.signal,
+          headers: {
+            'User-Agent': 'MSS-WebsiteScanner/1.0 (https://maxwellsoftwaresolutions.com)',
+          },
+          redirect: 'manual',
+        });
+        const location = response.headers.get('location');
+        if (response.status < 300 || response.status >= 400 || !location) break;
+        await response.body?.cancel();
+        target = new URL(location, target);
+      }
     } catch (err) {
       clearTimeout(timeout);
       const message = err instanceof Error ? err.message : 'Failed to fetch';
