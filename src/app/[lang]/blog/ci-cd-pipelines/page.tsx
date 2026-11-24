@@ -7,7 +7,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'Modern CI/CD Pipelines: Automating Your Software Delivery',
+  title: 'Modern CI/CD Pipelines: Automating Delivery',
   description:
     'Learn how to build modern CI/CD pipelines with automated testing, deployment strategies, and DevOps best practices for faster, safer releases.',
   openGraph: {

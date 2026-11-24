@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   // Title with template for child pages
   title: {
     default: PAGES.home!.title,
-    template: `%s | ${SITE_CONFIG.name}`,
+    template: '%s | Maxwell',
   },
 
   // Description from central registry

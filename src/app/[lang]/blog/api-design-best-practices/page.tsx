@@ -7,7 +7,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'API Design Best Practices: Building RESTful APIs That Scale',
+  title: 'API Design Best Practices for RESTful APIs',
   description:
     'Learn essential API design principles, RESTful best practices, versioning strategies, and documentation standards for building scalable, maintainable APIs.',
   openGraph: {

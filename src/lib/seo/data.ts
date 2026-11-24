@@ -217,7 +217,7 @@ export const KEYWORD_SETS = {
  */
 export const PAGES: Record<string, PageMetadata> = {
   home: {
-    title: 'AI Software Development Company in Vilnius, Lithuania — Maxwell Software Solutions',
+    title: 'AI Software Development in Vilnius, Lithuania | Maxwell',
     description: SITE_CONFIG.description,
     keywords: [
       ...KEYWORD_SETS.ai,
@@ -230,16 +230,16 @@ export const PAGES: Record<string, PageMetadata> = {
     canonical: '/',
     ogType: 'website',
   },
-  // Child pages get " | Maxwell Software Solutions" from the root title template
+  // Child pages get " | Maxwell" from the root title template
   about: {
-    title: 'About Us — AI Software Engineers in Vilnius, Lithuania',
+    title: 'About Us — AI Engineers in Vilnius, Lithuania',
     description:
       'Maxwell Software Solutions is an AI software development company in Vilnius, Lithuania. Our AI software engineers are grounded in architecture, testing and reliability. Meet the team.',
     keywords: [...KEYWORD_SETS.ai, 'AI engineers Vilnius', 'AI development team Lithuania', 'software consultancy Vilnius'],
     canonical: '/about',
   },
   services: {
-    title: 'AI Services in Vilnius — AI Agents, AI Adoption and AI Product Development',
+    title: 'AI Services in Vilnius: Agents, Adoption, Products',
     description:
       'AI services from Vilnius, Lithuania: AI adoption and strategy, AI agents and automation, AI product development and prototyping, on a foundation of audits, testing and CI/CD.',
     keywords: [...KEYWORD_SETS.ai, 'AI agents Vilnius', 'AI services Lithuania', ...KEYWORD_SETS.core, 'code quality audit Vilnius'],
@@ -291,49 +291,49 @@ export const PAGES: Record<string, PageMetadata> = {
     canonical: '/case-studies',
   },
   startASprint: {
-    title: 'Start a Sprint — Sprint-in-a-Box Service | Maxwell Software Solutions',
+    title: 'Start a Sprint — Sprint-in-a-Box Service',
     description: 'Kick off a focused engineering sprint with Maxwell Software Solutions. Fixed-scope, fixed-price delivery with measurable outcomes in two to four weeks.',
     keywords: ['sprint delivery', 'fixed price sprint', 'engineering sprint', ...KEYWORD_SETS.core],
     canonical: '/start-a-sprint',
   },
   servicesPackages: {
-    title: 'Service Packages — Code Audit, Sprint, Retainer & More | Maxwell Software Solutions',
+    title: 'Service Packages — Code Audit, Sprint, Retainer & More',
     description: 'Compare all five Maxwell Software Solutions service packages: Code Health Audit, Sprint-in-a-Box, Engineering Partner Retainer, CI/CD Accelerator, and Fractional CTO.',
     keywords: ['engineering service packages', 'code audit package', 'software retainer', ...KEYWORD_SETS.core],
     canonical: '/services/packages',
   },
   advisory: {
-    title: 'CTO-in-a-Box — Async Advisory for Startup Founders | Maxwell Software Solutions',
+    title: 'CTO-in-a-Box — Async Advisory for Startup Founders',
     description: 'Technical leadership without the full-time salary. Async Loom video reviews, monthly strategy call, and Slack access on a monthly subscription. Cancel anytime.',
     keywords: ['fractional CTO', 'startup CTO advisory', 'async technical advisory', 'CTO as a service', ...KEYWORD_SETS.core],
     canonical: '/advisory',
   },
   codeHealthScore: {
-    title: 'Code Health Score — Free Self-Assessment Quiz | Maxwell Software Solutions',
+    title: 'Code Health Score — Free Self-Assessment Quiz',
     description: 'Rate your codebase health in 2 minutes. Answer 15 questions about testing, deployment, security, and engineering practices. Get an instant score with actionable insights.',
     keywords: ['code health score', 'codebase assessment', 'engineering practices quiz', 'technical debt assessment', ...KEYWORD_SETS.core],
     canonical: '/code-health-score',
   },
   codeAudit: {
-    title: 'Code Audit Services — Technical Debt Assessment | Maxwell Software Solutions',
+    title: 'Code Audit Services — Technical Debt Assessment',
     description: 'Professional code audit services: architecture review, security scan, performance analysis, and technical debt assessment. Prioritised remediation roadmap in 5 business days.',
     keywords: ['code audit services', 'code review service', 'technical debt assessment', 'code quality review', ...KEYWORD_SETS.core],
     canonical: '/services/code-audit',
   },
   fractionalCTO: {
-    title: 'Fractional CTO Services — Part-Time Technical Leadership | Maxwell Software Solutions',
+    title: 'Fractional CTO Services — Part-Time Technical Leadership',
     description: 'Fractional CTO services in Europe and Lithuania. Architecture decisions, team hiring, vendor selection, and investor due diligence. Monthly retainer, month-to-month.',
     keywords: ['fractional cto europe', 'fractional cto lithuania', 'part-time cto startup', 'fractional cto services', ...KEYWORD_SETS.core],
     canonical: '/services/fractional-cto',
   },
   hireDeveloper: {
-    title: 'Hire a Senior Developer — React, Next.js, Node.js | Maxwell Software Solutions',
+    title: 'Hire a Senior Developer — React, Next.js, Node.js',
     description: 'Hire senior React, Next.js, and Node.js developers in Lithuania and Europe. No recruitment fees, start in 1-2 weeks. Sprint or retainer models available.',
     keywords: ['hire react developer lithuania', 'hire next.js developer', 'outsource development europe', 'hire senior developer', ...KEYWORD_SETS.core],
     canonical: '/services/hire-developer',
   },
   websiteScanner: {
-    title: 'Free Website Health Scanner — Performance, Security & SEO | Maxwell Software Solutions',
+    title: 'Free Website Health Scanner — Performance, Security & SEO',
     description: 'Scan any website for free. Get instant scores for performance (Core Web Vitals), security headers, SEO, and accessibility. Powered by Google PageSpeed Insights.',
     keywords: ['website scanner', 'website health check', 'site speed test', 'security headers check', 'SEO audit tool', 'web performance', ...KEYWORD_SETS.core],
     canonical: '/website-scanner',

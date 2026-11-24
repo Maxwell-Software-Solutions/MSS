@@ -17,7 +17,7 @@ const MeasuringSuccess = dynamic(() => import('./sections/MeasuringSuccess'), { 
 const CaseStudies = dynamic(() => import('./sections/CaseStudies'), { ssr: true });
 
 export const metadata: Metadata = {
-  title: 'Refactoring Legacy Code: Complete Guide to Modernizing Your Software Architecture',
+  title: 'Refactoring Legacy Code: Where to Start',
   description:
     'Learn proven strategies for refactoring legacy code, reducing technical debt, and improving software maintainability. Expert tips for modernizing old codebases.',
   keywords:

@@ -7,7 +7,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'What to Expect From a 2-Week Software Sprint (And When It Makes Sense)',
+  title: 'What to Expect From a 2-Week Software Sprint',
   description:
     'A practical guide to rapid software development sprints. Learn what fits in 2 weeks, what does not, how a well-run sprint works, and when an MVP sprint makes sense for your team.',
   openGraph: {

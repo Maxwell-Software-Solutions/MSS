@@ -7,7 +7,7 @@ import StructuredData from '@/app/components/StructuredData';
 import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
 
 export const metadata: Metadata = {
-  title: 'How to Know When Your Codebase Is Slowing Down Your Business',
+  title: 'Is Your Codebase Slowing Down Your Business?',
   description:
     'Technical debt has a real business cost: missed estimates, slow onboarding, and compounding maintenance overhead. Learn the symptoms of an unhealthy codebase and what a code health audit actually surfaces.',
   openGraph: {
