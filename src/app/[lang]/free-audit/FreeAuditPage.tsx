@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { ReactElement } from 'react';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
 import { CheckIcon, FaqSection } from '@/app/components/ui';
@@ -204,9 +205,9 @@ export default function FreeAuditPage(): ReactElement {
 
               <p className="form-note text-center" suppressHydrationWarning>
                 {ht('freeAudit.form.privacy', 'No spam. We only contact you about your audit request.')}{' '}
-                <a className="link" href="/privacy">
+                <Link className="link" href="/privacy">
                   {ht('freeAudit.form.privacy.link', 'Privacy Policy')}
-                </a>
+                </Link>
               </p>
             </form>
           </div>

@@ -1,20 +1,19 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
-import HeaderNav from './components/HeaderNav';
+import { notFound } from 'next/navigation';
+import HeaderNav from '@/app/components/HeaderNav';
 import { IBM_Plex_Sans } from 'next/font/google';
-import './globals.css';
-import './styles/tokens.css';
+import '../globals.css';
+import '../styles/tokens.css';
 import GoogleAnalytics from '@/app/components/GoogleAnalytics';
 import Cookiebot from '@/app/components/Cookiebot';
 import ClientOnlyComponents from '@/app/components/ClientOnlyComponents';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import StructuredData from '@/app/components/StructuredData';
 import { generateOrganizationSchema, generateWebSiteSchema, generateLocalBusinessSchema } from '@/lib/seo/structured-data';
-import { headers } from 'next/headers';
 import { loadServerTranslations, getCriticalTranslations } from '@/lib/server-translations';
 import { SITE_CONFIG, PAGES } from '@/lib/seo/data';
 import { CANONICAL_BASE_URL } from '@/lib/seo/url';
-import { PAGE_LANGUAGE_HEADER } from '@/lib/page-language';
 
 const siteUrl = CANONICAL_BASE_URL;
 
@@ -142,18 +141,23 @@ export const viewport = {
   ],
 };
 
+// Every page is built ahead of time in both languages. The middleware picks one per request (/lt/ addresses are always
+// Lithuanian, the rest follow the language cookie), so pages come from the CDN instead of a server render each time.
+export function generateStaticParams(): Array<{ lang: 'en' | 'lt' }> {
+  return [{ lang: 'en' }, { lang: 'lt' }];
+}
+export const dynamicParams = false;
+
 export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }>): Promise<ReactElement> {
-  // Read language cookie from request headers on the server so we can set
-  // the HTML lang and pass an initial language to the client provider.
-  const hdrs = await headers();
-  const cookieHeader = hdrs.get('cookie') || '';
-  const match = cookieHeader.match(/(?:^|; )language=(lt|en)(?:;|$)/);
-  // A page with a fixed language (everything under /lt/) ignores the cookie
-  const initialLang = hdrs.get(PAGE_LANGUAGE_HEADER) === 'lt' || match?.[1] === 'lt' ? 'lt' : 'en';
+  const { lang } = await params;
+  if (lang !== 'en' && lang !== 'lt') notFound();
+  const initialLang = lang;
 
   // Load critical translations for server-side injection to reduce flashes
   const fullTranslations = await loadServerTranslations(initialLang);

@@ -182,10 +182,8 @@ const nextConfig: NextConfig = {
             key: 'Strict-Transport-Security',
             value: 'max-age=31536000; includeSubDomains; preload',
           },
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600, s-maxage=86400',
-          },
+          // No site-wide Cache-Control: prebuilt pages keep Vercel's own, which serves them from the CDN and drops them
+          // on each deploy. An hour in the browser would keep old pages that point at scripts a new deploy removed.
         ],
       },
       {

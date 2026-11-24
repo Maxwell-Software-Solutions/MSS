@@ -13,7 +13,7 @@ import { generateBreadcrumbSchema } from '@/lib/seo/structured-data';
  * an AI flags what does not match, and a named person approves each line, all remotely.
  *
  * Its own /lt/ address (not the site's cookie or `?lang=` switch) so search engines and shared links always get
- * Lithuanian text. The middleware marks /lt/ requests, and the root layout then renders <html lang="lt">.
+ * Lithuanian text. The middleware serves /lt/ addresses from the Lithuanian build, which renders <html lang="lt">.
  * No price, client name or figure belongs on this page. The first conversation and a written architecture
  * note are free; the pilot is paid.
  */

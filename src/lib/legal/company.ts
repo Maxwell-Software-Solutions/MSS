@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, CONTACT_PHONE } from '@/app/contact/contact.constants';
+import { CONTACT_EMAIL, CONTACT_PHONE } from '@/app/[lang]/contact/contact.constants';
 
 const DOMAIN = 'maxwellsoftwaresolutions.com';
 /** The one public mailbox for privacy, security and legal mail. */

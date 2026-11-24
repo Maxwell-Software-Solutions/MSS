@@ -3,7 +3,7 @@ import { join } from 'path';
 import { fireEvent, render as renderPlain, within } from '@testing-library/react';
 import { renderWithProviders as render, screen } from '@/test/test-utils';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { CONTACT_EMAIL, CONTACT_PHONE } from '../contact/contact.constants';
+import { CONTACT_EMAIL, CONTACT_PHONE } from '@/app/[lang]/contact/contact.constants';
 import SiteFooter from './AppFooter';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import en from '@/lib/translations/en.json';

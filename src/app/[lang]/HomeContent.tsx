@@ -2,17 +2,17 @@
 
 import type { ReactElement } from 'react';
 import Link from 'next/link';
-import HeroStage from './components/hero/HeroStage';
-import PromoFilm from './components/PromoFilm';
-import DeferredSections from './components/DeferredSections';
-import DarkShowcaseSection from './components/DarkShowcaseSection';
-import RealAiWork from './components/RealAiWork';
-import Rail from './components/Rail';
-import { useReveal } from './components/useReveal';
+import HeroStage from '@/app/components/hero/HeroStage';
+import PromoFilm from '@/app/components/PromoFilm';
+import DeferredSections from '@/app/components/DeferredSections';
+import DarkShowcaseSection from '@/app/components/DarkShowcaseSection';
+import RealAiWork from '@/app/components/RealAiWork';
+import Rail from '@/app/components/Rail';
+import { useReveal } from '@/app/components/useReveal';
 import { useLanguage } from '@/lib/LanguageContext';
-import { FeatureCard, ButtonLink, LineIcon } from './components/ui';
-import type { LineIconName } from './components/ui';
-import './home.css';
+import { FeatureCard, ButtonLink, LineIcon } from '@/app/components/ui';
+import type { LineIconName } from '@/app/components/ui';
+import '../home.css';
 
 export default function HomeContent(): ReactElement {
   const { t } = useLanguage();
