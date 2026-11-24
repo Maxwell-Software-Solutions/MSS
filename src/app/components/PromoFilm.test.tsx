@@ -1,5 +1,8 @@
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { act, fireEvent, renderWithProviders, screen, waitFor } from '@/test/test-utils';
 import { axe } from 'jest-axe';
+import * as analytics from '@/lib/analytics';
 import * as LanguageContext from '@/lib/LanguageContext';
 import PromoFilm from './PromoFilm';
 
@@ -11,6 +14,7 @@ interface Watcher {
 describe('PromoFilm', () => {
   let watchers: Watcher[];
   let upright: boolean;
+  let reduced: boolean;
   let turned: Array<() => void>;
   let load: jest.SpyInstance;
   let play: jest.SpyInstance;
@@ -24,10 +28,10 @@ describe('PromoFilm', () => {
   };
   const sourcesOf = (container: HTMLElement): string[] => Array.from(container.querySelectorAll('video source'), (node) => node.getAttribute('src') ?? '');
 
-  // a 58 second film whose clock the test moves, as a browser would, and whose timeupdate it fires
-  const playTo = (container: HTMLElement, seconds: number): HTMLVideoElement => {
+  // a 58 second film (the real one is 59.13) whose clock the test moves, as a browser would, and whose timeupdate it fires
+  const playTo = (container: HTMLElement, seconds: number, length = 58.1): HTMLVideoElement => {
     const video = container.querySelector('video') as HTMLVideoElement;
-    Object.defineProperty(video, 'duration', { configurable: true, value: 58.1 });
+    Object.defineProperty(video, 'duration', { configurable: true, value: length });
     Object.defineProperty(video, 'currentTime', { configurable: true, writable: true, value: seconds });
     act(() => {
       video.dispatchEvent(new Event('timeupdate'));
@@ -39,6 +43,7 @@ describe('PromoFilm', () => {
   beforeEach(() => {
     watchers = [];
     upright = false;
+    reduced = false;
     turned = [];
     window.sessionStorage.clear();
     global.IntersectionObserver = class {
@@ -54,6 +59,7 @@ describe('PromoFilm', () => {
     } as unknown as typeof IntersectionObserver;
     window.matchMedia = ((query: string) => ({
       get matches() {
+        if (query.includes('prefers-reduced-motion')) return reduced;
         return query.includes('orientation: portrait') ? upright : false;
       },
       media: query,
@@ -217,14 +223,218 @@ describe('PromoFilm', () => {
     expect(container.querySelector('.promo-film-frame')).not.toHaveAttribute('data-blocked');
   });
 
+  describe('the live Book a call, while the film is still playing', () => {
+    const LENGTH = 59.1333; // the real film; its drawn button starts to show 55.6 s in, in both cuts
+    const rule = (selector: string): string => {
+      const css = readFileSync(join(__dirname, 'promo-film.css'), 'utf8');
+      const found = new RegExp(`(?:^|\\})\\s*${selector.replace(/[.:]/g, '\\$&')}\\s*\\{([^}]*)\\}`, 'm').exec(css);
+      return found?.[1] ?? '';
+    };
+
+    it('goes in at the first frame of the drawn button, not when the film reaches its last card', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 55.4, LENGTH); // the drawn button is not there yet
+      expect(container.querySelector('.promo-film-cta')).not.toBeInTheDocument();
+      playTo(container, 55.6, LENGTH); // its first frame
+      expect(screen.getByRole('link', { name: 'Book a call (opens in new tab)' })).toBeInTheDocument();
+      expect(video.paused).toBe(false); // the film is still playing: it has not reached its last card
+      expect(screen.getByRole('button', { name: 'Pause film' })).toBeInTheDocument();
+    });
+
+    it('is a live link from its first frame: it takes the click at once, and stays the same link to the end card', () => {
+      const track = jest.spyOn(analytics, 'trackCTAClick').mockImplementation(() => undefined);
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      playTo(container, 55.6, LENGTH);
+      const link = screen.getByRole('link', { name: 'Book a call (opens in new tab)' });
+      expect(link).toHaveAttribute('href', '/book');
+      expect(link).not.toHaveAttribute('aria-disabled');
+      expect(link).not.toHaveAttribute('tabindex');
+      expect(link.closest('[inert], [aria-hidden="true"], [hidden]')).toBeNull();
+      link.addEventListener('click', (event) => event.preventDefault()); // jsdom cannot open a tab
+      fireEvent.click(link);
+      expect(track).toHaveBeenCalledWith('promo_film');
+      // the film plays on and stops on its card: the same link carries through, nothing is swapped under the pointer
+      playTo(container, 57, LENGTH);
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBe(link);
+      playTo(container, 58.3, LENGTH);
+      expect(container.querySelector('video')?.paused).toBe(true);
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBe(link);
+    });
+
+    it('finds the moment between timeupdates, which a browser reports only a few times a second', () => {
+      const frames: FrameRequestCallback[] = [];
+      jest.spyOn(window, 'requestAnimationFrame').mockImplementation((callback) => frames.push(callback));
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 54.9, LENGTH); // a second before the button: the clock is watched frame by frame
+      expect(frames.length).toBeGreaterThan(0);
+      Object.defineProperty(video, 'currentTime', { configurable: true, writable: true, value: 55.55 }); // no timeupdate came
+      act(() => frames.splice(0).forEach((callback) => callback(0)));
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument();
+    });
+
+    it('is taken away when the film goes back to its start, and put in again at the same point', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      playTo(container, 56, LENGTH);
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument();
+      playTo(container, 0, LENGTH); // the first time the sound comes on the film starts again
+      expect(screen.queryByRole('link', { name: /Book a call/ })).not.toBeInTheDocument();
+      playTo(container, 55.6, LENGTH);
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument();
+    });
+
+    it('does not depend on the visitor\'s motion setting: the same moment with reduced motion', () => {
+      reduced = true;
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      playTo(container, 55.4, LENGTH);
+      expect(container.querySelector('.promo-film-cta')).not.toBeInTheDocument();
+      playTo(container, 55.6, LENGTH);
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument();
+    });
+
+    it('is never switched off in the style sheet, and nothing laid over it takes the click', () => {
+      const cta = rule('.promo-film-cta');
+      expect(cta).toContain('position: absolute');
+      expect(cta).not.toMatch(/pointer-events|visibility|display:\s*none/);
+      // its fade starts from opacity 0 (which still takes clicks), and nothing else about it changes before then
+      expect(cta).toMatch(/animation:\s*promo-film-cta-in[^;]*both/);
+      for (const layer of ['.promo-film-floor', '.promo-film-veil', '.promo-film-frame::after', '.promo-film-ui']) {
+        expect(rule(layer)).toMatch(/pointer-events:\s*none/);
+      }
+    });
+  });
+
+  describe('a click on the film itself', () => {
+    const filmOf = (container: HTMLElement): HTMLVideoElement => container.querySelector('video') as HTMLVideoElement;
+
+    it('turns the sound on while it is off, keeps the film playing where it is, and keeps the choice for the visit', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 20);
+      expect(video.muted).toBe(true);
+      play.mockClear();
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      expect(video.paused).toBe(false);
+      expect(video.currentTime).toBe(20); // not sent back to the start
+      expect(play).not.toHaveBeenCalled();
+      expect(screen.getByRole('button', { name: 'Pause film' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Turn sound off' })).toBeInTheDocument();
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBe('on');
+    });
+
+    it('does nothing to the sound when it is already on, however often it is clicked', () => {
+      window.sessionStorage.setItem('mss.film.sound', 'on');
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = filmOf(container);
+      expect(video.muted).toBe(false);
+      play.mockClear();
+      fireEvent.click(video);
+      fireEvent.click(container.querySelector('.promo-film-frame') as HTMLElement);
+      expect(video.muted).toBe(false);
+      expect(video.paused).toBe(false);
+      expect(play).not.toHaveBeenCalled();
+      expect(screen.getByRole('button', { name: 'Turn sound off' })).toBeInTheDocument();
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBe('on');
+    });
+
+    it('never turns the sound off: the sound button does that, and a click after it turns it on again', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = filmOf(container);
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      fireEvent.click(screen.getByRole('button', { name: 'Turn sound off' }));
+      expect(video.muted).toBe(true);
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBe('off');
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBe('on');
+    });
+
+    it('does not count a click on the live Book a call, which still opens its link and is still tracked', () => {
+      const track = jest.spyOn(analytics, 'trackCTAClick').mockImplementation(() => undefined);
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 55.6, 59.1333);
+      const link = screen.getByRole('link', { name: /Book a call/ });
+      link.addEventListener('click', (event) => event.preventDefault()); // jsdom cannot open a tab
+      fireEvent.click(link);
+      fireEvent.click(link.firstChild as Node); // its text
+      expect(track).toHaveBeenCalledTimes(2);
+      expect(video.muted).toBe(true);
+      expect(window.sessionStorage.getItem('mss.film.sound')).toBeNull();
+      expect(video.paused).toBe(false);
+      fireEvent.click(video); // but the picture around it still counts
+      expect(video.muted).toBe(false);
+    });
+
+    it('leaves the buttons as they were: pause does not turn the sound on, and Play with sound still starts it from the top', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 20);
+      fireEvent.click(screen.getByRole('button', { name: 'Pause film' }));
+      expect(video.paused).toBe(true);
+      expect(video.muted).toBe(true);
+      fireEvent.click(screen.getByRole('button', { name: 'Play with sound' }));
+      expect(video.muted).toBe(false);
+      expect(video.currentTime).toBe(0);
+      expect(video.paused).toBe(false);
+    });
+
+    it('turns the sound on in a film the visitor paused, and leaves it paused', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = filmOf(container);
+      fireEvent.click(screen.getByRole('button', { name: 'Pause film' }));
+      play.mockClear();
+      fireEvent.click(video);
+      expect(video.muted).toBe(false);
+      expect(video.paused).toBe(true);
+      expect(play).not.toHaveBeenCalled();
+    });
+
+    it('starts a film the browser would not start by itself, with its sound, when the poster is clicked', async () => {
+      play.mockImplementationOnce(() => Promise.reject(new DOMException('blocked', 'NotAllowedError')));
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      await waitFor(() => expect(container.querySelector('.promo-film-start')).toBeInTheDocument());
+      fireEvent.click(container.querySelector('.promo-film-frame') as HTMLElement); // the poster laid over the film is the frame's own
+      await waitFor(() => expect(container.querySelector('.promo-film-start')).not.toBeInTheDocument());
+      expect(filmOf(container).muted).toBe(false);
+      expect(filmOf(container).paused).toBe(false);
+    });
+
+    it('does nothing once the film has played through: only Watch again brings it back', () => {
+      const { container } = renderWithProviders(<PromoFilm />);
+      report(seen(), 0.8);
+      const video = playTo(container, 57.3);
+      expect(video.paused).toBe(true);
+      play.mockClear();
+      fireEvent.click(video);
+      expect(video.muted).toBe(true);
+      expect(play).not.toHaveBeenCalled();
+      expect(screen.getByRole('link', { name: /Book a call/ })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Watch again' })).toBeInTheDocument();
+    });
+  });
+
   describe('when the film has played through', () => {
-    it('stops on its last card, just before the fade, and lays the live Book a call over the drawn one', () => {
+    it('stops on its last card, just before the fade, and keeps the live Book a call over the drawn one', () => {
       const { container } = renderWithProviders(<PromoFilm />);
       report(seen(), 0.8);
       expect(container.querySelector('.promo-film-cta')).not.toBeInTheDocument();
-      playTo(container, 56); // the card is still on its way
+      const video = playTo(container, 54); // the card is still on its way
       expect(container.querySelector('.promo-film-cta')).not.toBeInTheDocument();
-      const video = playTo(container, 57.3); // 58.1 minus the fade
+      expect(video.paused).toBe(false);
+      playTo(container, 57.3); // 58.1 minus the fade
       expect(video.paused).toBe(true);
       const button = screen.getByRole('link', { name: 'Book a call (opens in new tab)' });
       expect(button).toHaveAttribute('href', '/book');

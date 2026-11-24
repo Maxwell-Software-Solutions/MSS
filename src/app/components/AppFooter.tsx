@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import BrandLogo from './BrandLogo';
 import CookieSettingsButton from './legal/CookieSettingsButton';
-import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from '../contact/contact.constants';
+import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from '@/app/[lang]/contact/contact.constants';
 import { useLanguage } from '@/lib/LanguageContext';
 import { COMPANY } from '@/lib/legal/company';
 

@@ -47,7 +47,7 @@ describe('RealAiWork', () => {
   it('labels the Sage note as founder experience, never as a client', () => {
     render(<RealAiWork />);
     const note = screen.getByRole('group', { name: /^founder experience$/i });
-    expect(within(note).getByText('Before MSS, our founder spent years engineering software for Sage.')).toBeInTheDocument();
+    expect(within(note).getByText('Before Maxwell, our founder spent years engineering software for Sage.')).toBeInTheDocument();
     expect(
       within(note).getByText('Sage is a UK software company whose accounting, payroll and HR software is used by businesses around the world.')
     ).toBeInTheDocument();

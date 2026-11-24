@@ -1,22 +1,40 @@
 /** @jest-environment node */
 import { NextRequest } from 'next/server';
 import { middleware } from './middleware';
-import { PAGE_LANGUAGE_HEADER } from '@/lib/page-language';
 
-// NextResponse.next({ request: { headers } }) reports the request headers it sets under this prefix
-const forwarded = (response: Response | void, name: string): string | null =>
-  response ? response.headers.get(`x-middleware-request-${name}`) : null;
+// NextResponse.rewrite reports where it sends the request in this header
+const rewrittenTo = (response: Response | void): string | null => {
+  const target = response ? response.headers.get('x-middleware-rewrite') : null;
+  return target ? new URL(target).pathname : null;
+};
 
-describe('middleware page-language header', () => {
-  it('marks pages under /lt/ as Lithuanian', () => {
-    const response = middleware(new NextRequest('http://localhost/lt/dokumentu-sutikrinimas'));
-    expect(forwarded(response, PAGE_LANGUAGE_HEADER)).toBe('lt');
+const request = (path: string, cookie?: string): NextRequest =>
+  new NextRequest(`http://localhost${path}`, cookie ? { headers: { cookie } } : undefined);
+
+describe('middleware page language', () => {
+  it('serves pages from the English build by default', () => {
+    expect(rewrittenTo(middleware(request('/services')))).toBe('/en/services');
+    expect(rewrittenTo(middleware(request('/')))).toBe('/en');
   });
 
-  it('leaves every other page alone, even when the request tries to set the header', () => {
-    const spoofed = new NextRequest('http://localhost/services', { headers: { [PAGE_LANGUAGE_HEADER]: 'lt' } });
-    const response = middleware(spoofed);
-    expect(forwarded(response, PAGE_LANGUAGE_HEADER)).toBeNull();
-    expect((response?.headers.get('x-middleware-override-headers') ?? '').split(',')).not.toContain(PAGE_LANGUAGE_HEADER);
+  it('follows the language cookie', () => {
+    expect(rewrittenTo(middleware(request('/about', 'language=lt')))).toBe('/lt/about');
+  });
+
+  it('keeps pages under /lt/ Lithuanian whatever the cookie says', () => {
+    expect(rewrittenTo(middleware(request('/lt/dokumentu-sutikrinimas', 'language=en')))).toBe(
+      '/lt/lt/dokumentu-sutikrinimas'
+    );
+  });
+
+  it('lets a ?lang= link choose the language over the cookie', () => {
+    expect(rewrittenTo(middleware(request('/privacy?lang=lt', 'language=en')))).toBe('/lt/privacy');
+    expect(rewrittenTo(middleware(request('/privacy?lang=xx', 'language=lt')))).toBe('/lt/privacy');
+  });
+
+  it('leaves public files and the share image at their own addresses', () => {
+    for (const path of ['/logo.svg', '/.well-known/security.txt', '/opengraph-image']) {
+      expect(rewrittenTo(middleware(request(path)))).toBeNull();
+    }
   });
 });

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { PAGE_LANGUAGE_HEADER, isLithuanianPath } from '@/lib/page-language';
+import { isLithuanianPath } from '@/lib/page-language';
 
 const CANONICAL_HOST = process.env.NEXT_PUBLIC_CANONICAL_HOST ?? 'www.maxwellsoftwaresolutions.com';
 const CANONICAL_PROTOCOL = 'https';
@@ -63,13 +63,16 @@ export function middleware(request: NextRequest): NextResponse | void {
     return NextResponse.redirect(url, { status: 301 });
   }
 
-  // 4. Tell the root layout which pages have a fixed language (/lt/...). The header is cleared first, so a request cannot set it.
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.delete(PAGE_LANGUAGE_HEADER);
-  if (isLithuanianPath(pathname)) requestHeaders.set(PAGE_LANGUAGE_HEADER, 'lt');
+  // 4. Public files and the site-wide share image keep their own addresses
+  if (pathname.includes('.') || pathname === '/opengraph-image') return NextResponse.next();
 
-  // 5. Allow request to proceed
-  return NextResponse.next({ request: { headers: requestHeaders } });
+  // 5. Serve the page prebuilt in the visitor's language: /lt/ addresses are always Lithuanian; elsewhere a ?lang= link
+  //    decides, then the language cookie. The /en or /lt prefix stays internal, the address bar keeps the clean path.
+  const query = request.nextUrl.searchParams.get('lang');
+  const asked = query === 'lt' || query === 'en' ? query : request.cookies.get('language')?.value;
+  const url = request.nextUrl.clone();
+  url.pathname = `/${isLithuanianPath(pathname) || asked === 'lt' ? 'lt' : 'en'}${pathname === '/' ? '' : pathname}`;
+  return NextResponse.rewrite(url);
 }
 
 /**

@@ -90,6 +90,8 @@ uniform float uReveal;
 uniform vec3 uPulse;
 uniform vec3 uMouse;
 uniform vec4 uCopy;
+uniform vec3 uLine;
+uniform vec3 uGold;
 out float vD;
 out float vHalf;
 out vec4 vColor;
@@ -138,7 +140,7 @@ void main() {
   float cover = (1.0 - smoothstep(uCopy.x, uCopy.x + uCopy.z, here.x))
               * (1.0 - smoothstep(uCopy.y, uCopy.y + uCopy.w, here.y));
   alpha *= 1.0 - 0.78 * cover;
-  vec3 rgb = mix(vec3(0.92), vec3(0.788, 0.635, 0.153), lift);
+  vec3 rgb = mix(uLine, uGold, lift);
   vColor = vec4(rgb * alpha, alpha);
 
   float halfW = uPx * mix(0.36, 0.62, here.z);
@@ -193,6 +195,13 @@ const LIGHT_STRENGTH = 0.95;
 const CURSOR_LEAN = 0.07;
 // Past the end of the draw-on: every line is simply there, for reduced motion and after a pause
 const FULLY_DRAWN = 99;
+
+/** An "r g b" custom property (0 to 255 each) as a shader colour, or the fallback if it is missing. */
+function rgbOf(value: string, fallback: [number, number, number]): Float32Array {
+  const parts = value.trim().split(/\s+/).map(Number);
+  const rgb = parts.length === 3 && parts.every((n) => Number.isFinite(n)) ? parts : fallback;
+  return new Float32Array(rgb.map((n) => n / 255));
+}
 
 function buildProgram(gl: WebGL2RenderingContext): WebGLProgram | null {
   const program = gl.createProgram();
@@ -249,6 +258,8 @@ export function startRibbon(
     pulse: uniform('uPulse'),
     mouse: uniform('uMouse'),
     copy: uniform('uCopy'),
+    line: uniform('uLine'),
+    gold: uniform('uGold'),
   };
 
   gl.useProgram(program);
@@ -316,7 +327,11 @@ export function startRibbon(
     gl.uniform2f(u.band, (posterBox.top - stageBox.top) / stageBox.height, band);
     gl.uniform2f(u.span, (posterBox.left - stageBox.left) / stageBox.width, span);
     // Phones shade the text with their own CSS scrim (--ribbon-cover: none), so no line fades here
-    const cover = getComputedStyle(stage).getPropertyValue('--ribbon-cover').trim() !== 'none';
+    const style = getComputedStyle(stage);
+    const cover = style.getPropertyValue('--ribbon-cover').trim() !== 'none';
+    // the theme's line and light colours, the same ones the poster draws with
+    gl.uniform3fv(u.line, rgbOf(style.getPropertyValue('--ribbon-line'), [235, 235, 235]));
+    gl.uniform3fv(u.gold, rgbOf(style.getPropertyValue('--ribbon-gold'), [201, 162, 39]));
     gl.uniform4f(
       u.copy,
       cover ? (copyBox.right - stageBox.left) * dpr : -1e6,
@@ -449,6 +464,13 @@ export function startRibbon(
   resizes.observe(stage);
   resizes.observe(copy);
 
+  // a switch of the site theme changes the lines' colours: read them again, and repaint a still picture
+  const themes = new MutationObserver(() => {
+    layoutDirty = true;
+    if (!running && !halted) drawStill();
+  });
+  themes.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
   const onVisibility = (): void => {
     if (document.hidden) pause();
     else resume();
@@ -494,6 +516,7 @@ export function startRibbon(
       pause();
       cancelAnimationFrame(still);
       resizes.disconnect();
+      themes.disconnect();
       stage.removeEventListener('pointermove', onMove);
       stage.removeEventListener('pointerleave', onLeave);
       document.removeEventListener('visibilitychange', onVisibility);

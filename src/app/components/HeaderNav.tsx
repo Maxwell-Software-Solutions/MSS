@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useState, useCallback, useEffect, type ReactElement } from 'react';
-import { usePathname } from 'next/navigation';
+import { useSelectedLayoutSegments } from 'next/navigation';
 import MobileMenu from './navigation/MobileMenu';
 import { useLanguageToggle } from '@/lib/useLanguageToggle';
 import { useHydratedTranslation } from '@/lib/useHydratedTranslation';
@@ -15,7 +15,8 @@ export default function HeaderNav(): ReactElement {
   const [open, setOpen] = useState(false);
   const toggle = useCallback(() => setOpen((o) => !o), []);
   const close = useCallback(() => setOpen(false), []);
-  const pathname = usePathname();
+  // The path below the hidden language segment, the same in the prebuilt page and in the browser
+  const pathname = `/${useSelectedLayoutSegments().join('/')}`;
   const { language, toggleLanguage } = useLanguageToggle();
   const ht = useHydratedTranslation();
 

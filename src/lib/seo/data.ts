@@ -311,7 +311,7 @@ export const PAGES: Record<string, PageMetadata> = {
   },
   advisory: {
     title: 'CTO-in-a-Box — Async Advisory for Startup Founders | Maxwell Software Solutions',
-    description: 'Technical leadership without the €120K salary. Async Loom video reviews, monthly strategy call, and Slack access for €500/month. Cancel anytime.',
+    description: 'Technical leadership without the full-time salary. Async Loom video reviews, monthly strategy call, and Slack access on a monthly subscription. Cancel anytime.',
     keywords: ['fractional CTO', 'startup CTO advisory', 'async technical advisory', 'CTO as a service', ...KEYWORD_SETS.core],
     canonical: '/advisory',
   },
@@ -323,13 +323,13 @@ export const PAGES: Record<string, PageMetadata> = {
   },
   codeAudit: {
     title: 'Code Audit Services — Technical Debt Assessment | Maxwell Software Solutions',
-    description: 'Professional code audit services: architecture review, security scan, performance analysis, and technical debt assessment. Prioritised remediation roadmap in 5 business days. €2,500 one-time.',
+    description: 'Professional code audit services: architecture review, security scan, performance analysis, and technical debt assessment. Prioritised remediation roadmap in 5 business days.',
     keywords: ['code audit services', 'code review service', 'technical debt assessment', 'code quality review', ...KEYWORD_SETS.core],
     canonical: '/services/code-audit',
   },
   fractionalCTO: {
     title: 'Fractional CTO Services — Part-Time Technical Leadership | Maxwell Software Solutions',
-    description: 'Fractional CTO services in Europe and Lithuania. Architecture decisions, team hiring, vendor selection, and investor due diligence. From €3,500/month, month-to-month.',
+    description: 'Fractional CTO services in Europe and Lithuania. Architecture decisions, team hiring, vendor selection, and investor due diligence. Monthly retainer, month-to-month.',
     keywords: ['fractional cto europe', 'fractional cto lithuania', 'part-time cto startup', 'fractional cto services', ...KEYWORD_SETS.core],
     canonical: '/services/fractional-cto',
   },

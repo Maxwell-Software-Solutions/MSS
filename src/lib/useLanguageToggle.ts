@@ -7,7 +7,7 @@ import { isLithuanianPath } from '@/lib/page-language';
 
 /**
  * The header's and the phone menu's language switch. A /lt/ page has no English twin, so switching to English
- * opens the English home page. It is a full page load: the client router does not complete a move to "/" on this site.
+ * opens the English home page, as a full page load because the English pages are a separate build.
  */
 export function useLanguageToggle(): { language: 'en' | 'lt'; toggleLanguage: () => void } {
   const { language, setLanguage } = useLanguage();

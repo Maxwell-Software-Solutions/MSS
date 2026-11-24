@@ -108,3 +108,15 @@ export const HOLD_BEFORE_END = 0.9;
 export function holdPoint(duration: number): number {
   return Number.isFinite(duration) ? Math.max(0, duration - HOLD_BEFORE_END) : Infinity;
 }
+
+/**
+ * The film draws its "Book a call" button from 55.6 s (full strength by 56.3 s) in both cuts, which is 3.5 s before the
+ * end of the 59.13 s film. The live button goes in 3.6 s before the end, at the first frame of that button, so anyone who
+ * clicks the drawn one is clicking the live one, rather than waiting for the film to reach its last card.
+ */
+export const CTA_BEFORE_END = 3.6;
+
+/** Where the live button goes in: the film's clock, or Infinity (never) while its length is unknown. Not later than the hold. */
+export function ctaPoint(duration: number): number {
+  return Number.isFinite(duration) ? Math.max(0, duration - Math.max(CTA_BEFORE_END, HOLD_BEFORE_END)) : Infinity;
+}

@@ -25,6 +25,9 @@ jest.mock('next/navigation', () => ({
   usePathname() {
     return '/';
   },
+  useSelectedLayoutSegments() {
+    return [];
+  },
 }));
 
 // next/image is mapped via moduleNameMapper to a custom mock that strips Next-specific props.
