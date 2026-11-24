@@ -2,10 +2,8 @@ import { SITE_CONFIG } from '../data';
 import type { WebSite } from './types';
 
 /**
- * WebSite schema with search action
- *
- * Enables the Google "Sitelinks Search Box" feature, allowing users
- * to search your site directly from Google search results.
+ * WebSite schema: the site's name and address. No SearchAction: the site has no search, so one would point
+ * search engines at a results page that does not exist.
  *
  * @returns WebSite schema object for JSON-LD
  */
@@ -15,13 +13,5 @@ export function generateWebSiteSchema(): WebSite {
     '@type': 'WebSite',
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${SITE_CONFIG.url}/blog?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
   };
 }
