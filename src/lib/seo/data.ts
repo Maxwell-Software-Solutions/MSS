@@ -259,13 +259,6 @@ export const PAGES: Record<string, PageMetadata> = {
     keywords: [...KEYWORD_SETS.architecture, ...KEYWORD_SETS.testing, 'software engineering blog'],
     canonical: '/blog',
   },
-  founders: {
-    title: 'Our Founders — Leadership in Software Engineering',
-    description:
-      'Meet the experienced software engineers leading Maxwell Software Solutions with decades of combined expertise.',
-    keywords: ['software engineering leadership', 'founders', 'engineering team'],
-    canonical: '/founders',
-  },
   privacy: {
     title: 'Privacy Policy',
     description: 'Our privacy policy and data protection practices.',
@@ -479,6 +472,42 @@ export const BLOG_POSTS: Record<string, BlogPostMeta> = {
     category: 'API Design',
     section: 'Software Engineering',
     tags: ['API Design', 'REST', 'Web Services', 'Best Practices'],
+  },
+  'code-health-audit-business-impact': {
+    slug: 'code-health-audit-business-impact',
+    title: 'How to Know When Your Codebase Is Slowing Down Your Business',
+    description:
+      'Technical debt has a real business cost: missed estimates, slow onboarding and compounding maintenance. The symptoms, and what a code health audit surfaces.',
+    excerpt:
+      'Technical debt and code health audit guide for CTOs and engineering leaders: the real symptoms and business costs of an unhealthy codebase.',
+    keywords: [...KEYWORD_SETS.core, 'code health audit', 'technical debt cost'],
+    canonical: '/blog/code-health-audit-business-impact',
+    ogType: 'article',
+    author: 'Maxwell Software Solutions',
+    publishedTime: '2026-03-28T00:00:00.000Z',
+    modifiedTime: '2026-03-28T00:00:00.000Z',
+    readTime: '9 min read',
+    category: 'Code Health',
+    section: 'Software Engineering',
+    tags: ['Code Health', 'Technical Debt', 'Code Quality'],
+  },
+  'what-to-expect-2-week-sprint': {
+    slug: 'what-to-expect-2-week-sprint',
+    title: 'What to Expect From a 2-Week Software Sprint (And When It Makes Sense)',
+    description:
+      'A practical guide to rapid software development sprints: what fits in 2 weeks, what does not, how a well-run sprint works and when an MVP sprint makes sense.',
+    excerpt:
+      'Rapid software development guide: what fits in a 2-week sprint, how the Maxwell Sprint-in-a-Box works, and when it makes sense for your team.',
+    keywords: ['2-week sprint', 'MVP sprint', 'rapid software development', 'sprint delivery'],
+    canonical: '/blog/what-to-expect-2-week-sprint',
+    ogType: 'article',
+    author: 'Maxwell Software Solutions',
+    publishedTime: '2026-03-28T00:00:00.000Z',
+    modifiedTime: '2026-03-28T00:00:00.000Z',
+    readTime: '8 min read',
+    category: 'Rapid Development',
+    section: 'Software Engineering',
+    tags: ['Sprint', 'MVP', 'Rapid Development'],
   },
 };
 

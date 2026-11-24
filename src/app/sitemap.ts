@@ -13,7 +13,6 @@ import { CANONICAL_BASE_URL } from '@/lib/seo/url';
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = CANONICAL_BASE_URL ?? SITE_CONFIG.url;
-  const now = new Date();
 
   // Static pages from PAGES registry
   const staticPages = Object.entries(PAGES).map(([key, page]) => {
@@ -61,8 +60,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return {
       url: `${baseUrl}${page.canonical}`,
-      // A page that records its own modified date uses it; the rest report the time of the request
-      lastModified: page.modifiedTime ? new Date(page.modifiedTime) : now,
+      // Only a page that records its own modified date gives one: the build time would change on every deploy and teach
+      // search engines to ignore the field
+      ...(page.modifiedTime ? { lastModified: new Date(page.modifiedTime) } : {}),
       changeFrequency: changefreqMap[key] || 'monthly',
       priority: priorityMap[key] || 0.5,
     };
