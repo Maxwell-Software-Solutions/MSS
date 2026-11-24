@@ -2,7 +2,6 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { act, fireEvent, renderWithProviders, screen, waitFor } from '@/test/test-utils';
 import { axe } from 'jest-axe';
-import * as analytics from '@/lib/analytics';
 import * as LanguageContext from '@/lib/LanguageContext';
 import PromoFilm from './PromoFilm';
 
@@ -243,7 +242,6 @@ describe('PromoFilm', () => {
     });
 
     it('is a live link from its first frame: it takes the click at once, and stays the same link to the end card', () => {
-      const track = jest.spyOn(analytics, 'trackCTAClick').mockImplementation(() => undefined);
       const { container } = renderWithProviders(<PromoFilm />);
       report(seen(), 0.8);
       playTo(container, 55.6, LENGTH);
@@ -252,9 +250,10 @@ describe('PromoFilm', () => {
       expect(link).not.toHaveAttribute('aria-disabled');
       expect(link).not.toHaveAttribute('tabindex');
       expect(link.closest('[inert], [aria-hidden="true"], [hidden]')).toBeNull();
-      link.addEventListener('click', (event) => event.preventDefault()); // jsdom cannot open a tab
+      const clicked = jest.fn((event: Event) => event.preventDefault()); // jsdom cannot open a tab
+      link.addEventListener('click', clicked);
       fireEvent.click(link);
-      expect(track).toHaveBeenCalledWith('promo_film');
+      expect(clicked).toHaveBeenCalledTimes(1);
       // the film plays on and stops on its card: the same link carries through, nothing is swapped under the pointer
       playTo(container, 57, LENGTH);
       expect(screen.getByRole('link', { name: /Book a call/ })).toBe(link);
@@ -359,16 +358,16 @@ describe('PromoFilm', () => {
       expect(window.sessionStorage.getItem('mss.film.sound')).toBe('on');
     });
 
-    it('does not count a click on the live Book a call, which still opens its link and is still tracked', () => {
-      const track = jest.spyOn(analytics, 'trackCTAClick').mockImplementation(() => undefined);
+    it('does not count a click on the live Book a call, which still opens its link', () => {
       const { container } = renderWithProviders(<PromoFilm />);
       report(seen(), 0.8);
       const video = playTo(container, 55.6, 59.1333);
       const link = screen.getByRole('link', { name: /Book a call/ });
-      link.addEventListener('click', (event) => event.preventDefault()); // jsdom cannot open a tab
+      const clicked = jest.fn((event: Event) => event.preventDefault()); // jsdom cannot open a tab
+      link.addEventListener('click', clicked);
       fireEvent.click(link);
       fireEvent.click(link.firstChild as Node); // its text
-      expect(track).toHaveBeenCalledTimes(2);
+      expect(clicked).toHaveBeenCalledTimes(2);
       expect(video.muted).toBe(true);
       expect(window.sessionStorage.getItem('mss.film.sound')).toBeNull();
       expect(video.paused).toBe(false);

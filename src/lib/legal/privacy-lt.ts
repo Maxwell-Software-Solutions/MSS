@@ -29,7 +29,7 @@ export const privacyLt: LegalDoc = {
           items: [
             'Esame maža programinės įrangos bendrovė Vilniuje. Asmens duomenis naudojame tam, kad jums atsakytume, valdytume ir saugotume šią svetainę, siūlytume paslaugas įmonėms ir vykdytume sutartis.',
             'Asmens duomenų neparduodame. Šioje svetainėje nėra reklaminių ar pakartotinės rinkodaros priemonių.',
-            'Analitiniai slapukai nustatomi tik gavus jūsų sutikimą. Be sutikimo analitinių slapukų nenustatome ir analitikos duomenų Google nesiunčiame.',
+            'Ši svetainė nenaudoja analitinių, reklaminių ar sekimo slapukų, todėl slapukų juostos nerodo. Vienintelis jos nustatomas slapukas įsimena jūsų pasirinktą kalbą.',
             'Jei rašome jūsų įmonei, vienu žodžiu galite pasakyti, kad nebenorite gauti laiškų, ir mes daugiau niekada nerašysime tuo adresu. Žr. [teisę nesutikti su rinkodara](#object).',
             'Klausimai, prašymai ir nesutikimai: ' + privacy + '. Skundai: Valstybinė duomenų apsaugos inspekcija (VDAI), žr. skyrių [Skundai](#complaints).',
           ],
@@ -187,38 +187,20 @@ export const privacyLt: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Slapukai yra nedideli failai, kuriuos svetainė išsaugo jūsų įrenginyje. Prieš naudodami slapukus, kurie nėra griežtai būtini tam, ko paprašėte svetainės, prašome jūsų sutikimo (BDAR 6 straipsnio 1 dalies a punktas; Elektroninių ryšių įstatymo 73 straipsnio 4 dalis).',
+          text: 'Slapukai yra nedideli failai, kuriuos svetainė išsaugo jūsų įrenginyje. Ši svetainė nenaudoja analitinių, reklaminių ar sekimo slapukų ir nesiunčia duomenų apie jūsų apsilankymą analitikos ar reklamos paslaugoms. Ji saugo tik tai, kas griežtai būtina tam, ko jos paprašote, o tam sutikimo nereikia (Elektroninių ryšių įstatymo 73 straipsnio 4 dalis).',
         },
-        { kind: 'h3', text: 'Jūsų pasirinkimas' },
-        {
-          kind: 'p',
-          text: 'Analitiniai slapukai nustatomi tik tada, kai juos priimate slapukų juostoje, kurią teikia Cookiebot. Jei jų nepriėmėte arba juosta jūsų naršyklėje nerodoma, analitinių slapukų nenustatome ir analitikos duomenų Google nesiunčiame. Savo pasirinkimą galite bet kada pakeisti arba atšaukti. Sutikimo atšaukimas nedaro poveikio sutikimu grindžiamo duomenų tvarkymo, atlikto iki sutikimo atšaukimo, teisėtumui.',
-        },
-        { kind: 'cookieSettings', label: 'Slapukų nustatymai', unavailable: 'Slapukų juosta jūsų naršyklėje šiuo metu nepasiekiama. Analitinių slapukų nenustatome, jei nesutikote.' },
         {
           kind: 'table',
           caption: 'Naudojami slapukai',
           head: ['Pavadinimas', 'Kas nustato', 'Ką daro', 'Kategorija', 'Galiojimas'],
           rows: [
             ['`language`', 'Ši svetainė', 'Įsimena jūsų pasirinktą kalbą (anglų ar lietuvių). Nustatomas tik jums pakeitus kalbą.', 'Būtinasis', '1 metai'],
-            ['`CookieConsent`', 'Cookiebot (Usercentrics A/S)', 'Saugo jūsų slapukų pasirinkimą.', 'Būtinasis', '1 metai'],
-            ['`_ga`, `_ga_Z934MSEFV5`', 'Google Analytics (Google)', 'Atskiria lankytojus ir sieja to paties apsilankymo veiksmus, kad galėtume skaičiuoti apsilankymus ir matyti, kurie puslapiai naudingi. Nustatomi tik priėmus statistikos slapukus.', 'Statistikos', 'Iki 2 metų'],
           ],
         },
         { kind: 'h3', text: 'Kiti jūsų naršyklėje saugomi duomenys' },
         {
           kind: 'p',
-          text: 'Jūsų nustatymams įsiminti svetainė taip pat naudoja naršyklės saugyklą: `language` (kalba), `site.theme` (šviesi ar tamsi tema) ir `site.heroPaused` (ar sustabdėte animaciją pagrindiniame puslapyje). Šie įrašai lieka jūsų įrenginyje, jokio identifikatoriaus neturi ir naudojami tik jūsų naudojamai funkcijai.',
-        },
-        { kind: 'h3', text: 'Ką renka Google Analytics' },
-        {
-          kind: 'p',
-          text: 'Puslapių peržiūras, apytikslę vietą, nustatytą pagal jūsų IP adresą, naršyklės ir įrenginio tipą, puslapį, iš kurio atėjote, ir įvykius, pavyzdžiui, mygtukų paspaudimus bei tai, ar forma buvo išsiųsta (niekada ne tai, ką įrašėte). Google teigia, kad ES lankytojų IP adresų neregistruoja ir nesaugo. Šiuos duomenis Google mūsų vardu tvarko kaip mūsų duomenų tvarkytoja. Įvykių duomenys saugomi ne ilgiau kaip 14 mėnesių. Nenaudojame reklamos ar pakartotinės rinkodaros funkcijų.',
-        },
-        { kind: 'h3', text: 'Ką registruoja Cookiebot' },
-        {
-          kind: 'p',
-          text: 'Cookiebot (Usercentrics A/S, Danija) saugo sutikimo įrašą, kad galėtume parodyti, jog jūsų pasirinkimas buvo gerbiamas (BDAR 7 straipsnio 1 dalis): atsitiktinį sutikimo ID, datą ir laiką, jūsų pasirinkimus ir ribotus techninius duomenis, pavyzdžiui, naršyklės tipą ir sutrumpintą IP adresą. Cookiebot jį ištrina po 12 mėnesių. Jos privatumo politika: [cookiebot.com](https://www.cookiebot.com/en/privacy-policy/).',
+          text: 'Jūsų nustatymams įsiminti svetainė taip pat naudoja naršyklės saugyklą: `language` (kalba), `site.theme` (šviesi ar tamsi tema) ir `site.heroPaused` (ar sustabdėte animaciją pagrindiniame puslapyje). Tik dabartiniam apsilankymui ji saugo `mss.film.sound` (ar įjungėte filmo garsą) ir `mss.film.no-lt` (kurioms filmo versijoms dar nėra įgarsinimo lietuvių kalba). Kiekvienas įrašas saugomas tik tada, kai jo reikia, lieka jūsų įrenginyje, jokio identifikatoriaus neturi ir naudojamas tik savo funkcijai.',
         },
         { kind: 'h3', text: 'Kitos svetainės' },
         {
@@ -252,8 +234,6 @@ export const privacyLt: LegalDoc = {
           rows: [
             ['Vercel Inc.', 'Šios svetainės talpinimas ir pateikimas.', 'Duomenų tvarkytojas', 'Jungtinės Amerikos Valstijos; pateikiama per pasaulinį tinklą. Mūsų puslapiai šiuo metu generuojami serveriuose Vašingtone (D. C.).'],
             ['Google Cloud EMEA Limited (Airija) ir Google LLC (Jungtinės Amerikos Valstijos)', 'Google Workspace: el. paštas, kalendorius ir rezervavimo puslapis, dokumentai ir skaičiuoklės bei kontaktų formą priimantis scenarijus.', 'Duomenų tvarkytojas', 'ES ir kitos šalys, įskaitant Jungtines Amerikos Valstijas'],
-            ['Google Ireland Limited ir Google LLC', 'Google Analytics – tik jums sutikus.', 'Duomenų tvarkytojas', 'ES ir Jungtinės Amerikos Valstijos'],
-            ['Usercentrics A/S (Cookiebot)', 'Slapukų juosta ir sutikimo įrašas.', 'Duomenų tvarkytojas', 'Danija; sutikimų įrašai talpinami ES'],
             ['Formspree, Inc.', 'Nemokamo audito prašymo forma.', 'Duomenų tvarkytojas', 'Jungtinės Amerikos Valstijos'],
             ['Google', 'PageSpeed Insights – tik jei naudojate svetainės skenerį. Taikoma pačios Google privatumo politika.', 'Atskiras duomenų valdytojas', 'ES ir Jungtinės Amerikos Valstijos'],
           ],
@@ -277,7 +257,6 @@ export const privacyLt: LegalDoc = {
           items: [
             '**Google LLC** ir **Vercel Inc.** yra sertifikuotos pagal duomenų privatumo sistemą. Jų duomenų tvarkymo sąlygose taip pat yra ES standartinės duomenų apsaugos sąlygos (46 straipsnis): [Google](https://cloud.google.com/terms/data-processing-addendum), [Vercel](https://vercel.com/legal/dpa).',
             '**Formspree, Inc.** nėra sertifikuota pagal duomenų privatumo sistemą. Ji nurodo, kad remiasi standartinėmis duomenų apsaugos sąlygomis: [formspree.io/security](https://formspree.io/security/).',
-            '**Usercentrics A/S (Cookiebot)** yra Danijoje ir sutikimų įrašus talpina ES.',
           ],
         },
         {
@@ -296,8 +275,6 @@ export const privacyLt: LegalDoc = {
           head: ['Kas', 'Kiek laiko'],
           rows: [
             ['Svetainės serverio žurnalai (Vercel)', 'Trumpą laiką: Vercel juos saugo nuo maždaug vienos valandos iki kelių parų, priklausomai nuo talpinimo plano.'],
-            ['Slapukų pasirinkimas ir sutikimo įrašas (Cookiebot)', '12 mėnesių. Slapukas `CookieConsent` galioja iki 1 metų.'],
-            ['Analitikos duomenys (Google Analytics)', 'Ne ilgiau kaip 14 mėnesių. Slapukai galioja iki 2 metų.'],
             ['Kontaktų formos žinutės, rezervacijos ir susirašinėjimas el. paštu su užklausas pateikusiais asmenimis', 'Iki 12 mėnesių nuo paskutinio mūsų kontakto su jumis.'],
             ['Prašymai dėl nemokamo audito', 'Iki 12 mėnesių nuo paskutinio mūsų kontakto su jumis. Formspree savo kopiją saugo pagal savo plano numatytą laikotarpį (nemokamame plane – 30 dienų, mokamuose – ilgiau).'],
             ['Svetainės skeneris', 'Nesaugoma.'],
@@ -328,7 +305,7 @@ export const privacyLt: LegalDoc = {
             '**Teisė apriboti duomenų tvarkymą** (18 straipsnis): riboti, kaip naudojame jūsų duomenis, įstatymų nurodytais atvejais.',
             '**Teisė į duomenų perkeliamumą** (20 straipsnis): gauti jūsų mums pateiktus duomenis, kuriuos automatizuotomis priemonėmis tvarkome sutikimo ar sutarties pagrindu, susistemintu, įprastai naudojamu ir kompiuterio skaitomu formatu ir persiųsti juos kitam duomenų valdytojui, kai tai techniškai įmanoma.',
             '**Teisė nesutikti** (21 straipsnis): su rinkodara – bet kada, ir su tvarkymu, grindžiamu teisėtais interesais; žr. [teisę nesutikti](#object).',
-            '**Teisė atšaukti sutikimą** (7 straipsnio 3 dalis): bet kada, pavyzdžiui, slapukų nustatymuose.',
+            '**Teisė atšaukti sutikimą** (7 straipsnio 3 dalis): bet kada, kai tvarkymas grindžiamas jūsų sutikimu.',
             '**Teisė pateikti skundą** (77 straipsnis): priežiūros institucijai; žr. skyrių [Skundai](#complaints).',
           ],
         },

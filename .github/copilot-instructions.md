@@ -44,7 +44,7 @@ Copilot supports custom **chat modes** to adjust behavior based on your current 
 - **Server Components by default** — only add `'use client'` for interactivity (hooks, event handlers)
 - Pages: `src/app/*` with route-based structure
 - Reusable components: `src/app/components/` (e.g., `HeaderNav.tsx`, `AppFooter.tsx`)
-- Global providers: `src/app/layout.tsx` includes `LanguageProvider`, `Cookiebot`, `GoogleAnalytics`
+- Global providers: `src/app/[lang]/layout.tsx` includes `LanguageProvider`
 
 **Import paths**:
 
@@ -80,7 +80,7 @@ Copilot supports custom **chat modes** to adjust behavior based on your current 
 
 ### Environment Variables
 
-- See `next.config.ts` and README; common keys: `OPENAI_API_KEY`, `NEXT_PUBLIC_APPS_SCRIPT_URL`, `NEXT_PUBLIC_SHARED_TOKEN`, `NEXT_PUBLIC_GA_MEASUREMENT_ID`, `NEXT_PUBLIC_COOKIEBOT_CBID`
+- See `next.config.ts` and README; common keys: `OPENAI_API_KEY`, `NEXT_PUBLIC_APPS_SCRIPT_URL`, `NEXT_PUBLIC_SHARED_TOKEN`
 - Set `.env.local` for local dev
 - **Never commit secrets** — use environment variables and `.env.local`
 
@@ -92,7 +92,7 @@ Copilot supports custom **chat modes** to adjust behavior based on your current 
 
 ### Integration Points
 
-- Analytics & consent: `src/app/layout.tsx` wires `Cookiebot` and `GoogleAnalytics`. Cookie IDs and GA IDs come via env vars
+- No analytics, tracking cookies or consent banner: the privacy policy (`src/lib/legal/privacy-*.ts`) says so, so adding any needs a policy change first
 - External services: `@vercel/kv` and `openai` appear in dependencies — be explicit about not committing secret keys; prefer using `.env.local` and the environment
 - Images: Next image optimization is enabled (`next.config.ts` image formats). Avoid adding unoptimized large raster assets
 

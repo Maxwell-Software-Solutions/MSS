@@ -114,17 +114,4 @@
   .legal-note > :where(p, ul, ol) + :where(p, ul, ol) {
     margin-top: var(--space-3);
   }
-
-  .legal-actions {
-    margin-top: var(--space-4);
-  }
-  .legal-actions .btn {
-    width: auto;
-  }
-  .legal-status {
-    display: block;
-    margin-top: var(--space-3);
-    font-size: 0.875rem;
-    color: var(--color-muted);
-  }
 }

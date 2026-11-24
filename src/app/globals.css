@@ -646,43 +646,6 @@ html[data-loading] .site-header .logo-stroke:nth-child(3) { animation-delay: 0.3
 }
 
 /* ============================================
-   COOKIEBOT — placement only (third-party markup)
-   ============================================ */
-#CybotCookiebotDialog {
-  position: fixed !important;
-  inset: auto 0 0 0 !important;
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 !important;
-  border-radius: 12px 12px 0 0 !important;
-  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.18);
-  z-index: 2147483000 !important;
-  transform: none !important;
-}
-
-@media (min-width: 640px) {
-  #CybotCookiebotDialog {
-    inset: auto auto 1.5rem 50% !important;
-    width: min(48rem, calc(100vw - 3rem)) !important;
-    border-radius: 12px !important;
-    transform: translateX(-50%) !important;
-  }
-}
-
-#CybotCookiebotDialogBodyUnderlay {
-  position: fixed !important;
-  inset: 0 !important;
-  background: rgba(0, 0, 0, 0.55) !important;
-  z-index: 2147482999 !important;
-}
-
-html:has(#CybotCookiebotDialog) { scroll-padding-bottom: 220px; }
-
-@media (max-width: 639px) {
-  html:has(#CybotCookiebotDialog) { scroll-padding-bottom: 140px; }
-}
-
-/* ============================================
    PHONES AND TABLETS — running text is never smaller than 16px.
    Unlayered, so it outranks the text-sm utilities used inside articles. Code keeps its size.
    ============================================ */

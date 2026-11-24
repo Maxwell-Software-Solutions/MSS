@@ -55,9 +55,10 @@ describe('Privacy page', () => {
   it('names the processors found in the site code', () => {
     renderPage();
     const recipients = within(document.getElementById('recipients') as HTMLElement);
-    for (const name of [/Vercel Inc\./, /Google Cloud EMEA/, /Google Ireland Limited/, /Usercentrics A\/S/, /Formspree, Inc\./]) {
+    for (const name of [/Vercel Inc\./, /Google Cloud EMEA/, /Formspree, Inc\./]) {
       expect(recipients.getAllByText(name).length).toBeGreaterThan(0);
     }
+    expect(recipients.queryByText(/Google Analytics|Cookiebot|Usercentrics/)).toBeNull();
   });
 
   it('links the supervisory authority and its address', () => {
@@ -67,12 +68,13 @@ describe('Privacy page', () => {
     expect(complaints.getByRole('link', { name: VDAI.email })).toHaveAttribute('href', `mailto:${VDAI.email}`);
   });
 
-  it('lists the cookies the site sets and offers cookie settings', () => {
+  it('lists the one cookie the site sets, and no analytics or consent cookies', () => {
     renderPage();
     const cookies = within(document.getElementById('cookies') as HTMLElement);
     expect(cookies.getAllByText('language').length).toBeGreaterThan(0);
-    expect(cookies.getAllByText('CookieConsent').length).toBeGreaterThan(0);
-    expect(cookies.getByRole('button', { name: 'Cookie settings' })).toBeInTheDocument();
+    expect(cookies.getAllByRole('row')).toHaveLength(2); // the header row and `language`
+    expect(cookies.queryByText(/CookieConsent|_ga|Cookiebot|Google Analytics/)).toBeNull();
+    expect(cookies.queryByRole('button')).toBeNull();
   });
 
   it('shows the Lithuanian text when the link asks for it, and marks its language', () => {

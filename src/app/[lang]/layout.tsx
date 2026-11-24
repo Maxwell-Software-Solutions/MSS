@@ -5,8 +5,6 @@ import HeaderNav from '@/app/components/HeaderNav';
 import { IBM_Plex_Sans } from 'next/font/google';
 import '../globals.css';
 import '../styles/tokens.css';
-import GoogleAnalytics from '@/app/components/GoogleAnalytics';
-import Cookiebot from '@/app/components/Cookiebot';
 import AppFooter from '@/app/components/AppFooter';
 import { LanguageProvider } from '@/lib/LanguageContext';
 import StructuredData from '@/app/components/StructuredData';
@@ -184,10 +182,6 @@ export default async function RootLayout({
         <LanguageProvider initialLanguage={initialLang} criticalTranslations={criticalTranslations}>
           {/* Enhanced Structured Data: Organization + WebSite + LocalBusiness (Vilnius) */}
           <StructuredData schema={[organizationSchemaNew, websiteSchema, localBusinessSchema]} />
-          {/* Cookiebot */}
-          <Cookiebot cbid={process.env.NEXT_PUBLIC_COOKIEBOT_CBID || 'c99c6734-f40a-4c0f-842f-aea763f24ee7'} />
-          {/* Google Analytics */}
-          <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-Z934MSEFV5'} />
           <a href="#main-content" className="skip-link">
             Skip to main content
           </a>

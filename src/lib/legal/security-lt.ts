@@ -39,7 +39,7 @@ export const securityLt: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Į apimtį nepatenka, todėl apie tai praneškite jų savininkams: mūsų naudojamos trečiųjų šalių paslaugos (Google, Vercel, Cookiebot, Formspree), mūsų klientų sistemos ir viskas, kas nėra mūsų. Į apimtį patenka tai, kaip mūsų svetainė tomis paslaugomis naudojasi.',
+          text: 'Į apimtį nepatenka, todėl apie tai praneškite jų savininkams: mūsų naudojamos trečiųjų šalių paslaugos (Google, Vercel, Formspree), mūsų klientų sistemos ir viskas, kas nėra mūsų. Į apimtį patenka tai, kaip mūsų svetainė tomis paslaugomis naudojasi.',
         },
         {
           kind: 'p',
@@ -117,7 +117,7 @@ export const securityLt: LegalDoc = {
             'Visas srautas šifruojamas naudojant HTTPS, o naršyklėms nurodoma svetainę naudoti tik per HTTPS (HTTP Strict Transport Security, vieneri metai, įskaitant subdomenus).',
             'Svetainė siunčia saugumo antraštes: draudžia nuspėti turinio tipą, riboja nukreipiančiojo puslapio informacijos perdavimą, išjungia prieigą prie kameros, mikrofono ir vietos duomenų ir riboja įterpimą į kitas svetaines.',
             'Pačioje svetainėje nėra naudotojų paskyrų, mokėjimų ar duomenų bazės. Formos perduoda tai, ką siunčiate, Google (kontaktų forma) arba Formspree (prašymas dėl nemokamo audito), kaip aprašyta [Privatumo politikoje](/privacy).',
-            'Svetainė neįkelia reklaminių scenarijų, o analitika veikia tik jums sutikus.',
+            'Svetainė neįkelia reklamos ar analitikos scenarijų ir nenustato sekimo slapukų.',
           ],
         },
         { kind: 'h3', text: 'Dirbant su kliento medžiaga' },

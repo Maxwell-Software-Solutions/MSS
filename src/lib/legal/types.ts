@@ -11,8 +11,7 @@ export type LegalBlock =
   | { kind: 'h3'; id?: string; text: string }
   | { kind: 'dl'; rows: Array<{ term: string; def: string }> }
   | { kind: 'table'; caption: string; head: string[]; rows: string[][] }
-  | { kind: 'note'; title?: string; blocks: LegalBlock[] }
-  | { kind: 'cookieSettings'; label: string; unavailable: string };
+  | { kind: 'note'; title?: string; blocks: LegalBlock[] };
 
 export interface LegalSection {
   id: string;

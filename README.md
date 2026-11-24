@@ -172,11 +172,9 @@ Create a `.env.local` file for local development:
 OPENAI_API_KEY=your_api_key
 NEXT_PUBLIC_APPS_SCRIPT_URL=your_url
 NEXT_PUBLIC_SHARED_TOKEN=your_token
-
-# Analytics and Tracking (Optional - defaults to production values if not set)
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-Z934MSEFV5
-NEXT_PUBLIC_COOKIEBOT_CBID=c99c6734-f40a-4c0f-842f-aea763f24ee7
 ```
+
+The site has no analytics, tracking cookies or consent banner.
 
 ## Learn More
 

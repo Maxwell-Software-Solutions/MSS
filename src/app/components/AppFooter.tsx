@@ -3,7 +3,6 @@ import type { ReactElement } from 'react';
 import Link from 'next/link';
 
 import BrandLogo from './BrandLogo';
-import CookieSettingsButton from './legal/CookieSettingsButton';
 import { CONTACT_EMAIL, CONTACT_EMAIL_MAILTO, CONTACT_PHONE, CONTACT_PHONE_TEL } from '@/app/[lang]/contact/contact.constants';
 import { useLanguage } from '@/lib/LanguageContext';
 import { COMPANY } from '@/lib/legal/company';
@@ -178,12 +177,6 @@ export default function SiteFooter(): ReactElement {
                   {t(link.labelKey)}
                 </Link>
               ))}
-              <CookieSettingsButton
-                label={t('footer.cookieSettings')}
-                unavailable={t('footer.cookieUnavailable')}
-                className="inline-flex min-h-11 min-w-11 items-center transition-colors hover:text-foreground lg:min-h-0 lg:min-w-0"
-                statusClassName="block w-full text-xs"
-              />
             </div>
           </div>
         </div>

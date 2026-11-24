@@ -4,7 +4,6 @@ import { memo, useEffect, useRef, useState, type ReactElement } from 'react';
 import Link from 'next/link';
 import CalendlyCTA from '../CalendlyCTA';
 import { useLanguage } from '@/lib/LanguageContext';
-import { trackCTAClick } from '@/lib/analytics';
 import { POSTER_VIEWBOX, ribbonPosterLines } from './ribbon';
 import type { RibbonHandle } from './ribbonRenderer';
 import './hero.css';
@@ -151,18 +150,10 @@ export default function HeroStage(): ReactElement {
             <span className="hero-lede-short">{t('hero.subtitle.short')}</span>
           </p>
           <div className="hero-actions flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/contact"
-              className="btn btn-accent btn-lg"
-              onClick={() => trackCTAClick('hero_primary')}
-            >
+            <Link href="/contact" className="btn btn-accent btn-lg">
               {t('hero.cta.primary')}
             </Link>
-            <Link
-              href="/services"
-              className="btn hero-btn-quiet btn-lg"
-              onClick={() => trackCTAClick('hero_secondary')}
-            >
+            <Link href="/services" className="btn hero-btn-quiet btn-lg">
               {t('hero.cta.secondary')}
             </Link>
           </div>

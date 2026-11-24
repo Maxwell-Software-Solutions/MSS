@@ -35,8 +35,6 @@ export function getCriticalTranslations(translations: Record<string, string>): R
     'footer.privacy',
     'footer.terms',
     'footer.security',
-    'footer.cookieSettings',
-    'footer.cookieUnavailable',
     'footer.legal.heading',
     'footer.legal.code',
     'footer.legal.register',

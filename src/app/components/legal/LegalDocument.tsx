@@ -9,7 +9,6 @@ import { LEGAL_DOCS } from '@/lib/legal';
 import type { LegalKind } from '@/lib/legal';
 import { LEGAL_UPDATED } from '@/lib/legal/company';
 import type { LegalBlock, LegalLanguage } from '@/lib/legal/types';
-import CookieSettingsButton from './CookieSettingsButton';
 import { renderInline } from './renderInline';
 
 interface LegalDocumentProps {
@@ -95,12 +94,6 @@ function Blocks({ blocks }: { blocks: LegalBlock[] }): ReactElement {
               <div key={index} className="note legal-note" role="note">
                 {block.title && <p className="legal-note-title">{block.title}</p>}
                 <Blocks blocks={block.blocks} />
-              </div>
-            );
-          case 'cookieSettings':
-            return (
-              <div key={index} className="legal-actions">
-                <CookieSettingsButton label={block.label} unavailable={block.unavailable} />
               </div>
             );
         }

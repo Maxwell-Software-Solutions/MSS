@@ -2,7 +2,6 @@
 
 import type { ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { trackCTAClick } from '@/lib/analytics';
 
 import { BOOKING_URL as CALENDLY_URL } from '@/lib/booking';
 
@@ -15,7 +14,6 @@ export default function CalendlyCTA(): ReactElement {
         href={CALENDLY_URL}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => trackCTAClick('hero_calendly')}
         className="btn-text rounded-md"
         aria-label={t('hero.calendly.aria')}
       >

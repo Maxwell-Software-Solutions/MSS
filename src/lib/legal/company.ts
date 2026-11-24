@@ -28,9 +28,9 @@ export const COMPANY = {
 
 /** Date of the current wording of the three legal pages. Change it whenever their text changes. */
 export const LEGAL_UPDATED = {
-  iso: '2026-11-02',
-  en: '2 November 2026',
-  lt: '2026 m. lapkričio 2 d.',
+  iso: '2026-11-24',
+  en: '24 November 2026',
+  lt: '2026 m. lapkričio 24 d.',
 } as const;
 
 export const VDAI = {

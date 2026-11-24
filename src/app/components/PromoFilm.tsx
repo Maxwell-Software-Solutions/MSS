@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type ReactElement } from 'react';
 import { useLanguage } from '@/lib/LanguageContext';
-import { trackCTAClick } from '@/lib/analytics';
 import { TALL, ctaPoint, endScale, filmSources, frameAt, growth, holdPoint, pinProgress, posterOf, settleAt, voiceOf } from './promoFilmModel';
 import type { Cut, FilmSource, Layout } from './promoFilmModel';
 import './promo-film.css';
@@ -652,7 +651,7 @@ export default function PromoFilm(): ReactElement {
                   <div className="promo-film-floor" aria-hidden="true" />
                   <div className="promo-film-veil" aria-hidden="true" />
                   {cta ? (
-                    <a className="promo-film-cta" href="/book" target="_blank" rel="noopener noreferrer" aria-label={t('cta.bookCall.aria')} onClick={() => trackCTAClick('promo_film')}>
+                    <a className="promo-film-cta" href="/book" target="_blank" rel="noopener noreferrer" aria-label={t('cta.bookCall.aria')}>
                       {t('cta.bookCall')}
                     </a>
                   ) : null}

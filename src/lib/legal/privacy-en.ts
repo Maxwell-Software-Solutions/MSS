@@ -29,7 +29,7 @@ export const privacyEn: LegalDoc = {
           items: [
             'We are a small software company in Vilnius. We use personal data to answer you, to run and secure this website, to offer our services to businesses and to carry out our contracts.',
             'We do not sell personal data. This website has no advertising or remarketing tools.',
-            'Analytics cookies are set only if you consent. Without your consent no analytics cookies are set and no analytics data is sent to Google.',
+            'This website uses no analytics, advertising or tracking cookies, so it shows no cookie banner. The only cookie it sets remembers the language you choose.',
             'If we write to your company, you can tell us to stop with one word and we will never write to that address again. See [your right to object to marketing](#object).',
             'Questions, requests and objections: ' + privacy + '. Complaints: the State Data Protection Inspectorate (VDAI), see [Complaints](#complaints).',
           ],
@@ -187,38 +187,20 @@ export const privacyEn: LegalDoc = {
       blocks: [
         {
           kind: 'p',
-          text: 'Cookies are small files that a website stores on your device. We ask for your consent before using any that are not strictly necessary for something you asked the site to do (GDPR Art. 6(1)(a); Article 73(4) of the Law on Electronic Communications).',
+          text: 'Cookies are small files that a website stores on your device. This website uses no analytics, advertising or tracking cookies and sends no data about your visit to analytics or advertising services. It stores only what is strictly necessary for something you ask it to do, which needs no consent (Article 73(4) of the Law on Electronic Communications).',
         },
-        { kind: 'h3', text: 'Your choice' },
-        {
-          kind: 'p',
-          text: 'Analytics cookies are set only if you accept them in the cookie banner, which Cookiebot provides. If you have not accepted them, or the banner is not shown in your browser, no analytics cookies are set and no analytics data is sent to Google. You can change or withdraw your choice at any time. Withdrawing consent does not affect the lawfulness of processing based on consent before it was withdrawn.',
-        },
-        { kind: 'cookieSettings', label: 'Cookie settings', unavailable: 'The cookie banner is not available in your browser right now. No analytics cookies are set unless you have consented.' },
         {
           kind: 'table',
           caption: 'Cookies we use',
           head: ['Name', 'Set by', 'What it does', 'Category', 'Lifetime'],
           rows: [
             ['`language`', 'This website', 'Remembers the language you picked (English or Lithuanian). Set only when you switch language.', 'Necessary', '1 year'],
-            ['`CookieConsent`', 'Cookiebot (Usercentrics A/S)', 'Stores your cookie choice.', 'Necessary', '1 year'],
-            ['`_ga`, `_ga_Z934MSEFV5`', 'Google Analytics (Google)', 'Tells visitors apart and keeps one visit together, so we can count visits and see which pages are useful. Set only after you accept statistics cookies.', 'Statistics', 'Up to 2 years'],
           ],
         },
         { kind: 'h3', text: 'Other data kept in your browser' },
         {
           kind: 'p',
-          text: 'To remember your settings the site also uses your browser’s storage: `language` (the language), `site.theme` (light or dark) and `site.heroPaused` (whether you paused the animation on the home page). These items stay on your device, hold no identifier and are used only for the feature you use.',
-        },
-        { kind: 'h3', text: 'What Google Analytics collects' },
-        {
-          kind: 'p',
-          text: 'Page views, the approximate location derived from your IP address, browser and device type, the page you came from, and events such as clicks on buttons and whether a form was sent (never what you wrote). Google states that it does not log or store IP addresses of visitors from the EU. Google processes this data for us as our processor. Event data is kept for no longer than 14 months. We do not use advertising or remarketing features.',
-        },
-        { kind: 'h3', text: 'What Cookiebot records' },
-        {
-          kind: 'p',
-          text: 'Cookiebot (Usercentrics A/S, Denmark) keeps a consent record so that we can show your choice was respected (GDPR Art. 7(1)): a random consent ID, the date and time, your choices and limited technical data such as your browser type and a shortened IP address. Cookiebot deletes it after 12 months. Its privacy policy is at [cookiebot.com](https://www.cookiebot.com/en/privacy-policy/).',
+          text: 'To remember your settings the site also uses your browser’s storage: `language` (the language), `site.theme` (light or dark) and `site.heroPaused` (whether you paused the animation on the home page). For the current visit only it keeps `mss.film.sound` (whether you turned on the film’s sound) and `mss.film.no-lt` (which versions of the film have no Lithuanian voice-over yet). Each is stored only when it is needed, stays on your device, holds no identifier and is used only for its own feature.',
         },
         { kind: 'h3', text: 'Other sites' },
         {
@@ -252,8 +234,6 @@ export const privacyEn: LegalDoc = {
           rows: [
             ['Vercel Inc.', 'Hosting and delivery of this website.', 'Processor', 'United States; delivered through a global network. Our pages are currently generated on servers in Washington, D.C.'],
             ['Google Cloud EMEA Limited (Ireland) and Google LLC (United States)', 'Google Workspace: e-mail, calendar and booking page, documents and spreadsheets, and the script that receives the contact form.', 'Processor', 'EU and other countries, including the United States'],
-            ['Google Ireland Limited and Google LLC', 'Google Analytics, only if you consent.', 'Processor', 'EU and United States'],
-            ['Usercentrics A/S (Cookiebot)', 'Cookie banner and consent record.', 'Processor', 'Denmark; consent records are hosted in the EU'],
             ['Formspree, Inc.', 'Free audit application form.', 'Processor', 'United States'],
             ['Google', 'PageSpeed Insights, only if you use the website scanner. Google’s own privacy policy applies.', 'Separate controller', 'EU and United States'],
           ],
@@ -277,7 +257,6 @@ export const privacyEn: LegalDoc = {
           items: [
             '**Google LLC** and **Vercel Inc.** are certified under the Data Privacy Framework. Their data processing terms also contain the EU Standard Contractual Clauses (Art. 46): [Google](https://cloud.google.com/terms/data-processing-addendum), [Vercel](https://vercel.com/legal/dpa).',
             '**Formspree, Inc.** is not certified under the Data Privacy Framework. It states that it relies on the Standard Contractual Clauses: [formspree.io/security](https://formspree.io/security/).',
-            '**Usercentrics A/S (Cookiebot)** is in Denmark and hosts consent records in the EU.',
           ],
         },
         {
@@ -296,8 +275,6 @@ export const privacyEn: LegalDoc = {
           head: ['What', 'How long'],
           rows: [
             ['Website server logs (Vercel)', 'Short-lived: Vercel keeps them from about one hour to a few days, depending on the hosting plan.'],
-            ['Cookie choice and consent record (Cookiebot)', '12 months. The `CookieConsent` cookie lasts up to 1 year.'],
-            ['Analytics data (Google Analytics)', 'No longer than 14 months. The cookies last up to 2 years.'],
             ['Contact-form messages, bookings and e-mail with enquirers', 'Up to 12 months after our last contact with you.'],
             ['Free audit applications', 'Up to 12 months after our last contact with you. Formspree keeps its own copy for the period its plan allows (30 days on its free plan, longer on paid plans).'],
             ['Website scanner', 'Not stored.'],
@@ -328,7 +305,7 @@ export const privacyEn: LegalDoc = {
             '**Restriction** (Art. 18): to limit how we use your data in the cases the law lists.',
             '**Portability** (Art. 20): to receive the data you gave us, where we process it by automated means on the basis of consent or a contract, in a structured, commonly used and machine-readable format, and to have it transmitted to another controller where technically feasible.',
             '**Objection** (Art. 21): to marketing at any time, and to processing based on legitimate interests; see [your right to object](#object).',
-            '**Withdrawal of consent** (Art. 7(3)): at any time, for example in the cookie settings.',
+            '**Withdrawal of consent** (Art. 7(3)): at any time, wherever we rely on your consent.',
             '**Complaint** (Art. 77): to a supervisory authority; see [Complaints](#complaints).',
           ],
         },

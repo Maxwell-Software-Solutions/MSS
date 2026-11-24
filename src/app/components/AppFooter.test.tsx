@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { fireEvent, render as renderPlain, within } from '@testing-library/react';
+import { render as renderPlain, within } from '@testing-library/react';
 import { renderWithProviders as render, screen } from '@/test/test-utils';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { CONTACT_EMAIL, CONTACT_PHONE } from '@/app/[lang]/contact/contact.constants';
@@ -137,30 +137,10 @@ describe('AppFooter provider details', () => {
 
   it('sends every footer text with the server-rendered page, in both languages', () => {
     for (const dictionary of [en, lt] as Array<Record<string, string>>) {
-      const keys = Object.keys(dictionary).filter((key) => /^footer\.(legal\.|privacy|terms|security|cookie)/.test(key));
-      expect(keys.length).toBeGreaterThanOrEqual(11);
+      const keys = Object.keys(dictionary).filter((key) => /^footer\.(legal\.|privacy|terms|security)/.test(key));
+      expect(keys.length).toBeGreaterThanOrEqual(9);
       const critical = getCriticalTranslations(dictionary);
       expect(keys.filter((key) => critical[key] !== dictionary[key])).toEqual([]);
     }
-  });
-});
-
-describe('AppFooter cookie settings', () => {
-  afterEach(() => {
-    delete window.Cookiebot;
-  });
-
-  it('opens the cookie banner so consent can be changed or withdrawn', () => {
-    const renew = jest.fn();
-    window.Cookiebot = { renew };
-    render(<SiteFooter />);
-    fireEvent.click(screen.getByRole('button', { name: 'Cookie settings' }));
-    expect(renew).toHaveBeenCalledTimes(1);
-  });
-
-  it('says so when the banner is not available', () => {
-    render(<SiteFooter />);
-    fireEvent.click(screen.getByRole('button', { name: 'Cookie settings' }));
-    expect(screen.getByRole('status')).toHaveTextContent(/not available in your browser/);
   });
 });

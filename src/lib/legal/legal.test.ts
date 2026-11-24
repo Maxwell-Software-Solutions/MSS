@@ -32,8 +32,6 @@ function textsOf(block: LegalBlock): string[] {
       return [block.caption, ...block.head, ...block.rows.flat()];
     case 'note':
       return [...(block.title ? [block.title] : []), ...block.blocks.flatMap(textsOf)];
-    case 'cookieSettings':
-      return [block.label, block.unavailable];
   }
 }
 

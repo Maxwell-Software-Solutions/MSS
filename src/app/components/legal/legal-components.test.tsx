@@ -1,5 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import CookieSettingsButton from './CookieSettingsButton';
+import { render, screen } from '@testing-library/react';
 import { renderInline } from './renderInline';
 
 describe('renderInline', () => {
@@ -38,26 +37,5 @@ describe('renderInline', () => {
   it('never turns other schemes into links', () => {
     render(<p>{renderInline('[x](javascript:alert(1))')}</p>);
     expect(screen.queryByRole('link')).toBeNull();
-  });
-});
-
-describe('CookieSettingsButton', () => {
-  afterEach(() => {
-    delete window.Cookiebot;
-  });
-
-  it('opens the Cookiebot banner when it is available', () => {
-    const renew = jest.fn();
-    window.Cookiebot = { renew };
-    render(<CookieSettingsButton label="Cookie settings" unavailable="Not available" />);
-    fireEvent.click(screen.getByRole('button', { name: 'Cookie settings' }));
-    expect(renew).toHaveBeenCalledTimes(1);
-    expect(screen.queryByRole('status')).toBeNull();
-  });
-
-  it('says so when the banner is not available', () => {
-    render(<CookieSettingsButton label="Cookie settings" unavailable="Not available" />);
-    fireEvent.click(screen.getByRole('button', { name: 'Cookie settings' }));
-    expect(screen.getByRole('status')).toHaveTextContent('Not available');
   });
 });

@@ -39,7 +39,7 @@ export const securityEn: LegalDoc = {
         },
         {
           kind: 'p',
-          text: 'Out of scope, so please report to their owners instead: the third-party services we use (Google, Vercel, Cookiebot, Formspree), our clients’ systems, and anything that is not ours. How our website uses those services is in scope.',
+          text: 'Out of scope, so please report to their owners instead: the third-party services we use (Google, Vercel, Formspree), our clients’ systems, and anything that is not ours. How our website uses those services is in scope.',
         },
         {
           kind: 'p',
@@ -117,7 +117,7 @@ export const securityEn: LegalDoc = {
             'All traffic is encrypted with HTTPS, and browsers are told to use only HTTPS for the site (HTTP Strict Transport Security, one year, including subdomains).',
             'The site sends security headers: it forbids content-type sniffing, limits what is passed in the referrer, switches off camera, microphone and location access, and restricts embedding in other sites.',
             'The site itself has no user accounts, payments or database. The forms pass what you send to Google (contact form) or Formspree (free audit application), as the [Privacy Policy](/privacy) describes.',
-            'The site loads no advertising scripts, and analytics runs only after you accept it.',
+            'The site loads no advertising or analytics scripts and sets no tracking cookies.',
           ],
         },
         { kind: 'h3', text: 'With client material' },
