@@ -280,7 +280,7 @@ export const PAGES: Record<string, PageMetadata> = {
   caseStudies: {
     title: 'Real AI Work — Case Studies',
     description:
-      'Real AI work: AI document processing for a UK law firm, an AI review loop on a live website, a multi-model AI orchestrator and an LED neon-sign builder.',
+      'Real AI work: AI document processing for a law firm, an AI review loop on a live website, a multi-model AI orchestrator and an LED neon-sign builder.',
     keywords: [
       'AI case studies',
       'AI document processing',
